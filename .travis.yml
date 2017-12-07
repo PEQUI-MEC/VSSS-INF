@@ -1,0 +1,21 @@
+language: cpp 
+ 
+sudo: required
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+      - docker-ce
+      
+before_install:
+ - docker login -u $DOCKER_ACC -p $DOCKER_PASS
+ - docker pull pequi/vsss-inf:latest
+
+script:
+  - docker build -t pequi/vsss-inf:latest --cache-from="pequi/vsss-inf:latest" .
+
+after_success:
+  - docker push pequi/vsss-inf:latest

@@ -5,3 +5,4 @@ VSSS
 *.o
 *.json
 *.txt
+.vscode/
