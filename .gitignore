@@ -3,6 +3,4 @@ media/**/*.png
 VSSS
 *.a
 *.o
-*.json
-*.txt
 .vscode/

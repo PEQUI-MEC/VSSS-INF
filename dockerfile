@@ -29,5 +29,5 @@ RUN apt-get install -y \
         libgtkmm-3.0-dev
 
 COPY . .
-RUN ./buildVSSS.sh
+RUN ./make.sh
 CMD ./runVSSS.sh
