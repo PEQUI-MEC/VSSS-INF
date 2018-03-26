@@ -659,15 +659,15 @@ void V4LInterface::__update_control_widgets(std::list<ControlHolder>& ctrl_list)
 void V4LInterface::updateRobotLabels()
 {
   std::stringstream aux1;
-  aux1 << "(" << round((robot_list[0].position.x))<< "," << round((robot_list[0].position.y))<< "," << round(robot_list[0].orientation*(180/PI)) << ")";
+  aux1 << "(" << round((robotGUI.robot_list[0].position.x))<< "," << round((robotGUI.robot_list[0].position.y))<< "," << round(robotGUI.robot_list[0].orientation*(180/PI)) << ")";
   robot1_pos_lb->set_text(aux1.str());
 
   std::stringstream aux2;
-  aux2 << "(" << round((robot_list[1].position.x))<< "," << round((robot_list[1].position.y))<< "," << round((robot_list[1].orientation*(180/PI))) << ")";
+  aux2 << "(" << round((robotGUI.robot_list[1].position.x))<< "," << round((robotGUI.robot_list[1].position.y))<< "," << round((robotGUI.robot_list[1].orientation*(180/PI))) << ")";
   robot2_pos_lb->set_text(aux2.str());
 
   std::stringstream aux3;
-  aux3 << "(" << round((robot_list[2].position.x))<< "," << round((robot_list[2].position.y)) << "," <<  round((robot_list[2].orientation*(180/PI))) << ")";
+  aux3 << "(" << round((robotGUI.robot_list[2].position.x))<< "," << round((robotGUI.robot_list[2].position.y)) << "," <<  round((robotGUI.robot_list[2].orientation*(180/PI))) << ")";
 
   robot3_pos_lb->set_text(aux3.str());
   std::stringstream aux4;
@@ -726,174 +726,6 @@ void V4LInterface::createIDsFrame(){
 
   robots_id_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_edit_bt_signal_pressed));
   robots_id_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_done_bt_signal_clicked));
-}
-
-void V4LInterface::createSpeedsFrame(){
-  Gtk::Label *label;
-  info_hbox.pack_start(robots_speed_fm, false, true, 5);
-  robots_speed_fm.set_label("Speeds");
-  robots_speed_fm.add(robots_speed_vbox[0]);
-
-  robots_speed_hbox[0].pack_start(robots_speed_edit_bt, false, true, 5);
-  robots_speed_edit_bt.set_label("Edit");
-  robots_speed_hbox[0].pack_end(robots_speed_done_bt, false, true, 5);
-  robots_speed_done_bt.set_label("Done");
-  robots_speed_vbox[0].pack_start(robots_speed_hbox[0], false, true, 5);
-
-  label = new Gtk::Label("Robot 1:");
-  //label->set_yalign(1.0);
-  robots_speed_hscale[0].set_digits(1);
-  robots_speed_hscale[0].set_increments(0.1,1);
-  robots_speed_hscale[0].set_range(0,1.4);
-  robots_speed_hscale[0].set_size_request(100,-1);
-  //robots_speed_hscale[0].set_inverted(true);
-  robots_speed_hscale[0].set_value(0.8);
-  robots_speed_hbox[1].pack_start(*label, false, true, 0);
-  robots_speed_hbox[1].pack_start(robots_speed_vbox[1], false, true, 0);
-  robots_speed_vbox[1].pack_start(robots_speed_hscale[0], false, true, 0);
-  robots_speed_vbox[1].pack_start(robots_speed_progressBar[0], false, true, 0);
-  robots_speed_progressBar[0].set_halign(Gtk::ALIGN_CENTER);
-  robots_speed_progressBar[0].set_valign(Gtk::ALIGN_CENTER);
-  std::ostringstream strs0;
-  strs0 << robot_list[0].vmax;
-  std::string str0 = strs0.str();
-  robots_speed_progressBar[0].set_text(str0.substr(0,3));
-  robots_speed_progressBar[0].set_show_text(true);
-  robots_speed_progressBar[0].set_fraction( (double) robot_list[0].vmax);
-  robots_speed_vbox[0].pack_start(robots_speed_hbox[1], false, true, 0);
-
-  label = new Gtk::Label("Robot 2:");
-  //label->set_yalign(1.0);
-  robots_speed_hscale[1].set_digits(1);
-  robots_speed_hscale[1].set_increments(0.1,1);
-  robots_speed_hscale[1].set_range(0,1.4);
-  robots_speed_hscale[1].set_size_request(100,-1);
-  //robots_speed_hscale[1].set_inverted(true);
-  robots_speed_hscale[1].set_value(0.8);
-  robots_speed_hbox[2].pack_start(*label, false, true, 0);
-  robots_speed_hbox[2].pack_start(robots_speed_vbox[2], false, true, 0);
-  robots_speed_vbox[2].pack_start(robots_speed_hscale[1], false, true, 0);
-  robots_speed_vbox[2].pack_start(robots_speed_progressBar[1], false, true, 0);
-  robots_speed_progressBar[1].set_halign(Gtk::ALIGN_CENTER);
-  robots_speed_progressBar[1].set_valign(Gtk::ALIGN_CENTER);
-  std::ostringstream strs1;
-  strs1 << robot_list[1].vmax;
-  std::string str1 = strs1.str();
-  robots_speed_progressBar[1].set_text(str1.substr(0,3));
-  robots_speed_progressBar[1].set_show_text(true);
-  robots_speed_progressBar[1].set_fraction( (double) robot_list[1].vmax);
-  robots_speed_vbox[0].pack_start(robots_speed_hbox[2], false, true, 0);
-
-  label = new Gtk::Label("Robot 3:");
-  //label->set_yalign(1.0);
-  robots_speed_hscale[2].set_digits(1);
-  robots_speed_hscale[2].set_increments(0.1,1);
-  robots_speed_hscale[2].set_range(0,1.4);
-  robots_speed_hscale[2].set_size_request(100,-1);
-  //robots_speed_hscale[2].set_inverted(true);
-  robots_speed_hscale[2].set_value(0.8);
-  robots_speed_hbox[3].pack_start(*label, false, true, 0);
-  robots_speed_hbox[3].pack_start(robots_speed_vbox[3], false, true, 0);
-  robots_speed_vbox[3].pack_start(robots_speed_hscale[2], false, true, 0);
-  robots_speed_vbox[3].pack_start(robots_speed_progressBar[2], false, true, 0);
-  robots_speed_progressBar[2].set_halign(Gtk::ALIGN_CENTER);
-  robots_speed_progressBar[2].set_valign(Gtk::ALIGN_CENTER);
-  std::ostringstream strs2;
-  strs2 << robot_list[2].vmax;
-  std::string str2 = strs2.str();
-  robots_speed_progressBar[2].set_text(str2.substr(0,3));
-  robots_speed_progressBar[2].set_show_text(true);
-  robots_speed_progressBar[2].set_fraction( (double) robot_list[2].vmax);
-  robots_speed_vbox[0].pack_start(robots_speed_hbox[3], false, true, 0);
-
-  robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-  robots_speed_hscale[0].set_state(Gtk::STATE_INSENSITIVE);
-  robots_speed_hscale[1].set_state(Gtk::STATE_INSENSITIVE);
-  robots_speed_hscale[2].set_state(Gtk::STATE_INSENSITIVE);
-  robots_speed_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-
-  robots_speed_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_speed_edit_bt_signal_pressed));
-  robots_speed_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_speed_done_bt_signal_clicked));
-}
-
-void V4LInterface::update_speed_progressBars(){
-  std::ostringstream strs0, strs1, strs2;
-  std::string str0, str1, str2;
-
-  robots_speed_progressBar[0].set_fraction( (double) robot_list[0].vmax/1.4);
-  strs0 << (double) robot_list[0].vmax;
-  str0 = strs0.str();
-  robots_speed_progressBar[0].set_text(str0.substr(0,4));
-
-  robots_speed_progressBar[1].set_fraction( (double) robot_list[1].vmax/1.4);
-  strs1 << (double) robot_list[1].vmax;
-  str1 = strs1.str();
-  robots_speed_progressBar[1].set_text(str1.substr(0,4));
-
-  robots_speed_progressBar[2].set_fraction( (double) robot_list[2].vmax/1.4);
-  strs2 << (double) robot_list[2].vmax;
-  str2 = strs2.str();
-  robots_speed_progressBar[2].set_text(str2.substr(0,4));
-}
-
-void V4LInterface::update_robot_functions(){
-  for (int i = 0; i < 3; i++)
-    cb_robot_function[i].set_active(robot_list[i].role);
-}
-
-void V4LInterface::createFunctionsFrame(){
-  Gtk::Label *label;
-  robots_function_fm.set_label("Robot Functions");
-  info_hbox.pack_start(robots_function_fm, false, true, 5);
-  robots_function_fm.add(robots_function_vbox);
-  robots_function_edit_bt.set_label("Edit");
-  robots_function_done_bt.set_label("Done");
-  robots_function_hbox[0].pack_start(robots_function_edit_bt, false, true, 5);
-  robots_function_hbox[0].pack_end(robots_function_done_bt, false, true, 5);
-  robots_function_vbox.pack_start(robots_function_hbox[0], false, true, 5);
-  label = new Gtk::Label("Robot 1: ");
-  std::string function[4];
-  function[0].clear();
-  function[0].append("Goalkeeper");
-  function[1].clear();
-  function[1].append("Defense");
-  function[2].clear();
-  function[2].append("Attack");
-  function[3].clear();
-  function[3].append("Opponent");
-  cb_robot_function[0].append(function[0]);
-  cb_robot_function[0].append(function[1]);
-  cb_robot_function[0].append(function[2]);
-  cb_robot_function[0].append(function[3]);
-  cb_robot_function[0].set_active_text(function[0]);
-  robots_function_hbox[1].pack_start(*label, false, true, 5);
-  robots_function_hbox[1].pack_start(cb_robot_function[0], false, true, 5);
-  robots_function_vbox.pack_start(robots_function_hbox[1], false, true, 5);
-  label = new Gtk::Label("Robot 2: ");
-  cb_robot_function[1].append(function[0]);
-  cb_robot_function[1].append(function[1]);
-  cb_robot_function[1].append(function[2]);
-  cb_robot_function[1].append(function[3]);
-  cb_robot_function[1].set_active_text(function[1]);
-  robots_function_hbox[2].pack_start(*label, false, true, 5);
-  robots_function_hbox[2].pack_start(cb_robot_function[1], false, true, 5);
-  robots_function_vbox.pack_start(robots_function_hbox[2], false, true, 5);
-  label = new Gtk::Label("Robot 3: ");
-  cb_robot_function[2].append(function[0]);
-  cb_robot_function[2].append(function[1]);
-  cb_robot_function[2].append(function[2]);
-  cb_robot_function[2].append(function[3]);
-  cb_robot_function[2].set_active_text(function[2]);
-  robots_function_hbox[3].pack_start(*label, false, true, 5);
-  robots_function_hbox[3].pack_start(cb_robot_function[2], false, true, 5);
-  robots_function_vbox.pack_start(robots_function_hbox[3], false, true, 5);
-  robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-  robots_function_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-  cb_robot_function[0].set_state(Gtk::STATE_INSENSITIVE);
-  cb_robot_function[1].set_state(Gtk::STATE_INSENSITIVE);
-  cb_robot_function[2].set_state(Gtk::STATE_INSENSITIVE);
-  robots_function_edit_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_function_edit_bt_signal_clicked));
-  robots_function_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_function_done_bt_signal_clicked));
 }
 
 void V4LInterface::createPositionsAndButtonsFrame(){
@@ -958,9 +790,9 @@ Gtk::VBox(false, 0), reset_warp_flag(false) {
 
   Robot r;
 
-  robot_list.push_back(r);
-  robot_list.push_back(r);
-  robot_list.push_back(r);
+  robotGUI.robot_list.push_back(r);
+  robotGUI.robot_list.push_back(r);
+  robotGUI.robot_list.push_back(r);
 
   cb_device.set_state(Gtk::STATE_NORMAL);
   cb_input.set_state(Gtk::STATE_NORMAL);
@@ -1014,25 +846,23 @@ Gtk::VBox(false, 0), reset_warp_flag(false) {
   red_button_released.set_size_request(100,100);
   red_button_pressed.set_size_request(100,100);
 
-  robot_list[0].ID = 'A';
-  robot_list[1].ID = 'B';
-  robot_list[2].ID = 'C';
+  robotGUI.robot_list[0].ID = 'A';
+  robotGUI.robot_list[1].ID = 'B';
+  robotGUI.robot_list[2].ID = 'C';
 
-  robot_list[0].role = 0;
-  robot_list[1].role = 1;
-  robot_list[2].role = 2;
+  robotGUI.robot_list[0].role = 0;
+  robotGUI.robot_list[1].role = 1;
+  robotGUI.robot_list[2].role = 2;
 
 
 
-  for(int i=0; i<robot_list.size(); i++) {
-    robot_list[i].position = cv::Point(-1,-1);
+  for(unsigned i=0; i<robotGUI.robot_list.size(); i++) {
+    robotGUI.robot_list.at(i).position = cv::Point(-1,-1);
   }
 
   createPositionsAndButtonsFrame();
   createQuickActionsFrame();
   createIDsFrame();
-  createFunctionsFrame();
-  createSpeedsFrame();
 
   info_hbox.pack_end(buttons_vbox, false, true, 5);
   buttons_vbox.pack_start(start_game_hbox, false, true, 5);

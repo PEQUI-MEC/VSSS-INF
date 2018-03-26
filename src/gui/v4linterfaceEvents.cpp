@@ -503,11 +503,11 @@ void V4LInterface::event_robots_id_edit_bt_signal_pressed(){
 void V4LInterface::event_robots_id_done_bt_signal_clicked(){
 	std::string str;
 	str = robots_id_box[0].get_text();
-	robot_list[0].ID = str[0];
+	robotGUI.robot_list[0].ID = str[0];
 	str = robots_id_box[1].get_text();
-	robot_list[1].ID = str[0];
+	robotGUI.robot_list[1].ID = str[0];
 	str = robots_id_box[2].get_text();
-	robot_list[2].ID = str[0];
+	robotGUI.robot_list[2].ID = str[0];
 
 	robots_id_edit_flag = false;
 	robots_id_edit_bt.set_label("Edit");
@@ -518,59 +518,15 @@ void V4LInterface::event_robots_id_done_bt_signal_clicked(){
 
 }
 
-void V4LInterface::event_robots_speed_edit_bt_signal_pressed(){
-	if (!robots_speed_edit_flag)
-	{
-		robots_speed_edit_flag = true;
-		robots_speed_edit_bt.set_label("Cancel");
-		robots_speed_done_bt.set_state(Gtk::STATE_NORMAL);
-		robots_speed_hscale[0].set_state(Gtk::STATE_NORMAL);
-		robots_speed_hscale[1].set_state(Gtk::STATE_NORMAL);
-		robots_speed_hscale[2].set_state(Gtk::STATE_NORMAL);
-		robots_speed_tmp[0] = robots_speed_hscale[0].get_value();
-		robots_speed_tmp[1] = robots_speed_hscale[1].get_value();
-		robots_speed_tmp[2] = robots_speed_hscale[2].get_value();
-	}
-	else
-	{
-		robots_speed_edit_flag = false;
-		robots_speed_edit_bt.set_label("Edit");
-		robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-		robots_speed_hscale[0].set_state(Gtk::STATE_INSENSITIVE);
-		robots_speed_hscale[1].set_state(Gtk::STATE_INSENSITIVE);
-		robots_speed_hscale[2].set_state(Gtk::STATE_INSENSITIVE);
-		robots_speed_hscale[0].set_value(robots_speed_tmp[0]);
-		robots_speed_hscale[1].set_value(robots_speed_tmp[1]);
-		robots_speed_hscale[2].set_value(robots_speed_tmp[2]);
-
-	}
-}
-
-void V4LInterface::event_robots_speed_done_bt_signal_clicked(){
-
-	robot_list[0].vdefault = (float) robots_speed_hscale[0].get_value();
-	robot_list[1].vdefault = (float) robots_speed_hscale[1].get_value();
-	robot_list[2].vdefault = (float) robots_speed_hscale[2].get_value();
-	robot_list[0].vmax = robot_list[0].vdefault;
-	robot_list[1].vmax = robot_list[1].vdefault;
-	robot_list[2].vmax = robot_list[2].vdefault;
-	robots_speed_edit_flag = false;
-	robots_speed_edit_bt.set_label("Edit");
-	robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-	robots_speed_hscale[0].set_state(Gtk::STATE_INSENSITIVE);
-	robots_speed_hscale[1].set_state(Gtk::STATE_INSENSITIVE);
-	robots_speed_hscale[2].set_state(Gtk::STATE_INSENSITIVE);
-}
-
 void V4LInterface::event_start_game_bt_signal_clicked(){
 	if (!start_game_flag)
 	{
 		start_game_flag = true;
 		start_game_bt.set_image(red_button_pressed);
 
-		robot_list[0].status = 0;
-		robot_list[1].status = 0;
-		robot_list[2].status = 0;
+		robotGUI.robot_list[0].status = 0;
+		robotGUI.robot_list[1].status = 0;
+		robotGUI.robot_list[2].status = 0;
 
 		std::string dateString;
 		time_t tt;
@@ -596,87 +552,11 @@ void V4LInterface::event_start_game_bt_signal_clicked(){
 		start_game_flag = false;
 		start_game_bt.set_image(red_button_released);
 		for(int i=0; i<3; i++) {
-			robot_list.at(i).cmdType = 0; // Position
-			robot_list.at(i).vmax = 0;
+			robotGUI.robot_list.at(i).cmdType = 0; // Position
+			robotGUI.robot_list.at(i).vmax = 0;
 		}
 	}
 }
-
-void V4LInterface::event_robots_function_edit_bt_signal_clicked(){
-	if (!robots_function_edit_flag)
-	{
-		robots_function_edit_flag = true;
-		robots_function_edit_bt.set_label("Cancel");
-		robots_function_edit_bt.set_state(Gtk::STATE_NORMAL);
-		cb_robot_function[0].set_state(Gtk::STATE_NORMAL);
-		cb_robot_function[1].set_state(Gtk::STATE_NORMAL);
-		cb_robot_function[2].set_state(Gtk::STATE_NORMAL);
-		robots_function_done_bt.set_state(Gtk::STATE_NORMAL);
-		robots_function_tmp[0] = cb_robot_function[0].get_active_row_number();
-		robots_function_tmp[1] = cb_robot_function[1].get_active_row_number();
-		robots_function_tmp[2] = cb_robot_function[2].get_active_row_number();
-
-	}
-	else
-	{
-		robots_function_edit_flag = false;
-		robots_function_edit_bt.set_label("Edit");
-		cb_robot_function[0].set_state(Gtk::STATE_INSENSITIVE);
-		cb_robot_function[1].set_state(Gtk::STATE_INSENSITIVE);
-		cb_robot_function[2].set_state(Gtk::STATE_INSENSITIVE);
-		robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-		cb_robot_function[0].set_active(robots_function_tmp[0]);
-		cb_robot_function[1].set_active(robots_function_tmp[1]);
-		cb_robot_function[2].set_active(robots_function_tmp[2]);
-	}
-}
-
-
-		void V4LInterface::event_robots_function_done_bt_signal_clicked(){
-			std::string s[3];
-
-			for (int i = 0; i < 3; i++)
-			{
-				s[i] = cb_robot_function[i].get_active_text();
-
-				if (s[i].compare("Goalkeeper") == 0)
-				{
-					std::cout << "Robot " << i+1 << ": Goalkeeper." << std::endl;
-					robot_list[i].role = 0;
-				}
-				else if (s[i].compare("Defense") == 0)
-				{
-					std::cout << "Robot " << i+1 << ": Defense." << std::endl;
-					robot_list[i].role = 1;
-				}
-				else if (s[i].compare("Attack") == 0)
-				{
-					std::cout << "Robot " << i+1 << ": Attack." << std::endl;
-					robot_list[i].role = 2;
-				}
-				else if (s[i].compare("Opponent") == 0)
-				{
-					std::cout << "Robot " << i+1 << ": Opponent." << std::endl;
-					robot_list[i].role = 3;
-				}
-				else
-				{
-					std::cout << "Error: not possible to set robot " << i+1 << " function." << std::endl;
-				}
-
-
-			}
-
-			robots_function_edit_flag = false;
-			robots_function_edit_bt.set_label("Edit");
-			cb_robot_function[0].set_state(Gtk::STATE_INSENSITIVE);
-			cb_robot_function[1].set_state(Gtk::STATE_INSENSITIVE);
-			cb_robot_function[2].set_state(Gtk::STATE_INSENSITIVE);
-			robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-
-		}
-
-
 
 bool V4LInterface::__core_save(const char * txtFileName)
 {
@@ -692,8 +572,8 @@ bool V4LInterface::__core_save(const char * txtFileName)
 		// sempre é salvo 9 linhas
 		for (int i = 0; i < 3; i++) {
 			txtFile << robots_id_box[i].get_text() <<std::endl;
-			txtFile << cb_robot_function[i].get_active_row_number() <<std::endl;
-			txtFile << robots_speed_hscale[i].get_value() <<std::endl;
+			txtFile << robotGUI.cb_robot_function[i].get_active_row_number() <<std::endl;
+			txtFile << robotGUI.robots_speed_hscale[i].get_value() <<std::endl;
 		}
 		// !END_INFO
 
@@ -766,29 +646,29 @@ bool V4LInterface::__core_load(const char * txtFileName)
 		for (int i = 0; i < 3; i++) {
 			getline(txtFile, line);
 			robots_id_box[i].set_text(line.c_str());
-			robot_list[i].ID = line.c_str()[0];
+			robotGUI.robot_list[i].ID = line.c_str()[0];
 
 			getline(txtFile, line);
-			cb_robot_function[i].set_active(atoi(line.c_str()));
-			if (cb_robot_function[i].get_active_row_number() == 0)
+			robotGUI.cb_robot_function[i].set_active(atoi(line.c_str()));
+			if (robotGUI.cb_robot_function[i].get_active_row_number() == 0)
 			{
 				std::cout << "Robot " << i+1 << ": Goalkeeper." << std::endl;
-				robot_list[i].role = 0;
+				robotGUI.robot_list[i].role = 0;
 			}
-			else if (cb_robot_function[i].get_active_row_number() == 1)
+			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 1)
 			{
 				std::cout << "Robot " << i+1 << ": Defense." << std::endl;
-				robot_list[i].role = 1;
+				robotGUI.robot_list[i].role = 1;
 			}
-			else if (cb_robot_function[i].get_active_row_number() == 2)
+			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 2)
 			{
 				std::cout << "Robot " << i+1 << ": Attack." << std::endl;
-				robot_list[i].role = 2;
+				robotGUI.robot_list[i].role = 2;
 			}
-			else if (cb_robot_function[i].get_active_row_number() == 3)
+			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 3)
 			{
 				std::cout << "Robot " << i+1 << ": Opponent." << std::endl;
-				robot_list[i].role = 3;
+				robotGUI.robot_list[i].role = 3;
 			}
 			else
 			{
@@ -798,15 +678,15 @@ bool V4LInterface::__core_load(const char * txtFileName)
 			getline(txtFile, line);
 			double value = atof(line.c_str());
 			//std::cout << "ATOF " << atof(line.c_str()) << std::endl;
-			robots_speed_hscale[i].set_value((double) value);
-			robot_list[i].vmax = (double) value;
-			robot_list[i].vdefault = (double) value;
+			robotGUI.robots_speed_hscale[i].set_value((double) value);
+			robotGUI.robot_list[i].vmax = (double) value;
+			robotGUI.robot_list[i].vdefault = (double) value;
 
-			robots_speed_progressBar[i].set_fraction(robots_speed_hscale[i].get_value()/6);
+			robotGUI.robots_speed_progressBar[i].set_fraction(robotGUI.robots_speed_hscale[i].get_value()/6);
 			std::ostringstream strs;
-			strs << robots_speed_hscale[i].get_value();
+			strs << robotGUI.robots_speed_hscale[i].get_value();
 			std::string str = strs.str();
-			robots_speed_progressBar[i].set_text(str.substr(0,4));
+			robotGUI.robots_speed_progressBar[i].set_text(str.substr(0,4));
 		}
 		// !END_INFO
 

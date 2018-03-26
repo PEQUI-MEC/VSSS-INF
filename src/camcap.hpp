@@ -86,9 +86,9 @@ public:
         for (int i = 0; i < interface.visionGUI.vision->getRobotListSize(); i++)
         {
             robot = interface.visionGUI.vision->getRobot(i);
-            interface.robot_list[i].position = robot.position;
-            interface.robot_list[i].orientation = robot.orientation;
-            interface.robot_list[i].secundary = robot.secundary;
+            interface.robotGUI.robot_list[i].position = robot.position;
+            interface.robotGUI.robot_list[i].orientation = robot.orientation;
+            interface.robotGUI.robot_list[i].secundary = robot.secundary;
         }
 
         ballPosition = interface.visionGUI.vision->getBall();
@@ -143,8 +143,8 @@ public:
 
             // Liberar os botões de edit
             interface.robots_id_edit_bt.set_state(Gtk::STATE_NORMAL);
-            interface.robots_speed_edit_bt.set_state(Gtk::STATE_NORMAL);
-            interface.robots_function_edit_bt.set_state(Gtk::STATE_NORMAL);
+            interface.robotGUI.robots_speed_edit_bt.set_state(Gtk::STATE_NORMAL);
+            interface.robotGUI.robots_function_edit_bt.set_state(Gtk::STATE_NORMAL);
             strategyGUI.formation_box.set_sensitive(true);
             strategyGUI.bt_createFormation.set_sensitive(true);
 
@@ -161,8 +161,8 @@ public:
 
             // Travar os botões de edit
             interface.robots_id_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-            interface.robots_speed_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-            interface.robots_function_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
+            interface.robotGUI.robots_speed_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
+            interface.robotGUI.robots_function_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
             strategyGUI.formation_box.set_sensitive(false);
             strategyGUI.bt_createFormation.set_sensitive(false);
         }
@@ -267,15 +267,15 @@ public:
                 cv::Point aux_point;
 
                 if (interface.imageView.PID_test_flag) {
-                  for(int i=0; i<interface.robot_list.size(); i++) {
-                      if(interface.robot_list[i].target.x!=-1&&interface.robot_list[i].target.y!=-1) {
+                  for(int i=0; i<interface.robotGUI.robot_list.size(); i++) {
+                      if(interface.robotGUI.robot_list[i].target.x!=-1&&interface.robotGUI.robot_list[i].target.y!=-1) {
                           // linha branca no alvo sendo executado
-                          line(cameraFlow, interface.robot_list[i].position,interface.robot_list[i].target, cv::Scalar(255,255,255),2);
+                          line(cameraFlow, interface.robotGUI.robot_list[i].position,interface.robotGUI.robot_list[i].target, cv::Scalar(255,255,255),2);
                           // linha roxa no alvo final
-                          line(cameraFlow, interface.robot_list[i].position, cv::Point(interface.imageView.tar_pos[0], interface.imageView.tar_pos[1]), cv::Scalar(255,0,255),2);
+                          line(cameraFlow, interface.robotGUI.robot_list[i].position, cv::Point(interface.imageView.tar_pos[0], interface.imageView.tar_pos[1]), cv::Scalar(255,0,255),2);
                       }
                       // círculo branco no alvo sendo executado
-                      circle(cameraFlow,interface.robot_list[i].target, 9, cv::Scalar(255,255,255), 2);
+                      circle(cameraFlow,interface.robotGUI.robot_list[i].target, 9, cv::Scalar(255,255,255), 2);
                       // círculo roxo no alvo final
                       circle(cameraFlow,cv::Point(interface.imageView.tar_pos[0], interface.imageView.tar_pos[1]), 7, cv::Scalar(255,0,255), 2);
                       // círculo vermelho no obstáculo
@@ -286,7 +286,7 @@ public:
 
                   }
                   if(Selec_index!=-1) {
-                      circle(cameraFlow,interface.robot_list[Selec_index].position, 17, cv::Scalar(255,255,255), 2);
+                      circle(cameraFlow,interface.robotGUI.robot_list[Selec_index].position, 17, cv::Scalar(255,255,255), 2);
                   }
                 }
 
@@ -303,7 +303,7 @@ public:
                 {
                     // robo 1
                     line(cameraFlow, interface.visionGUI.vision->getRobot(i).position, interface.visionGUI.vision->getRobot(i).secundary,cv::Scalar(255,255,0), 2);
-                    //line(cameraFlow,interface.robot_list[0].position,interface.robot_list[0].ternary,cv::Scalar(100,255,0), 2);
+                    //line(cameraFlow,interface.robotGUI.robot_list[0].position,interface.robotGUI.robot_list[0].ternary,cv::Scalar(100,255,0), 2);
                     putText(cameraFlow, std::to_string(i+1),cv::Point(interface.visionGUI.vision->getRobot(i).position.x-5,interface.visionGUI.vision->getRobot(i).position.y-17),cv::FONT_HERSHEY_PLAIN,1,cv::Scalar(255,255,0),2);
                     circle(cameraFlow, interface.visionGUI.vision->getRobot(i).position, 15, cv::Scalar(255,255,0), 2);
                     // linha da pick-a
@@ -312,24 +312,24 @@ public:
 
 
                     // vetor que todos os robos estão executando
-                    aux_point.x = round(100*cos(interface.robot_list[i].transAngle));
-                    aux_point.y = - round(100*sin(interface.robot_list[i].transAngle));
-                    aux_point += interface.robot_list[i].position;
-                    arrowedLine(cameraFlow,interface.robot_list[i].position, aux_point,cv::Scalar(255,0,0),2);
+                    aux_point.x = round(100*cos(interface.robotGUI.robot_list[i].transAngle));
+                    aux_point.y = - round(100*sin(interface.robotGUI.robot_list[i].transAngle));
+                    aux_point += interface.robotGUI.robot_list[i].position;
+                    arrowedLine(cameraFlow,interface.robotGUI.robot_list[i].position, aux_point,cv::Scalar(255,0,0),2);
                 }
 
                 for(int i=0;i<5;i++){
                     aux_point.x = round(100*cos(strategyGUI.strategy.pot_angle[i]));
                     aux_point.y = - round(100*sin(strategyGUI.strategy.pot_angle[i]));
-                    aux_point += interface.robot_list[2].position;
+                    aux_point += interface.robotGUI.robot_list[2].position;
                     if(strategyGUI.strategy.pot_magnitude[i]!=0){
-                        arrowedLine(cameraFlow,interface.robot_list[2].position, aux_point, cv::Scalar(0,255,0));
+                        arrowedLine(cameraFlow,interface.robotGUI.robot_list[2].position, aux_point, cv::Scalar(0,255,0));
                     }
                 }
                 aux_point.x = round(100*cos(strategyGUI.strategy.pot_goalTheta));
                 aux_point.y = - round(100*sin(strategyGUI.strategy.pot_goalTheta));
-                aux_point += interface.robot_list[2].position;
-                arrowedLine(cameraFlow,interface.robot_list[2].position, aux_point, cv::Scalar(255,255,0));
+                aux_point += interface.robotGUI.robot_list[2].position;
+                arrowedLine(cameraFlow,interface.robotGUI.robot_list[2].position, aux_point, cv::Scalar(255,255,0));
 
                 for(int i=0; i<interface.visionGUI.vision->getAdvListSize(); i++)
                     circle(cameraFlow,interface.visionGUI.vision->getAdvRobot(i), 15, cv::Scalar(0,0,255), 2);
@@ -344,8 +344,8 @@ public:
             PID_test();
         }
         else {
-            for(int i=0; i<interface.robot_list.size(); i++) {
-                interface.robot_list[i].target=cv::Point(-1,-1);
+            for(int i=0; i<interface.robotGUI.robot_list.size(); i++) {
+                interface.robotGUI.robot_list[i].target=cv::Point(-1,-1);
             }
             Selec_index=-1;
             control.PID_test_flag = false;
@@ -372,10 +372,10 @@ public:
         }
         else if(strategyGUI.updating_formation_flag) {
             strategyGUI.updating_formation_flag = false;
-            for(int i = 0; i < interface.robot_list.size(); i++) {
-                interface.robot_list.at(i).cmdType = POSITION;
-                interface.robot_list.at(i).vmax = interface.robot_list.at(i).vdefault;
-                interface.robot_list.at(i).target = cv::Point(-1, -1);
+            for(int i = 0; i < interface.robotGUI.robot_list.size(); i++) {
+                interface.robotGUI.robot_list.at(i).cmdType = POSITION;
+                interface.robotGUI.robot_list.at(i).vmax = interface.robotGUI.robot_list.at(i).vdefault;
+                interface.robotGUI.robot_list.at(i).target = cv::Point(-1, -1);
             }
         }
 
@@ -392,14 +392,14 @@ public:
             circle(cameraFlow,Ball_Est, 7, cv::Scalar(255,140,0), 2);
             //char buffer[3]; -> não é utilizado
             // line(cameraFlow,cv::Point(strategyGUI.strategy.COORD_BOX_DEF_X,strategyGUI.strategy.COORD_BOX_UP_Y - strategyGUI.strategy.ABS_ROBOT_SIZE/2),cv::Point(strategyGUI.strategy.COORD_GOAL_DEF_FRONT_X,strategyGUI.strategy.COORD_BOX_UP_Y- strategyGUI.strategy.ABS_ROBOT_SIZE/2),cv::Scalar(255,140,0), 2);
-            strategyGUI.strategy.get_targets(&(interface.robot_list), (interface.visionGUI.vision->getAllAdvRobots()));
+            strategyGUI.strategy.get_targets(&(interface.robotGUI.robot_list), (interface.visionGUI.vision->getAllAdvRobots()));
             for(int i =0; i<3; i++) {
-                circle(cameraFlow,interface.robot_list[i].target, 7, cv::Scalar(127,255,127), 2);
-                putText(cameraFlow,std::to_string(i+1),cv::Point(interface.robot_list[i].target.x-5,interface.robot_list[i].target.y-17),cv::FONT_HERSHEY_PLAIN,1,cv::Scalar(127,255,127),2);
+                circle(cameraFlow,interface.robotGUI.robot_list[i].target, 7, cv::Scalar(127,255,127), 2);
+                putText(cameraFlow,std::to_string(i+1),cv::Point(interface.robotGUI.robot_list[i].target.x-5,interface.robotGUI.robot_list[i].target.y-17),cv::FONT_HERSHEY_PLAIN,1,cv::Scalar(127,255,127),2);
             } // for
 
-            interface.update_speed_progressBars();
-            interface.update_robot_functions();
+            interface.robotGUI.update_speed_progressBars();
+            interface.robotGUI.update_robot_functions();
         } // if start_game_flag
         // ----------------------------------------//
 
@@ -433,7 +433,7 @@ public:
     void sendCmdToRobots(std::vector<Robot>&robot_list, bool &xbeeIsConnected){
         while (1) {
             if (interface.get_start_game_flag() || interface.imageView.PID_test_flag || strategyGUI.updating_formation_flag) {
-                //transformTargets(robot_list);
+                //transformTargets(robotGUI.robot_list);
                 robot_list[0].position = robot_kf_est[0];
                 robot_list[1].position = robot_kf_est[1];
                 robot_list[2].position = robot_kf_est[2];
@@ -457,29 +457,29 @@ public:
         // se os três robôs estiverem posicionados, desmarca a flag
         int robots_positioned = 0;
         //std::cout << "\niteration id#" << rand() << "\n";
-        for(int i = 0; i < interface.robot_list.size(); i++) {
-            if(distance(interface.robot_list.at(i).position, virtual_robots_positions[i]) > CONST::fixed_pos_distance / 4) {
-                //interface.robot_list.at(i).cmdType = VECTOR;
-                //interface.robot_list.at(i).transAngle = atan2(double(interface.robot_list.at(i).position.y - virtual_robots_positions[i].y), - double(interface.robot_list.at(i).position.x - virtual_robots_positions[i].x));
-                interface.robot_list.at(i).vmax = MAX_POSITIONING_VEL;
+        for(int i = 0; i < interface.robotGUI.robot_list.size(); i++) {
+            if(distance(interface.robotGUI.robot_list.at(i).position, virtual_robots_positions[i]) > CONST::fixed_pos_distance / 4) {
+                //interface.robotGUI.robot_list.at(i).cmdType = VECTOR;
+                //interface.robotGUI.robot_list.at(i).transAngle = atan2(double(interface.robotGUI.robot_list.at(i).position.y - virtual_robots_positions[i].y), - double(interface.robotGUI.robot_list.at(i).position.x - virtual_robots_positions[i].x));
+                interface.robotGUI.robot_list.at(i).vmax = MAX_POSITIONING_VEL;
 
-                interface.robot_list.at(i).cmdType = POSITION;
-                interface.robot_list.at(i).target = virtual_robots_positions[i];
+                interface.robotGUI.robot_list.at(i).cmdType = POSITION;
+                interface.robotGUI.robot_list.at(i).target = virtual_robots_positions[i];
 
                 //std::cout << "robot " << i+1 << " updating position.\n";
             }
-            else if(angular_distance(interface.robot_list.at(i).orientation, virtual_robots_orientations[i]) > MAX_THETA_TOLERATION * (PI/180)) {
-                interface.robot_list.at(i).fixedPos = true;
-                interface.robot_list.at(i).cmdType = ORIENTATION;
-                interface.robot_list.at(i).targetOrientation = virtual_robots_positions[i].x > width/2 ? -virtual_robots_orientations[i] : virtual_robots_orientations[i];
-                interface.robot_list.at(i).vmax = MAX_POSITIONING_VEL;
-                //std::cout << "robot " << i+1 << " updating rotation. Now: " << interface.robot_list.at(i).orientation << " Desired:" << virtual_robots_orientations[i] << ".\n";
+            else if(angular_distance(interface.robotGUI.robot_list.at(i).orientation, virtual_robots_orientations[i]) > MAX_THETA_TOLERATION * (PI/180)) {
+                interface.robotGUI.robot_list.at(i).fixedPos = true;
+                interface.robotGUI.robot_list.at(i).cmdType = ORIENTATION;
+                interface.robotGUI.robot_list.at(i).targetOrientation = virtual_robots_positions[i].x > width/2 ? -virtual_robots_orientations[i] : virtual_robots_orientations[i];
+                interface.robotGUI.robot_list.at(i).vmax = MAX_POSITIONING_VEL;
+                //std::cout << "robot " << i+1 << " updating rotation. Now: " << interface.robotGUI.robot_list.at(i).orientation << " Desired:" << virtual_robots_orientations[i] << ".\n";
             }
             else {
                 //std::cout << "robot " << i+1 << " done.\n";
-                interface.robot_list.at(i).cmdType = ORIENTATION;
-                interface.robot_list.at(i).targetOrientation = virtual_robots_orientations[i];
-                interface.robot_list.at(i).vmax = 0;
+                interface.robotGUI.robot_list.at(i).cmdType = ORIENTATION;
+                interface.robotGUI.robot_list.at(i).targetOrientation = virtual_robots_orientations[i];
+                interface.robotGUI.robot_list.at(i).vmax = 0;
                 robots_positioned++;
             }
         }
@@ -570,50 +570,50 @@ public:
         double dist;
         int old_Selec_index;
         old_Selec_index = Selec_index;
-        for(int i=0; i<interface.robot_list.size() && i<3; i++) {
-            // interface.robot_list[i].cmdType = 0; // position cmd
-            dist = sqrt(pow((interface.imageView.robot_pos[0]-interface.robot_list[i].position.x),2)+pow((interface.imageView.robot_pos[1]-interface.robot_list[i].position.y),2));
+        for(int i=0; i<interface.robotGUI.robot_list.size() && i<3; i++) {
+            // interface.robotGUI.robot_list[i].cmdType = 0; // position cmd
+            dist = sqrt(pow((interface.imageView.robot_pos[0]-interface.robotGUI.robot_list[i].position.x),2)+pow((interface.imageView.robot_pos[1]-interface.robotGUI.robot_list[i].position.y),2));
             if(dist<=17) {
                 Selec_index=i;
                 interface.imageView.tar_pos[0] = -1;
                 interface.imageView.tar_pos[1] = -1;
-                interface.robot_list[Selec_index].target=cv::Point(-1,-1);
+                interface.robotGUI.robot_list[Selec_index].target=cv::Point(-1,-1);
                 fixed_ball[Selec_index]=false;
             }
         }
         if(Selec_index>-1) {
-            if(sqrt(pow((interface.visionGUI.vision->getBall().x-interface.robot_list[Selec_index].target.x),2)+pow((interface.visionGUI.vision->getBall().y-interface.robot_list[Selec_index].target.y),2))<=7)
+            if(sqrt(pow((interface.visionGUI.vision->getBall().x-interface.robotGUI.robot_list[Selec_index].target.x),2)+pow((interface.visionGUI.vision->getBall().y-interface.robotGUI.robot_list[Selec_index].target.y),2))<=7)
                 fixed_ball[Selec_index]=true;
 
             if(fixed_ball[Selec_index])
-                interface.robot_list[Selec_index].target=interface.visionGUI.vision->getBall();
+                interface.robotGUI.robot_list[Selec_index].target=interface.visionGUI.vision->getBall();
             else
-                interface.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
+                interface.robotGUI.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
         }
 
 
-        for(int i=0; i<interface.robot_list.size() && i<3; i++) {
+        for(int i=0; i<interface.robotGUI.robot_list.size() && i<3; i++) {
             if(fixed_ball[i])
-                interface.robot_list[i].target=interface.visionGUI.vision->getBall();
+                interface.robotGUI.robot_list[i].target=interface.visionGUI.vision->getBall();
             else {
-                if(sqrt(pow((interface.robot_list[i].position.x-interface.robot_list[i].target.x),2)+
-                pow((interface.robot_list[i].position.y-interface.robot_list[i].target.y),2))<15) {
-                    interface.robot_list[i].target = cv::Point(-1,-1);
+                if(sqrt(pow((interface.robotGUI.robot_list[i].position.x-interface.robotGUI.robot_list[i].target.x),2)+
+                pow((interface.robotGUI.robot_list[i].position.y-interface.robotGUI.robot_list[i].target.y),2))<15) {
+                    interface.robotGUI.robot_list[i].target = cv::Point(-1,-1);
                     interface.imageView.tar_pos[0]=-1;
                     interface.imageView.tar_pos[1]=-1;
-                    interface.robot_list[i].Vr = 0;
-                    interface.robot_list[i].Vl = 0;
-                    interface.robot_list[i].vmax = 0;
+                    interface.robotGUI.robot_list[i].Vr = 0;
+                    interface.robotGUI.robot_list[i].Vl = 0;
+                    interface.robotGUI.robot_list[i].vmax = 0;
                 }
-                if(interface.robot_list[i].target.x != -1 && interface.robot_list[i].target.y != -1) {
-                    interface.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
-                    interface.robot_list[Selec_index].vmax = interface.robot_list[Selec_index].vdefault;
-                    interface.robot_list[i].cmdType = VECTOR;
-                    interface.robot_list[i].transAngle = atan2(double(interface.robot_list[i].position.y - interface.robot_list[i].target.y), - double(interface.robot_list[i].position.x - interface.robot_list[i].target.x));
-                    //interface.robot_list[i].goTo(interface.robot_list[i].target,interface.visionGUI.vision->getBall());
+                if(interface.robotGUI.robot_list[i].target.x != -1 && interface.robotGUI.robot_list[i].target.y != -1) {
+                    interface.robotGUI.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
+                    interface.robotGUI.robot_list[Selec_index].vmax = interface.robotGUI.robot_list[Selec_index].vdefault;
+                    interface.robotGUI.robot_list[i].cmdType = VECTOR;
+                    interface.robotGUI.robot_list[i].transAngle = atan2(double(interface.robotGUI.robot_list[i].position.y - interface.robotGUI.robot_list[i].target.y), - double(interface.robotGUI.robot_list[i].position.x - interface.robotGUI.robot_list[i].target.x));
+                    //interface.robotGUI.robot_list[i].goTo(interface.robotGUI.robot_list[i].target,interface.visionGUI.vision->getBall());
                 } else {
-                    interface.robot_list[i].Vr = 0;
-                    interface.robot_list[i].Vl = 0;
+                    interface.robotGUI.robot_list[i].Vr = 0;
+                    interface.robotGUI.robot_list[i].Vl = 0;
                 }
             }
         }
@@ -676,9 +676,11 @@ public:
         fm.add(interface.imageView);
 
         notebook.append_page(interface, "Capture");
+        notebook.append_page(interface.robotGUI, "Robot");
         notebook.append_page(interface.visionGUI, "Vision");
         notebook.append_page(control, "Control");
         notebook.append_page(strategyGUI, "Strategy");
+
 
         robot_kf_est.push_back(Ball_Est);
         robot_kf_est.push_back(Ball_Est);
@@ -710,7 +712,7 @@ public:
 
         // Thread que envia comandos para o robo
         threshold_threads.add_thread(new boost::thread(&CamCap::sendCmdToRobots,this,
-        boost::ref(interface.robot_list), boost::ref(control.s.Serial_Enabled)));
+        boost::ref(interface.robotGUI.robot_list), boost::ref(control.s.Serial_Enabled)));
 
 
         interface.signal_start().connect(sigc::mem_fun(*this, &CamCap::start_signal));

@@ -74,8 +74,8 @@ ControlGUI::ControlGUI() {
 
     _create_status_frame();
 
-    pack_start(testFrame, false, true, 5);
-    configureTestFrame();
+    //pack_start(testFrame, false, true, 5);
+    //configureTestFrame();
 
     _update_cb_serial();
     // Conectar os sinais para o acontecimento dos eventos

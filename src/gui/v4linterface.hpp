@@ -16,9 +16,9 @@
 #include <gtkmm/messagedialog.h>
 #include <linux/videodev2.h>
 #include "../capture/v4lcap.hpp"
-#include "../robot.hpp"
 #include "imageView.hpp"
 #include "visionGUI.hpp"
+#include "robotGUI.hpp"
 #include <ctime>
 #include <chrono>
 
@@ -29,14 +29,13 @@ class V4LInterface: public Gtk::VBox {
 public:
 
     VisionGUI visionGUI;
+    RobotGUI robotGUI;
 
     bool warped = false;
 
     ImageView imageView;
 
     double ballX, ballY;
-
-    std::vector<Robot> robot_list;
 
     Gtk::Image red_button_released;
     Gtk::Image red_button_pressed;
@@ -45,7 +44,9 @@ public:
     Gtk::Label *ball_pos_lb;
 
     Gtk::Frame robots_id_fm;
+    
     Gtk::HBox info_hbox;
+
     Gtk::VBox robots_pos_vbox;
     Gtk::HBox robots_pos_hbox[7];
     Gtk::HBox start_game_hbox;
@@ -72,25 +73,6 @@ public:
     Gtk::Entry robots_id_box[3];
     Glib::ustring robots_id_tmp[3];
     bool robots_id_edit_flag = false;
-
-    Gtk::Frame robots_speed_fm;
-    Gtk::VBox robots_speed_vbox[4];
-    Gtk::HScale robots_speed_hscale[3];
-    double robots_speed_tmp[3];
-    Gtk::HBox robots_speed_hbox[4];
-    Gtk::ProgressBar robots_speed_progressBar[3];
-    Gtk::Button robots_speed_edit_bt;
-    Gtk::Button robots_speed_done_bt;
-    bool robots_speed_edit_flag = false;
-
-    Gtk::Frame robots_function_fm;
-    Gtk::VBox robots_function_vbox;
-    Gtk::HBox robots_function_hbox[4];
-    Gtk::ComboBoxText cb_robot_function[3];
-    int robots_function_tmp[3];
-    Gtk::Button robots_function_edit_bt;
-    Gtk::Button robots_function_done_bt;
-    bool robots_function_edit_flag = false;
 
     v4lcap vcap;
     V4LInterface();
@@ -143,18 +125,10 @@ public:
     void __event_cb_frame_interval_changed();
 
     void createIDsFrame();
-    void createSpeedsFrame();
-    void update_speed_progressBars();
-    void update_robot_functions();
     void event_draw_info_checkbox_signal_clicked();
     void createPositionsAndButtonsFrame();
-    void createFunctionsFrame();
 
-    void event_robots_function_done_bt_signal_clicked();
-    void event_robots_function_edit_bt_signal_clicked();
     void event_start_game_bt_signal_clicked();
-    void event_robots_speed_done_bt_signal_clicked();
-    void event_robots_speed_edit_bt_signal_pressed();
     void event_robots_id_done_bt_signal_clicked();
     void event_robots_id_edit_bt_signal_pressed();
 

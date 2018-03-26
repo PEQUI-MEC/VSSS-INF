@@ -39,15 +39,15 @@ SOURCES = $(shell find . -name "*.hpp")
 # isso compila o projeto
 # ele gera primeiro os objetos que são dependências e depois linka tudo
 
-VSSS: welcome src/vision/vision.o src/vision/gmm.o src/vision/tag.o src/kalmanFilter.o src/gui/controlGUI.o src/serialW.o src/gui/filechooser.o src/gui/imageView.o src/gui/visionGUI.o src/gui/testFrame.o src/capture/v4lcap.o src/gui/v4linterface.o src/gui/v4linterfaceEvents.o src/fuzzy/fuzzyController.o src/fuzzy/fuzzyFunction.o src/fuzzy/rules.o src/main.o
+VSSS: welcome src/vision/vision.o src/vision/gmm.o src/vision/tag.o src/kalmanFilter.o src/gui/robotGUI.o src/gui/controlGUI.o src/serialW.o src/gui/filechooser.o src/gui/imageView.o src/gui/visionGUI.o src/gui/testFrame.o src/capture/v4lcap.o src/gui/v4linterface.o src/gui/v4linterfaceEvents.o src/fuzzy/fuzzyController.o src/fuzzy/fuzzyFunction.o src/fuzzy/rules.o src/main.o
 	@ar cr "src/pack-capture-gui.a" "src/capture/v4lcap.o" "src/capture/v4lcap.o" "src/gui/v4linterface.o" "src/gui/v4linterfaceEvents.o"
 	@echo "\n\n\033[92mLinking objects...\033[0m\n"
-	@$(COMPILER) -w -L"/usr/local/lib" -L"/lib64" -o "VSSS"  "src/main.o" "src/pack-capture-gui.a" "src/vision/vision.o" "src/kalmanFilter.o" "src/gui/controlGUI.o" "src/serialW.o" "src/gui/filechooser.o" "src/gui/imageView.o" "src/gui/visionGUI.o" "src/vision/tag.o" "src/vision/gmm.o" "src/gui/testFrame.o" "src/fuzzy/fuzzyController.o" "src/fuzzy/fuzzyFunction.o" "src/fuzzy/rules.o" -lopencv_shape -lopencv_stitching -lopencv_objdetect -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_video -lopencv_photo -lopencv_ml -lopencv_imgproc -lopencv_flann -lopencv_core -lboost_thread -lboost_system `pkg-config gtkmm-3.0 libv4l2 libv4lconvert --cflags --libs`
+	@$(COMPILER) -w -L"/usr/local/lib" -L"/lib64" -o "VSSS"  "src/main.o" "src/pack-capture-gui.a" "src/vision/vision.o" "src/kalmanFilter.o" "src/gui/robotGUI.o" "src/gui/controlGUI.o" "src/serialW.o" "src/gui/filechooser.o" "src/gui/imageView.o" "src/gui/visionGUI.o" "src/vision/tag.o" "src/vision/gmm.o" "src/gui/testFrame.o" "src/fuzzy/fuzzyController.o" "src/fuzzy/fuzzyFunction.o" "src/fuzzy/rules.o" -lopencv_shape -lopencv_stitching -lopencv_objdetect -lopencv_superres -lopencv_videostab -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lopencv_video -lopencv_photo -lopencv_ml -lopencv_imgproc -lopencv_flann -lopencv_core -lboost_thread -lboost_system `pkg-config gtkmm-3.0 libv4l2 libv4lconvert --cflags --libs`
 	@echo "\n\n\033[92mAll done.../ Run 'sh runVSSS.sh' to open VSSS terminal.\033[0m\n"
 
 # mensagem de boas vindas, fica daora
 welcome:
-	@echo "\n\033[92m|------- VSSS 2017 - PEQUI MECÂNICO -------|\033[0m"
+	@echo "\n\033[92m|------- VSSS 2018 - PEQUI MECÂNICO INF -------|\033[0m"
 	@echo "\n\033[92mThis script will build only necessary objects.\033[0m\n"
 
 # verifica se algum hpp ou cpp foi alterado e compila a main se precisar
@@ -129,6 +129,11 @@ src/serialW.o: src/serialW.cpp
 src/gui/visionGUI.o: src/gui/visionGUI.cpp
 	@echo "\n\n\033[92mCompiling Vision GUI object...\033[0m\n"
 	@$(COMPILER) -c `pkg-config gtkmm-3.0 --cflags` "src/gui/visionGUI.cpp" -o "src/gui/visionGUI.o"
+
+#objeto robotGUI
+src/gui/robotGUI.o: src/gui/robotGUI.cpp
+	@echo "\n\n\033[92mCompiling Robot GUI object...\033[0m\n"
+	@$(COMPILER) -c `pkg-config gtkmm-3.0 --cflags` -Wall "src/gui/robotGUI.cpp" -o "src/gui/robotGUI.o"
 
 # objeto controlGUI
 src/gui/controlGUI.o: src/gui/controlGUI.cpp
