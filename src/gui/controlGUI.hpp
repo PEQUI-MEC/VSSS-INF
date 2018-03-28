@@ -18,10 +18,12 @@
 
 #include <gtkmm.h>
 #include <string>
-#include "../serialW.hpp"
+//#include "../serialW.hpp"
+#include "../communication/flyingMessenger.hpp"
 #include "testFrame.hpp"
 #include <unistd.h>
 #include <time.h>
+#include <fcntl.h>
 // system_clock::now
 #include <iostream>
 #include <ctime>
@@ -30,7 +32,8 @@
 class ControlGUI: public Gtk::VBox
 {
 public:
-	SerialW s;
+	//SerialW s;
+	FlyingMessenger FM;
 
 	const static int TOTAL_ROBOTS = 6;
 
@@ -110,6 +113,10 @@ public:
 	void _update_cb_serial();
 
 	void _create_status_frame();
+
+	char get_robot_id(int pos);
+
+	int get_robot_pos(char id);
 
 	// Função para verificar se os valores digitados nos campos
 	// de PID são válidos: apenas números e um único ponto

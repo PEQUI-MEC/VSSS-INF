@@ -4,3 +4,4 @@ VSSS
 *.a
 *.o
 .vscode/
+*.txt

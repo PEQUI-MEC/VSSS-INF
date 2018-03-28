@@ -102,9 +102,11 @@ void ControlGUI::configureTestFrame() {
 }
 
 void ControlGUI::_send_command(){
-    std::string cmd;
-    cmd.append(send_cmd_box.get_text());
-    s.sendAPISerialText(cmd);
+    //std::string cmd;
+    //cmd.append(send_cmd_box.get_text());
+    //s.sendAPISerialText(cmd);
+    std::string cmd = send_cmd_box.get_text();
+    FM.send_old_format(cmd);
 }
 
 void ControlGUI::_PID_Test(){
@@ -157,10 +159,10 @@ void ControlGUI::updateInterfaceStatus(double battery, int id) {
 
 // update the battery status of all robots
 void ControlGUI::_robot_status(){
-    std::string cmd[TOTAL_ROBOTS] = {"A@BAT#", "B@BAT#", "C@BAT#", "D@BAT#", "E@BAT#", "F@BAT#"};
+    //std::string cmd[TOTAL_ROBOTS] = {"A@BAT#", "B@BAT#", "C@BAT#", "D@BAT#", "E@BAT#", "F@BAT#"};
     std::string dateString;
     time_t tt;
-    char buf[TOTAL_ROBOTS][12];
+    //char buf[TOTAL_ROBOTS][12];
 
     // define last update time
     std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -170,36 +172,39 @@ void ControlGUI::_robot_status(){
     lastUpdate_lb.set_text(dateString);
 
     // update robot status
-    for (int i = 0; i < TOTAL_ROBOTS; i++) {
-        // s.sendSerial(cmd[i]);
-        usleep(100000);
-        if(s.readSerial(buf[i],sizeof buf[i]) == 1) {
-            handleBatteryMsg(buf[i], i);
-        } else {
-            status_img[i].set("img/offline.png");
-            battery_bar[i].set_fraction(0.0);
+	for (int i = 0; i < TOTAL_ROBOTS; ++i) {
+		char id = get_robot_id(i);
+		double battery = FM.get_battery(id);
+		if(battery != -1) {
+			updateInterfaceStatus(battery, i);
+		} else {
+			status_img[i].set("img/offline.png");
+			battery_bar[i].set_fraction(0.0);
             battery_bar[i].set_text("0%");
             status_lb[i].set_text("Offline");
-        }
-    }
+		}
+	}
+
 
 }
 
 void ControlGUI::_start_serial(){
-    int fd;
+
+    //int fd;
     Glib::ustring serial = cb_serial.get_active_text();
 
-    if (serial.size() < 1) return;
-    fd = s.start(serial);
+    //if (serial.size() < 1) return;
+    //fd = s.start(serial);
 
-     if(fd != -1)
-    {
-           std::cout<<serial<<" - Connected"<<std::endl;
-    } else{
-        std::cout<<serial<<" - Error"<<std::endl;
-    }
+    if(serial.empty()) return;
+    FM.start_xbee(serial);
 
-
+    //  if(fd != -1)
+    // {
+    //        std::cout<<serial<<" - Connected"<<std::endl;
+    // } else{
+    //     std::cout<<serial<<" - Error"<<std::endl;
+    // }
 
     bt_Serial_Start.set_state(Gtk::STATE_INSENSITIVE);
     cb_serial.set_state(Gtk::STATE_INSENSITIVE);
@@ -238,8 +243,6 @@ bool ControlGUI::isFloat(std::string value){
 }
 
 void ControlGUI::_send_test(){
-    std::string cmd;
-
     // verifica se os valores inseridos nos campos são válidos (são números entre -1.4 e 1.4)
     if(!isFloat(Tbox_V1.get_text()))
         Tbox_V1.set_text("0");
@@ -262,6 +265,21 @@ void ControlGUI::_send_test(){
             Tbox_V2.set_text("1.4");
     }
 
+    int pos = cb_test.get_active_row_number();
+	std::string cmd = Tbox_V1.get_text()+";"+Tbox_V2.get_text();
+
+	if(pos == -1) {
+		return;
+	} else if(pos != 6) {
+		char id = get_robot_id(pos);
+		FM.send_msg(id,cmd);
+	} else {
+		for (int i = 0; i < 6; ++i) {
+			char id = get_robot_id(i);
+			FM.send_msg(id,cmd);
+		}
+	}
+    /*
     switch(cb_test.get_active_row_number()){
         case -1:
         return;
@@ -355,11 +373,21 @@ void ControlGUI::_send_test(){
 
         break;
     }
+    */
     // s.sendSerial(cmd);
 }
 
-void ControlGUI::_update_cb_serial(){
+int ControlGUI::get_robot_pos(char id) {
+    return uint8_t(id)-65;
+}
 
+char ControlGUI::get_robot_id(int pos) {
+    return char(65+pos);
+}
+
+
+void ControlGUI::_update_cb_serial(){
+/*
     std::string port;
     int fd;
     cb_serial.remove_all();
@@ -385,7 +413,34 @@ void ControlGUI::_update_cb_serial(){
     cb_test.set_state(Gtk::STATE_INSENSITIVE);
     bt_Robot_Status.set_state(Gtk::STATE_INSENSITIVE);
     s.Serial_Enabled = false;
+*/
+    FM.stop_xbee();
 
+    cb_serial.remove_all();
+
+    for(int i=0; i<256; ++i) {
+        std::string port = "/dev/ttyUSB";
+        port.append(std::to_string(i));
+
+        int fd = open(port.c_str(), O_RDWR);
+        if(fd != -1) {
+            std::cout<<port<<std::endl;
+            cb_serial.append(port);
+            close(fd);
+        }
+    }
+
+    bt_Serial_Start.set_state(Gtk::STATE_NORMAL);
+    cb_serial.set_state(Gtk::STATE_NORMAL);
+    bt_Serial_Refresh.set_state(Gtk::STATE_NORMAL);
+
+    pid_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
+    Tbox_V1.set_state(Gtk::STATE_INSENSITIVE);
+    Tbox_V2.set_state(Gtk::STATE_INSENSITIVE);
+    bt_Serial_test.set_state(Gtk::STATE_INSENSITIVE);
+    cb_test.set_state(Gtk::STATE_INSENSITIVE);
+    bt_Robot_Status.set_state(Gtk::STATE_INSENSITIVE);
+    //bt_reset_ack.set_state(Gtk::STATE_INSENSITIVE);
 }
 
 void ControlGUI::_create_status_frame(){
