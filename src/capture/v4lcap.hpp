@@ -11,17 +11,20 @@
 #include <linux/videodev2.h>
 #include <libv4lconvert.h>
 
+
 class v4lcap {
+
 	public:
 
 		enum memory_type {
 			MEM_READ, MEM_MMAP, MEM_USER
 		};
-	public:
 
 		int fd;
+
 		bool emulate_format;
 		bool needs_convert;
+		
 		struct v4l2_format format_src, format_dest;
 		struct v4lconvert_data * v4lconv;
 		struct v4l2_requestbuffers reqbuf;
@@ -29,26 +32,27 @@ class v4lcap {
 		enum device_status {
 			OPENED = 1 << 0, MMAP_INIT = 1 << 1, STREAM_ON = 1 << 2
 		};
+
 		unsigned int status;
 
 		struct buffer {
 				void * start;
 				long int length;
 		};
+
 		struct buffer_holder {
 				int qtd;
 				struct buffer * buffs;
 		};
+
 		struct buffer_holder buffers;
 
 		int xioctl(int fd, int request, void * arg);
 
-	public:
 		v4lcap();
 
 		~v4lcap();
 
-	public:
 		/* 			 */
 		static bool enum_device_name(char device[16], int ndev_max, bool init = false);
 		bool open_device(const char * devname, bool emulate_fmt);
@@ -57,7 +61,6 @@ class v4lcap {
 
 		bool init_mmap(int nbuffers);
 
-	public:
 		/* configuration */
 		bool set_input(int index);
 		bool set_standard(v4l2_std_id std_id);
@@ -65,8 +68,6 @@ class v4lcap {
 		bool set_frame_size(int width, int height, unsigned int type);
 		bool set_frame_interval(struct v4l2_fract & fract);
 		bool set_control(int ctrl_id, int value);
-
-	public:
 
 		bool streamon(enum v4l2_buf_type type);
 		bool streamon(int type);
@@ -163,5 +164,6 @@ class v4lcap {
 		//bool set_format(int pixel_format, int width, int height);
 
 };
+
 
 #endif /* V4LCAP_HPP_ */

@@ -1,47 +1,62 @@
 #include "robotGUI.hpp"
 
+
 RobotGUI::RobotGUI() {
+
     createFunctionsFrame();
     createSpeedsFrame();
+
 }
-RobotGUI::~RobotGUI() {
-}
+
+RobotGUI::~RobotGUI() {}
+
 
 //////// AUXILIARES
 
-void RobotGUI::update_robot_functions(){
+
+void RobotGUI::update_robot_functions() {
+
     for (int i = 0; i < N_ROBOTS; i++)
         cb_robot_function[i].set_active(robot_list[i].role);
+
 }
-void RobotGUI::update_speed_progressBars(){
+
+void RobotGUI::update_speed_progressBars() {
+
     std::ostringstream strs[N_ROBOTS];
+
     for(int i = 0; i < N_ROBOTS; i++) {
         robots_speed_progressBar[i].set_fraction( (double) robot_list[i].vmax/1.4);
         strs[i] << (double) robot_list[i].vmax;
         robots_speed_progressBar[i].set_text(strs[i].str().substr(0,4));
     }
+
 }
 
-/////// INTERFACES 
+
+/////// INTERFACES
+
 
 void RobotGUI::createFunctionsFrame() {
+
     Gtk::Label *label;
     std::string function[N_ROBOTS];
 
     pack_start(robots_function_fm, false, true, 5); // coloca o frame no começo da aba
 
     robots_function_fm.add(robots_function_vbox); // adiciona um vbox
-    
+
     // coloca os botões na primeira hbox
     robots_function_hbox[0].pack_start(robots_function_edit_bt, false, true, 5); // alinha pro começo
     robots_function_hbox[0].pack_end(robots_function_done_bt, false, true, 5); // alinha pro final
     // coloca essa hbox no começo da vbox
-    robots_function_vbox.pack_start(robots_function_hbox[0], false, true, 5); 
+    robots_function_vbox.pack_start(robots_function_hbox[0], false, true, 5);
 
     // seta os textos das possíveis funções
-    for(int i = 0; i < N_ROBOTS; i++) {     
+    for(int i = 0; i < N_ROBOTS; i++)
         function[i].clear();
-    }
+
+
     function[0].append("Goalkeeper");
     function[1].append("Defense");
     function[2].append("Attack");
@@ -50,20 +65,24 @@ void RobotGUI::createFunctionsFrame() {
     for(int i = 0; i < N_ROBOTS; i++) {
         // configura o rótulo
         switch(i) {
+
             case 1:
                 label = new Gtk::Label("Robot 2:");
-            break;
+                break;
+
             case 2:
                 label = new Gtk::Label("Robot 3:");
-            break;
+                break;
+
             default:
                 label = new Gtk::Label("Robot 1:");
+
         }
 
         // adiciona as opções de papel pro seletor de cada robo
-        for(int j = 0; j < N_ROBOTS; j++) {
+        for(int j = 0; j < N_ROBOTS; j++)
             cb_robot_function[i].append(function[j]);
-        }
+
 
         // seleciona uma opção padrão
         cb_robot_function[i].set_active_text(function[i]);
@@ -86,20 +105,23 @@ void RobotGUI::createFunctionsFrame() {
     // deixa os botões não clicáveis
     robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
     robots_function_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-    for(int i = 0; i < N_ROBOTS; i++) {
+
+    for(int i = 0; i < N_ROBOTS; i++)
         cb_robot_function[i].set_state(Gtk::STATE_INSENSITIVE);
-    }
 
     // amarra eventos
 
     robots_function_edit_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_function_edit_bt_signal_clicked));
     robots_function_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_function_done_bt_signal_clicked));
+
 }
+
 
 /**
  * Cria o frame de controle de velocidades.
  */
-void RobotGUI::createSpeedsFrame(){
+void RobotGUI::createSpeedsFrame() {
+
     Gtk::Label *label;
 
     // coloca o frame das velocidades na aba dos robos
@@ -113,19 +135,23 @@ void RobotGUI::createSpeedsFrame(){
 
     // coloca essa hbox na vbox principal
     robots_speed_vbox.pack_start(robots_speed_hbox[0], false, true, 5);
-    
+
     // pra cada robô
     for(int i = 0; i < N_ROBOTS; i++) {
         // seleciona a label correspondente
         switch(i) {
+
             case 1:
                 label = new Gtk::Label("Robot 2:");
-            break;
+                break;
+
             case 2:
                 label = new Gtk::Label("Robot 3:");
-            break;
+                break;
+
             default:
                 label = new Gtk::Label("Robot 1:");
+
         }
         // configura os sliders
         robots_speed_hscale[i].set_digits(1);
@@ -138,11 +164,11 @@ void RobotGUI::createSpeedsFrame(){
         // adiciona o rótulo e o slider na hbox do robô
         robots_speed_hbox[i+1].pack_start(*label, false, true, 0);
         robots_speed_hbox[i+1].pack_start(robots_speed_slider_vbox[i], false, true, 0);
-        
+
         // coloca o slider e a barra de progresso que representa a velocidade atual em um vbox exclusivo do robô
         robots_speed_slider_vbox[i].pack_start(robots_speed_hscale[i], false, true, 0);
         robots_speed_slider_vbox[i].pack_start(robots_speed_progressBar[i], false, true, 0);
-        
+
         // configura as barras de progresso
         robots_speed_progressBar[i].set_halign(Gtk::ALIGN_CENTER);
         robots_speed_progressBar[i].set_valign(Gtk::ALIGN_CENTER);
@@ -153,7 +179,7 @@ void RobotGUI::createSpeedsFrame(){
         // adiciona a hbox no vbox principal desse frame
         robots_speed_vbox.pack_start(robots_speed_hbox[i+1], false, true, 0);
     }
-    
+
     // configuração inicial
 
     robots_speed_fm.set_label("Speeds"); // nome do frame
@@ -168,14 +194,16 @@ void RobotGUI::createSpeedsFrame(){
 
     robots_speed_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_speed_edit_bt_signal_pressed));
     robots_speed_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_speed_done_bt_signal_clicked));
+
 }
 
 
 //////// EVENTOS
 
 
-void RobotGUI::event_robots_function_edit_bt_signal_clicked(){
-	if (!robots_function_edit_flag) {
+void RobotGUI::event_robots_function_edit_bt_signal_clicked() {
+
+	if(!robots_function_edit_flag) {
 		robots_function_edit_flag = true;
 		robots_function_edit_bt.set_label("Cancel");
 
@@ -184,45 +212,41 @@ void RobotGUI::event_robots_function_edit_bt_signal_clicked(){
             cb_robot_function[i].set_state(Gtk::STATE_NORMAL);
             robots_function_tmp[i] = cb_robot_function[0].get_active_row_number();
         }
+
 		robots_function_edit_bt.set_state(Gtk::STATE_NORMAL);
         robots_function_done_bt.set_state(Gtk::STATE_NORMAL);
-
-	}
-	else {
+	} else {
 		robots_function_edit_flag = false;
 		robots_function_edit_bt.set_label("Edit");
 
         robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
+
         for(int i = 0; i < N_ROBOTS; i++) {
 		    cb_robot_function[i].set_state(Gtk::STATE_INSENSITIVE);
             cb_robot_function[i].set_active(robots_function_tmp[i]);
         }
 	}
+
 }
-void RobotGUI::event_robots_function_done_bt_signal_clicked(){
+
+
+void RobotGUI::event_robots_function_done_bt_signal_clicked() {
+
     std::string s[N_ROBOTS];
 
-    for (int i = 0; i < N_ROBOTS; i++)
-    {
+    for(int i = 0; i < N_ROBOTS; i++) {
         s[i] = cb_robot_function[i].get_active_text();
 
-        if (s[i].compare("Goalkeeper") == 0)
-        {
+        if (s[i].compare("Goalkeeper") == 0) {
             std::cout << "Robot " << i+1 << ": Goalkeeper." << std::endl;
             robot_list[i].role = 0;
-        }
-        else if (s[i].compare("Defense") == 0)
-        {
+        } else if (s[i].compare("Defense") == 0) {
             std::cout << "Robot " << i+1 << ": Defense." << std::endl;
             robot_list[i].role = 1;
-        }
-        else if (s[i].compare("Attack") == 0)
-        {
+        } else if (s[i].compare("Attack") == 0) {
             std::cout << "Robot " << i+1 << ": Attack." << std::endl;
             robot_list[i].role = 2;
-        }
-        else
-        {
+        } else {
             std::cout << "Error: not possible to set robot " << i+1 << " function." << std::endl;
         }
 
@@ -234,33 +258,45 @@ void RobotGUI::event_robots_function_done_bt_signal_clicked(){
     robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
 
 }
-void RobotGUI::event_robots_speed_edit_bt_signal_pressed(){
-	if (!robots_speed_edit_flag) {
+
+
+void RobotGUI::event_robots_speed_edit_bt_signal_pressed() {
+
+	if(!robots_speed_edit_flag) {
 		robots_speed_edit_flag = true;
 		robots_speed_edit_bt.set_label("Cancel");
 		robots_speed_done_bt.set_state(Gtk::STATE_NORMAL);
+
         for(int i = 0; i < N_ROBOTS; i++) {
             robots_speed_hscale[i].set_state(Gtk::STATE_NORMAL);
             robots_speed_tmp[i] = robots_speed_hscale[i].get_value();
         }
-	}
-	else {
+
+	} else {
 		robots_speed_edit_flag = false;
 		robots_speed_edit_bt.set_label("Edit");
 		robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
+
         for(int i = 0; i < N_ROBOTS; i++) {
             robots_speed_hscale[i].set_state(Gtk::STATE_INSENSITIVE);
             robots_speed_hscale[i].set_value(robots_speed_tmp[i]);
         }
+
 	}
+
 }
+
+
 void RobotGUI::event_robots_speed_done_bt_signal_clicked(){
+
     robots_speed_edit_flag = false;
 	robots_speed_edit_bt.set_label("Edit");
 	robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
+
     for(int i = 0; i < N_ROBOTS; i++) {
         robot_list[i].vdefault = (float) robots_speed_hscale[i].get_value();
         robot_list[i].vmax = robot_list[i].vdefault;
         robots_speed_hscale[i].set_state(Gtk::STATE_INSENSITIVE);
     }
+    
 }

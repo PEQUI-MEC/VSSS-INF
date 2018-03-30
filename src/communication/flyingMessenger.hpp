@@ -12,8 +12,11 @@
 #define ORIENTATION 2
 #define VECTOR 3
 
+
 class FlyingMessenger {
+
 	private:
+
 		SerialCom* xbee = nullptr;
 		void add_robots();
 		std::string position_msg(Robot robot);
@@ -23,6 +26,7 @@ class FlyingMessenger {
 		std::string rounded_str(double num);
 
 	public:
+
 		FlyingMessenger();
 		std::vector<message> sendCMDs(std::vector<Robot> robots);
 		void send_msg(char id, std::string msg);
@@ -32,6 +36,7 @@ class FlyingMessenger {
 		void reset_lost_acks();
 		void start_xbee(const std::string& port, int baud = 115200);
 		void stop_xbee();
+
 };
 
 

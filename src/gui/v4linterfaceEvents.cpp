@@ -13,102 +13,101 @@
 
 #define DEFAULT_STR " - "
 
-bool V4LInterface::on_button_press_event(GdkEventButton *event)
-{
+
+bool V4LInterface::on_button_press_event(GdkEventButton *event) {
 
 	// Check if the event is a left(1) button click.
-	if( (event->type == GDK_BUTTON_PRESS) )
-	{
+	if( (event->type == GDK_BUTTON_PRESS) ) {
 		//  std::cout<<"click"<<std::endl;
-
 		return true;
-	} else
-	return false;
+	} else {
+		return false;
+	}
 
 }
+
 void V4LInterface::HScale_offsetR_value_changed() {
 
-	offsetR=HScale_offsetR.get_value();
+	offsetR = HScale_offsetR.get_value();
 
 }
+
 void V4LInterface::HScale_offsetL_value_changed() {
 
-	offsetL=HScale_offsetL.get_value();
+	offsetL = HScale_offsetL.get_value();
 
 }
 
 // signals
-void V4LInterface::__event_bt_quick_save_clicked()
-{
+void V4LInterface::__event_bt_quick_save_clicked() {
 	std::cout << "QUICK SAVE" << std::endl;
 
 	if(!V4LInterface::__core_save("config/quicksave.txt"))
-	{
 		std::cout<<"Error: could not quick save."<<std::endl;
-	}
+
 }
 
 
-void V4LInterface::__event_bt_save_clicked()
-{
+void V4LInterface::__event_bt_save_clicked() {
 	std::cout << "SAVE" << std::endl;
 
 	FileChooser loadWindow;
 
-	if (loadWindow.result == Gtk::RESPONSE_OK) {
+	if(loadWindow.result == Gtk::RESPONSE_OK) {
 		if(!V4LInterface::__core_save(loadWindow.fileName.c_str()))
-		{
 			std::cout<<"Error: could not save."<<std::endl;
-		}
-	}
-	else {
+
+	} else {
 		return;
 	}
+
 }
 
-void V4LInterface::__event_bt_quick_load_clicked()
-{
+
+void V4LInterface::__event_bt_quick_load_clicked() {
+
 	std::cout << "QUICK LOAD" << std::endl;
 
-	if (!V4LInterface::__core_load("config/quicksave.txt"))
-	{
+	if(!V4LInterface::__core_load("config/quicksave.txt"))
 		std::cout << "Error: could not quick load. Maybe a quicksave.txt file does not exist." << std::endl;
-	}
+
 }
 
-void V4LInterface::__event_bt_load_clicked()
-{
+
+void V4LInterface::__event_bt_load_clicked() {
+
 	std::cout << "LOAD" << std::endl;
 
 	FileChooser loadWindow;
 
-	if (loadWindow.result == Gtk::RESPONSE_OK) {
+	if(loadWindow.result == Gtk::RESPONSE_OK) {
 		if (!V4LInterface::__core_load(loadWindow.fileName.c_str()))
-		{
 			std::cout << "Error: could not quick load. The requested file could not be opened." << std::endl;
-		}
-	}
-	else {
+
+	} else {
 		return;
 	}
+
 }
 
 
 void V4LInterface::__event_bt_start_clicked() {
 
-	if (!vcap.is_opened()) return;
+	if(!vcap.is_opened())
+		return;
 
 	Glib::ustring label = bt_start.get_label();
 
 
-	if (0 == label.compare("start")) {
-
+	if(0 == label.compare("start")) {
 		bool r;
 		// = Pre-configure device ======================================
 
 		// set frame size
 		r = vcap.set_frame_size(sp_width.get_value_as_int(), sp_height.get_value_as_int(), V4L2_BUF_TYPE_VIDEO_CAPTURE);
-		if (!r) std::cout << "Can't set frame size!" << std::endl;
+
+		if (!r)
+			std::cout << "Can't set frame size!" << std::endl;
 
 		// = Init memory map buffers ===================================
 		//			if (vcap.start_capturing(v4lcap::MEM_READ, 2)) {
@@ -116,12 +115,12 @@ void V4LInterface::__event_bt_start_clicked() {
 		//				return;
 		//			}
 
-		if (!vcap.init_mmap(2)) {
+		if(!vcap.init_mmap(2)) {
 			std::cout << "Can't map device memory!" << std::endl;
 			return;
 		}
 
-		if (!vcap.start_capturing()) {
+		if(!vcap.start_capturing()) {
 			std::cout << "Can't start device!" << std::endl;
 			return;
 		}
@@ -149,27 +148,25 @@ void V4LInterface::__event_bt_start_clicked() {
 		bt_quick_load.set_state(Gtk::STATE_NORMAL);
 		bt_save.set_state(Gtk::STATE_NORMAL);
 		bt_load.set_state(Gtk::STATE_NORMAL);
-			HScale_offsetR.set_state(Gtk::STATE_NORMAL);
-			HScale_offsetL.set_state(Gtk::STATE_NORMAL);
-			visionGUI.rb_split_view.set_state(Gtk::STATE_NORMAL);
-			visionGUI.rb_original_view.set_state(Gtk::STATE_NORMAL);
-			visionGUI.bt_HSV_calib.set_state(Gtk::STATE_NORMAL);
-			visionGUI.rb_mode_GMM.set_state(Gtk::STATE_NORMAL);
-			visionGUI.rb_mode_HSV.set_state(Gtk::STATE_NORMAL);
-			visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
-			visionGUI.bt_save_picture.set_state(Gtk::STATE_NORMAL);
-			visionGUI.en_video_name.set_state(Gtk::STATE_NORMAL);
-			visionGUI.en_picture_name.set_state(Gtk::STATE_NORMAL);
+		HScale_offsetR.set_state(Gtk::STATE_NORMAL);
+		HScale_offsetL.set_state(Gtk::STATE_NORMAL);
+		visionGUI.rb_split_view.set_state(Gtk::STATE_NORMAL);
+		visionGUI.rb_original_view.set_state(Gtk::STATE_NORMAL);
+		visionGUI.bt_HSV_calib.set_state(Gtk::STATE_NORMAL);
+		visionGUI.rb_mode_GMM.set_state(Gtk::STATE_NORMAL);
+		visionGUI.rb_mode_HSV.set_state(Gtk::STATE_NORMAL);
+		visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
+		visionGUI.bt_save_picture.set_state(Gtk::STATE_NORMAL);
+		visionGUI.en_video_name.set_state(Gtk::STATE_NORMAL);
+		visionGUI.en_picture_name.set_state(Gtk::STATE_NORMAL);
 		m_signal_start.emit(true);
-
 	} else {
-
-		if (!vcap.stop_capturing()) {
+		if(!vcap.stop_capturing()) {
 			std::cout << "Can't stop device!" << std::endl;
 			return;
 		}
 
-		if (!vcap.uninit_mmap()) {
+		if(!vcap.uninit_mmap()) {
 			std::cout << "Can't unmmap device memory!" << std::endl;
 			return;
 		}
@@ -197,10 +194,13 @@ void V4LInterface::__event_bt_start_clicked() {
 
 }
 
+
 void V4LInterface::__event_bt_warp_clicked() {
-	std::cout<<"Warp drive engaged"<<std::endl;
-	if (!imageView.warp_event_flag) {
-		imageView.warp_event_flag=true;
+
+	std::cout << "Warp drive engaged" << std::endl;
+
+	if(!imageView.warp_event_flag) {
+		imageView.warp_event_flag = true;
 		bt_reset_warp.set_state(Gtk::STATE_NORMAL);
 		bt_quick_load.set_state(Gtk::STATE_NORMAL);
 		bt_quick_save.set_state(Gtk::STATE_NORMAL);
@@ -217,24 +217,27 @@ void V4LInterface::__event_bt_warp_clicked() {
 			reset_warp_flag = true;
 		//bt_invert_image.set_state(Gtk::STATE_INSENSITIVE);
 	}
+
 }
+
 
 void V4LInterface::__event_bt_adjust_pressed() {
 
-	if (!adjust_event_flag) {
+	if(!adjust_event_flag) {
 		adjust_event_flag=true;
-		std::cout<<"ADJUST = TRUE"<<std::endl;
+		std::cout << "ADJUST = TRUE" << std::endl;
 	} else {
 		adjust_event_flag=false;
-		std::cout<<"ADJUST = FALSE"<<std::endl;
+		std::cout << "ADJUST = FALSE" << std::endl;
 
 	}
+
 }
 
 
 void V4LInterface::__event_bt_reset_warp_clicked() {
 	std::cout<<"Resetting warp matrix."<<std::endl;
-	warped=false;
+	warped = false;
 	bt_warp.set_state(Gtk::STATE_NORMAL);
 	bt_adjust.set_active(false);
 	bt_adjust.set_state(Gtk::STATE_INSENSITIVE);
@@ -247,32 +250,31 @@ void V4LInterface::__event_bt_reset_warp_clicked() {
 	reset_warp_flag = true;
 }
 
+
 void V4LInterface::__event_bt_invert_image_signal_clicked() {
-	if (!invert_image_flag)
-	{
+
+	if(!invert_image_flag) {
 		invert_image_flag = true;
 		std::cout << "imageView >>>>>>>INVERTED<<<<<<<" << std::endl;
-	}
-	else
-	{
+	} else {
 		invert_image_flag = false;
 		std::cout << "imageView >>>>>>>NORMAL<<<<<<<" << std::endl;
 	}
+
 }
 
-void V4LInterface::__event_cb_device_changed() {
-	if (vcap.is_opened()) {
-		vcap.close_device();
-	}
 
+void V4LInterface::__event_cb_device_changed() {
+
+	if(vcap.is_opened())
+		vcap.close_device();
 
 	Glib::ustring dev = cb_device.get_active_text();
 
-	if (dev.size() < 1) return;
+	if(dev.size() < 1)
+		return;
 
-	if (vcap.open_device(dev.data(), true)) {
-
-
+	if(vcap.open_device(dev.data(), true)) {
 		struct v4l2_capability cap;
 		vcap.query_capability(&cap);
 
@@ -292,7 +294,7 @@ void V4LInterface::__event_cb_device_changed() {
 
 	page = notebook.get_nth_page(1);
 
-	while (page) {
+	while(page) {
 		notebook.remove_page(1);
 		delete page;
 		page = notebook.get_nth_page(1);
@@ -309,7 +311,8 @@ void V4LInterface::__event_cb_device_changed() {
 
 void V4LInterface::__event_cb_input_changed() {
 
-	if (cb_input.get_active_row_number() == -1) return;
+	if(cb_input.get_active_row_number() == -1)
+		return;
 
 	Gtk::TreeModel::iterator it = cb_input.get_active();
 
@@ -317,14 +320,17 @@ void V4LInterface::__event_cb_input_changed() {
 	struct v4l2_input input = row[model_input.m_col_data];
 
 	int r = vcap.set_input(input.index);
-	if (!r) std::cout << "Can't set input!" << std::endl;
+
+	if(!r)
+		std::cout << "Can't set input!" << std::endl;
 
 	__update_all();
 }
 
 void V4LInterface::__event_cb_standard_changed() {
 
-	if (cb_standard.get_active_row_number() == -1) return;
+	if(cb_standard.get_active_row_number() == -1)
+		return;
 
 	Gtk::TreeModel::iterator it = cb_standard.get_active();
 
@@ -334,16 +340,18 @@ void V4LInterface::__event_cb_standard_changed() {
 
 	int r = vcap.set_standard(standard.id);
 
-	if (!r) std::cout << "Can't set standard!" << std::endl;
+	if(!r)
+		std::cout << "Can't set standard!" << std::endl;
 
 	__update_all();
 
 }
 
+
 void V4LInterface::__event_cb_format_desc_changed() {
 
-
-	if (cb_format_desc.get_active_row_number() == -1) return;
+	if (cb_format_desc.get_active_row_number() == -1)
+		return;
 
 	Gtk::TreeModel::iterator it = cb_format_desc.get_active();
 
@@ -352,15 +360,19 @@ void V4LInterface::__event_cb_format_desc_changed() {
 
 	//int r = vcap.set_pixel_format(fmtdesc.pixelformat, V4L2_BUF_TYPE_VIDEO_CAPTURE);
 	int r = vcap.set_pixel_format(fmtdesc.pixelformat);
-	if (!r) std::cout << "Can't set format!" << std::endl;
 
+	if (!r)
+		std::cout << "Can't set format!" << std::endl;
 
 	__update_all();
+
 }
+
 
 void V4LInterface::__event_cb_frame_size_changed() {
 
-	if (cb_frame_size.get_active_row_number() == -1) return;
+	if (cb_frame_size.get_active_row_number() == -1)
+		return;
 
 	Gtk::TreeModel::iterator it = cb_frame_size.get_active();
 
@@ -368,16 +380,18 @@ void V4LInterface::__event_cb_frame_size_changed() {
 	struct v4l2_frmsizeenum frmsize = row[model_frame_size.m_col_data];
 
 	int r = vcap.set_frame_size(frmsize.discrete.width, frmsize.discrete.height, V4L2_BUF_TYPE_VIDEO_CAPTURE);
-	if (!r) std::cout << "Can't set frame size!" << std::endl;
-
+	if(!r)
+		std::cout << "Can't set frame size!" << std::endl;
 
 	__update_all();
 
 }
 
+
 void V4LInterface::__event_cb_frame_interval_changed() {
 
-	if (cb_frame_interval.get_active_row_number() == -1) return;
+	if (cb_frame_interval.get_active_row_number() == -1)
+		return;
 
 	Gtk::TreeModel::iterator it = cb_frame_interval.get_active();
 
@@ -385,29 +399,35 @@ void V4LInterface::__event_cb_frame_interval_changed() {
 	struct v4l2_frmivalenum frame_interval = row[model_frame_interval.m_col_data];
 
 	int r = vcap.set_frame_interval(frame_interval.discrete);
-	if (!r) std::cout << "Can't set frame interval!" << std::endl;
+	if(!r)
+		std::cout << "Can't set frame interval!" << std::endl;
 
 	__update_all();
 
 }
 
+
 bool V4LInterface::__set_control_hscale(int type, double val, std::list<ControlHolder> * list, Gtk::Widget * wctrl) {
+
 	std::list<ControlHolder>::iterator iter;
 
 	for (iter = list->begin(); iter != list->end(); ++iter) {
-		if ((*iter).widget == wctrl) break;
+		if ((*iter).widget == wctrl)
+			break;
 	}
 
 	int value = static_cast<Gtk::HScale *>(wctrl)->get_value();
 	struct v4l2_queryctrl qctrl = (*iter).qctrl;
 
-	if (!vcap.set_control(qctrl.id, value)) {
+	if(!vcap.set_control(qctrl.id, value)) {
 		std::cout << "Can not update control [" << qctrl.name << "] with value " << value << std::endl;
 		return false;
 	}
 
 	struct v4l2_control ctrl;
-	if (!vcap.get_control(&ctrl, qctrl.id)) return false;
+
+	if(!vcap.get_control(&ctrl, qctrl.id))
+		return false;
 
 	__update_control_widgets(ctrl_list_default);
 
@@ -415,52 +435,60 @@ bool V4LInterface::__set_control_hscale(int type, double val, std::list<ControlH
 
 }
 
+
 void V4LInterface::__set_control(std::list<ControlHolder> * list, Gtk::Widget * wctrl) {
 
 	std::list<ControlHolder>::iterator iter;
+
 	for (iter = list->begin(); iter != list->end(); ++iter) {
-		if ((*iter).widget == wctrl) break;
+		if ((*iter).widget == wctrl)
+			break;
 	}
 
 	int value;
 	struct v4l2_queryctrl qctrl = (*iter).qctrl;
 
 	switch (qctrl.type) {
-	case V4L2_CTRL_TYPE_INTEGER:
-	case V4L2_CTRL_TYPE_INTEGER64:
-	case V4L2_CTRL_TYPE_CTRL_CLASS:
-	case V4L2_CTRL_TYPE_BITMASK:
-	default:
-		break;
+
+		case V4L2_CTRL_TYPE_INTEGER:
+		case V4L2_CTRL_TYPE_INTEGER64:
+		case V4L2_CTRL_TYPE_CTRL_CLASS:
+		case V4L2_CTRL_TYPE_BITMASK:
+		default:
+			break;
 
 
-	case V4L2_CTRL_TYPE_BOOLEAN:
-		value = static_cast<Gtk::CheckButton *>(wctrl)->get_active();
-		if (!vcap.set_control(qctrl.id, value)) {
-			std::cout << "Can not update control [" << qctrl.name << "] with value " << value << std::endl;
-		}
-		break;
+		case V4L2_CTRL_TYPE_BOOLEAN:
 
-	case V4L2_CTRL_TYPE_BUTTON:
-		if (!vcap.set_control(qctrl.id, 1)) {
-			std::cout << "Can not update control [" << qctrl.name << "] with value " << 1 << std::endl;
-		}
-		break;
+			value = static_cast<Gtk::CheckButton *>(wctrl)->get_active();
 
-	case V4L2_CTRL_TYPE_STRING:
-		break;
+			if (!vcap.set_control(qctrl.id, value))
+				std::cout << "Can not update control [" << qctrl.name << "] with value " << value << std::endl;
 
-	case V4L2_CTRL_TYPE_MENU:
-	case V4L2_CTRL_TYPE_INTEGER_MENU:
+			break;
 
-		Gtk::TreeModel::Children::iterator iter = static_cast<Gtk::ComboBox *>(wctrl)->get_active();
-		Gtk::TreeModel::Row row = *iter;
-		struct v4l2_querymenu qmenu;
-		qmenu = row[model_control_menu.m_col_data];
-		if (!vcap.set_control(qctrl.id, qmenu.index)) {
-			std::cout << "Can not update control [" << qctrl.name << "] with value " << qmenu.name << std::endl;
-		}
-		break;
+		case V4L2_CTRL_TYPE_BUTTON:
+
+			if (!vcap.set_control(qctrl.id, 1))
+				std::cout << "Can not update control [" << qctrl.name << "] with value " << 1 << std::endl;
+
+			break;
+
+		case V4L2_CTRL_TYPE_STRING:
+			break;
+
+		case V4L2_CTRL_TYPE_MENU:
+		case V4L2_CTRL_TYPE_INTEGER_MENU:
+
+			Gtk::TreeModel::Children::iterator iter = static_cast<Gtk::ComboBox *>(wctrl)->get_active();
+			Gtk::TreeModel::Row row = *iter;
+			struct v4l2_querymenu qmenu;
+			qmenu = row[model_control_menu.m_col_data];
+
+			if (!vcap.set_control(qctrl.id, qmenu.index))
+				std::cout << "Can not update control [" << qctrl.name << "] with value " << qmenu.name << std::endl;
+
+			break;
 
 	}
 
@@ -468,13 +496,17 @@ void V4LInterface::__set_control(std::list<ControlHolder> * list, Gtk::Widget * 
 
 }
 
-void V4LInterface::event_draw_info_checkbox_signal_clicked(){
+
+void V4LInterface::event_draw_info_checkbox_signal_clicked() {
+
 	draw_info_flag = !draw_info_flag;
+
 }
 
-void V4LInterface::event_robots_id_edit_bt_signal_pressed(){
-	if (!robots_id_edit_flag)
-	{
+
+void V4LInterface::event_robots_id_edit_bt_signal_pressed() {
+
+	if (!robots_id_edit_flag) {
 		robots_id_edit_flag = true;
 		robots_id_edit_bt.set_label("Cancel");
 		robots_id_box[0].set_state(Gtk::STATE_NORMAL);
@@ -485,9 +517,7 @@ void V4LInterface::event_robots_id_edit_bt_signal_pressed(){
 		robots_id_tmp[1] = robots_id_box[1].get_text();
 		robots_id_tmp[2] = robots_id_box[2].get_text();
 
-	}
-	else
-	{
+	} else {
 		robots_id_edit_flag = false;
 		robots_id_edit_bt.set_label("Edit");
 		robots_id_box[0].set_state(Gtk::STATE_INSENSITIVE);
@@ -500,12 +530,17 @@ void V4LInterface::event_robots_id_edit_bt_signal_pressed(){
 	}
 }
 
-void V4LInterface::event_robots_id_done_bt_signal_clicked(){
+
+void V4LInterface::event_robots_id_done_bt_signal_clicked() {
+
 	std::string str;
+
 	str = robots_id_box[0].get_text();
 	robotGUI.robot_list[0].ID = str[0];
+
 	str = robots_id_box[1].get_text();
 	robotGUI.robot_list[1].ID = str[0];
+
 	str = robots_id_box[2].get_text();
 	robotGUI.robot_list[2].ID = str[0];
 
@@ -518,9 +553,10 @@ void V4LInterface::event_robots_id_done_bt_signal_clicked(){
 
 }
 
-void V4LInterface::event_start_game_bt_signal_clicked(){
-	if (!start_game_flag)
-	{
+
+void V4LInterface::event_start_game_bt_signal_clicked() {
+
+	if(!start_game_flag) {
 		start_game_flag = true;
 		start_game_bt.set_image(red_button_pressed);
 
@@ -534,38 +570,37 @@ void V4LInterface::event_start_game_bt_signal_clicked(){
 		tt = std::chrono::system_clock::to_time_t ( now );
 		dateString.append(std::string(ctime(&tt)).substr(0,24));
 
-		if (visionGUI.vision->isRecording()) {
+		if(visionGUI.vision->isRecording()) {
 			visionGUI.vision->finishVideo();
 			visionGUI.bt_record_video.set_label("REC");
 		}
+
 		visionGUI.bt_record_video.set_state(Gtk::STATE_INSENSITIVE);
 		visionGUI.en_video_name.set_state(Gtk::STATE_INSENSITIVE);
 		visionGUI.en_video_name.set_text(dateString);
 		visionGUI.vision->startNewVideo(dateString);
-	}
-	else
-	{
+	} else {
 		visionGUI.vision->finishVideo();
 		visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
 		visionGUI.en_video_name.set_state(Gtk::STATE_NORMAL);
 		visionGUI.en_video_name.set_text("");
 		start_game_flag = false;
 		start_game_bt.set_image(red_button_released);
-		for(int i=0; i<3; i++) {
+
+		for(int i = 0; i < 3; i++) {
 			robotGUI.robot_list.at(i).cmdType = 0; // Position
 			robotGUI.robot_list.at(i).vmax = 0;
 		}
 	}
 }
 
-bool V4LInterface::__core_save(const char * txtFileName)
-{
+
+bool V4LInterface::__core_save(const char * txtFileName) {
+
 	std::ofstream txtFile;
 	txtFile.open(txtFileName);
 
-
-	if (txtFile.is_open())
-	{
+	if(txtFile.is_open()) {
 		// !BEGIN_INFO
 		std::cout<<"Saving robots info..."<<std::endl;
 
@@ -580,7 +615,7 @@ bool V4LInterface::__core_save(const char * txtFileName)
 		// !BEGIN_HSV
 		std::cout<<"Saving HSV calibs..."<<std::endl;
 		// salva sempre 42 linhas linhas
-		for(int i=0; i<4; i++) {
+		for(int i = 0; i < 4; i++) {
 			txtFile <<visionGUI.vision->getHue(i, 0)<<std::endl<<visionGUI.vision->getHue(i, 1)<<std::endl;
 			txtFile <<visionGUI.vision->getSaturation(i, 0)<<std::endl<<visionGUI.vision->getSaturation(i, 1)<<std::endl;
 			txtFile <<visionGUI.vision->getValue(i, 0)<<std::endl<<visionGUI.vision->getValue(i, 1)<<std::endl;
@@ -598,7 +633,9 @@ bool V4LInterface::__core_save(const char * txtFileName)
 		txtFile << imageView.warp_mat[1][0] <<std::endl<<imageView.warp_mat[1][1] <<std::endl;
 		txtFile << imageView.warp_mat[2][0] <<std::endl<<imageView.warp_mat[2][1] <<std::endl;
 		txtFile << imageView.warp_mat[3][0] <<std::endl<<imageView.warp_mat[3][1] <<std::endl;
+
 		txtFile << offsetL <<std::endl<<offsetR <<std::endl;
+
 		txtFile << imageView.adjust_mat[0][0] <<std::endl<<imageView.adjust_mat[0][1] <<std::endl;
 		txtFile << imageView.adjust_mat[1][0] <<std::endl<<imageView.adjust_mat[1][1] <<std::endl;
 		txtFile << imageView.adjust_mat[2][0] <<std::endl<<imageView.adjust_mat[2][1] <<std::endl;
@@ -614,7 +651,7 @@ bool V4LInterface::__core_save(const char * txtFileName)
 
 		// sempre salva um id e seu valor
 		// como o número de linhas é o único que pode ser variável, coloquei por último no arquivo
-		for (iter = ctrl_list_default.begin(); iter != ctrl_list_default.end(); ++iter) {
+		for(iter = ctrl_list_default.begin(); iter != ctrl_list_default.end(); ++iter) {
 			qctrl = (*iter).qctrl;
 			vcap.get_control(&control, qctrl.id);
 			txtFile <<qctrl.id<<std::endl<<control.value<<std::endl;
@@ -624,21 +661,20 @@ bool V4LInterface::__core_save(const char * txtFileName)
 		txtFile.close();
 
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
+
 }
 
-bool V4LInterface::__core_load(const char * txtFileName)
-{
+
+bool V4LInterface::__core_load(const char * txtFileName) {
+
 	std::ifstream txtFile;
 	txtFile.open(txtFileName);
 	std::string line;
 
-	if (txtFile.is_open())
-	{
+	if(txtFile.is_open()) {
 		// !BEGIN_INFO
 		std::cout<<"Loading robots info..."<<std::endl;
 
@@ -650,28 +686,20 @@ bool V4LInterface::__core_load(const char * txtFileName)
 
 			getline(txtFile, line);
 			robotGUI.cb_robot_function[i].set_active(atoi(line.c_str()));
-			if (robotGUI.cb_robot_function[i].get_active_row_number() == 0)
-			{
+
+			if (robotGUI.cb_robot_function[i].get_active_row_number() == 0) {
 				std::cout << "Robot " << i+1 << ": Goalkeeper." << std::endl;
 				robotGUI.robot_list[i].role = 0;
-			}
-			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 1)
-			{
+			} else if (robotGUI.cb_robot_function[i].get_active_row_number() == 1) {
 				std::cout << "Robot " << i+1 << ": Defense." << std::endl;
 				robotGUI.robot_list[i].role = 1;
-			}
-			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 2)
-			{
+			} else if (robotGUI.cb_robot_function[i].get_active_row_number() == 2) {
 				std::cout << "Robot " << i+1 << ": Attack." << std::endl;
 				robotGUI.robot_list[i].role = 2;
-			}
-			else if (robotGUI.cb_robot_function[i].get_active_row_number() == 3)
-			{
+			} else if (robotGUI.cb_robot_function[i].get_active_row_number() == 3) {
 				std::cout << "Robot " << i+1 << ": Opponent." << std::endl;
 				robotGUI.robot_list[i].role = 3;
-			}
-			else
-			{
+			} else {
 				std::cout << "Error: not possible to set robot " << i+1 << " function." << std::endl;
 			}
 
@@ -692,7 +720,8 @@ bool V4LInterface::__core_load(const char * txtFileName)
 
 		// !BEGIN_HSV
 		std::cout<<"Loading HSV calibs..."<<std::endl;
-		for(int i=0; i<4; i++) {
+
+		for(int i = 0; i < 4; i++) {
 			getline(txtFile, line);
 			visionGUI.vision->setHue(i, 0, atoi(line.c_str()));
 			getline(txtFile, line);
@@ -736,7 +765,7 @@ bool V4LInterface::__core_load(const char * txtFileName)
 		// !END_WARP
 
 		// !BEGIN_LOADWARP
-		std::cout<<"Loading warp matrix..."<<std::endl;
+		std::cout << "Loading warp matrix..." << std::endl;
 
 		getline(txtFile, line);
 		imageView.warp_mat[0][0] = atoi(line.c_str());
@@ -811,9 +840,10 @@ bool V4LInterface::__core_load(const char * txtFileName)
 			qctrl.id = atoi(line.c_str());
 			getline(txtFile, line);
 			control.value=atoi(line.c_str());
-			if (!vcap.set_control(qctrl.id, control.value)) {
+
+			if (!vcap.set_control(qctrl.id, control.value))
 				std::cout << "Can not load control [ " << qctrl.id << " ] with value " << control.value << std::endl;
-			}
+
 		}
 
 		__update_control_widgets(ctrl_list_default);
@@ -821,9 +851,7 @@ bool V4LInterface::__core_load(const char * txtFileName)
 
 		txtFile.close();
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
 }

@@ -42,4 +42,5 @@ int main(int argc, char ** argv) {
 	Gtk::Main::run(window);
 
 	return EXIT_SUCCESS;
+
 }

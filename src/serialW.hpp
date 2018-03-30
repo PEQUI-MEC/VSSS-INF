@@ -21,31 +21,35 @@
 #define VECTOR 3
 #define PI 3.14159265453
 
-class SerialW
-{
-public:
-	bool Serial_Enabled;
-	int	USB;
-	std::string port;
 
-	SerialW();
+class SerialW {
 
-	int start(std::string serial);
+	public:
+		bool Serial_Enabled;
+		int	USB;
+		std::string port;
 
-	void sendToRobot(Robot r);
+		SerialW();
 
-	void sendCmdToRobots(std::vector<Robot> robot_list);
+		int start(std::string serial);
 
-	void sendSerial(std::string cmd);
+		void sendToRobot(Robot r);
 
-	void sendAPISerial(std::string cmd);
+		void sendCmdToRobots(std::vector<Robot> robot_list);
 
-	void sendAPISerialText(std::string cmd);
+		void sendSerial(std::string cmd);
 
-	// void sendAPIToRobot(std::string msg);
+		void sendAPISerial(std::string cmd);
 
-	uint8_t generateChecksum(uint8_t type, uint8_t id, uint16_t address, uint8_t option, std::string cmd);
+		void sendAPISerialText(std::string cmd);
 
-	int readSerial(char* buf, int size);
+		// void sendAPIToRobot(std::string msg);
+
+		uint8_t generateChecksum(uint8_t type, uint8_t id, uint16_t address, uint8_t option, std::string cmd);
+
+		int readSerial(char* buf, int size);
+
 };
+
+
 #endif /* CONTROLGUI_HPP_ */

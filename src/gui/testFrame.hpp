@@ -5,25 +5,26 @@
 #include <string>
 #include <iostream>
 
-class TestFrame: public Gtk::Frame
-{
-private:
-  Gtk::Grid grid;
 
-  Gtk::HScale hscale[5];
-  Gtk::Label label[5];
+class TestFrame: public Gtk::Frame {
 
-private:
-  void init();
+    private:
+        Gtk::Grid grid;
 
-public:
-  TestFrame();
-  ~TestFrame();
+        Gtk::HScale hscale[5];
+        Gtk::Label label[5];
 
-  double getValue(int index);
-  void configureHScale(int index, double currentValue, double min, double max, double digits=1, double steps=1);
-  void setLabel(int index, std::string label);
-  void setName(std::string name);
+        void init();
+
+    public:
+        TestFrame();
+        ~TestFrame();
+
+        double getValue(int index);
+        void configureHScale(int index, double currentValue, double min, double max, double digits=1, double steps=1);
+        void setLabel(int index, std::string label);
+        void setName(std::string name);
+
 };
 
 

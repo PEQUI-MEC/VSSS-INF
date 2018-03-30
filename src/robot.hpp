@@ -3,9 +3,11 @@
 #include "opencv2/opencv.hpp"
 #include "vision/tag.hpp"
 
-class Robot
-{
+
+class Robot {
+
     public:
+
         cv::Point position, secundary, target, transTarget, ternary;
         cv::Point rearPoint;
         char ID;
@@ -26,15 +28,18 @@ class Robot
         cmdType(0), vdefault(0.8), vmax(1.4), fixedPos(false),
         using_pot_field(false), role(0), status(0)
         {
+
             ternary = cv::Point(-1,-1);
             secundary= cv::Point(-1,-1);
             position= cv::Point(-1,-1);
             target = cv::Point(-1,-1);
             rearPoint = cv::Point(-1,-1);
-        }
-
-        ~Robot() {
 
         }
+
+        ~Robot() {}
+
 };
+
+
 #endif /* ROBOT_HPP_ */

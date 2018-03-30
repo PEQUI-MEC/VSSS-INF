@@ -3,8 +3,8 @@
 
 
 // Constructor of the main Window (build ui interface).
-FileChooser::FileChooser()
-{
+FileChooser::FileChooser() {
+
     // Initialize the main window and hide the title bar
     this->set_border_width(10);
 
@@ -38,32 +38,31 @@ FileChooser::FileChooser()
     result = dialog.run();
 
     //Handle the response:
-    switch(result)
-    {
-    case(Gtk::RESPONSE_OK):
-    {
-        // The user selected a file
-        std::cout << "Open clicked." << std::endl;
-        fileName = dialog.get_filename();
-        std::cout << "File selected: " <<  fileName << std::endl;
-        break;
+    switch(result) {
+
+        case Gtk::RESPONSE_OK:
+
+            // The user selected a file
+            std::cout << "Open clicked." << std::endl;
+            fileName = dialog.get_filename();
+            std::cout << "File selected: " <<  fileName << std::endl;
+            break;
+
+        case Gtk::RESPONSE_CANCEL:
+
+            // The user clicked cancel
+            std::cout << "Cancel clicked." << std::endl;
+            break;
+
+        default:
+            // The user closed the dialog box
+            std::cout << "Unexpected button clicked." << std::endl;
+            break;
+
     }
-    case(Gtk::RESPONSE_CANCEL):
-    {
-        // The user clicked cancel
-        std::cout << "Cancel clicked." << std::endl;
-        break;
-    }
-    default:
-    {
-        // The user closed the dialog box
-        std::cout << "Unexpected button clicked." << std::endl;
-        break;
-    }
-    }
+
 }
 
 
 // Destructor of the class
-FileChooser::~FileChooser()
-{}
+FileChooser::~FileChooser() {}

@@ -14,119 +14,119 @@
 #include <iostream>     // std::cout
 #include "tag.hpp"
 
-class Vision
-{
 
-private:
+class Vision {
 
-  // Constants
-  static const int MAIN = 0;
-  static const int GREEN = 1;
-  // static const int PINK = 2;
-  static const int BALL = 2;
-  static const int ADV = 3;
-  static const int MAX_ADV = 3;
-  static const int TOTAL_COLORS = 4;
-  static const int MIN = 0;
-  static const int MAX = 1;
+    private:
 
-  // Frames
-  cv::Mat in_frame, hsv_frame;
-  std::vector<cv::Mat>threshold_frame;
-  cv::Mat splitFrame;
+        // Constants
+        static const int MAIN = 0;
+        static const int GREEN = 1;
+        // static const int PINK = 2;
+        static const int BALL = 2;
+        static const int ADV = 3;
+        static const int MAX_ADV = 3;
+        static const int TOTAL_COLORS = 4;
+        static const int MIN = 0;
+        static const int MAX = 1;
 
-  // Robots
-  std::vector<Robot> robot_list;
-  cv::Point advRobots[MAX_ADV];
+        // Frames
+        cv::Mat in_frame, hsv_frame;
+        std::vector<cv::Mat>threshold_frame;
+        cv::Mat splitFrame;
 
-  // Ball
-  cv::Point ball;
+        // Robots
+        std::vector<Robot> robot_list;
+        cv::Point advRobots[MAX_ADV];
 
-  // TAGS
-  std::vector<std::vector<Tag>> tags;
+        // Ball
+        cv::Point ball;
 
-  // HSV Calibration Parameters
-  int hue[5][2];
-  int saturation[5][2];
-  int value[5][2];
-  int dilate[5];
-  int erode[5];
-  int blur[5];
-  int areaMin[5];
+        // TAGS
+        std::vector<std::vector<Tag>> tags;
 
-  // image size
-  int width;
-  int height;
+        // HSV Calibration Parameters
+        int hue[5][2];
+        int saturation[5][2];
+        int value[5][2];
+        int dilate[5];
+        int erode[5];
+        int blur[5];
+        int areaMin[5];
 
-  // record video flag
-  bool bOnAir;
+        // image size
+        int width;
+        int height;
 
-  // video
-  cv::VideoWriter video;
+        // record video flag
+        bool bOnAir;
 
-  // threads
-  boost::thread_group threshold_threads;
+        // video
+        cv::VideoWriter video;
 
-  void preProcessing();
-  void posProcessing(int color);
-  void segmentAndSearch(int color);
-  void searchTags(int color);
-  void searchGMMTags(std::vector<cv::Mat> thresholds);
-  void findTags();
-  // void findElements();
-  void pick_a_tag();
-  int inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary);
+        // threads
+        boost::thread_group threshold_threads;
 
-public:
-  Vision(int w, int h);
-  ~Vision();
+        void preProcessing();
+        void posProcessing(int color);
+        void segmentAndSearch(int color);
+        void searchTags(int color);
+        void searchGMMTags(std::vector<cv::Mat> thresholds);
+        void findTags();
+        // void findElements();
+        void pick_a_tag();
+        int inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary);
 
-  void run(cv::Mat raw_frame);
-  void runGMM(std::vector<cv::Mat> thresholds);
-  void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
-  double calcDistance(cv::Point p1, cv::Point p2);
+    public:
+        Vision(int w, int h);
+        ~Vision();
 
-  void startNewVideo(std::string videoName);
-  bool recordToVideo();
-  bool finishVideo();
-  bool isRecording();
-  void savePicture(std::string in_name);
+      void run(cv::Mat raw_frame);
+      void runGMM(std::vector<cv::Mat> thresholds);
+      void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
+      double calcDistance(cv::Point p1, cv::Point p2);
 
-  void switchMainWithAdv();
+      void startNewVideo(std::string videoName);
+      bool recordToVideo();
+      bool finishVideo();
+      bool isRecording();
+      void savePicture(std::string in_name);
 
-  cv::Point getBall();
-  Robot getRobot(int index);
-  cv::Point getRobotPos(int index);
-  cv::Point getAdvRobot(int index);
-  cv::Point* getAllAdvRobots();
-  cv::Mat getSplitFrame();
+      void switchMainWithAdv();
 
-  int getRobotListSize();
-  int getAdvListSize();
-  cv::Mat getThreshold(int index);
-  void setAllThresholds(cv::Mat input);
+      cv::Point getBall();
+      Robot getRobot(int index);
+      cv::Point getRobotPos(int index);
+      cv::Point getAdvRobot(int index);
+      cv::Point* getAllAdvRobots();
+      cv::Mat getSplitFrame();
 
-  int getHue(int index0, int index1);
-  int getSaturation(int index0, int index1);
-  int getValue(int index0, int index1);
-  int getErode(int index);
-  int getDilate(int index);
-  int getBlur(int index);
-  int getAmin(int index);
+      int getRobotListSize();
+      int getAdvListSize();
+      cv::Mat getThreshold(int index);
+      void setAllThresholds(cv::Mat input);
 
-  void setFrameSize(int inWidth, int inHeight);
-  int getFrameHeight();
-  int getFrameWidth();
+      int getHue(int index0, int index1);
+      int getSaturation(int index0, int index1);
+      int getValue(int index0, int index1);
+      int getErode(int index);
+      int getDilate(int index);
+      int getBlur(int index);
+      int getAmin(int index);
 
-  void setHue(int index0, int index1, int inValue);
-  void setSaturation(int index0, int index1, int inValue);
-  void setValue(int index0, int index1, int inValue);
-  void setErode(int index, int inValue);
-  void setDilate(int index, int inValue);
-  void setBlur(int index, int inValue);
-  void setAmin(int index, int inValue);
+      void setFrameSize(int inWidth, int inHeight);
+      int getFrameHeight();
+      int getFrameWidth();
 
+      void setHue(int index0, int index1, int inValue);
+      void setSaturation(int index0, int index1, int inValue);
+      void setValue(int index0, int index1, int inValue);
+      void setErode(int index, int inValue);
+      void setDilate(int index, int inValue);
+      void setBlur(int index, int inValue);
+      void setAmin(int index, int inValue);
 
 };
+
 
 #endif /* VISION_HPP_ */

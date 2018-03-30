@@ -7,35 +7,38 @@
 
 #define ROBOT_RADIUS 17 // valor encontrado empiricamente (quanto menor, mais próximos os robôs podem ficar sem dar errado)
 
+
 class Tag {
-public:
-    cv::Point position;
-    cv::Point frontPoint;
-    cv::Point rearPoint;
 
-    double area;
+    public:
+        cv::Point position;
+        cv::Point frontPoint;
+        cv::Point rearPoint;
 
-    bool left;
+        double area;
 
-    // eu tentei implementar num cpp mas deu muita merda
-    /// <summary>
-    /// Constroi a tag
-    /// </summary>
-    /// <param name="pos">Posição da tag</param>
-    /// <param name="myarea">Corresponde ao tagArea</param>
-    Tag(cv::Point pos, double myarea) ;
+        bool left;
 
-    /// <summary>
-    /// Seta os pontos frontPoint e rearPoint aleatoriamente
-    /// </summary>
-    /// <param name="myLine">Linha encontrada pelo fitline</param>
-    void setLine(cv::Vec4f myLine);
+        // eu tentei implementar num cpp mas deu muita merda
+        /// <summary>
+        /// Constroi a tag
+        /// </summary>
+        /// <param name="pos">Posição da tag</param>
+        /// <param name="myarea">Corresponde ao tagArea</param>
+        Tag(cv::Point pos, double myarea) ;
 
-    /// <summary>
-    /// Inverte os pontos frontPoint e rearPoint depois que a visão determinar a ordem correta
-    /// </summary>
-    void switchPoints();
+        /// <summary>
+        /// Seta os pontos frontPoint e rearPoint aleatoriamente
+        /// </summary>
+        /// <param name="myLine">Linha encontrada pelo fitline</param>
+        void setLine(cv::Vec4f myLine);
+
+        /// <summary>
+        /// Inverte os pontos frontPoint e rearPoint depois que a visão determinar a ordem correta
+        /// </summary>
+        void switchPoints();
 
 };
+
 
 #endif /* TAG_HPP_ */

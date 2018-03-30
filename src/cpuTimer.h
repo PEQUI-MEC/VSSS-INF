@@ -7,7 +7,7 @@
  */
 
 #ifndef CPUTIME_H
- #define CPUTIME_H
+#define CPUTIME_H
 
 #include <iostream>
 #include <unistd.h>
@@ -20,66 +20,71 @@
 #include <mach/mach_time.h>
 #endif
 
-class CPUTimer
-{
-  public:
-    CPUTimer();
 
-    // Retorna o tempo (em segs e msegs) de CPU cronometrado para uma rotina.
-    // Se apenas uma cronometragem foi realizada, entao os valores retornados
-    // por getCPUCurrSecs() e getCPUTtotalSecs sao iguais.
-    double getCPUCurrSecs();
+class CPUTimer {
 
-    // Retorna o tempo total (em segs e msegs) de CPU cronometrado para uma rotina
-    double getCPUTotalSecs();
+    public:
 
-    // Retorna o tempo (em segs e msegs) de execucao cronometrado para uma rotina.
-    // Se apenas uma cronometragem foi realizada, entao os valores retornados
-    // por getCPUCurrSecs() e getCPUTtotalSecs sao iguais.
-    double getCronoCurrSecs();
+        CPUTimer();
 
-    // Retorna o tempo total (em segs e msegs) de execucao cronometrado para uma rotina.
-    double getCronoTotalSecs();
+        // Retorna o tempo (em segs e msegs) de CPU cronometrado para uma rotina.
+        // Se apenas uma cronometragem foi realizada, entao os valores retornados
+        // por getCPUCurrSecs() e getCPUTtotalSecs sao iguais.
+        double getCPUCurrSecs();
 
-    // Inicia a cronometragem (tempo de execucao e de CPU) de uma rotina
-    bool start();
+        // Retorna o tempo total (em segs e msegs) de CPU cronometrado para uma rotina
+        double getCPUTotalSecs();
 
-    // Encerra a cronometragem (tempo de execucao e de CPU) de uma rotina
-    bool stop();
+        // Retorna o tempo (em segs e msegs) de execucao cronometrado para uma rotina.
+        // Se apenas uma cronometragem foi realizada, entao os valores retornados
+        // por getCPUCurrSecs() e getCPUTtotalSecs sao iguais.
+        double getCronoCurrSecs();
 
-    // Prepara o ambiente de cronometragem para ser utilizado em outra rotina
-    void reset();
+        // Retorna o tempo total (em segs e msegs) de execucao cronometrado para uma rotina.
+        double getCronoTotalSecs();
 
-    // Operator to add cputimers
-    void operator += ( CPUTimer t );
+        // Inicia a cronometragem (tempo de execucao e de CPU) de uma rotina
+        bool start();
 
-    inline void increaseCPUTotalSecs( double s )
-    {
-      CPUTotalSecs += s;
-    };
+        // Encerra a cronometragem (tempo de execucao e de CPU) de uma rotina
+        bool stop();
 
-  private:
-    double CPUTStart;   // the cpu start time
-    double CPUTStop;    // the cpu stop time
-    double CronoTStart; // the real start time
-    double CronoTStop;  // the real stop time
+        // Prepara o ambiente de cronometragem para ser utilizado em outra rotina
+        void reset();
 
-    double getCPUTime();
-    double getRealTime();
+        // Operator to add cputimers
+        void operator += (CPUTimer t);
 
-    // tempo de cpu cronometrado para uma rotina (segs e msegs)
-    double CPUCurrSecs;
+        inline void increaseCPUTotalSecs(double s){
+            CPUTotalSecs += s;
+        };
 
-    // total do tempo de cpu cronometrado para uma rotina (segs e msegs)
-    double CPUTotalSecs;
+    private:
 
-    // tempo de execucao cronometrado para uma rotina (segs e msegs)
-    double CronoCurrSecs;
+        double CPUTStart;   // the cpu start time
+        double CPUTStop;    // the cpu stop time
+        double CronoTStart; // the real start time
+        double CronoTStop;  // the real stop time
 
-    // total do tempo de execucao cronometrado para uma rotina (segs e msegs)
-    double CronoTotalSecs;
+        double getCPUTime();
+        double getRealTime();
 
-    bool gottime; // do we have a measured time we can return?
-    bool started; // is the timer started?
+        // tempo de cpu cronometrado para uma rotina (segs e msegs)
+        double CPUCurrSecs;
+
+        // total do tempo de cpu cronometrado para uma rotina (segs e msegs)
+        double CPUTotalSecs;
+
+        // tempo de execucao cronometrado para uma rotina (segs e msegs)
+        double CronoCurrSecs;
+
+        // total do tempo de execucao cronometrado para uma rotina (segs e msegs)
+        double CronoTotalSecs;
+
+        bool gottime; // do we have a measured time we can return?
+        bool started; // is the timer started?
+
+
 };
+
 #endif

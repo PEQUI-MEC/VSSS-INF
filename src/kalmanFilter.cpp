@@ -1,6 +1,8 @@
 #include "kalmanFilter.hpp"
 
+
 void KalmanFilter::KF_init(cv::Point pos) {
+
     ticks = 0;
     int stateSize = 6;
     int measSize = 4;
@@ -53,9 +55,12 @@ void KalmanFilter::KF_init(cv::Point pos) {
     //KF_meas.at<float>(1) = pos.y;
     //KF_meas.at<float>(2) = (float) 5;
     //KF_meas.at<float>(3) = (float) 5;
+
 }
 
+
 cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
+
     //std::cout<<"KF1"<<std::endl;
     KF.statePost = KF_state;
     //std::cout<<"KF1.1"<<std::endl;
@@ -66,8 +71,8 @@ cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
     KF_meas.at<float>(2) = (float) 5;
     KF_meas.at<float>(3) = (float) 5;
     //std::cout<<"KF2"<<std::endl;
-    if (!kf_found) // First detection!
-    {
+
+    if (!kf_found) { // First detection!
         //std::cout<<"KF3.1"<<std::endl;
         // >>>> Initialization
         KF.errorCovPre.at<float>(0) = 1; // px
@@ -84,11 +89,11 @@ cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
         KF_state.at<float>(5) = KF_meas.at<float>(3);
         // <<<< Initialization
         kf_found = true;
-    }
-    else {
+    } else {
         //std::cout<<"KF3.2"<<std::endl;
         KF.correct(KF_meas); // Kalman Correction
     }
+
     //std::cout<<"KF4"<<std::endl;
     double precTick = ticks;
     ticks = (double) cv::getTickCount();
@@ -101,9 +106,13 @@ cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
     //std::cout<<"KF6"<<std::endl;
     center.x = KF_state.at<float>(0);
     center.y = KF_state.at<float>(1);
+
     return center;
+
 }
 
+
 KalmanFilter::KalmanFilter() {}
+
 
 KalmanFilter::~KalmanFilter() {}
