@@ -4,4 +4,6 @@ VSSS
 *.a
 *.o
 .vscode/
+.idea/
 *.txt
+config/quicksave.txt
