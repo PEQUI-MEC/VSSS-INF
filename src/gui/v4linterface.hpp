@@ -1,10 +1,3 @@
-/*
-* v4lgui.hpp
-*
-*  Created on: Feb 1, 2014
-*      Author: gustavo
-*/
-
 #ifndef V4LINTERFACE_HPP_
 #define V4LINTERFACE_HPP_
 
@@ -24,17 +17,26 @@
 
 #define PI 3.14159265453
 
+namespace vsss_gui {
 
-class V4LInterface: public Gtk::VBox {
+    typedef struct __ctrl_holder {
+        struct v4l2_queryctrl qctrl;
+        Gtk::Widget *widget;
+        sigc::connection con;
+    } ControlHolder;
+
+    class V4LInterface : public Gtk::VBox {
 
     public:
 
+        ImageView imageView;
         VisionGUI visionGUI;
         RobotGUI robotGUI;
 
-        bool warped = false;
+        std::string camera_card;
+        std::list <ControlHolder> ctrl_list_default;
 
-        ImageView imageView;
+        bool warped = false;
 
         double ballX, ballY;
 
@@ -52,7 +54,7 @@ class V4LInterface: public Gtk::VBox {
         Gtk::HBox robots_pos_hbox[7];
         Gtk::HBox start_game_hbox;
         Gtk::VBox buttons_vbox;
-        std::vector<std::string> robot_pos;
+        std::vector <std::string> robot_pos;
         Gtk::Button start_game_bt;
 
         Gtk::Frame robots_pos_fm;
@@ -76,7 +78,9 @@ class V4LInterface: public Gtk::VBox {
         bool robots_id_edit_flag = false;
 
         v4lcap vcap;
+
         V4LInterface();
+
         int offsetL;
         int offsetR;
         Gtk::Scale HScale_offsetL;
@@ -89,7 +93,7 @@ class V4LInterface: public Gtk::VBox {
         Gtk::CheckButton bt_invert_image;
 
 
-        void grab_rgb(unsigned char * rgb) {
+        void grab_rgb(unsigned char *rgb) {
             std::cout << "Grabbing\n";
             vcap.grab_rgb(rgb);
         }
@@ -103,40 +107,65 @@ class V4LInterface: public Gtk::VBox {
         sigc::connection cb_frame_interval_signal;
 
         void __event_bt_quick_save_clicked();
+
         void __event_bt_quick_load_clicked();
+
         void __event_bt_save_clicked();
+
         void __event_bt_load_clicked();
 
-    	bool __core_save(const char *);
+        bool __core_save(const char *);
+
         bool __core_load(const char *);
 
         void __event_bt_start_clicked();
+
         void __event_bt_warp_clicked();
+
         void __event_bt_adjust_pressed();
+
         void __event_bt_reset_warp_clicked();
 
         void HScale_offsetR_value_changed();
+
         void HScale_offsetL_value_changed();
+
         void __event_bt_invert_image_signal_clicked();
 
         void __event_cb_device_changed();
+
         void __event_cb_input_changed();
+
         void __event_cb_standard_changed();
+
         void __event_cb_format_desc_changed();
+
         void __event_cb_frame_size_changed();
+
         void __event_cb_frame_interval_changed();
 
         void createIDsFrame();
+
         void event_draw_info_checkbox_signal_clicked();
+
         void createPositionsAndButtonsFrame();
 
         void event_start_game_bt_signal_clicked();
+
         void event_robots_id_done_bt_signal_clicked();
+
         void event_robots_id_edit_bt_signal_pressed();
 
         void updateRobotLabels();
+
         void updateFPS(int fps);
+
         bool get_start_game_flag();
+
+        void update_interface_robots();
+
+        void update_interface_camera();
+
         /* Signals */
         typedef sigc::signal<bool, bool> SignalStart;
 
@@ -148,25 +177,36 @@ class V4LInterface: public Gtk::VBox {
     protected:
 
         SignalStart m_signal_start;
-        bool on_button_press_event(GdkEventButton * event);
+
+        bool on_button_press_event(GdkEventButton *event);
 
     private:
 
         bool start_game_flag = false;
 
         void __init_combo_boxes();
+
         void __create_frm_device_info();
+
         void __create_frm_device_properties();
+
         void createQuickActionsFrame();
+
         void __create_frm_warp();
 
         // Combo properties updates
         void __update_cb_device();
+
         void __update_cb_input();
+
         void __update_cb_standard();
+
         void __update_cb_format_desc();
+
         void __update_cb_frame_size();
+
         void __update_cb_frame_interval();
+
         void __update_all();
 
 
@@ -203,24 +243,25 @@ class V4LInterface: public Gtk::VBox {
         Gtk::ComboBox cb_frame_size;
         Gtk::ComboBox cb_frame_interval;
         //----------------------------------
-        Glib::RefPtr<Gtk::ListStore> ls_input;
-        Glib::RefPtr<Gtk::ListStore> ls_standard;
-        Glib::RefPtr<Gtk::ListStore> ls_format_desc;
-        Glib::RefPtr<Gtk::ListStore> ls_frame_size;
-        Glib::RefPtr<Gtk::ListStore> ls_frame_interval;
+        Glib::RefPtr <Gtk::ListStore> ls_input;
+        Glib::RefPtr <Gtk::ListStore> ls_standard;
+        Glib::RefPtr <Gtk::ListStore> ls_format_desc;
+        Glib::RefPtr <Gtk::ListStore> ls_frame_size;
+        Glib::RefPtr <Gtk::ListStore> ls_frame_interval;
         //----------------------------------
 
 
-        template<class T> class ModelColumn: public Gtk::TreeModel::ColumnRecord {
-            public:
+        template<class T>
+        class ModelColumn : public Gtk::TreeModel::ColumnRecord {
+        public:
 
-                ModelColumn() {
-                    add(m_col_name);
-                    add(m_col_data);
-                }
+            ModelColumn() {
+                add(m_col_name);
+                add(m_col_data);
+            }
 
-                Gtk::TreeModelColumn<Glib::ustring> m_col_name;
-                Gtk::TreeModelColumn<T> m_col_data;
+            Gtk::TreeModelColumn <Glib::ustring> m_col_name;
+            Gtk::TreeModelColumn <T> m_col_data;
         };
 
 
@@ -244,26 +285,21 @@ class V4LInterface: public Gtk::VBox {
         Gtk::Notebook notebook2;
         //==================================================================
 
-        typedef struct __ctrl_holder {
-            struct v4l2_queryctrl qctrl;
-            Gtk::Widget * widget;
-            sigc::connection con;
-        } ControlHolder;
-
-        std::list<ControlHolder> ctrl_list_default;
-
         void __make_controls();
+
         void __make_control_list_default();
 
-        void __make_control_table(std::list<ControlHolder>& list, const char * title);
+        void __make_control_table(std::list <ControlHolder> &list, const char *title);
 
-        void __update_control_widgets(std::list<ControlHolder>& list);
-        void __block_control_signals(std::list<ControlHolder>& list, bool block);
+        void __update_control_widgets(std::list <ControlHolder> &list);
 
-        bool __set_control_hscale(int type, double val, std::list<ControlHolder> * list, Gtk::Widget * wctrl);
-        void __set_control(std::list<ControlHolder> * list, Gtk::Widget * wctrl);
+        void __block_control_signals(std::list <ControlHolder> &list, bool block);
 
-};
+        bool __set_control_hscale(int type, double val, std::list <ControlHolder> *list, Gtk::Widget *wctrl);
 
+        void __set_control(std::list <ControlHolder> *list, Gtk::Widget *wctrl);
 
+    };
+
+}
 #endif /* V4LINTERFACE_HPP_ */

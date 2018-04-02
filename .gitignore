@@ -6,4 +6,4 @@ VSSS
 .vscode/
 .idea/
 *.txt
-config/quicksave.txt
+config/quicksave.json

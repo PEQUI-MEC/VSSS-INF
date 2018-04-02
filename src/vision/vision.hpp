@@ -11,7 +11,7 @@
 #include <boost/thread/mutex.hpp>
 #include <boost/bind.hpp>
 #include "../robot.hpp"
-#include <iostream>     // std::cout
+#include <iostream>
 #include "tag.hpp"
 
 

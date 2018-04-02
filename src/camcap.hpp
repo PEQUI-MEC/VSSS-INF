@@ -64,7 +64,7 @@ public:
 
     StrategyGUI strategyGUI;
     ControlGUI control;
-    V4LInterface interface;
+    vsss_gui::V4LInterface interface;
 
     Gtk::Frame fm;
     Gtk::Frame info_fm;
