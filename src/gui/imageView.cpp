@@ -1,8 +1,6 @@
 #include "imageView.hpp"
 
-
 bool ImageView::on_button_press_event(GdkEventButton *event) {
-
 	if(gmm_sample_flag && event->button == 1) {
 		gmm_clicks[gmm_counter][0] = event->x;
 		gmm_clicks[gmm_counter][1] = event->y;
@@ -10,9 +8,7 @@ bool ImageView::on_button_press_event(GdkEventButton *event) {
 		if(gmm_counter == 1) {
 			gmm_counter = 0;
 			gmm_ready_flag = true;
-		} else {
-			gmm_counter++;
-		}
+		} else gmm_counter++;
 	}
 
 	if(split_flag) {
@@ -41,10 +37,8 @@ bool ImageView::on_button_press_event(GdkEventButton *event) {
 				hold_warp = true;
 				warp_counter=0;
 			}
-
 			return true;
 		}
-
 		return true;
 	}
 
@@ -69,13 +63,12 @@ bool ImageView::on_button_press_event(GdkEventButton *event) {
 					//std::cerr <<"DIREITA SUPERIOR"<<std::endl;
 					adjust_mat[2][0] = event->x;
 					adjust_mat[2][1] = event->y;
-				}else {
+				} else {
 					//std::cerr <<"DIREITA INFERIOR"<<std::endl;
 					adjust_mat[3][0] = event->x;
 					adjust_mat[3][1] = event->y;
 				}
 			}
-
 			if(adj_counter == 4){
 				adjust_rdy = true;
 				adjust_event_flag = false;
@@ -84,20 +77,17 @@ bool ImageView::on_button_press_event(GdkEventButton *event) {
 			}
 		}
 	} else if(PID_test_flag) {
-		robot_pos[0]=0;
-		robot_pos[1]=0;
-
+		robot_pos[0] = 0;
+		robot_pos[1] = 0;
 		if(event->button == 1) {
 			robot_pos[0] = event->x;
 			robot_pos[1] = event->y;
-
 			//std::cerr <<robot_pos[0] <<"  -  "<<robot_pos[1]<<std::endl;
 		} else if(event->button == 3) {
 			tar_pos[0] = event->x;
 			tar_pos[1] = event->y;
 			//std::cerr <<tar_pos[0] <<"  -  "<<tar_pos[1]<<std::endl;
 		}
-
 	} else if(formation_flag) {
 		robot_pos[0]= -1;
 		robot_pos[1]= -1;
@@ -116,70 +106,46 @@ bool ImageView::on_button_press_event(GdkEventButton *event) {
 			//std::cerr <<tar_pos[0] <<"  -  "<<tar_pos[1]<<std::endl;
 		}
 	}
-
 }
-
 
 ImageView::ImageView() : data(0), width(0), height(0), stride(0) {
-
-		robot_pos[1]=0;
-		robot_pos[0]=0;
-		tar_pos[1]=-1;
-		tar_pos[0]=-1;
-
+	robot_pos[1] = 0;
+	robot_pos[0] = 0;
+	tar_pos[1] = -1;
+	tar_pos[0] = -1;
 }
 
-
 void ImageView::set_data(unsigned char * data, int width, int height) {
-
 	this->data = data;
 	this->width = width;
 	this->height = height;
 	this->stride = width * 3;
-
 }
-
 
 unsigned char * ImageView::get_data() {
-
 	return this->data;
-
 }
-
 
 int ImageView::get_width() {
-
 	return this->width;
-
 }
-
 
 int ImageView::get_height() {
-
 	return this->height;
-
 }
 
-
 void ImageView::disable_image_show() {
-
 	data = 0;
 	width = 0;
 	height = 0;
 	stride = 0;
-
 }
-
 
 void ImageView::refresh() {
-
 	this->queue_draw();
-
 }
 
-
 bool ImageView::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
-
 	add_events(Gdk::BUTTON_PRESS_MASK);
 	if(!data) return false;
 
@@ -209,5 +175,4 @@ bool ImageView::on_draw(const Cairo::RefPtr<Cairo::Context>& cr) {
 //				layout->show_in_cairo_context(cr);
 
 	return true;
-	
 }

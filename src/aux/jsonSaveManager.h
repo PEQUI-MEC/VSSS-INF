@@ -5,7 +5,7 @@
 #include "../gui/v4linterface.hpp"
 
 using json = nlohmann::json;
-using namespace vsss_gui;
+using namespace VSSS_GUI;
 
 class jsonSaveManager {
 

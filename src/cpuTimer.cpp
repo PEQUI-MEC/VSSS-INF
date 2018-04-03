@@ -5,54 +5,35 @@
  *  Instituto de Informatica - UFG
  *
  */
- 
+
 #include "cpuTimer.h"
 
-
 CPUTimer::CPUTimer() {
-
 	started = false;
-
 	CPUCurrSecs = 0;
 	CPUTotalSecs = 0;
 	CronoCurrSecs = 0;
 	CronoTotalSecs = 0;
-
 }
-
 
 double CPUTimer::getCPUCurrSecs() {
-
 	return CPUCurrSecs;
-
 }
-
 
 double CPUTimer::getCPUTotalSecs() {
-
 	return CPUTotalSecs;
-
 }
-
 
 double CPUTimer::getCronoCurrSecs() {
-
 	return CronoCurrSecs;
-
 }
-
 
 double CPUTimer::getCronoTotalSecs() {
-
 	return CronoTotalSecs;
-
 }
 
-
 bool CPUTimer::start() {
-
 	bool status = true;
-
 	CPUCurrSecs = 0;
 	CronoCurrSecs = 0;
 
@@ -63,12 +44,9 @@ bool CPUTimer::start() {
 	started = status;
 
 	return (status);
-
 }
 
-
 bool CPUTimer::stop() {
-
 	bool status = true;
 
 	if (started) {
@@ -85,38 +63,28 @@ bool CPUTimer::stop() {
 	started = false;
 
 	return status;
-
 }
 
-
 void CPUTimer::reset() {
-
 	started = false;
-
 	CPUCurrSecs = 0;
 	CPUTotalSecs = 0;
 	CronoCurrSecs = 0;
 	CronoTotalSecs = 0;
-
 }
 
-
 void CPUTimer::operator += (CPUTimer t) {
-
 	CPUCurrSecs += t.getCPUCurrSecs();
 	CPUTotalSecs += t.getCPUTotalSecs();
 	CronoCurrSecs += t.getCronoCurrSecs();
 	CronoTotalSecs += t.getCronoTotalSecs();
-
 }
-
 
 /**
  * Returns the amount of CPU time used by the current process,
  * in seconds, or -1.0 if an error occurred.
  */
 double CPUTimer::getCPUTime() {
-
 	#if defined(_POSIX_TIMERS) && (_POSIX_TIMERS > 0)
 
   	/* Prefer high-res POSIX timers, when available. */
@@ -159,16 +127,13 @@ double CPUTimer::getCPUTime() {
 
 	/* Failed. */
 	return -1.0;
-
 }
-
 
 /**
  * Returns the amount of real time used by the current process,
  * in seconds, or -1.0 if an error occurred.
  */
  double CPUTimer::getRealTime() {
-
  	#if defined(_POSIX_TIMERS) && (_POSIX_TIMERS > 0)
  	struct timespec ts;
 
@@ -221,5 +186,4 @@ double CPUTimer::getCPUTime() {
 
    	/* To avoid compilation warnings only!!! */
  	return -1.0;
-
 }

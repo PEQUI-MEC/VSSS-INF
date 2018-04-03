@@ -1,8 +1,6 @@
 #include "visionGUI.hpp"
 
-
 void VisionGUI::__create_frm_calib_mode() {
-
     Gtk::VBox * vbox;
     Gtk::Grid * grid;
     Gtk::Frame * frame;
@@ -38,12 +36,9 @@ void VisionGUI::__create_frm_calib_mode() {
 
     rb_mode_HSV.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::__event_rb_mode_clicked));
     rb_mode_GMM.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::__event_rb_mode_clicked));
-
 }
 
-
 void VisionGUI::__event_rb_mode_clicked() {
-
     if(rb_mode_GMM.get_active()) {
         isHSV = false;
 
@@ -126,9 +121,7 @@ void VisionGUI::__event_rb_mode_clicked() {
     }
 }
 
-
 void VisionGUI::__create_frm_gmm() {
-
     Gtk::VBox * vbox;
     Gtk::Grid * grid;
     Gtk::Frame * frame;
@@ -344,75 +337,48 @@ void VisionGUI::__create_frm_gmm() {
     bt_GMM_right.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::__event_bt_GMM_right_clicked));
     HScale_closing.signal_value_changed().connect(sigc::mem_fun(*this, &VisionGUI::HScale_closing_value_changed));
     HScale_opening.signal_value_changed().connect(sigc::mem_fun(*this, &VisionGUI::HScale_opening_value_changed));
-
 }
 
-
 void VisionGUI::__event_cb_convertType_signal_changed() {
-
     gmm.setConvertType(cb_convertType.get_active_row_number());
-
 }
 
 bool VisionGUI::getDrawSamples() {
-
     return samplesEventFlag;
-
 }
-
 
 bool VisionGUI::getOriginalFrameFlag() {
-
     return originalFrame_flag;
-
 }
-
 
 bool VisionGUI::getGaussiansFrameFlag() {
-
     return gaussiansFrame_flag;
-
 }
-
 
 bool VisionGUI::getFinalFrameFlag() {
-
     return finalFrame_flag;
-
 }
-
 
 bool VisionGUI::getThresholdFrameFlag() {
     return thresholdFrame_flag;
 }
 
-
 void VisionGUI::HScale_closing_value_changed() {
-
     gmm.setClosingSize(HScale_closing.get_value());
-
 }
-
 
 void VisionGUI::HScale_opening_value_changed() {
-
     gmm.setOpeningSize(HScale_opening.get_value());
-
 }
 
-
 void VisionGUI::__event_bt_GMM_save_clicked() {
-
     FileChooser saveWindow;
 
     if (saveWindow.result == Gtk::RESPONSE_OK)
         gmm.write(saveWindow.fileName);
-
 }
 
-
 void VisionGUI::__event_bt_GMM_load_clicked() {
-
     FileChooser loadWindow;
 
     if (loadWindow.result == Gtk::RESPONSE_OK) {
@@ -425,49 +391,31 @@ void VisionGUI::__event_bt_GMM_load_clicked() {
             cb_convertType.set_active(gmm.getConvertType());
         }
     }
-
 }
 
-
 void VisionGUI::quickLoadGMM() {
-
       gmm.read("config/autoGMM.json");
       HScale_clusters.set_value(gmm.getClusters());
       HScale_closing.set_value(gmm.getClosingSize());
       HScale_opening.set_value(gmm.getOpeningSize());
       cb_convertType.set_active(gmm.getConvertType());
-
 }
-
 
 void VisionGUI::__event_bt_GMM_left_clicked() {
-
-    if (colorIndex-1 < 0) {
-        colorIndex = realColors.size()-1;
-    } else {
-        colorIndex--;
-    }
+    if (colorIndex-1 < 0) colorIndex = realColors.size()-1;
+    else colorIndex--;
 
     lb_threshold.set_text(realColors.at(colorIndex));
-
 }
-
 
 void VisionGUI::__event_bt_GMM_right_clicked() {
-
-    if (colorIndex+1 >= realColors.size()) {
-        colorIndex = 0;
-    } else {
-        colorIndex++;
-    }
+    if (colorIndex+1 >= realColors.size()) colorIndex = 0;
+    else colorIndex++;
 
     lb_threshold.set_text(realColors.at(colorIndex));
-
 }
 
-
 void VisionGUI::__event_rb_GMM_frame_clicked() {
-
     if (rb_GMM_original.get_active()) {
         originalFrame_flag = true;
         gaussiansFrame_flag = false;
@@ -489,26 +437,20 @@ void VisionGUI::__event_rb_GMM_frame_clicked() {
         finalFrame_flag = false;
         thresholdFrame_flag = true;
     }
-
 }
 
-
 void VisionGUI::__event_bt_GMM_match_clicked() {
-
     int gaussian = cb_gaussianColor.get_active_row_number();
     int color = cb_realColor.get_active_row_number();
 
     if (gaussian >= 0 && color >= 0)
         gmm.setMatchColor(gaussian-1, color-1);
-
 }
-
 
 void VisionGUI::__event_bt_GMM_done_clicked() {
     gmm.setDone();
     rb_GMM_threshold.set_state(Gtk::STATE_NORMAL);
 }
-
 
 void VisionGUI::HScale_clusters_value_changed() {
     gmm.setClusters(HScale_clusters.get_value());
@@ -519,12 +461,9 @@ void VisionGUI::HScale_clusters_value_changed() {
 
     for(int i = 0; i < gmm.getClusters(); i++)
         cb_gaussianColor.append(gaussianColors.at(i));
-
 }
 
-
 void VisionGUI::__event_bt_trainGMM_clicked() {
-
     int res = gmm.train();
     if(res == 0) {
         rb_GMM_gaussians.set_active(true);
@@ -534,15 +473,10 @@ void VisionGUI::__event_bt_trainGMM_clicked() {
         bt_popSample.set_state(Gtk::STATE_INSENSITIVE);
         bt_GMM_save.set_state(Gtk::STATE_NORMAL);
         samplesEventFlag = false;
-    } else {
-        HScale_clusters.set_state(Gtk::STATE_NORMAL);
-    }
-
+    } else HScale_clusters.set_state(Gtk::STATE_NORMAL);
 }
 
-
 void VisionGUI::__event_bt_collectSamples_pressed() {
-
     if(samplesEventFlag) {
         bt_popSample.set_state(Gtk::STATE_INSENSITIVE);
         bt_clearSamples.set_state(Gtk::STATE_INSENSITIVE);
@@ -550,40 +484,27 @@ void VisionGUI::__event_bt_collectSamples_pressed() {
         bt_popSample.set_state(Gtk::STATE_NORMAL);
         bt_clearSamples.set_state(Gtk::STATE_NORMAL);
     }
-
     samplesEventFlag = !samplesEventFlag;
-
 }
-
 
 void VisionGUI::__event_bt_popSample_clicked() {
-
-      gmm.popSample();
-      decrementSamples();
-      std::cout << "GMM sample popped. Total left: " << gmm.getSamplesSize() << std::endl;
-
+    gmm.popSample();
+    decrementSamples();
+    std::cout << "GMM sample popped. Total left: " << gmm.getSamplesSize() << std::endl;
 }
-
 
 void VisionGUI::__event_bt_clearSamples_clicked() {
-
-      gmm.clearSamples();
-      totalSamples = 0;
-      bt_popSample.set_label("Pop (0)");
-      std::cout << "GMM samples cleared." << std::endl;
-
+    gmm.clearSamples();
+    totalSamples = 0;
+    bt_popSample.set_label("Pop (0)");
+    std::cout << "GMM samples cleared." << std::endl;
 }
-
 
 bool VisionGUI::getSamplesEventFlag() {
-
-      return samplesEventFlag;
-
+    return samplesEventFlag;
 }
 
-
 void VisionGUI::__create_frm_split_view() {
-
     Gtk::VBox * vbox;
     Gtk::Grid * grid;
     Gtk::Label * label;
@@ -619,30 +540,18 @@ void VisionGUI::__create_frm_split_view() {
 
     rb_original_view.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::__event_rb_split_mode_clicked));
     rb_split_view.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::__event_rb_split_mode_clicked));
-
 }
-
 
 void VisionGUI::__event_rb_split_mode_clicked() {
-
-    if(rb_split_view.get_active()) {
-        isSplitView = true;
-    } else{
-        isSplitView = false;
-    }
-
+    if(rb_split_view.get_active()) isSplitView = true;
+    else isSplitView = false;
 }
-
 
 bool VisionGUI::getIsSplitView() {
-
   return isSplitView;
-
 }
 
-
 void VisionGUI::__create_frm_capture() {
-
     Gtk::VBox * vbox;
     Gtk::Grid * grid;
     Gtk::Label * label;
@@ -687,12 +596,9 @@ void VisionGUI::__create_frm_capture() {
 
     bt_record_video.signal_pressed().connect(sigc::mem_fun(*this, &VisionGUI::bt_record_video_pressed));
     bt_save_picture.signal_clicked().connect(sigc::mem_fun(*this, &VisionGUI::bt_save_picture_clicked));
-
 }
 
-
 void VisionGUI::bt_record_video_pressed() {
-
     if(vision->isRecording()) {
         vision->finishVideo();
         bt_record_video.set_label("REC");
@@ -710,26 +616,18 @@ void VisionGUI::bt_record_video_pressed() {
           vision->startNewVideo(name);
       }
   }
-
 }
-
 
 void VisionGUI::bt_save_picture_clicked() {
-
     std::string name = en_picture_name.get_text();
 
-    if(name.empty()) {
-        vision->savePicture(std::to_string(picIndex++));
-    } else {
-        vision->savePicture(name);
-    }
-    en_picture_name.set_text("");
+    if(name.empty()) vision->savePicture(std::to_string(picIndex++));
+    else vision->savePicture(name);
 
+    en_picture_name.set_text("");
 }
 
-
 void VisionGUI::__create_frm_hsv() {
-
     Gtk::VBox * vbox;
     Gtk::Grid * grid;
     Gtk::Label * label;
@@ -915,12 +813,9 @@ void VisionGUI::__create_frm_hsv() {
     HScale_Dilate.signal_value_changed().connect(sigc::mem_fun(*this, &VisionGUI::HScale_Dilate_value_changed));
     HScale_Blur.signal_value_changed().connect(sigc::mem_fun(*this, &VisionGUI::HScale_Blur_value_changed));
     HScale_Amin.signal_value_changed().connect(sigc::mem_fun(*this, &VisionGUI::HScale_Amin_value_changed));
-
 }
 
-
 void VisionGUI::__event_bt_switchMainAdv_clicked() {
-
     vision->switchMainWithAdv();
     HScale_Hmin.set_value(vision->getHue(Img_id, 0));
     HScale_Hmax.set_value(vision->getHue(Img_id, 1));
@@ -932,85 +827,49 @@ void VisionGUI::__event_bt_switchMainAdv_clicked() {
     HScale_Blur.set_value(vision->getBlur(Img_id));
     HScale_Erode.set_value(vision->getErode(Img_id));
     HScale_Dilate.set_value(vision->getDilate(Img_id));
-
 }
-
 
 void VisionGUI::HScale_Hmin_value_changed() {
-
     vision->setHue(Img_id, 0, HScale_Hmin.get_value());
-
 }
-
 
 void VisionGUI::HScale_Smin_value_changed() {
-
     vision->setSaturation(Img_id, 0, HScale_Smin.get_value());
-
 }
-
 
 void VisionGUI::HScale_Vmin_value_changed() {
-
     vision->setValue(Img_id, 0, HScale_Vmin.get_value());
-
 }
-
 
 void VisionGUI::HScale_Hmax_value_changed() {
-
     vision->setHue(Img_id, 1, HScale_Hmax.get_value());
-
 }
-
 
 void VisionGUI::HScale_Smax_value_changed() {
-
     vision->setSaturation(Img_id, 1, HScale_Smax.get_value());
-
 }
-
 
 void VisionGUI::HScale_Vmax_value_changed() {
-
     vision->setValue(Img_id, 1, HScale_Vmax.get_value());
-
 }
-
 
 void VisionGUI::HScale_Amin_value_changed() {
-
-      vision->setAmin(Img_id, HScale_Amin.get_value());
-
+    vision->setAmin(Img_id, HScale_Amin.get_value());
 }
-
 
 void VisionGUI::HScale_Dilate_value_changed() {
-
-    if(HScale_Dilate.get_value() < 0) {
-        vision->setDilate(Img_id, 0);
-    } else {
-        vision->setDilate(Img_id, HScale_Dilate.get_value());
-    }
+    if(HScale_Dilate.get_value() < 0) vision->setDilate(Img_id, 0);
+    else vision->setDilate(Img_id, HScale_Dilate.get_value());
     //std::cout<<"=================================================="<<D[Img_id]<<std::endl;
-
 }
-
 
 void VisionGUI::HScale_Erode_value_changed() {
-
-    if(HScale_Erode.get_value() < 0) {
-        vision->setErode(Img_id, 0);
-    } else{
-        vision->setErode(Img_id, HScale_Erode.get_value());
-    }
+    if(HScale_Erode.get_value() < 0) vision->setErode(Img_id, 0);
+    else vision->setErode(Img_id, HScale_Erode.get_value());
     //std::cout<<"=================================================="<<E[Img_id]<<std::endl;
-
 }
 
-
 void VisionGUI::HScale_Blur_value_changed() {
-
     if(HScale_Blur.get_value() < 3) {
         vision->setBlur(Img_id, 3);
     } else if((int) HScale_Blur.get_value() % 2 == 0){
@@ -1019,12 +878,9 @@ void VisionGUI::HScale_Blur_value_changed() {
         vision->setBlur(Img_id, (int)HScale_Blur.get_value());
     }
     //std::cout<<"====Blur: "<<B[Img_id]<<" id color: "<<Img_id<<std::endl;
-
 }
 
-
 void VisionGUI::__event_bt_HSV_calib_pressed() {
-
     if(HSV_calib_event_flag) {
         HSV_calib_event_flag=false;
         // VisionGUI::__event_auto_save();
@@ -1057,14 +913,10 @@ void VisionGUI::__event_bt_HSV_calib_pressed() {
         bt_HSV_left.set_state(Gtk::STATE_NORMAL);
         bt_switchMainAdv.set_state(Gtk::STATE_NORMAL);
     }
-
 }
 
-
 void VisionGUI::selectFrame(int sector) {
-
     switch (sector) {
-
         case 0:
 
             rb_original_view.set_active(true);
@@ -1114,20 +966,14 @@ void VisionGUI::selectFrame(int sector) {
             break;
 
         default:
-
             break;
-
     }
-
 }
-
 
 void VisionGUI::__event_bt_right_HSV_calib_clicked() {
+    Img_id = Img_id + 1;
 
-    Img_id=Img_id+1;
-
-    if(Img_id>3)
-        Img_id = 0;
+    if(Img_id > 3) Img_id = 0;
 
     HScale_Hmin.set_value(vision->getHue(Img_id, 0));
     HScale_Hmax.set_value(vision->getHue(Img_id, 1));
@@ -1145,7 +991,6 @@ void VisionGUI::__event_bt_right_HSV_calib_clicked() {
     HScale_Amin.set_value(vision->getAmin(Img_id));
 
     switch(Img_id) {
-
         case 0:
 
             HSV_label.set_text("Main");
@@ -1169,18 +1014,13 @@ void VisionGUI::__event_bt_right_HSV_calib_clicked() {
 
             HSV_label.set_text("Opp.");
             break;
-
     }
-
 }
-
 
 void VisionGUI::__event_bt_left_HSV_calib_clicked() {
-
     Img_id = Img_id-1;
 
-    if(Img_id < 0)
-        Img_id = 3;
+    if(Img_id < 0) Img_id = 3;
 
     HScale_Hmin.set_value(vision->getHue(Img_id, 0));
     HScale_Hmax.set_value(vision->getHue(Img_id, 1));
@@ -1198,7 +1038,6 @@ void VisionGUI::__event_bt_left_HSV_calib_clicked() {
     HScale_Amin.set_value(vision->getAmin(Img_id));
 
     switch(Img_id) {
-
         case 0:
 
             HSV_label.set_text("Main");
@@ -1222,9 +1061,7 @@ void VisionGUI::__event_bt_left_HSV_calib_clicked() {
             HSV_label.set_text("Opp.");
             break;
     }
-
 }
-
 
 // void VisionGUI::__event_auto_save()
 // {
@@ -1236,32 +1073,21 @@ void VisionGUI::__event_bt_left_HSV_calib_clicked() {
 //   }
 // }
 
-
 void VisionGUI::incrementSamples() {
-
     totalSamples++;
     std::string text = "Pop (" + std::to_string(totalSamples) + ")";
     bt_popSample.set_label(text);
-
 }
 
-
 void VisionGUI::decrementSamples() {
-
-    if(totalSamples-1 < 0) {
-        totalSamples = 0;
-    } else {
-        totalSamples--;
-    }
+    if(totalSamples-1 < 0) totalSamples = 0;
+    else totalSamples--;
 
     std::string text = "Pop (" + std::to_string(totalSamples) + ")";
     bt_popSample.set_label(text);
-
 }
 
-
 void VisionGUI::init_calib_params() {
-
     // Inicializar variáveis de calibração
     int H[5][2] = { {0,180}, {0,180}, {0,180}, {0,180}, {0,180} };
     int S[5][2] = { {0, 255}, {0, 255}, {0, 255}, {0, 255}, {0, 255} };
@@ -1281,49 +1107,30 @@ void VisionGUI::init_calib_params() {
     HScale_Amin.set_value(Amin[0]);
 }
 
-
 void VisionGUI::setFrameSize(int inWidth, int inHeight) {
-
-      vision->setFrameSize(inWidth, inHeight);
-
+    vision->setFrameSize(inWidth, inHeight);
 }
-
 
 int VisionGUI::getFrameHeight() {
-
-      return vision->getFrameHeight();
-
+    return vision->getFrameHeight();
 }
-
 
 int VisionGUI::getFrameWidth() {
-
-      return vision->getFrameWidth();
-
+    return vision->getFrameWidth();
 }
-
 
 int VisionGUI::getGMMColorIndex() {
-
-      return colorIndex;
-
+    return colorIndex;
 }
-
 
 bool VisionGUI::getIsHSV() {
-
-      return isHSV;
-
+    return isHSV;
 }
 
-
 VisionGUI::VisionGUI() :
-  HSV_calib_event_flag(false), Img_id(0),
-  vidIndex(0), picIndex(0), samplesEventFlag(false),
-  originalFrame_flag(true), totalSamples(0),
-  gaussiansFrame_flag(false), finalFrame_flag(false),
-  thresholdFrame_flag(false), colorIndex(0), isHSV(true),
-  isSplitView(false)
+  HSV_calib_event_flag(false), Img_id(0), vidIndex(0), picIndex(0), samplesEventFlag(false), originalFrame_flag(true),
+  totalSamples(0), gaussiansFrame_flag(false), finalFrame_flag(false), thresholdFrame_flag(false), colorIndex(0),
+  isHSV(true), isSplitView(false)
 {
 
     vision = new Vision(640, 480);
@@ -1335,13 +1142,8 @@ VisionGUI::VisionGUI() :
     // __create_frm_gmm();
 
     init_calib_params();
-
 }
 
-
 VisionGUI::~VisionGUI() {
-
-    if(vision->isRecording())
-        vision->finishVideo();
-
+    if(vision->isRecording()) vision->finishVideo();
 }

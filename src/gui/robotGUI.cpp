@@ -1,28 +1,20 @@
 #include "robotGUI.hpp"
 
-
 RobotGUI::RobotGUI() {
-
     createFunctionsFrame();
     createSpeedsFrame();
-
 }
 
 RobotGUI::~RobotGUI() {}
 
-
 //////// AUXILIARES
 
-
 void RobotGUI::update_robot_functions() {
-
     for (int i = 0; i < N_ROBOTS; i++)
         cb_robot_function[i].set_active(robot_list[i].role);
-
 }
 
 void RobotGUI::update_speed_progressBars() {
-
     std::ostringstream strs[N_ROBOTS];
 
     for(int i = 0; i < N_ROBOTS; i++) {
@@ -30,15 +22,11 @@ void RobotGUI::update_speed_progressBars() {
         strs[i] << (double) robot_list[i].vmax;
         robots_speed_progressBar[i].set_text(strs[i].str().substr(0,4));
     }
-
 }
-
 
 /////// INTERFACES
 
-
 void RobotGUI::createFunctionsFrame() {
-
     Gtk::Label *label;
     std::string function[N_ROBOTS];
 
@@ -56,7 +44,6 @@ void RobotGUI::createFunctionsFrame() {
     for(int i = 0; i < N_ROBOTS; i++)
         function[i].clear();
 
-
     function[0].append("Goalkeeper");
     function[1].append("Defense");
     function[2].append("Attack");
@@ -65,7 +52,6 @@ void RobotGUI::createFunctionsFrame() {
     for(int i = 0; i < N_ROBOTS; i++) {
         // configura o rótulo
         switch(i) {
-
             case 1:
                 label = new Gtk::Label("Robot 2:");
                 break;
@@ -76,13 +62,11 @@ void RobotGUI::createFunctionsFrame() {
 
             default:
                 label = new Gtk::Label("Robot 1:");
-
         }
 
         // adiciona as opções de papel pro seletor de cada robo
         for(int j = 0; j < N_ROBOTS; j++)
             cb_robot_function[i].append(function[j]);
-
 
         // seleciona uma opção padrão
         cb_robot_function[i].set_active_text(function[i]);
@@ -113,15 +97,12 @@ void RobotGUI::createFunctionsFrame() {
 
     robots_function_edit_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_function_edit_bt_signal_clicked));
     robots_function_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_function_done_bt_signal_clicked));
-
 }
-
 
 /**
  * Cria o frame de controle de velocidades.
  */
 void RobotGUI::createSpeedsFrame() {
-
     Gtk::Label *label;
 
     // coloca o frame das velocidades na aba dos robos
@@ -140,7 +121,6 @@ void RobotGUI::createSpeedsFrame() {
     for(int i = 0; i < N_ROBOTS; i++) {
         // seleciona a label correspondente
         switch(i) {
-
             case 1:
                 label = new Gtk::Label("Robot 2:");
                 break;
@@ -151,7 +131,6 @@ void RobotGUI::createSpeedsFrame() {
 
             default:
                 label = new Gtk::Label("Robot 1:");
-
         }
         // configura os sliders
         robots_speed_hscale[i].set_digits(1);
@@ -194,15 +173,11 @@ void RobotGUI::createSpeedsFrame() {
 
     robots_speed_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_speed_edit_bt_signal_pressed));
     robots_speed_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_speed_done_bt_signal_clicked));
-
 }
-
 
 //////// EVENTOS
 
-
 void RobotGUI::event_robots_function_edit_bt_signal_clicked() {
-
 	if(!robots_function_edit_flag) {
 		robots_function_edit_flag = true;
 		robots_function_edit_bt.set_label("Cancel");
@@ -226,12 +201,9 @@ void RobotGUI::event_robots_function_edit_bt_signal_clicked() {
             cb_robot_function[i].set_active(robots_function_tmp[i]);
         }
 	}
-
 }
 
-
 void RobotGUI::event_robots_function_done_bt_signal_clicked() {
-
     std::string s[N_ROBOTS];
 
     for(int i = 0; i < N_ROBOTS; i++) {
@@ -256,12 +228,9 @@ void RobotGUI::event_robots_function_done_bt_signal_clicked() {
     robots_function_edit_flag = false;
     robots_function_edit_bt.set_label("Edit");
     robots_function_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-
 }
 
-
 void RobotGUI::event_robots_speed_edit_bt_signal_pressed() {
-
 	if(!robots_speed_edit_flag) {
 		robots_speed_edit_flag = true;
 		robots_speed_edit_bt.set_label("Cancel");
@@ -271,7 +240,6 @@ void RobotGUI::event_robots_speed_edit_bt_signal_pressed() {
             robots_speed_hscale[i].set_state(Gtk::STATE_NORMAL);
             robots_speed_tmp[i] = robots_speed_hscale[i].get_value();
         }
-
 	} else {
 		robots_speed_edit_flag = false;
 		robots_speed_edit_bt.set_label("Edit");
@@ -281,14 +249,10 @@ void RobotGUI::event_robots_speed_edit_bt_signal_pressed() {
             robots_speed_hscale[i].set_state(Gtk::STATE_INSENSITIVE);
             robots_speed_hscale[i].set_value(robots_speed_tmp[i]);
         }
-
 	}
-
 }
 
-
 void RobotGUI::event_robots_speed_done_bt_signal_clicked(){
-
     robots_speed_edit_flag = false;
 	robots_speed_edit_bt.set_label("Edit");
 	robots_speed_done_bt.set_state(Gtk::STATE_INSENSITIVE);
@@ -298,5 +262,4 @@ void RobotGUI::event_robots_speed_done_bt_signal_clicked(){
         robot_list[i].vmax = robot_list[i].vdefault;
         robots_speed_hscale[i].set_state(Gtk::STATE_INSENSITIVE);
     }
-    
 }

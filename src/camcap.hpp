@@ -64,7 +64,7 @@ public:
 
     StrategyGUI strategyGUI;
     ControlGUI control;
-    vsss_gui::V4LInterface interface;
+    VSSS_GUI::V4LInterface interface;
 
     Gtk::Frame fm;
     Gtk::Frame info_fm;
@@ -81,7 +81,6 @@ public:
 
 
     void updateAllPositions() {
-
         Robot robot;
         cv::Point ballPosition;
 
@@ -98,7 +97,6 @@ public:
 
         interface.updateRobotLabels();
         interface.updateFPS(fps_average);
-
 
         // KALMAN FILTER
         if(KF_FIRST) {
@@ -118,9 +116,7 @@ public:
 
     } // updateAllPositions
 
-
     bool start_signal(bool b) {
-
         if (b) {
             cout << "Start Clicked!" << endl;
 
@@ -175,14 +171,10 @@ public:
         interface.visionGUI.quickLoadGMM();
 
         return true;
-
     } // start_signal
 
-
     bool capture_and_show() {
-
         if (!data) return false;
-
         if (frameCounter == 0) timer.start();
 
         frameCounter++;
@@ -411,9 +403,7 @@ public:
         }
 
         return true;
-
     } // capture_and_show
-
 
     void arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
         int thickness=1, int line_type=8, int shift=0, double tipLength=0.1) {
@@ -430,10 +420,8 @@ public:
 
     }
 
-
     //void sendCmdToRobots(std::vector<Robot>&robot_list, bool &xbeeIsConnected){
     void sendCmdToRobots(std::vector<Robot>&robot_list){
-
         while (1) {
             if (interface.get_start_game_flag() || interface.imageView.PID_test_flag || strategyGUI.updating_formation_flag) {
                 // !TODO Otimização do código::Usar laço de repetição
@@ -449,26 +437,18 @@ public:
         }
     }
 
-
     double distance(cv::Point a, cv::Point b) {
-
         return sqrt(pow(double(b.x - a.x), 2) + pow(double(b.y - a.y), 2));
-
     }
 
-
     double angular_distance(double alpha, double beta) {
-
         double phi = fmod(abs(beta - alpha), (PI));
         double distance = phi > PI/2 ? PI - phi : phi;
         return distance;
-
     }
-
 
     // manda os robôs para a posição e orientação alvo
     void updating_formation() {
-
         // se os três robôs estiverem posicionados, desmarca a flag
         int robots_positioned = 0;
         //std::cout << "\niteration id#" << rand() << "\n";
@@ -505,7 +485,6 @@ public:
 
     // cria a interface de criação e carregamento de formação
     void formation_creation() {
-
         if (interface.get_start_game_flag()) return;
 
         if(strategyGUI.update_interface_flag) {
@@ -547,10 +526,8 @@ public:
         }
     }
 
-
     // atualiza as informações dadas pela interface na estratégia
     void update_formation_information() {
-
         // reseta robo selecionado
         virtual_robot_selected = -1;
 
@@ -559,7 +536,6 @@ public:
             strategyGUI.formation_positions[i] = virtual_robots_positions[i];
             strategyGUI.formation_orientations[i] = virtual_robots_orientations[i];
         }
-
     }
 
     /*void transformTargets (std::vector<Robot>&robot_list){
@@ -584,14 +560,11 @@ public:
         }
     } */
 
-
     void PID_test() {
-
         if (interface.get_start_game_flag()) return;
 
         double dist;
         int old_Selec_index;
-
         old_Selec_index = Selec_index;
 
         for(int i = 0; i < interface.robotGUI.robot_list.size() && i < 3; i++) {
@@ -617,7 +590,6 @@ public:
                 interface.robotGUI.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
             }
         }
-
 
         for(int i = 0; i < interface.robotGUI.robot_list.size() && i < 3; i++) {
             if(fixed_ball[i]) {
@@ -649,9 +621,7 @@ public:
         }
     } // PID_test
 
-
     void warp_transform(cv::Mat cameraFlow){
-
         cv::Point2f inputQuad[4];
         cv::Point2f outputQuad[4];
         cv::Mat lambda = cv::Mat::zeros(cameraFlow.rows, cameraFlow.cols, cameraFlow.type());
@@ -701,9 +671,7 @@ public:
         }
     } // warp_transform
 
-
     CamCap() : data(0), width(0), height(0), frameCounter(0) {
-
         // !TODO Otimização do código::Usar laço de repetição
         fixed_ball[0]=false;
         fixed_ball[1]=false;
@@ -732,7 +700,6 @@ public:
 
         for(int i = 0; i < 3; i++) {
             virtual_robots_orientations[i] = 0;
-
             // !TODO hardcoded, usar variáveis quando possível
             virtual_robots_positions[i] = cv::Point(200, 480 / 6 + (i + 1) * 480 / 6);
         }
@@ -755,9 +722,7 @@ public:
         threshold_threads.add_thread(new boost::thread(&CamCap::sendCmdToRobots,this, boost::ref(interface.robotGUI.robot_list)));
 
         interface.signal_start().connect(sigc::mem_fun(*this, &CamCap::start_signal));
-
     }
-
 
     ~CamCap(){
         con.disconnect();
@@ -766,7 +731,6 @@ public:
 
         data = 0;
     }
-
 };
 
 

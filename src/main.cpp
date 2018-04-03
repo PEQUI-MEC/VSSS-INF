@@ -11,20 +11,18 @@
  */
 
 #include <gtkmm.h>
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <iostream>
-using namespace std;
 #include <gtkmm.h>
+
 #include "camcap.hpp"
 #include "opencv2/opencv.hpp"
 
+using namespace std;
 
 int main(int argc, char ** argv) {
-
 	Gtk::Main kit(argc, argv);
 	Gtk::Window window;
 
@@ -42,5 +40,4 @@ int main(int argc, char ** argv) {
 	Gtk::Main::run(window);
 
 	return EXIT_SUCCESS;
-
 }

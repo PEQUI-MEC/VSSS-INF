@@ -29,101 +29,97 @@
 #include <ctime>
 #include <chrono>
 
-
 class ControlGUI: public Gtk::VBox {
+public:
+	//SerialW s;
+	FlyingMessenger FM;
 
-	public:
-		//SerialW s;
-		FlyingMessenger FM;
+	const static int TOTAL_ROBOTS = 6;
 
-		const static int TOTAL_ROBOTS = 6;
+	TestFrame testFrame;
 
-		TestFrame testFrame;
+	bool Serial_Enabled;
+	// Flag para saber se o botão PID está pressionado ou não.
+	bool PID_test_flag = false;
+	// Containers para o conteúdo da interface gráfica
+	Gtk::Frame Serial_fm;
+	Gtk::Frame Test_fm;
+	Gtk::HBox Top_hbox;
+	Gtk::VBox Serial_vbox;
+	Gtk::VBox Test_vbox;
+	Gtk::HBox Serial_hbox[3];
+	Gtk::Label *label;
+	Gtk::Button bt_send_cmd;
+	Gtk::Entry send_cmd_box;
 
-		bool Serial_Enabled;
-		// Flag para saber se o botão PID está pressionado ou não.
-		bool PID_test_flag = false;
-		// Containers para o conteúdo da interface gráfica
-		Gtk::Frame Serial_fm;
-		Gtk::Frame Test_fm;
-		Gtk::HBox Top_hbox;
-		Gtk::VBox Serial_vbox;
-		Gtk::VBox Test_vbox;
-		Gtk::HBox Serial_hbox[3];
-		Gtk::Label *label;
-		Gtk::Button bt_send_cmd;
-		Gtk::Entry send_cmd_box;
+	// Botões e combo box Rádio
+	Gtk::Button bt_Serial_Start;
+	Gtk::Button bt_Robot_Status;
+	Gtk::Button bt_Serial_Refresh;
+	Gtk::ComboBoxText cb_serial;
+	Gtk::ToggleButton button_PID_Test;
+	Gtk::Button bt_Serial_test;
+	Gtk::ComboBoxText cb_test;
+	Gtk::Entry Tbox_V1;
+	Gtk::Entry Tbox_V2;
 
-		// Botões e combo box Rádio
-		Gtk::Button bt_Serial_Start;
-		Gtk::Button bt_Robot_Status;
-		Gtk::Button bt_Serial_Refresh;
-		Gtk::ComboBoxText cb_serial;
-		Gtk::ToggleButton button_PID_Test;
-		Gtk::Button bt_Serial_test;
-		Gtk::ComboBoxText cb_test;
-		Gtk::Entry Tbox_V1;
-		Gtk::Entry Tbox_V2;
+	Gtk::Grid status_grid;
+	Gtk::Frame status_fm;
+	Gtk::Image status_img[TOTAL_ROBOTS];
+	Gtk::Label robots_lb[TOTAL_ROBOTS];
+	Gtk::Label status_lb[TOTAL_ROBOTS];
+	Gtk::Label lastUpdate_lb;
+	Gtk::ProgressBar battery_bar[TOTAL_ROBOTS];
 
-		Gtk::Grid status_grid;
-		Gtk::Frame status_fm;
-		Gtk::Image status_img[TOTAL_ROBOTS];
-		Gtk::Label robots_lb[TOTAL_ROBOTS];
-		Gtk::Label status_lb[TOTAL_ROBOTS];
-		Gtk::Label lastUpdate_lb;
-		Gtk::ProgressBar battery_bar[TOTAL_ROBOTS];
+	Gtk::Frame pid_fm;
+	Gtk::VBox pid_vbox;
+	Gtk::HBox pid_hbox[2];
+	Gtk::Button pid_edit_bt;
+	Gtk::Button pid_send_bt;
+	Gtk::Entry pid_box[3];
+	Glib::ustring pid_tmp[4];
+	Gtk::ComboBoxText cb_pid_robot;
+	Gtk::ComboBoxText cb_pid_type;
+	bool pid_edit_flag = false;
 
-		Gtk::Frame pid_fm;
-		Gtk::VBox pid_vbox;
-		Gtk::HBox pid_hbox[2];
-		Gtk::Button pid_edit_bt;
-		Gtk::Button pid_send_bt;
-		Gtk::Entry pid_box[3];
-		Glib::ustring pid_tmp[4];
-		Gtk::ComboBoxText cb_pid_robot;
-		Gtk::ComboBoxText cb_pid_type;
-		bool pid_edit_flag = false;
+	ControlGUI();
 
-		ControlGUI();
+	bool get_PID_test_flag();
 
-		bool get_PID_test_flag();
+	void set_PID_test_flag(bool input);
 
-		void set_PID_test_flag(bool input);
+	void configureTestFrame();
 
-		void configureTestFrame();
+	void _send_command();
 
-		void _send_command();
+	void _PID_Test();
 
-		void _PID_Test();
+	// translate battery message
+	void handleBatteryMsg(char buf[12], int id);
 
-		// translate battery message
-		void handleBatteryMsg(char buf[12], int id);
+	// Gets battery % and robot id to update a single robot's battery status
+	void updateInterfaceStatus(double battery, int id);
 
-		// Gets battery % and robot id to update a single robot's battery status
-		void updateInterfaceStatus(double battery, int id);
+	// update the battery status of all robots
+	void _robot_status();
 
-		// update the battery status of all robots
-		void _robot_status();
+	void _start_serial();
 
-		void _start_serial();
+	bool isFloat(std::string value);
 
-		bool isFloat(std::string value);
+	void _send_test();
 
-		void _send_test();
+	void _update_cb_serial();
 
-		void _update_cb_serial();
+	void _create_status_frame();
 
-		void _create_status_frame();
+	char get_robot_id(int pos);
 
-		char get_robot_id(int pos);
+	int get_robot_pos(char id);
 
-		int get_robot_pos(char id);
-
-		// Função para verificar se os valores digitados nos campos
-		// de PID são válidos: apenas números e um único ponto
-		bool checkPIDvalues();
-		
+	// Função para verificar se os valores digitados nos campos
+	// de PID são válidos: apenas números e um único ponto
+	bool checkPIDvalues();
 };
-
 
 #endif /* CONTROLGUI_HPP_ */

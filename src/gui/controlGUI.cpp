@@ -1,23 +1,15 @@
 #include "controlGUI.hpp"
 
-
 bool ControlGUI::get_PID_test_flag() {
-
     return PID_test_flag;
-
 }
-
 
 void ControlGUI::set_PID_test_flag(bool input) {
-
     PID_test_flag = input;
-
 }
 
-
 ControlGUI::ControlGUI() {
-
-    Serial_Enabled=false;
+    Serial_Enabled = false;
     // Adicionar o frame do Serial e sua VBOX
     pack_start(Top_hbox, false, true, 5);
     Top_hbox.pack_start(Serial_fm, false, true, 5);
@@ -64,7 +56,6 @@ ControlGUI::ControlGUI() {
     Tbox_V1.set_text("0.8");
     Tbox_V2.set_text("0.8");
 
-
     bt_Serial_Start.set_state(Gtk::STATE_NORMAL);
     cb_serial.set_state(Gtk::STATE_NORMAL);
 
@@ -93,12 +84,9 @@ ControlGUI::ControlGUI() {
     bt_Serial_Start.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_start_serial));
     bt_Robot_Status.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_robot_status));
     bt_send_cmd.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_send_command));
-
 }
 
-
 void ControlGUI::configureTestFrame() {
-
     std::string labels[5] = {"Name 1", "Name 2", "Name 3", "Name 4", "Name 5"};
     double min[5] = {0, 0, 0, 0, 0};
     double max[5] = {100, 100, 100, 100, 100};
@@ -110,31 +98,22 @@ void ControlGUI::configureTestFrame() {
         testFrame.setLabel(i, labels[i]);
         testFrame.configureHScale(i, currentValue[i],  min[i], max[i], digits[i], steps[i]);
     }
-
 }
 
-
 void ControlGUI::_send_command() {
-
     //std::string cmd;
     //cmd.append(send_cmd_box.get_text());
     //s.sendAPISerialText(cmd);
     std::string cmd = send_cmd_box.get_text();
     FM.send_old_format(cmd);
-
 }
-
 
 void ControlGUI::_PID_Test() {
-
     PID_test_flag = !PID_test_flag;
-
 }
-
 
 // translate battery message
 void ControlGUI::handleBatteryMsg(char buf[12], int id) {
-
     double battery;
     std::string cmd(buf);
     // check if first element is an ID
@@ -155,13 +134,10 @@ void ControlGUI::handleBatteryMsg(char buf[12], int id) {
 
     // update battery
     updateInterfaceStatus(battery, id);
-
 }
-
 
 // Gets battery % and robot id to update a single robot's battery status
 void ControlGUI::updateInterfaceStatus(double battery, int id) {
-
     if(battery > 20) {
         status_img[id].set("img/online.png");
         battery_bar[id].set_fraction(battery/100);
@@ -176,13 +152,10 @@ void ControlGUI::updateInterfaceStatus(double battery, int id) {
         battery_bar[id].set_text("0%");
         status_lb[id].set_text("DEAD");
     }
-
 }
-
 
 // update the battery status of all robots
 void ControlGUI::_robot_status(){
-
     //std::string cmd[TOTAL_ROBOTS] = {"A@BAT#", "B@BAT#", "C@BAT#", "D@BAT#", "E@BAT#", "F@BAT#"};
     std::string dateString;
     time_t tt;
@@ -208,20 +181,16 @@ void ControlGUI::_robot_status(){
             status_lb[i].set_text("Offline");
 		}
 	}
-
 }
 
-
 void ControlGUI::_start_serial() {
-
     //int fd;
     Glib::ustring serial = cb_serial.get_active_text();
 
     //if (serial.size() < 1) return;
     //fd = s.start(serial);
 
-    if(serial.empty())
-        return;
+    if(serial.empty()) return;
 
     FM.start_xbee(serial);
 
@@ -234,7 +203,6 @@ void ControlGUI::_start_serial() {
 
     bt_Serial_Start.set_state(Gtk::STATE_INSENSITIVE);
     cb_serial.set_state(Gtk::STATE_INSENSITIVE);
-
     Tbox_V1.set_state(Gtk::STATE_NORMAL);
     Tbox_V2.set_state(Gtk::STATE_NORMAL);
     pid_edit_bt.set_state(Gtk::STATE_NORMAL);
@@ -243,43 +211,30 @@ void ControlGUI::_start_serial() {
     cb_test.set_state(Gtk::STATE_NORMAL);
     pid_edit_bt.set_state(Gtk::STATE_NORMAL);
     bt_Robot_Status.set_state(Gtk::STATE_NORMAL);
-
 }
 
-
 bool ControlGUI::isFloat(std::string value) {
-
     int counter = 0, i = 0;
 
     if(value.size() < 1 || value.front() == '.' || value.back() == '.')
         return false;
 
     if(!isdigit(value[0])) {
-        if(value[0] != '-') {
-            return false;
-        } else {
-            i = 1;
-        }
+        if(value[0] != '-') return false;
+        else i = 1;
     }
 
     for(; i < value.size(); i++) {
-        if(value[i] == '.') {
-            counter++;
-        } else if(!isdigit(value[i])) {
-            return false;
-        }
+        if(value[i] == '.') counter++;
+        else if(!isdigit(value[i])) return false;
     }
     // só pode ter um ponto
-    if (counter > 1)
-        return false;
+    if (counter > 1) return false;
 
     return true;
-
 }
 
-
 void ControlGUI::_send_test() {
-
     // verifica se os valores inseridos nos campos são válidos (são números entre -1.4 e 1.4)
     if(!isFloat(Tbox_V1.get_text()))
         Tbox_V1.set_text("0");
@@ -291,20 +246,13 @@ void ControlGUI::_send_test() {
     float v2 = std::stof(Tbox_V2.get_text());
 
     if(abs(v1) > 1.4) {
-        if(v1 < 0){
-            Tbox_V1.set_text("-1.4");
-        } else {
-            Tbox_V1.set_text("1.4");
-        }
+        if(v1 < 0) Tbox_V1.set_text("-1.4");
+        else Tbox_V1.set_text("1.4");
     }
 
     if(abs(v2) > 1.4) {
-        if(v2 < 0) {
-            Tbox_V2.set_text("-1.4");
-        }
-        else {
-            Tbox_V2.set_text("1.4");
-        }
+        if(v2 < 0) Tbox_V2.set_text("-1.4");
+        else Tbox_V2.set_text("1.4");
     }
 
     int pos = cb_test.get_active_row_number();
@@ -417,26 +365,17 @@ void ControlGUI::_send_test() {
     }
     */
     // s.sendSerial(cmd);
-
 }
-
 
 int ControlGUI::get_robot_pos(char id) {
-
     return uint8_t(id)-65;
-
 }
-
 
 char ControlGUI::get_robot_id(int pos) {
-
     return char(65+pos);
-
 }
 
-
 void ControlGUI::_update_cb_serial(){
-
 /*
     std::string port;
     int fd;
@@ -468,7 +407,7 @@ void ControlGUI::_update_cb_serial(){
 
     cb_serial.remove_all();
 
-    for(int i=0; i<256; ++i) {
+    for(int i = 0; i < 256; ++i) {
         std::string port = "/dev/ttyUSB";
         port.append(std::to_string(i));
 
@@ -492,12 +431,9 @@ void ControlGUI::_update_cb_serial(){
     cb_test.set_state(Gtk::STATE_INSENSITIVE);
     bt_Robot_Status.set_state(Gtk::STATE_INSENSITIVE);
     //bt_reset_ack.set_state(Gtk::STATE_INSENSITIVE);
-
 }
 
-
-void ControlGUI::_create_status_frame(){
-
+void ControlGUI::_create_status_frame() {
     pack_start(status_fm, false, true, 5);
     status_fm.set_label("Robot Status");
     status_fm.add(status_grid);
@@ -531,14 +467,11 @@ void ControlGUI::_create_status_frame(){
         status_lb[i].set_text("Offline");
         status_grid.attach(status_lb[i], 3, i+1, 1, 1);
     }
-
 }
-
 
 // Função para verificar se os valores digitados nos campos
 // de PID são válidos: apenas números e um único ponto
 bool ControlGUI::checkPIDvalues(){
-
     std::string value;
     int counter;
 
@@ -556,10 +489,7 @@ bool ControlGUI::checkPIDvalues(){
             if (!isdigit(value[j]) && value[j] != '.') return false;
         }
 
-        if(counter > 1)
-            return false;
+        if(counter > 1) return false;
     }
-
     return true;
-    
 }

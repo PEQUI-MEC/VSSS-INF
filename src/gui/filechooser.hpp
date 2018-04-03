@@ -3,25 +3,21 @@
 
 #include <gtkmm.h>
 
-
 class FileChooser : public Gtk::Window {
+// Constructor and destructor
+public:
 
-	// Constructor and destructor
-	public:
+	FileChooser();
+	virtual					~FileChooser();
+	std::string fileName;
+	int result;
 
-		FileChooser();
-		virtual					~FileChooser();
-		std::string fileName;
-		int result;
+protected:
 
-	protected:
-
-		//Member widgets:
-		Gtk::Button             buttonLoad;
-		Gtk::Button             buttonQuit;
-		Gtk::Grid               mainGrid;
-
+	//Member widgets:
+	Gtk::Button             buttonLoad;
+	Gtk::Button             buttonQuit;
+	Gtk::Grid               mainGrid;
 };
-
 
 #endif /* FILECHOOSER_HPP_ */

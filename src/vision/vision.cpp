@@ -1,47 +1,31 @@
 #include "vision.hpp"
 
-
 void Vision::run(cv::Mat raw_frame) {
-
     in_frame = raw_frame.clone();
-
     if (bOnAir) recordToVideo();
-
     preProcessing();
     findTags();
     //findElements();
     pick_a_tag();
-
 }
-
 
 void Vision::runGMM(std::vector<cv::Mat> thresholds) {
-
     searchGMMTags(thresholds);
     pick_a_tag();
-
 }
-
 
 void Vision::preProcessing() {
-
     cv::cvtColor(in_frame,hsv_frame,cv::COLOR_RGB2HSV);
-
 }
 
-
 void Vision::findTags() {
-
     for (int i = 0; i < TOTAL_COLORS; i++)
         threshold_threads.add_thread(new boost::thread(&Vision::segmentAndSearch, this, i));
 
     threshold_threads.join_all();
-
 }
 
-
 void Vision::segmentAndSearch(int color) {
-
     cv::Mat frame = hsv_frame.clone();
 
     inRange(frame,cv::Scalar(hue[color][MIN],saturation[color][MIN],value[color][MIN]),
@@ -49,28 +33,22 @@ void Vision::segmentAndSearch(int color) {
 
     posProcessing(color);
     searchTags(color);
-
 }
 
-
 void Vision::posProcessing(int color) {
-
     cv::Mat erodeElement = cv::getStructuringElement( cv::MORPH_RECT,cv::Size(3,3));
     cv::Mat dilateElement = cv::getStructuringElement( cv::MORPH_RECT,cv::Size(3,3));
 
     cv::medianBlur(threshold_frame.at(color), threshold_frame.at(color), blur[color]);
     cv::erode(threshold_frame.at(color),threshold_frame.at(color),erodeElement,cv::Point(-1,-1),erode[color]);
     cv::dilate(threshold_frame.at(color),threshold_frame.at(color),dilateElement,cv::Point(-1,-1),dilate[color]);
-
 }
 
-
 void Vision::searchGMMTags(std::vector<cv::Mat> thresholds) {
-
     std::vector< std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierarchy;
 
-    for (int color = 0; color < TOTAL_COLORS; color++) {
+    for(int color = 0; color < TOTAL_COLORS; color++) {
         tags.at(color).clear();
 
         cv::Mat tmp;
@@ -78,7 +56,7 @@ void Vision::searchGMMTags(std::vector<cv::Mat> thresholds) {
 
         cv::findContours(tmp,contours,hierarchy,cv::RETR_CCOMP,cv::CHAIN_APPROX_NONE);
 
-        for (int i = 0; i < contours.size(); i++) {
+        for(int i = 0; i < contours.size(); i++) {
             double area = contourArea(contours[i]);
             // if(area >= areaMin[color]) {
             cv::Moments moment = moments((cv::Mat)contours[i]);
@@ -97,9 +75,7 @@ void Vision::searchGMMTags(std::vector<cv::Mat> thresholds) {
 
 }
 
-
 void Vision::searchTags(int color) {
-
     std::vector< std::vector<cv::Point> > contours;
     std::vector<cv::Vec4i> hierarchy;
 
@@ -107,7 +83,7 @@ void Vision::searchTags(int color) {
 
     cv::findContours(threshold_frame.at(color),contours,hierarchy,cv::RETR_CCOMP,cv::CHAIN_APPROX_NONE);
 
-    for (int i = 0; i < contours.size(); i++) {
+    for(int i = 0; i < contours.size(); i++) {
         double area = contourArea(contours[i]);
         if(area >= areaMin[color]) {
             cv::Moments moment = moments((cv::Mat)contours[i]);
@@ -141,9 +117,7 @@ void Vision::searchTags(int color) {
             }
         }
     }
-
 }
-
 
 // void Vision::findElements() {
 //   int dist;
@@ -241,7 +215,6 @@ void Vision::searchTags(int color) {
 /// P.S.: Aqui eu uso a flag 'isOdd' para representar quando um robô tem as duas bolas laterais.
 /// </description>
 void Vision::pick_a_tag() {
-
     int dist, tmpSide;
 
     // OUR ROBOTS
@@ -293,20 +266,17 @@ void Vision::pick_a_tag() {
     } // OUR ROBOTS
 
     // ADV ROBOTS
-    for (int i = 0; i < MAX_ADV; i++) {
+    for(int i = 0; i < MAX_ADV; i++) {
         if(i < tags.at(ADV).size()) {
             advRobots[i] = tags.at(ADV).at(i).position;
         } else {
             advRobots[i] = cv::Point(-1, -1);
         }
     }
-
     // BALL POSITION
     if (!tags[BALL].empty())
         ball = tags.at(BALL).at(0).position;
-
 }
-
 
 /// <summary>
 /// Verifica se uma tag secundária pertence a esta pick-a e calcula seu delta.
@@ -320,7 +290,6 @@ void Vision::pick_a_tag() {
 /// 1, caso a secundária esteja à direita
 /// </returns>
 int Vision::inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary) {
-
     // se esta secundária faz parte do robô
     if(calcDistance(robot->position, secondary) <= ROBOT_RADIUS) {
         if(calcDistance(tempTags->at(0).frontPoint, secondary) < calcDistance(tempTags->at(0).rearPoint, secondary)) {
@@ -336,22 +305,16 @@ int Vision::inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secon
     }
 
     return 0;
-
 }
-
 
 double Vision::calcDistance(cv::Point p1, cv::Point p2) {
-
     return sqrt(pow(p1.x-p2.x,2) + pow(p1.y-p2.y,2));
-
 }
 
-
 void Vision::switchMainWithAdv() {
-
     int tmp;
 
-    for (int i = MIN; i <= MAX; i++) {
+    for(int i = MIN; i <= MAX; i++) {
         tmp = hue[MAIN][i];
         hue[MAIN][i] = hue[ADV][i];
         hue[ADV][i] = tmp;
@@ -382,9 +345,7 @@ void Vision::switchMainWithAdv() {
     blur[ADV] = tmp;
 }
 
-
 cv::Mat Vision::getSplitFrame() {
-
     cv::Mat horizontal[2], vertical[2];
 
     for (int index = 0; index < 3; index++)
@@ -406,12 +367,9 @@ cv::Mat Vision::getSplitFrame() {
     // cv::imwrite("teste.png", splitFrame);
 
     return splitFrame;
-
 }
 
-
 void Vision::setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]) {
-
     for (int i = 0; i < 5; i++) {
         areaMin[i] = Amin[i];
         erode[i] = E[i];
@@ -423,36 +381,26 @@ void Vision::setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], 
             value[i][j] = V[i][j];
         }
     }
-
 }
 
-
 void Vision::savePicture(std::string in_name) {
-
     cv::Mat frame = in_frame.clone();
     std::string picName = "media/pictures/" + in_name + ".png";
 
     cv::cvtColor(frame, frame, cv::COLOR_RGB2BGR);
     cv::imwrite(picName, frame);
-
 }
 
-
 void Vision::startNewVideo(std::string in_name) {
-
     std::string videoName = "media/videos/" + in_name + ".avi";
 
     video.open(videoName, CV_FOURCC('M','J','P','G'), 30, cv::Size(width,height));
     std::cout << "Started a new video recording." << std::endl;
     bOnAir = true;
-
 }
 
-
 bool Vision::recordToVideo() {
-
-    if (!video.isOpened())
-        return false;
+    if (!video.isOpened()) return false;
 
     cv::Mat frame = in_frame.clone();
     cv::cvtColor(frame, frame, cv::COLOR_RGB2BGR);
@@ -460,246 +408,161 @@ bool Vision::recordToVideo() {
     video.write(frame);
 
     return true;
-
 }
 
-
 bool Vision::finishVideo() {
-
-    if (!video.isOpened())
-        return false;
+    if (!video.isOpened()) return false;
 
     std::cout << "Finished video recording." << std::endl;
     video.release();
     bOnAir = false;
 
     return true;
-
 }
-
 
 bool Vision::isRecording() {
-
     return bOnAir;
-
 }
-
 
 cv::Point Vision::getBall() {
-
     return ball;
-
 }
-
 
 Robot Vision::getRobot(int index) {
-
     return robot_list.at(index);
-
 }
-
 
 cv::Point Vision::getRobotPos(int index) {
-
     return robot_list.at(index).position;
-
 }
-
 cv::Point Vision::getAdvRobot(int index) {
-
-    if (index < 0 || index >= MAX_ADV) {
+    if(index < 0 || index >= MAX_ADV) {
         std::cout << "Vision::getAdvRobot: index argument is invalid." << std::endl;
         return cv::Point(-1,-1);
-    } else {
-        return advRobots[index];
-    }
-
+    } else return advRobots[index];
 }
-
 
 int Vision::getRobotListSize() {
-
     return (int)robot_list.size();
-
 }
-
 
 int Vision::getAdvListSize() {
-
     return MAX_ADV;
-
 }
-
 
 cv::Mat Vision::getThreshold(int index) {
-
     cv::cvtColor(threshold_frame.at(index), threshold_frame.at(index), cv::COLOR_GRAY2RGB);
     return threshold_frame.at(index);
-
 }
-
 
 int Vision::getHue(int index0, int index1) {
-
     return hue[index0][index1];
-
 }
-
 
 int Vision::getSaturation(int index0, int index1) {
-
     return saturation[index0][index1];
-
 }
-
 
 int Vision::getValue(int index0, int index1) {
-
     return value[index0][index1];
-
 }
-
 
 int Vision::getErode(int index) {
-
     return erode[index];
-
 }
-
 
 int Vision::getDilate(int index) {
-
     return dilate[index];
-
 }
-
 
 int Vision::getBlur(int index) {
-
     return blur[index];
-
 }
-
 
 int Vision::getAmin(int index) {
-
     return areaMin[index];
-
 }
 
-
 void Vision::setHue(int index0, int index1, int inValue) {
-
-    if (index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
+    if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
         hue[index0][index1] = inValue;
     } else {
         std::cout << "Vision:setHue: could not set (invalid index)" << std::endl;
     }
 }
 
-
 void Vision::setSaturation(int index0, int index1, int inValue) {
-
-    if (index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
+    if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
         saturation[index0][index1] = inValue;
     } else {
         std::cout << "Vision:setSaturation: could not set (invalid index)" << std::endl;
     }
-
 }
 
-
 void Vision::setValue(int index0, int index1, int inValue) {
-
-  if (index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
+  if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
       value[index0][index1] = inValue;
   } else{
       std::cout << "Vision:setValue: could not set (invalid index)" << std::endl;
   }
-
 }
 
-
 void Vision::setErode(int index, int inValue) {
-
-    if (index >= 0 && index < TOTAL_COLORS) {
+    if(index >= 0 && index < TOTAL_COLORS) {
         erode[index] = inValue;
     } else {
         std::cout << "Vision:setErode: could not set (invalid index)" << std::endl;
     }
-
 }
 
-
 void Vision::setDilate(int index, int inValue) {
-
-    if (index >= 0 && index < TOTAL_COLORS) {
+    if(index >= 0 && index < TOTAL_COLORS) {
         dilate[index] = inValue;
     } else {
         std::cout << "Vision:setDilate: could not set (invalid index)" << std::endl;
     }
-
 }
 
-
 void Vision::setBlur(int index, int inValue) {
-    if (index >= 0 && index < TOTAL_COLORS) {
+    if(index >= 0 && index < TOTAL_COLORS) {
         blur[index] = inValue;
     } else {
         std::cout << "Vision:setBlur: could not set (invalid index)" << std::endl;
     }
-
 }
 
-
 void Vision::setAmin(int index, int inValue) {
-
-    if (index >= 0 && index < TOTAL_COLORS) {
+    if(index >= 0 && index < TOTAL_COLORS) {
         areaMin[index] = inValue;
     } else {
         std::cout << "Vision:setAmin: could not set (invalid index)" << std::endl;
     }
-
 }
-
 
 void Vision::setFrameSize(int inWidth, int inHeight) {
-
     if (inWidth >= 0) width = inWidth;
     if (inHeight >= 0) height = inHeight;
-
 }
-
 
 int Vision::getFrameHeight() {
-
     return height;
-
 }
-
 
 int Vision::getFrameWidth() {
-
     return width;
-
 }
-
 
 cv::Point* Vision::getAllAdvRobots() {
-
     return advRobots;
-
 }
 
-
 Vision::Vision(int w, int h) : width(w), height(h), bOnAir(false) {
-
     // Variables Init
     cv::Mat mat;
     std::vector<Tag> tagVec;
     Robot robot;
 
-    for (int i = 0; i < TOTAL_COLORS; i++) {
+    for(int i = 0; i < TOTAL_COLORS; i++) {
         threshold_frame.push_back(mat);
         tags.push_back(tagVec);
     }
@@ -708,6 +571,5 @@ Vision::Vision(int w, int h) : width(w), height(h), bOnAir(false) {
     robot_list.push_back(robot);
     robot_list.push_back(robot);
 }
-
 
 Vision::~Vision() {}

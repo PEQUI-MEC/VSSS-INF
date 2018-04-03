@@ -45,22 +45,17 @@
 #define	SIDEWAYS 5
 #define DEF_CORNER_STATE 6
 
-
 //potField
 #define BALL_IS_OBS 0
 #define BALL_ONLY_OBS 1
 #define BALL_NOT_OBS 2
 #define NO_OBS 3
 
-
 #define THETA_TOLERATION 3
-
 
 using namespace CONST;
 
-
 class Strategy {
-
 public:
 	TestFrame testFrame;
 
@@ -124,14 +119,10 @@ public:
 	bool atk_mindcontrol = false;
 	bool def_mindcontrol = false;
 
-
 	Strategy(){
-
 		LS_ball_x.init(PREDICAO_NUM_SAMPLES,1);
 		LS_ball_y.init(PREDICAO_NUM_SAMPLES,1);
-
 	}
-
 
 	void set_constants(int w, int h) {
 		width = w;
@@ -199,45 +190,30 @@ public:
 		BALL_RADIUS = 100;
 
 		fuzzy_init();
-
 	}
-
 
 	double distance(cv::Point A, cv::Point B) {
-
 		double dist = sqrt(pow(double(A.y - B.y), 2) + pow(double(A.x - B.x), 2));
 		return dist;
-
 	}
 
-
 	double distance_meters(cv::Point A, cv::Point B) {
-
 		double dist = sqrt(pow(double(A.y - B.y), 2) + pow(double(A.x - B.x), 2));
 		dist = 1.7*dist/ABS_GOAL_TO_GOAL_WIDTH;
 		return dist;
-
 	}
-
 
 	void get_variables() {
-
 		goalie_line = testFrame.getValue(0); // index da barrinha
 		goalie_offset = testFrame.getValue(1); // index da barrinha
-
 	}
-
 
 	void get_past(int i) {
-
 		past_position[i] = robots[i].position;
 		past_transangle[i] = robots[i].transAngle;
-
 	}
 
-
 	void get_targets(vector<Robot> * pRobots, cv::Point * advRobots) {
-
 		robots = * pRobots;
 		adv = advRobots;
 		// cout << "vector copied" << endl;
@@ -354,7 +330,7 @@ public:
 				half_transition = false;
 				half_transition_enabled = false;
 				transition_timeout = 90; //3 segundos
-				for(int i =0; i<3; i++) {
+				for(int i = 0; i < 3; i++) {
 					robots[i].status = NORMAL_STATE;
 
 					switch (robots[i].role) {
@@ -387,7 +363,6 @@ public:
 					robots[i].status = NORMAL_STATE;
 
 					switch (robots[i].role) {
-
 						case GOALKEEPER:
 							robots[i].role = ATTACKER;
 							robots[i].vmax = robots[i].vdefault;
@@ -410,17 +385,14 @@ public:
 			}
 		}
 
-
 		// devolve o vetor de robots com as alterações
 		*pRobots = robots;
 		// cout << "passou ponteiro" << endl;
-
 	} // get_targets
 
-
 	void overmind() {
-
 		cv::Point goal = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
+
 		double m1 = double(goal.y - Ball.y)/double(goal.x - Ball.x);
 		double m2 = double(robots[atk].position.y - Ball.y)/double(robots[atk].position.x - Ball.x);
 		double ball_goal = distance(Ball, goal);
@@ -561,9 +533,7 @@ public:
 
 	}
 
-
 	void set_flags() {
-
 		danger_zone_1 = false;
 		danger_zone_2 = false;
 		atk_ball_possession = false;
@@ -573,9 +543,7 @@ public:
 		if(Ball.x > COORD_MID_FIELD_X/3) {
 			full_transition_enabled = true;
 			half_transition_enabled = true;
-		} else {
-			half_transition_enabled = false;
-		}
+		} else half_transition_enabled = false;
 
 		if(Ball.x < robots[atk].position.x - ABS_ROBOT_SIZE*2 && Ball.x > robots[def].position.x) {
 			danger_zone_1 = true;
@@ -585,9 +553,7 @@ public:
 
 	}
 
-
 	void fixed_position_check(int i) { // Para posição fixa
-
 		if(robots[i].fixedPos && (robots[i].cmdType == VECTOR || robots[i].cmdType == POSITION)) {
 			robots[i].vmax = robots[i].vdefault * pow(distance(robots[i].position, robots[i].target)/(ABS_GOAL_TO_GOAL_WIDTH/4), 2);
 			// cout << "vmax " << robots[i].vmax << " distancia "<< distance(robots[i].position, robots[i].target) << " distancia max " << ABS_GOAL_TO_GOAL_WIDTH/4<<endl;
@@ -601,12 +567,9 @@ public:
 				robots[i].vmax = 0;
 			}
 		}
-
 	}
 
-
 	bool offensive_adv() {
-
 		bool isDangerous = false;
 		for(int i = 0; i < 3; i++) {
 			// se o adversário mais próximo da bola está a pelo menos duas vezes a distância de nosso gk a bola, não é perigoso
@@ -617,12 +580,9 @@ public:
 		}
 
 		return isDangerous;
-
 	}
 
-
 	void collision_check(int i) {
-
 		if(!robots[i].fixedPos && robots[i].role != GOALKEEPER && robots[i].status != CORNER_STATE) {
 			if(distance(robots[i].position, past_position[i]) <= collision_radius) {
 				collision_count[i]++;
@@ -648,9 +608,7 @@ public:
 			}
 		}
 		// cout << " past " << past_position[i] << " count "<< collision_count[i] << endl;
-
 	}
-
 
 	bool cock_blocked() {
 		bool at_least_one_blocked = false;
@@ -670,9 +628,8 @@ public:
 			}
 		}
 
-		if(!at_least_one_blocked) {
-			frames_blocked = 0;
-		} else {
+		if(!at_least_one_blocked) frames_blocked = 0;
+		else {
 			frames_blocked++;
 			if(frames_blocked > 15) {
 				transition_overmind_timeout = 60; // dois segundos
@@ -681,35 +638,24 @@ public:
 		}
 
 		return false;
-
 	}
 
-
 	void set_role(int i, int role) {
-
 		robots[i].status = NORMAL_STATE;
 		robots[i].role = role;
 		robots[i].vmax = robots[i].vdefault;
-
 	}
-
 
 	bool is_near(int i, cv::Point point) {
-
 		return distance(robots[i].position, point) < fixed_pos_distance;
-
 	}
 
-
 	void position_to_vector(int i) {
-
 		robots[i].transAngle = atan2(double(robots[i].position.y - robots[i].target.y), - double(robots[i].position.x - robots[i].target.x));
-
 	}
 
 
 	void go_to_the_ball(int i) {
-
 		cv::Point targets_temp;
 		cv::Point goal = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
 		double m1 = double(goal.y - Ball.y)/double(goal.x - Ball.x);
@@ -734,12 +680,9 @@ public:
 		robots[i].vmax = 0.5 * 4*distance(robots[i].position, targets_temp)/ABS_GOAL_TO_GOAL_WIDTH;
 
 		if(robots[i].vmax > 0.5) robots[i].vmax = 0.5;
-
 	}
 
-
 	void go_to_the_ball_direct(int i) {
-
 		cv::Point targets_temp;
 		cv::Point goal = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
 		double m1 = double(goal.y - Ball.y)/double(goal.x - Ball.x);
@@ -790,9 +733,7 @@ public:
 
 	} // incompleto!!! //incompleto!!
 
-
 	void around_the_ball(int i) {
-
 		// serve como um estado anterior ao go_to_the_ball, para quando o robô se encontra a frente da bola
 		robots[i].target.x = Ball.x - max_approach/2;
 		if(robots[i].position.y > Ball.y){
@@ -800,24 +741,19 @@ public:
 		} else {
 			robots[i].target.y = Ball.y - max_approach/2;
 		}
-
 	}
-
 
 	double look_at_ball(int i) {
-
 		double target_angle = atan2(double(Ball.y - robots[i].position.y),- double(Ball.x - robots[i].position.x)); // ângulo da bola em relação ao robô
 		return target_angle;
-
 	}
 
-
 	double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS) {
-
 		robots[robot_index].using_pot_field = true;
-		float gain_rep=10;
-		float gain_att=1;
-		float rep_radius=0.2;
+
+		float gain_rep = 10;
+		float gain_att = 1;
+		float rep_radius = 0.2;
 		float ball_rep_radius = 0.3;
 		float rot_angle = 0;
 
@@ -862,7 +798,6 @@ public:
 					} else if(pot_rotation_decision(robot_index,goal,robots[i].position)>0) {
 						pot_angle[j] = atan2(sin(pot_angle[j]+PI/2),cos(pot_angle[j]+PI/2));
 						//	printf("HORARIO ");
-
 					} else{
 						pot_angle[j] = atan2(sin(pot_angle[j]+3*PI/2),cos(pot_angle[j]+3*PI/2));
 						//	printf("ANTI-HORARIO ");
@@ -872,13 +807,11 @@ public:
 					pot_magnitude[j] = 0;
 					pot_angle[j] = 0;
 				}
-
 				j++;
 			}
 		}
 
 		switch(behavior) {
-
 			case BALL_IS_OBS:
 				if(distance_meters(robots[robot_index].position, Ball) > 0 && distance_meters(robots[robot_index].position, Ball) < ball_rep_radius) {
 
@@ -937,7 +870,6 @@ public:
 
 			case BALL_NOT_OBS:
 				break;
-
 		}
 
 		for (int i = 0; i < 5; i++) {
@@ -956,12 +888,9 @@ public:
 		// pot_theta = atan2(-sin(robots[robot_index].orientation - pot_theta),cos(robots[robot_index].orientation - pot_theta));
 		//printf("THETA %f \n",pot_theta*180/PI);
 		return pot_theta;
-
 	}
 
-
 	int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst) {
-
 		int HORARIO = 1;
 		int ANTI_HORARIO = -1;
 		bool goal_ahead = robots[robot_index].position.x > obst.x && obst.x > goal.x;
@@ -975,11 +904,9 @@ public:
 			if(goal_behind) return HORARIO;
 		}
 
-		float angle_Obst_Robot = atan2(double(obst.y - robots[robot_index].position.y),
-					- double(obst.x - robots[robot_index].position.x));
+		float angle_Obst_Robot = atan2(double(obst.y - robots[robot_index].position.y), - double(obst.x - robots[robot_index].position.x));
 
-		float angle_Obst_Goal = atan2(double(obst.y - goal.y),
-					- double(obst.x - goal.x));
+		float angle_Obst_Goal = atan2(double(obst.y - goal.y), - double(obst.x - goal.x));
 
 		//printf("%f + %f = %f \n",fabs(angle_Obst_Robot)*180/PI,fabs(angle_Obst_Goal)*180/PI,(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal))*180/PI);
 		if(angle_Obst_Robot > 0 && angle_Obst_Robot <= PI/2) { // ROBO NO PRIMEIRO QUAD
@@ -988,43 +915,33 @@ public:
 
 			} else if(angle_Obst_Goal > PI/2 && angle_Obst_Goal <= PI) { // OBJETIVO NO SEGUNDO QUAD
 				return ANTI_HORARIO;
-
-			} else if(angle_Obst_Goal > -PI && angle_Obst_Goal <= -PI/2){// OBJETIVO NO TERCEIRO QUAD
+			} else if(angle_Obst_Goal > -PI && angle_Obst_Goal <= -PI/2) {// OBJETIVO NO TERCEIRO QUAD
 				return HORARIO;
-
 			} else { // OBJETIVO NO QUARTO QUAD
 				//printf("DECIDE" );
-				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal)<PI){
-					return HORARIO;
-				} else {
-					return ANTI_HORARIO;
-				}
+				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) return HORARIO;
+				else return ANTI_HORARIO;
 			}
 		} else if(angle_Obst_Robot > PI/2 && angle_Obst_Robot <= PI) { // ROBO NO SEGUNDO QUAD
 			if(angle_Obst_Goal > 0 && angle_Obst_Goal <= PI/2) { // OBJETIVO NO PRIMEIRO QUAD
 				return HORARIO;
+
 			} else if(angle_Obst_Goal > PI/2 && angle_Obst_Goal <= PI) { // OBJETIVO NO SEGUNDO QUAD
 				return 0;
+
 			} else if(angle_Obst_Goal > -PI && angle_Obst_Goal <= -PI/2) {// OBJETIVO NO TERCEIRO QUAD
 				return ANTI_HORARIO;
+
 			} else { // OBJETIVO NO QUARTO QUAD
 				//printf("DECIDE" );
-				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal)<PI) {
-					return HORARIO;
-				} else {
-					return ANTI_HORARIO;
-				}
+				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) return HORARIO;
+				else return ANTI_HORARIO;
 			}
 		} else if(angle_Obst_Robot > -PI && angle_Obst_Robot <= -PI/2) {// ROBO NO TERCEIRO QUAD
-
 			if(angle_Obst_Goal > 0 && angle_Obst_Goal <= PI/2) { // OBJETIVO NO PRIMEIRO QUAD
 			//	printf("DECIDE" );
-				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) {
-					return ANTI_HORARIO;
-				} else {
-					return HORARIO;
-				}
-
+				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) return ANTI_HORARIO;
+				else return HORARIO;
 			} else if(angle_Obst_Goal > PI/2 && angle_Obst_Goal <= PI) { // OBJETIVO NO SEGUNDO QUAD
 				return HORARIO;
 			} else if(angle_Obst_Goal > -PI && angle_Obst_Goal <= -PI/2) {// OBJETIVO NO TERCEIRO QUAD
@@ -1037,65 +954,48 @@ public:
 				return ANTI_HORARIO;
 			} else if(angle_Obst_Goal > PI/2 && angle_Obst_Goal <= PI) { // OBJETIVO NO SEGUNDO QUAD
 			//	printf("DECIDE" );
-				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) {
-					return ANTI_HORARIO;
-				} else {
-					return HORARIO;
-				}
+				if(fabs(angle_Obst_Robot)+fabs(angle_Obst_Goal) < PI) return ANTI_HORARIO;
+				else return HORARIO;
 			} else if(angle_Obst_Goal > -PI && angle_Obst_Goal <= -PI/2) {// OBJETIVO NO TERCEIRO QUAD
 				return HORARIO;
 			} else { // OBJETIVO NO QUARTO QUAD
 				return 0;
 			}
 		}
-
 	}
 
-
 	double reach_on_time(double dist, double time_limit = 1) {
-
 		double tmp0 = time_limit + sqrt(pow(time_limit, 2) - 2 * dist/acceleration) * acceleration;
 		double tmp1 = time_limit - sqrt(pow(time_limit, 2) - 2 * dist/acceleration) * acceleration;
 
 		if(tmp0 <= 1.1 && tmp0 >= 0.3) return tmp0;
 		if(tmp1 <= 1.1 && tmp1 >= 0.3) return tmp1;
 		else return 1.0;
-
 	}
 
-
 	void spin_anti_clockwise(int i, double speed=0.8) {
-
 		robots[i].cmdType = SPEED;
 		robots[i].vmax = speed;
 		robots[i].Vr = robots[i].vmax;
 		robots[i].Vl = - robots[i].vmax;
-
 	}
 
-
 	void spin_clockwise(int i, double speed=0.8) {
-
 		robots[i].cmdType = SPEED;
 		robots[i].vmax = speed;
 		robots[i].Vr = - robots[i].vmax;
 		robots[i].Vl = robots[i].vmax;
-
 	}
 
 	void def_wait(int i) {
-
 		robots[i].fixedPos = true;
 		if(distance(robots[i].position, robots[i].target) <= fixed_pos_distance) {
 			robots[i].cmdType = ORIENTATION;
 			robots[i].targetOrientation = look_at_ball(i);
 		}
-
 	}
 
-
 	void fuzzy_init() {
-
 		cout << "init " << endl;
 
 		controller.importRules("config/fuzzy/RULES_VSS2017.txt");
@@ -1103,13 +1003,11 @@ public:
 
 		controller.defineVariables("config/fuzzy/Membership_VSS2017.txt");
 		cout << "variables " << endl;
-
 	}
 
-
 	int Fuzzy_Troca() {
-
 		vector<float> input;
+
 		// cout << "vector " << endl;
 		if(Ball.x < 0) Ball.x = 0;
 		if(Ball.y < 0) Ball.y = 0;
@@ -1117,7 +1015,7 @@ public:
 		if(robots[atk].position.y < 0) robots[atk].position.y = 0;
 		if(robots[def].position.x < 0) robots[def].position.x = 0;
 		if(robots[def].position.y < 0) robots[def].position.y = 0;
-		//
+
 		// input.push_back(float(Ball.x * 1.7/(ABS_GOAL_TO_GOAL_WIDTH)));
 		// input.push_back(float(Ball.y * 1.3/ABS_FIELD_HEIGHT));
 		// input.push_back(float(robots[atk].position.x * 1.7/(ABS_GOAL_TO_GOAL_WIDTH)));
@@ -1135,7 +1033,6 @@ public:
 		input.push_back(float(distance(robots[gk].position, Ball) * 1.7/(ABS_GOAL_TO_GOAL_WIDTH)));
 		input.push_back(float(distance(robots[atk].position, Ball) * 1.7/(ABS_GOAL_TO_GOAL_WIDTH)));
 		input.push_back(float(distance(robots[def].position, Ball) * 1.7/(ABS_GOAL_TO_GOAL_WIDTH)));
-
 
 		vector<float>  out = controller.ControladorFuzzy(input);
 		std::cout << "resultado: " << out[0] << std::endl;
@@ -1158,21 +1055,15 @@ public:
 		}*/
 
 		return out[0];
-
 	}
 
-
 	double map_range(double actual, double minactual, double maxactual) {
-
 		double maxtarget = 1;
 		double mintarget = 0;
 		return (actual - minactual) * ((maxtarget-mintarget)/(maxactual-minactual));
-
 	}
 
-
 	void pot_field_around(int i) {
-
 		robots[i].using_pot_field = true;
 
 		cv::Point targets_temp;
@@ -1186,12 +1077,12 @@ public:
 		double dist_up = distance(Ball_Est, cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_UP_Y));
 		double dist_dwn = distance(Ball_Est, cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_DWN_Y));
 
-		double beta = acos( (pow(dist_up,2)+pow(dist_dwn,2)-pow(ABS_GOAL_SIZE_Y,2))/(2*dist_up*dist_dwn) );
+		double beta = acos((pow(dist_up,2)+pow(dist_dwn,2)-pow(ABS_GOAL_SIZE_Y,2)) / (2*dist_up*dist_dwn));
 
 		cv::Point v = cv::Point(goal.x - Ball_Est.x, goal.y - Ball_Est.y);
 		double module = sqrt(pow(v.x,2) + pow(v.y,2));
 
-		double phi = atan((m2-m1)/(1+m2*m1));
+		double phi = atan((m2-m1) / (1+m2*m1));
 		// cout << "phi -> " << phi*180/PI << " 180 - phi -> " << 180 - phi*180/PI << endl;
 
 		targets_temp.x = double(Ball_Est.x - double(v.x/module) * max_approach);
@@ -1211,7 +1102,6 @@ public:
 			action1 = false;
 
 		if(is_near(i, targets_temp) || abs(phi) < beta/2 || action1) {
-
 			v = cv::Point(robots[i].position.x - Ball.x, robots[i].position.y - Ball.y);
 			module = sqrt(pow(v.x,2) + pow(v.y,2));
 
@@ -1222,12 +1112,9 @@ public:
 			action1 = true;
 			// cout << "action1" << endl;
 		}
-
 	}
 
-
 	void gotta_catch_the_ball(int i) { //(UMA BOSTA)usando área de possibilidade para gol
-
 		double dist_up = distance(Ball_Est, cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_UP_Y));
 		double dist_dwn = distance(Ball_Est, cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_DWN_Y));
 
@@ -1250,12 +1137,9 @@ public:
 		if(robots[i].target.y > ABS_FIELD_HEIGHT) robots[i].target.y = ABS_FIELD_HEIGHT;
 		if(robots[i].target.x < COORD_BOX_DEF_X) robots[i].target.x = COORD_BOX_DEF_X;
 		if(robots[i].target.x > COORD_GOAL_ATK_FRONT_X) robots[i].target.x = COORD_GOAL_ATK_FRONT_X;
-
 	}
 
-
 	void crop_targets(int i) {
-
 		if(robots[i].target.y < 0)
 			robots[i].target.y = 0;
 
@@ -1270,33 +1154,23 @@ public:
 
 		if (robots[i].target.x < COORD_BOX_DEF_X && robots[i].target.y > COORD_BOX_UP_Y && robots[i].target.y < COORD_GOAL_DWN_Y)
 			robots[i].target.x = def_corner_line;
-
 	}
 
-
 	void smart_ball(int i, int max_distance) {
-
 		cv::Point v = cv::Point(Ball.x - Ball_Est.x, Ball.y - Ball_Est.y);
 		double vector_module = sqrt(pow(v.x,2) + pow(v.y,2));
 		double approach = distance(Ball, Ball_Est) * (distance(Ball, robots[atk].position)/(max_distance));
 		robots[i].target.x = double(Ball.x - double(v.x/vector_module) * approach);
 		robots[i].target.y = double(Ball.y - double(v.y/vector_module) * approach);
-
 	}
-
 
 	void test_run(int i) {
-
 		// robots[i].target = robots[i].position;
 		// fixed_lookup(i);
-
 	}
 
-
 	void atk_routine(int i) {
-
 		switch (robots[i].status) {
-
 			case NORMAL_STATE:
 				if(Ball.x > corner_atk_limit && (Ball.y > COORD_GOAL_DWN_Y || Ball.y < COORD_GOAL_UP_Y)) {
 					robots[i].status = CORNER_STATE; // bola no canto
@@ -1317,9 +1191,8 @@ public:
 					} else if(Ball.x >= robots[i].position.x + ABS_ROBOT_SIZE/2){
 						// smart_ball(i, COORD_GOAL_MID_Y);
 						robots[i].target = Ball;
-					} else {
-						spin_anti_clockwise(i);
-					}
+					} else spin_anti_clockwise(i);
+
 					if(Ball.x < robots[i].position.x) {
 						robots[i].target.x = Ball.x - max_approach;
 						robots[i].target.y = Ball.y - max_approach/2;
@@ -1330,16 +1203,14 @@ public:
 					} else if(Ball.x >= robots[i].position.x + ABS_ROBOT_SIZE/2){
 						// smart_ball(i, COORD_GOAL_MID_Y);
 						robots[i].target = Ball;
-					} else {
-						spin_clockwise(i);
-					}
+					} else spin_clockwise(i);
+
 					if(Ball.x < robots[i].position.x) {
 						robots[i].target.x = Ball.x - max_approach;
 						robots[i].target.y = Ball.y + max_approach/2;
 					}
-				} else {
-					robots[i].status = NORMAL_STATE; // voltar ao estado normal
-				}
+				} else robots[i].status = NORMAL_STATE; // voltar ao estado normal
+
 				break;
 
 			case CORNER_STATE:
@@ -1361,13 +1232,13 @@ public:
 							else robots[i].target = Ball;
 						}
 					}
-				} else {
-					robots[i].status = NORMAL_STATE; // voltar ao estado normal
-				}
+				} else robots[i].status = NORMAL_STATE; // voltar ao estado normal
+
 				break;
 
 			case DEF_CORNER_STATE:
 				robots[i].fixedPos = true;
+
 				if(Ball.x < def_corner_line) {
 					if(Ball.y > COORD_GOAL_MID_Y) {
 						robots[i].target.x = goalie_line;
@@ -1386,21 +1257,15 @@ public:
 							robots[i].target = Ball;
 						}
 					}
+				} else robots[i].status = NORMAL_STATE;
 
-				} else {
-					robots[i].status = NORMAL_STATE;
-				}
 				crop_targets(i);
 				break;
 			}
-
 	}
 
-
 	void def_routine(int i) {
-
 		switch (robots[i].status) {
-
 			case NORMAL_STATE:
 				if(Ball_Est.x > corner_atk_limit) {
 					int y_pos = Ball.y > COORD_GOAL_MID_Y ? COORD_GOAL_UP_Y : COORD_GOAL_DWN_Y;
@@ -1441,14 +1306,10 @@ public:
 			case TRANSITION_STATE:
 				break;
 		}
-
 	}
 
-
 	void gk_routine(int i) {
-
 		switch (robots[i].status) {
-
 			case NORMAL_STATE:
 				// robots[i].fixedPos = true;
 				robots[i].cmdType = POSITION;
@@ -1555,14 +1416,10 @@ public:
 					robots[i].target.x = robots[i].position.x;
 
 				break;
-
 		}
-
 	}
 
-
 	void def_past_routine(int i) {
-
 		switch (robots[i].status) {
 			case NORMAL_STATE:
 				robots[i].fixedPos = true;
@@ -1570,14 +1427,10 @@ public:
 				robots[i].target.y = Ball.y;
 				break;
 		}
-
 	}
 
-
 	void opp_gk_routine(int i) {
-
 		switch (robots[i].status) {
-
 			case NORMAL_STATE:
 				robots[i].fixedPos = true;
 				robots[i].target.x = COORD_GOAL_ATK_FRONT_X - ABS_ROBOT_SIZE/2;
@@ -1601,33 +1454,24 @@ public:
 
 	}
 
-
 	//Estimativa da Bola
 	cv::Point get_Ball_Est() {
-
 		return Ball_Est;
-
 	}
-
 
 	void set_Ball_Est(cv::Point b) {
-
 		Ball_Est =  b;
-
 	}
 
-
 	void set_Ball(cv::Point b) {
-
 		Ball = b;
 		LS_ball_x.addValue(Ball.x);
 		LS_ball_y.addValue(Ball.y);
 
 		Ball_Est.x =  LS_ball_x.estimate(10);
 		Ball_Est.y =  LS_ball_y.estimate(10);
-
 	}
 
-
 };
+
 #endif /* STRATEGY_HPP_ */

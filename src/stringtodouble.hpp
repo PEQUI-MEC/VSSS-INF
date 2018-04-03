@@ -11,9 +11,7 @@
 #include <string>
 #include <ctype.h>
 
-
 double stringToDouble(std::string s) {
-
 	int commaCount = 0;
 	int pointCount = 0;
 
@@ -42,8 +40,6 @@ double stringToDouble(std::string s) {
 	}
 
 	return std::stod(s.c_str());
-
 }
-
 
 #endif /* STRINGTODOUBLE_HPP_ */

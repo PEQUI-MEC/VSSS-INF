@@ -1,11 +1,10 @@
 #include "gmm.hpp"
 
-
 void GMM::run(cv::Mat frame) {
 
     inFrame = frame.clone();
 
-    for (int i = 0; i < TOTAL_THREADS; i++)
+    for(int i = 0; i < TOTAL_THREADS; i++)
         threads.add_thread(new boost::thread(&GMM::classify, this, i));
 
      threads.join_all();
@@ -20,34 +19,25 @@ void GMM::run(cv::Mat frame) {
          setAllThresholds();
          posProcessing();
       }
-
 }
-
 
 // Aplica Abertura e Fechamento nos thresholds
 void GMM::posProcessing() {
-
-    for (int i = 0; i < TOTAL_COLORS; i++) {
+    for(int i = 0; i < TOTAL_COLORS; i++) {
         cv::Mat closingElement = cv::getStructuringElement( cv::MORPH_RECT, cv::Size( 2*closingSize+1, 2*closingSize+1 ), cv::Point(closingSize, closingSize));
         cv::morphologyEx(threshold_frame.at(i), threshold_frame.at(i), cv::MORPH_CLOSE, closingElement);
 
         cv::Mat openingElement = cv::getStructuringElement( cv::MORPH_RECT, cv::Size( 2*openingSize+1, 2*openingSize+1 ), cv::Point(openingSize, openingSize));
         cv::morphologyEx(threshold_frame.at(i), threshold_frame.at(i), cv::MORPH_OPEN, openingElement);
     }
-
 }
-
 
 void GMM::setFrame(cv::Mat frame) {
-
     inFrame = frame.clone();
-
 }
-
 
 // Recorta um retângulo do Frame Original
 cv::Mat GMM::crop(cv::Point p1, cv::Point p2) {
-
     cv::Mat frame = inFrame.clone();
     cv::Rect roi;
 
@@ -63,7 +53,7 @@ cv::Mat GMM::crop(cv::Point p1, cv::Point p2) {
     } else if(p1.x > p2.x && p1.y > p2.y) {
         roi.x = p2.x;
         roi.y = p2.y;
-    } else if (p1.x <= p2.x && p1.y > p2.y) {
+    } else if(p1.x <= p2.x && p1.y > p2.y) {
       roi.x = p1.x;
       roi.y = p2.y;
     } else {
@@ -77,13 +67,10 @@ cv::Mat GMM::crop(cv::Point p1, cv::Point p2) {
     cv::Mat out = frame(roi);
 
     return out;
-
 }
-
 
 // Classifica cada pixel quanto a cor de sua gaussiana
 void GMM::classify(int index) {
-
     cv::Mat input = predict(index);
 
     int rows = input.rows;
@@ -91,8 +78,8 @@ void GMM::classify(int index) {
 
 	partialFrames[index] = cv::Mat::zeros(rows, cols, CV_8UC3);
 
-	for (int x = 0; x < rows; x++) {
-	    for (int y = 0; y < cols; y++) {
+	for(int x = 0; x < rows; x++) {
+	    for(int y = 0; y < cols; y++) {
 			int label = input.at<float>(x,y);
 
 			partialFrames[index].at<cv::Vec3b>(x, y)[0] = colors[label][0];
@@ -100,14 +87,11 @@ void GMM::classify(int index) {
 			partialFrames[index].at<cv::Vec3b>(x, y)[2] = colors[label][2];
 		}
 	}
-
 }
-
 
 // Pinta os pixels das gaussianas em suas cores reais
 // Prepara o preThreshold para a futura separação dos thresholds de cada cor
 void GMM::paint() {
-
     cv::Mat predictFrame;
 
     cv::vconcat(partialPredicts, TOTAL_THREADS, predictFrame);
@@ -115,8 +99,8 @@ void GMM::paint() {
 	finalFrame = cv::Mat::zeros(predictFrame.rows, predictFrame.cols, CV_8UC3);
 	preThreshold = cv::Mat::zeros(predictFrame.rows, predictFrame.cols, CV_8UC3);
 
-	for (int x = 0; x < predictFrame.rows; x++) {
-	    for (int y = 0; y < predictFrame.cols; y++) {
+	for(int x = 0; x < predictFrame.rows; x++) {
+	    for(int y = 0; y < predictFrame.cols; y++) {
 		    int label = predictFrame.at<float>(x,y);
 			finalFrame.at<cv::Vec3b>(x, y)[0] = colors[matchColor.at(label)][0];
 			finalFrame.at<cv::Vec3b>(x, y)[1] = colors[matchColor.at(label)][1];
@@ -127,9 +111,7 @@ void GMM::paint() {
 			preThreshold.at<cv::Vec3b>(x, y)[2] = matchColor.at(label);
 		}
 	}
-
 }
-
 
 // Associa cada pixel com uma gaussiana do modelo
 cv::Mat GMM::predict(int threadIndex) {
@@ -148,14 +130,11 @@ cv::Mat GMM::predict(int threadIndex) {
     }
 
     return partialPredicts[threadIndex];
-
 }
-
 
 // Formata o Frame para o tipo de variável requerido pelo EM
 cv::Mat GMM::formatFrameForEM(int index) {
-
-    if (inFrame.empty()) return cv::Mat::zeros(1, 1, CV_32F);
+    if(inFrame.empty()) return cv::Mat::zeros(1, 1, CV_32F);
 
     int cols = inFrame.cols;
     int rows = inFrame.rows/TOTAL_THREADS;
@@ -168,9 +147,9 @@ cv::Mat GMM::formatFrameForEM(int index) {
 
     cv::Mat dst = inFrame(roi);
 
-    if (convertType == HSV_TYPE) {
+    if(convertType == HSV_TYPE) {
         cv::cvtColor(dst, dst, cv::COLOR_BGR2HSV);
-    } else if (convertType == CIELAB_TYPE) {
+    } else if(convertType == CIELAB_TYPE) {
         cv::cvtColor(dst, dst, cv::COLOR_BGR2Lab);
     }
 
@@ -181,26 +160,23 @@ cv::Mat GMM::formatFrameForEM(int index) {
 
     int counter = 0;
 
-    for (int j = 0; j < dst.rows; j++) {
+    for(int j = 0; j < dst.rows; j++) {
         cv::Vec3f* row = float_image.ptr<cv::Vec3f > (j);
 
-        for (int i = 0; i < dst.cols; i++) {
+        for(int i = 0; i < dst.cols; i++) {
             output.at<cv::Vec3f> (counter++, 0) = row[i];
         }
     }
 
     return output;
-
 }
-
 
 // Treina e gera o modelo GMM (com base no EM)
 int GMM::train() {
-
     std::cout << "Training..." << std::endl;
     cv::Mat input = formatSamplesForEM().clone();
 
-    if (input.total() <= 1) return -1;
+    if(input.total() <= 1) return -1;
 
     em->setClustersNumber(clusters);
     em->setCovarianceMatrixType(cv::ml::EM::COV_MAT_DIAGONAL);
@@ -218,7 +194,7 @@ int GMM::train() {
 
     std::cout << "-------- COVS" << std::endl;
 
-    for (int i = 0; i < covs.size(); i++) {
+    for(int i = 0; i < covs.size(); i++) {
         std::cout << ">> " << i << std::endl;
         std::cout << covs.at(i) << std::endl;
     }
@@ -229,31 +205,29 @@ int GMM::train() {
     write("config/autoGMM.json");
 
     return 0;
-
 }
-
 
 // Formata as samples para o tipo de variável requerido pelo EM.
 cv::Mat GMM::formatSamplesForEM() {
-    if (samples.empty()) {
+    if(samples.empty()) {
         std:: cout << "GMM aborted: no samples provided." << std::endl;
         return cv::Mat::zeros(1, 1, CV_32F);
     }
 
     int totalRows = 0;
 
-    for (int i = 0; i < samples.size(); i++)
+    for(int i = 0; i < samples.size(); i++)
         totalRows += samples.at(i).cols*samples.at(i).rows;
 
     cv::Mat output(totalRows, 3, CV_32FC1);
     int counter = 0;
 
-    for (int k = 0; k < samples.size(); k++) {
+    for(int k = 0; k < samples.size(); k++) {
         cv::Mat dst = samples.at(k).clone();
 
-        if (convertType == HSV_TYPE) {
+        if(convertType == HSV_TYPE) {
             cv::cvtColor(dst, dst, cv::COLOR_BGR2HSV);
-        } else if (convertType == CIELAB_TYPE) {
+        } else if(convertType == CIELAB_TYPE) {
             cv::cvtColor(dst, dst, cv::COLOR_BGR2Lab);
         }
 
@@ -261,26 +235,23 @@ cv::Mat GMM::formatSamplesForEM() {
         dst.convertTo(float_image,CV_32F);
 
         //Converting from Float image to Column vector
-        for (int j = 0; j < dst.rows; j++) {
+        for(int j = 0; j < dst.rows; j++) {
             cv::Vec3f* row = float_image.ptr<cv::Vec3f > (j);
 
-            for (int i = 0; i < dst.cols; i++){
+            for(int i = 0; i < dst.cols; i++){
                 output.at<cv::Vec3f> (counter++, 0) = row[i];
             }
         }
     }
     return output;
-
 }
 
-
 void GMM::pushSample(int points[2][2]) {
-
     cv::Point p1(points[0][0], points[0][1]);
     cv::Point p2(points[1][0], points[1][1]);
 
     cv::Mat sample = crop(p1, p2);
-    if (sample.cols <= 1 && sample.rows <= 1) {
+    if(sample.cols <= 1 && sample.rows <= 1) {
         std::cout << "Invalid sampled provided: not added to samples vector." << std::endl;
         return;
     }
@@ -289,39 +260,30 @@ void GMM::pushSample(int points[2][2]) {
     samplePoints.push_back(p2);
 
     samples.push_back(sample);
-
 }
 
-
 void GMM::popSample() {
-
-    if (!samples.empty()) {
+    if(!samples.empty()) {
         samplePoints.pop_back();
         samplePoints.pop_back();
         samples.pop_back();
     }
-
 }
-
 
 void GMM::clearSamples() {
-
     samples.clear();
     samplePoints.clear();
-
 }
-
 
 // Carrega a GMM de um arquivo
 bool GMM::read(std::string fileName) {
-
     std::string txtFileName = fileName;
     txtFileName.replace(txtFileName.size()-5, txtFileName.size(), ".txt");
 
     std::ifstream file;
     file.open(txtFileName);
 
-    if (file.is_open()) {
+    if(file.is_open()) {
         std::string line;
 
         getline(file, line);
@@ -336,7 +298,7 @@ bool GMM::read(std::string fileName) {
         getline(file, line);
         openingSize = atoi(line.c_str());
 
-        for (int i = 0; i < matchColor.size(); i++) {
+        for(int i = 0; i < matchColor.size(); i++) {
           getline(file, line);
           matchColor.at(i) = atoi(line.c_str());
         }
@@ -380,10 +342,8 @@ bool GMM::read(std::string fileName) {
 
 }
 
-
 // Salva a GMM em um arquivo
 bool GMM::write(std::string fileName) {
-
     std::string txtFileName = fileName;
     txtFileName.replace(txtFileName.size()-5, txtFileName.size(), ".txt");
 
@@ -399,11 +359,10 @@ bool GMM::write(std::string fileName) {
         for (int i = 0; i < matchColor.size(); i++)
             file << matchColor.at(i) <<std::endl;
 
-
         file.close();
     } else {
-    std::cout << "GMM::write: Could not open " << txtFileName << ". Maybe it does not exist." << std::endl;
-    return false;
+        std::cout << "GMM::write: Could not open " << txtFileName << ". Maybe it does not exist." << std::endl;
+        return false;
     }
 
     cv::FileStorage fs(fileName, cv::FileStorage::WRITE);
@@ -419,97 +378,58 @@ bool GMM::write(std::string fileName) {
         std::cout << "GMM::write: Could not open " << fileName << ". Maybe it does not exist." << std::endl;
         return false;
     }
-
 }
-
 
 int GMM::getSamplesSize() {
-
   return samples.size();
-
 }
-
 
 std::vector<cv::Point> GMM::getSamplePoints() {
-
   return samplePoints;
-
 }
-
 
 // Define o número de gaussianas do modelo
 void GMM::setClusters(int k) {
-
-    if (k > 0) {
-        clusters = k;
-    } else {
-        std::cout << "GMM::setClusters: invalid value = " << k << std::endl;
-    }
-
+    if (k > 0) clusters = k;
+    else std::cout << "GMM::setClusters: invalid value = " << k << std::endl;
 }
-
 
 int GMM::getClusters() {
-
     return clusters;
-
 }
-
 
 cv::Mat GMM::getGaussiansFrame() {
-
     return gaussiansFrame;
-
 }
-
 
 cv::Mat GMM::getFinalFrame() {
-
     return finalFrame;
-
 }
-
 
 cv::Mat GMM::getPreThresholdFrame() {
-
     return preThreshold;
-
 }
-
 
 bool GMM::getIsTrained() {
-
     return isTrained;
-
 }
-
 
 void GMM::setMatchColor(int gaussian, int color) {
-
     matchColor.at(gaussian) = color;
-
 }
 
-
 bool GMM::getDoneFlag() {
-
     return isDone;
-
 }
 
 void GMM::setDone() {
-
     isDone = true;
-
 }
-
 
 // Usa o preThreshold para fazer um threshold para cada cor
 void GMM::setAllThresholds() {
-
     for (int i = 0; i < TOTAL_COLORS; i++)
         threshold_frame.at(i) = cv::Mat::zeros(preThreshold.rows, preThreshold.cols, CV_8UC3);
-
 
     for (int x = 0; x < preThreshold.rows; x++) {
         for (int y = 0; y < preThreshold.cols; y++) {
@@ -522,74 +442,46 @@ void GMM::setAllThresholds() {
             }
         }
     }
-
 }
-
 
 cv::Mat GMM::getThresholdFrame(int color) {
-
     return threshold_frame.at(color);
-
 }
-
 
 void GMM::setClosingSize(int value) {
-
     closingSize = value;
-
 }
-
 
 void GMM::setOpeningSize(int value) {
-
     openingSize = value;
-
 }
-
 
 int GMM::getClosingSize() {
-
     return closingSize;
-
 }
 
-
 int GMM::getOpeningSize() {
-
     return openingSize;
-
 }
 
 std::vector<cv::Mat> GMM::getAllThresholds() {
-
     return threshold_frame;
-
 }
-
 
 void GMM::setConvertType(int value) {
-
     convertType = value;
-
 }
-
 
 int GMM::getConvertType() {
-
     return convertType;
-
 }
 
-
 GMM::GMM() : clusters(1), isTrained(false), isDone(false), convertType(0) {
-
     em = cv::ml::EM::create();
 
     cv::Mat mat;
     for (int i = 0; i < TOTAL_COLORS; i++)
         threshold_frame.push_back(mat);
-
 }
-
 
 GMM::~GMM() {}

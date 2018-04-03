@@ -1,8 +1,6 @@
 #include "kalmanFilter.hpp"
 
-
 void KalmanFilter::KF_init(cv::Point pos) {
-
     ticks = 0;
     int stateSize = 6;
     int measSize = 4;
@@ -55,12 +53,9 @@ void KalmanFilter::KF_init(cv::Point pos) {
     //KF_meas.at<float>(1) = pos.y;
     //KF_meas.at<float>(2) = (float) 5;
     //KF_meas.at<float>(3) = (float) 5;
-
 }
 
-
 cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
-
     //std::cout<<"KF1"<<std::endl;
     KF.statePost = KF_state;
     //std::cout<<"KF1.1"<<std::endl;
@@ -108,11 +103,8 @@ cv::Point KalmanFilter::KF_Prediction(cv::Point pos) {
     center.y = KF_state.at<float>(1);
 
     return center;
-
 }
 
-
 KalmanFilter::KalmanFilter() {}
-
 
 KalmanFilter::~KalmanFilter() {}

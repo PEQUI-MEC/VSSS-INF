@@ -1,16 +1,11 @@
 #include "ls.h"
 
-
 LS::LS() {
-
     this->sampNum   = 1;
     this->polyOrder = 1;
-
 }
 
-
 void LS::init(int sampNum,int polyOrder) {
-
     this->sampNum   = sampNum;
     this->polyOrder = polyOrder;
 
@@ -21,71 +16,53 @@ void LS::init(int sampNum,int polyOrder) {
 
     for ( int i = 0; i < sampNum; i++)
         P[i][0] = i;
-
 }
-
 
 // This will give you the position estimate for a certain future sample
 double LS::estimate(int futureSample) {
-
     interpolate();
 	return (sampNum + futureSample)*R[0] + R[1];
-
 }
-
 
 // This will add a new value to the voltages array
 void LS::addValue(double newValue) {
-
     for (int i = 1; i < sampNum; i++)
         P[i-1][1] = P[i][1];
 
     P[sampNum-1][1] = newValue;
-
 }
-
 
 // Preenche a matriz G usando os pontos em P
 void LS::fillMatrixG( double** G, double** P, int m, int n) {
-
     double aux = 1;
 
     for (int i = 0; i < m; i++) {
         aux = 1;
-
         for (int j = n; j >= 0; j--) {
             G[i][j] = aux;
             aux *= P[i][0];
         }
     }
-
 }
-
 
 // Atribui valor 0 a todos os elementos de M
 void LS::zeroMatrix( double** M, int m, int n) {
-
     for(int i = 0; i < m; i++) {
         for(int j = 0; j < n; j++) {
             M[i][j] = 0;
         }
     }
-
 }
-
 
 // Atribui valor 0 a todos os elementos de V
 void LS::zeroVector( double* V, int m) {
-
     for(int i = 0; i < m; i++)
         V[i] = 0;
-
 }
 
 
 // Aloca espalo de memoria para a matriz
 double** LS::intializeMatrix( int m, int n) {
-
     double** M;
 
     M = (double**)calloc(m, sizeof(double*));
@@ -96,80 +73,61 @@ double** LS::intializeMatrix( int m, int n) {
     return M;
 }
 
-
 // Aloca espalo de memoria para o vetor
 double* LS::initializeVector( int m) {
-
     double* V;
     V = (double*)calloc(m, sizeof(double));
     return V;
-
 }
 
 
 // Copia o conteudo da matriz A e do vetor B para a matriz M
 void LS::prepareMatrix( double** M, double** A, double* B, int m) {
-
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < m; j++) {
             M[i][j] = A[i][j];
         }
-
         M[i][m] = B[i];
     }
-
 }
 
-
 void LS::retrosubstitutionU( double** M, double* R, int m) {
-
     // Este loop Sobe a matriz escalonada achando o valor de cada variavel
     for (int i = m-1; i >= 0; i--) {
         // Preenche o vetor R com B
         R[i] = M[i][m];
 
         // Subtrai de R todos os valores ponderados entre B e o pivo
-        for (int j = (m-1); j > i; j--) {
+        for (int j = (m-1); j > i; j--)
             R[i] -= M[i][j]*R[j];
-        }
 
         // Divide R pelo piv�
         R[i] /= M[i][i];
     }
-
 }
 
 void LS::retrosubstitutionL( double** M, double* R, int m) {
-
     // Este loop Sobe a matriz escalonada achando o valor de cada variavel
     for(int i = 0; i < m; i++) {
         // Preenche o vetor R com B
         R[i] = M[i][m];
 
         // Subtrai de R todos os valores ponderados entre B e o pivo
-        for(int j = 0; j < i; j++) {
+        for(int j = 0; j < i; j++)
             R[i] -= M[i][j]*R[j];
-        }
 
         // Divide R pelo pivo
         R[i] /= M[i][i];
     }
-
 }
 
-
 void LS::lu( double** A, double** L, double** U, int m) {
-
     // Zera os elementos de L e U triangularizando-as. Preenche com 1 os elementos da diagonal de L
     for(int i = 0; i < m; i++) {
         for (int j = 0; j < m; j++) {
-            if( i > j) {
-                U[i][j] = 0;
-            } else if(i < j) {
-                L[i][j] = 0;
-            } else {
-                L[i][j] = 1;
-            }
+            if(i > j) U[i][j] = 0;
+            else if(i < j) L[i][j] = 0;
+            else L[i][j] = 1;
         }
     }
 
@@ -177,13 +135,12 @@ void LS::lu( double** A, double** L, double** U, int m) {
 
     // A cada passada deste laco, define-se uma linha de U e uma coluna de L
     for(int i = 0; i < m; i++) {
-
         // A cada passada deste laco, define-se uma linha de U
         for(int j = i; j < m; j++) {
             sum = 0;
-            for (int k = 0; k < i; k++) {
+
+            for (int k = 0; k < i; k++)
                 sum += L[i][k]*U[k][j];
-            }
 
             U[i][j] = A[i][j] - sum;
         }
@@ -192,74 +149,59 @@ void LS::lu( double** A, double** L, double** U, int m) {
         for(int j = i+1; j < m; j++) {
             sum = 0;
 
-            for(int k = 0; k < j; k++) {
+            for(int k = 0; k < j; k++)
                 sum += L[j][k]*U[k][i];
-            }
 
             L[j][i] = (A[j][i] - sum)/U[i][i];
         }
     }
-
 }
 
-
 void LS::solveSystem( int polyOrder, double** A, double** L, double** U, double** M, double* R, double* B) {
-
     lu( A, L, U, polyOrder+1);
     prepareMatrix( M, L, B, polyOrder+1);
     retrosubstitutionL( M, R, polyOrder+1);
     prepareMatrix( M, U, R, polyOrder+1);
     retrosubstitutionU( M, R, polyOrder+1);
-
 }
-
 
 // Faz a transpose de G em T
 void LS::transpose( double** G, double** T, int m, int n) {
-
     for (int i = 0; i < m; i++){
-        for (int j = 0; j < n; j++){
+        for (int j = 0; j < n; j++)
             T[j][i] = G[i][j];
-        }
     }
-
 }
-
 
 // Multiplica G por T
 void LS::multiplyMatrix( double** G, double** T, double** A, int m, int n, int o) {
-
     double sum = 0;
 
     for(int i = 0; i < m; i++) {
         for(int j = 0; j < n; j++) {
             sum = 0;
-            for(int k = 0; k < o; k++){
+
+            for(int k = 0; k < o; k++)
                 sum += G[i][k] * T[k][j];
-            }
+
             A[i][j] = sum;
         }
     }
-
 }
-
 
 // Multiplica T por yP
 void LS::multiplyMatrix( double** P, double** T, double* B, int m, int n) {
-
     for(int i = 0; i < n; i++) {
         B[i] = 0;
-        for(int j = 0; j < m; j++) {
+
+        for(int j = 0; j < m; j++)
             B[i] += T[i][j] * P[j][1];
-        }
+
     }
-
 }
-
 
 // This is the function that will interpolate, given the points and parameters
 int LS::interpolate() {
-
     double**    G = intializeMatrix( sampNum, polyOrder+1);
     double**    T = intializeMatrix( polyOrder+1, sampNum);
     double**    A = intializeMatrix( polyOrder+1, polyOrder+1);
@@ -304,5 +246,4 @@ int LS::interpolate() {
     free(B);
 
     return 0;
-    
 }

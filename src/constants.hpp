@@ -4,7 +4,6 @@
 #include <math.h>
 
 namespace CONST {
-
     //class Const {
     static bool GOAL_DANGER_ZONE, ADV_NA_AREA;
 
@@ -70,7 +69,6 @@ namespace CONST {
         transition_y_distance,
         acceleration;
     //};
-
 }
 
 #endif

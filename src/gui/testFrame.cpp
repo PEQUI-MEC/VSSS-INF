@@ -1,32 +1,22 @@
 #include "testFrame.hpp"
 
-
 void TestFrame::setLabel(int index, std::string lb) {
-
     if(index < 0 || index > 4) {
       std::cout << "TestFrame::setLabel: invalid index error." << std::endl;
         return;
     }
-
     label[index].set_text(lb);
-
 }
 
-
 double TestFrame::getValue(int index) {
-
     if(index < 0 || index > 4) {
       std::cout << "TestFrame::getValue: invalid index error." << std::endl;
         return -1;
     }
-
     return hscale[index].get_value();
-
 }
 
-
 void TestFrame::configureHScale(int index, double currentValue, double min, double max, double digits, double steps) {
-
     if (index < 0 || index > 4) {
       std::cout << "TestFrame::configureHScale: invalid index error." << std::endl;
         return;
@@ -36,16 +26,11 @@ void TestFrame::configureHScale(int index, double currentValue, double min, doub
     hscale[index].set_increments(steps,steps*5);
     hscale[index].set_range(min,max);
     hscale[index].set_value(currentValue);
-
 }
-
 
 void TestFrame::setName(std::string name) {
-
     set_label(name);
-
 }
-
 
 void TestFrame::init() {
     add(grid);
@@ -69,12 +54,8 @@ void TestFrame::init() {
     }
 }
 
-
 TestFrame::TestFrame() {
-
   init();
-
 }
-
 
 TestFrame::~TestFrame() {}

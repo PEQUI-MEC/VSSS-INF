@@ -14,30 +14,21 @@
 
 #define DEFAULT_STR " - "
 
-namespace vsss_gui {
-
+namespace VSSS_GUI {
     bool V4LInterface::on_button_press_event(GdkEventButton *event) {
-
         // Check if the event is a left(1) button click.
-        if( (event->type == GDK_BUTTON_PRESS) ) {
+        if((event->type == GDK_BUTTON_PRESS)) {
             //  std::cout<<"click"<<std::endl;
             return true;
-        } else {
-            return false;
-        }
-
+        } else return false;
     }
 
     void V4LInterface::HScale_offsetR_value_changed() {
-
         offsetR = HScale_offsetR.get_value();
-
     }
 
     void V4LInterface::HScale_offsetL_value_changed() {
-
         offsetL = HScale_offsetL.get_value();
-
     }
 
     // signals
@@ -47,10 +38,8 @@ namespace vsss_gui {
         config.save();
     }
 
-
     void V4LInterface::__event_bt_save_clicked() {
         std::cout << "SAVE" << std::endl;
-
         FileChooser loadWindow;
 
         if (loadWindow.result == Gtk::RESPONSE_OK){
@@ -59,9 +48,7 @@ namespace vsss_gui {
         }
     }
 
-
     void V4LInterface::__event_bt_quick_load_clicked() {
-
         std::cout << "QUICK LOAD" << std::endl;
 
         jsonSaveManager config(this);
@@ -70,9 +57,7 @@ namespace vsss_gui {
         update_interface_camera();
     }
 
-
     void V4LInterface::__event_bt_load_clicked() {
-
         std::cout << "LOAD" << std::endl;
 
         FileChooser loadWindow;
@@ -85,14 +70,10 @@ namespace vsss_gui {
         }
     }
 
-
     void V4LInterface::__event_bt_start_clicked() {
-
-        if(!vcap.is_opened())
-            return;
+        if(!vcap.is_opened()) return;
 
         Glib::ustring label = bt_start.get_label();
-
 
         if(0 == label.compare("start")) {
             bool r;
@@ -101,8 +82,7 @@ namespace vsss_gui {
             // set frame size
             r = vcap.set_frame_size(sp_width.get_value_as_int(), sp_height.get_value_as_int(), V4L2_BUF_TYPE_VIDEO_CAPTURE);
 
-            if (!r)
-                std::cout << "Can't set frame size!" << std::endl;
+            if (!r) std::cout << "Can't set frame size!" << std::endl;
 
             // = Init memory map buffers ===================================
             //			if (vcap.start_capturing(v4lcap::MEM_READ, 2)) {
@@ -182,16 +162,11 @@ namespace vsss_gui {
             bt_save.set_state(Gtk::STATE_INSENSITIVE);
             bt_load.set_state(Gtk::STATE_INSENSITIVE);
             m_signal_start.emit(false);
-
         }
-
         return;
-
     }
 
-
     void V4LInterface::__event_bt_warp_clicked() {
-
         std::cout << "Warp drive engaged" << std::endl;
 
         if(!imageView.warp_event_flag) {
@@ -212,26 +187,20 @@ namespace vsss_gui {
                 reset_warp_flag = true;
             //bt_invert_image.set_state(Gtk::STATE_INSENSITIVE);
         }
-
     }
 
-
     void V4LInterface::__event_bt_adjust_pressed() {
-
         if(!adjust_event_flag) {
             adjust_event_flag=true;
             std::cout << "ADJUST = TRUE" << std::endl;
         } else {
             adjust_event_flag=false;
             std::cout << "ADJUST = FALSE" << std::endl;
-
         }
-
     }
 
-
     void V4LInterface::__event_bt_reset_warp_clicked() {
-        std::cout<<"Resetting warp matrix."<<std::endl;
+        std::cout << "Resetting warp matrix." << std::endl;
         warped = false;
         bt_warp.set_state(Gtk::STATE_NORMAL);
         bt_adjust.set_active(false);
@@ -245,9 +214,7 @@ namespace vsss_gui {
         reset_warp_flag = true;
     }
 
-
     void V4LInterface::__event_bt_invert_image_signal_clicked() {
-
         if(!invert_image_flag) {
             invert_image_flag = true;
             std::cout << "imageView >>>>>>>INVERTED<<<<<<<" << std::endl;
@@ -255,20 +222,14 @@ namespace vsss_gui {
             invert_image_flag = false;
             std::cout << "imageView >>>>>>>NORMAL<<<<<<<" << std::endl;
         }
-
     }
 
-
     void V4LInterface::__event_cb_device_changed() {
-
-        if(vcap.is_opened())
-            vcap.close_device();
+        if(vcap.is_opened()) vcap.close_device();
 
         Glib::ustring dev = cb_device.get_active_text();
 
-        if(dev.size() < 1)
-            return;
-
+        if(dev.size() < 1) return;
         if(vcap.open_device(dev.data(), true)) {
             struct v4l2_capability cap;
             vcap.query_capability(&cap);
@@ -278,10 +239,7 @@ namespace vsss_gui {
             lb_device_card.set_text((const char *) cap.card);
             lb_device_driver.set_text((const char *) cap.driver);
             lb_device_bus.set_text((const char *) cap.bus_info);
-
-        } else {
-            std::cout << "Ooops!" << std::endl;
-        }
+        } else std::cout << "Ooops!" << std::endl;
 
         __update_all();
 
@@ -303,115 +261,85 @@ namespace vsss_gui {
         __make_control_table(ctrl_list_default, "Cam Configs");
 
         __update_control_widgets(ctrl_list_default);
-
     }
 
-
     void V4LInterface::__event_cb_input_changed() {
-
-        if(cb_input.get_active_row_number() == -1)
-            return;
+        if(cb_input.get_active_row_number() == -1) return;
 
         Gtk::TreeModel::iterator it = cb_input.get_active();
-
         Gtk::TreeModel::Row row = *it;
         struct v4l2_input input = row[model_input.m_col_data];
 
         int r = vcap.set_input(input.index);
 
-        if(!r)
-            std::cout << "Can't set input!" << std::endl;
-
+        if(!r) std::cout << "Can't set input!" << std::endl;
         __update_all();
     }
 
     void V4LInterface::__event_cb_standard_changed() {
-
-        if(cb_standard.get_active_row_number() == -1)
-            return;
+        if(cb_standard.get_active_row_number() == -1) return;
 
         Gtk::TreeModel::iterator it = cb_standard.get_active();
-
-
         Gtk::TreeModel::Row row = *it;
+
         struct v4l2_standard standard = row[model_standard.m_col_data];
 
         int r = vcap.set_standard(standard.id);
 
-        if(!r)
-            std::cout << "Can't set standard!" << std::endl;
+        if(!r) std::cout << "Can't set standard!" << std::endl;
 
         __update_all();
-
     }
 
-
     void V4LInterface::__event_cb_format_desc_changed() {
-
-        if (cb_format_desc.get_active_row_number() == -1)
-            return;
+        if (cb_format_desc.get_active_row_number() == -1) return;
 
         Gtk::TreeModel::iterator it = cb_format_desc.get_active();
-
         Gtk::TreeModel::Row row = *it;
+
         struct v4l2_fmtdesc fmtdesc = row[model_format_desc.m_col_data];
 
         //int r = vcap.set_pixel_format(fmtdesc.pixelformat, V4L2_BUF_TYPE_VIDEO_CAPTURE);
         int r = vcap.set_pixel_format(fmtdesc.pixelformat);
 
-        if (!r)
-            std::cout << "Can't set format!" << std::endl;
+        if (!r) std::cout << "Can't set format!" << std::endl;
 
         __update_all();
-
     }
 
-
     void V4LInterface::__event_cb_frame_size_changed() {
-
-        if (cb_frame_size.get_active_row_number() == -1)
-            return;
+        if (cb_frame_size.get_active_row_number() == -1) return;
 
         Gtk::TreeModel::iterator it = cb_frame_size.get_active();
-
         Gtk::TreeModel::Row row = *it;
+
         struct v4l2_frmsizeenum frmsize = row[model_frame_size.m_col_data];
 
         int r = vcap.set_frame_size(frmsize.discrete.width, frmsize.discrete.height, V4L2_BUF_TYPE_VIDEO_CAPTURE);
-        if(!r)
-            std::cout << "Can't set frame size!" << std::endl;
+        if(!r) std::cout << "Can't set frame size!" << std::endl;
 
         __update_all();
-
     }
 
-
     void V4LInterface::__event_cb_frame_interval_changed() {
-
-        if (cb_frame_interval.get_active_row_number() == -1)
-            return;
+        if (cb_frame_interval.get_active_row_number() == -1) return;
 
         Gtk::TreeModel::iterator it = cb_frame_interval.get_active();
-
         Gtk::TreeModel::Row row = *it;
+
         struct v4l2_frmivalenum frame_interval = row[model_frame_interval.m_col_data];
 
         int r = vcap.set_frame_interval(frame_interval.discrete);
-        if(!r)
-            std::cout << "Can't set frame interval!" << std::endl;
+        if(!r) std::cout << "Can't set frame interval!" << std::endl;
 
         __update_all();
-
     }
 
-
     bool V4LInterface::__set_control_hscale(int type, double val, std::list<ControlHolder> * list, Gtk::Widget * wctrl) {
-
         std::list<ControlHolder>::iterator iter;
 
         for (iter = list->begin(); iter != list->end(); ++iter) {
-            if ((*iter).widget == wctrl)
-                break;
+            if ((*iter).widget == wctrl) break;
         }
 
         int value = static_cast<Gtk::HScale *>(wctrl)->get_value();
@@ -430,24 +358,19 @@ namespace vsss_gui {
         __update_control_widgets(ctrl_list_default);
 
         return true;
-
     }
 
-
     void V4LInterface::__set_control(std::list<ControlHolder> * list, Gtk::Widget * wctrl) {
-
         std::list<ControlHolder>::iterator iter;
 
         for (iter = list->begin(); iter != list->end(); ++iter) {
-            if ((*iter).widget == wctrl)
-                break;
+            if ((*iter).widget == wctrl) break;
         }
 
         int value;
         struct v4l2_queryctrl qctrl = (*iter).qctrl;
 
         switch (qctrl.type) {
-
             case V4L2_CTRL_TYPE_INTEGER:
             case V4L2_CTRL_TYPE_INTEGER64:
             case V4L2_CTRL_TYPE_CTRL_CLASS:
@@ -455,11 +378,9 @@ namespace vsss_gui {
             default:
                 break;
 
-
             case V4L2_CTRL_TYPE_BOOLEAN:
 
                 value = static_cast<Gtk::CheckButton *>(wctrl)->get_active();
-
                 if (!vcap.set_control(qctrl.id, value))
                     std::cout << "Can not update control [" << qctrl.name << "] with value " << value << std::endl;
 
@@ -487,23 +408,15 @@ namespace vsss_gui {
                     std::cout << "Can not update control [" << qctrl.name << "] with value " << qmenu.name << std::endl;
 
                 break;
-
         }
-
         __update_control_widgets(ctrl_list_default);
-
     }
-
 
     void V4LInterface::event_draw_info_checkbox_signal_clicked() {
-
         draw_info_flag = !draw_info_flag;
-
     }
 
-
     void V4LInterface::event_robots_id_edit_bt_signal_pressed() {
-
         if (!robots_id_edit_flag) {
             robots_id_edit_flag = true;
             robots_id_edit_bt.set_label("Cancel");
@@ -514,7 +427,6 @@ namespace vsss_gui {
             robots_id_tmp[0] = robots_id_box[0].get_text();
             robots_id_tmp[1] = robots_id_box[1].get_text();
             robots_id_tmp[2] = robots_id_box[2].get_text();
-
         } else {
             robots_id_edit_flag = false;
             robots_id_edit_bt.set_label("Edit");
@@ -528,9 +440,7 @@ namespace vsss_gui {
         }
     }
 
-
     void V4LInterface::event_robots_id_done_bt_signal_clicked() {
-
         std::string str;
 
         str = robots_id_box[0].get_text();
@@ -548,12 +458,9 @@ namespace vsss_gui {
         robots_id_box[1].set_state(Gtk::STATE_INSENSITIVE);
         robots_id_box[2].set_state(Gtk::STATE_INSENSITIVE);
         robots_id_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-
     }
 
-
     void V4LInterface::event_start_game_bt_signal_clicked() {
-
         if(!start_game_flag) {
             start_game_flag = true;
             start_game_bt.set_image(red_button_pressed);

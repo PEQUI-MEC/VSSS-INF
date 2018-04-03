@@ -7,24 +7,19 @@
 
 #include "v4linterface.hpp"
 
-
 #include <string>       // std::string
 #include <iostream>     // std::cout
 #include <sstream>      // std::stringstream
 
 #define DEFAULT_STR " - "
 
-namespace vsss_gui {
+namespace VSSS_GUI {
 
     bool V4LInterface::get_start_game_flag(){
-
         return start_game_flag;
-
     }
 
-
     void V4LInterface::__init_combo_boxes() {
-
         ls_input = Gtk::ListStore::create(model_input);
         cb_input.set_model(ls_input);
         cb_input.pack_start(model_input.m_col_name);
@@ -44,12 +39,9 @@ namespace vsss_gui {
         ls_frame_interval = Gtk::ListStore::create(model_frame_interval);
         cb_frame_interval.set_model(ls_frame_interval);
         cb_frame_interval.pack_start(model_frame_interval.m_col_name);
-
     }
 
-
     void V4LInterface::createQuickActionsFrame() {
-
         Gtk::VBox *vbox;
 
         vbox = new Gtk::VBox();
@@ -71,12 +63,9 @@ namespace vsss_gui {
         vbox->pack_start(bt_save, false, true, 5);
         bt_load.set_label("Load");
         vbox->pack_start(bt_load, false, true, 5);
-
     }
 
-
     void V4LInterface::__create_frm_device_info() {
-
         Gtk::HBox * hbox;
         Gtk::VBox * vbox;
         Gtk::Label * label;
@@ -89,8 +78,6 @@ namespace vsss_gui {
 
         hbox = new Gtk::HBox();
         vbox->pack_start(*hbox, false, true, 0);
-
-
 
         label = new Gtk::Label("Device: ");
         label->set_alignment(1.0, .5);
@@ -136,12 +123,9 @@ namespace vsss_gui {
         table->attach(lb_device_bus, 3, 4, 1, 2);
 
         hbox->pack_start(*table, true, true, 0);
-
     }
 
-
     void V4LInterface::__create_frm_device_properties() {
-
         Gtk::Label * label;
         Gtk::Table * table;
         Gtk::HBox * hbox;
@@ -150,18 +134,14 @@ namespace vsss_gui {
         // Adiciona a vbox (principal) no frame
         vbox = new Gtk::VBox();
 
-
         // Primeira Hbox com oos botões Warp, Reset, Adjust
         hbox = new Gtk::HBox();
         hbox->set_border_width(5);
         hbox->set_halign(Gtk::ALIGN_CENTER);
 
-
         vbox->pack_start(*hbox, false, true, 0);
         frm_device_prop.add(*vbox);
         vbox->pack_start(notebook, false, true, 5);
-
-
 
         table = new Gtk::Table(4, 4, false);
 
@@ -198,19 +178,14 @@ namespace vsss_gui {
 
         notebook.append_page(*table, "Properties");
 
-
         frm_device_prop.set_label("Device Prop");
-
     }
 
-
     void V4LInterface::__create_frm_warp() {
-
         Gtk::HBox * hbox;
         Gtk::HBox * hbox2;
         Gtk::VBox * vbox;
         Gtk::Label * label;
-
 
         // Adiciona a vbox (principal) no frame
         vbox = new Gtk::VBox();
@@ -233,7 +208,6 @@ namespace vsss_gui {
         bt_invert_image.signal_clicked().connect(sigc::mem_fun(*this,
         &V4LInterface::__event_bt_invert_image_signal_clicked));
 
-
         // Terceira Hbox com as barras de offset e suas labels
         hbox2 = new Gtk::HBox();
         hbox2->set_border_width(5);
@@ -246,7 +220,6 @@ namespace vsss_gui {
         hbox2->pack_start(HScale_offsetR, false, true, 5);
         vbox->pack_start(*hbox2, false, true, 0);
 
-
         // Configurações da barra do offset right
         HScale_offsetR.set_digits(0);
         HScale_offsetR.set_increments(1,1);
@@ -256,7 +229,6 @@ namespace vsss_gui {
         HScale_offsetR.set_size_request(100,-1);
         HScale_offsetR.signal_value_changed().connect(sigc::mem_fun(*this, &V4LInterface::HScale_offsetR_value_changed));
 
-
         // Configurações da barra do offset left
         HScale_offsetL.set_digits(0);
         HScale_offsetL.set_increments(1,1);
@@ -265,26 +237,19 @@ namespace vsss_gui {
         HScale_offsetL.set_draw_value();
         HScale_offsetL.set_size_request(100,-1);
         HScale_offsetL.signal_value_changed().connect(sigc::mem_fun(*this,&V4LInterface::HScale_offsetL_value_changed));
-
     }
 
-
     void V4LInterface::__update_cb_device() {
-
         char device[16];
-
         if(v4lcap::enum_device_name(device, 20, true)) {
             do {
                 cb_device.append(device);
             } while(v4lcap::enum_device_name(device, 20));
         }
-
     }
 
-
-     void V4LInterface::__update_cb_input() {
-
-         cb_input_signal.block(true);
+    void V4LInterface::__update_cb_input() {
+        cb_input_signal.block(true);
         ls_input->clear();
 
         struct v4l2_input input;
@@ -300,21 +265,14 @@ namespace vsss_gui {
                 row[model_input.m_col_name] = name;
                 row[model_input.m_col_data] = input;
 
-                if(input.index == index)
-                    cb_input.set_active(row);
-
+                if(input.index == index) cb_input.set_active(row);
             } while(vcap.enum_video_input(&input));
         }
-
         cb_input_signal.block(false);
-
     }
 
-
     void V4LInterface::__update_cb_standard() {
-
         cb_standard_signal.block(true);
-
         ls_standard->clear();
 
         struct v4l2_standard standard;
@@ -329,21 +287,14 @@ namespace vsss_gui {
                 row[model_standard.m_col_name] = name;
                 row[model_standard.m_col_data] = standard;
 
-                if (standard.id == index)
-                    cb_standard.set_active(row);
-
-
+                if (standard.id == index) cb_standard.set_active(row);
             } while(vcap.enum_video_standard(&standard));
         }
-
         cb_standard_signal.block(false);
     }
 
-
     void V4LInterface::__update_cb_format_desc() {
-
         cb_format_desc_signal.block(true);
-
         ls_format_desc->clear();
 
         struct v4l2_format fmt;
@@ -354,33 +305,26 @@ namespace vsss_gui {
 
         if(vcap.enum_image_format(&fmt_desc, 0, true)) {
             do {
-            Gtk::TreeModel::Row row = *(ls_format_desc->append());
-            Glib::ustring name = (const char *) fmt_desc.description;
+                Gtk::TreeModel::Row row = *(ls_format_desc->append());
+                Glib::ustring name = (const char *) fmt_desc.description;
 
-            if(fmt_desc.flags & V4L2_FMT_FLAG_EMULATED)
-                name = name + "(Emulated)";
+                if(fmt_desc.flags & V4L2_FMT_FLAG_EMULATED) name = name + "(Emulated)";
 
-            row[model_format_desc.m_col_name] = name;
-            row[model_format_desc.m_col_data] = fmt_desc;
+                row[model_format_desc.m_col_name] = name;
+                row[model_format_desc.m_col_data] = fmt_desc;
 
-            if (fmt_desc.pixelformat == index)
-              cb_format_desc.set_active(row);
-
+                if (fmt_desc.pixelformat == index) cb_format_desc.set_active(row);
             } while(vcap.enum_image_format(&fmt_desc));
         }
-
         cb_format_desc_signal.block(false);
-
     }
 
-
     void V4LInterface::__update_cb_frame_size() {
-
         cb_frame_size_signal.block(true);
-
         ls_frame_size->clear();
 
         struct v4l2_format fmt;
+
         vcap.get_format(&fmt, V4L2_BUF_TYPE_VIDEO_CAPTURE);
         sp_width.set_value((double) fmt.fmt.pix.width);
         sp_height.set_value((double) fmt.fmt.pix.height);
@@ -396,18 +340,13 @@ namespace vsss_gui {
 
                 if (frmsize.discrete.width == fmt.fmt.pix.width && frmsize.discrete.height == fmt.fmt.pix.height)
                     cb_frame_size.set_active(row);
-
             } while(vcap.enum_frame_size(&frmsize, fmt.fmt.pix.pixelformat));
         }
-
         cb_frame_size_signal.block(false);
     }
 
-
     void V4LInterface::__update_cb_frame_interval() {
-
         cb_frame_interval_signal.block(true);
-
         ls_frame_interval->clear();
 
         struct v4l2_format fmt;
@@ -432,16 +371,15 @@ namespace vsss_gui {
                 row[model_frame_interval.m_col_data] = frminterval;
 
                 if (streamparm.parm.capture.timeperframe.numerator == frminterval.discrete.numerator
-                  && streamparm.parm.capture.timeperframe.denominator == frminterval.discrete.denominator) {
+                  && streamparm.parm.capture.timeperframe.denominator == frminterval.discrete.denominator)
+                {
                     cb_frame_interval.set_active(row);
                 }
 
             } while (vcap.enum_frame_interval(&frminterval, fmt.fmt.pix.pixelformat, width, height));
         }
         cb_frame_interval_signal.block(false);
-
     }
-
 
     void V4LInterface::__update_all() {
         __update_cb_input();
@@ -451,9 +389,7 @@ namespace vsss_gui {
         __update_cb_frame_interval();
     }
 
-
     void V4LInterface::__make_control_list_default() {
-
         ctrl_list_default.clear();
         struct v4l2_queryctrl qctrl;
         struct v4l2_querymenu qmenu;
@@ -465,7 +401,6 @@ namespace vsss_gui {
                 Glib::RefPtr<Gtk::ListStore> lstore;
 
                 switch(qctrl.type) {
-
                     case V4L2_CTRL_TYPE_INTEGER:
                     case V4L2_CTRL_TYPE_INTEGER64:
 
@@ -525,23 +460,17 @@ namespace vsss_gui {
                     default:
                         wctrl = 0;
                         break;
-
                 }
-
                 if(wctrl) {
                     hold.qctrl = qctrl;
                     hold.widget = wctrl;
                     ctrl_list_default.push_back(hold);
                 }
-
             } while(vcap.enum_control_default(&qctrl));
         }
-
     }
 
-
     void V4LInterface::__make_control_table(std::list<ControlHolder>& list, const char * title) {
-
         // create new controls =====================================================
         Gtk::Label * label = NULL;
         Gtk::Table * table = NULL;
@@ -588,27 +517,19 @@ namespace vsss_gui {
                 label->set_max_width_chars(10);
                 label->set_alignment(1.0, 0.5);
             }
-
             count++;
         }
-
         notebook.show_all();
-
     }
 
-
     void V4LInterface::__block_control_signals(std::list<ControlHolder>& list, bool block) {
-
         std::list<ControlHolder>::iterator iter;
 
         for (iter = list.begin(); iter != list.end(); ++iter)
             (*iter).con.block(block);
-
     }
 
-
     void V4LInterface::__update_control_widgets(std::list<ControlHolder>& ctrl_list) {
-
         Gtk::Widget * wctrl = NULL;
         struct v4l2_queryctrl qctrl;
         struct v4l2_control control;
@@ -624,7 +545,6 @@ namespace vsss_gui {
             vcap.get_control(&control, qctrl.id);
 
             switch (qctrl.type) {
-
                 case V4L2_CTRL_TYPE_INTEGER:
                 case V4L2_CTRL_TYPE_INTEGER64:
 
@@ -657,27 +577,19 @@ namespace vsss_gui {
                         struct v4l2_querymenu qm;
                         qm = row[model_control_menu.m_col_data];
 
-                        if (control.value < 0)
-                            return;
-
+                        if (control.value < 0) return;
                         if (control.value == (int) qm.index) {
                             static_cast<Gtk::ComboBox *>(wctrl)->set_active(iter);
                             break;
                         }
-
                     }
                     break;
-
                 }
         }
         __block_control_signals(ctrl_list, false);
-
-
     }
 
-
     void V4LInterface::updateRobotLabels() {
-
         std::stringstream aux1;
         aux1 << "(" << round((robotGUI.robot_list[0].position.x))<< "," << round((robotGUI.robot_list[0].position.y))<< "," << round(robotGUI.robot_list[0].orientation*(180/PI)) << ")";
         robot1_pos_lb->set_text(aux1.str());
@@ -693,16 +605,13 @@ namespace vsss_gui {
         std::stringstream aux4;
         aux4 << "(" << round((ballX))<< "," << round((ballY)) << ")";
         ball_pos_lb->set_text(aux4.str());
-
     }
-
 
     void V4LInterface::updateFPS(int fps) {
         std::stringstream aux;
         aux << "FPS: " << fps;
         fps_label->set_text(aux.str());
     }
-
 
     void V4LInterface::createIDsFrame() {
         Gtk::Label *label;
@@ -748,12 +657,9 @@ namespace vsss_gui {
 
         robots_id_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_edit_bt_signal_pressed));
         robots_id_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_done_bt_signal_clicked));
-
     }
 
-
     void V4LInterface::createPositionsAndButtonsFrame() {
-
         Gtk::Label *label;
         info_hbox.pack_start(robots_pos_buttons_vbox, false, true, 5);
 
@@ -762,20 +668,17 @@ namespace vsss_gui {
         robots_pos_fm.add(robots_pos_vbox);
         robots_pos_vbox.set_size_request(190,-1);
 
-
         label = new Gtk::Label("Robot 1:");
         robot1_pos_lb = new Gtk::Label("-");
         robots_pos_hbox[0].pack_start(*label, false, true, 5);
         robots_pos_hbox[0].pack_start(*robot1_pos_lb, false, true, 5);
         robots_pos_vbox.pack_start(robots_pos_hbox[0], false, true, 5);
 
-
         label = new Gtk::Label("Robot 2:");
         robot2_pos_lb = new Gtk::Label("-");
         robots_pos_hbox[1].pack_start(*label, false, true, 5);
         robots_pos_hbox[1].pack_start(*robot2_pos_lb, false, true, 5);
         robots_pos_vbox.pack_start(robots_pos_hbox[1], false, true, 5);
-
 
         label = new Gtk::Label("Robot 3:");
         robot3_pos_lb = new Gtk::Label("-");
@@ -804,12 +707,9 @@ namespace vsss_gui {
         draw_info_hbox.pack_start(draw_info_checkbox, false, true, 5);
         draw_info_checkbox.set_label("Disable Drawing");
         draw_info_checkbox.set_can_focus(false);
-
     }
 
-
     // Constructor
-
 
     V4LInterface::V4LInterface() :
     Gtk::VBox(false, 0), reset_warp_flag(false) {
@@ -844,8 +744,6 @@ namespace vsss_gui {
 
         HScale_offsetR.set_state(Gtk::STATE_INSENSITIVE);
         HScale_offsetL.set_state(Gtk::STATE_INSENSITIVE);
-
-
 
         notebook.set_scrollable(true);
         adjust_event_flag = false;
@@ -882,11 +780,8 @@ namespace vsss_gui {
         robotGUI.robot_list[1].role = 1;
         robotGUI.robot_list[2].role = 2;
 
-
-
         for(unsigned i = 0; i < robotGUI.robot_list.size(); i++)
             robotGUI.robot_list.at(i).position = cv::Point(-1,-1);
-
 
         createPositionsAndButtonsFrame();
         createQuickActionsFrame();
@@ -920,6 +815,5 @@ namespace vsss_gui {
         cb_frame_interval_signal = cb_frame_interval.signal_changed().connect(sigc::mem_fun(*this, &V4LInterface::__event_cb_frame_interval_changed));
 
         draw_info_checkbox.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_draw_info_checkbox_signal_clicked));
-
     }
 }

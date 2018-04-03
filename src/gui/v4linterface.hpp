@@ -17,8 +17,7 @@
 
 #define PI 3.14159265453
 
-namespace vsss_gui {
-
+namespace VSSS_GUI {
     typedef struct __ctrl_holder {
         struct v4l2_queryctrl qctrl;
         Gtk::Widget *widget;
@@ -26,7 +25,6 @@ namespace vsss_gui {
     } ControlHolder;
 
     class V4LInterface : public Gtk::VBox {
-
     public:
 
         ImageView imageView;
@@ -298,8 +296,7 @@ namespace vsss_gui {
         bool __set_control_hscale(int type, double val, std::list <ControlHolder> *list, Gtk::Widget *wctrl);
 
         void __set_control(std::list <ControlHolder> *list, Gtk::Widget *wctrl);
-
     };
-
 }
+
 #endif /* V4LINTERFACE_HPP_ */

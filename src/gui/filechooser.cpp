@@ -1,10 +1,8 @@
 #include "filechooser.hpp"
 #include <iostream>
 
-
 // Constructor of the main Window (build ui interface).
 FileChooser::FileChooser() {
-
     // Initialize the main window and hide the title bar
     this->set_border_width(10);
 
@@ -39,7 +37,6 @@ FileChooser::FileChooser() {
 
     //Handle the response:
     switch(result) {
-
         case Gtk::RESPONSE_OK:
 
             // The user selected a file
@@ -58,11 +55,8 @@ FileChooser::FileChooser() {
             // The user closed the dialog box
             std::cout << "Unexpected button clicked." << std::endl;
             break;
-
     }
-
 }
-
 
 // Destructor of the class
 FileChooser::~FileChooser() {}
