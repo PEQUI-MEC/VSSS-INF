@@ -3,7 +3,7 @@
 #define PI 3.14159265453
 #include "fuzzy/fuzzyController.hpp"
 #include "opencv2/opencv.hpp"
-#include "ls.cpp"
+#include "ls.hpp"
 #include "robot.hpp"
 #include "serialW.hpp"
 #include <math.h>

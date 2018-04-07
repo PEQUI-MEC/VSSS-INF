@@ -23,7 +23,7 @@
 class CPUTimer {
 
 public:
-    
+
     CPUTimer();
 
     // Retorna o tempo (em segs e msegs) de CPU cronometrado para uma rotina.

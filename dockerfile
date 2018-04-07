@@ -1,9 +1,8 @@
 FROM ubuntu:17.10
 
-RUN apt-get update
-
 #OPENCV
-RUN apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
         build-essential \
         cmake \ 
         git \ 
@@ -11,23 +10,49 @@ RUN apt-get install -y \
         pkg-config \
         libavcodec-dev \ 
         libavformat-dev \
-        libswscale-dev
+        libswscale-dev \ 
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opencv_workspace
-RUN git clone https://github.com/opencv/opencv.git --depth 1
-WORKDIR ./opencv/build
-RUN cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
-RUN make
-RUN make install
+RUN git clone \
+        --depth 1 \
+        --branch 3.4.1 \
+        https://github.com/opencv/opencv.git 
+RUN git clone \
+        --depth 1 \
+        --branch 3.4.1 \
+        https://github.com/opencv/opencv_contrib.git  
+WORKDIR ./build
+RUN cmake \ 
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr/local ../opencv \
+        -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ../opencv \
+    && make -j7 \
+    && make install \
+    && rm -r /opencv_workspace 
+
+#XBEE
+WORKDIR /Xbee_workspace
+RUN git clone \
+        --depth 1 \ 
+        --branch v3.0.11 \
+        https://github.com/attie/libxbee3.git 
+WORKDIR ./libxbee3
+RUN make configure \
+    && make -j7 \
+    && make install \
+    && rm -r /Xbee_workspace 
 
 #VSSS
 WORKDIR /VSS_workspace
-RUN apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
         libboost-all-dev \
         libv4l-dev \
         libv4lconvert0 \
-        libgtkmm-3.0-dev
+        libgtkmm-3.0-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY . .
-RUN ./make.sh
-CMD ./runVSSS.sh
+RUN ./build.sh
+CMD ./P137

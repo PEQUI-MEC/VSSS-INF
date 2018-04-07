@@ -1,9 +1,11 @@
 media/**/*.avi
 media/**/*.png
-VSSS
+P137
 *.a
 *.o
 .vscode/
 .idea/
 *.txt
 config/quicksave.json
+build
+cmake-build-debug

@@ -30,7 +30,7 @@
 #include <gtkmm.h>
 #include <math.h>
 #include <fstream>
-#include "cpuTimer.cpp"
+#include "cpuTimer.hpp"
 #include "constants.hpp"
 
 #define MAX_THETA_TOLERATION 3

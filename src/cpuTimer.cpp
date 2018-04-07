@@ -6,7 +6,7 @@
  *
  */
 
-#include "cpuTimer.h"
+#include "cpuTimer.hpp"
 
 CPUTimer::CPUTimer() {
 	started = false;

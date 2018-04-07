@@ -60,6 +60,7 @@ public:
 
     // This will give you the position estimate for a certain future sample
     double estimate(int futureSample);
+
 };
 
 #endif

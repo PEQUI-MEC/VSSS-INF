@@ -1,4 +1,4 @@
-#include "ls.h"
+#include "ls.hpp"
 
 LS::LS() {
     this->sampNum   = 1;
