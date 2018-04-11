@@ -77,9 +77,9 @@ set(sources
         src/main.cpp
         src/ls.cpp
 		src/cpuTimer.cpp
-        src/camcap.hpp
+        src/camcap.cpp
         src/kalmanFilter.cpp
-        src/strategy.hpp
+        src/strategy.cpp
         src/constants.hpp
         src/robot.hpp
 
@@ -89,7 +89,7 @@ set(sources
         src/communication/flyingMessenger.cpp
 
         src/capture/v4lcap.cpp
-		src/capture/v4ldev.hpp
+		src/capture/v4ldev.cpp
 
         src/fuzzy/fuzzyController.cpp
         src/fuzzy/fuzzyFunction.cpp
@@ -102,7 +102,7 @@ set(sources
         src/gui/filechooser.cpp
         src/gui/controlGUI.cpp
         src/gui/testFrame.cpp
-        src/gui/strategyGUI.hpp
+        src/gui/strategyGUI.cpp
         src/gui/visionGUI.cpp
         src/gui/robotGUI.cpp
         src/gui/imageView.cpp
