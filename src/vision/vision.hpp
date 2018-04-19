@@ -71,7 +71,6 @@ private:
     void searchTags(int color);
     void searchGMMTags(std::vector<cv::Mat> thresholds);
     void findTags();
-    // void findElements();
     void pick_a_tag();
     int inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary);
 
@@ -124,6 +123,11 @@ public:
   void setDilate(int index, int inValue);
   void setBlur(int index, int inValue);
   void setAmin(int index, int inValue);
+  
+  /**
+   * @brief Loads default values to vision object, making callibration easier.
+   */
+  void preloadHSV();
 };
 
 #endif /* VISION_HPP_ */

@@ -51,7 +51,8 @@ public:
 
     int frameCounter;
     double ticks = 0;
-    vector<cv::Point> robot_kf_est;
+
+    vector<cv::Point> robot_raw_pos;
     vector< KalmanFilter > KF_RobotBall;
 
     cv::Point Ball_Est;
@@ -100,6 +101,7 @@ public:
     
     // cria a interface de criação e carregamento de formação
     void formation_creation();
+
     // atualiza as informações dadas pela interface na estratégia
     void update_formation_information();
     

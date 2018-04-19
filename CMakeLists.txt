@@ -95,7 +95,6 @@ set(sources
         src/fuzzy/fuzzyFunction.cpp
         src/fuzzy/rules.cpp
 
-        src/vision/gmm.cpp
         src/vision/tag.cpp
         src/vision/vision.cpp
 
