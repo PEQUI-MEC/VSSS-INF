@@ -33,9 +33,20 @@
 
 include(CMakeToolsHelpers OPTIONAL)
 include(cmake/PreventSourceFolderCorruption.cmake)
+#include(cmake/P137MinDepVersions.cmake)
 
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 project(P137)
+
+#  --DEPENDENCY RESOLUTION---------------
+# set(bash_cmd "bash")
+# message(STATUS "Verifying installed dependencies")
+# execute_process(COMMAND ${bash_cmd}
+#     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+#     RESULT_VARIABLE bash_result
+#     OUTPUT_VARIABLE bash_resp)
+# message(STATUS "All dependencies resolved")
+# ---------------------------------------
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
@@ -68,8 +79,11 @@ pkg_check_modules(V4L2 libv4l2 libv4lconvert)
 link_directories(${V4L2_LIBRARY_DIRS})
 
 # Find needed packages and libraries on system
+
 find_package(Boost REQUIRED COMPONENTS date_time filesystem wserialization system serialization thread regex)
+
 find_package(OpenCV REQUIRED)
+
 find_library(LIBXBEE libxbee.so libxbeep.so)
 
 # --FILE GLOBBING------------------------
