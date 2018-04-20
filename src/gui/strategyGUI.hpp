@@ -42,6 +42,12 @@ private:
 	void _event_formation_box_changed();
 	
 	void _event_set_penalty_behavior();
+
+	void _event_fulltransition_checkbox_signal_clicked();
+
+	void _event_halftransition_signal_clicked();
+	
+	void _event_transitionmindcontrol_signal_clicked();
 	
 	/// formation.txt:
 	///	Nº de formações
@@ -105,6 +111,12 @@ public:
 	Gtk::Grid behavior_grid;
 	Gtk::ToggleButton bt_penaltyBehavior;
 
+	Gtk::Frame transitions_fm;
+	Gtk::Grid transitions_grid;
+	Gtk::CheckButton transitions_fulltransition_check;
+	Gtk::CheckButton transitions_halftransition_check;
+	Gtk::CheckButton transitions_mindcontrol_check;
+
 	StrategyGUI();
 	
 	void createBehaviorsFrame();
@@ -112,6 +124,8 @@ public:
 	void configureTestFrame();
 	
 	void createFormationFrame();
+
+	void createTransitionsFrame();
 	
 	void createMenuFrame();
 	

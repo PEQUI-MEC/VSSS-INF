@@ -1,5 +1,18 @@
 #include "strategyGUI.hpp"
 
+StrategyGUI::StrategyGUI() {
+	createFormationFrame();
+	createTransitionsFrame();
+	//createBehaviorsFrame();
+	pack_start(strategy.testFrame, false, true, 5);
+	configureTestFrame();
+	//createMenuFrame();
+	//createInfoTextFrame();
+	//createInfoImageFrame();
+}
+
+StrategyGUI::~StrategyGUI() {}
+
 char * StrategyGUI::unconstant_char(const char * c_str) {
 	char * uc;
 	int len;
@@ -258,6 +271,21 @@ void StrategyGUI::_event_set_penalty_behavior() {
 	// bt_penaltyBehavior.set_active(!flag);
 }
 
+void StrategyGUI::_event_fulltransition_checkbox_signal_clicked() {
+	strategy.full_transition_enabled = !strategy.full_transition_enabled;
+	//std::cout << "Full transition:" << strategy.full_transition_enabled << std::endl;
+}
+
+void StrategyGUI::_event_halftransition_signal_clicked() {
+	strategy.half_transition_enabled = !strategy.half_transition_enabled;
+	//std::cout << "Half transition:" << strategy.half_transition_enabled << std::endl;
+}
+	
+void StrategyGUI::_event_transitionmindcontrol_signal_clicked() {
+	strategy.transition_mindcontrol_enabled = !strategy.transition_mindcontrol_enabled;
+	//std::cout << "Transition mindcontrol: " << strategy.transition_mindcontrol_enabled << std::endl;
+}
+
 /// formation.txt:
 ///	Nº de formações
 /// formation_name r1x r1y r1o r2x r2y r2o r3x r3y r3o
@@ -291,16 +319,6 @@ void StrategyGUI::loadSavedFormations() {
 	formation_box.set_active(0);
 }
 
-StrategyGUI::StrategyGUI() {
-	createFormationFrame();
-	createBehaviorsFrame();
-	pack_start(strategy.testFrame, false, true, 5);
-	configureTestFrame();
-	//createMenuFrame();
-	//createInfoTextFrame();
-	//createInfoImageFrame();
-}
-
 void StrategyGUI::createBehaviorsFrame() {
 	pack_start(behavior_fm, false, true, 5);
 	behavior_fm.add(behavior_grid);
@@ -311,6 +329,32 @@ void StrategyGUI::createBehaviorsFrame() {
 	behavior_grid.set_column_spacing(5);
 	behavior_grid.attach(bt_penaltyBehavior, 0, 0, 1, 1);
 	bt_penaltyBehavior.signal_pressed().connect(sigc::mem_fun(*this, &StrategyGUI::_event_set_penalty_behavior));
+}
+
+void StrategyGUI::createTransitionsFrame() {
+	pack_start(transitions_fm, false, true, 5);
+
+	transitions_fm.set_label("Transitions");
+	transitions_fm.add(transitions_grid);
+	
+	transitions_grid.set_border_width(10);
+	transitions_grid.set_column_spacing(5);
+	transitions_grid.set_halign(Gtk::ALIGN_CENTER);	
+
+	transitions_grid.attach(transitions_fulltransition_check, 0, 0, 1, 1);
+	transitions_grid.attach(transitions_halftransition_check, 0, 1, 1, 1);
+	transitions_grid.attach(transitions_mindcontrol_check, 1, 0, 1, 1);
+
+	transitions_fulltransition_check.set_label("Full Transition");
+	transitions_halftransition_check.set_label("Half Transition");
+	transitions_mindcontrol_check.set_label("Transition Mindcontrol");
+	transitions_fulltransition_check.set_active();
+	transitions_halftransition_check.set_active();
+	transitions_mindcontrol_check.set_active();
+
+	transitions_fulltransition_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_fulltransition_checkbox_signal_clicked));
+	transitions_halftransition_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_halftransition_signal_clicked));
+	transitions_mindcontrol_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_transitionmindcontrol_signal_clicked));
 }
 
 void StrategyGUI::configureTestFrame() {
@@ -410,5 +454,3 @@ void StrategyGUI::createInfoImageFrame() {
 	strategy_img.set("img/pequi_mecanico.png");
 	info_img_fm.add(strategy_img);
 }
-
-StrategyGUI::~StrategyGUI() {}

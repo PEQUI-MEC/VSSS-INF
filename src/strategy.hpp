@@ -102,10 +102,11 @@ public:
 	bool full_transition = false;
 	bool danger_zone_1 = false;
 	bool danger_zone_2 = false;
-	bool half_transition_enabled = false;
-	bool full_transition_enabled = false;
-	bool transition_mindcontrol_enabled = true;
 	bool atk_ball_possession = false;
+
+	bool half_transition_enabled = true;
+	bool full_transition_enabled = true;
+	bool transition_mindcontrol_enabled = true;
 
 	int t = 0;
 	int timeout = 0;

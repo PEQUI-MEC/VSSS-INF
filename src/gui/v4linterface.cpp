@@ -706,7 +706,6 @@ namespace VSSS_GUI {
         draw_info_hbox.set_halign(Gtk::ALIGN_CENTER);
         draw_info_hbox.pack_start(draw_info_checkbox, false, true, 5);
         draw_info_checkbox.set_label("Disable Drawing");
-        draw_info_checkbox.set_can_focus(false);
     }
 
     // Constructor

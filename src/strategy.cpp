@@ -137,9 +137,6 @@ void Strategy::get_targets(vector<Robot> * pRobots, cv::Point * advRobots) {
 
 	// danger_zone_1 = false; //só para testes com um robô
 	// danger_zone_2 = false; //só para testes com um robô
-	// half_transition_enabled = false; //só para testes com um robô
-	// full_transition_enabled = false; //só para testes com um robô
-	// transition_mindcontrol_enabled = false;
 
 	// cout << "transitions" << endl;
 
