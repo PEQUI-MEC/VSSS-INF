@@ -50,9 +50,10 @@ ControlGUI::ControlGUI() {
     cb_test.append("Robot D");
     cb_test.append("Robot E");
     cb_test.append("Robot F");
+    cb_test.append("Robot G");
     cb_test.append("All");
 
-    cb_test.set_active(6); // ALL
+    cb_test.set_active(TOTAL_ROBOTS); // ALL
     Tbox_V1.set_text("0.8");
     Tbox_V2.set_text("0.8");
 
@@ -117,7 +118,7 @@ void ControlGUI::handleBatteryMsg(char buf[12], int id) {
     double battery;
     std::string cmd(buf);
     // check if first element is an ID
-    if(cmd[0] != 'A' && cmd[0] != 'B' && cmd[0] != 'C' && cmd[0] != 'D' && cmd[0] != 'E' && cmd[0] != 'F') {
+    if(cmd[0] != 'A' && cmd[0] != 'B' && cmd[0] != 'C' && cmd[0] != 'D' && cmd[0] != 'E' && cmd[0] != 'F' && cmd[0] != 'G') {
         std::cout << "ControlGUI::updateBattery: failed to update battery (WRONG ID). " << cmd << std::endl;
         return;
     }
@@ -260,11 +261,11 @@ void ControlGUI::_send_test() {
 
 	if(pos == -1) {
 		return;
-	} else if(pos != 6) {
+	} else if(pos != TOTAL_ROBOTS) {
 		char id = get_robot_id(pos);
 		FM.send_msg(id,cmd);
 	} else {
-		for(int i = 0; i < 6; ++i) {
+		for(int i = 0; i < TOTAL_ROBOTS; ++i) {
 			char id = get_robot_id(i);
 			FM.send_msg(id,cmd);
 		}
@@ -368,11 +369,11 @@ void ControlGUI::_send_test() {
 }
 
 int ControlGUI::get_robot_pos(char id) {
-    return uint8_t(id)-65;
+    return uint8_t(id)-'A';
 }
 
 char ControlGUI::get_robot_id(int pos) {
-    return char(65+pos);
+    return char('A'+pos);
 }
 
 void ControlGUI::_update_cb_serial(){
@@ -456,6 +457,7 @@ void ControlGUI::_create_status_frame() {
     name.push_back("Robot D");
     name.push_back("Robot E");
     name.push_back("Robot F");
+    name.push_back("Robot G");
 
     for(int i = 0; i < TOTAL_ROBOTS; i++) {
         status_img[i].set("img/offline.png");

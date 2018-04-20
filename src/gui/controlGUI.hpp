@@ -34,7 +34,7 @@ public:
 	//SerialW s;
 	FlyingMessenger FM;
 
-	const static int TOTAL_ROBOTS = 6;
+	const static int TOTAL_ROBOTS = 7;
 
 	TestFrame testFrame;
 

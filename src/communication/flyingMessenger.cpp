@@ -22,6 +22,7 @@ void FlyingMessenger::add_robots() {
 	xbee->newRobot('D', 0x35f6);
 	xbee->newRobot('E', 0x97e7);
 	xbee->newRobot('F', 0x6b0d);
+	xbee->newRobot('G', 0x56bc);
 }
 
 void FlyingMessenger::send_msg(char id, std::string msg) {
