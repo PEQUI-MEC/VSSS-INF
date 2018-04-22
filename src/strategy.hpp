@@ -44,6 +44,7 @@
 #define	TRANSITION_STATE 4
 #define	SIDEWAYS 5
 #define DEF_CORNER_STATE 6
+#define ATK_PENALTI_STATE 7
 
 //potField
 #define BALL_IS_OBS 0
