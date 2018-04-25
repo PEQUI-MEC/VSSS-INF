@@ -6,11 +6,15 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <chrono>
+#include <thread>
+#include <condition_variable>
 
 #define POSITION 0
 #define SPEED 1
 #define ORIENTATION 2
 #define VECTOR 3
+#define DEFAULT_FRAMESKIP 5
 
 class FlyingMessenger {
 private:
@@ -20,6 +24,10 @@ private:
 	 *  send and get message. More details can be found on serialCom.hpp.
 	 */
 	SerialCom* xbee = nullptr;
+	
+	double time_between_msgs;
+	int frameskip, send_cmd_count;
+	std::chrono::system_clock::time_point previous_msg_time;
 
 	/**
 	 * @brief Calls SerialCom's addNew method and add 6 possible connections to the robots based on their
@@ -137,6 +145,14 @@ public:
 	 * @brief Stops xbee connection and purge the instance of xbee (instance of SerialCom class).
 	 */
 	void stop_xbee();
+	
+	void update_msg_time();
+	
+	void set_frameskipper(int frames);
+	
+	int get_frameskipper();
+	
+	double get_time();
 };
 
 #endif //VSSS_FlyingMessenger_H

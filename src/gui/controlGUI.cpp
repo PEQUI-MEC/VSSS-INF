@@ -12,7 +12,7 @@ ControlGUI::ControlGUI() {
     Serial_Enabled = false;
     // Adicionar o frame do Serial e sua VBOX
     pack_start(Top_hbox, false, true, 5);
-    Top_hbox.pack_start(Serial_fm, false, true, 5);
+    Top_hbox.pack_start(Serial_fm, true, true, 0);
     Serial_fm.set_label("Serial");
     Serial_fm.add(Serial_vbox);
 
@@ -39,6 +39,15 @@ ControlGUI::ControlGUI() {
     send_cmd_box.set_width_chars(25);
     bt_send_cmd.set_label("Send Command");
     Serial_vbox.pack_start(Serial_hbox[2], false, true, 5);
+    
+    bt_set_frameskip.set_label("Set skipped frames");
+	frameskipper = FM.get_frameskipper();
+	time_msgs.set_label("Delay: " + std::to_string((frameskipper + 1) * 33) + " ms");
+	entry_set_frameskip.set_text(std::to_string(frameskipper));
+	Serial_hbox[3].pack_start(entry_set_frameskip, false, false, 5);
+	Serial_hbox[3].pack_start(bt_set_frameskip, false, false, 5);
+	Serial_hbox[3].pack_start(time_msgs, false, false, 5);
+	Serial_vbox.pack_start(Serial_hbox[3], false, false, 5);
 
     Tbox_V1.set_max_length(6);
     Tbox_V2.set_max_length(6);
@@ -85,6 +94,7 @@ ControlGUI::ControlGUI() {
     bt_Serial_Start.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_start_serial));
     bt_Robot_Status.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_robot_status));
     bt_send_cmd.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_send_command));
+    bt_set_frameskip.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::set_frameskipper));
 }
 
 void ControlGUI::configureTestFrame() {
@@ -99,6 +109,30 @@ void ControlGUI::configureTestFrame() {
         testFrame.setLabel(i, labels[i]);
         testFrame.configureHScale(i, currentValue[i],  min[i], max[i], digits[i], steps[i]);
     }
+}
+
+void ControlGUI::set_frameskipper() {
+	int frames;
+	try {
+		frames = std::stoi(entry_set_frameskip.get_text());
+	} catch (...) {
+		return;
+	}
+	FM.set_frameskipper(frames);
+	std::string time_str = std::to_string(33 * (frames + 1));
+	time_msgs.set_label("Delay: " + time_str + " ms");
+}
+
+void ControlGUI::update_msg_time() {
+	acc_time += FM.get_time();
+	time_count++;
+	if (acc_time > 500) {
+		std::ostringstream ss;
+		ss << round(acc_time / time_count * 100) / 100;
+		time_msgs.set_label("Delay: " + ss.str() + " ms");
+		acc_time = 0;
+		time_count = 0;
+	}
 }
 
 void ControlGUI::_send_command() {

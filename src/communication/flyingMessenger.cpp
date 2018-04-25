@@ -40,7 +40,7 @@ void FlyingMessenger::send_old_format(std::string cmd) {
 
 std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robot> robots) {
 	vector<message> acks;
-	if(!xbee) return acks;
+	if(!xbee || ++send_cmd_count <= frameskip) return acks;
 
 	for(Robot robot : robots){
 		std::string msg;
@@ -72,6 +72,9 @@ std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robot> robots) {
 			acks.push_back({robot.ID, std::to_string(ack)});
 		}
 	}
+	
+	update_msg_time();
+	send_cmd_count=0;
 
 	return acks;
 }
@@ -129,6 +132,28 @@ void FlyingMessenger::reset_lost_acks() {
 	xbee->reset_lost_acks();
 }
 
+void FlyingMessenger::set_frameskipper(int frames) { 
+	frameskip = frames;
+}
+
+int FlyingMessenger::get_frameskipper() {
+	return frameskip;
+}
+
+double FlyingMessenger::get_time() {
+	return time_between_msgs;
+}
+
+void FlyingMessenger::update_msg_time() {
+	auto now = std::chrono::system_clock::now();
+	std::chrono::duration<double, std::milli> time_diff = now - previous_msg_time;
+	time_between_msgs = time_diff.count();
+	previous_msg_time = now;
+}
+
 FlyingMessenger::FlyingMessenger() {
 	setlocale(LC_ALL,"C");
+	send_cmd_count = 0;
+	frameskip = DEFAULT_FRAMESKIP;
+	previous_msg_time = std::chrono::system_clock::now();
 }

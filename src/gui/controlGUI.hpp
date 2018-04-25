@@ -37,8 +37,11 @@ public:
 	const static int TOTAL_ROBOTS = 7;
 
 	TestFrame testFrame;
-
+	
+	double acc_time;
+	int time_count;
 	bool Serial_Enabled;
+	int frameskipper;
 	// Flag para saber se o botão PID está pressionado ou não.
 	bool PID_test_flag = false;
 	// Containers para o conteúdo da interface gráfica
@@ -47,15 +50,18 @@ public:
 	Gtk::HBox Top_hbox;
 	Gtk::VBox Serial_vbox;
 	Gtk::VBox Test_vbox;
-	Gtk::HBox Serial_hbox[3];
+	Gtk::HBox Serial_hbox[4];
 	Gtk::Label *label;
 	Gtk::Button bt_send_cmd;
 	Gtk::Entry send_cmd_box;
+	
+	Gtk::Entry entry_set_frameskip;
 
 	// Botões e combo box Rádio
 	Gtk::Button bt_Serial_Start;
 	Gtk::Button bt_Robot_Status;
 	Gtk::Button bt_Serial_Refresh;
+	Gtk::Button bt_set_frameskip;
 	Gtk::ComboBoxText cb_serial;
 	Gtk::ToggleButton button_PID_Test;
 	Gtk::Button bt_Serial_test;
@@ -69,6 +75,7 @@ public:
 	Gtk::Label robots_lb[TOTAL_ROBOTS];
 	Gtk::Label status_lb[TOTAL_ROBOTS];
 	Gtk::Label lastUpdate_lb;
+	Gtk::Label time_msgs;
 	Gtk::ProgressBar battery_bar[TOTAL_ROBOTS];
 
 	Gtk::Frame pid_fm;
@@ -116,6 +123,10 @@ public:
 	char get_robot_id(int pos);
 
 	int get_robot_pos(char id);
+	
+	void set_frameskipper();
+	
+	void update_msg_time();
 
 	// Função para verificar se os valores digitados nos campos
 	// de PID são válidos: apenas números e um único ponto

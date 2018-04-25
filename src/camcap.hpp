@@ -66,18 +66,24 @@ public:
     ControlGUI control;
     VSSS_GUI::V4LInterface interface;
 
+
     Gtk::Frame fm;
     Gtk::Frame info_fm;
     Gtk::VBox camera_vbox;
     Gtk::Notebook notebook;
 
-    boost::thread_group threshold_threads;
+    //boost::thread_group threshold_threads;
     sigc::connection con;
 
     /* PARA TESTE */
-    cv::Point obstacle;
-    cv::Point deviation1;
-    cv::Point deviation2;
+    //cv::Point obstacle;
+    //cv::Point deviation1;
+    //cv::Point deviation2;
+    
+    boost::thread msg_thread;
+	boost::condition_variable data_ready_cond;
+	boost::mutex data_ready_mutex;
+	bool data_ready_flag = false;
 
     void updateAllPositions();
     
@@ -85,12 +91,14 @@ public:
     
     bool capture_and_show();
     
+    void send_cmd_thread(std::vector<Robot> &robots);
+	
+	void notify_data_ready();
+    
     void arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
         int thickness=1, int line_type=8, int shift=0, double tipLength=0.1);
-        
-    //void sendCmdToRobots(std::vector<Robot>&robot_list, bool &xbeeIsConnected){
     
-    void sendCmdToRobots(std::vector<Robot>&robot_list);
+    //void sendCmdToRobots(std::vector<Robot>&robot_list);
     
     double distance(cv::Point a, cv::Point b);
     

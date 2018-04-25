@@ -223,10 +223,10 @@ bool CamCap::capture_and_show() {
                     // círculo roxo no alvo final
                     circle(cameraFlow,cv::Point((int) interface.imageView.tar_pos[0], (int) interface.imageView.tar_pos[1]), 7, cv::Scalar(255,0,255), 2);
                     // círculo vermelho no obstáculo
-                    circle(cameraFlow,obstacle, 17, cv::Scalar(255,0,0), 2);
+                    //circle(cameraFlow,obstacle, 17, cv::Scalar(255,0,0), 2);
                     // círculo verde nos desvios
-                    circle(cameraFlow,deviation1, 7, cv::Scalar(0,255,0), 2);
-                    circle(cameraFlow,deviation2, 7, cv::Scalar(0,255,0), 2);
+                    //circle(cameraFlow,deviation1, 7, cv::Scalar(0,255,0), 2);
+                    //circle(cameraFlow,deviation2, 7, cv::Scalar(0,255,0), 2);
                 }
 
                 if(Selec_index != -1)
@@ -312,9 +312,37 @@ bool CamCap::capture_and_show() {
         timer.reset();
         frameCounter = 0;
     }
+    
+    /*interface.robotGUI.robot_list[0].position = robot_kf_est[0];
+	interface.robotGUI.robot_list[1].position = robot_kf_est[1];
+	interface.robotGUI.robot_list[2].position = robot_kf_est[2]; */
+	
+	if (interface.get_start_game_flag() || interface.imageView.PID_test_flag) {
+		control.update_msg_time();
+		notify_data_ready();
+	}
 
     return true;
 } // capture_and_show
+
+void CamCap::send_cmd_thread(vector<Robot> &robots) {
+	boost::unique_lock<boost::mutex> lock(data_ready_mutex);
+	while (true) {
+		try {
+			data_ready_cond.wait(lock, [this]() { return data_ready_flag; });
+		} catch (...) {
+			lock.unlock();
+			return;
+		}
+		data_ready_flag = false;
+		control.FM.sendCMDs(robots);
+	}
+}
+
+void CamCap::notify_data_ready() {
+	data_ready_flag = true;
+	data_ready_cond.notify_all();
+}
 
 void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
     int thickness, int line_type, int shift, double tipLength) {
@@ -331,7 +359,7 @@ void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Sc
 
 }
 
-void CamCap::sendCmdToRobots(std::vector<Robot>&robot_list){
+/*void CamCap::sendCmdToRobots(std::vector<Robot>&robot_list){
     while (1) {
         if (interface.get_start_game_flag() || interface.imageView.PID_test_flag || strategyGUI.updating_formation_flag) {
             // !TODO Otimização do código::Usar laço de repetição
@@ -341,7 +369,7 @@ void CamCap::sendCmdToRobots(std::vector<Robot>&robot_list){
 
         boost::this_thread::sleep(boost::posix_time::milliseconds(200));
     }
-}
+} */
 
 double CamCap::distance(cv::Point a, cv::Point b) {
     return sqrt(pow(double(b.x - a.x), 2) + pow(double(b.y - a.y), 2));
@@ -548,7 +576,8 @@ void CamCap::warp_transform(cv::Mat cameraFlow){
     }
 } // warp_transform
 
-CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0) {
+CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), 
+msg_thread(&CamCap::send_cmd_thread, this, boost::ref(interface.robotGUI.robot_list)) {
     // !TODO Otimização do código::Usar laço de repetição
     fixed_ball[0]=false;
     fixed_ball[1]=false;
@@ -587,7 +616,7 @@ CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0) {
     pack_start(notebook, false, false, 10);
 
     // Thread que envia comandos para o robo
-    threshold_threads.add_thread(new boost::thread(&CamCap::sendCmdToRobots,this, boost::ref(interface.robotGUI.robot_list)));
+    //threshold_threads.add_thread(new boost::thread(&CamCap::sendCmdToRobots,this, boost::ref(interface.robotGUI.robot_list)));
 
     interface.signal_start().connect(sigc::mem_fun(*this, &CamCap::start_signal));
 }
@@ -598,4 +627,7 @@ CamCap::~CamCap(){
     free(data);
 
     data = 0;
+    
+    msg_thread.interrupt();
+	if (msg_thread.joinable()) msg_thread.join();
 }
