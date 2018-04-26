@@ -1,8 +1,8 @@
-/*
+/**
 *  camcap.hpp
-*
-*  Created on: Feb 18, 2014
-*      Author: gustavo
+*  @file camcap.hpp
+*  @since 2014/02/14
+*  @author Gustavo
 */
 
 #ifndef CAMCAP_HPP_
@@ -85,42 +85,107 @@ public:
 	boost::mutex data_ready_mutex;
 	bool data_ready_flag = false;
 
+    /**
+	 * @brief Updates the position of all captured elements
+	 * @details Sets ball position, robot's orientation and positions (both actual and prediction)
+	 */
     void updateAllPositions();
     
+    /**
+	 * @brief Interface adjustments after 'start' button is clicked
+	 * @param b Variable that indicates whether start/stop button was clicked
+	 * @return true 
+	 */
     bool start_signal(bool b);
     
+    /**
+	 * @brief Captures camera frames and shows it in the interface
+	 * @details It also draw elements (target circles, arrows, virtual robots) and triggers some events (formation change, warp, hsv and pid buttons)
+	 * @return bool true 
+	 */
     bool capture_and_show();
     
-    void send_cmd_thread(std::vector<Robot> &robots);
-	
-	void notify_data_ready();
-    
+    /**
+	 * @brief Draws an arrow between two given points
+	 * @param img Cameraflow
+	 * @param pt1 Point to be connected
+	 * @param pt2 Point to be connected
+	 * @param color Arrow's color
+	 * @param thickness Arrow's line thickness
+	 * @param line_type The way that pixels are connected. Each pixel has 8 neighbors by default
+	 * @param shift Number of fractional bits in the point coordinates
+	 * @param tipLength Length of the arrow tip  
+	 */
     void arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
         int thickness=1, int line_type=8, int shift=0, double tipLength=0.1);
-    
+        
+    //void sendCmdToRobots(std::vector<Robot>&robot_list, bool &xbeeIsConnected);
+
     //void sendCmdToRobots(std::vector<Robot>&robot_list);
-    
+
+    /** 
+    * @brief Send robots to its estimated positions
+    * @param robots Vector cointaining all robots instances
+    */
+    void send_cmd_thread(std::vector<Robot> &robots);
+	
+    /**
+    * @brief Notifies all waiting threads through a conditional variable
+    */
+	void notify_data_ready();
+            
+    /**
+	 * @brief Calculates the euclidean distance between two given points
+	 * @param a First point
+	 * @param b Second point
+	 * @return Linear distance between a and b
+	 */
     double distance(cv::Point a, cv::Point b);
     
+     /**
+	 * @brief Calculates the angular distance between two given points
+	 * @param alpha First point
+	 * @param beta Second point
+	 * @return Angle between alpha and beta
+	 */
     double angular_distance(double alpha, double beta);
     
-    // manda os robôs para a posição e orientação alvo
+    /**
+	 * @brief Sends robots to the target position and orientation
+	 */
     void updating_formation();
     
-    // cria a interface de criação e carregamento de formação
+     /**
+	 * @brief Creates the formation (creation and load) interface
+	 */
     void formation_creation();
-
-    // atualiza as informações dadas pela interface na estratégia
+   
+    /**
+	 * @brief Updates information given by interface in strategy
+	 */
     void update_formation_information();
     
-    /** void transformTargets (std::vector<Robot>&robot_list); */
+    //void transformTargets (std::vector<Robot>&robot_list);
 
+	 /**
+	 * @brief Executes the 'PID Test on click' at the control panel
+	 */	
     void PID_test();
     
+    /**
+	 * @brief Adjusts the image framing
+	 */	
     void warp_transform(cv::Mat cameraFlow);
     
+    /**
+	 * @brief Constructor of a CamCap object
+	 * @details Sets variables and append elements to the interface
+	 */	
     CamCap();
     
+    /**
+	 * @brief Destructor of a CamCap object
+	 */	
     ~CamCap();
 };
 

@@ -134,7 +134,6 @@ namespace VSSS_GUI {
         // Adiciona a vbox (principal) no frame
         vbox = new Gtk::VBox();
 
-        // Primeira Hbox com oos botões Warp, Reset, Adjust
         hbox = new Gtk::HBox();
         hbox->set_border_width(5);
         hbox->set_halign(Gtk::ALIGN_CENTER);
@@ -192,7 +191,7 @@ namespace VSSS_GUI {
         frm_warp.add(*vbox);
         frm_warp.set_label("Warp");
 
-        // Primeira Hbox com oos botões Warp, Reset, Adjust
+        // Primeira Hbox com os botões Warp, Reset, Adjust
         hbox = new Gtk::HBox();
         hbox->set_border_width(5);
         hbox->set_halign(Gtk::ALIGN_CENTER);
@@ -708,8 +707,6 @@ namespace VSSS_GUI {
         draw_info_checkbox.set_label("Disable Drawing");
     }
 
-    // Constructor
-
     V4LInterface::V4LInterface() :
     Gtk::VBox(false, 0), reset_warp_flag(false) {
         offsetL = 0;
@@ -815,4 +812,9 @@ namespace VSSS_GUI {
 
         draw_info_checkbox.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_draw_info_checkbox_signal_clicked));
     }
+    
+    void V4LInterface::grab_rgb(unsigned char *rgb) {
+            std::cout << "Grabbing\n";
+            vcap.grab_rgb(rgb);
+        }
 }

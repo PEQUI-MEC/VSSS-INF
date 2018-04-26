@@ -1,7 +1,6 @@
 #include "filechooser.hpp"
 #include <iostream>
 
-// Constructor of the main Window (build ui interface).
 FileChooser::FileChooser() {
     // Initialize the main window and hide the title bar
     this->set_border_width(10);
@@ -58,5 +57,4 @@ FileChooser::FileChooser() {
     }
 }
 
-// Destructor of the class
 FileChooser::~FileChooser() {}

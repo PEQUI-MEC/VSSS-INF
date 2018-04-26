@@ -286,9 +286,6 @@ void StrategyGUI::_event_transitionmindcontrol_signal_clicked() {
 	//std::cout << "Transition mindcontrol: " << strategy.transition_mindcontrol_enabled << std::endl;
 }
 
-/// formation.txt:
-///	Nº de formações
-/// formation_name r1x r1y r1o r2x r2y r2o r3x r3y r3o
 void StrategyGUI::loadSavedFormations() {
 	std::ifstream txtFile;
 	std::string line;

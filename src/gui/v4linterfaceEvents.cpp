@@ -16,7 +16,6 @@
 
 namespace VSSS_GUI {
     bool V4LInterface::on_button_press_event(GdkEventButton *event) {
-        // Check if the event is a left(1) button click.
         if((event->type == GDK_BUTTON_PRESS)) {
             //  std::cout<<"click"<<std::endl;
             return true;

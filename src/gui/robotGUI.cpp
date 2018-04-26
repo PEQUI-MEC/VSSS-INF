@@ -99,9 +99,6 @@ void RobotGUI::createFunctionsFrame() {
     robots_function_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &RobotGUI::event_robots_function_done_bt_signal_clicked));
 }
 
-/**
- * Cria o frame de controle de velocidades.
- */
 void RobotGUI::createSpeedsFrame() {
     Gtk::Label *label;
 

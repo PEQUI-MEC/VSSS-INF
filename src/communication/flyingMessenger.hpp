@@ -135,7 +135,6 @@ public:
 	/**
 	 * @brief This method creates the xbee connection passing the port and the baudrate.
 	 * @details All connections are instances of SerialCom class.
-	 *
 	 * @param port String path of the serial port that handles xbee radio (Eg. /dev/ttyUSB1).
 	 * @param baud Baudrate of the communication between host pc and xbee.
 	 */
@@ -145,13 +144,19 @@ public:
 	 * @brief Stops xbee connection and purge the instance of xbee (instance of SerialCom class).
 	 */
 	void stop_xbee();
-	
+
+	/**
+	* @brief Calculates the gap between sent messages
+	*/	
 	void update_msg_time();
-	
+
 	void set_frameskipper(int frames);
 	
 	int get_frameskipper();
-	
+
+	/**
+	* @return time_between_msgs Gap between sent messages
+	*/
 	double get_time();
 };
 

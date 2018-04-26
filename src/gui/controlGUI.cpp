@@ -147,7 +147,6 @@ void ControlGUI::_PID_Test() {
     PID_test_flag = !PID_test_flag;
 }
 
-// translate battery message
 void ControlGUI::handleBatteryMsg(char buf[12], int id) {
     double battery;
     std::string cmd(buf);
@@ -171,7 +170,6 @@ void ControlGUI::handleBatteryMsg(char buf[12], int id) {
     updateInterfaceStatus(battery, id);
 }
 
-// Gets battery % and robot id to update a single robot's battery status
 void ControlGUI::updateInterfaceStatus(double battery, int id) {
     if(battery > 20) {
         status_img[id].set("img/online.png");
@@ -189,7 +187,6 @@ void ControlGUI::updateInterfaceStatus(double battery, int id) {
     }
 }
 
-// update the battery status of all robots
 void ControlGUI::_robot_status(){
     //std::string cmd[TOTAL_ROBOTS] = {"A@BAT#", "B@BAT#", "C@BAT#", "D@BAT#", "E@BAT#", "F@BAT#"};
     std::string dateString;
@@ -505,8 +502,6 @@ void ControlGUI::_create_status_frame() {
     }
 }
 
-// Função para verificar se os valores digitados nos campos
-// de PID são válidos: apenas números e um único ponto
 bool ControlGUI::checkPIDvalues(){
     std::string value;
     int counter;

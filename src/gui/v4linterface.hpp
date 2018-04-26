@@ -1,3 +1,8 @@
+/**
+ * @file v4linterface.hpp
+ * 
+ * */
+
 #ifndef V4LINTERFACE_HPP_
 #define V4LINTERFACE_HPP_
 
@@ -76,7 +81,11 @@ namespace VSSS_GUI {
         bool robots_id_edit_flag = false;
 
         v4lcap vcap;
-
+        
+		 /**
+		 * @brief Constructor of a V4LInterface object
+		 * @details Initializes variables, sets interface components and attaches events to methods
+		 */	
         V4LInterface();
 
         int offsetL;
@@ -89,13 +98,8 @@ namespace VSSS_GUI {
         Gtk::ToggleButton bt_warp;
         Gtk::ToggleButton bt_adjust;
         Gtk::CheckButton bt_invert_image;
-
-
-        void grab_rgb(unsigned char *rgb) {
-            std::cout << "Grabbing\n";
-            vcap.grab_rgb(rgb);
-        }
-
+        	
+        void grab_rgb(unsigned char *rgb);
 
         // Signals
         sigc::connection cb_input_signal;
@@ -104,69 +108,167 @@ namespace VSSS_GUI {
         sigc::connection cb_frame_size_signal;
         sigc::connection cb_frame_interval_signal;
 
+        /**
+		* @brief Event triggered when 'Quick Save' button is clicked
+		*/	
         void __event_bt_quick_save_clicked();
-
+        
+        /**
+		 * @brief Event triggered when 'Quick Load' button is clicked
+		 */	
         void __event_bt_quick_load_clicked();
-
+        
+        /**
+		 * @brief Event triggered when 'Save' button is clicked
+		 */	
         void __event_bt_save_clicked();
-
+		
+		/**
+		 * @brief Event triggered when 'Load' button is clicked
+		 */	
         void __event_bt_load_clicked();
 
         bool __core_save(const char *);
 
         bool __core_load(const char *);
 
+        /**
+		 * @brief Event triggered when 'start' button is clicked
+		 * @details This method triggers the pre-configuration and start of capture device
+		 */	
         void __event_bt_start_clicked();
 
+        /**
+		 * @brief Event triggered when 'Warp' button is clicked
+		 * @details This method enable/disable reset, load and save buttons
+		 */			
         void __event_bt_warp_clicked();
-
+		
+		/**
+		 * @brief Event triggered when 'Adjust' button is pressed
+		 * @details Switches adjust_event_flag value
+		 */	
         void __event_bt_adjust_pressed();
 
+		/**
+		 * @brief Event triggered when 'Reset' button is pressed
+		 * @details This method resets image offsets 
+		 */			
         void __event_bt_reset_warp_clicked();
-
+        
+		/**
+		 * @brief Updates the right offset value when the slider position is changed
+		 */	
         void HScale_offsetR_value_changed();
-
+		
+		/**
+		 * @brief Updates the left offset value when the slider position is changed
+		 */	
         void HScale_offsetL_value_changed();
 
+		/**
+		 * @brief Switches invert_image_flag value when 'invert image' is clicked
+		 */	
         void __event_bt_invert_image_signal_clicked();
-
+		
+		/**
+		 * @brief Event triggered when a new device is selected in Device combobox
+		 * @details Updates information about capture device (device, card, driver, bus) and Device Prop frame
+		 */	
         void __event_cb_device_changed();
-
+		
+		/**
+		 * @brief Event triggered when a new input is selected in Input combobox
+		 * @details Sets the selected input
+		 */	
         void __event_cb_input_changed();
 
+		/**
+		 * @brief Event triggered when a new stantard is selected in Standard combobox
+		 * @details Sets the selected standard
+		 */	
         void __event_cb_standard_changed();
 
+		/**
+		 * @brief Event triggered when a new format is selected in Format combobox
+		 * @details Sets the selected format
+		 */	
         void __event_cb_format_desc_changed();
-
+		
+		/**
+		 * @brief Event triggered when a new frame size is selected in Frame size combobox
+		 * @details Sets the selected image frame
+		 */	
         void __event_cb_frame_size_changed();
-
+		
+		/**
+		 * @brief Event triggered when a new interval is selected in Interval combobox
+		 * @details Changes the image frame rate
+		 */	
         void __event_cb_frame_interval_changed();
 
+		/**
+		 * @brief Creates IDs frame
+		 * @details IDs frame associates robots (1,2,3) and hardware (A, B, C,...)
+		 */	
         void createIDsFrame();
 
+		/**
+		 * @brief Switches draw_info_flag value
+		 */	
         void event_draw_info_checkbox_signal_clicked();
 
+		/**
+		 * @brief Create Positions frame
+		 * @details Frame that shows ball and robots positions 
+		 */	
         void createPositionsAndButtonsFrame();
 
+        /**
+        * @brief Event triggered when start button is clicked. Starts/finishes video recording.
+        */
         void event_start_game_bt_signal_clicked();
-
+        
+        /**
+        * @brief Event triggered when Robot Functions' done button is clicked
+        * @details Assigns each robot (on RobotGUI) to its new ID
+        */
         void event_robots_id_done_bt_signal_clicked();
-
+        
+        /**
+        * @brief Event triggered when Robot Functions' edit button is clicked
+        * @details Turns robot's ID combobox (non)editable and keeps the changes
+        */
         void event_robots_id_edit_bt_signal_pressed();
 
+        /**
+        * @brief Updates robots and ball positions on interface (Positions frame)
+        */
         void updateRobotLabels();
 
+        /**
+        * @brief Updates the interface's FPS value (Positions frame)
+        * @param fps A new fps value
+        */
         void updateFPS(int fps);
 
+        /**
+        * @return bool start_game_flag
+        */
         bool get_start_game_flag();
 
+        /**
+        * @brief Updates all robots attributes at RobotGUI
+        */
         void update_interface_robots();
 
+        /**
+        * @brief Updates Calibration parameters at Vision GUI, Offset values and calls __update_control_widgets
+        */        
         void update_interface_camera();
 
-        /* Signals */
+        //Signals
         typedef sigc::signal<bool, bool> SignalStart;
-
 
         SignalStart signal_start() {
             return m_signal_start;
@@ -175,21 +277,39 @@ namespace VSSS_GUI {
     protected:
 
         SignalStart m_signal_start;
-
+        
+        /**
+        * @brief Check if the event is a left button click.
+        */
         bool on_button_press_event(GdkEventButton *event);
 
     private:
 
         bool start_game_flag = false;
-
+        
+        /**
+        * @brief Initilizes Device Properties combo boxes (Input, Format, Intervals,Standard, Frame Size)
+        */
         void __init_combo_boxes();
-
+        
+        /**
+        * @brief Adds Device Information frame and its inner elements
+        */
         void __create_frm_device_info();
-
+        
+        /**
+        * @brief Adds Device Properties frame and its inner elements
+        */
         void __create_frm_device_properties();
-
+        
+        /**
+        * @brief Creates Save/Load frame
+        */
         void createQuickActionsFrame();
 
+        /**
+        * @brief Adds Warp frame and its inner elements
+        */
         void __create_frm_warp();
 
         // Combo properties updates
@@ -204,16 +324,17 @@ namespace VSSS_GUI {
         void __update_cb_frame_size();
 
         void __update_cb_frame_interval();
-
+        
+        /**
+        * @brief Update all combo box inputs on CaptureGUI 
+        */
         void __update_all();
 
 
-        //==================================================================
         Gtk::Frame frm_device_info;
         Gtk::ComboBoxText cb_device;
         Gtk::Button bt_start;
         Gtk::Button bt_reset_warp;
-        //-------------------------------
 
         Gtk::Frame frm_quick_actions;
         Gtk::Button bt_quick_save;
@@ -221,33 +342,29 @@ namespace VSSS_GUI {
         Gtk::Button bt_save;
         Gtk::Button bt_load;
 
-        //-------------------------------
         Gtk::Label lb_device_name;
         Gtk::Label lb_device_card;
         Gtk::Label lb_device_driver;
         Gtk::Label lb_device_bus;
         Gtk::Label right_offset_label;
         Gtk::Label left_offset_label;
-        //==================================================================
+
         Gtk::Frame frm_device_prop;
         Gtk::Frame frm_warp;
         Gtk::SpinButton sp_width;
         Gtk::SpinButton sp_height;
 
-        //==================================================================
         Gtk::ComboBox cb_input;
         Gtk::ComboBox cb_standard;
         Gtk::ComboBox cb_format_desc;
         Gtk::ComboBox cb_frame_size;
         Gtk::ComboBox cb_frame_interval;
-        //----------------------------------
+
         Glib::RefPtr <Gtk::ListStore> ls_input;
         Glib::RefPtr <Gtk::ListStore> ls_standard;
         Glib::RefPtr <Gtk::ListStore> ls_format_desc;
         Glib::RefPtr <Gtk::ListStore> ls_frame_size;
         Glib::RefPtr <Gtk::ListStore> ls_frame_interval;
-        //----------------------------------
-
 
         template<class T>
         class ModelColumn : public Gtk::TreeModel::ColumnRecord {
@@ -278,13 +395,11 @@ namespace VSSS_GUI {
 
         ModelControlMenu model_control_menu;
 
-        //==================================================================
         Gtk::Notebook notebook;
         Gtk::Notebook notebook2;
-        //==================================================================
-
+        
         void __make_controls();
-
+        
         void __make_control_list_default();
 
         void __make_control_table(std::list <ControlHolder> &list, const char *title);
