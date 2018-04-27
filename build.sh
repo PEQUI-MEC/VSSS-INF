@@ -15,7 +15,15 @@ if [ -e dep_ok ]; then
     cd ..
 else
     chmod +x $PATH_TO_DEP_RESOLUTION
-    ./$PATH_TO_DEP_RESOLUTION
+    if [ -f ../.dockerenv ]; then
+        printf "\033[1;37mWe're inside MATRIX =[ \033[0m\n"
+        ./$PATH_TO_DEP_RESOLUTION
+    else
+        printf "\033[1;37mWe're in the REAL world =] \033[0m\n\n"
+        printf "\033[0;33mWe're going to need root privileges.\033[0m\n"
+        sudo -s ./$PATH_TO_DEP_RESOLUTION
+    fi
+    
     if [ $? -eq 0 ]; then
         touch dep_ok
     else

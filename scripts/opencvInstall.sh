@@ -21,7 +21,7 @@ installOpenCV() {
     thread_num=$(nproc)
     make -j$((++thread_num))
     echo 66 > $file
-    sudo -k make install
+    make install
     cd ..
     cd ..
     rm -rf /opencv*
