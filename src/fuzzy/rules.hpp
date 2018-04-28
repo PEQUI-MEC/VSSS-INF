@@ -1,3 +1,7 @@
+// Must be included before #ifndef directive
+// This makes our compiler include our debug namespace directives into this file
+#include "../aux/debug.hpp"
+
 #ifndef Rules_H
 #define Rules_H
 

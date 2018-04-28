@@ -92,12 +92,12 @@ set(sources
         src/ls.cpp
 		src/cpuTimer.cpp
         src/camcap.cpp
-        src/kalmanFilter.cpp
         src/strategy.cpp
         src/constants.hpp
         src/robot.hpp
 
         src/aux/jsonSaveManager.cpp
+        src/aux/kalmanFilter.cpp
 
         src/communication/serialCom.cpp
         src/communication/flyingMessenger.cpp

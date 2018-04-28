@@ -32,33 +32,31 @@ namespace VSSS_GUI {
 
     // signals
     void V4LInterface::__event_bt_quick_save_clicked() {
-        std::cout << "QUICK SAVE" << std::endl;
         jsonSaveManager config(this);
         config.save();
+        debug_log("Quick save");
     }
 
     void V4LInterface::__event_bt_save_clicked() {
-        std::cout << "SAVE" << std::endl;
         FileChooser loadWindow;
 
         if (loadWindow.result == Gtk::RESPONSE_OK){
             jsonSaveManager config(this);
             config.save(loadWindow.fileName);
         }
+
+        debug_log("Save");
     }
 
     void V4LInterface::__event_bt_quick_load_clicked() {
-        std::cout << "QUICK LOAD" << std::endl;
-
         jsonSaveManager config(this);
         config.load();
         update_interface_robots();
         update_interface_camera();
+        debug_log("Quick load");
     }
 
     void V4LInterface::__event_bt_load_clicked() {
-        std::cout << "LOAD" << std::endl;
-
         FileChooser loadWindow;
 
         if(loadWindow.result == Gtk::RESPONSE_OK) {
@@ -67,6 +65,8 @@ namespace VSSS_GUI {
             update_interface_robots();
             update_interface_camera();
         }
+
+        debug_log("Load");
     }
 
     void V4LInterface::__event_bt_start_clicked() {

@@ -9,5 +9,6 @@ P137
 config/quicksave.json
 build
 cmake-build-debug
+debug.log
 dep_ok
 opencvIsInstalled

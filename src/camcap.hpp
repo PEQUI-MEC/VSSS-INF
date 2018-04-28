@@ -5,6 +5,10 @@
 *  @author Gustavo
 */
 
+// Must be included before #ifndef directive
+// This makes our compiler include our debug namespace directives into this file
+#include "aux/debug.hpp"
+
 #ifndef CAMCAP_HPP_
 #define CAMCAP_HPP_
 #define PI 3.14159265453
@@ -16,11 +20,6 @@
 #include <opencv2/video/video.hpp>
 #include <opencv2/video/tracking.hpp>
 
-#include "gui/strategyGUI.hpp"
-#include "gui/controlGUI.hpp"
-#include "vision/vision.hpp"
-#include "kalmanFilter.hpp"
-#include "gui/v4linterface.hpp"
 #include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/bind.hpp>
@@ -30,6 +29,12 @@
 #include <gtkmm.h>
 #include <math.h>
 #include <fstream>
+
+#include "aux/kalmanFilter.hpp"
+#include "gui/strategyGUI.hpp"
+#include "gui/controlGUI.hpp"
+#include "gui/v4linterface.hpp"
+#include "vision/vision.hpp"
 #include "cpuTimer.hpp"
 #include "constants.hpp"
 
@@ -72,13 +77,7 @@ public:
     Gtk::VBox camera_vbox;
     Gtk::Notebook notebook;
 
-    //boost::thread_group threshold_threads;
     sigc::connection con;
-
-    /* PARA TESTE */
-    //cv::Point obstacle;
-    //cv::Point deviation1;
-    //cv::Point deviation2;
     
     boost::thread msg_thread;
 	boost::condition_variable data_ready_cond;

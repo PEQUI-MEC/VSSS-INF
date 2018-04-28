@@ -5,6 +5,10 @@
  *      Author: gustavo
  */
 
+// Must be included before #ifndef directive
+// This makes our compiler include our debug namespace directives into this file
+#include "../aux/debug.hpp"
+
 #ifndef V4LCAP_HPP_
 #define V4LCAP_HPP_
 

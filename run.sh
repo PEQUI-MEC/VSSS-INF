@@ -7,4 +7,4 @@ sh build.sh
 printf "\n\033[43m\033[1;30m|------- VSSS 2018 - PEQUI MECÂNICO INF -------|\033[0m\n\n"
 
 # sudo é necessário para o save/load funcionar
-sudo -S ./P137
+sudo -S ./P137 -v 1

@@ -3,6 +3,10 @@
  * 
  * */
 
+// Must be included before #ifndef directive
+// This makes our compiler include our debug namespace directives into this file
+#include "aux/debug.hpp"
+
 #ifndef V4LINTERFACE_HPP_
 #define V4LINTERFACE_HPP_
 

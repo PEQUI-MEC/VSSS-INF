@@ -873,13 +873,8 @@ void Strategy::def_wait(int i) {
 }
 
 void Strategy::fuzzy_init() {
-	cout << "init " << endl;
-
 	controller.importRules("config/fuzzy/RULES_VSS2017.txt");
-	cout << "rules " << endl;
-
 	controller.defineVariables("config/fuzzy/Membership_VSS2017.txt");
-	cout << "variables " << endl;
 }
 
 int Strategy::Fuzzy_Troca() {

@@ -309,16 +309,16 @@ bool v4lcap::start_capturing() {
 	for(unsigned int i = 0; i < reqbuf.count; ++i) {
 		struct v4l2_buffer buffer = { 0 };
 		if (!enqueue_buff(&buffer, reqbuf.type, reqbuf.memory, i))
-			std::cout << "Can't enqueue buffer " << i << std::endl;
+			debug_error("Can't enqueue buffer " + std::to_string(i));
 
 		//////////////////////////////
 		if(!query_buffer(&buffer, reqbuf.type, reqbuf.memory, i))
-			std::cout << "Can't request buffer " << i << std::endl;
+			debug_error("Can't request buffer " + std::to_string(i));
 
 		if(buffer.flags & V4L2_BUF_FLAG_QUEUED) {
-			std::cout << "Buffer " << i << " queued!" << std::endl;
+			debug_log("Buffer " + std::to_string(i) + " queued!");
 		} else {
-			std::cout << "Buffer " << i << " NOT queued!" << std::endl;
+			debug_error("Buffer " + std::to_string(i) + " NOT queued!");
 		}
 	}
 

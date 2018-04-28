@@ -12,13 +12,13 @@ Rules::~Rules()
 
 void Rules::generate_baseRuleMatrix(std::string file_name)
 {
-	cout << "Importing Base Rule" << endl;
+	debug_log("Importing Base Rule");
 
 	//Read from file_name
 	ifstream in(file_name);
 	if(!in)
 	{
-		printf( "Erro na abertura do arquivo");
+		debug_error("Erro na abertura do arquivo");
 		getchar();
 		exit(0);
 	}

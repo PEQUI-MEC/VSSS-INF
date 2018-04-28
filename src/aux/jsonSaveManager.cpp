@@ -1,14 +1,12 @@
 #include "jsonSaveManager.h"
 
 using std::string;
-using std::cout;
-using std::endl;
 
 void jsonSaveManager::load(const string file_path) {
     int error = read_configs_from_file(file_path);
 
-    if(error == 1) cout << "File " << file_path << " not found" << endl;
-    else if(error == 2) cout << file_path << " is not a valid JSON file" << endl;
+    if(error == 1) debug_warning("File " + file_path + " not found");
+    else if(error == 2) debug_warning(file_path + " is not a valid JSON file");
 
     if(!error){
         load_camera();
@@ -18,8 +16,8 @@ void jsonSaveManager::load(const string file_path) {
 
 void jsonSaveManager::save(const string file_path) {
     int error = read_configs_from_file(file_path);
-    if(error == 1) cout << "Creating " << file_path << endl;
-    else if(error == 2) cout << file_path << " is not a valid JSON file, will be overwritten" << endl;
+    if(error == 1) debug_log("Creating " + file_path);
+    else if(error == 2) debug_warning(file_path + " is not a valid JSON file, will be overwritten");
 
     save_camera();
     save_robots();
@@ -181,6 +179,7 @@ void jsonSaveManager::write_configs_to_file(string file_path) {
     std::ofstream file(file_path);
     file << std::setw(4) << configs << endl;
     file.close();
+    debug_success("Config file written.");
 }
 
 bool jsonSaveManager::exists(json &config, string name) {
