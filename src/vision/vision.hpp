@@ -1,3 +1,11 @@
+/**
+ * @file vision.hpp
+ * @author Pequi Mecânico
+ * @date undefined
+ * @brief Vision Class
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
+ */
 #ifndef VISION_HPP_
 #define VISION_HPP_
 
@@ -65,41 +73,116 @@ private:
     // threads
     boost::thread_group threshold_threads;
 
+    /** Run pre-processing methods in actual frame
+     */
     void preProcessing();
+
+    /** Run pos-processing methods in actual frame
+     * @brief Executes medianBlur, erode and dilate
+     * @param color ball, main or secondary color
+     */
     void posProcessing(int color);
+
+    /** Make the threshold with interface values
+     * @brief invokes Vision::posProcessing() and Vision::searchTags() methods
+     * @param color threshold color, indicates threshold frame in vector
+     */
     void segmentAndSearch(int color);
+
+    /** Search tag in threshold frames
+     * @param color frame indicator (ball, main or secondary frame)
+     * @sa Vision::searchSecondaryTags()
+     */
     void searchTags(int color);
-    void searchGMMTags(std::vector<cv::Mat> thresholds);
+
+    /** Invokes with threads the Vision::segmentAndSearch() method.
+     */
     void findTags();
+
+    /** Give tags to the robots
+     * @brief uses Vision::inSphere() method
+     */
     void pick_a_tag();
+
+    /**
+     *
+     * @param robot robot's vector
+     * @param tempTags tag's vector
+     * @param secondary actual secondary position
+     * @return 0, if secondary tag isn't part of robot
+     *         1, if secondary tag is in right side
+     *        -1, if secondary tag is in left side
+     */
     int inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary);
 
 public:
-    
+
+    /** Vision's constructor
+     * @param w width
+     * @param h height
+     */
     Vision(int w, int h);
     ~Vision();
 
-  void run(cv::Mat raw_frame);
-  void runGMM(std::vector<cv::Mat> thresholds);
-  void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
-  double calcDistance(cv::Point p1, cv::Point p2);
+    /** Run the vision
+     * @brief Call Vision::preprocessing method, Vision::searchTags and Vision::pick-a-tag
+     * @param raw_frame image from camcap.hh
+     */
+    void run(cv::Mat raw_frame);
 
-  void startNewVideo(std::string videoName);
-  bool recordToVideo();
-  bool finishVideo();
-  bool isRecording();
-  void savePicture(std::string in_name);
+    /** Set HSV calib parameters
+     * @note receive values from interface
+     * @param H hue value
+     * @param S saturation value
+     * @param V value
+     * @param Amin area min
+     * @param E erode value
+     * @param D dilate value
+     * @param B blur value
+     */
 
-  void switchMainWithAdv();
+    void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
 
-  cv::Point getBall();
-  Robot getRobot(int index);
-  cv::Point getRobotPos(int index);
-  cv::Point getAdvRobot(int index);
-  cv::Point* getAllAdvRobots();
-  cv::Mat getSplitFrame();
+    /** Calculates Euclidean distance between two points
+     * @return double value with distance value
+     */
+    double calcDistance(cv::Point p1, cv::Point p2);
 
-  int getRobotListSize();
+    void startNewVideo(std::string videoName);
+    bool recordToVideo();
+    bool finishVideo();
+    bool isRecording();
+    void savePicture(std::string in_name);
+
+    /** Switch main color to adversary color
+     * @note main and adversary color will be blue or yellow.
+     */
+    void switchMainWithAdv();
+
+    /** Gets the ball position in image
+     * @return cv::Point containing the ball position
+     */
+    cv::Point getBall();
+    /** Obtains robot object
+     * @param index robot number
+     * @return robot object at index
+     */
+    Robot getRobot(int index);
+
+    /** Gets robot position in image
+     * @param index robot number
+     * @return cv::Point containing robot position
+     */
+    cv::Point getRobotPos(int index);
+    cv::Point getAdvRobot(int index);
+    cv::Point* getAllAdvRobots();
+
+    /** Concatenate all frames( capture frame and threshold frames (ball, main color and secondary color))
+     * @return concatenated image, with capture frame size with all frames
+     */
+    cv::Mat getSplitFrame();
+
+    int getRobotListSize();
   int getAdvListSize();
   cv::Mat getThreshold(int index);
   void setAllThresholds(cv::Mat input);
