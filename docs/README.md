@@ -1,25 +1,62 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e59a153895344c36ac6f438368939134)](https://www.codacy.com/app/eduardoquijano2/VSSS-INF?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PEQUI-VSSS/VSSS-INF&amp;utm_campaign=Badge_Grade)
+![](https://github.com/PEQUI-MEC/VSSS-INF/blob/readme_edit/docs/images/p137_team.png)
 
-[![Build Status](https://travis-ci.org/PEQUI-VSSS/VSSS-INF.svg?branch=master)](https://travis-ci.org/PEQUI-VSSS/VSSS-INF)
+# Pequi Very Small
+ ![travis build](https://img.shields.io/travis/PEQUI-MEC/VSSS-INF/master.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e59a153895344c36ac6f438368939134)](https://www.codacy.com/app/eduardoquijano2/VSSS-INF?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PEQUI-MEC/VSSS-INF&amp;utm_campaign=Badge_Grade) ![](https://img.shields.io/github/stars/PEQUI-MEC/VSSS-INF.svg) ![](https://img.shields.io/github/contributors/PEQUI-MEC/VSSS-INF.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/LICENSE)
 
-# Introdução
+View this page on another language: [Portuguese](https://github.com/PEQUI-MEC/VSSS-INF) [English](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/README.en.md)
 
-Repositório destinado ao versionamento dos sistemas de controle e movimentação de robôs para participacao em competições de [IEEE VSSS](http://www.cbrobotica.org/?page_id=81&lang=pt). O grupo é misto e é composto por integrantes de Engenharia Elétrica, Engenharia da Computação, Engenharia de Software e Ciência da Computação da Universidade Federal de Goiás - [UFG](https://www.ufg.br/) - Goiânia.
+Olá! Esse é o repositório de desenvolvimento da equipe de robótica **Very Small Size Soccer** do [Pequi Mecânico](https://www.facebook.com/NucleoPMec/). Nosso grupo é composto por integrantes de várias cursos (Engenharia Elétrica, Engenharia da Computação, Engenharia de Software, Engenharia Florestal e Ciências da Computação) todos da Universidade Federal de Goiás - [UFG](https://www.ufg.br/) - Goiânia.
 
-# Motivação
+Nosso repositório é aberto pois entendemos que nosso maior trabalho é agregar nossas pesquisas e conhecimentos ao mundo acadêmico e comercial.
 
-Com a diversificação nas técnicas de manejo e controle de robôs e técnicas de implantação de software, tentamos abordar sistemas de Open Source para a produção de mecanismos completos de tracking por imagens de câmera, controle de sistemas motorizados e eventual implementação de inteligência estratégica.
+Estamos abertos a responder qualquer dúvida e sugestão através do nosso email contato@pequimecanico.com. Mais informações em nosso [SITE](https://pequimecanico.com/).
 
-# Contribuidores
-
-Projeto criado e mantido pelo [PEQUI MECÂNICO](https://www.facebook.com/NucleoPMec/) e pela comunidade que se dispõe a colaborar.
-Leia [code-of-conduct](/CODE_OF_CONDUCT.md) e então [contributing](/CONTRIBUTING.md).
-Contato no facebook do [PEQUI MECÂNICO](https://www.facebook.com/NucleoPMec/) ou via email pqverysmall@gmail.com
+# Como a usar
 
 
+## Dependências
 
-O PROJETO NÃO POSSUI FINS LUCRATIVOS E QUALQUER ARRECADAÇÃO SERÁ TOTALMENTE INVESTIDA EM NOVAS PESQUISAS PARA APOIO A COMUNIDADE CIENTÍFICA E LOCAL.
+Para começar a utilizar nosso software em primeiro lugar é necessário que tenha instalado alguma distro Linux, de preferência uma Debian-like. Caso tenha, basta executar nosso [run.sh](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/run.sh). O mesmo executará uma verificação de dependências e o que estiver faltando será instalado.
 
-# Primeiros Passos
+Caso queira instalar manualmente as dependências, segue a lista para instalação:
 
-Consulte nossa [Wiki](/wiki) para ver como começar a usar o código.
+ - build-essential
+ - cmake
+ - git
+ - libgtk2.0-dev
+ - pkg-config
+ - libavcodec-dev
+ - libavformat-dev
+ - libswscale-dev
+ - Opencv v3.4.1
+ - Opencv Contrib v3.4.1
+ - Libxbee3 v3.0.11
+ - libboot-all-dev
+ - libv4l-dev
+ - libv4lconvert0
+ - libgtkmm-3.0-dev
+
+## Gerando o executável
+
+Nosso sistema possui um arquivo CMakeLists.txt para construir nosso executável. Nosso script  [build.sh](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/build.sh) resolve automaticamente a construção da aplicação.
+
+Caso deseje fazê-lo manualmente, dentro da pasta do projeto crie uma pasta chamada **build**, abra o terminal dentro da pasta e execute o comando 
+
+>cmake ..
+
+Em seguida execute 
+
+>make
+
+O projeto gerará um executável na raiz do projeto com o nome de P137. Basta executá-lo.
+
+# Wiki
+
+Nossa [Wiki](https://github.com/PEQUI-MEC/VSSS-INF/wiki) pode conter informações relevantes para seu melhor entendimento de como trabalhamos e como você pode contribuir com nosso trabalho.
+
+# Redes Sociais
+
+Nossas atividades e eventos estão sempre em atualização através de nossos canais sociais. Fique por dentro de nossas atividades e se encante com o mundo da robótica.
+
+- [INSTAGRAM](https://www.instagram.com/pequimecanico/)
+- [FACEBOOK](https://www.facebook.com/NucleoPMec)
