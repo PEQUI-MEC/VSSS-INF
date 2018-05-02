@@ -12,10 +12,10 @@ addons:
 
 before_install:
   - echo $DOCKER_PASS | docker login -u $DOCKER_ACC --password-stdin
-  - docker pull pequi/vsss-inf:latest
+  - docker pull pequimecanico/vsss-inf:latest
 
 script:
-  - docker build -t pequi/vsss-inf:latest --cache-from="pequi/vsss-inf:latest" .
+  - docker build -t pequimecanico/vsss-inf:latest --cache-from="pequimecanico/vsss-inf:latest" .
 
 after_success:
-  - docker push pequi/vsss-inf:latest
+  - docker push pequimecanico/vsss-inf:latest
