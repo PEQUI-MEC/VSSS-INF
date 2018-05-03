@@ -3,12 +3,8 @@
 StrategyGUI::StrategyGUI() {
 	createFormationFrame();
 	createTransitionsFrame();
-	//createBehaviorsFrame();
 	pack_start(strategy.testFrame, false, true, 5);
 	configureTestFrame();
-	//createMenuFrame();
-	//createInfoTextFrame();
-	//createInfoImageFrame();
 }
 
 StrategyGUI::~StrategyGUI() {}
@@ -265,12 +261,6 @@ void StrategyGUI::_event_formation_box_changed() {
 	bt_deleteFormation.set_sensitive(true);
 }
 
-void StrategyGUI::_event_set_penalty_behavior() {
-	// !TODO setar flag e alterar estado do botão
-	// flag = !flag;
-	// bt_penaltyBehavior.set_active(!flag);
-}
-
 void StrategyGUI::_event_fulltransition_checkbox_signal_clicked() {
 	strategy.full_transition_enabled = !strategy.full_transition_enabled;
 	//std::cout << "Full transition:" << strategy.full_transition_enabled << std::endl;
@@ -314,18 +304,6 @@ void StrategyGUI::loadSavedFormations() {
 	}
 	// seleciona o None como padrão
 	formation_box.set_active(0);
-}
-
-void StrategyGUI::createBehaviorsFrame() {
-	pack_start(behavior_fm, false, true, 5);
-	behavior_fm.add(behavior_grid);
-	behavior_fm.set_label("Behaviors");
-	behavior_grid.set_halign(Gtk::ALIGN_CENTER);
-	bt_penaltyBehavior.set_label("Penalty");
-	behavior_grid.set_border_width(10);
-	behavior_grid.set_column_spacing(5);
-	behavior_grid.attach(bt_penaltyBehavior, 0, 0, 1, 1);
-	bt_penaltyBehavior.signal_pressed().connect(sigc::mem_fun(*this, &StrategyGUI::_event_set_penalty_behavior));
 }
 
 void StrategyGUI::createTransitionsFrame() {
@@ -406,48 +384,4 @@ void StrategyGUI::createFormationFrame() {
 	bt_saveFormation.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_saveFormation_bt_clicked));
 	bt_loadFormation.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_loadFormation_bt_clicked));
 	bt_deleteFormation.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_deleteFormation_bt_clicked));
-}
-
-void StrategyGUI::createMenuFrame() {
-	pack_start(menu_fm, false, true, 5);
-	menu_fm.add(menu_vbox);
-	menu_hbox[0].pack_start(m_TreeView, false, true, 5);
-	menu_hbox[0].set_halign(Gtk::ALIGN_CENTER);
-	m_TreeView.set_size_request(450,200);
-	//Add the TreeView's view columns:
-	//This number will be shown with the default numeric formatting.
-	m_TreeView.append_column("Strategy Menu", strategyColumns.strategy_name);
-	//Create the Tree model:
-	m_refTreeModel = Gtk::ListStore::create(strategyColumns);
-	m_TreeView.set_model(m_refTreeModel);
-	//Fill the TreeView's model
-	Gtk::TreeModel::Row row = *(m_refTreeModel->append());
-	row[strategyColumns.strategy_name] = "Strategy 1";
-	row = *(m_refTreeModel->append());
-	row[strategyColumns.strategy_name] = "Strategy 2";
-
-	select_button.set_label("Selecionar");
-	menu_hbox[1].pack_start(select_button, false, true, 5);
-	menu_hbox[1].set_halign(Gtk::ALIGN_CENTER);
-	menu_vbox.pack_start(menu_hbox[0], false, true,  5);
-	menu_vbox.pack_start(menu_hbox[1], false, true,  5);
-}
-
-void StrategyGUI::createInfoTextFrame() {
-	pack_start(info_text_fm, false, true, 5);
-	info_text_fm.set_label("Description:  ");
-	info_text_fm.add(m_ScrolledWindow);
-	m_ScrolledWindow.add(strategy_description_view);
-	m_ScrolledWindow.set_min_content_height(200);
-	m_ScrolledWindow.set_min_content_width(450);
-	strategy_description_text = Gtk::TextBuffer::create();
-	strategy_description_text->set_text("This is the text from TextBuffer #1.\n\n\n\n");
-	strategy_description_view.set_buffer(strategy_description_text);
-}
-
-void StrategyGUI::createInfoImageFrame() {
-	pack_start(info_img_fm, false, true, 5);
-	info_img_fm.set_label("Picture:  ");
-	strategy_img.set("img/pequi_mecanico.png");
-	info_img_fm.add(strategy_img);
 }

@@ -89,8 +89,6 @@ find_library(LIBXBEE libxbee.so libxbeep.so)
 # --FILE GLOBBING------------------------
 set(sources 
         src/main.cpp
-        src/ls.cpp
-		src/cpuTimer.cpp
         src/camcap.cpp
         src/strategy.cpp
         src/constants.hpp
@@ -98,16 +96,14 @@ set(sources
 
         src/aux/jsonSaveManager.cpp
         src/aux/kalmanFilter.cpp
+		src/aux/ls.cpp
+		src/aux/cpuTimer.cpp
 
         src/communication/serialCom.cpp
         src/communication/flyingMessenger.cpp
 
         src/capture/v4lcap.cpp
 		src/capture/v4ldev.cpp
-
-        src/fuzzy/fuzzyController.cpp
-        src/fuzzy/fuzzyFunction.cpp
-        src/fuzzy/rules.cpp
 
         src/vision/tag.cpp
         src/vision/vision.cpp

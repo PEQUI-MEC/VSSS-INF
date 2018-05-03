@@ -192,7 +192,7 @@ bool CamCap::capture_and_show() {
 
         for(int i = 0; i < interface.robotGUI.robot_list.size(); i++) {
             interface.robotGUI.robot_list.at(i).cmdType = POSITION;
-            interface.robotGUI.robot_list.at(i).vmax = interface.robotGUI.robot_list.at(i).vdefault;
+            interface.robotGUI.robot_list.at(i).vmax = interface.robotGUI.default_vel[interface.robotGUI.robot_list.at(i).role];
             interface.robotGUI.robot_list.at(i).target = cv::Point(-1, -1);
         }
     }
@@ -206,6 +206,7 @@ bool CamCap::capture_and_show() {
     // só roda a estratégia se o play tiver sido dado
     if(interface.get_start_game_flag()) {
         strategyGUI.strategy.set_Ball(Ball_kf_est); // interface.visionGUI.vision->getBall()
+        strategyGUI.strategy.set_default_vel(interface.robotGUI.default_vel);
         Ball_Est = strategyGUI.strategy.get_Ball_Est();
 
         // roda a estratégia
@@ -489,7 +490,7 @@ void CamCap::PID_test() {
 
             if(interface.robotGUI.robot_list[i].target.x != -1 && interface.robotGUI.robot_list[i].target.y != -1) {
                 interface.robotGUI.robot_list[Selec_index].target = cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]);
-                interface.robotGUI.robot_list[Selec_index].vmax = interface.robotGUI.robot_list[Selec_index].vdefault;
+                interface.robotGUI.robot_list[Selec_index].vmax = interface.robotGUI.default_vel[interface.robotGUI.robot_list.at(Selec_index).role];
                 interface.robotGUI.robot_list[i].cmdType = VECTOR;
                 interface.robotGUI.robot_list[i].transAngle = atan2(double(interface.robotGUI.robot_list[i].position.y - interface.robotGUI.robot_list[i].target.y), - double(interface.robotGUI.robot_list[i].position.x - interface.robotGUI.robot_list[i].target.x));
                 //interface.robotGUI.robot_list[i].goTo(interface.robotGUI.robot_list[i].target,interface.visionGUI.vision->getBall());

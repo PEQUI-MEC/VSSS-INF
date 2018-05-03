@@ -19,34 +19,34 @@ private:
     double robots_speed_tmp[N_ROBOTS];
     int robots_function_tmp[N_ROBOTS];
 
-public:
-
     bool robots_speed_edit_flag = false; /**< Disable the speed edition frame*/
     bool robots_function_edit_flag = false; /**< Disable the robot functions edition frame */
- 
-    std::vector<Robot> robot_list;
 
+    Gtk::Grid speeds_grid;
     Gtk::Frame robots_function_fm;
     Gtk::Frame robots_speed_fm;
 
     Gtk::VBox robots_function_vbox; /**< Robot Function frame main vbox */
     Gtk::VBox robots_speed_vbox; /**< Speed frame main vbox*/
- 
+
     Gtk::VBox robots_speed_slider_vbox[N_ROBOTS]; /**< Robot's vboxes that keep the slider and progress bar*/
     Gtk::HBox robots_function_hbox[N_ROBOTS+1]; /**< Hbox that lists robots in Robo Functions frame */
-    Gtk::HBox robots_speed_hbox[N_ROBOTS+1]; /**< Hbox that lists robots in Speeds frame*/
+    Gtk::HBox robots_speed_hbox; /**< Hbox that holds edit/done buttons */
+
+public:
+
+    float default_vel[N_ROBOTS];
 
     // Edit/Done buttons
-    Gtk::Button robots_function_edit_bt; 
-    Gtk::Button robots_function_done_bt;
     Gtk::Button robots_speed_edit_bt;
     Gtk::Button robots_speed_done_bt;
-
+    Gtk::Button robots_function_edit_bt;
+    Gtk::Button robots_function_done_bt;
     Gtk::ComboBoxText cb_robot_function[N_ROBOTS]; /**< Functions dropdown selector*/
-
     Gtk::HScale robots_speed_hscale[N_ROBOTS]; /**< Speed selection sliders*/
-
     Gtk::ProgressBar robots_speed_progressBar[N_ROBOTS]; /**< Bars that show robot's actual speed*/
+    
+    std::vector<Robot> robot_list;
 	
 	/**
 	 * @brief Constructor of a RobotGUI object

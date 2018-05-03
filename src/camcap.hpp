@@ -35,7 +35,7 @@
 #include "gui/controlGUI.hpp"
 #include "gui/v4linterface.hpp"
 #include "vision/vision.hpp"
-#include "cpuTimer.hpp"
+#include "aux/cpuTimer.hpp"
 #include "constants.hpp"
 
 #define MAX_THETA_TOLERATION 3

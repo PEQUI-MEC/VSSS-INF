@@ -1,28 +1,18 @@
 #ifndef STRATEGY_HPP_
 #define STRATEGY_HPP_
 #define PI 3.14159265453
-#include "fuzzy/fuzzyController.hpp"
 #include "opencv2/opencv.hpp"
-#include "ls.hpp"
+#include "aux/ls.hpp"
 #include "robot.hpp"
-//#include "serialW.hpp"
 #include <math.h>
 #include "gui/testFrame.hpp"
 #include "constants.hpp"
+#include <vector>
+
+#define N_ROBOTS 3
 
 #define PREDICAO_NUM_SAMPLES 15
-// Parametros para atacante sem bola
 
-#define ENTRADA_GOL_INVERSO	1
-
-//Parametros para atacante com bola
-#define AVOID_GOLEIRO_APOLO		0
-
-// Parametros do Defensor com bola no ataque
-#define DEF_RATIO			1.0f
-
-// Parametros do Defensor na defesa
-#define ZAGA_CENTRALIZADA			1
 //role
 #define GOALKEEPER 0
 #define DEFENDER 1
@@ -52,26 +42,19 @@
 #define BALL_NOT_OBS 2
 #define NO_OBS 3
 
-#define THETA_TOLERATION 3
-
-using namespace CONST;
 
 class Strategy {
+private:
+	double distance(cv::Point A, cv::Point B);
+	double distance_meters(cv::Point A, cv::Point B);
 public:
 	TestFrame testFrame;
-
-	// Robot Goalkeeper;
-	// Robot Attack;
-	// Robot Defense;
-	// Robot Opponent;
+	
 	cv::Point Ball;
-	cv::Point FutureBall;
+    cv::Point Ball_Est;
 	int distBall;
 	LS LS_ball_x;
 	LS LS_ball_y;
-	cv::Point Ball_Est;
-	cv::Point target = cv::Point(-1,-1);
-	cv::Point targetlock = cv::Point(-1,-1);
 
 	double pot_thetaX = 0;
 	double pot_thetaY = 0;
@@ -83,19 +66,14 @@ public:
 	float ball_angle = 0;
 	float ball_mag = 0;
 
-	vector<Robot> robots;
+	std::vector<Robot> robots;
 	cv::Point* adv;
-	int collision_count[3];
-	double past_transangle[3];
-	cv::Point past_position[3];
-	cv::Point Goalkeeper;
-	cv::Point Defender;
-	cv::Point Attacker;
-	cv::Point Opponent;
+    float default_vel[N_ROBOTS];
+	int collision_count[N_ROBOTS];
+	double past_transangle[N_ROBOTS];
+	cv::Point past_position[N_ROBOTS];
 	int atk, def, gk, opp;
 	double lock_angle;
-
-	FuzzyController controller;
 
 	int frames_blocked;
 
@@ -103,7 +81,6 @@ public:
 	bool full_transition = false;
 	bool danger_zone_1 = false;
 	bool danger_zone_2 = false;
-	bool atk_ball_possession = false;
 
 	bool half_transition_enabled = true;
 	bool full_transition_enabled = true;
@@ -114,9 +91,6 @@ public:
 	int transition_timeout = 0;
 	int transition_overmind_timeout = 0;
 	bool action1 = false;
-	bool action2 = false;
-	bool action3 = false;
-	bool kick = false;
 	bool transition_mindcontrol = false;
 	bool atk_mindcontrol = false;
 	bool def_mindcontrol = false;
@@ -125,15 +99,11 @@ public:
 	
 	void set_constants(int w, int h);
 	
-	double distance(cv::Point A, cv::Point B);
-	
-	double distance_meters(cv::Point A, cv::Point B);
-	
 	void get_variables();
 	
 	void get_past(int i);
 	
-	void get_targets(vector<Robot> * pRobots, cv::Point * advRobots);
+	void get_targets(std::vector<Robot> * pRobots, cv::Point * advRobots);
 	
 	void overmind();
 	
@@ -152,20 +122,12 @@ public:
 	bool is_near(int i, cv::Point point);
 	
 	void position_to_vector(int i);
-	
-	void go_to_the_ball(int i);
-	
-	void go_to_the_ball_direct(int i);
-	
-	void around_the_ball(int i);
-	
+
 	double look_at_ball(int i);
 	
 	double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS);
 	
 	int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst);
-	
-	double reach_on_time(double dist, double time_limit = 1);
 	
 	void spin_anti_clockwise(int i, double speed=0.8);
 	
@@ -173,21 +135,9 @@ public:
 	
 	void def_wait(int i);
 	
-	void fuzzy_init();
-	
-	int Fuzzy_Troca();
-	
-	double map_range(double actual, double minactual, double maxactual);
-	
 	void pot_field_around(int i);
 	
-	void gotta_catch_the_ball(int i);
-	
 	void crop_targets(int i);
-	
-	void smart_ball(int i, int max_distance);
-	
-	void test_run(int i);
 	
 	void atk_routine(int i);
 	
@@ -195,16 +145,11 @@ public:
 	
 	void gk_routine(int i);
 	
-	void def_past_routine(int i);
-	
-	void opp_gk_routine(int i);
-	
-	//Estimativa da Bola
-	cv::Point get_Ball_Est();
-	
-	void set_Ball_Est(cv::Point b);
-	
 	void set_Ball(cv::Point b);
+
+    void set_default_vel(float default_vel[]);
+
+	cv::Point get_Ball_Est();
 	
 };
 

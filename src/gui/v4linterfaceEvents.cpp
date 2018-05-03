@@ -503,7 +503,7 @@ namespace VSSS_GUI {
             Robot robot = robotGUI.robot_list.at(i);
             robots_id_box[i].set_text(&robot.ID);
             robotGUI.cb_robot_function[i].set_active(robot.role);
-            robotGUI.robots_speed_hscale[i].set_value(robot.vdefault);
+            robotGUI.robots_speed_hscale[i].set_value(robotGUI.default_vel[i]);
             robotGUI.robots_speed_progressBar[i].set_fraction(robot.vmax/1.4);
             std::ostringstream vmax;
             vmax << round(robot.vmax*100)/100;

@@ -15,7 +15,6 @@ public:
     double orientation2;
     double transAngle;
     int cmdType;
-    double vdefault;
     double vmax; // m/s
     float Vl,Vr;  // RPS
     bool fixedPos;
@@ -24,7 +23,7 @@ public:
     int status;
 
     Robot() : isOdd(false), orientation(0), orientation2(0),
-    cmdType(0), vdefault(0.8), vmax(1.4), fixedPos(false),
+    cmdType(0), vmax(1.4), fixedPos(false),
     using_pot_field(false), role(0), status(0)
     {
         ternary = cv::Point(-1,-1);

@@ -1,10 +1,7 @@
 #ifndef CONSTANTS_HPP_
 #define CONSTANTS_HPP_
 
-#include <math.h>
-
 namespace CONST {
-    //class Const {
     static bool GOAL_DANGER_ZONE, ADV_NA_AREA;
 
     static int height, width,
@@ -66,9 +63,7 @@ namespace CONST {
         goalie_line,
         goalie_offset,
         transition_back_radius,
-        transition_y_distance,
-        acceleration;
-    //};
+        transition_y_distance;
 }
 
 #endif

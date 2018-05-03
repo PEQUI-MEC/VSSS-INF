@@ -31,7 +31,7 @@ void jsonSaveManager::save_robots() {
 
         robot_config["ID"] = string(1, robot.ID);
         robot_config["role"] = robot.role;
-        robot_config["speed"] = round(robot.vdefault*1000)/1000;
+        robot_config["speed"] = round(interface->robotGUI.default_vel[i]*1000)/1000;
     }
 }
 
@@ -48,8 +48,8 @@ void jsonSaveManager::load_robots() {
         }
         if(exists(robot_config, "role")) robot.role = robot_config["role"];
         if(exists(robot_config, "speed")){
-            robot.vdefault = robot_config["speed"];
-            robot.vmax = robot.vdefault;
+            interface->robotGUI.default_vel[i] = robot_config["speed"];
+            robot.vmax = interface->robotGUI.default_vel[i];
         }
     }
 }

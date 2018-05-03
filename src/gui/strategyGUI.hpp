@@ -14,19 +14,6 @@
 
 class StrategyGUI: public Gtk::VBox {
 private:
-
-	bool deslocamentoZagaAtaque_flag = false;
-	bool goalSize_flag = false;
-	bool defenseLine_flag = false;
-	bool goalMax_flag = false;
-	bool goalMin_flag = false;
-	bool goalCenter_flag = false;
-	bool areasDivision_flag = false;
-	bool banheira_flag = false;
-	bool areaLimitX_flag = false;
-	bool ballRadius_flag = false;
-	bool goalArea_flag = false;
-	bool sideRectangles_flag = false;
 	
 	/**
 	 * @brief Converts a constant string to an inconstant one
@@ -116,12 +103,8 @@ public:
 	Gtk::TreeView m_TreeView;
 	Glib::RefPtr<Gtk::ListStore> m_refTreeModel;
 
-	Gtk::HBox selection_hbox;
-
 	Gtk::VBox menu_vbox;
 	Gtk::HBox menu_hbox[2];
-
-	Gtk::VBox info_text_hbox;
 
 	Gtk::Image strategy_img;
 
@@ -161,12 +144,7 @@ public:
 	 * @brief Constructor of a StrategyGUI object
 	 */
 	StrategyGUI();
-	
-	/**
-	 * @brief Behavior frame creator
-	 */
-	void createBehaviorsFrame();
-	
+
 	/**
 	 * @brief Inicialization of labels and values from Test Parameters frame 
 	 */
@@ -181,22 +159,6 @@ public:
 	 * @brief Transitions frame creator
 	 */
 	void createTransitionsFrame();
-	
-	/**
-	 * @brief Menu frame creator
-	 */
-	void createMenuFrame();
-	
-	/**
-	 * @brief Info text creator
-	 */
-	void createInfoTextFrame();
-	
-	/**
-	 * @brief Image frame creator
-	 * @details Pequi Mecânico's logo 
-	 */
-	void createInfoImageFrame();
 	
 	/**
 	 * @brief Destructor of a StrategyGUI object
