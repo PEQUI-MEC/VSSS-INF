@@ -78,6 +78,55 @@ std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robot> robots) {
 
 	return acks;
 }
+std::vector<message> FlyingMessenger::sendCMDs_with_priority(std::vector<Robot> robots, prioridade) {
+	int iterador;
+	int indice;
+
+	vector<message> acks;
+	if(!xbee || ++send_cmd_count <= frameskip) return acks;
+	for(iterador=0; iterador<3; iterador++) {
+		if (robots[iterador].priority==(prioridade)) {
+			indice=iterador;
+			//prioridade[iterador]=-1;
+			break;
+		}
+			
+	}
+	std::string msg;
+	switch (robots[indice].cmdType){
+		case POSITION:
+			if(robots[indice].target.x != -1 && robots[indice].target.y != -1)
+				msg = position_msg(robots[indice]);
+			break;
+
+		case SPEED:
+			msg = speed_msg(robots[indice]);
+			break;
+
+		case ORIENTATION:
+			msg = orientation_msg(robots[indice]);
+			break;
+
+		case VECTOR:
+			msg = vector_msg(robots[indice]);
+			break;
+
+		default:
+			if(robots[indice].target.x != -1 && robots[indice].target.y != -1)
+				msg = position_msg(robots[indice]);
+	}
+	
+	if(!msg.empty()){
+		int ack = xbee->sendMessage(robots[indice].ID,msg);
+		acks.push_back({robots[indice].ID, std::to_string(ack)});
+	}
+	
+	update_msg_time();
+	send_cmd_count=0;
+
+	return acks;
+}
+
 
 std::string FlyingMessenger::position_msg(Robot robot) {
 	double diff_x = robot.target.x - robot.position.x;
