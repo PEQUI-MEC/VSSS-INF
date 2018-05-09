@@ -1,3 +1,12 @@
+/**
+ * @file flyingMessenger.hpp
+ * @author Pequi Mecânico
+ * @date undefined
+ * @brief Communication methods with software and xbees.
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
+ */
+
 #ifndef VSSS_FlyingMessenger_H
 #define VSSS_FlyingMessenger_H
 

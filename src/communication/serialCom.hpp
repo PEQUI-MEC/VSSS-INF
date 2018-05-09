@@ -1,3 +1,12 @@
+/**
+ * @file serialCom.hpp
+ * @author Pequi Mecânico
+ * @date undefined
+ * @brief Class to interface xbee library.
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
+ */
+
 #ifndef VSSS_XBEE_H
 #define VSSS_XBEE_H
 
@@ -39,19 +48,19 @@ class SerialCom {
 private:
 
 	/**
-	 * @brief Pointer that points to xbee struct inside xbee.h.
+	 * Pointer that points to xbee struct inside xbee.h.
 	 */
 	struct xbee *xbee;
 
 	/**
-	 * @brief unordered map that stores all robots.
+	 * Unordered map that stores all robots.
 	 */
 	std::unordered_map<char, robot_xbee> robots;
 
 public:
 
 	/**
-	 * @brief Constructor of a new Serial Com object.
+	 * Constructor of a new Serial Com object.
 	 *
 	 * @param port String path of the serial port that handles xbee radio (Eg. /dev/ttyUSB1).
 	 * @param baud Baudrate of the communication between host pc and xbee.
@@ -59,11 +68,12 @@ public:
 	SerialCom(const std::string &port, int baud);
 
 	/**
-	 * @brief Destroy the SerialCom object
+	 * Destroy the SerialCom object
 	 */
 	~SerialCom();
 
 	/**
+	 * Creates a new robot connection.
 	 * @brief Receives ID and address of the robot and creates a connection to the robot.
 	 * @details Robots connection are added using xbee_conNew method provided from xbee library.
 	 *  xbee_conNew creates a new connection via the given libxbee instance. The new connection
@@ -73,18 +83,16 @@ public:
 	 * @param id Robot ID provided by vision.
 	 * @param addr Address provided statically from FlyingMessenger class.
 	 */
-	//void add_robot(char id, uint16_t addr);
 	void newRobot(char id, uint16_t addr);
 
 	/**
-	 * @brief Method that sends message to a specific robot identified by robot ID.
+	 * Method that sends message to a specific robot identified by robot ID.
 	 * @details This method calls xbee_conTx method from xbee library. This method receives a ACK return from the sent message and update ACK count using update_ack method.
 	 *
 	 * @param id Robot ID that identifies specific robot.
 	 * @param message Message that will be sent to robot.
 	 * @return Returns ACK received from xbee_conTx method.
 	 */
-	//int send(char id, const std::string &message);
 	int sendMessage(char id, const std::string &message);
 
 	/**
@@ -92,7 +100,6 @@ public:
 	 *
 	 * @return Returns vector of struct message that handles char id and string data.
 	 */
-	 //std::vector<message> get_messages();
 	std::vector<message> getMessages();
 
 	/**
@@ -102,9 +109,7 @@ public:
 	 * @param message Message that will be sent to the robot.
 	 * @return Returns a string that contains the robot[id] message.
 	 */
-	//std::string send_get_answer(char id, const std::string &message);
 	std::string getResponse(char id, const std::string &message);
-
 
 	/**
 	 * @brief The same functionality of getResponse method but sends message and waits response from all robots.
@@ -112,7 +117,6 @@ public:
 	 * @param message Message that will be sent to the robots.
 	 * @return std::vector<message> Returns a vector containing all robots return messages.
 	 */
-	//std::vector<message> send_get_answer_all(const std::string &message);
 	std::vector<message> getResponseAll(const std::string &message);
 
 	/**
@@ -121,7 +125,6 @@ public:
 	 * @param pkt Package received from the robot of type xbee_pkt (struct defined on xbee.h library).
 	 * @return std::string Message converted.
 	 */
-    //std::string get_string(xbee_pkt *pkt);
 	std::string getString(xbee_pkt *pkt);
 
 	/**
