@@ -102,6 +102,7 @@ public:
 	 * @return std::vector<message> Returns a vector of all acks received after send commands to each robots.
 	 */
 	std::vector<message> sendCMDs(std::vector<Robot> robots);
+	std::vector<message> FlyingMessenger::sendCMDs_with_priority(std::vector<Robot> robots, prioridade);
 
 	/**
 	 * @brief This method calls sendMessage method from xbee (instance of SerialCom class) and pass id and msg.
