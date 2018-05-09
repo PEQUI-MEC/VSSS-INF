@@ -1,7 +1,7 @@
 ![](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/images/p137_team.png)
 
 # Pequi Very Small
- ![travis build](https://img.shields.io/travis/PEQUI-MEC/VSSS-INF/master.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e59a153895344c36ac6f438368939134)](https://www.codacy.com/app/eduardoquijano2/VSSS-INF?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PEQUI-MEC/VSSS-INF&amp;utm_campaign=Badge_Grade) ![](https://img.shields.io/github/stars/PEQUI-MEC/VSSS-INF.svg) ![](https://img.shields.io/github/contributors/PEQUI-MEC/VSSS-INF.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/LICENSE)
+ ![travis build](https://img.shields.io/travis/PEQUI-MEC/VSSS-INF/master.svg) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/390869ad71524efd9f25f56036775963)](https://www.codacy.com/app/rafaelfgjardim/VSSS-INF?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PEQUI-MEC/VSSS-INF&amp;utm_campaign=Badge_Grade) ![](https://img.shields.io/github/stars/PEQUI-MEC/VSSS-INF.svg) ![](https://img.shields.io/github/contributors/PEQUI-MEC/VSSS-INF.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/LICENSE)
 
 View this page on another language: [Portuguese](https://github.com/PEQUI-MEC/VSSS-INF) [English](https://github.com/PEQUI-MEC/VSSS-INF/blob/master/docs/README.en.md)
 
