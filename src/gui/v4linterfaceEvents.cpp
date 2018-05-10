@@ -464,6 +464,7 @@ namespace VSSS_GUI {
             start_game_flag = true;
             start_game_bt.set_image(red_button_pressed);
 
+
             robotGUI.robot_list[0].status = 0;
             robotGUI.robot_list[1].status = 0;
             robotGUI.robot_list[2].status = 0;
@@ -483,6 +484,12 @@ namespace VSSS_GUI {
             visionGUI.en_video_name.set_state(Gtk::STATE_INSENSITIVE);
             visionGUI.en_video_name.set_text(dateString);
             visionGUI.vision->startNewVideo(dateString);
+
+            //Quick save
+            jsonSaveManager config(this);
+            config.save();
+            debug_log("Quick save");
+
         } else {
             visionGUI.vision->finishVideo();
             visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
@@ -495,6 +502,14 @@ namespace VSSS_GUI {
                 robotGUI.robot_list.at(i).cmdType = 0; // Position
                 robotGUI.robot_list.at(i).vmax = 0;
             }
+
+            //Quick Load
+            jsonSaveManager config(this);
+            config.load();
+            update_interface_robots();
+            update_interface_camera();
+            debug_log("Quick load");
+
         }
     }
 
