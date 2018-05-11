@@ -84,14 +84,14 @@ private:
     void posProcessing(int color);
 
     /** Make the threshold with interface values
-     * @brief invokes Vision::posProcessing() and Vision::searchTags() methods
+     * @brief invokes posProcessing() and searchTags() methods
      * @param color threshold color, indicates threshold frame in vector
      */
     void segmentAndSearch(int color);
 
     /** Search tag in threshold frames
      * @param color frame indicator (ball, main or secondary frame)
-     * @sa Vision::searchSecondaryTags()
+     * @sa Vision::searchSecondaryTags
      */
     void searchTags(int color);
 
@@ -100,7 +100,7 @@ private:
     void findTags();
 
     /** Give tags to the robots
-     * @brief uses Vision::inSphere() method
+     * @brief uses inSphere() method
      */
     void pick_a_tag();
 
@@ -125,8 +125,8 @@ public:
     ~Vision();
 
     /** Run the vision
-     * @brief Call Vision::preprocessing method, Vision::searchTags and Vision::pick-a-tag
-     * @param raw_frame image from camcap.hh
+     * @brief Call preProcessing() method, searchTags() and pick-a-tag()
+     * @param raw_frame image from camcap.hpp
      */
     void run(cv::Mat raw_frame);
 
@@ -144,14 +144,34 @@ public:
     void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
 
     /** Calculates Euclidean distance between two points
+     * @param p1 first point
+     * @param p2 second point
      * @return double value with distance value
      */
     double calcDistance(cv::Point p1, cv::Point p2);
 
+    /** Start a new video
+     * @param videoName video name
+     */
+
     void startNewVideo(std::string videoName);
     bool recordToVideo();
+    /** Finishes video recording
+     * @return true if was successful
+     *         false if not
+     */
     bool finishVideo();
+
+    /**
+     *
+     * @return true if is recording
+     *         false if isn't recording
+     */
     bool isRecording();
+
+    /** Save a picture
+     * @param in_name picture's name
+     */
     void savePicture(std::string in_name);
 
     /** Switch main color to adversary color
@@ -183,34 +203,49 @@ public:
     cv::Mat getSplitFrame();
 
     int getRobotListSize();
-  int getAdvListSize();
-  cv::Mat getThreshold(int index);
-  void setAllThresholds(cv::Mat input);
+    int getAdvListSize();
+    cv::Mat getThreshold(int index);
+    void setAllThresholds(cv::Mat input);
 
-  int getHue(int index0, int index1);
-  int getSaturation(int index0, int index1);
-  int getValue(int index0, int index1);
-  int getErode(int index);
-  int getDilate(int index);
-  int getBlur(int index);
-  int getAmin(int index);
+    int getHue(int index0, int index1);
+    int getSaturation(int index0, int index1);
+    int getValue(int index0, int index1);
+    int getErode(int index);
+    int getDilate(int index);
+    int getBlur(int index);
+    int getAmin(int index);
+    /** Sets the width and height
+     *
+     * @param inWidth input width
+     * @param inHeight input height
+     */
+    void setFrameSize(int inWidth, int inHeight);
+    int getFrameHeight();
+    int getFrameWidth();
+    /** Sets hue value
+     *
+     * @param index0 color position in vector
+     * @param index1 0 to min hue value, otherwise 1 to max hue value
+     * @param inValue hue value
+     */
+    void setHue(int index0, int index1, int inValue);
 
-  void setFrameSize(int inWidth, int inHeight);
-  int getFrameHeight();
-  int getFrameWidth();
+    void setSaturation(int index0, int index1, int inValue);
 
-  void setHue(int index0, int index1, int inValue);
-  void setSaturation(int index0, int index1, int inValue);
-  void setValue(int index0, int index1, int inValue);
-  void setErode(int index, int inValue);
-  void setDilate(int index, int inValue);
-  void setBlur(int index, int inValue);
-  void setAmin(int index, int inValue);
+    void setValue(int index0, int index1, int inValue);
+
+    void setErode(int index, int inValue);
+
+    void setDilate(int index, int inValue);
+
+    void setBlur(int index, int inValue);
+
+    void setAmin(int index, int inValue);
   
-  /**
-   * @brief Loads default values to vision object, making callibration easier.
-   */
-  void preloadHSV();
+    /**
+     * @brief Loads default values to vision object, making callibration easier.
+     */
+    void preloadHSV();
 };
 
 #endif /* VISION_HPP_ */
