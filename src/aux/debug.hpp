@@ -1,3 +1,11 @@
+/**
+ * @file debug.hpp
+ * @author Pequi Mecânico
+ * @date 10/05/2018
+ * @brief Debug Namespace
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
+ */
 #define debug_set_level(...) Debug::_set_debug_level( __VA_ARGS__ )
 #define debug_set_output(...) Debug::_set_output_file( __VA_ARGS__ )
 #define debug_log(...) Debug::log(__FILE__, __LINE__, __FUNCTION__, 0, __VA_ARGS__)
@@ -32,11 +40,12 @@ namespace Debug {
     static int _debug_level;
     static bool _debug_level_set;
 
-    static ofstream _debug_output;
     static bool _write_enabled;
+    static ofstream _debug_output;
+    static ofstream _terminal_output;
 
     /**
-     * @brief Sets the verbosity of this debug script.
+     * Sets the verbosity of this debug script.
      * @param level 0 = log, 1 = success, 2 = warning, 3 = error, 4 = fatal error, 5 = no messages
      */
     inline void _set_debug_level(int level) {
@@ -67,15 +76,15 @@ namespace Debug {
     }
 
     /**
-     * @brief Tries to open a given file name as our debug output
+     * Tries to open a given file name as our debug output and redirects the standard output to this file
      * @param file_name Name of the output file to be opened
      * @return bool True on success, False on error.
      */
     inline bool _set_output_file(string file_name) {
         if(_write_enabled) return false;
 
-        _debug_output.open(file_name);
-        if(!_debug_output.is_open()) {
+        _terminal_output.open("/dev/tty", std::ios_base::out);
+        if(!_terminal_output.is_open() || freopen(file_name.c_str(),"w",stdout) == NULL) {
             _write_enabled = false;
             return false;
         }
@@ -84,7 +93,7 @@ namespace Debug {
     }
 
     /**
-     * @brief Get File Name from a Path with or without extension
+     * Get File Name from a Path with or without extension
      * @param file Full path to the given file
      * @return string The file's name without extension.
      */
@@ -101,7 +110,7 @@ namespace Debug {
     }
 
     /**
-     * @brief Logs a string in a fancy way
+     * Logs a string in a fancy way
      * @param file_caller The name of the file where this function was called
      * @param line_caller The line of the file where this function was called
      * @param function_caller The name of the function where this one was called
@@ -109,8 +118,6 @@ namespace Debug {
      * @param msg The message to be printed
      */
     inline void log(const char * file_caller, int line_caller, const char * function_caller, short level, string msg) {
-        if(level < _debug_level) return;
-
         string class_caller = _get_class(file_caller);
         string color;
         stringstream output_message;
@@ -141,11 +148,10 @@ namespace Debug {
 
         output_message << "\033[0m" << endl;
 
-        cout << output_message.str();
-
-        if(_write_enabled) {
-            _debug_output << output_message.str();
-        }
+        if(level >= _debug_level)
+            _terminal_output << output_message.str();
+        if(_write_enabled)
+            cout << output_message.str();
     }
 
 }

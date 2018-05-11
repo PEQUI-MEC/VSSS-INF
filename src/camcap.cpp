@@ -102,7 +102,6 @@ bool CamCap::start_signal(bool b) {
 bool CamCap::capture_and_show() {
 
     // ----------------- CONFIGURAÇÃO INICIAL -----------------//
-
     if (!data) return false;
     if (frameCounter == 0) timer.start();
 
