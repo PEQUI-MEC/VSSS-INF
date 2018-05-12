@@ -140,7 +140,6 @@ public:
      * @param D dilate value
      * @param B blur value
      */
-
     void setCalibParams(int H[5][2], int S[5][2], int V[5][2], int Amin[5], int E[5], int D[5], int B[5]);
 
     /** Calculates Euclidean distance between two points
@@ -153,16 +152,21 @@ public:
     /** Start a new video
      * @param videoName video name
      */
-
     void startNewVideo(std::string videoName);
+
+    /** Writes the input frame in video object
+     * @return false if camera is closed,
+     *         true if frame was successful written
+     */
     bool recordToVideo();
+
     /** Finishes video recording
      * @return true if was successful
      *         false if not
      */
     bool finishVideo();
 
-    /**
+    /** Verifies if is recording
      *
      * @return true if is recording
      *         false if isn't recording
@@ -183,6 +187,7 @@ public:
      * @return cv::Point containing the ball position
      */
     cv::Point getBall();
+
     /** Obtains robot object
      * @param index robot number
      * @return robot object at index
@@ -194,7 +199,17 @@ public:
      * @return cv::Point containing robot position
      */
     cv::Point getRobotPos(int index);
+    /**
+     *
+     * @param index
+     * @return Adversary robot position
+     */
     cv::Point getAdvRobot(int index);
+
+    /** Gets a pointer containing all adversary positions
+     *
+     * @return pointer containing all adversary positions
+     */
     cv::Point* getAllAdvRobots();
 
     /** Concatenate all frames( capture frame and threshold frames (ball, main color and secondary color))
@@ -202,44 +217,126 @@ public:
      */
     cv::Mat getSplitFrame();
 
+    /** Gets robot list size
+     * @return robot list size
+     */
     int getRobotListSize();
-    int getAdvListSize();
-    cv::Mat getThreshold(int index);
-    void setAllThresholds(cv::Mat input);
 
+    /** Gets adversary robot list size
+     * @return adversary robot list size
+     */
+    int getAdvListSize();
+
+    /** Gets threshold image
+     * @param index color
+     * @return threshold frame in color position
+     */
+    cv::Mat getThreshold(int index);
+
+    /** Gets hue (Hsv) value
+     * @param index0 color position
+     * @param index1 min (0) or max (1)
+     * @return hue value (min or max) from color position
+     */
     int getHue(int index0, int index1);
+
+    /** Gets saturation (hSv) value
+     * @param index0 color position
+     * @param index1 min (0) or max (1)
+     * @return saturation value (min or max) from color position
+     */
     int getSaturation(int index0, int index1);
+
+    /** Gets value (hsV) value (hehehe)
+     * @param index0 color position
+     * @param index1 min (0) or max (1)
+     * @return value value (min or max) from color position
+     */
     int getValue(int index0, int index1);
+
+    /** Gets erode value
+     * @param index color position
+     * @return erode value (min or max) from color position
+     */
     int getErode(int index);
+
+    /** Gets dilate value
+     * @param index color position
+     * @return dilate value from color position
+     */
     int getDilate(int index);
+
+    /** Gets blur value
+     * @param index color position
+     * @return blur value from color position
+     */
     int getBlur(int index);
+
+    /** Gets min area value
+     * @param index color position
+     * @return min area value from color position
+     */
     int getAmin(int index);
+
     /** Sets the width and height
-     *
      * @param inWidth input width
      * @param inHeight input height
      */
     void setFrameSize(int inWidth, int inHeight);
+
+    /** Gets frame's height
+     * @return height value from image
+     */
     int getFrameHeight();
+
+    /** Gets frame's width
+     * @return width value from image
+     */
     int getFrameWidth();
-    /** Sets hue value
-     *
+
+    /** Sets hue (Hsv) value
      * @param index0 color position in vector
      * @param index1 0 to min hue value, otherwise 1 to max hue value
      * @param inValue hue value
      */
     void setHue(int index0, int index1, int inValue);
 
+    /** Sets saturation (hSv) value
+     * @param index0 color position in vector
+     * @param index1 0 to min saturation value, otherwise 1 to max saturation value
+     * @param inValue saturation value
+     */
     void setSaturation(int index0, int index1, int inValue);
 
+    /** Sets value (hsV) value
+     * @param index0 color position in vector
+     * @param index1 0 to min saturation value, otherwise 1 to max saturation value
+     * @param inValue value value
+     */
     void setValue(int index0, int index1, int inValue);
 
+    /** Sets erosion value
+     * @param index0 color position in vector
+     * @param inValue erosion value
+     */
     void setErode(int index, int inValue);
 
+    /** Sets dilation value
+     * @param index0 color position in vector
+     * @param inValue dilation value
+     */
     void setDilate(int index, int inValue);
 
+    /** Sets blur value
+     * @param index0 color position in vector
+     * @param inValue blur value
+     */
     void setBlur(int index, int inValue);
 
+    /** Sets area min value
+     * @param index0 color position in vector
+     * @param inValue area min value
+     */
     void setAmin(int index, int inValue);
   
     /**
