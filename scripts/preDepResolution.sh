@@ -1,10 +1,6 @@
 #!/bin/bash
 set -e
 
-# file="/tmp/progress_1"
-# echo 0 > $file
-# progress=0
-
 notInstalled=()
 
 dependencies=(
@@ -42,11 +38,7 @@ installPreReq() {
     for nI in "${notInstalled[@]}"; do
         echo -e "\033[0;31m\t $nI \033[1;31mnot installed\033[0m"
         echo -e "\033[0;33m\n\t Installing \033[1;33m$nI\033[0;33m...\033[0m\n"
-        #echo -e "\033[1;33mWe're going to need root privileges:\033[0m\t"
         apt-get install -y -qq "$nI" > /dev/null
-        #DEBIAN_FRONTEND=noninteractive apt-get install -y -qq "$nI" htop < /dev/null > /dev/null
-        #$progress=$((progress+p_step))
-        #echo $progress > $file
     done
 
     if [ ! -s /usr/lib/libxbee.so ]; then
@@ -66,15 +58,13 @@ verifyDependencies() {
         fi
     done
 
-    if [ ${#notInstalled[@]} -gt 0 ]; then
-        export p_step=100/${#notInstalled[@]}
-        installPreReq
+    #if [ ${#notInstalled[@]} -gt 0 ]; then
+    #    export p_step=100/${#notInstalled[@]}
+    #    installPreReq
     #else
         #echo "100" > $file
         #echo 2 #passed
-    fi
+    #fi
 }
 
 verifyDependencies
-
-#echo 1 #failed
