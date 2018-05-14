@@ -43,7 +43,11 @@ installOpenCV_WITH_CUDA() {
         -D WITH_CUBLAS=ON \
         -D WITH_TBB=ON \
         -D WITH_V4L=ON \
-        -D WITH_OPENGL = ON \
+        -D WITH_OPENGL=ON \
+        -D BUILD_TESTES=OFF \
+        -D BUILD_PERF_TESTS=OFF \
+        -D BUILD_opencv_java=OFF \
+        -D CUDA_GENERATION=Auto \
         -D CUDA_NVCC_FLAGS="-D_FORCE_INLINES" \
         -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules ..
     echo 33 > $file
