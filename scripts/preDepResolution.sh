@@ -58,13 +58,13 @@ verifyDependencies() {
         fi
     done
 
-    #if [ ${#notInstalled[@]} -gt 0 ]; then
+    if [ ${#notInstalled[@]} -gt 0 ]; then
     #    export p_step=100/${#notInstalled[@]}
-    #    installPreReq
+        installPreReq
     #else
         #echo "100" > $file
         #echo 2 #passed
-    #fi
+    fi
 }
 
 verifyDependencies

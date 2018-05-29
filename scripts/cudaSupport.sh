@@ -17,6 +17,7 @@ function installCuda() {
     done
 
     wget https://developer.nvidia.com/compute/cuda/9.1/Prod/local_installers/cuda_9.1.85_387.26_linux
+    chmod +x cuda_9.1.85_387.26_linux.run
     sudo ./cuda_9.1.85_387.26_linux.run
 
     export PATH=/usr/local/cuda-9.1/bin${PATH:+:${PATH}}

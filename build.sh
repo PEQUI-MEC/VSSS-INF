@@ -21,16 +21,16 @@ function dep_resolution() {
         cd ..
     else
         if [ -f ../.dockerenv ]; then
-            printf "\033[1;37mWe're inside MATRIX =[ \033[0m\n"
-            if [ "$1"  = "cuda" ]; then
-                chmod +x $PATH_TO_CUDA_RESOLUTION
-                ./$PATH_TO_CUDA_RESOLUTION
-            fi
+            printf "\033[1;37mWe're inside MATRIX =[ be creative...\033[0m\n"
+            #if [ "$1"  = "cuda" ]; then
+            #    chmod +x $PATH_TO_CUDA_RESOLUTION
+            #    ./$PATH_TO_CUDA_RESOLUTION
+            #fi
             chmod +x $PATH_TO_DEP_RESOLUTION
             ./$PATH_TO_DEP_RESOLUTION
 
         else
-            printf "\033[1;37mWe're in the REAL world =] \033[0m\n\n"
+            printf "\033[1;37mWe're in the REAL world =] be careful...\033[0m\n\n"
             printf "\033[0;33mWe're going to need root privileges.\033[0m\n"
             if [ "$1"  = "cuda" ]; then
                 chmod +x $PATH_TO_CUDA_RESOLUTION
