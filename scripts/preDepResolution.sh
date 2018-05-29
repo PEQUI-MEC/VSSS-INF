@@ -5,6 +5,8 @@ notInstalled=()
 
 dependencies=(
     #pré-dependencies
+    apt-utils
+    wget
     build-essential
     cmake
     git
