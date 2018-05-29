@@ -29,10 +29,13 @@ echo -e "Preparing to install dependencies...\n"
 ./$PATH_DEP
 
 echo -e "Verifying cuda installation...\n"
-nvcc -V 1> cudaIsInstalled
+nvcc -V 1> cudaIsInstalled 2>cudaNotInstalled
 if [ -s cudaIsInstalled ]; then
+    rm -f cudaIsInstalled
     echo -e "\033[0;32m\t CUDA \033[1;32minstalled\033[0m\n"
-else
+else if[ -s cudaNotInstalled ]; then
+    printf "\033[0;32m\t CUDA \033[1;31mnot installed\033[0m\n"
+    rm -f cudaNotInstalled
     installCuda
 fi
 
