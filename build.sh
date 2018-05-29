@@ -22,7 +22,11 @@ function dep_resolution() {
     else
         if [ -f ../.dockerenv ]; then
             printf "\033[1;37mWe're inside MATRIX =[ \033[0m\n"
+            chmod +x $PATH_TO_DEP_RESOLUTION
             ./$PATH_TO_DEP_RESOLUTION
+            if [ "$1"  = "cuda" ]; then
+                chmod +x $PATH_TO_CUDA_RESOLUTION
+                sudo -s ./$PATH_TO_CUDA_RESOLUTION
         else
             printf "\033[1;37mWe're in the REAL world =] \033[0m\n\n"
             printf "\033[0;33mWe're going to need root privileges.\033[0m\n"
