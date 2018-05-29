@@ -59,7 +59,7 @@ function usage() {
 while [ "$1" != "" ]; do
     case $1 in
         -wc|--with-cuda)
-            printf "Instalando com suporte a CUDA\n"
+            printf "Instalando dependências com suporte a CUDA\n"
             dep_resolution
         ;;
         -s|--simu)

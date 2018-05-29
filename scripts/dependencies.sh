@@ -14,7 +14,11 @@ steps=($PATH_DEP $PATH_OCV)
 
 for i in 1 2; do
     echo -e "\033[1;35mSolving ${msgs[$i-1]}... \033[0m\n"
-    "./${steps[$i-1]}"
+    if [ "$1" == "cuda" ]; then
+        "./${steps[$i-1]} cuda"
+    else
+        "./${steps[$i-1]}"
+    fi
 done
 
 chmod -x $PATH_DEP $PATH_OCV
