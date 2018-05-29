@@ -29,10 +29,11 @@ echo -e "Preparing to install dependencies...\n"
 ./$PATH_DEP
 
 echo -e "Verifying cuda installation...\n"
-ldconfig - | grep cuda 2>cudaIsInstalled 1>/dev/null
+nvcc -V 1> cudaIsInstalled
 if [ -s cudaIsInstalled ]; then
-    installCuda
-else
     echo -e "\033[0;32m\t CUDA \033[1;32minstalled\033[0m\n"
+else
+    installCuda
 fi
 
+chmod -x $PATH_DEP
