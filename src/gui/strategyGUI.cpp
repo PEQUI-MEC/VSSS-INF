@@ -261,19 +261,9 @@ void StrategyGUI::_event_formation_box_changed() {
 	bt_deleteFormation.set_sensitive(true);
 }
 
-void StrategyGUI::_event_fulltransition_checkbox_signal_clicked() {
-	strategy.full_transition_enabled = !strategy.full_transition_enabled;
-	//std::cout << "Full transition:" << strategy.full_transition_enabled << std::endl;
-}
-
-void StrategyGUI::_event_halftransition_signal_clicked() {
-	strategy.half_transition_enabled = !strategy.half_transition_enabled;
-	//std::cout << "Half transition:" << strategy.half_transition_enabled << std::endl;
-}
-	
-void StrategyGUI::_event_transitionmindcontrol_signal_clicked() {
-	strategy.transition_mindcontrol_enabled = !strategy.transition_mindcontrol_enabled;
-	//std::cout << "Transition mindcontrol: " << strategy.transition_mindcontrol_enabled << std::endl;
+void StrategyGUI::_event_transitions_checkbox_signal_clicked() {
+	strategy.transitions_enabled = !strategy.transitions_enabled;
+	debug_log("Transitions: " + to_string(strategy.transitions_enabled));
 }
 
 void StrategyGUI::loadSavedFormations() {
@@ -316,27 +306,19 @@ void StrategyGUI::createTransitionsFrame() {
 	transitions_grid.set_column_spacing(5);
 	transitions_grid.set_halign(Gtk::ALIGN_CENTER);	
 
-	transitions_grid.attach(transitions_fulltransition_check, 0, 0, 1, 1);
-	transitions_grid.attach(transitions_halftransition_check, 0, 1, 1, 1);
-	transitions_grid.attach(transitions_mindcontrol_check, 1, 0, 1, 1);
+	transitions_grid.attach(transitions_check, 0, 0, 1, 1);
 
-	transitions_fulltransition_check.set_label("Full Transition");
-	transitions_halftransition_check.set_label("Half Transition");
-	transitions_mindcontrol_check.set_label("Transition Mindcontrol");
-	transitions_fulltransition_check.set_active();
-	transitions_halftransition_check.set_active();
-	transitions_mindcontrol_check.set_active();
+	transitions_check.set_label("Enable Transitions");
+	transitions_check.set_active();
 
-	transitions_fulltransition_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_fulltransition_checkbox_signal_clicked));
-	transitions_halftransition_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_halftransition_signal_clicked));
-	transitions_mindcontrol_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_transitionmindcontrol_signal_clicked));
+	transitions_check.signal_clicked().connect(sigc::mem_fun(*this, &StrategyGUI::_event_transitions_checkbox_signal_clicked));
 }
 
 void StrategyGUI::configureTestFrame() {
 	std::string labels[5] = {"Goalie Line", "Goalie Offset", "Name 3", "Name 4", "Name 5"};
 	double min[5] = {0, 0, 0, 0, 0};
 	double max[5] = {160, 100, 100, 100, 100};
-	double currentValue[5] = {60, 40, 20, 30, 40};
+	double currentValue[5] = {60, 15, 20, 30, 40};
 	double digits[5] = {0, 0, 0, 0, 0};
 	double steps[5] = {5, 1, 1, 1, 1};
 

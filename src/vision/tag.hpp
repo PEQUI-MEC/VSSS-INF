@@ -1,3 +1,12 @@
+/**
+ * @file tag.hpp
+ * @author Bryan Lincoln @ Pequi Mecânico
+ * @date 28/09/2017
+ * @brief A Tag Class
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
+ */
+
 #ifndef TAG_HPP_
 #define TAG_HPP_
 
@@ -18,23 +27,22 @@ public:
 
     bool left;
 
-    // eu tentei implementar num cpp mas deu muita merda
-    /// <summary>
-    /// Constroi a tag
-    /// </summary>
-    /// <param name="pos">Posição da tag</param>
-    /// <param name="myarea">Corresponde ao tagArea</param>
+    /**
+     * Constroi a tag.
+     * @param pos Posição da tag.
+     * @param myarea Corresponde ao tagArea.
+     */
     Tag(cv::Point pos, double myarea) ;
 
-    /// <summary>
-    /// Seta os pontos frontPoint e rearPoint aleatoriamente
-    /// </summary>
-    /// <param name="myLine">Linha encontrada pelo fitline</param>
+    /**
+     * Seta os pontos frontPoint e rearPoint arbitrariamente.
+     * @param myLine Linha encontrada pelo fitline.
+     */
     void setLine(cv::Vec4f myLine);
 
-    /// <summary>
-    /// Inverte os pontos frontPoint e rearPoint depois que a visão determinar a ordem correta
-    /// </summary>
+    /**
+     * Inverte os pontos frontPoint e rearPoint depois que a visão determinar a ordem correta.
+     */
     void switchPoints();
 };
 

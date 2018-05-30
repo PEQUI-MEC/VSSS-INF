@@ -13,7 +13,7 @@
 #include <iostream>
 #include <bitset>
 #include <boost/format.hpp>
-#include "robot.hpp"
+#include "robots.hpp"
 
 #define POSITION 0
 #define SPEED 1

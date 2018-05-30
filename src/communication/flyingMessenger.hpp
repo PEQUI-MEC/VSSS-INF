@@ -10,7 +10,7 @@
 #ifndef VSSS_FlyingMessenger_H
 #define VSSS_FlyingMessenger_H
 
-#include "../robot.hpp"
+#include "robots.hpp"
 #include "serialCom.hpp"
 #include <string>
 #include <vector>
@@ -19,11 +19,7 @@
 #include <thread>
 #include <condition_variable>
 
-#define POSITION 0
-#define SPEED 1
-#define ORIENTATION 2
-#define VECTOR 3
-#define DEFAULT_FRAMESKIP 5
+#define DEFAULT_FRAMESKIP 4
 
 class FlyingMessenger {
 private:
@@ -51,7 +47,7 @@ private:
 	 * @param robot Gets a Robot instance to prepare the specific message.
 	 * @return std::string Message containing prepared position and velocity message.
 	 */
-	std::string position_msg(Robot robot);
+	std::string position_msg(Robots::Command command);
 
 	/**
 	 * @brief Prepare the message to send to the robot a speed message.
@@ -60,7 +56,7 @@ private:
 	 * @param robot Gets a Robot instance to prepare the specific message.
 	 * @return std::string Message containing prepared speed message.
 	 */
-	std::string speed_msg(Robot robot);
+	std::string speed_msg(Robots::Command command);
 
 	/**
 	 * @brief Prepare the message to send to the robot a orientation message.
@@ -69,7 +65,7 @@ private:
 	 * @param robot Gets a Robot instance to prepare the specific message.
 	 * @return std::string Message containg prepared orientation message.
 	 */
-	std::string orientation_msg(Robot robot);
+	std::string orientation_msg(Robots::Command command);
 
 	/**
 	 * @brief Prepare the message to send to the robot a vector message.
@@ -78,7 +74,7 @@ private:
 	 * @param robot Gets a Robot instance to prepare the specific message.
 	 * @return std::string Message containg prepared orientation message.
 	 */
-	std::string vector_msg(Robot robot);
+	std::string vector_msg(Robots::Command command);
 
 	/**
 	 * @brief Method to round the double number passed.
@@ -101,7 +97,7 @@ public:
 	 * @param robots Vector containing all robots instances.
 	 * @return std::vector<message> Returns a vector of all acks received after send commands to each robots.
 	 */
-	std::vector<message> sendCMDs(std::vector<Robot> robots);
+	std::vector<message> sendCMDs(std::vector<Robots::Command> commands);
 
 	/**
 	 * @brief This method calls sendMessage method from xbee (instance of SerialCom class) and pass id and msg.

@@ -3,13 +3,13 @@
 #
 # --Instructions-------------------------
 #
-# 0. If you need to include a new source file, please make shure you have
+# 0. If you need to include a new source file, please make sure you have
 #       <header_file>.hpp and <source_file>.cpp. Otherwhise CMake command
 #       will return a bunch of multiple definitions errors on your methods.
 #
 # 1. To include a new source file, include the path of <source_file>.cpp
 #       inside above set function under # FILE GLOBBING comment. This
-#       function will set the sources of project. Make shure you pass
+#       function will set the sources of project. Make sure you pass
 #       the path from the 'src' folder to the <source_file>.cpp.
 #       (Eg. src/to/the/<source_file>.cpp).
 #
@@ -53,7 +53,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 # --SETTING VERSION NUMBER---------------
 set(P137_MAJOR_VERSION 1)
-set(P137_MINOR_VERSION 0)
+set(P137_MINOR_VERSION 1)
 set(P137_PATCH_VERSION 0)
 set(P137_TWEEK_VERSION 0)
 set(P137 VERSION ${P137_MAJOR_VERSION}.${P137_MINOR_VERSION}.${P137_PATCH_VERSION}.${P137_TWEEK_VERSION})
@@ -92,7 +92,7 @@ set(sources
         src/camcap.cpp
         src/strategy.cpp
         src/constants.hpp
-        src/robot.hpp
+        src/robots.cpp
 
         src/aux/jsonSaveManager.cpp
         src/aux/kalmanFilter.cpp

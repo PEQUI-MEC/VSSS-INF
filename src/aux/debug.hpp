@@ -1,6 +1,6 @@
 /**
  * @file debug.hpp
- * @author Pequi Mecânico
+ * @author Bryan Lincoln @ Pequi Mecânico
  * @date 10/05/2018
  * @brief Debug Namespace
  * @see https://www.facebook.com/NucleoPMec/
@@ -39,16 +39,42 @@ private:
 namespace Debug {
     static int _debug_level;
     static bool _debug_level_set;
-
     static bool _write_enabled;
     static ofstream _debug_output;
     static ofstream _terminal_output;
 
     /**
+     * Logs a string in a fancy way
+     * @param file_caller The name of the file where this function was called
+     * @param line_caller The line of the file where this function was called
+     * @param function_caller The name of the function where this one was called
+     * @param level The priority level (used for verbosity) of the received message
+     * @param msg The message to be printed
+     */
+    inline void log(const char * file_caller, const int line_caller, const char * function_caller, const short level, const string& msg);
+
+    /**
      * Sets the verbosity of this debug script.
      * @param level 0 = log, 1 = success, 2 = warning, 3 = error, 4 = fatal error, 5 = no messages
      */
-    inline void _set_debug_level(int level) {
+    inline void _set_debug_level(const int level);
+
+    /**
+     * Tries to open a given file name as our debug output and redirects the standard output to this file
+     * @param file_name Name of the output file to be opened
+     * @return bool True on success, False on error.
+     */
+    inline bool _set_output_file(const string& file_name);
+
+    /**
+     * Get File Name from a Path with or without extension
+     * @param file Full path to the given file
+     * @return string The file's name without extension.
+     */
+    inline string _get_class(const string& file);
+
+
+    void _set_debug_level(const int level) {
         if(_debug_level_set) return;
 
         stringstream color;
@@ -75,29 +101,20 @@ namespace Debug {
         cout << color.str() << "messages.\033[0m" << endl << endl;
     }
 
-    /**
-     * Tries to open a given file name as our debug output and redirects the standard output to this file
-     * @param file_name Name of the output file to be opened
-     * @return bool True on success, False on error.
-     */
-    inline bool _set_output_file(string file_name) {
+    bool _set_output_file(const string& file_name) {
         if(_write_enabled) return false;
 
         _terminal_output.open("/dev/tty", std::ios_base::out);
         if(!_terminal_output.is_open() || freopen(file_name.c_str(),"w",stdout) == NULL) {
             _write_enabled = false;
+            log(__FILE__, __LINE__, __FUNCTION__, (short)3, "Debug log can't work properly. Some features will be disabled.");
             return false;
         }
         _write_enabled = true;
         return true;
     }
 
-    /**
-     * Get File Name from a Path with or without extension
-     * @param file Full path to the given file
-     * @return string The file's name without extension.
-     */
-    inline string _get_class(string file) {
+    string _get_class(const string& file) {
         // Create a Path object from File Path
         filesys::path pathObj(file);
 
@@ -109,17 +126,9 @@ namespace Debug {
         return pathObj.filename().string();
     }
 
-    /**
-     * Logs a string in a fancy way
-     * @param file_caller The name of the file where this function was called
-     * @param line_caller The line of the file where this function was called
-     * @param function_caller The name of the function where this one was called
-     * @param level The priority level (used for verbosity) of the received message
-     * @param msg The message to be printed
-     */
-    inline void log(const char * file_caller, int line_caller, const char * function_caller, short level, string msg) {
+    void log(const char * file_caller, const int line_caller, const char * function_caller, const short level, const string& msg) {
         string class_caller = _get_class(file_caller);
-        string color;
+        string color, details;
         stringstream output_message;
 
         switch(level) {
@@ -140,18 +149,24 @@ namespace Debug {
             break;
         }
 
+        details = "\033[0m[" + class_caller + " -> " + function_caller + " (" + to_string(line_caller) + ")]: ";
+
         if(_debug_level == 0)
-            output_message << "\033[0m" << "[" << class_caller << " -> " << function_caller << " (" << line_caller << ")]: ";
+            output_message << details;
 
         if(string(msg).size() > 0)
             output_message << color << msg;
 
         output_message << "\033[0m" << endl;
 
-        if(level >= _debug_level)
+        if(level >= _debug_level) {
             _terminal_output << output_message.str();
-        if(_write_enabled)
-            cout << output_message.str();
+            _terminal_output.flush();
+        }
+        if(_write_enabled) {
+            cout << details << output_message.str();
+            cout.flush();
+        }
     }
 
 }

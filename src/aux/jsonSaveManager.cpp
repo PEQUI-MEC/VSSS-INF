@@ -25,33 +25,36 @@ void jsonSaveManager::save(const string file_path) {
 }
 
 void jsonSaveManager::save_robots() {
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < Robots::SIZE; ++i) {
         json& robot_config = configs["Robots"]["Robot "+std::to_string(i+1)];
-        Robot& robot = interface->robotGUI.robot_list.at((unsigned long) i);
-
-        robot_config["ID"] = string(1, robot.ID);
-        robot_config["role"] = robot.role;
-        robot_config["speed"] = round(interface->robotGUI.default_vel[i]*1000)/1000;
+        // debug_warning(string(1, Robots::get_ID(i)));
+        robot_config["ID"] = string(1, Robots::get_ID(i));
+        robot_config["role"] = Robots::get_role(i);
+        robot_config["speed"] = to_string(round(Robots::get_default_velocity(i)*1000)/1000); // salvar como string pois double zoa as casas decimais
     }
 }
 
 void jsonSaveManager::load_robots() {
     if(!exists(configs, "Robots")) return;
-
-    for (int i = 0; i < 3; ++i) {
+    for (int i = 0; i < Robots::SIZE; ++i) {
         json& robot_config = configs["Robots"]["Robot "+std::to_string(i+1)];
-        Robot& robot = interface->robotGUI.robot_list.at((unsigned long) i);
 
         if(exists(robot_config, "ID")){
             string id = robot_config["ID"];
-            robot.ID = id[0];
+            // debug_log("setting id: " + id);
+            Robots::set_ID(i, id[0]);
         }
-        if(exists(robot_config, "role")) robot.role = robot_config["role"];
+        if(exists(robot_config, "role")) {
+            Robots::set_role(i, robot_config["role"]);
+        }
         if(exists(robot_config, "speed")){
-            interface->robotGUI.default_vel[i] = robot_config["speed"];
-            robot.vmax = interface->robotGUI.default_vel[i];
+            string tmp_speed = robot_config["speed"];
+            Robots::set_default_velocity(i, stof(tmp_speed));
         }
     }
+    interface->robotGUI.update_ids();
+    interface->robotGUI.update_robot_functions();
+    interface->robotGUI.update_speed_sliders();
 }
 
 void jsonSaveManager::save_camera() {

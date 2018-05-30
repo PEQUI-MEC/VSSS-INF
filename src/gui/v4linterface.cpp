@@ -590,15 +590,15 @@ namespace VSSS_GUI {
 
     void V4LInterface::updateRobotLabels() {
         std::stringstream aux1;
-        aux1 << "(" << round((robotGUI.robot_list[0].position.x))<< "," << round((robotGUI.robot_list[0].position.y))<< "," << round(robotGUI.robot_list[0].orientation*(180/PI)) << ")";
+        aux1 << "(" << (Robots::get_position(0).x) << "," << (Robots::get_position(0).y) << "," << int(Robots::get_orientation(0)*(180/PI)) << ")";
         robot1_pos_lb->set_text(aux1.str());
 
         std::stringstream aux2;
-        aux2 << "(" << round((robotGUI.robot_list[1].position.x))<< "," << round((robotGUI.robot_list[1].position.y))<< "," << round((robotGUI.robot_list[1].orientation*(180/PI))) << ")";
+        aux2 << "(" << (Robots::get_position(1).x) << "," << (Robots::get_position(1).y) << "," << int((Robots::get_orientation(1)*(180/PI))) << ")";
         robot2_pos_lb->set_text(aux2.str());
 
         std::stringstream aux3;
-        aux3 << "(" << round((robotGUI.robot_list[2].position.x))<< "," << round((robotGUI.robot_list[2].position.y)) << "," <<  round((robotGUI.robot_list[2].orientation*(180/PI))) << ")";
+        aux3 << "(" << (Robots::get_position(2).x) << "," << (Robots::get_position(2).y) << "," <<  int((Robots::get_orientation(2)*(180/PI))) << ")";
 
         robot3_pos_lb->set_text(aux3.str());
         std::stringstream aux4;
@@ -610,52 +610,6 @@ namespace VSSS_GUI {
         std::stringstream aux;
         aux << "FPS: " << fps;
         fps_label->set_text(aux.str());
-    }
-
-    void V4LInterface::createIDsFrame() {
-        Gtk::Label *label;
-        info_hbox.pack_start(robots_id_fm, false, true, 5);
-        robots_id_fm.set_label("IDs");
-        robots_id_fm.add(robots_id_vbox);
-        robots_id_vbox.pack_start(robots_id_hbox[0], false, true, 5);
-
-        robots_id_hbox[0].pack_start(robots_id_edit_bt, false, true, 5);
-        robots_id_hbox[0].pack_end(robots_id_done_bt, false, true, 5);
-        robots_id_edit_bt.set_label("Edit");
-        robots_id_done_bt.set_label("Done");
-
-        label = new Gtk::Label("Robot 1: ");
-        robots_id_hbox[1].pack_start(*label, false, true, 5);
-        robots_id_hbox[1].pack_start(robots_id_box[0], false, true, 5);
-        robots_id_box[0].set_max_length(1);
-        robots_id_box[0].set_width_chars(2);
-        robots_id_box[0].set_text(Glib::ustring::format("A"));
-        robots_id_vbox.pack_start(robots_id_hbox[1], false, true, 5);
-
-        label = new Gtk::Label("Robot 2: ");
-        robots_id_hbox[2].pack_start(*label, false, true, 5);
-        robots_id_hbox[2].pack_start(robots_id_box[1], false, true, 5);
-        robots_id_box[1].set_max_length(1);
-        robots_id_box[1].set_width_chars(2);
-        robots_id_box[1].set_text(Glib::ustring::format("B"));
-        robots_id_vbox.pack_start(robots_id_hbox[2], false, true, 5);
-
-        label = new Gtk::Label("Robot 3: ");
-        robots_id_hbox[3].pack_start(*label, false, true, 5);
-        robots_id_hbox[3].pack_start(robots_id_box[2], false, true, 5);
-        robots_id_box[2].set_max_length(1);
-        robots_id_box[2].set_width_chars(2);
-        robots_id_box[2].set_text(Glib::ustring::format("C"));
-        robots_id_vbox.pack_start(robots_id_hbox[3], false, true, 5);
-
-        robots_id_box[0].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_box[1].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_box[2].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_edit_bt.set_state(Gtk::STATE_INSENSITIVE);
-
-        robots_id_edit_bt.signal_pressed().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_edit_bt_signal_pressed));
-        robots_id_done_bt.signal_clicked().connect(sigc::mem_fun(*this, &V4LInterface::event_robots_id_done_bt_signal_clicked));
     }
 
     void V4LInterface::createPositionsAndButtonsFrame() {
@@ -712,12 +666,6 @@ namespace VSSS_GUI {
         offsetL = 0;
         offsetR = 0;
 
-        Robot r;
-
-        robotGUI.robot_list.push_back(r);
-        robotGUI.robot_list.push_back(r);
-        robotGUI.robot_list.push_back(r);
-
         cb_device.set_state(Gtk::STATE_NORMAL);
         cb_input.set_state(Gtk::STATE_NORMAL);
         cb_standard.set_state(Gtk::STATE_NORMAL);
@@ -768,20 +716,8 @@ namespace VSSS_GUI {
         red_button_released.set_size_request(100,100);
         red_button_pressed.set_size_request(100,100);
 
-        robotGUI.robot_list[0].ID = 'A';
-        robotGUI.robot_list[1].ID = 'B';
-        robotGUI.robot_list[2].ID = 'C';
-
-        robotGUI.robot_list[0].role = 0;
-        robotGUI.robot_list[1].role = 1;
-        robotGUI.robot_list[2].role = 2;
-
-        for(unsigned i = 0; i < robotGUI.robot_list.size(); i++)
-            robotGUI.robot_list.at(i).position = cv::Point(-1,-1);
-
         createPositionsAndButtonsFrame();
         createQuickActionsFrame();
-        createIDsFrame();
 
         info_hbox.pack_end(buttons_vbox, false, true, 5);
         buttons_vbox.pack_start(start_game_hbox, false, true, 5);

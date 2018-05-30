@@ -1,42 +1,17 @@
+#include "aux/debug.hpp"
+
 #ifndef STRATEGY_HPP_
 #define STRATEGY_HPP_
-#define PI 3.14159265453
+
 #include "opencv2/opencv.hpp"
 #include "aux/ls.hpp"
-#include "robot.hpp"
-#include <math.h>
+#include "robots.hpp"
 #include "gui/testFrame.hpp"
 #include "constants.hpp"
 #include <vector>
 
 #define N_ROBOTS 3
-
-#define PREDICAO_NUM_SAMPLES 15
-
-//role
-#define GOALKEEPER 0
-#define DEFENDER 1
-#define ATTACKER 2
-#define OPPONENT 3
-
-//cmdType
-#define POSITION 0
-#define SPEED 1
-#define ORIENTATION 2
-#define VECTOR 3
-#define VECTORRAW 4
-
-//state
-#define NORMAL_STATE 0
-#define CORNER_STATE 1
-#define	STEP_BACK 2
-#define	ADVANCING_STATE 3
-#define	TRANSITION_STATE 4
-#define	SIDEWAYS 5
-#define DEF_CORNER_STATE 6
-#define ATK_PENALTI_STATE 7
-
-//potField
+// potField
 #define BALL_IS_OBS 0
 #define BALL_ONLY_OBS 1
 #define BALL_NOT_OBS 2
@@ -63,12 +38,10 @@ public:
 	double pot_goalMag;
 	double pot_magnitude[5];
 	double pot_angle[5];
-	float ball_angle = 0;
-	float ball_mag = 0;
+	double ball_angle = 0;
+	double ball_mag = 0;
 
-	std::vector<Robot> robots;
-	cv::Point* adv;
-    float default_vel[N_ROBOTS];
+	std::vector<cv::Point> adv;
 	int collision_count[N_ROBOTS];
 	double past_transangle[N_ROBOTS];
 	cv::Point past_position[N_ROBOTS];
@@ -77,14 +50,10 @@ public:
 
 	int frames_blocked;
 
-	bool half_transition = false;
-	bool full_transition = false;
 	bool danger_zone_1 = false;
 	bool danger_zone_2 = false;
 
-	bool half_transition_enabled = true;
-	bool full_transition_enabled = true;
-	bool transition_mindcontrol_enabled = true;
+	bool transitions_enabled = true;
 
 	int t = 0;
 	int timeout = 0;
@@ -99,15 +68,17 @@ public:
 	
 	void set_constants(int w, int h);
 	
-	void get_variables();
+	void get_targets(std::vector<cv::Point> advRobots);
 	
-	void get_past(int i);
-	
-	void get_targets(std::vector<Robot> * pRobots, cv::Point * advRobots);
-	
+	void reset_flags();
+
+	void set_roles();
+
+	bool has_ball(int i);
+
 	void overmind();
 	
-	void set_flags();
+	// void set_flags();
 	
 	void fixed_position_check(int i);
 	
@@ -129,10 +100,6 @@ public:
 	
 	int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst);
 	
-	void spin_anti_clockwise(int i, double speed=0.8);
-	
-	void spin_clockwise(int i, double speed=0.8);
-	
 	void def_wait(int i);
 	
 	void pot_field_around(int i);
@@ -150,6 +117,10 @@ public:
     void set_default_vel(float default_vel[]);
 
 	cv::Point get_Ball_Est();
+
+	void get_past(int i);
+
+	void get_variables();
 	
 };
 

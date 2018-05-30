@@ -62,17 +62,7 @@ private:
  	/**
 	 * @brief Switches Strategy's full_transition_enabled flag value 
 	 */
-	void _event_fulltransition_checkbox_signal_clicked();
-
-	/**
-	 * @brief Switches Strategy's half_transition_enabled flag value 
-	 */
-	void _event_halftransition_signal_clicked();
-	
-	/**
-	 * @brief Switches Strategy's transition_mindcontrol_enabled flag value
-	 */
-	void _event_transitionmindcontrol_signal_clicked();
+	void _event_transitions_checkbox_signal_clicked();
 	
 	/**
 	 * @brief Loads formation.txt file and appends the saved formations on the checkbox
@@ -136,9 +126,7 @@ public:
 	Gtk::ToggleButton bt_penaltyBehavior;
 	Gtk::Frame transitions_fm;
 	Gtk::Grid transitions_grid;
-	Gtk::CheckButton transitions_fulltransition_check;
-	Gtk::CheckButton transitions_halftransition_check;
-	Gtk::CheckButton transitions_mindcontrol_check;
+	Gtk::CheckButton transitions_check;
 
 	/**
 	 * @brief Constructor of a StrategyGUI object

@@ -1,4 +1,5 @@
 #include "vision.hpp"
+#include "../aux/debug.hpp"
 
 void Vision::run(cv::Mat raw_frame) {
     in_frame = raw_frame.clone();
@@ -49,7 +50,7 @@ void Vision::searchTags(int color) {
     for(int i = 0; i < contours.size(); i++) {
         double area = contourArea(contours[i]);
         if(area >= areaMin[color]) {
-            cv::Moments moment = moments((cv::Mat)contours[i]);
+            cv::Moments moment = moments(cv::Mat(contours[i]));
 
             // seta as linhas para as tags principais do pick-a-tag
             if(color == MAIN) {
@@ -58,8 +59,7 @@ void Vision::searchTags(int color) {
                 // tem que ter jogado a tag no vetor antes de mexer nos valores dela
                 cv::Vec4f line;
                 cv::fitLine(cv::Mat(contours[i]),line,2,0,0.01,0.01);
-                int tagsInVec = tags.at(color).size() - 1;
-                tags.at(color).at(tagsInVec).setLine(line);
+                tags.at(color).at(tags.at(color).size() - 1).setLine(line);
             } else if(color == ADV) {
                 if(tags.at(color).size() >= 3) {
                     // pega o menor índice
@@ -82,88 +82,69 @@ void Vision::searchTags(int color) {
     }
 }
 
-/// <summary>
-/// Seleciona um conjunto de tags para representar cada robô
-/// </summary>
-/// <description>
-/// P.S.: Aqui eu uso a flag 'isOdd' para representar quando um robô tem as duas bolas laterais.
-/// </description>
 void Vision::pick_a_tag() {
-    int dist, tmpSide;
-
     // OUR ROBOTS
-    for(int i = 0; i < tags.at(MAIN).size() && i<3; i++) {
-        // cria um robô temporário para armazenar nossas descobertas
-        Robot robot;
+    for(unsigned short i = 0; i < tags.at(MAIN).size() && i<3; i++) {
         std::vector<Tag> tempTags;
 
+        Robots::_Status robot;
         // Posição do robô
         robot.position = (cv::Point_<int>) tags.at(MAIN).at(i).position;
 
         // Cálculo da orientação de acordo com os pontos rear e front
-        robot.orientation = atan2((tags.at(MAIN).at(i).frontPoint.y-robot.position.y)*1.3/height,(tags.at(MAIN).at(i).frontPoint.x-robot.position.x)*1.5/width);
+        robot.orientation = atan2((tags.at(MAIN).at(i).frontPoint.y - robot.position.y) * 1.3 / height,
+                                  (tags.at(MAIN).at(i).frontPoint.x - robot.position.x) * 1.5 / width);
 
         // Armazena a tag
         tempTags.push_back(tags.at(MAIN).at(i));
 
         // Para cada tag principal, verifica quais são as secundárias correspondentes
-        for(int j = 0; j < tags.at(GREEN).size(); j++) {
+        for (unsigned j = 0;
+             j < tags.at(GREEN).size(); j++) { // (não usei unsigned short pois pode ter muitas tags verdes)
             // já faz a atribuição verificando se o valor retornado é 0 (falso); além disso, altera a orientação caso esteja errada
-            if(tmpSide = inSphere(&robot, &tempTags, tags.at(GREEN).at(j).position)) {
-                // identifica se já tem mais de uma tag
-                if(tempTags.size() > 1)
-                    robot.isOdd = true;
-
-                tags.at(GREEN).at(j).left = (tmpSide > 0) ? true : false;
+            int tmpSide = inSphere(&robot, &tempTags, tags.at(GREEN).at(j).position);
+            if (tmpSide) {
+                tags.at(GREEN).at(j).left = tmpSide > 0;
                 // calculos feitos, joga tag no vetor
                 tempTags.push_back(tags.at(GREEN).at(j));
+
+                // identifica se já tem mais de duas tags (amarela e uma verde.)
+                if (tempTags.size() > 2) {
+                    break;
+                }
             }
         }
 
         // Dá nome aos bois (robôs)
-        if(robot.isOdd){ // isOdd representa que este tem as duas bolas
-            robot_list.at(2).position = robot.position; // colocar em um vetor
-            robot_list.at(2).secundary = tempTags.at(0).frontPoint; // colocar em um vetor
-            robot_list.at(2).orientation = robot.orientation;
-            robot_list.at(2).rearPoint = tempTags.at(0).rearPoint;
-        } else if(tempTags.size() > 1 && tempTags.at(1).left) {
-            robot_list.at(0).position = robot.position; // colocar em um vetor
-            robot_list.at(0).secundary = tempTags.at(0).frontPoint; // colocar em um vetor
-            robot_list.at(0).orientation = robot.orientation;
-            robot_list.at(0).rearPoint = tempTags.at(0).rearPoint;
-        } else {
-            robot_list.at(1).position = robot.position; // colocar em um vetor
-            robot_list.at(1).secundary = tempTags.at(0).frontPoint; // colocar em um vetor
-            robot_list.at(1).orientation =  robot.orientation;
-            robot_list.at(1).rearPoint = tempTags.at(0).rearPoint;
+        if (tempTags.size() > 2) { // se tem três tags, é o full pick-a
+            Robots::set_position(2, robot.position);
+            Robots::set_orientation(2, robot.orientation);
+            Robots::set_secondary_tag(2, tempTags.at(0).frontPoint);
+            //robot_list.at(2).rearPoint = tempTags.at(0).rearPoint;
+        } else if (tempTags.size() > 1) { // não classifica se não tiver encontrado pelo menos uma verde
+            if (tempTags.at(1).left) {
+                Robots::set_position(0, robot.position);
+                Robots::set_orientation(0, robot.orientation);
+                Robots::set_secondary_tag(0, tempTags.at(0).frontPoint);
+            } else {
+                Robots::set_position(1, robot.position);
+                Robots::set_orientation(1, robot.orientation);
+                Robots::set_secondary_tag(1, tempTags.at(0).frontPoint);
+            }
         }
     } // OUR ROBOTS
 
     // ADV ROBOTS
-    for(int i = 0; i < MAX_ADV; i++) {
-        if(i < tags.at(ADV).size()) {
-            advRobots[i] = tags.at(ADV).at(i).position;
-        } else {
-            advRobots[i] = cv::Point(-1, -1);
-        }
+    advRobots.clear();
+    for(int i = 0; i < tags.at(ADV).size(); i++) {
+        advRobots.push_back(tags.at(ADV).at(i).position);
     }
     // BALL POSITION
     if (!tags[BALL].empty())
         ball = tags.at(BALL).at(0).position;
 }
 
-/// <summary>
-/// Verifica se uma tag secundária pertence a esta pick-a e calcula seu delta.
-/// </summary>
-/// <param name="position">Posição central do robô</param>
-/// <param name="secondary">O suposto ponto que marca uma bola da tag</param>
-/// <param name="orientation">A orientação do robô</param>
-/// <returns>
-/// 0, se esta não é uma tag secundária;
-/// -1, caso a secundária esteja à esquerda;
-/// 1, caso a secundária esteja à direita
-/// </returns>
-int Vision::inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary) {
+int Vision::inSphere(Robots::_Status * robot, std::vector<Tag> * tempTags, cv::Point secondary) {
     // se esta secundária faz parte do robô
     if(calcDistance(robot->position, secondary) <= ROBOT_RADIUS) {
         if(calcDistance(tempTags->at(0).frontPoint, secondary) < calcDistance(tempTags->at(0).rearPoint, secondary)) {
@@ -172,7 +153,7 @@ int Vision::inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secon
             robot->orientation = atan2((tempTags->at(0).frontPoint.y-robot->position.y)*1.3/height,(tempTags->at(0).frontPoint.x-robot->position.x)*1.5/width);
         }
 
-        float secSide = atan2((secondary.y-robot->position.y)*1.3/height,(secondary.x-robot->position.x)*1.5/width);
+        double secSide = atan2((secondary.y-robot->position.y)*1.3/height,(secondary.x-robot->position.x)*1.5/width);
 
         // Cálculo do ângulo de orientação para diferenciar robôs de mesma cor
         return (atan2(sin(secSide-robot->orientation+3.1415), cos(secSide-robot->orientation+3.1415))) > 0 ? 1 : -1;
@@ -269,7 +250,7 @@ void Vision::startNewVideo(std::string in_name) {
     std::string videoName = "media/videos/" + in_name + ".avi";
 
     video.open(videoName, cv::VideoWriter::fourcc('M','J','P','G'), 30, cv::Size(width,height));
-    std::cout << "Started a new video recording." << std::endl;
+    debug_log("Started a new video recording.");
     bOnAir = true;
 }
 
@@ -287,7 +268,7 @@ bool Vision::recordToVideo() {
 bool Vision::finishVideo() {
     if (!video.isOpened()) return false;
 
-    std::cout << "Finished video recording." << std::endl;
+    debug_log("Finished video recording.");
     video.release();
     bOnAir = false;
 
@@ -300,28 +281,6 @@ bool Vision::isRecording() {
 
 cv::Point Vision::getBall() {
     return ball;
-}
-
-Robot Vision::getRobot(int index) {
-    return robot_list.at(index);
-}
-
-cv::Point Vision::getRobotPos(int index) {
-    return robot_list.at(index).position;
-}
-cv::Point Vision::getAdvRobot(int index) {
-    if(index < 0 || index >= MAX_ADV) {
-        std::cout << "Vision::getAdvRobot: index argument is invalid." << std::endl;
-        return cv::Point(-1,-1);
-    } else return advRobots[index];
-}
-
-int Vision::getRobotListSize() {
-    return (int)robot_list.size();
-}
-
-int Vision::getAdvListSize() {
-    return MAX_ADV;
 }
 
 cv::Mat Vision::getThreshold(int index) {
@@ -361,7 +320,7 @@ void Vision::setHue(int index0, int index1, int inValue) {
     if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
         hue[index0][index1] = inValue;
     } else {
-        std::cout << "Vision:setHue: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setHue: could not set (invalid index)");
     }
 }
 
@@ -369,7 +328,7 @@ void Vision::setSaturation(int index0, int index1, int inValue) {
     if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
         saturation[index0][index1] = inValue;
     } else {
-        std::cout << "Vision:setSaturation: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setSaturation: could not set (invalid index)");
     }
 }
 
@@ -377,7 +336,7 @@ void Vision::setValue(int index0, int index1, int inValue) {
   if(index0 >= 0 && index0 < TOTAL_COLORS && (index1 == 0 || index1 == 1)) {
       value[index0][index1] = inValue;
   } else{
-      std::cout << "Vision:setValue: could not set (invalid index)" << std::endl;
+      debug_error("Vision:setValue: could not set (invalid index)");
   }
 }
 
@@ -385,7 +344,7 @@ void Vision::setErode(int index, int inValue) {
     if(index >= 0 && index < TOTAL_COLORS) {
         erode[index] = inValue;
     } else {
-        std::cout << "Vision:setErode: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setErode: could not set (invalid index)");
     }
 }
 
@@ -393,7 +352,7 @@ void Vision::setDilate(int index, int inValue) {
     if(index >= 0 && index < TOTAL_COLORS) {
         dilate[index] = inValue;
     } else {
-        std::cout << "Vision:setDilate: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setDilate: could not set (invalid index)");
     }
 }
 
@@ -401,7 +360,7 @@ void Vision::setBlur(int index, int inValue) {
     if(index >= 0 && index < TOTAL_COLORS) {
         blur[index] = inValue;
     } else {
-        std::cout << "Vision:setBlur: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setBlur: could not set (invalid index)");
     }
 }
 
@@ -409,7 +368,7 @@ void Vision::setAmin(int index, int inValue) {
     if(index >= 0 && index < TOTAL_COLORS) {
         areaMin[index] = inValue;
     } else {
-        std::cout << "Vision:setAmin: could not set (invalid index)" << std::endl;
+        debug_error("Vision:setAmin: could not set (invalid index)");
     }
 }
 
@@ -426,7 +385,7 @@ int Vision::getFrameWidth() {
     return width;
 }
 
-cv::Point* Vision::getAllAdvRobots() {
+std::vector<cv::Point> Vision::getAdvs() {
     return advRobots;
 }
 
@@ -465,16 +424,11 @@ Vision::Vision(int w, int h) : width(w), height(h), bOnAir(false) {
     // Variables Init
     cv::Mat mat;
     std::vector<Tag> tagVec;
-    Robot robot;
 
     for(int i = 0; i < TOTAL_COLORS; i++) {
         threshold_frame.push_back(mat);
         tags.push_back(tagVec);
     }
-
-    robot_list.push_back(robot);
-    robot_list.push_back(robot);
-    robot_list.push_back(robot);
 }
 
 Vision::~Vision() {}

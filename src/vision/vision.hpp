@@ -18,7 +18,7 @@
 #include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/bind.hpp>
-#include "../robot.hpp"
+#include "robots.hpp"
 #include <iostream>
 #include "tag.hpp"
 
@@ -41,9 +41,7 @@ private:
     std::vector<cv::Mat>threshold_frame;
     cv::Mat splitFrame;
 
-    // Robots
-    std::vector<Robot> robot_list;
-    cv::Point advRobots[MAX_ADV];
+    std::vector<cv::Point> advRobots;
 
     // Ball
     cv::Point ball;
@@ -105,7 +103,7 @@ private:
     void pick_a_tag();
 
     /**
-     *
+     * Checks if a given secondary tag belongs to our current primary tag
      * @param robot robot's vector
      * @param tempTags tag's vector
      * @param secondary actual secondary position
@@ -113,7 +111,7 @@ private:
      *         1, if secondary tag is in right side
      *        -1, if secondary tag is in left side
      */
-    int inSphere(Robot * robot, std::vector<Tag> * tempTags, cv::Point secondary);
+    int inSphere(Robots::_Status * robot, std::vector<Tag> * tempTags, cv::Point secondary);
 
 public:
 
@@ -188,44 +186,15 @@ public:
      */
     cv::Point getBall();
 
-    /** Obtains robot object
-     * @param index robot number
-     * @return robot object at index
-     */
-    Robot getRobot(int index);
-
-    /** Gets robot position in image
-     * @param index robot number
-     * @return cv::Point containing robot position
-     */
-    cv::Point getRobotPos(int index);
-    /**
-     *
-     * @param index
-     * @return Adversary robot position
-     */
-    cv::Point getAdvRobot(int index);
-
     /** Gets a pointer containing all adversary positions
-     *
      * @return pointer containing all adversary positions
      */
-    cv::Point* getAllAdvRobots();
+    std::vector<cv::Point> getAdvs();
 
     /** Concatenate all frames( capture frame and threshold frames (ball, main color and secondary color))
      * @return concatenated image, with capture frame size with all frames
      */
     cv::Mat getSplitFrame();
-
-    /** Gets robot list size
-     * @return robot list size
-     */
-    int getRobotListSize();
-
-    /** Gets adversary robot list size
-     * @return adversary robot list size
-     */
-    int getAdvListSize();
 
     /** Gets threshold image
      * @param index color
@@ -338,7 +307,7 @@ public:
      * @param inValue area min value
      */
     void setAmin(int index, int inValue);
-  
+
     /**
      * @brief Loads default values to vision object, making callibration easier.
      */

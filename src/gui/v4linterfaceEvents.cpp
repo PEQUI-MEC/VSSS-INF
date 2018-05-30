@@ -51,7 +51,6 @@ namespace VSSS_GUI {
     void V4LInterface::__event_bt_quick_load_clicked() {
         jsonSaveManager config(this);
         config.load();
-        update_interface_robots();
         update_interface_camera();
         debug_log("Quick load");
     }
@@ -62,7 +61,6 @@ namespace VSSS_GUI {
         if(loadWindow.result == Gtk::RESPONSE_OK) {
             jsonSaveManager config(this);
             config.load(loadWindow.fileName);
-            update_interface_robots();
             update_interface_camera();
         }
 
@@ -415,59 +413,10 @@ namespace VSSS_GUI {
         draw_info_flag = !draw_info_flag;
     }
 
-    void V4LInterface::event_robots_id_edit_bt_signal_pressed() {
-        if (!robots_id_edit_flag) {
-            robots_id_edit_flag = true;
-            robots_id_edit_bt.set_label("Cancel");
-            robots_id_box[0].set_state(Gtk::STATE_NORMAL);
-            robots_id_box[1].set_state(Gtk::STATE_NORMAL);
-            robots_id_box[2].set_state(Gtk::STATE_NORMAL);
-            robots_id_done_bt.set_state(Gtk::STATE_NORMAL);
-            robots_id_tmp[0] = robots_id_box[0].get_text();
-            robots_id_tmp[1] = robots_id_box[1].get_text();
-            robots_id_tmp[2] = robots_id_box[2].get_text();
-        } else {
-            robots_id_edit_flag = false;
-            robots_id_edit_bt.set_label("Edit");
-            robots_id_box[0].set_state(Gtk::STATE_INSENSITIVE);
-            robots_id_box[1].set_state(Gtk::STATE_INSENSITIVE);
-            robots_id_box[2].set_state(Gtk::STATE_INSENSITIVE);
-            robots_id_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-            robots_id_box[0].set_text(robots_id_tmp[0]);
-            robots_id_box[1].set_text(robots_id_tmp[1]);
-            robots_id_box[2].set_text(robots_id_tmp[2]);
-        }
-    }
-
-    void V4LInterface::event_robots_id_done_bt_signal_clicked() {
-        std::string str;
-
-        str = robots_id_box[0].get_text();
-        robotGUI.robot_list[0].ID = str[0];
-
-        str = robots_id_box[1].get_text();
-        robotGUI.robot_list[1].ID = str[0];
-
-        str = robots_id_box[2].get_text();
-        robotGUI.robot_list[2].ID = str[0];
-
-        robots_id_edit_flag = false;
-        robots_id_edit_bt.set_label("Edit");
-        robots_id_box[0].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_box[1].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_box[2].set_state(Gtk::STATE_INSENSITIVE);
-        robots_id_done_bt.set_state(Gtk::STATE_INSENSITIVE);
-    }
-
     void V4LInterface::event_start_game_bt_signal_clicked() {
         if(!start_game_flag) {
             start_game_flag = true;
             start_game_bt.set_image(red_button_pressed);
-
-
-            robotGUI.robot_list[0].status = 0;
-            robotGUI.robot_list[1].status = 0;
-            robotGUI.robot_list[2].status = 0;
 
             std::string dateString;
             time_t tt;
@@ -485,11 +434,10 @@ namespace VSSS_GUI {
             visionGUI.en_video_name.set_text(dateString);
             visionGUI.vision->startNewVideo(dateString);
 
-            //Quick save
+            // Quick save
             jsonSaveManager config(this);
             config.save();
             debug_log("Quick save");
-
         } else {
             visionGUI.vision->finishVideo();
             visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
@@ -498,31 +446,13 @@ namespace VSSS_GUI {
             start_game_flag = false;
             start_game_bt.set_image(red_button_released);
 
-            for(int i = 0; i < 3; i++) {
-                robotGUI.robot_list.at(i).cmdType = 0; // Position
-                robotGUI.robot_list.at(i).vmax = 0;
-            }
-
             //Quick Load
             jsonSaveManager config(this);
             config.load();
-            update_interface_robots();
             update_interface_camera();
             debug_log("Quick load");
 
-        }
-    }
-
-    void V4LInterface::update_interface_robots() {
-        for (int i = 0; i < 3; i++) {
-            Robot robot = robotGUI.robot_list.at(i);
-            robots_id_box[i].set_text(&robot.ID);
-            robotGUI.cb_robot_function[i].set_active(robot.role);
-            robotGUI.robots_speed_hscale[i].set_value(robotGUI.default_vel[i]);
-            robotGUI.robots_speed_progressBar[i].set_fraction(robot.vmax/1.4);
-            std::ostringstream vmax;
-            vmax << round(robot.vmax*100)/100;
-            robotGUI.robots_speed_progressBar[i].set_text(vmax.str());
+            // !TODO Verificar bateria dos robôs
         }
     }
 

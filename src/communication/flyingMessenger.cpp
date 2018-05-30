@@ -1,5 +1,4 @@
 #include "flyingMessenger.hpp"
-
 using namespace std;
 
 void FlyingMessenger::start_xbee(const std::string &port, int baud) {
@@ -38,38 +37,33 @@ void FlyingMessenger::send_old_format(std::string cmd) {
 	xbee->sendMessage(id,msg);
 }
 
-std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robot> robots) {
+std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robots::Command> commands) {
 	vector<message> acks;
 	if(!xbee || ++send_cmd_count <= frameskip) return acks;
 
-	for(Robot robot : robots){
+	for(Robots::Command command : commands){
 		std::string msg;
-		switch (robot.cmdType){
-			case POSITION:
-				if(robot.target.x != -1 && robot.target.y != -1)
-					msg = position_msg(robot);
+		switch (command.cmdType){
+			case Robots::CMD::SPEED:
+				msg = speed_msg(command);
 				break;
 
-			case SPEED:
-				msg = speed_msg(robot);
+			case Robots::CMD::ORIENTATION:
+				msg = orientation_msg(command);
 				break;
 
-			case ORIENTATION:
-				msg = orientation_msg(robot);
+			case Robots::CMD::VECTOR:
+				msg = vector_msg(command);
 				break;
 
-			case VECTOR:
-				msg = vector_msg(robot);
-				break;
-
-			default:
-				if(robot.target.x != -1 && robot.target.y != -1)
-					msg = position_msg(robot);
+			default: // POSITION
+                if(command.Msg.target.x != -1 && command.Msg.target.y != -1)
+                    msg = position_msg(command);
 		}
 
-		if(!msg.empty()){
-			int ack = xbee->sendMessage(robot.ID,msg);
-			acks.push_back({robot.ID, std::to_string(ack)});
+		if(!msg.empty()) {
+			int ack = xbee->sendMessage(command.ID,msg);
+			acks.push_back({command.ID, std::to_string(ack)});
 		}
 	}
 	
@@ -79,32 +73,32 @@ std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robot> robots) {
 	return acks;
 }
 
-std::string FlyingMessenger::position_msg(Robot robot) {
-	double diff_x = robot.target.x - robot.position.x;
-	double diff_y = robot.target.y - robot.position.y;
+std::string FlyingMessenger::position_msg(Robots::Command command) {
+	double diff_x = command.Msg.target.x - command.Status.position.x;
+	double diff_y = command.Msg.target.y - command.Status.position.y;
 
-	double transTarget_x = cos(robot.orientation)*diff_x + sin(robot.orientation)*diff_y;
-	double transTarget_y = -(-sin(robot.orientation)*diff_x + cos(robot.orientation)*diff_y);
+	double transTarget_x = cos(command.Status.orientation)*diff_x + sin(command.Status.orientation)*diff_y;
+	double transTarget_y = -(-sin(command.Status.orientation)*diff_x + cos(command.Status.orientation)*diff_y);
 
 	double pos_x = transTarget_x*(150.0/640.0);
 	double pos_y = transTarget_y*(130.0/480.0);
 
-	return ("P"+ rounded_str(pos_x)+";"+ rounded_str(pos_y)+";"+ rounded_str(robot.vmax));
+	return ("P"+ rounded_str(pos_x)+";"+ rounded_str(pos_y)+";"+ rounded_str(command.Status.vmax));
 }
 
-std::string FlyingMessenger::speed_msg(Robot robot) {
-	return (rounded_str(robot.Vr)+";"+ rounded_str(robot.Vl));
+std::string FlyingMessenger::speed_msg(Robots::Command command) {
+	return (rounded_str(command.Msg.Velocity.right)+";"+ rounded_str(command.Msg.Velocity.left));
 }
 
-std::string FlyingMessenger::orientation_msg(Robot robot) {
-	double orientation = (robot.orientation + robot.targetOrientation)*180/M_PI;
-	return ("O"+ rounded_str(orientation)+";"+ rounded_str(robot.vmax));
+std::string FlyingMessenger::orientation_msg(Robots::Command command) {
+	double orientation = (command.Status.orientation + command.Msg.theta)*180/M_PI;
+	return ("O"+ rounded_str(orientation)+";"+ rounded_str(command.Status.vmax));
 }
 
-std::string FlyingMessenger::vector_msg(Robot robot) {
-	double orientation = atan2(sin(robot.orientation + robot.transAngle), cos(robot.orientation + robot.transAngle));
+std::string FlyingMessenger::vector_msg(Robots::Command command) {
+	double orientation = atan2(sin(command.Status.orientation + command.Msg.theta), cos(command.Status.orientation + command.Msg.theta));
 	orientation = orientation*(180.0/M_PI);
-	return ("V"+ rounded_str(orientation)+";"+ rounded_str(robot.vmax));
+	return ("V"+ rounded_str(orientation)+";"+ rounded_str(command.Status.vmax));
 }
 
 double FlyingMessenger::get_battery(char id) {

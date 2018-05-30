@@ -40,6 +40,7 @@
 
 #define MAX_THETA_TOLERATION 3
 #define MAX_POSITIONING_VEL 0.1
+#define ROBOT_RADIUS 17
 
 class CamCap: public Gtk::HBox {
 public:
@@ -57,8 +58,8 @@ public:
     int frameCounter;
     double ticks = 0;
 
-    vector<cv::Point> robot_raw_pos;
-    vector< KalmanFilter > KF_RobotBall;
+    vector<cv::Point> advRobots;
+    vector<KalmanFilter> KF_RobotBall;
 
     cv::Point Ball_Est;
     cv::Point Ball_kf_est;
@@ -126,7 +127,7 @@ public:
     * @brief Send robots to its estimated positions
     * @param robots Vector cointaining all robots instances
     */
-    void send_cmd_thread(std::vector<Robot> &robots);
+    void send_cmd_thread();
 	
     /**
     * @brief Notifies all waiting threads through a conditional variable
@@ -168,6 +169,7 @@ public:
 
 	 /**
 	 * @brief Executes the 'PID Test on click' at the control panel
+     * @details Handles only 1 selected robot at time by setting it's target
 	 */	
     void PID_test();
     

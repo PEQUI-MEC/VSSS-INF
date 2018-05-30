@@ -53,8 +53,6 @@ namespace VSSS_GUI {
         Gtk::Label *robot1_pos_lb, *robot2_pos_lb, *robot3_pos_lb;
         Gtk::Label *ball_pos_lb;
 
-        Gtk::Frame robots_id_fm;
-
         Gtk::HBox info_hbox;
 
         Gtk::VBox robots_pos_vbox;
@@ -75,14 +73,6 @@ namespace VSSS_GUI {
         bool draw_info_flag = false;
 
         bool reset_warp_flag;
-
-        Gtk::VBox robots_id_vbox;
-        Gtk::HBox robots_id_hbox[4];
-        Gtk::Button robots_id_edit_bt;
-        Gtk::Button robots_id_done_bt;
-        Gtk::Entry robots_id_box[3];
-        Glib::ustring robots_id_tmp[3];
-        bool robots_id_edit_flag = false;
 
         v4lcap vcap;
         
@@ -116,7 +106,7 @@ namespace VSSS_GUI {
 		* @brief Event triggered when 'Quick Save' button is clicked
 		*/	
         void __event_bt_quick_save_clicked();
-        
+
         /**
 		 * @brief Event triggered when 'Quick Load' button is clicked
 		 */	
@@ -212,12 +202,6 @@ namespace VSSS_GUI {
         void __event_cb_frame_interval_changed();
 
 		/**
-		 * @brief Creates IDs frame
-		 * @details IDs frame associates robots (1,2,3) and hardware (A, B, C,...)
-		 */	
-        void createIDsFrame();
-
-		/**
 		 * @brief Switches draw_info_flag value
 		 */	
         void event_draw_info_checkbox_signal_clicked();
@@ -232,18 +216,6 @@ namespace VSSS_GUI {
         * @brief Event triggered when start button is clicked. Starts/finishes video recording.
         */
         void event_start_game_bt_signal_clicked();
-        
-        /**
-        * @brief Event triggered when Robot Functions' done button is clicked
-        * @details Assigns each robot (on RobotGUI) to its new ID
-        */
-        void event_robots_id_done_bt_signal_clicked();
-        
-        /**
-        * @brief Event triggered when Robot Functions' edit button is clicked
-        * @details Turns robot's ID combobox (non)editable and keeps the changes
-        */
-        void event_robots_id_edit_bt_signal_pressed();
 
         /**
         * @brief Updates robots and ball positions on interface (Positions frame)
@@ -260,11 +232,6 @@ namespace VSSS_GUI {
         * @return bool start_game_flag
         */
         bool get_start_game_flag();
-
-        /**
-        * @brief Updates all robots attributes at RobotGUI
-        */
-        void update_interface_robots();
 
         /**
         * @brief Updates Calibration parameters at Vision GUI, Offset values and calls __update_control_widgets
@@ -350,8 +317,6 @@ namespace VSSS_GUI {
         Gtk::Label lb_device_card;
         Gtk::Label lb_device_driver;
         Gtk::Label lb_device_bus;
-        Gtk::Label right_offset_label;
-        Gtk::Label left_offset_label;
 
         Gtk::Frame frm_device_prop;
         Gtk::Frame frm_warp;
@@ -400,9 +365,6 @@ namespace VSSS_GUI {
         ModelControlMenu model_control_menu;
 
         Gtk::Notebook notebook;
-        Gtk::Notebook notebook2;
-        
-        void __make_controls();
         
         void __make_control_list_default();
 
