@@ -146,7 +146,8 @@ void Strategy::set_roles() {
 				case GOALKEEPER:
 					gk = i;
 				break;
-			}
+                default:break;
+            }
 		}
 		return;
 	}
@@ -368,7 +369,43 @@ bool Strategy::offensive_adv() {
 */
 
 void Strategy::collision_check(int i) {
-	if(!Robots::get_fixedPos(i) && Robots::get_status(i) != CORNER_STATE && Robots::get_status(i) != ATK_PENALTI_STATE) {
+    if(Robots::get_fixedPos(i)) return;
+
+    // se é atacante e está dentro do gol
+    if (Robots::get_role(i) == ATTACKER &&
+            Robots::get_position(i).y > COORD_GOAL_UP_Y && Robots::get_position(i).y < COORD_GOAL_DWN_Y &&
+            Robots::get_position(i).x < ABS_GOAL_SIZE_X + 0.75 * ABS_ROBOT_SIZE) {
+
+        // verifica se está colidindo
+        if(distance(Robots::get_position(i), past_position[i]) <= collision_radius) {
+            collision_count[i]++;
+        } else {
+            get_past(i);
+            collision_count[i] = 0;
+        }
+
+        if(collision_count[i] >= max_collision_count) {
+            cv::Point upper_corner;
+            cv::Point lower_corner;
+            double tempAngle;
+
+            upper_corner.x = lower_corner.x = ABS_GOAL_SIZE_X;
+            upper_corner.y = COORD_GOAL_UP_Y;
+            lower_corner.y = COORD_GOAL_DWN_Y;
+
+            if(distance(Robots::get_position(i), upper_corner) > distance(Robots::get_position(i), lower_corner) && Ball.y > COORD_GOAL_MID_Y){
+                tempAngle = atan2(sin(past_transangle[i]+(PI/2)),cos(past_transangle[i]+(PI/2)));
+            } else if (distance(Robots::get_position(i), upper_corner) < distance(Robots::get_position(i), lower_corner) && Ball.y < COORD_GOAL_MID_Y) {
+                tempAngle = atan2(sin(past_transangle[i]-(PI / 2)), cos(past_transangle[i]-(PI / 2)));
+            } else {
+                tempAngle = Robots::get_transAngle(i);
+            }
+
+            Robots::set_target(i, cv::Point(Ball.x, Robots::get_position(i).y));
+            Robots::set_command(i, tempAngle);
+        }
+    }
+    else if(Robots::get_status(i) != CORNER_STATE && Robots::get_status(i) != ATK_PENALTI_STATE) {
 		if(distance(Robots::get_position(i), past_position[i]) <= collision_radius &&
 			distance(Robots::get_position(i), Robots::get_target(i)) > fixed_pos_distance) {
 			collision_count[i]++;
@@ -778,7 +815,7 @@ void Strategy::atk_routine(int i) {
 
 				if(Ball.x < Robots::get_position(i).x) { // se a bola tá atrás do atacante
 					target.x = Ball.x - max_approach;
-					target.y = Ball.y - max_approach/2.0;
+					target.y = int(Ball.y - max_approach/2.0);
 				}
 			}
 			else if(Ball.y < ABS_ROBOT_SIZE*1.5) { // se a bola tá na lateral superior
@@ -792,7 +829,7 @@ void Strategy::atk_routine(int i) {
 
 				if(Ball.x < Robots::get_position(i).x) { // se a bola tá atrás do atacante
 					target.x = Ball.x - max_approach;
-					target.y = Ball.y + max_approach/2.0;
+					target.y = int(Ball.y + max_approach/2.0);
 				}
 			}
 
@@ -874,8 +911,6 @@ void Strategy::atk_routine(int i) {
 
 			if(!has_ball(i))
 				Robots::set_status(i, NORMAL_STATE);
-
-        default:break;
 	}
 	//crop_targets(i);
 }
@@ -988,8 +1023,6 @@ void Strategy::def_routine(int i) {
 
 			Robots::set_cmdType(i, Robots::CMD::VECTOR);
             Robots::kick(i, Ball);
-
-        default:break;
     }
 }
 
