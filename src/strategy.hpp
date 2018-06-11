@@ -50,19 +50,12 @@ public:
 
 	int frames_blocked;
 
-	bool danger_zone_1 = false;
-	bool danger_zone_2 = false;
-
 	bool transitions_enabled = true;
 
 	int t = 0;
 	int timeout = 0;
 	int transition_timeout = 0;
-	int transition_overmind_timeout = 0;
 	bool action1 = false;
-	bool transition_mindcontrol = false;
-	bool atk_mindcontrol = false;
-	bool def_mindcontrol = false;
 
 	Strategy();
 	
@@ -75,10 +68,6 @@ public:
 	void set_roles();
 
 	bool has_ball(int i);
-
-	void overmind();
-	
-	// void set_flags();
 	
 	void fixed_position_check(int i);
 	
@@ -86,15 +75,11 @@ public:
 	
 	void collision_check(int i);
 	
-	bool cock_blocked();
-	
 	void set_role(int i, int role);
 	
 	bool is_near(int i, cv::Point point);
 	
 	void position_to_vector(int i);
-
-	double look_at_ball(int i);
 	
 	double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS);
 	
@@ -114,14 +99,11 @@ public:
 	
 	void set_Ball(cv::Point b);
 
-    void set_default_vel(float default_vel[]);
-
 	cv::Point get_Ball_Est();
 
 	void get_past(int i);
 
 	void get_variables();
-	
 };
 
 #endif /* STRATEGY_HPP_ */
