@@ -1,0 +1,208 @@
+\hypertarget{class_file_chooser}{}\section{File\+Chooser Class Reference}
+\label{class_file_chooser}\index{File\+Chooser@{File\+Chooser}}
+
+
+{\ttfamily \#include $<$filechooser.\+hpp$>$}
+
+
+
+Inheritance diagram for File\+Chooser\+:
+% FIG 0
+
+
+Collaboration diagram for File\+Chooser\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_file_chooser_a566dad72c6724bc2d4970361758d66c5}{File\+Chooser} ()
+\begin{DoxyCompactList}\small\item\em Creates the dialog box so the user can select a local file (after clicking on \textquotesingle{}Load\textquotesingle{}) \end{DoxyCompactList}\item 
+virtual \hyperlink{class_file_chooser_a67c94ae24fad94cf464d1283f33175d4}{$\sim$\+File\+Chooser} ()
+\begin{DoxyCompactList}\small\item\em Destructor of the class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{class_file_chooser_a1d086cbbd2700e5fe9e143c505b205c8}{file\+Name}
+\item 
+int \hyperlink{class_file_chooser_a7651bd1362ed109c0ac323d8ab41b254}{result}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Gtk\+::\+Button \hyperlink{class_file_chooser_a8a482acec202e153b7764e7942d1895b}{button\+Load}
+\item 
+Gtk\+::\+Button \hyperlink{class_file_chooser_ac7ff53b66e963e4478cecea22de7331c}{button\+Quit}
+\item 
+Gtk\+::\+Grid \hyperlink{class_file_chooser_ad4533e29ed9c3dc3bd3d48c513688abb}{main\+Grid}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file filechooser.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_file_chooser_a566dad72c6724bc2d4970361758d66c5}\label{class_file_chooser_a566dad72c6724bc2d4970361758d66c5}} 
+\index{File\+Chooser@{File\+Chooser}!File\+Chooser@{File\+Chooser}}
+\index{File\+Chooser@{File\+Chooser}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{File\+Chooser()}{FileChooser()}}
+{\footnotesize\ttfamily File\+Chooser\+::\+File\+Chooser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates the dialog box so the user can select a local file (after clicking on \textquotesingle{}Load\textquotesingle{}) 
+
+
+
+Definition at line 4 of file filechooser.\+cpp.
+
+
+
+References file\+Name, and result.
+
+
+\begin{DoxyCode}
+4                          \{
+5     \textcolor{comment}{// Initialize the main window and hide the title bar}
+6     this->set\_border\_width(10);
+7 
+8     \textcolor{comment}{// Create the dialog box FileChooser}
+9     Gtk::FileChooserDialog dialog(\textcolor{stringliteral}{"Please choose a file"},Gtk::FILE\_CHOOSER\_ACTION\_SAVE);
+10     dialog.set\_transient\_for(*\textcolor{keyword}{this});
+11 
+12     \textcolor{comment}{//Add response buttons the the dialog:}
+13     dialog.add\_button(\textcolor{stringliteral}{"\_Cancel"}, Gtk::RESPONSE\_CANCEL);
+14     dialog.add\_button(\textcolor{stringliteral}{"\_Done"}, Gtk::RESPONSE\_OK);
+15 
+16     \textcolor{comment}{//Add filters, so that only certain file types can be selected:}
+17     Glib::RefPtr<Gtk::FileFilter> filter\_text = Gtk::FileFilter::create();
+18     filter\_text->set\_name(\textcolor{stringliteral}{"Text files"});
+19     filter\_text->add\_mime\_type(\textcolor{stringliteral}{"text/plain"});
+20     dialog.add\_filter(filter\_text);
+21 
+22     Glib::RefPtr<Gtk::FileFilter> filter\_cpp = Gtk::FileFilter::create();
+23     filter\_cpp->set\_name(\textcolor{stringliteral}{"C/C++ files"});
+24     filter\_cpp->add\_mime\_type(\textcolor{stringliteral}{"text/x-c"});
+25     filter\_cpp->add\_mime\_type(\textcolor{stringliteral}{"text/x-c++"});
+26     filter\_cpp->add\_mime\_type(\textcolor{stringliteral}{"text/x-c-header"});
+27     dialog.add\_filter(filter\_cpp);
+28 
+29     Glib::RefPtr<Gtk::FileFilter> filter\_any = Gtk::FileFilter::create();
+30     filter\_any->set\_name(\textcolor{stringliteral}{"Any files"});
+31     filter\_any->add\_pattern(\textcolor{stringliteral}{"*"});
+32     dialog.add\_filter(filter\_any);
+33 
+34     \textcolor{comment}{//Show the dialog and wait for a user response:}
+35     \hyperlink{class_file_chooser_a7651bd1362ed109c0ac323d8ab41b254}{result} = dialog.run();
+36 
+37     \textcolor{comment}{//Handle the response:}
+38     \textcolor{keywordflow}{switch}(\hyperlink{class_file_chooser_a7651bd1362ed109c0ac323d8ab41b254}{result}) \{
+39         \textcolor{keywordflow}{case} Gtk::RESPONSE\_OK:
+40 
+41             \textcolor{comment}{// The user selected a file}
+42             std::cout << \textcolor{stringliteral}{"Open clicked."} << std::endl;
+43             \hyperlink{class_file_chooser_a1d086cbbd2700e5fe9e143c505b205c8}{fileName} = dialog.get\_filename();
+44             std::cout << \textcolor{stringliteral}{"File selected: "} <<  \hyperlink{class_file_chooser_a1d086cbbd2700e5fe9e143c505b205c8}{fileName} << std::endl;
+45             \textcolor{keywordflow}{break};
+46 
+47         \textcolor{keywordflow}{case} Gtk::RESPONSE\_CANCEL:
+48 
+49             \textcolor{comment}{// The user clicked cancel}
+50             std::cout << \textcolor{stringliteral}{"Cancel clicked."} << std::endl;
+51             \textcolor{keywordflow}{break};
+52 
+53         \textcolor{keywordflow}{default}:
+54             \textcolor{comment}{// The user closed the dialog box}
+55             std::cout << \textcolor{stringliteral}{"Unexpected button clicked."} << std::endl;
+56             \textcolor{keywordflow}{break};
+57     \}
+58 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_file_chooser_a67c94ae24fad94cf464d1283f33175d4}\label{class_file_chooser_a67c94ae24fad94cf464d1283f33175d4}} 
+\index{File\+Chooser@{File\+Chooser}!````~File\+Chooser@{$\sim$\+File\+Chooser}}
+\index{````~File\+Chooser@{$\sim$\+File\+Chooser}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{$\sim$\+File\+Chooser()}{~FileChooser()}}
+{\footnotesize\ttfamily File\+Chooser\+::$\sim$\+File\+Chooser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor of the class. 
+
+
+
+Definition at line 60 of file filechooser.\+cpp.
+
+
+\begin{DoxyCode}
+60 \{\}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_file_chooser_a8a482acec202e153b7764e7942d1895b}\label{class_file_chooser_a8a482acec202e153b7764e7942d1895b}} 
+\index{File\+Chooser@{File\+Chooser}!button\+Load@{button\+Load}}
+\index{button\+Load@{button\+Load}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{button\+Load}{buttonLoad}}
+{\footnotesize\ttfamily Gtk\+::\+Button File\+Chooser\+::button\+Load\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 28 of file filechooser.\+hpp.
+
+\mbox{\Hypertarget{class_file_chooser_ac7ff53b66e963e4478cecea22de7331c}\label{class_file_chooser_ac7ff53b66e963e4478cecea22de7331c}} 
+\index{File\+Chooser@{File\+Chooser}!button\+Quit@{button\+Quit}}
+\index{button\+Quit@{button\+Quit}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{button\+Quit}{buttonQuit}}
+{\footnotesize\ttfamily Gtk\+::\+Button File\+Chooser\+::button\+Quit\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 29 of file filechooser.\+hpp.
+
+\mbox{\Hypertarget{class_file_chooser_a1d086cbbd2700e5fe9e143c505b205c8}\label{class_file_chooser_a1d086cbbd2700e5fe9e143c505b205c8}} 
+\index{File\+Chooser@{File\+Chooser}!file\+Name@{file\+Name}}
+\index{file\+Name@{file\+Name}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{file\+Name}{fileName}}
+{\footnotesize\ttfamily std\+::string File\+Chooser\+::file\+Name}
+
+
+
+Definition at line 22 of file filechooser.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+load\+\_\+clicked(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+save\+\_\+clicked(), and File\+Chooser().
+
+\mbox{\Hypertarget{class_file_chooser_ad4533e29ed9c3dc3bd3d48c513688abb}\label{class_file_chooser_ad4533e29ed9c3dc3bd3d48c513688abb}} 
+\index{File\+Chooser@{File\+Chooser}!main\+Grid@{main\+Grid}}
+\index{main\+Grid@{main\+Grid}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{main\+Grid}{mainGrid}}
+{\footnotesize\ttfamily Gtk\+::\+Grid File\+Chooser\+::main\+Grid\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line 30 of file filechooser.\+hpp.
+
+\mbox{\Hypertarget{class_file_chooser_a7651bd1362ed109c0ac323d8ab41b254}\label{class_file_chooser_a7651bd1362ed109c0ac323d8ab41b254}} 
+\index{File\+Chooser@{File\+Chooser}!result@{result}}
+\index{result@{result}!File\+Chooser@{File\+Chooser}}
+\subsubsection{\texorpdfstring{result}{result}}
+{\footnotesize\ttfamily int File\+Chooser\+::result}
+
+
+
+Definition at line 23 of file filechooser.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+load\+\_\+clicked(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+save\+\_\+clicked(), and File\+Chooser().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/\hyperlink{filechooser_8hpp}{filechooser.\+hpp}\item 
+src/gui/\hyperlink{filechooser_8cpp}{filechooser.\+cpp}\end{DoxyCompactItemize}

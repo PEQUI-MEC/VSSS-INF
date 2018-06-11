@@ -1,0 +1,2132 @@
+\hypertarget{class_vision}{}\section{Vision Class Reference}
+\label{class_vision}\index{Vision@{Vision}}
+
+
+{\ttfamily \#include $<$vision.\+hpp$>$}
+
+
+
+Collaboration diagram for Vision\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision_a823f146baaaa771e4e31b021c82fa8ca}{Vision} (int w, int h)
+\item 
+\hyperlink{class_vision_a12bc039b4fcdb229e70c55d2660392a8}{$\sim$\+Vision} ()
+\item 
+void \hyperlink{class_vision_a8d7335b29584429ff5b5c24958896b08}{run} (cv\+::\+Mat raw\+\_\+frame)
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision_a6d23298e695a938d2491ae1f6264c694}{pre\+Processing()} method, \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{search\+Tags()} and pick-\/a-\/tag() \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_a5871e49c1e8bdfd214c602707e8dfffc}{set\+Calib\+Params} (int H\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}, int S\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}, int V\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}, int Amin\mbox{[}5\mbox{]}, int E\mbox{[}5\mbox{]}, int D\mbox{[}5\mbox{]}, int B\mbox{[}5\mbox{]})
+\item 
+double \hyperlink{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}{calc\+Distance} (cv\+::\+Point p1, cv\+::\+Point p2)
+\item 
+void \hyperlink{class_vision_ae3ec43e811508f326910f99c416332db}{start\+New\+Video} (std\+::string video\+Name)
+\item 
+bool \hyperlink{class_vision_a2ce5281f1eb08b71952407ef2a3f5eab}{record\+To\+Video} ()
+\item 
+bool \hyperlink{class_vision_a5c7366071fde8a1b916be0721adaa275}{finish\+Video} ()
+\item 
+bool \hyperlink{class_vision_a7990c9cb8684e1d1c92a5b6aa99abe6f}{is\+Recording} ()
+\item 
+void \hyperlink{class_vision_a324ad2f355fa414ee484e8ce9b247ffc}{save\+Picture} (std\+::string in\+\_\+name)
+\item 
+void \hyperlink{class_vision_a11fa5150abbd3b37e78999b46b7b3a84}{switch\+Main\+With\+Adv} ()
+\item 
+cv\+::\+Point \hyperlink{class_vision_a17e19e24cfc7948f646a3cca0488437a}{get\+Ball} ()
+\item 
+std\+::vector$<$ cv\+::\+Point $>$ \hyperlink{class_vision_ade08a555c6bcba89ee6a60be24f95c5b}{get\+Advs} ()
+\item 
+cv\+::\+Mat \hyperlink{class_vision_a5543116011e744661d9e60a70012bc6c}{get\+Split\+Frame} ()
+\item 
+cv\+::\+Mat \hyperlink{class_vision_a8dbf66a10209a8c92480b303e1eac3de}{get\+Threshold} (int index)
+\item 
+int \hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{get\+Hue} (int index0, int index1)
+\item 
+int \hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{get\+Saturation} (int index0, int index1)
+\item 
+int \hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{get\+Value} (int index0, int index1)
+\item 
+int \hyperlink{class_vision_a6cc4617b0af832b4cb94e00cc845c317}{get\+Erode} (int index)
+\item 
+int \hyperlink{class_vision_a0d07157e3d9bb577940f03365c8f57e8}{get\+Dilate} (int index)
+\item 
+int \hyperlink{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}{get\+Blur} (int index)
+\item 
+int \hyperlink{class_vision_a563041d47d11e0912227c3ce87dcc22e}{get\+Amin} (int index)
+\item 
+void \hyperlink{class_vision_a363ee40ff45ed78c4895df2d42ef2d84}{set\+Frame\+Size} (int in\+Width, int in\+Height)
+\item 
+int \hyperlink{class_vision_aa24748503769d116bd9d132fcfcc7aea}{get\+Frame\+Height} ()
+\item 
+int \hyperlink{class_vision_ac807f56dd7e64d74d65893b7f13b9d3b}{get\+Frame\+Width} ()
+\item 
+void \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{set\+Hue} (int index0, int index1, int in\+Value)
+\item 
+void \hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{set\+Saturation} (int index0, int index1, int in\+Value)
+\item 
+void \hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{set\+Value} (int index0, int index1, int in\+Value)
+\item 
+void \hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{set\+Erode} (int index, int in\+Value)
+\item 
+void \hyperlink{class_vision_a5a763aa322837556ab83f39ffb7e9391}{set\+Dilate} (int index, int in\+Value)
+\item 
+void \hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{set\+Blur} (int index, int in\+Value)
+\item 
+void \hyperlink{class_vision_a15483736197991fac542022fd9652472}{set\+Amin} (int index, int in\+Value)
+\item 
+void \hyperlink{class_vision_ac0c3f793197c5fec6dddb22ff7c7383c}{preload\+H\+SV} ()
+\begin{DoxyCompactList}\small\item\em Loads default values to vision object, making callibration easier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_vision_a6d23298e695a938d2491ae1f6264c694}{pre\+Processing} ()
+\item 
+void \hyperlink{class_vision_af00cb00dca3916c4beebbd140ec8b153}{pos\+Processing} (int color)
+\begin{DoxyCompactList}\small\item\em Executes median\+Blur, erode and dilate. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_a0e43481439b4b670f5dd66caefa09494}{segment\+And\+Search} (int color)
+\begin{DoxyCompactList}\small\item\em invokes \hyperlink{class_vision_af00cb00dca3916c4beebbd140ec8b153}{pos\+Processing()} and \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{search\+Tags()} methods \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{search\+Tags} (int color)
+\item 
+void \hyperlink{class_vision_a7321350b5ea7648219a4cd4f0f7ca48e}{find\+Tags} ()
+\item 
+void \hyperlink{class_vision_ada61d6f3bfc003a8e0e49bb5ee3516a3}{pick\+\_\+a\+\_\+tag} ()
+\begin{DoxyCompactList}\small\item\em uses \hyperlink{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}{in\+Sphere()} method \end{DoxyCompactList}\item 
+int \hyperlink{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}{in\+Sphere} (\hyperlink{struct_robots_1_1___status}{Robots\+::\+\_\+\+Status} $\ast$robot, std\+::vector$<$ \hyperlink{class_tag}{Tag} $>$ $\ast$temp\+Tags, cv\+::\+Point secondary)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Mat \hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\+\_\+frame}
+\item 
+cv\+::\+Mat \hyperlink{class_vision_a1bbcad0a1286863da12d3580492b4a8d}{hsv\+\_\+frame}
+\item 
+std\+::vector$<$ cv\+::\+Mat $>$ \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\+\_\+frame}
+\item 
+cv\+::\+Mat \hyperlink{class_vision_a5099dad8e3d8cb0ec58083a47a4171a8}{split\+Frame}
+\item 
+std\+::vector$<$ cv\+::\+Point $>$ \hyperlink{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}{adv\+Robots}
+\item 
+cv\+::\+Point \hyperlink{class_vision_a525356abf07741955e63faffff9740af}{ball}
+\item 
+std\+::vector$<$ std\+::vector$<$ \hyperlink{class_tag}{Tag} $>$ $>$ \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}
+\item 
+int \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue} \mbox{[}5\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation} \mbox{[}5\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value} \mbox{[}5\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate} \mbox{[}5\mbox{]}
+\item 
+int \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode} \mbox{[}5\mbox{]}
+\item 
+int \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur} \mbox{[}5\mbox{]}
+\item 
+int \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{area\+Min} \mbox{[}5\mbox{]}
+\item 
+int \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width}
+\item 
+int \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height}
+\item 
+bool \hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{b\+On\+Air}
+\item 
+cv\+::\+Video\+Writer \hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}
+\item 
+boost\+::thread\+\_\+group \hyperlink{class_vision_a2be0ca7754ab9d3c7a71041f87d43b1e}{threshold\+\_\+threads}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{M\+A\+IN} = 0
+\item 
+static const int \hyperlink{class_vision_aa6daf48b10c075b01c40c4de1240e17f}{G\+R\+E\+EN} = 1
+\item 
+static const int \hyperlink{class_vision_a08a1f319b2c20419f420bf9c280c4861}{B\+A\+LL} = 2
+\item 
+static const int \hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{A\+DV} = 3
+\item 
+static const int \hyperlink{class_vision_ad5414bb8b9a738ec032e3673b50c1cb4}{M\+A\+X\+\_\+\+A\+DV} = 3
+\item 
+static const int \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS} = 4
+\item 
+static const int \hyperlink{class_vision_a3824e4ab6a6c9beaceec70f7d3910ed0}{M\+IN} = 0
+\item 
+static const int \hyperlink{class_vision_af96e82ce8807b3c5e0651f84a04eeb9a}{M\+AX} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 25 of file vision.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vision_a823f146baaaa771e4e31b021c82fa8ca}\label{class_vision_a823f146baaaa771e4e31b021c82fa8ca}} 
+\index{Vision@{Vision}!Vision@{Vision}}
+\index{Vision@{Vision}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{Vision()}{Vision()}}
+{\footnotesize\ttfamily Vision\+::\+Vision (\begin{DoxyParamCaption}\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+\hyperlink{class_vision}{Vision}\textquotesingle{}s constructor 
+\begin{DoxyParams}{Parameters}
+{\em w} & width \\
+\hline
+{\em h} & height \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 423 of file vision.\+cpp.
+
+
+
+References tags, threshold\+\_\+frame, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+\begin{DoxyCode}
+423                            : \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width}(w), \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height}(h), \hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{bOnAir}(\textcolor{keyword}{false}) \{
+424     \textcolor{comment}{// Variables Init}
+425     cv::Mat mat;
+426     std::vector<Tag> tagVec;
+427 
+428     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}; i++) \{
+429         \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.push\_back(mat);
+430         \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.push\_back(tagVec);
+431     \}
+432 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_vision_a12bc039b4fcdb229e70c55d2660392a8}\label{class_vision_a12bc039b4fcdb229e70c55d2660392a8}} 
+\index{Vision@{Vision}!````~Vision@{$\sim$\+Vision}}
+\index{````~Vision@{$\sim$\+Vision}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{$\sim$\+Vision()}{~Vision()}}
+{\footnotesize\ttfamily Vision\+::$\sim$\+Vision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 434 of file vision.\+cpp.
+
+
+\begin{DoxyCode}
+434 \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}\label{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}} 
+\index{Vision@{Vision}!calc\+Distance@{calc\+Distance}}
+\index{calc\+Distance@{calc\+Distance}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{calc\+Distance()}{calcDistance()}}
+{\footnotesize\ttfamily double Vision\+::calc\+Distance (\begin{DoxyParamCaption}\item[{cv\+::\+Point}]{p1,  }\item[{cv\+::\+Point}]{p2 }\end{DoxyParamCaption})}
+
+Calculates Euclidean distance between two points 
+\begin{DoxyParams}{Parameters}
+{\em p1} & first point \\
+\hline
+{\em p2} & second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double value with distance value 
+\end{DoxyReturn}
+
+
+Definition at line 165 of file vision.\+cpp.
+
+
+
+Referenced by in\+Sphere().
+
+
+\begin{DoxyCode}
+165                                                   \{
+166     \textcolor{keywordflow}{return} sqrt(pow(p1.x-p2.x,2) + pow(p1.y-p2.y,2));
+167 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_vision_a7321350b5ea7648219a4cd4f0f7ca48e}\label{class_vision_a7321350b5ea7648219a4cd4f0f7ca48e}} 
+\index{Vision@{Vision}!find\+Tags@{find\+Tags}}
+\index{find\+Tags@{find\+Tags}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{find\+Tags()}{findTags()}}
+{\footnotesize\ttfamily void Vision\+::find\+Tags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Invokes with threads the \hyperlink{class_vision_a0e43481439b4b670f5dd66caefa09494}{Vision\+::segment\+And\+Search()} method. 
+
+Definition at line 16 of file vision.\+cpp.
+
+
+
+References segment\+And\+Search(), threshold\+\_\+threads, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by run().
+
+
+\begin{DoxyCode}
+16                       \{
+17     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}; i++)
+18         \hyperlink{class_vision_a2be0ca7754ab9d3c7a71041f87d43b1e}{threshold\_threads}.add\_thread(\textcolor{keyword}{new} boost::thread(&
+      \hyperlink{class_vision_a0e43481439b4b670f5dd66caefa09494}{Vision::segmentAndSearch}, \textcolor{keyword}{this}, i));
+19 
+20     \hyperlink{class_vision_a2be0ca7754ab9d3c7a71041f87d43b1e}{threshold\_threads}.join\_all();
+21 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_vision_a5c7366071fde8a1b916be0721adaa275}\label{class_vision_a5c7366071fde8a1b916be0721adaa275}} 
+\index{Vision@{Vision}!finish\+Video@{finish\+Video}}
+\index{finish\+Video@{finish\+Video}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{finish\+Video()}{finishVideo()}}
+{\footnotesize\ttfamily bool Vision\+::finish\+Video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Finishes video recording \begin{DoxyReturn}{Returns}
+true if was successful false if not 
+\end{DoxyReturn}
+
+
+Definition at line 268 of file vision.\+cpp.
+
+
+
+References b\+On\+Air, debug\+\_\+log, and video.
+
+
+
+Referenced by Vision\+G\+U\+I\+::bt\+\_\+record\+\_\+video\+\_\+pressed(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked(), and Vision\+G\+U\+I\+::$\sim$\+Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+268                          \{
+269     \textcolor{keywordflow}{if} (!\hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}.isOpened()) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+270 
+271     \hyperlink{debug_8hpp_afde3f42696113719c9ae35507125ee6e}{debug\_log}(\textcolor{stringliteral}{"Finished video recording."});
+272     \hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}.release();
+273     \hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{bOnAir} = \textcolor{keyword}{false};
+274 
+275     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+276 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_vision_ade08a555c6bcba89ee6a60be24f95c5b}\label{class_vision_ade08a555c6bcba89ee6a60be24f95c5b}} 
+\index{Vision@{Vision}!get\+Advs@{get\+Advs}}
+\index{get\+Advs@{get\+Advs}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Advs()}{getAdvs()}}
+{\footnotesize\ttfamily std\+::vector$<$ cv\+::\+Point $>$ Vision\+::get\+Advs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets a pointer containing all adversary positions \begin{DoxyReturn}{Returns}
+pointer containing all adversary positions 
+\end{DoxyReturn}
+
+
+Definition at line 388 of file vision.\+cpp.
+
+
+
+References adv\+Robots.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+388                                    \{
+389     \textcolor{keywordflow}{return} \hyperlink{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}{advRobots};
+390 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_vision_a563041d47d11e0912227c3ce87dcc22e}\label{class_vision_a563041d47d11e0912227c3ce87dcc22e}} 
+\index{Vision@{Vision}!get\+Amin@{get\+Amin}}
+\index{get\+Amin@{get\+Amin}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Amin()}{getAmin()}}
+{\footnotesize\ttfamily int Vision\+::get\+Amin (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Gets min area value 
+\begin{DoxyParams}{Parameters}
+{\em index} & color position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+min area value from color position 
+\end{DoxyReturn}
+
+
+Definition at line 315 of file vision.\+cpp.
+
+
+
+References area\+Min.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+315                              \{
+316     \textcolor{keywordflow}{return} \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[index];
+317 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_vision_a17e19e24cfc7948f646a3cca0488437a}\label{class_vision_a17e19e24cfc7948f646a3cca0488437a}} 
+\index{Vision@{Vision}!get\+Ball@{get\+Ball}}
+\index{get\+Ball@{get\+Ball}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Ball()}{getBall()}}
+{\footnotesize\ttfamily cv\+::\+Point Vision\+::get\+Ball (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets the ball position in image \begin{DoxyReturn}{Returns}
+cv\+::\+Point containing the ball position 
+\end{DoxyReturn}
+
+
+Definition at line 282 of file vision.\+cpp.
+
+
+
+References ball.
+
+
+
+Referenced by Cam\+Cap\+::update\+All\+Positions().
+
+
+\begin{DoxyCode}
+282                         \{
+283     \textcolor{keywordflow}{return} \hyperlink{class_vision_a525356abf07741955e63faffff9740af}{ball};
+284 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}\label{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}} 
+\index{Vision@{Vision}!get\+Blur@{get\+Blur}}
+\index{get\+Blur@{get\+Blur}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Blur()}{getBlur()}}
+{\footnotesize\ttfamily int Vision\+::get\+Blur (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Gets blur value 
+\begin{DoxyParams}{Parameters}
+{\em index} & color position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+blur value from color position 
+\end{DoxyReturn}
+
+
+Definition at line 311 of file vision.\+cpp.
+
+
+
+References blur.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+311                              \{
+312     \textcolor{keywordflow}{return} \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[index];
+313 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{class_vision_a0d07157e3d9bb577940f03365c8f57e8}\label{class_vision_a0d07157e3d9bb577940f03365c8f57e8}} 
+\index{Vision@{Vision}!get\+Dilate@{get\+Dilate}}
+\index{get\+Dilate@{get\+Dilate}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Dilate()}{getDilate()}}
+{\footnotesize\ttfamily int Vision\+::get\+Dilate (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Gets dilate value 
+\begin{DoxyParams}{Parameters}
+{\em index} & color position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+dilate value from color position 
+\end{DoxyReturn}
+
+
+Definition at line 307 of file vision.\+cpp.
+
+
+
+References dilate.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+307                                \{
+308     \textcolor{keywordflow}{return} \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[index];
+309 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_vision_a6cc4617b0af832b4cb94e00cc845c317}\label{class_vision_a6cc4617b0af832b4cb94e00cc845c317}} 
+\index{Vision@{Vision}!get\+Erode@{get\+Erode}}
+\index{get\+Erode@{get\+Erode}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Erode()}{getErode()}}
+{\footnotesize\ttfamily int Vision\+::get\+Erode (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Gets erode value 
+\begin{DoxyParams}{Parameters}
+{\em index} & color position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+erode value (min or max) from color position 
+\end{DoxyReturn}
+
+
+Definition at line 303 of file vision.\+cpp.
+
+
+
+References erode.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+303                               \{
+304     \textcolor{keywordflow}{return} \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[index];
+305 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{class_vision_aa24748503769d116bd9d132fcfcc7aea}\label{class_vision_aa24748503769d116bd9d132fcfcc7aea}} 
+\index{Vision@{Vision}!get\+Frame\+Height@{get\+Frame\+Height}}
+\index{get\+Frame\+Height@{get\+Frame\+Height}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Frame\+Height()}{getFrameHeight()}}
+{\footnotesize\ttfamily int Vision\+::get\+Frame\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets frame\textquotesingle{}s height \begin{DoxyReturn}{Returns}
+height value from image 
+\end{DoxyReturn}
+
+
+Definition at line 380 of file vision.\+cpp.
+
+
+
+References height.
+
+
+\begin{DoxyCode}
+380                            \{
+381     \textcolor{keywordflow}{return} \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height};
+382 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_vision_ac807f56dd7e64d74d65893b7f13b9d3b}\label{class_vision_ac807f56dd7e64d74d65893b7f13b9d3b}} 
+\index{Vision@{Vision}!get\+Frame\+Width@{get\+Frame\+Width}}
+\index{get\+Frame\+Width@{get\+Frame\+Width}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Frame\+Width()}{getFrameWidth()}}
+{\footnotesize\ttfamily int Vision\+::get\+Frame\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets frame\textquotesingle{}s width \begin{DoxyReturn}{Returns}
+width value from image 
+\end{DoxyReturn}
+
+
+Definition at line 384 of file vision.\+cpp.
+
+
+
+References width.
+
+
+\begin{DoxyCode}
+384                           \{
+385     \textcolor{keywordflow}{return} \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width};
+386 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_vision_adc6eb838fa27551430516e80a547a6bd}\label{class_vision_adc6eb838fa27551430516e80a547a6bd}} 
+\index{Vision@{Vision}!get\+Hue@{get\+Hue}}
+\index{get\+Hue@{get\+Hue}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Hue()}{getHue()}}
+{\footnotesize\ttfamily int Vision\+::get\+Hue (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1 }\end{DoxyParamCaption})}
+
+Gets hue (Hsv) value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position \\
+\hline
+{\em index1} & min (0) or max (1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hue value (min or max) from color position 
+\end{DoxyReturn}
+
+
+Definition at line 291 of file vision.\+cpp.
+
+
+
+References hue.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+291                                          \{
+292     \textcolor{keywordflow}{return} \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[index0][index1];
+293 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}\label{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}} 
+\index{Vision@{Vision}!get\+Saturation@{get\+Saturation}}
+\index{get\+Saturation@{get\+Saturation}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Saturation()}{getSaturation()}}
+{\footnotesize\ttfamily int Vision\+::get\+Saturation (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1 }\end{DoxyParamCaption})}
+
+Gets saturation (h\+Sv) value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position \\
+\hline
+{\em index1} & min (0) or max (1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+saturation value (min or max) from color position 
+\end{DoxyReturn}
+
+
+Definition at line 295 of file vision.\+cpp.
+
+
+
+References saturation.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+295                                                 \{
+296     \textcolor{keywordflow}{return} \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[index0][index1];
+297 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{class_vision_a5543116011e744661d9e60a70012bc6c}\label{class_vision_a5543116011e744661d9e60a70012bc6c}} 
+\index{Vision@{Vision}!get\+Split\+Frame@{get\+Split\+Frame}}
+\index{get\+Split\+Frame@{get\+Split\+Frame}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Split\+Frame()}{getSplitFrame()}}
+{\footnotesize\ttfamily cv\+::\+Mat Vision\+::get\+Split\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Concatenate all frames( capture frame and threshold frames (ball, main color and secondary color)) \begin{DoxyReturn}{Returns}
+concatenated image, with capture frame size with all frames 
+\end{DoxyReturn}
+
+
+Definition at line 203 of file vision.\+cpp.
+
+
+
+References in\+\_\+frame, split\+Frame, and threshold\+\_\+frame.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+203                             \{
+204     cv::Mat horizontal[2], vertical[2];
+205 
+206     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} index = 0; index < 3; index++)
+207         cv::cvtColor(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(index), \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(index), 
+      cv::COLOR\_GRAY2RGB);
+208 
+209 
+210     cv::pyrDown(\hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\_frame}, vertical[0]);
+211     cv::pyrDown(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(0), vertical[1]);
+212 
+213     cv::hconcat(vertical, 2, horizontal[0]);
+214 
+215     cv::pyrDown(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(1), vertical[0]);
+216     cv::pyrDown(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(2), vertical[1]);
+217 
+218     cv::hconcat(vertical, 2, horizontal[1]);
+219 
+220     cv::vconcat(horizontal, 2, \hyperlink{class_vision_a5099dad8e3d8cb0ec58083a47a4171a8}{splitFrame});
+221 
+222     \textcolor{comment}{// cv::imwrite("teste.png", splitFrame);}
+223 
+224     \textcolor{keywordflow}{return} \hyperlink{class_vision_a5099dad8e3d8cb0ec58083a47a4171a8}{splitFrame};
+225 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{class_vision_a8dbf66a10209a8c92480b303e1eac3de}\label{class_vision_a8dbf66a10209a8c92480b303e1eac3de}} 
+\index{Vision@{Vision}!get\+Threshold@{get\+Threshold}}
+\index{get\+Threshold@{get\+Threshold}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Threshold()}{getThreshold()}}
+{\footnotesize\ttfamily cv\+::\+Mat Vision\+::get\+Threshold (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+Gets threshold image 
+\begin{DoxyParams}{Parameters}
+{\em index} & color \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+threshold frame in color position 
+\end{DoxyReturn}
+
+
+Definition at line 286 of file vision.\+cpp.
+
+
+
+References threshold\+\_\+frame.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+286                                     \{
+287     cv::cvtColor(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(index), \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(index), 
+      cv::COLOR\_GRAY2RGB);
+288     \textcolor{keywordflow}{return} \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(index);
+289 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}\label{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}} 
+\index{Vision@{Vision}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily int Vision\+::get\+Value (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1 }\end{DoxyParamCaption})}
+
+Gets value (hsV) value (hehehe) 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position \\
+\hline
+{\em index1} & min (0) or max (1) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value value (min or max) from color position 
+\end{DoxyReturn}
+
+
+Definition at line 299 of file vision.\+cpp.
+
+
+
+References value.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), json\+Save\+Manager\+::save\+\_\+camera(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+
+\begin{DoxyCode}
+299                                            \{
+300     \textcolor{keywordflow}{return} \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[index0][index1];
+301 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}\label{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}} 
+\index{Vision@{Vision}!in\+Sphere@{in\+Sphere}}
+\index{in\+Sphere@{in\+Sphere}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{in\+Sphere()}{inSphere()}}
+{\footnotesize\ttfamily int Vision\+::in\+Sphere (\begin{DoxyParamCaption}\item[{\hyperlink{struct_robots_1_1___status}{Robots\+::\+\_\+\+Status} $\ast$}]{robot,  }\item[{std\+::vector$<$ \hyperlink{class_tag}{Tag} $>$ $\ast$}]{temp\+Tags,  }\item[{cv\+::\+Point}]{secondary }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Checks if a given secondary tag belongs to our current primary tag 
+\begin{DoxyParams}{Parameters}
+{\em robot} & robot\textquotesingle{}s vector \\
+\hline
+{\em temp\+Tags} & tag\textquotesingle{}s vector \\
+\hline
+{\em secondary} & actual secondary position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0, if secondary tag isn\textquotesingle{}t part of robot 1, if secondary tag is in right side -\/1, if secondary tag is in left side 
+\end{DoxyReturn}
+
+
+Definition at line 147 of file vision.\+cpp.
+
+
+
+References calc\+Distance(), height, Robots\+::\+\_\+\+Status\+::orientation, Robots\+::\+\_\+\+Status\+::position, R\+O\+B\+O\+T\+\_\+\+R\+A\+D\+I\+US, and width.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag().
+
+
+\begin{DoxyCode}
+147                                                                                         \{
+148     \textcolor{comment}{// se esta secundária faz parte do robô}
+149     \textcolor{keywordflow}{if}(\hyperlink{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}{calcDistance}(robot->\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}, secondary) <= 
+      \hyperlink{camcap_8hpp_ab69dd643c61be536f4dc344cf7da0be6}{ROBOT\_RADIUS}) \{
+150         \textcolor{keywordflow}{if}(\hyperlink{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}{calcDistance}(tempTags->at(0).frontPoint, secondary) < 
+      \hyperlink{class_vision_a4f6f281bd1aaacad29c9e48f4d8fb1b9}{calcDistance}(tempTags->at(0).rearPoint, secondary)) \{
+151             tempTags->at(0).switchPoints();
+152             \textcolor{comment}{// recalcula a orientação com os novos pontos (isso só é feito uma vez em cada robô, se
+       necessário)}
+153             robot->\hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation} = atan2((tempTags->at(0).frontPoint.y-robot->
+      \hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.y)*1.3/\hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height},(tempTags->at(0).frontPoint.x-robot->
+      \hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.x)*1.5/\hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width});
+154         \}
+155 
+156         \textcolor{keywordtype}{double} secSide = atan2((secondary.y-robot->\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.y)*1.3/
+      \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height},(secondary.x-robot->\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.x)*1.5/\hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width});
+157 
+158         \textcolor{comment}{// Cálculo do ângulo de orientação para diferenciar robôs de mesma cor}
+159         \textcolor{keywordflow}{return} (atan2(sin(secSide-robot->\hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation}+3.1415), cos(secSide-robot->
+      \hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation}+3.1415))) > 0 ? 1 : -1;
+160     \}
+161 
+162     \textcolor{keywordflow}{return} 0;
+163 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 16
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{class_vision_a7990c9cb8684e1d1c92a5b6aa99abe6f}\label{class_vision_a7990c9cb8684e1d1c92a5b6aa99abe6f}} 
+\index{Vision@{Vision}!is\+Recording@{is\+Recording}}
+\index{is\+Recording@{is\+Recording}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{is\+Recording()}{isRecording()}}
+{\footnotesize\ttfamily bool Vision\+::is\+Recording (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Verifies if is recording
+
+\begin{DoxyReturn}{Returns}
+true if is recording false if isn\textquotesingle{}t recording 
+\end{DoxyReturn}
+
+
+Definition at line 278 of file vision.\+cpp.
+
+
+
+References b\+On\+Air.
+
+
+
+Referenced by Vision\+G\+U\+I\+::bt\+\_\+record\+\_\+video\+\_\+pressed(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked(), and Vision\+G\+U\+I\+::$\sim$\+Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+278                          \{
+279     \textcolor{keywordflow}{return} \hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{bOnAir};
+280 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{class_vision_ada61d6f3bfc003a8e0e49bb5ee3516a3}\label{class_vision_ada61d6f3bfc003a8e0e49bb5ee3516a3}} 
+\index{Vision@{Vision}!pick\+\_\+a\+\_\+tag@{pick\+\_\+a\+\_\+tag}}
+\index{pick\+\_\+a\+\_\+tag@{pick\+\_\+a\+\_\+tag}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{pick\+\_\+a\+\_\+tag()}{pick\_a\_tag()}}
+{\footnotesize\ttfamily void Vision\+::pick\+\_\+a\+\_\+tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+uses \hyperlink{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}{in\+Sphere()} method 
+
+Give tags to the robots 
+
+Definition at line 85 of file vision.\+cpp.
+
+
+
+References A\+DV, adv\+Robots, B\+A\+LL, ball, G\+R\+E\+EN, height, in\+Sphere(), M\+A\+IN, Robots\+::\+\_\+\+Status\+::orientation, Robots\+::\+\_\+\+Status\+::position, Robots\+::set\+\_\+orientation(), Robots\+::set\+\_\+position(), Robots\+::set\+\_\+secondary\+\_\+tag(), tags, and width.
+
+
+
+Referenced by run().
+
+
+\begin{DoxyCode}
+85                         \{
+86     \textcolor{comment}{// OUR ROBOTS}
+87     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} i = 0; i < \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}).size() && i<3; i++) \{
+88         std::vector<Tag> tempTags;
+89 
+90         \hyperlink{struct_robots_1_1___status}{Robots::\_Status} robot;
+91         \textcolor{comment}{// Posição do robô}
+92         robot.\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position} = (cv::Point\_<int>) \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}).at(i).position;
+93 
+94         \textcolor{comment}{// Cálculo da orientação de acordo com os pontos rear e front}
+95         robot.\hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation} = atan2((\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}).at(i).frontPoint.y - robot.
+      \hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.y) * 1.3 / \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height},
+96                                   (\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}).at(i).frontPoint.x - robot.
+      \hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position}.x) * 1.5 / \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width});
+97 
+98         \textcolor{comment}{// Armazena a tag}
+99         tempTags.push\_back(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}).at(i));
+100 
+101         \textcolor{comment}{// Para cada tag principal, verifica quais são as secundárias correspondentes}
+102         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} j = 0;
+103              j < \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_aa6daf48b10c075b01c40c4de1240e17f}{GREEN}).size(); j++) \{ \textcolor{comment}{// (não usei unsigned short pois pode ter muitas
+       tags verdes)}
+104             \textcolor{comment}{// já faz a atribuição verificando se o valor retornado é 0 (falso); além disso, altera a
+       orientação caso esteja errada}
+105             \textcolor{keywordtype}{int} tmpSide = \hyperlink{class_vision_a52fc530a0beea6bc8821cb83c5ae2cc5}{inSphere}(&robot, &tempTags, \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_aa6daf48b10c075b01c40c4de1240e17f}{GREEN}).at(j).position);
+106             \textcolor{keywordflow}{if} (tmpSide) \{
+107                 \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_aa6daf48b10c075b01c40c4de1240e17f}{GREEN}).at(j).left = tmpSide > 0;
+108                 \textcolor{comment}{// calculos feitos, joga tag no vetor}
+109                 tempTags.push\_back(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_aa6daf48b10c075b01c40c4de1240e17f}{GREEN}).at(j));
+110 
+111                 \textcolor{comment}{// identifica se já tem mais de duas tags (amarela e uma verde.)}
+112                 \textcolor{keywordflow}{if} (tempTags.size() > 2) \{
+113                     \textcolor{keywordflow}{break};
+114                 \}
+115             \}
+116         \}
+117 
+118         \textcolor{comment}{// Dá nome aos bois (robôs)}
+119         \textcolor{keywordflow}{if} (tempTags.size() > 2) \{ \textcolor{comment}{// se tem três tags, é o full pick-a}
+120             \hyperlink{class_robots_a96ac427f418c25db0c74295f75a58cbb}{Robots::set\_position}(2, robot.\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position});
+121             \hyperlink{class_robots_a9040aa6c409fe67186aaa52f9183b7c1}{Robots::set\_orientation}(2, robot.\hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation});
+122             \hyperlink{class_robots_a40620e7ef7a3003736ab1c0b82c2b3b2}{Robots::set\_secondary\_tag}(2, tempTags.at(0).frontPoint);
+123             \textcolor{comment}{//robot\_list.at(2).rearPoint = tempTags.at(0).rearPoint;}
+124         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tempTags.size() > 1) \{ \textcolor{comment}{// não classifica se não tiver encontrado pelo menos uma verde}
+125             \textcolor{keywordflow}{if} (tempTags.at(1).left) \{
+126                 \hyperlink{class_robots_a96ac427f418c25db0c74295f75a58cbb}{Robots::set\_position}(0, robot.\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position});
+127                 \hyperlink{class_robots_a9040aa6c409fe67186aaa52f9183b7c1}{Robots::set\_orientation}(0, robot.
+      \hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation});
+128                 \hyperlink{class_robots_a40620e7ef7a3003736ab1c0b82c2b3b2}{Robots::set\_secondary\_tag}(0, tempTags.at(0).frontPoint);
+129             \} \textcolor{keywordflow}{else} \{
+130                 \hyperlink{class_robots_a96ac427f418c25db0c74295f75a58cbb}{Robots::set\_position}(1, robot.\hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position});
+131                 \hyperlink{class_robots_a9040aa6c409fe67186aaa52f9183b7c1}{Robots::set\_orientation}(1, robot.
+      \hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation});
+132                 \hyperlink{class_robots_a40620e7ef7a3003736ab1c0b82c2b3b2}{Robots::set\_secondary\_tag}(1, tempTags.at(0).frontPoint);
+133             \}
+134         \}
+135     \} \textcolor{comment}{// OUR ROBOTS}
+136 
+137     \textcolor{comment}{// ADV ROBOTS}
+138     \hyperlink{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}{advRobots}.clear();
+139     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}).size(); i++) \{
+140         \hyperlink{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}{advRobots}.push\_back(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}).at(i).position);
+141     \}
+142     \textcolor{comment}{// BALL POSITION}
+143     \textcolor{keywordflow}{if} (!\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}[\hyperlink{class_vision_a08a1f319b2c20419f420bf9c280c4861}{BALL}].empty())
+144         \hyperlink{class_vision_a525356abf07741955e63faffff9740af}{ball} = \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(\hyperlink{class_vision_a08a1f319b2c20419f420bf9c280c4861}{BALL}).at(0).position;
+145 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 19
+Here is the caller graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{class_vision_af00cb00dca3916c4beebbd140ec8b153}\label{class_vision_af00cb00dca3916c4beebbd140ec8b153}} 
+\index{Vision@{Vision}!pos\+Processing@{pos\+Processing}}
+\index{pos\+Processing@{pos\+Processing}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{pos\+Processing()}{posProcessing()}}
+{\footnotesize\ttfamily void Vision\+::pos\+Processing (\begin{DoxyParamCaption}\item[{int}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Executes median\+Blur, erode and dilate. 
+
+Run pos-\/processing methods in actual frame 
+\begin{DoxyParams}{Parameters}
+{\em color} & ball, main or secondary color \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 33 of file vision.\+cpp.
+
+
+
+References blur, dilate, erode, and threshold\+\_\+frame.
+
+
+
+Referenced by segment\+And\+Search().
+
+
+\begin{DoxyCode}
+33                                     \{
+34     cv::Mat erodeElement = cv::getStructuringElement( cv::MORPH\_RECT,cv::Size(3,3));
+35     cv::Mat dilateElement = cv::getStructuringElement( cv::MORPH\_RECT,cv::Size(3,3));
+36 
+37     cv::medianBlur(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color), \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color), 
+      \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[color]);
+38     cv::erode(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color),\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color),
+      erodeElement,cv::Point(-1,-1),\hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[color]);
+39     cv::dilate(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color),\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color),
+      dilateElement,cv::Point(-1,-1),\hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[color]);
+40 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{class_vision_ac0c3f793197c5fec6dddb22ff7c7383c}\label{class_vision_ac0c3f793197c5fec6dddb22ff7c7383c}} 
+\index{Vision@{Vision}!preload\+H\+SV@{preload\+H\+SV}}
+\index{preload\+H\+SV@{preload\+H\+SV}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{preload\+H\+S\+V()}{preloadHSV()}}
+{\footnotesize\ttfamily void Vision\+::preload\+H\+SV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads default values to vision object, making callibration easier. 
+
+
+
+Definition at line 392 of file vision.\+cpp.
+
+
+
+References set\+Amin(), set\+Blur(), set\+Erode(), set\+Hue(), set\+Saturation(), and set\+Value().
+
+
+
+Referenced by Cam\+Cap\+::start\+\_\+signal().
+
+
+\begin{DoxyCode}
+392                         \{
+393     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 4; i++) \{
+394         \hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{setBlur}(i, 5);
+395     \}
+396     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(0, 0, 20);
+397     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(0, 1, 30);
+398     \hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(0, 0, 50);
+399     \hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(0, 0, 150);
+400     \hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{setErode}(0, 1);
+401     \hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(0, 70);
+402 
+403     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(1, 0, 31);
+404     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(1, 1, 60);
+405     \hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(1, 0, 45);
+406     \hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(1, 0, 150);
+407     \hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(1, 40);
+408 
+409     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(2, 0, 1);
+410     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(2, 1, 15);
+411     \hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(2, 0, 70);
+412     \hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(2, 0, 130);
+413     \hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(2, 50);
+414 
+415     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(3, 0, 55);
+416     \hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(3, 1, 150);
+417     \hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(3, 0, 50);
+418     \hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(3, 0, 150);
+419     \hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{setErode}(3, 1);
+420     \hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(3, 70);
+421 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 22
+Here is the caller graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{class_vision_a6d23298e695a938d2491ae1f6264c694}\label{class_vision_a6d23298e695a938d2491ae1f6264c694}} 
+\index{Vision@{Vision}!pre\+Processing@{pre\+Processing}}
+\index{pre\+Processing@{pre\+Processing}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{pre\+Processing()}{preProcessing()}}
+{\footnotesize\ttfamily void Vision\+::pre\+Processing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Run pre-\/processing methods in actual frame 
+
+Definition at line 12 of file vision.\+cpp.
+
+
+
+References hsv\+\_\+frame, and in\+\_\+frame.
+
+
+
+Referenced by run().
+
+
+\begin{DoxyCode}
+12                            \{
+13     cv::cvtColor(\hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\_frame},\hyperlink{class_vision_a1bbcad0a1286863da12d3580492b4a8d}{hsv\_frame},cv::COLOR\_RGB2HSV);
+14 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 24
+\mbox{\Hypertarget{class_vision_a2ce5281f1eb08b71952407ef2a3f5eab}\label{class_vision_a2ce5281f1eb08b71952407ef2a3f5eab}} 
+\index{Vision@{Vision}!record\+To\+Video@{record\+To\+Video}}
+\index{record\+To\+Video@{record\+To\+Video}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{record\+To\+Video()}{recordToVideo()}}
+{\footnotesize\ttfamily bool Vision\+::record\+To\+Video (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Writes the input frame in video object \begin{DoxyReturn}{Returns}
+false if camera is closed, true if frame was successful written 
+\end{DoxyReturn}
+
+
+Definition at line 257 of file vision.\+cpp.
+
+
+
+References in\+\_\+frame, and video.
+
+
+
+Referenced by run().
+
+
+\begin{DoxyCode}
+257                            \{
+258     \textcolor{keywordflow}{if} (!\hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}.isOpened()) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+259 
+260     cv::Mat frame = \hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\_frame}.clone();
+261     cv::cvtColor(frame, frame, cv::COLOR\_RGB2BGR);
+262 
+263     \hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}.write(frame);
+264 
+265     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+266 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 25
+\mbox{\Hypertarget{class_vision_a8d7335b29584429ff5b5c24958896b08}\label{class_vision_a8d7335b29584429ff5b5c24958896b08}} 
+\index{Vision@{Vision}!run@{run}}
+\index{run@{run}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Vision\+::run (\begin{DoxyParamCaption}\item[{cv\+::\+Mat}]{raw\+\_\+frame }\end{DoxyParamCaption})}
+
+
+
+Call \hyperlink{class_vision_a6d23298e695a938d2491ae1f6264c694}{pre\+Processing()} method, \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{search\+Tags()} and pick-\/a-\/tag() 
+
+Run the vision 
+\begin{DoxyParams}{Parameters}
+{\em raw\+\_\+frame} & image from \hyperlink{camcap_8hpp}{camcap.\+hpp} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4 of file vision.\+cpp.
+
+
+
+References b\+On\+Air, find\+Tags(), in\+\_\+frame, pick\+\_\+a\+\_\+tag(), pre\+Processing(), and record\+To\+Video().
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+4                                 \{
+5     \hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\_frame} = raw\_frame.clone();
+6     \textcolor{keywordflow}{if} (\hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{bOnAir}) \hyperlink{class_vision_a2ce5281f1eb08b71952407ef2a3f5eab}{recordToVideo}();
+7     \hyperlink{class_vision_a6d23298e695a938d2491ae1f6264c694}{preProcessing}();
+8     \hyperlink{class_vision_a7321350b5ea7648219a4cd4f0f7ca48e}{findTags}();
+9     \hyperlink{class_vision_ada61d6f3bfc003a8e0e49bb5ee3516a3}{pick\_a\_tag}();
+10 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 26
+Here is the caller graph for this function\+:
+% FIG 27
+\mbox{\Hypertarget{class_vision_a324ad2f355fa414ee484e8ce9b247ffc}\label{class_vision_a324ad2f355fa414ee484e8ce9b247ffc}} 
+\index{Vision@{Vision}!save\+Picture@{save\+Picture}}
+\index{save\+Picture@{save\+Picture}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{save\+Picture()}{savePicture()}}
+{\footnotesize\ttfamily void Vision\+::save\+Picture (\begin{DoxyParamCaption}\item[{std\+::string}]{in\+\_\+name }\end{DoxyParamCaption})}
+
+Save a picture 
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+name} & picture\textquotesingle{}s name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 241 of file vision.\+cpp.
+
+
+
+References in\+\_\+frame.
+
+
+
+Referenced by Vision\+G\+U\+I\+::bt\+\_\+save\+\_\+picture\+\_\+clicked().
+
+
+\begin{DoxyCode}
+241                                           \{
+242     cv::Mat frame = \hyperlink{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}{in\_frame}.clone();
+243     std::string picName = \textcolor{stringliteral}{"media/pictures/"} + in\_name + \textcolor{stringliteral}{".png"};
+244 
+245     cv::cvtColor(frame, frame, cv::COLOR\_RGB2BGR);
+246     cv::imwrite(picName, frame);
+247 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 28
+\mbox{\Hypertarget{class_vision_a717cabba99a7e8d5613df6dc699e31fe}\label{class_vision_a717cabba99a7e8d5613df6dc699e31fe}} 
+\index{Vision@{Vision}!search\+Tags@{search\+Tags}}
+\index{search\+Tags@{search\+Tags}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{search\+Tags()}{searchTags()}}
+{\footnotesize\ttfamily void Vision\+::search\+Tags (\begin{DoxyParamCaption}\item[{int}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Search tag in threshold frames 
+\begin{DoxyParams}{Parameters}
+{\em color} & frame indicator (ball, main or secondary frame) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+Vision\+::search\+Secondary\+Tags 
+\end{DoxySeeAlso}
+
+
+Definition at line 42 of file vision.\+cpp.
+
+
+
+References A\+DV, area\+Min, M\+A\+IN, tags, and threshold\+\_\+frame.
+
+
+
+Referenced by segment\+And\+Search().
+
+
+\begin{DoxyCode}
+42                                  \{
+43     std::vector< std::vector<cv::Point> > contours;
+44     std::vector<cv::Vec4i> hierarchy;
+45 
+46     \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).clear();
+47 
+48     cv::findContours(\hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color),contours,hierarchy,cv::RETR\_CCOMP,
+      cv::CHAIN\_APPROX\_NONE);
+49 
+50     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < contours.size(); i++) \{
+51         \textcolor{keywordtype}{double} area = contourArea(contours[i]);
+52         \textcolor{keywordflow}{if}(area >= \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[color]) \{
+53             cv::Moments moment = moments(cv::Mat(contours[i]));
+54 
+55             \textcolor{comment}{// seta as linhas para as tags principais do pick-a-tag}
+56             \textcolor{keywordflow}{if}(color == \hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}) \{
+57                 \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).push\_back(\hyperlink{class_tag}{Tag}(cv::Point(moment.m10/area, moment.m01/area), area));
+58 
+59                 \textcolor{comment}{// tem que ter jogado a tag no vetor antes de mexer nos valores dela}
+60                 cv::Vec4f line;
+61                 cv::fitLine(cv::Mat(contours[i]),line,2,0,0.01,0.01);
+62                 \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).at(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).size() - 1).setLine(line);
+63             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(color == \hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}) \{
+64                 \textcolor{keywordflow}{if}(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).size() >= 3) \{
+65                     \textcolor{comment}{// pega o menor índice}
+66                     \textcolor{keywordtype}{int} menor = 0;
+67 
+68                     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 1; j < 3; j++) \{
+69                         \textcolor{keywordflow}{if}(\hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).at(j).area < \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).at(menor).area)
+70                         menor = j;
+71                     \}
+72 
+73                     \textcolor{keywordflow}{if}(menor < \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).size() && area > \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).at(menor).area)
+74                     \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).at(menor) = \hyperlink{class_tag}{Tag}(cv::Point(moment.m10/area, moment.m01/area), area
+      );
+75                 \} \textcolor{keywordflow}{else} \{
+76                   \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).push\_back(\hyperlink{class_tag}{Tag}(cv::Point(moment.m10/area, moment.m01/area), area));
+77                 \}
+78             \} \textcolor{keywordflow}{else} \{
+79                 \hyperlink{class_vision_acc5bbdf18ba36cc516c17999308be267}{tags}.at(color).push\_back(\hyperlink{class_tag}{Tag}(cv::Point(moment.m10/area, moment.m01/area), area));
+80             \}
+81         \}
+82     \}
+83 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 29
+\mbox{\Hypertarget{class_vision_a0e43481439b4b670f5dd66caefa09494}\label{class_vision_a0e43481439b4b670f5dd66caefa09494}} 
+\index{Vision@{Vision}!segment\+And\+Search@{segment\+And\+Search}}
+\index{segment\+And\+Search@{segment\+And\+Search}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{segment\+And\+Search()}{segmentAndSearch()}}
+{\footnotesize\ttfamily void Vision\+::segment\+And\+Search (\begin{DoxyParamCaption}\item[{int}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+invokes \hyperlink{class_vision_af00cb00dca3916c4beebbd140ec8b153}{pos\+Processing()} and \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{search\+Tags()} methods 
+
+Make the threshold with interface values 
+\begin{DoxyParams}{Parameters}
+{\em color} & threshold color, indicates threshold frame in vector \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file vision.\+cpp.
+
+
+
+References hsv\+\_\+frame, hue, M\+AX, M\+IN, pos\+Processing(), saturation, search\+Tags(), threshold\+\_\+frame, and value.
+
+
+
+Referenced by find\+Tags().
+
+
+\begin{DoxyCode}
+23                                        \{
+24     cv::Mat frame = \hyperlink{class_vision_a1bbcad0a1286863da12d3580492b4a8d}{hsv\_frame}.clone();
+25 
+26     inRange(frame,cv::Scalar(\hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[color][\hyperlink{class_vision_a3824e4ab6a6c9beaceec70f7d3910ed0}{MIN}],\hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[color][MIN],
+      \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[color][MIN]),
+27     cv::Scalar(\hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[color][\hyperlink{class_vision_af96e82ce8807b3c5e0651f84a04eeb9a}{MAX}],\hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[color][MAX],\hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[color][MAX]),
+      \hyperlink{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}{threshold\_frame}.at(color));
+28 
+29     \hyperlink{class_vision_af00cb00dca3916c4beebbd140ec8b153}{posProcessing}(color);
+30     \hyperlink{class_vision_a717cabba99a7e8d5613df6dc699e31fe}{searchTags}(color);
+31 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 30
+Here is the caller graph for this function\+:
+% FIG 31
+\mbox{\Hypertarget{class_vision_a15483736197991fac542022fd9652472}\label{class_vision_a15483736197991fac542022fd9652472}} 
+\index{Vision@{Vision}!set\+Amin@{set\+Amin}}
+\index{set\+Amin@{set\+Amin}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Amin()}{setAmin()}}
+{\footnotesize\ttfamily void Vision\+::set\+Amin (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets area min value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em in\+Value} & area min value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 367 of file vision.\+cpp.
+
+
+
+References area\+Min, debug\+\_\+error, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+367                                            \{
+368     \textcolor{keywordflow}{if}(index >= 0 && index < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}) \{
+369         \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[index] = inValue;
+370     \} \textcolor{keywordflow}{else} \{
+371         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setAmin: could not set (invalid index)"});
+372     \}
+373 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 32
+\mbox{\Hypertarget{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}\label{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}} 
+\index{Vision@{Vision}!set\+Blur@{set\+Blur}}
+\index{set\+Blur@{set\+Blur}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Blur()}{setBlur()}}
+{\footnotesize\ttfamily void Vision\+::set\+Blur (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets blur value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em in\+Value} & blur value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 359 of file vision.\+cpp.
+
+
+
+References blur, debug\+\_\+error, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+359                                            \{
+360     \textcolor{keywordflow}{if}(index >= 0 && index < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}) \{
+361         \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[index] = inValue;
+362     \} \textcolor{keywordflow}{else} \{
+363         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setBlur: could not set (invalid index)"});
+364     \}
+365 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 33
+\mbox{\Hypertarget{class_vision_a5871e49c1e8bdfd214c602707e8dfffc}\label{class_vision_a5871e49c1e8bdfd214c602707e8dfffc}} 
+\index{Vision@{Vision}!set\+Calib\+Params@{set\+Calib\+Params}}
+\index{set\+Calib\+Params@{set\+Calib\+Params}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Calib\+Params()}{setCalibParams()}}
+{\footnotesize\ttfamily void Vision\+::set\+Calib\+Params (\begin{DoxyParamCaption}\item[{int}]{H\mbox{[}5\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{S\mbox{[}5\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{V\mbox{[}5\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{Amin\mbox{[}5\mbox{]},  }\item[{int}]{E\mbox{[}5\mbox{]},  }\item[{int}]{D\mbox{[}5\mbox{]},  }\item[{int}]{B\mbox{[}5\mbox{]} }\end{DoxyParamCaption})}
+
+Set H\+SV calib parameters \begin{DoxyNote}{Note}
+receive values from interface 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em H} & hue value \\
+\hline
+{\em S} & saturation value \\
+\hline
+{\em V} & value \\
+\hline
+{\em Amin} & area min \\
+\hline
+{\em E} & erode value \\
+\hline
+{\em D} & dilate value \\
+\hline
+{\em B} & blur value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 227 of file vision.\+cpp.
+
+
+
+References area\+Min, blur, dilate, erode, hue, saturation, and value.
+
+
+
+Referenced by Vision\+G\+U\+I\+::init\+\_\+calib\+\_\+params().
+
+
+\begin{DoxyCode}
+227                                                                                                            
+       \{
+228     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 5; i++) \{
+229         \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[i] = Amin[i];
+230         \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[i] = E[i];
+231         \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[i] = D[i];
+232         \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[i] = B[i];
+233         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 2; j++) \{
+234             \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[i][j] = H[i][j];
+235             \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[i][j] = S[i][j];
+236             \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[i][j] = V[i][j];
+237         \}
+238     \}
+239 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 34
+\mbox{\Hypertarget{class_vision_a5a763aa322837556ab83f39ffb7e9391}\label{class_vision_a5a763aa322837556ab83f39ffb7e9391}} 
+\index{Vision@{Vision}!set\+Dilate@{set\+Dilate}}
+\index{set\+Dilate@{set\+Dilate}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Dilate()}{setDilate()}}
+{\footnotesize\ttfamily void Vision\+::set\+Dilate (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets dilation value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em in\+Value} & dilation value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 351 of file vision.\+cpp.
+
+
+
+References debug\+\_\+error, dilate, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed(), and json\+Save\+Manager\+::load\+\_\+camera().
+
+
+\begin{DoxyCode}
+351                                              \{
+352     \textcolor{keywordflow}{if}(index >= 0 && index < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}) \{
+353         \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[index] = inValue;
+354     \} \textcolor{keywordflow}{else} \{
+355         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setDilate: could not set (invalid index)"});
+356     \}
+357 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 35
+\mbox{\Hypertarget{class_vision_a1313404c61d1518f8b8cb354377ed5f1}\label{class_vision_a1313404c61d1518f8b8cb354377ed5f1}} 
+\index{Vision@{Vision}!set\+Erode@{set\+Erode}}
+\index{set\+Erode@{set\+Erode}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Erode()}{setErode()}}
+{\footnotesize\ttfamily void Vision\+::set\+Erode (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets erosion value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em in\+Value} & erosion value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 343 of file vision.\+cpp.
+
+
+
+References debug\+\_\+error, erode, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+343                                             \{
+344     \textcolor{keywordflow}{if}(index >= 0 && index < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS}) \{
+345         \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[index] = inValue;
+346     \} \textcolor{keywordflow}{else} \{
+347         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setErode: could not set (invalid index)"});
+348     \}
+349 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 36
+\mbox{\Hypertarget{class_vision_a363ee40ff45ed78c4895df2d42ef2d84}\label{class_vision_a363ee40ff45ed78c4895df2d42ef2d84}} 
+\index{Vision@{Vision}!set\+Frame\+Size@{set\+Frame\+Size}}
+\index{set\+Frame\+Size@{set\+Frame\+Size}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Frame\+Size()}{setFrameSize()}}
+{\footnotesize\ttfamily void Vision\+::set\+Frame\+Size (\begin{DoxyParamCaption}\item[{int}]{in\+Width,  }\item[{int}]{in\+Height }\end{DoxyParamCaption})}
+
+Sets the width and height 
+\begin{DoxyParams}{Parameters}
+{\em in\+Width} & input width \\
+\hline
+{\em in\+Height} & input height \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 375 of file vision.\+cpp.
+
+
+
+References height, and width.
+
+
+
+Referenced by Vision\+G\+U\+I\+::set\+Frame\+Size().
+
+
+\begin{DoxyCode}
+375                                                    \{
+376     \textcolor{keywordflow}{if} (inWidth >= 0) \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width} = inWidth;
+377     \textcolor{keywordflow}{if} (inHeight >= 0) \hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height} = inHeight;
+378 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 37
+\mbox{\Hypertarget{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}\label{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}} 
+\index{Vision@{Vision}!set\+Hue@{set\+Hue}}
+\index{set\+Hue@{set\+Hue}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Hue()}{setHue()}}
+{\footnotesize\ttfamily void Vision\+::set\+Hue (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets hue (Hsv) value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em index1} & 0 to min hue value, otherwise 1 to max hue value \\
+\hline
+{\em in\+Value} & hue value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 319 of file vision.\+cpp.
+
+
+
+References debug\+\_\+error, hue, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed(), Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+319                                                        \{
+320     \textcolor{keywordflow}{if}(index0 >= 0 && index0 < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS} && (index1 == 0 || index1 == 1)) \{
+321         \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[index0][index1] = inValue;
+322     \} \textcolor{keywordflow}{else} \{
+323         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setHue: could not set (invalid index)"});
+324     \}
+325 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 38
+\mbox{\Hypertarget{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}\label{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}} 
+\index{Vision@{Vision}!set\+Saturation@{set\+Saturation}}
+\index{set\+Saturation@{set\+Saturation}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Saturation()}{setSaturation()}}
+{\footnotesize\ttfamily void Vision\+::set\+Saturation (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets saturation (h\+Sv) value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em index1} & 0 to min saturation value, otherwise 1 to max saturation value \\
+\hline
+{\em in\+Value} & saturation value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 327 of file vision.\+cpp.
+
+
+
+References debug\+\_\+error, saturation, and T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed(), Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+327                                                               \{
+328     \textcolor{keywordflow}{if}(index0 >= 0 && index0 < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS} && (index1 == 0 || index1 == 1)) \{
+329         \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[index0][index1] = inValue;
+330     \} \textcolor{keywordflow}{else} \{
+331         \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setSaturation: could not set (invalid index)"});
+332     \}
+333 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 39
+\mbox{\Hypertarget{class_vision_a43213a295e6e199c261d141118be14ad}\label{class_vision_a43213a295e6e199c261d141118be14ad}} 
+\index{Vision@{Vision}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{set\+Value()}{setValue()}}
+{\footnotesize\ttfamily void Vision\+::set\+Value (\begin{DoxyParamCaption}\item[{int}]{index0,  }\item[{int}]{index1,  }\item[{int}]{in\+Value }\end{DoxyParamCaption})}
+
+Sets value (hsV) value 
+\begin{DoxyParams}{Parameters}
+{\em index0} & color position in vector \\
+\hline
+{\em index1} & 0 to min saturation value, otherwise 1 to max saturation value \\
+\hline
+{\em in\+Value} & value value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 335 of file vision.\+cpp.
+
+
+
+References debug\+\_\+error, T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS, and value.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed(), Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed(), json\+Save\+Manager\+::load\+\_\+camera(), and preload\+H\+S\+V().
+
+
+\begin{DoxyCode}
+335                                                          \{
+336   \textcolor{keywordflow}{if}(index0 >= 0 && index0 < \hyperlink{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}{TOTAL\_COLORS} && (index1 == 0 || index1 == 1)) \{
+337       \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[index0][index1] = inValue;
+338   \} \textcolor{keywordflow}{else}\{
+339       \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Vision:setValue: could not set (invalid index)"});
+340   \}
+341 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 40
+\mbox{\Hypertarget{class_vision_ae3ec43e811508f326910f99c416332db}\label{class_vision_ae3ec43e811508f326910f99c416332db}} 
+\index{Vision@{Vision}!start\+New\+Video@{start\+New\+Video}}
+\index{start\+New\+Video@{start\+New\+Video}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{start\+New\+Video()}{startNewVideo()}}
+{\footnotesize\ttfamily void Vision\+::start\+New\+Video (\begin{DoxyParamCaption}\item[{std\+::string}]{video\+Name }\end{DoxyParamCaption})}
+
+Start a new video 
+\begin{DoxyParams}{Parameters}
+{\em video\+Name} & video name \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 249 of file vision.\+cpp.
+
+
+
+References b\+On\+Air, debug\+\_\+log, height, video, and width.
+
+
+
+Referenced by Vision\+G\+U\+I\+::bt\+\_\+record\+\_\+video\+\_\+pressed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked().
+
+
+\begin{DoxyCode}
+249                                             \{
+250     std::string videoName = \textcolor{stringliteral}{"media/videos/"} + in\_name + \textcolor{stringliteral}{".avi"};
+251 
+252     \hyperlink{class_vision_a65230f76c9af171a0a9faba81b57f3d5}{video}.open(videoName, cv::VideoWriter::fourcc(\textcolor{charliteral}{'M'},\textcolor{charliteral}{'J'},\textcolor{charliteral}{'P'},\textcolor{charliteral}{'G'}), 30, cv::Size(
+      \hyperlink{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}{width},\hyperlink{class_vision_aa6f52191ab439505b6156835594f1861}{height}));
+253     \hyperlink{debug_8hpp_afde3f42696113719c9ae35507125ee6e}{debug\_log}(\textcolor{stringliteral}{"Started a new video recording."});
+254     \hyperlink{class_vision_a1eb56f5e3433ca3dce53fe315b845979}{bOnAir} = \textcolor{keyword}{true};
+255 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 41
+\mbox{\Hypertarget{class_vision_a11fa5150abbd3b37e78999b46b7b3a84}\label{class_vision_a11fa5150abbd3b37e78999b46b7b3a84}} 
+\index{Vision@{Vision}!switch\+Main\+With\+Adv@{switch\+Main\+With\+Adv}}
+\index{switch\+Main\+With\+Adv@{switch\+Main\+With\+Adv}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{switch\+Main\+With\+Adv()}{switchMainWithAdv()}}
+{\footnotesize\ttfamily void Vision\+::switch\+Main\+With\+Adv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Switch main color to adversary color \begin{DoxyNote}{Note}
+main and adversary color will be blue or yellow. 
+\end{DoxyNote}
+
+
+Definition at line 169 of file vision.\+cpp.
+
+
+
+References A\+DV, area\+Min, blur, dilate, erode, hue, M\+A\+IN, M\+AX, M\+IN, saturation, and value.
+
+
+
+Referenced by Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked().
+
+
+\begin{DoxyCode}
+169                                \{
+170     \textcolor{keywordtype}{int} tmp;
+171 
+172     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = \hyperlink{class_vision_a3824e4ab6a6c9beaceec70f7d3910ed0}{MIN}; i <= \hyperlink{class_vision_af96e82ce8807b3c5e0651f84a04eeb9a}{MAX}; i++) \{
+173         tmp = \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i];
+174         \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i] = \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i];
+175         \hyperlink{class_vision_a557114ed93889df7c09fe7add7a2fa1f}{hue}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i] = tmp;
+176 
+177         tmp = \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i];
+178         \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i] = \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i];
+179         \hyperlink{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}{saturation}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i] = tmp;
+180 
+181         tmp = \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i];
+182         \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}][i] = \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i];
+183         \hyperlink{class_vision_ad76f296d21c0758ed68429ca8b237b03}{value}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}][i] = tmp;
+184     \}
+185 
+186     tmp = \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}];
+187     \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}] = \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}];
+188     \hyperlink{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}{areaMin}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}] = tmp;
+189 
+190     tmp = \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}];
+191     \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}] = \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}];
+192     \hyperlink{class_vision_a441302204181d31885b611e10ea92489}{erode}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}] = tmp;
+193 
+194     tmp = \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}];
+195     \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}] = \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}];
+196     \hyperlink{class_vision_a406af58255882218a4d49f41b7e3a67a}{dilate}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}] = tmp;
+197 
+198     tmp = \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}];
+199     \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[\hyperlink{class_vision_ae7d1888ee66883aabbdfc7390d338367}{MAIN}] = \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}];
+200     \hyperlink{class_vision_a48d1a64140429848f9a75a9d46c6e920}{blur}[\hyperlink{class_vision_ac1903844090d6721f5c854621c516d8f}{ADV}] = tmp;
+201 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 42
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_vision_ac1903844090d6721f5c854621c516d8f}\label{class_vision_ac1903844090d6721f5c854621c516d8f}} 
+\index{Vision@{Vision}!A\+DV@{A\+DV}}
+\index{A\+DV@{A\+DV}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{A\+DV}{ADV}}
+{\footnotesize\ttfamily const int Vision\+::\+A\+DV = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 33 of file vision.\+hpp.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag(), search\+Tags(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}\label{class_vision_ac6fb7fc6bde1436ef63c255858d690a4}} 
+\index{Vision@{Vision}!adv\+Robots@{adv\+Robots}}
+\index{adv\+Robots@{adv\+Robots}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{adv\+Robots}{advRobots}}
+{\footnotesize\ttfamily std\+::vector$<$cv\+::\+Point$>$ Vision\+::adv\+Robots\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 44 of file vision.\+hpp.
+
+
+
+Referenced by get\+Advs(), and pick\+\_\+a\+\_\+tag().
+
+\mbox{\Hypertarget{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}\label{class_vision_a674b5bf7f6570f5b8e053ee28a9721ff}} 
+\index{Vision@{Vision}!area\+Min@{area\+Min}}
+\index{area\+Min@{area\+Min}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{area\+Min}{areaMin}}
+{\footnotesize\ttfamily int Vision\+::area\+Min\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 59 of file vision.\+hpp.
+
+
+
+Referenced by get\+Amin(), search\+Tags(), set\+Amin(), set\+Calib\+Params(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a08a1f319b2c20419f420bf9c280c4861}\label{class_vision_a08a1f319b2c20419f420bf9c280c4861}} 
+\index{Vision@{Vision}!B\+A\+LL@{B\+A\+LL}}
+\index{B\+A\+LL@{B\+A\+LL}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{B\+A\+LL}{BALL}}
+{\footnotesize\ttfamily const int Vision\+::\+B\+A\+LL = 2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 32 of file vision.\+hpp.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag().
+
+\mbox{\Hypertarget{class_vision_a525356abf07741955e63faffff9740af}\label{class_vision_a525356abf07741955e63faffff9740af}} 
+\index{Vision@{Vision}!ball@{ball}}
+\index{ball@{ball}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{ball}{ball}}
+{\footnotesize\ttfamily cv\+::\+Point Vision\+::ball\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 47 of file vision.\+hpp.
+
+
+
+Referenced by get\+Ball(), and pick\+\_\+a\+\_\+tag().
+
+\mbox{\Hypertarget{class_vision_a48d1a64140429848f9a75a9d46c6e920}\label{class_vision_a48d1a64140429848f9a75a9d46c6e920}} 
+\index{Vision@{Vision}!blur@{blur}}
+\index{blur@{blur}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{blur}{blur}}
+{\footnotesize\ttfamily int Vision\+::blur\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 58 of file vision.\+hpp.
+
+
+
+Referenced by get\+Blur(), pos\+Processing(), set\+Blur(), set\+Calib\+Params(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a1eb56f5e3433ca3dce53fe315b845979}\label{class_vision_a1eb56f5e3433ca3dce53fe315b845979}} 
+\index{Vision@{Vision}!b\+On\+Air@{b\+On\+Air}}
+\index{b\+On\+Air@{b\+On\+Air}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{b\+On\+Air}{bOnAir}}
+{\footnotesize\ttfamily bool Vision\+::b\+On\+Air\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file vision.\+hpp.
+
+
+
+Referenced by finish\+Video(), is\+Recording(), run(), and start\+New\+Video().
+
+\mbox{\Hypertarget{class_vision_a406af58255882218a4d49f41b7e3a67a}\label{class_vision_a406af58255882218a4d49f41b7e3a67a}} 
+\index{Vision@{Vision}!dilate@{dilate}}
+\index{dilate@{dilate}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{dilate}{dilate}}
+{\footnotesize\ttfamily int Vision\+::dilate\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 56 of file vision.\+hpp.
+
+
+
+Referenced by get\+Dilate(), pos\+Processing(), set\+Calib\+Params(), set\+Dilate(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a441302204181d31885b611e10ea92489}\label{class_vision_a441302204181d31885b611e10ea92489}} 
+\index{Vision@{Vision}!erode@{erode}}
+\index{erode@{erode}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{erode}{erode}}
+{\footnotesize\ttfamily int Vision\+::erode\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 57 of file vision.\+hpp.
+
+
+
+Referenced by get\+Erode(), pos\+Processing(), set\+Calib\+Params(), set\+Erode(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_aa6daf48b10c075b01c40c4de1240e17f}\label{class_vision_aa6daf48b10c075b01c40c4de1240e17f}} 
+\index{Vision@{Vision}!G\+R\+E\+EN@{G\+R\+E\+EN}}
+\index{G\+R\+E\+EN@{G\+R\+E\+EN}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{G\+R\+E\+EN}{GREEN}}
+{\footnotesize\ttfamily const int Vision\+::\+G\+R\+E\+EN = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 30 of file vision.\+hpp.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag().
+
+\mbox{\Hypertarget{class_vision_aa6f52191ab439505b6156835594f1861}\label{class_vision_aa6f52191ab439505b6156835594f1861}} 
+\index{Vision@{Vision}!height@{height}}
+\index{height@{height}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int Vision\+::height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file vision.\+hpp.
+
+
+
+Referenced by get\+Frame\+Height(), in\+Sphere(), pick\+\_\+a\+\_\+tag(), set\+Frame\+Size(), and start\+New\+Video().
+
+\mbox{\Hypertarget{class_vision_a1bbcad0a1286863da12d3580492b4a8d}\label{class_vision_a1bbcad0a1286863da12d3580492b4a8d}} 
+\index{Vision@{Vision}!hsv\+\_\+frame@{hsv\+\_\+frame}}
+\index{hsv\+\_\+frame@{hsv\+\_\+frame}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{hsv\+\_\+frame}{hsv\_frame}}
+{\footnotesize\ttfamily cv\+::\+Mat Vision\+::hsv\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file vision.\+hpp.
+
+
+
+Referenced by pre\+Processing(), and segment\+And\+Search().
+
+\mbox{\Hypertarget{class_vision_a557114ed93889df7c09fe7add7a2fa1f}\label{class_vision_a557114ed93889df7c09fe7add7a2fa1f}} 
+\index{Vision@{Vision}!hue@{hue}}
+\index{hue@{hue}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{hue}{hue}}
+{\footnotesize\ttfamily int Vision\+::hue\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 53 of file vision.\+hpp.
+
+
+
+Referenced by get\+Hue(), segment\+And\+Search(), set\+Calib\+Params(), set\+Hue(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}\label{class_vision_a905e6a0333e4931dfd2e0e44b07b51c9}} 
+\index{Vision@{Vision}!in\+\_\+frame@{in\+\_\+frame}}
+\index{in\+\_\+frame@{in\+\_\+frame}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{in\+\_\+frame}{in\_frame}}
+{\footnotesize\ttfamily cv\+::\+Mat Vision\+::in\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file vision.\+hpp.
+
+
+
+Referenced by get\+Split\+Frame(), pre\+Processing(), record\+To\+Video(), run(), and save\+Picture().
+
+\mbox{\Hypertarget{class_vision_ae7d1888ee66883aabbdfc7390d338367}\label{class_vision_ae7d1888ee66883aabbdfc7390d338367}} 
+\index{Vision@{Vision}!M\+A\+IN@{M\+A\+IN}}
+\index{M\+A\+IN@{M\+A\+IN}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{M\+A\+IN}{MAIN}}
+{\footnotesize\ttfamily const int Vision\+::\+M\+A\+IN = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 29 of file vision.\+hpp.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag(), search\+Tags(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_af96e82ce8807b3c5e0651f84a04eeb9a}\label{class_vision_af96e82ce8807b3c5e0651f84a04eeb9a}} 
+\index{Vision@{Vision}!M\+AX@{M\+AX}}
+\index{M\+AX@{M\+AX}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{M\+AX}{MAX}}
+{\footnotesize\ttfamily const int Vision\+::\+M\+AX = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 37 of file vision.\+hpp.
+
+
+
+Referenced by segment\+And\+Search(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_ad5414bb8b9a738ec032e3673b50c1cb4}\label{class_vision_ad5414bb8b9a738ec032e3673b50c1cb4}} 
+\index{Vision@{Vision}!M\+A\+X\+\_\+\+A\+DV@{M\+A\+X\+\_\+\+A\+DV}}
+\index{M\+A\+X\+\_\+\+A\+DV@{M\+A\+X\+\_\+\+A\+DV}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+A\+DV}{MAX\_ADV}}
+{\footnotesize\ttfamily const int Vision\+::\+M\+A\+X\+\_\+\+A\+DV = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 34 of file vision.\+hpp.
+
+\mbox{\Hypertarget{class_vision_a3824e4ab6a6c9beaceec70f7d3910ed0}\label{class_vision_a3824e4ab6a6c9beaceec70f7d3910ed0}} 
+\index{Vision@{Vision}!M\+IN@{M\+IN}}
+\index{M\+IN@{M\+IN}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{M\+IN}{MIN}}
+{\footnotesize\ttfamily const int Vision\+::\+M\+IN = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 36 of file vision.\+hpp.
+
+
+
+Referenced by segment\+And\+Search(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}\label{class_vision_a71a7f9859283e916a0dfb1467eaf5b13}} 
+\index{Vision@{Vision}!saturation@{saturation}}
+\index{saturation@{saturation}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{saturation}{saturation}}
+{\footnotesize\ttfamily int Vision\+::saturation\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 54 of file vision.\+hpp.
+
+
+
+Referenced by get\+Saturation(), segment\+And\+Search(), set\+Calib\+Params(), set\+Saturation(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a5099dad8e3d8cb0ec58083a47a4171a8}\label{class_vision_a5099dad8e3d8cb0ec58083a47a4171a8}} 
+\index{Vision@{Vision}!split\+Frame@{split\+Frame}}
+\index{split\+Frame@{split\+Frame}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{split\+Frame}{splitFrame}}
+{\footnotesize\ttfamily cv\+::\+Mat Vision\+::split\+Frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 42 of file vision.\+hpp.
+
+
+
+Referenced by get\+Split\+Frame().
+
+\mbox{\Hypertarget{class_vision_acc5bbdf18ba36cc516c17999308be267}\label{class_vision_acc5bbdf18ba36cc516c17999308be267}} 
+\index{Vision@{Vision}!tags@{tags}}
+\index{tags@{tags}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{tags}{tags}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$\hyperlink{class_tag}{Tag}$>$ $>$ Vision\+::tags\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 50 of file vision.\+hpp.
+
+
+
+Referenced by pick\+\_\+a\+\_\+tag(), search\+Tags(), and Vision().
+
+\mbox{\Hypertarget{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}\label{class_vision_a2fee2db2d4fe0cee6b2de36ee0eb6c7f}} 
+\index{Vision@{Vision}!threshold\+\_\+frame@{threshold\+\_\+frame}}
+\index{threshold\+\_\+frame@{threshold\+\_\+frame}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{threshold\+\_\+frame}{threshold\_frame}}
+{\footnotesize\ttfamily std\+::vector$<$cv\+::\+Mat$>$ Vision\+::threshold\+\_\+frame\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 41 of file vision.\+hpp.
+
+
+
+Referenced by get\+Split\+Frame(), get\+Threshold(), pos\+Processing(), search\+Tags(), segment\+And\+Search(), and Vision().
+
+\mbox{\Hypertarget{class_vision_a2be0ca7754ab9d3c7a71041f87d43b1e}\label{class_vision_a2be0ca7754ab9d3c7a71041f87d43b1e}} 
+\index{Vision@{Vision}!threshold\+\_\+threads@{threshold\+\_\+threads}}
+\index{threshold\+\_\+threads@{threshold\+\_\+threads}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{threshold\+\_\+threads}{threshold\_threads}}
+{\footnotesize\ttfamily boost\+::thread\+\_\+group Vision\+::threshold\+\_\+threads\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 72 of file vision.\+hpp.
+
+
+
+Referenced by find\+Tags().
+
+\mbox{\Hypertarget{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}\label{class_vision_a9fbea649a805b17ad9ea18f3f06c14f2}} 
+\index{Vision@{Vision}!T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS@{T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS}}
+\index{T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS@{T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS}{TOTAL\_COLORS}}
+{\footnotesize\ttfamily const int Vision\+::\+T\+O\+T\+A\+L\+\_\+\+C\+O\+L\+O\+RS = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 35 of file vision.\+hpp.
+
+
+
+Referenced by find\+Tags(), set\+Amin(), set\+Blur(), set\+Dilate(), set\+Erode(), set\+Hue(), set\+Saturation(), set\+Value(), and Vision().
+
+\mbox{\Hypertarget{class_vision_ad76f296d21c0758ed68429ca8b237b03}\label{class_vision_ad76f296d21c0758ed68429ca8b237b03}} 
+\index{Vision@{Vision}!value@{value}}
+\index{value@{value}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily int Vision\+::value\mbox{[}5\mbox{]}\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 55 of file vision.\+hpp.
+
+
+
+Referenced by get\+Value(), segment\+And\+Search(), set\+Calib\+Params(), set\+Value(), and switch\+Main\+With\+Adv().
+
+\mbox{\Hypertarget{class_vision_a65230f76c9af171a0a9faba81b57f3d5}\label{class_vision_a65230f76c9af171a0a9faba81b57f3d5}} 
+\index{Vision@{Vision}!video@{video}}
+\index{video@{video}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{video}{video}}
+{\footnotesize\ttfamily cv\+::\+Video\+Writer Vision\+::video\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 69 of file vision.\+hpp.
+
+
+
+Referenced by finish\+Video(), record\+To\+Video(), and start\+New\+Video().
+
+\mbox{\Hypertarget{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}\label{class_vision_ac82a1da77a8b08d112e5c4688bd70c3d}} 
+\index{Vision@{Vision}!width@{width}}
+\index{width@{width}!Vision@{Vision}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int Vision\+::width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 62 of file vision.\+hpp.
+
+
+
+Referenced by get\+Frame\+Width(), in\+Sphere(), pick\+\_\+a\+\_\+tag(), set\+Frame\+Size(), and start\+New\+Video().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/vision/\hyperlink{vision_8hpp}{vision.\+hpp}\item 
+src/vision/\hyperlink{vision_8cpp}{vision.\+cpp}\end{DoxyCompactItemize}

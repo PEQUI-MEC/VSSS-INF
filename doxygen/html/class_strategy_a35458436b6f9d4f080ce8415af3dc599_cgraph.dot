@@ -1,0 +1,32 @@
+digraph "Strategy::set_roles"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node379 [label="Strategy::set_roles",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node379 -> Node380 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node380 [label="compare_pos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$strategy_8cpp.html#a10738a2f35566666f846dfde7ecc5a46"];
+  Node379 -> Node381 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node381 [label="Strategy::distance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#aacce05caed71553c4efd2d28c9c3aa39"];
+  Node379 -> Node382 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node382 [label="Robots::get_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a1fca8f2f5070176faa6ba1efa2f1ff14"];
+  Node382 -> Node383 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node383 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node383 -> Node384 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node384 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+  Node379 -> Node385 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node385 [label="Robots::get_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#ac5cdd16502bd325581fb2d732169a326"];
+  Node385 -> Node383 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node379 -> Node386 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node386 [label="Strategy::set_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#ad2a232eda7c95636be17a3d528547b5f"];
+  Node386 -> Node387 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node387 [label="Robots::set_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a3694b6380b113b7c38a252fd3bbfcca3"];
+  Node387 -> Node383 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node386 -> Node388 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node388 [label="Robots::set_status",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa287cd821cfe9c6c65fb5cdfd77c5050"];
+  Node388 -> Node383 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node386 -> Node389 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node389 [label="Robots::set_velocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#ae37da9b7ca9d84bee564c328db139758"];
+  Node389 -> Node383 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,497 @@
+\hypertarget{class_serial_w}{}\section{SerialW Class Reference}
+\label{class_serial_w}\index{SerialW@{SerialW}}
+
+
+{\ttfamily \#include $<$serial\+W.\+hpp$>$}
+
+
+
+Collaboration diagram for SerialW\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_serial_w_acba41f819a6ac6e0372ef113a1843985}{SerialW} ()
+\item 
+int \hyperlink{class_serial_w_a39a09737475182fe3588d3b78cae4bf3}{start} (std\+::string serial)
+\item 
+void \hyperlink{class_serial_w_a05d1b44110f4f36bedace0ac729e09b6}{send\+To\+Robot} (Robot r)
+\item 
+void \hyperlink{class_serial_w_a59559f7883b8215d92a47aafc95d5cf4}{send\+Cmd\+To\+Robots} (std\+::vector$<$ Robot $>$ robot\+\_\+list)
+\item 
+void \hyperlink{class_serial_w_a67953d9f4d61a9caeb562d94821d9f03}{send\+Serial} (std\+::string cmd)
+\item 
+void \hyperlink{class_serial_w_a482e8608c6048b44b0772fecf8a922d9}{send\+A\+P\+I\+Serial} (std\+::string cmd)
+\item 
+void \hyperlink{class_serial_w_a612587d40ba4735e99cdf1af67d5a6a0}{send\+A\+P\+I\+Serial\+Text} (std\+::string cmd)
+\item 
+uint8\+\_\+t \hyperlink{class_serial_w_a757c428d5a375862430ddef74512a043}{generate\+Checksum} (uint8\+\_\+t \hyperlink{classstd_1_1conditional_1_1type}{type}, uint8\+\_\+t id, uint16\+\_\+t address, uint8\+\_\+t option, std\+::string cmd)
+\item 
+int \hyperlink{class_serial_w_a94d4f4ad3623e70c47f45ca5f16ba5e5}{read\+Serial} (char $\ast$buf, int size)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\+\_\+\+Enabled}
+\item 
+int \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{U\+SB}
+\item 
+std\+::string \hyperlink{class_serial_w_afc325a02adcff1960a5be974a908631e}{port}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file serial\+W.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_serial_w_acba41f819a6ac6e0372ef113a1843985}\label{class_serial_w_acba41f819a6ac6e0372ef113a1843985}} 
+\index{SerialW@{SerialW}!SerialW@{SerialW}}
+\index{SerialW@{SerialW}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{Serial\+W()}{SerialW()}}
+{\footnotesize\ttfamily Serial\+W\+::\+SerialW (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 3 of file serial\+W.\+cpp.
+
+
+
+References Serial\+\_\+\+Enabled.
+
+
+\begin{DoxyCode}
+3                  \{
+4     \hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled} = \textcolor{keyword}{false};
+5 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_serial_w_a757c428d5a375862430ddef74512a043}\label{class_serial_w_a757c428d5a375862430ddef74512a043}} 
+\index{SerialW@{SerialW}!generate\+Checksum@{generate\+Checksum}}
+\index{generate\+Checksum@{generate\+Checksum}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{generate\+Checksum()}{generateChecksum()}}
+{\footnotesize\ttfamily uint8\+\_\+t Serial\+W\+::generate\+Checksum (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{type,  }\item[{uint8\+\_\+t}]{id,  }\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{option,  }\item[{std\+::string}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 227 of file serial\+W.\+cpp.
+
+
+
+Referenced by send\+A\+P\+I\+Serial(), and send\+A\+P\+I\+Serial\+Text().
+
+
+\begin{DoxyCode}
+227                                                                                                            
+      \{
+228     uint8\_t check = 0xFF - \hyperlink{classstd_1_1conditional_1_1type}{type} - \textcolor{keywordtype}{id} - (uint8\_t) address - uint8\_t(address >> 8) - option;
+229 
+230     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < cmd.size(); i++)
+231             check -= (uint8\_t) cmd[i];
+232 
+233     \textcolor{keywordflow}{return} check;
+234 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_serial_w_a94d4f4ad3623e70c47f45ca5f16ba5e5}\label{class_serial_w_a94d4f4ad3623e70c47f45ca5f16ba5e5}} 
+\index{SerialW@{SerialW}!read\+Serial@{read\+Serial}}
+\index{read\+Serial@{read\+Serial}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{read\+Serial()}{readSerial()}}
+{\footnotesize\ttfamily int Serial\+W\+::read\+Serial (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 236 of file serial\+W.\+cpp.
+
+
+
+References Serial\+\_\+\+Enabled, and U\+SB.
+
+
+\begin{DoxyCode}
+236                                            \{
+237     \textcolor{keywordflow}{if} (!\hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled}) \textcolor{keywordflow}{return} -2;
+238 
+239     fd\_set \textcolor{keyword}{set};
+240     \textcolor{keyword}{struct }timeval timeout;
+241     \textcolor{keywordtype}{int} rv;
+242 
+243     FD\_ZERO(&\textcolor{keyword}{set}); \textcolor{comment}{/* clear the set */}
+244     FD\_SET(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, &\textcolor{keyword}{set}); \textcolor{comment}{/* add our file descriptor to the set */}
+245 
+246     timeout.tv\_sec = 0;
+247     timeout.tv\_usec = 100000;
+248 
+249     rv = select(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB} + 1, &\textcolor{keyword}{set}, NULL, NULL, &timeout);
+250 
+251     \textcolor{keywordflow}{if}(rv == -1) \{
+252         perror(\textcolor{stringliteral}{"select"}); \textcolor{comment}{/* an error accured */}
+253         \textcolor{keywordflow}{return} -1;
+254     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(rv == 0) \{
+255         \textcolor{comment}{//printf("timeout \(\backslash\)n"); /* a timeout occured */}
+256         \textcolor{keywordflow}{return} 0;
+257     \} \textcolor{keywordflow}{else} \{
+258         \textcolor{keywordtype}{int} result = read( \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, buf , size); \textcolor{comment}{/* there was data to read */}
+259         buf[size-1] = \textcolor{charliteral}{'\(\backslash\)0'};
+260         \textcolor{comment}{//printf(buf);printf("\(\backslash\)n");}
+261         \textcolor{keywordflow}{return} 1;
+262     \}
+263 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_serial_w_a482e8608c6048b44b0772fecf8a922d9}\label{class_serial_w_a482e8608c6048b44b0772fecf8a922d9}} 
+\index{SerialW@{SerialW}!send\+A\+P\+I\+Serial@{send\+A\+P\+I\+Serial}}
+\index{send\+A\+P\+I\+Serial@{send\+A\+P\+I\+Serial}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{send\+A\+P\+I\+Serial()}{sendAPISerial()}}
+{\footnotesize\ttfamily void Serial\+W\+::send\+A\+P\+I\+Serial (\begin{DoxyParamCaption}\item[{std\+::string}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 185 of file serial\+W.\+cpp.
+
+
+
+References generate\+Checksum(), Serial\+\_\+\+Enabled, string\+To\+Int(), and U\+SB.
+
+
+
+Referenced by send\+Cmd\+To\+Robots().
+
+
+\begin{DoxyCode}
+185                                          \{
+186     \textcolor{keywordflow}{if}(!\hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled}) \textcolor{keywordflow}{return};
+187 
+188     \textcolor{comment}{//  if (cmd[0] != robot.ID) return;}
+189     uint8\_t start\_delimiter = 0x7E;
+190     uint8\_t frame\_type = 0x01;
+191     uint8\_t frame\_id = 0x01;
+192     uint8\_t option = 0x00;
+193     uint16\_t address = 0x4444;
+194     uint16\_t lenght = uint16\_t(5+cmd.size());
+195 
+196     std::vector<uint8\_t> hex\_message = \hyperlink{serial_w_8cpp_a813a1704f4f83398a435c67e028b0eb3}{stringToInt}(cmd);
+197 
+198     uint8\_t checksum = \hyperlink{class_serial_w_a757c428d5a375862430ddef74512a043}{generateChecksum}(frame\_type, frame\_id, address, option, cmd);
+199 
+200     uint8\_t *msg = (uint8\_t *) malloc(9+cmd.size());
+201     msg[0] = start\_delimiter;
+202     msg[1] = uint8\_t(lenght >> 8);
+203     msg[2] = uint8\_t(lenght);
+204     msg[3] = frame\_type;
+205     msg[4] = frame\_id;
+206     msg[5] = uint8\_t(address >> 8);
+207     msg[6] = uint8\_t(address);
+208     msg[7] = option;
+209 
+210     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < cmd.size(); i++)
+211             msg[i+8] = (uint8\_t) cmd[i];
+212 
+213     msg[cmd.size()+8] = checksum;
+214 
+215     \textcolor{comment}{/*}
+216 \textcolor{comment}{    for (size\_t i = 0; i < 9+cmd.size(); i++) \{}
+217 \textcolor{comment}{        printf("%02x ",msg[i]);}
+218 \textcolor{comment}{        // code}
+219 \textcolor{comment}{    \}}
+220 \textcolor{comment}{    */}
+221 
+222     \textcolor{keywordtype}{int} result = write(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, msg, 9+cmd.size());
+223     \textcolor{comment}{// std::cout << "size = " << 9+cmd.size() << std::endl;}
+224     free(msg);
+225 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_serial_w_a612587d40ba4735e99cdf1af67d5a6a0}\label{class_serial_w_a612587d40ba4735e99cdf1af67d5a6a0}} 
+\index{SerialW@{SerialW}!send\+A\+P\+I\+Serial\+Text@{send\+A\+P\+I\+Serial\+Text}}
+\index{send\+A\+P\+I\+Serial\+Text@{send\+A\+P\+I\+Serial\+Text}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{send\+A\+P\+I\+Serial\+Text()}{sendAPISerialText()}}
+{\footnotesize\ttfamily void Serial\+W\+::send\+A\+P\+I\+Serial\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 147 of file serial\+W.\+cpp.
+
+
+
+References generate\+Checksum(), Serial\+\_\+\+Enabled, string\+To\+Int(), and U\+SB.
+
+
+\begin{DoxyCode}
+147                                              \{
+148     \textcolor{keywordflow}{if}(!\hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled}) \textcolor{keywordflow}{return};
+149 
+150     uint8\_t start\_delimiter = 0x7E;
+151     uint8\_t frame\_type = 0x01;
+152     uint8\_t frame\_id = 0x01;
+153     uint8\_t option = 0x00;
+154     uint16\_t address = 0x4444;
+155     uint16\_t lenght = uint16\_t(5+cmd.size());
+156 
+157     std::vector<uint8\_t> hex\_message = \hyperlink{serial_w_8cpp_a813a1704f4f83398a435c67e028b0eb3}{stringToInt}(cmd);
+158 
+159     uint8\_t checksum = \hyperlink{class_serial_w_a757c428d5a375862430ddef74512a043}{generateChecksum}(frame\_type, frame\_id, address, option, cmd);
+160 
+161     uint8\_t *msg = (uint8\_t *) malloc(9+cmd.size());
+162     msg[0] = start\_delimiter;
+163     msg[1] = uint8\_t(lenght >> 8);
+164     msg[2] = uint8\_t(lenght);
+165     msg[3] = frame\_type;
+166     msg[4] = frame\_id;
+167     msg[5] = uint8\_t(address >> 8);
+168     msg[6] = uint8\_t(address);
+169     msg[7] = option;
+170 
+171     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{size\_t} i = 0; i < cmd.size(); i++)
+172             msg[i+8] = (uint8\_t) cmd[i];
+173 
+174     \textcolor{comment}{// msg[cmd.size()+8] = checksum;}
+175     \textcolor{comment}{// for (size\_t i = 0; i < 9+cmd.size(); i++) \{}
+176     \textcolor{comment}{//  printf("%02x ",msg[i]);}
+177     \textcolor{comment}{//  /* code */}
+178     \textcolor{comment}{// \}}
+179 
+180     \textcolor{keywordtype}{int} result = write(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, msg, 9+cmd.size());
+181     \textcolor{comment}{// std::cout << "size = " << 9+cmd.size() << std::endl;}
+182     free(msg);
+183 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_serial_w_a59559f7883b8215d92a47aafc95d5cf4}\label{class_serial_w_a59559f7883b8215d92a47aafc95d5cf4}} 
+\index{SerialW@{SerialW}!send\+Cmd\+To\+Robots@{send\+Cmd\+To\+Robots}}
+\index{send\+Cmd\+To\+Robots@{send\+Cmd\+To\+Robots}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{send\+Cmd\+To\+Robots()}{sendCmdToRobots()}}
+{\footnotesize\ttfamily void Serial\+W\+::send\+Cmd\+To\+Robots (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Robot $>$}]{robot\+\_\+list }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file serial\+W.\+cpp.
+
+
+
+References O\+R\+I\+E\+N\+T\+A\+T\+I\+ON, PI, P\+O\+S\+I\+T\+I\+ON, send\+A\+P\+I\+Serial(), Serial\+\_\+\+Enabled, S\+P\+E\+ED, and V\+E\+C\+T\+OR.
+
+
+\begin{DoxyCode}
+67                                                          \{
+68     \textcolor{keywordflow}{if} (!\hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled}) \textcolor{keywordflow}{return};
+69 
+70     std::stringstream cmd;
+71     \textcolor{keywordtype}{double} temp0, temp1, temp2, temp3, temp4;
+72 
+73     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 3; i++) \{
+74         \textcolor{keywordflow}{switch}(robot\_list[i].cmdType) \{
+75             \textcolor{keywordflow}{case} \hyperlink{serial_w_8hpp_a440f0e10bb28b153f5661c934bc6b89f}{POSITION}:
+76                 \textcolor{keywordflow}{if} (robot\_list.at(i).target.x != -1 && robot\_list.at(i).target.x != -1) \{
+77                     temp3 = double(robot\_list[i].target.x - robot\_list[i].position.x);
+78                     temp4 = double(robot\_list[i].target.y - robot\_list[i].position.y);
+79 
+80                     robot\_list[i].transTarget.x = round(cos(robot\_list[i].orientation)*temp3 + sin(
+      robot\_list[i].orientation)*temp4);
+81                     robot\_list[i].transTarget.y = round(-(-sin(robot\_list[i].orientation)*temp3 + cos(
+      robot\_list[i].orientation)*temp4));
+82 
+83                     temp0 = round(\textcolor{keywordtype}{double}(robot\_list[i].transTarget.x)*(150.0/640.0)*100)/100;
+84                     temp1 = round(\textcolor{keywordtype}{double}(robot\_list[i].transTarget.y)*(130.0/480.0)*100)/100;
+85                     temp2 = round(\textcolor{keywordtype}{double}(robot\_list[i].vmax)*100)/100;
+86                     cmd << robot\_list[i].ID << \textcolor{charliteral}{'@'} << \textcolor{stringliteral}{"P"} << temp0 << \textcolor{stringliteral}{";"} << temp1<< \textcolor{stringliteral}{";"} << temp2 << \textcolor{stringliteral}{"#"};
+87                 \}
+88                 \textcolor{keywordflow}{break};
+89 
+90             \textcolor{keywordflow}{case} \hyperlink{serial_w_8hpp_aac3553b3932cbfeeac4526ce7ca0336b}{SPEED}:
+91                 temp0 = round(robot\_list[i].Vr*100)/100;
+92                 temp1 = round(robot\_list[i].Vl*100)/100;
+93                 cmd << robot\_list[i].ID << \textcolor{charliteral}{'@'} << temp0 << \textcolor{stringliteral}{";"} << temp1 << \textcolor{stringliteral}{"#"};
+94                 \textcolor{keywordflow}{break};
+95 
+96             \textcolor{keywordflow}{case} \hyperlink{serial_w_8hpp_ac815b03ec48abf99301f44140ff0b0a9}{ORIENTATION}:
+97                 temp2 = double(robot\_list[i].orientation) - (- double(robot\_list[i].targetOrientation));
+98                 temp0 = temp2*180/\hyperlink{camcap_8hpp_a598a3330b3c21701223ee0ca14316eca}{PI};
+99                 temp0 = round(temp0*100)/100;
+100                 temp1 = round(\textcolor{keywordtype}{double}(robot\_list[i].vmax)*100)/100;
+101                 cmd << robot\_list[i].ID << \textcolor{charliteral}{'@'} << \textcolor{stringliteral}{"O"} << temp0 << \textcolor{stringliteral}{";"} << temp1 << \textcolor{stringliteral}{"#"};
+102                 \textcolor{comment}{//std::cout << cmd.str() << std::endl;}
+103                 \textcolor{keywordflow}{break};
+104 
+105             \textcolor{keywordflow}{case} \hyperlink{serial_w_8hpp_ac6e89954deaa373db52a91ac6db50884}{VECTOR}:
+106                 temp0 = double(atan2(sin(robot\_list[i].orientation-(-robot\_list[i].transAngle)),cos(
+      robot\_list[i].orientation-(-robot\_list[i].transAngle)))*180/\hyperlink{camcap_8hpp_a598a3330b3c21701223ee0ca14316eca}{PI});
+107                 temp0 = round(temp0*100)/100;
+108                 temp1 = round(\textcolor{keywordtype}{double}(robot\_list[i].vmax)*100)/100;
+109                 cmd << robot\_list[i].ID << \textcolor{charliteral}{'@'} << \textcolor{stringliteral}{"V"} << temp0 << \textcolor{stringliteral}{";"} << temp1 << \textcolor{stringliteral}{"#"};
+110                 \textcolor{comment}{// cout << robot\_list[i].ID<<'@'<<"V"<<temp0<<";"<<temp1<<"#"<< endl;}
+111                 \textcolor{keywordflow}{break};
+112 
+113             \textcolor{keywordflow}{default}:
+114                 \textcolor{keywordflow}{if}(robot\_list.at(i).target.x != -1 && robot\_list.at(i).target.x != -1) \{
+115                     temp3 = double(robot\_list[i].target.x - robot\_list[i].position.x);
+116                     temp4 = double(robot\_list[i].target.y - robot\_list[i].position.y);
+117 
+118                     robot\_list[i].transTarget.x = round(cos(robot\_list[i].orientation)*temp3 + sin(
+      robot\_list[i].orientation)*temp4);
+119                     robot\_list[i].transTarget.y = round(-(-sin(robot\_list[i].orientation)*temp3 + cos(
+      robot\_list[i].orientation)*temp4));
+120 
+121                     temp0 = round(\textcolor{keywordtype}{double}(robot\_list[i].transTarget.x)*(150.0/640.0)*100)/100;
+122                     temp1 = round(\textcolor{keywordtype}{double}(robot\_list[i].transTarget.y)*(130.0/480.0)*100)/100;
+123                     temp2 = round(\textcolor{keywordtype}{double}(robot\_list[i].vmax)*100)/100;
+124                     cmd << robot\_list[i].ID << \textcolor{charliteral}{'@'} << \textcolor{stringliteral}{"P"} << temp0 << \textcolor{stringliteral}{";"} << temp1 << \textcolor{stringliteral}{";"} << temp2 << \textcolor{stringliteral}{"#"};
+125                 \}
+126         \}
+127     \}
+128 
+129     \textcolor{keywordflow}{if} (!cmd.str().empty()) \hyperlink{class_serial_w_a482e8608c6048b44b0772fecf8a922d9}{sendAPISerial}(cmd.str().c\_str());
+130     \textcolor{comment}{// std::cout << cmd.str().c\_str() << std::endl;}
+131 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_serial_w_a67953d9f4d61a9caeb562d94821d9f03}\label{class_serial_w_a67953d9f4d61a9caeb562d94821d9f03}} 
+\index{SerialW@{SerialW}!send\+Serial@{send\+Serial}}
+\index{send\+Serial@{send\+Serial}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{send\+Serial()}{sendSerial()}}
+{\footnotesize\ttfamily void Serial\+W\+::send\+Serial (\begin{DoxyParamCaption}\item[{std\+::string}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Definition at line 133 of file serial\+W.\+cpp.
+
+
+
+References Serial\+\_\+\+Enabled, and U\+SB.
+
+
+\begin{DoxyCode}
+133                                       \{
+134     \textcolor{keywordflow}{if}(!\hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled}) \textcolor{keywordflow}{return};
+135     \textcolor{keywordtype}{int} result = write(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, cmd.c\_str(), cmd.size());
+136 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_serial_w_a05d1b44110f4f36bedace0ac729e09b6}\label{class_serial_w_a05d1b44110f4f36bedace0ac729e09b6}} 
+\index{SerialW@{SerialW}!send\+To\+Robot@{send\+To\+Robot}}
+\index{send\+To\+Robot@{send\+To\+Robot}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{send\+To\+Robot()}{sendToRobot()}}
+{\footnotesize\ttfamily void Serial\+W\+::send\+To\+Robot (\begin{DoxyParamCaption}\item[{Robot}]{r }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_serial_w_a39a09737475182fe3588d3b78cae4bf3}\label{class_serial_w_a39a09737475182fe3588d3b78cae4bf3}} 
+\index{SerialW@{SerialW}!start@{start}}
+\index{start@{start}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily int Serial\+W\+::start (\begin{DoxyParamCaption}\item[{std\+::string}]{serial }\end{DoxyParamCaption})}
+
+
+
+Definition at line 7 of file serial\+W.\+cpp.
+
+
+
+References Serial\+\_\+\+Enabled, and U\+SB.
+
+
+\begin{DoxyCode}
+7                                    \{
+8     \textcolor{keyword}{struct }termios tty;
+9     \textcolor{keyword}{struct }termios tty\_old;
+10     memset (&tty, 0, \textcolor{keyword}{sizeof} tty);
+11 
+12     \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB} = open(serial.c\_str(), O\_RDWR | O\_NOCTTY);
+13 
+14     \textcolor{keywordflow}{if}(\hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB} != -1) \hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled} = \textcolor{keyword}{true};
+15     \textcolor{keywordflow}{else} \{
+16         \hyperlink{class_serial_w_a557f72152ee772956c44fade26c1fd14}{Serial\_Enabled} = \textcolor{keyword}{false};
+17         \textcolor{keywordflow}{return} \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB};
+18     \}
+19 
+20     \textcolor{comment}{/* Error Handling */}
+21     \textcolor{keywordflow}{if}(tcgetattr ( \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, &tty ) != 0 )
+22         std::cout << \textcolor{stringliteral}{"Error "} << errno << \textcolor{stringliteral}{" from tcgetattr: "} << strerror(errno) << std::endl;
+23 
+24     \textcolor{comment}{/* Save old tty parameters */}
+25     tty\_old = tty;
+26 
+27     \textcolor{comment}{/* Set Baud Rate */}
+28     cfsetospeed (&tty, (speed\_t)B115200);
+29 
+30     tty.c\_oflag = 0;    \textcolor{comment}{// no remapping, no delays}
+31     tty.c\_lflag &= ~(ECHO | ECHONL | ICANON | IEXTEN | ISIG);
+32     tty.c\_cflag &= ~(CSIZE | PARENB);
+33     tty.c\_cflag |= CS8;
+34     \textcolor{comment}{/* Setting other Port Stuff */}
+35     \textcolor{comment}{//tty.c\_cflag     &=  ~PARENB;            // Make 8n1}
+36     \textcolor{comment}{//tty.c\_cflag     &=  ~CSTOPB;}
+37     \textcolor{comment}{//tty.c\_cflag     &=  ~CSIZE;}
+38     \textcolor{comment}{//tty.c\_cflag     |=  CS8;}
+39 
+40     tty.c\_cflag     &=  ~CRTSCTS;           \textcolor{comment}{// no flow control}
+41     tty.c\_cc[VMIN]   =  1;                  \textcolor{comment}{// read doesn't block}
+42     tty.c\_cc[VTIME]  = 5;                  \textcolor{comment}{// 0.5 seconds read timeout}
+43     tty.c\_cflag     |=  CREAD | CLOCAL;     \textcolor{comment}{// turn on READ & ignore ctrl lines}
+44 
+45     \textcolor{comment}{/* Make raw */}
+46     cfmakeraw(&tty);
+47 
+48     \textcolor{comment}{/* Flush Port, then applies attributes */}
+49     tcflush( \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, TCIFLUSH );
+50 
+51     \textcolor{keywordflow}{if}(tcsetattr ( \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB}, TCSANOW, &tty ) != 0)
+52         std::cout << \textcolor{stringliteral}{"Error "} << errno << \textcolor{stringliteral}{" from tcsetattr"} << std::endl;
+53 
+54     \textcolor{keywordflow}{return} \hyperlink{class_serial_w_addbc2cde514329294a30fd04da051ec8}{USB};
+55 \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_serial_w_afc325a02adcff1960a5be974a908631e}\label{class_serial_w_afc325a02adcff1960a5be974a908631e}} 
+\index{SerialW@{SerialW}!port@{port}}
+\index{port@{port}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily std\+::string Serial\+W\+::port}
+
+
+
+Definition at line 28 of file serial\+W.\+hpp.
+
+\mbox{\Hypertarget{class_serial_w_a557f72152ee772956c44fade26c1fd14}\label{class_serial_w_a557f72152ee772956c44fade26c1fd14}} 
+\index{SerialW@{SerialW}!Serial\+\_\+\+Enabled@{Serial\+\_\+\+Enabled}}
+\index{Serial\+\_\+\+Enabled@{Serial\+\_\+\+Enabled}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{Serial\+\_\+\+Enabled}{Serial\_Enabled}}
+{\footnotesize\ttfamily bool Serial\+W\+::\+Serial\+\_\+\+Enabled}
+
+
+
+Definition at line 26 of file serial\+W.\+hpp.
+
+
+
+Referenced by read\+Serial(), send\+A\+P\+I\+Serial(), send\+A\+P\+I\+Serial\+Text(), send\+Cmd\+To\+Robots(), send\+Serial(), Serial\+W(), and start().
+
+\mbox{\Hypertarget{class_serial_w_addbc2cde514329294a30fd04da051ec8}\label{class_serial_w_addbc2cde514329294a30fd04da051ec8}} 
+\index{SerialW@{SerialW}!U\+SB@{U\+SB}}
+\index{U\+SB@{U\+SB}!SerialW@{SerialW}}
+\subsubsection{\texorpdfstring{U\+SB}{USB}}
+{\footnotesize\ttfamily int Serial\+W\+::\+U\+SB}
+
+
+
+Definition at line 27 of file serial\+W.\+hpp.
+
+
+
+Referenced by read\+Serial(), send\+A\+P\+I\+Serial(), send\+A\+P\+I\+Serial\+Text(), send\+Serial(), and start().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{serial_w_8hpp}{serial\+W.\+hpp}\item 
+src/\hyperlink{serial_w_8cpp}{serial\+W.\+cpp}\end{DoxyCompactItemize}

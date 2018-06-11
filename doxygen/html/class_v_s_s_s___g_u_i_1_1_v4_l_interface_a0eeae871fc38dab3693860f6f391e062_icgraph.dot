@@ -1,0 +1,29 @@
+digraph "VSSS_GUI::V4LInterface::__update_cb_frame_interval"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node594 [label="VSSS_GUI::V4LInterface\l::__update_cb_frame_interval",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node594 -> Node595 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 [label="VSSS_GUI::V4LInterface\l::__update_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac3fe0a20fd30c6e9505eb375ef63e52e",tooltip="Update all combo box inputs on CaptureGUI. "];
+  Node595 -> Node596 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node596 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node596 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node597 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node595 -> Node598 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node598 [label="VSSS_GUI::V4LInterface\l::__event_cb_format_desc\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a41dc791b309dcb6e4469c6cc9d4a4852",tooltip="Event triggered when a new format is selected in Format combobox. "];
+  Node598 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 -> Node599 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node599 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_interval\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad78e73dabab1c7caa41a45c363eef205",tooltip="Event triggered when a new interval is selected in Interval combobox. "];
+  Node599 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 -> Node600 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node600 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_size\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a49e6f69de18f2bcb54db964375535e9f",tooltip="Event triggered when a new frame size is selected in Frame size combobox. "];
+  Node600 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 -> Node601 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node601 [label="VSSS_GUI::V4LInterface\l::__event_cb_input_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a09e546d62cf2363590490c2f9e85c951",tooltip="Event triggered when a new input is selected in Input combobox. "];
+  Node601 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 -> Node602 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node602 [label="VSSS_GUI::V4LInterface\l::__event_cb_standard\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#adaa2a6e1946bb639d5be0ec3eb03cdb5",tooltip="Event triggered when a new stantard is selected in Standard combobox. "];
+  Node602 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,35 @@
+digraph "Robots::get_default_role_velocity"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node112 [label="Robots::get_default\l_role_velocity",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node112 -> Node113 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node113 [label="RobotGUI::create_speeds\l_frame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#a05b171a9b805af42e32ed9036478dafe"];
+  Node113 -> Node114 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node114 [label="RobotGUI::RobotGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#a6e5874c7d6304555c48b08bd9c381253"];
+  Node112 -> Node115 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node115 [label="RobotGUI::update_speed\l_sliders",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#a7e7796fabb839c7eea5f82387fd10359"];
+  Node115 -> Node116 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node116 [label="jsonSaveManager::load\l_robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a6ddf4a28c77c83f37e3771177226c960",tooltip="Load robot configurations from our JSON object to the interface. "];
+  Node116 -> Node117 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node117 [label="jsonSaveManager::load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a79fd35c53290662b58c5a4869376fa2e",tooltip="Loads all avaliable configurations in the given .json file. "];
+  Node117 -> Node118 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node118 [label="VSSS_GUI::V4LInterface\l::__event_bt_load_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a62894fc8a49716b44d3a3c6a445fe880",tooltip="Event triggered when &#39;Load&#39; button is clicked. "];
+  Node118 -> Node119 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node119 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node117 -> Node120 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node120 [label="VSSS_GUI::V4LInterface\l::__event_bt_quick_load\l_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a3010084dff2d7f93eed40efaab8ee61b",tooltip="Event triggered when &#39;Quick Load&#39; button is clicked. "];
+  Node120 -> Node121 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node121 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node121 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node122 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node120 -> Node119 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node120 -> Node123 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node123 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node123 -> Node119 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node117 -> Node124 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node124 [label="VSSS_GUI::V4LInterface\l::event_start_game_bt\l_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8c3f91048adebeb0b5aa9838053cdcfe",tooltip="Event triggered when start button is clicked. Starts/finishes video recording. "];
+  Node124 -> Node119 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

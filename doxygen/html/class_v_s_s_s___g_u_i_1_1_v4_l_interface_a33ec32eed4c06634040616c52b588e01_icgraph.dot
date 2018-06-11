@@ -1,0 +1,29 @@
+digraph "VSSS_GUI::V4LInterface::__update_cb_input"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node621 [label="VSSS_GUI::V4LInterface\l::__update_cb_input",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node621 -> Node622 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node622 [label="VSSS_GUI::V4LInterface\l::__update_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac3fe0a20fd30c6e9505eb375ef63e52e",tooltip="Update all combo box inputs on CaptureGUI. "];
+  Node622 -> Node623 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node623 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node623 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node624 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node622 -> Node625 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node625 [label="VSSS_GUI::V4LInterface\l::__event_cb_format_desc\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a41dc791b309dcb6e4469c6cc9d4a4852",tooltip="Event triggered when a new format is selected in Format combobox. "];
+  Node625 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node622 -> Node626 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node626 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_interval\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad78e73dabab1c7caa41a45c363eef205",tooltip="Event triggered when a new interval is selected in Interval combobox. "];
+  Node626 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node622 -> Node627 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node627 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_size\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a49e6f69de18f2bcb54db964375535e9f",tooltip="Event triggered when a new frame size is selected in Frame size combobox. "];
+  Node627 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node622 -> Node628 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node628 [label="VSSS_GUI::V4LInterface\l::__event_cb_input_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a09e546d62cf2363590490c2f9e85c951",tooltip="Event triggered when a new input is selected in Input combobox. "];
+  Node628 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node622 -> Node629 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node629 [label="VSSS_GUI::V4LInterface\l::__event_cb_standard\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#adaa2a6e1946bb639d5be0ec3eb03cdb5",tooltip="Event triggered when a new stantard is selected in Standard combobox. "];
+  Node629 -> Node624 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

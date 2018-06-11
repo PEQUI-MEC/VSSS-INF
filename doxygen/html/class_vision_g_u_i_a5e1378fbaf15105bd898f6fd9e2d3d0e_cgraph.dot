@@ -1,0 +1,24 @@
+digraph "VisionGUI::__event_bt_switchMainAdv_clicked"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node126 [label="VisionGUI::__event\l_bt_switchMainAdv_clicked",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node126 -> Node127 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node127 [label="Vision::getAmin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a563041d47d11e0912227c3ce87dcc22e"];
+  Node126 -> Node128 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node128 [label="Vision::getBlur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ad15cc7e3c696c7f52e30e7974337c74f"];
+  Node126 -> Node129 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node129 [label="Vision::getDilate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a0d07157e3d9bb577940f03365c8f57e8"];
+  Node126 -> Node130 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node130 [label="Vision::getErode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a6cc4617b0af832b4cb94e00cc845c317"];
+  Node126 -> Node131 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node131 [label="Vision::getHue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#adc6eb838fa27551430516e80a547a6bd"];
+  Node126 -> Node132 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node132 [label="Vision::getSaturation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a023ff4cc4ee3a88125fd2a3c60d1b529"];
+  Node126 -> Node133 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node133 [label="Vision::getValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a04d1bcce0fd15a5d66752723f21c0dea"];
+  Node126 -> Node134 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node134 [label="Vision::switchMainWithAdv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a11fa5150abbd3b37e78999b46b7b3a84"];
+}

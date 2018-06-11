@@ -1,0 +1,271 @@
+\hypertarget{strategy_8cpp}{}\section{src/strategy.cpp File Reference}
+\label{strategy_8cpp}\index{src/strategy.\+cpp@{src/strategy.\+cpp}}
+{\ttfamily \#include \char`\"{}strategy.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+Include dependency graph for strategy.\+cpp\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{strategy_8cpp_a598a3330b3c21701223ee0ca14316eca}{PI}~3.\+14159265453
+\item 
+\#define \hyperlink{strategy_8cpp_aebd0a50311cecd8ebec5d5a755292ae9}{P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES}~15
+\item 
+\#define \hyperlink{strategy_8cpp_afa71f4eb5f5c11de6039a07252dab1be}{G\+O\+A\+L\+K\+E\+E\+P\+ER}~0
+\item 
+\#define \hyperlink{strategy_8cpp_a692df89f7ea5a93b2cb96a2d2a8c9c36}{D\+E\+F\+E\+N\+D\+ER}~1
+\item 
+\#define \hyperlink{strategy_8cpp_aea4f6064a6384f5525777880f0ef167f}{A\+T\+T\+A\+C\+K\+ER}~2
+\item 
+\#define \hyperlink{strategy_8cpp_a71fb3922bc79c3f8414c394f631c7c84}{N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE}~0
+\item 
+\#define \hyperlink{strategy_8cpp_a41eb8df5a57cb9d05d02cf5d65654c36}{C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}~1
+\item 
+\#define \hyperlink{strategy_8cpp_a6cbcbd24532a4a29c2003f9a264163d3}{S\+T\+E\+P\+\_\+\+B\+A\+CK}~2
+\item 
+\#define \hyperlink{strategy_8cpp_a88a694a4a047e916d0a89feaca69e3aa}{T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE}~4
+\item 
+\#define \hyperlink{strategy_8cpp_adab46768ffe75a9897a198b161b9e6dd}{S\+I\+D\+E\+W\+A\+YS}~5
+\item 
+\#define \hyperlink{strategy_8cpp_aa8a5bad2045ce42ba4e4b26d4ad528b3}{D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}~6
+\item 
+\#define \hyperlink{strategy_8cpp_af9daa148169d5771f87d930a1a1a2c04}{A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE}~7
+\item 
+\#define \hyperlink{strategy_8cpp_a249e00fdccfe7edf6ebbcf22a17af4ed}{M\+A\+X\+\_\+\+V\+EL}~1.\+4f
+\item 
+\#define \hyperlink{strategy_8cpp_a585b5044938e8ad615171d10c786530d}{M\+E\+D\+I\+A\+N\+\_\+\+V\+EL}~0.\+8f
+\item 
+\#define \hyperlink{strategy_8cpp_a93be1ff32befa44d3d6045ce962d9a0a}{S\+L\+O\+W\+\_\+\+V\+EL}~0.\+35f
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{strategy_8cpp_a10738a2f35566666f846dfde7ecc5a46}{compare\+\_\+pos} (std\+::pair$<$ int, std\+::pair$<$ double, double $>$ $>$ a, std\+::pair$<$ int, std\+::pair$<$ double, double $>$ $>$ b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{strategy_8cpp_af9daa148169d5771f87d930a1a1a2c04}\label{strategy_8cpp_af9daa148169d5771f87d930a1a1a2c04}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE@{A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE}}
+\index{A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE@{A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE}{ATK\_PENALTI\_STATE}}
+{\footnotesize\ttfamily \#define A\+T\+K\+\_\+\+P\+E\+N\+A\+L\+T\+I\+\_\+\+S\+T\+A\+TE~7}
+
+
+
+Definition at line 22 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine(), Strategy\+::collision\+\_\+check(), and Strategy\+::def\+\_\+routine().
+
+\mbox{\Hypertarget{strategy_8cpp_aea4f6064a6384f5525777880f0ef167f}\label{strategy_8cpp_aea4f6064a6384f5525777880f0ef167f}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!A\+T\+T\+A\+C\+K\+ER@{A\+T\+T\+A\+C\+K\+ER}}
+\index{A\+T\+T\+A\+C\+K\+ER@{A\+T\+T\+A\+C\+K\+ER}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{A\+T\+T\+A\+C\+K\+ER}{ATTACKER}}
+{\footnotesize\ttfamily \#define A\+T\+T\+A\+C\+K\+ER~2}
+
+
+
+Definition at line 11 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::collision\+\_\+check(), and Strategy\+::set\+\_\+roles().
+
+\mbox{\Hypertarget{strategy_8cpp_a41eb8df5a57cb9d05d02cf5d65654c36}\label{strategy_8cpp_a41eb8df5a57cb9d05d02cf5d65654c36}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE@{C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}}
+\index{C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE@{C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}{CORNER\_STATE}}
+{\footnotesize\ttfamily \#define C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE~1}
+
+
+
+Definition at line 16 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine(), and Strategy\+::collision\+\_\+check().
+
+\mbox{\Hypertarget{strategy_8cpp_aa8a5bad2045ce42ba4e4b26d4ad528b3}\label{strategy_8cpp_aa8a5bad2045ce42ba4e4b26d4ad528b3}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE@{D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}}
+\index{D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE@{D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE}{DEF\_CORNER\_STATE}}
+{\footnotesize\ttfamily \#define D\+E\+F\+\_\+\+C\+O\+R\+N\+E\+R\+\_\+\+S\+T\+A\+TE~6}
+
+
+
+Definition at line 21 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine(), and Strategy\+::def\+\_\+routine().
+
+\mbox{\Hypertarget{strategy_8cpp_a692df89f7ea5a93b2cb96a2d2a8c9c36}\label{strategy_8cpp_a692df89f7ea5a93b2cb96a2d2a8c9c36}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!D\+E\+F\+E\+N\+D\+ER@{D\+E\+F\+E\+N\+D\+ER}}
+\index{D\+E\+F\+E\+N\+D\+ER@{D\+E\+F\+E\+N\+D\+ER}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{D\+E\+F\+E\+N\+D\+ER}{DEFENDER}}
+{\footnotesize\ttfamily \#define D\+E\+F\+E\+N\+D\+ER~1}
+
+
+
+Definition at line 10 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::set\+\_\+roles().
+
+\mbox{\Hypertarget{strategy_8cpp_afa71f4eb5f5c11de6039a07252dab1be}\label{strategy_8cpp_afa71f4eb5f5c11de6039a07252dab1be}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!G\+O\+A\+L\+K\+E\+E\+P\+ER@{G\+O\+A\+L\+K\+E\+E\+P\+ER}}
+\index{G\+O\+A\+L\+K\+E\+E\+P\+ER@{G\+O\+A\+L\+K\+E\+E\+P\+ER}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{G\+O\+A\+L\+K\+E\+E\+P\+ER}{GOALKEEPER}}
+{\footnotesize\ttfamily \#define G\+O\+A\+L\+K\+E\+E\+P\+ER~0}
+
+
+
+Definition at line 9 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::set\+\_\+roles().
+
+\mbox{\Hypertarget{strategy_8cpp_a249e00fdccfe7edf6ebbcf22a17af4ed}\label{strategy_8cpp_a249e00fdccfe7edf6ebbcf22a17af4ed}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!M\+A\+X\+\_\+\+V\+EL@{M\+A\+X\+\_\+\+V\+EL}}
+\index{M\+A\+X\+\_\+\+V\+EL@{M\+A\+X\+\_\+\+V\+EL}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+V\+EL}{MAX\_VEL}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+V\+EL~1.\+4f}
+
+
+
+Definition at line 25 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::gk\+\_\+routine().
+
+\mbox{\Hypertarget{strategy_8cpp_a585b5044938e8ad615171d10c786530d}\label{strategy_8cpp_a585b5044938e8ad615171d10c786530d}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!M\+E\+D\+I\+A\+N\+\_\+\+V\+EL@{M\+E\+D\+I\+A\+N\+\_\+\+V\+EL}}
+\index{M\+E\+D\+I\+A\+N\+\_\+\+V\+EL@{M\+E\+D\+I\+A\+N\+\_\+\+V\+EL}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{M\+E\+D\+I\+A\+N\+\_\+\+V\+EL}{MEDIAN\_VEL}}
+{\footnotesize\ttfamily \#define M\+E\+D\+I\+A\+N\+\_\+\+V\+EL~0.\+8f}
+
+
+
+Definition at line 26 of file strategy.\+cpp.
+
+\mbox{\Hypertarget{strategy_8cpp_a71fb3922bc79c3f8414c394f631c7c84}\label{strategy_8cpp_a71fb3922bc79c3f8414c394f631c7c84}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE@{N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE}}
+\index{N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE@{N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE}{NORMAL\_STATE}}
+{\footnotesize\ttfamily \#define N\+O\+R\+M\+A\+L\+\_\+\+S\+T\+A\+TE~0}
+
+
+
+Definition at line 15 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine(), Strategy\+::def\+\_\+routine(), Strategy\+::gk\+\_\+routine(), and Strategy\+::set\+\_\+role().
+
+\mbox{\Hypertarget{strategy_8cpp_a598a3330b3c21701223ee0ca14316eca}\label{strategy_8cpp_a598a3330b3c21701223ee0ca14316eca}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!PI@{PI}}
+\index{PI@{PI}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \#define PI~3.\+14159265453}
+
+
+
+Definition at line 5 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine(), Strategy\+::collision\+\_\+check(), Strategy\+::def\+\_\+routine(), Strategy\+::gk\+\_\+routine(), Strategy\+::has\+\_\+ball(), Strategy\+::pot\+\_\+rotation\+\_\+decision(), and Strategy\+::pot\+Field().
+
+\mbox{\Hypertarget{strategy_8cpp_aebd0a50311cecd8ebec5d5a755292ae9}\label{strategy_8cpp_aebd0a50311cecd8ebec5d5a755292ae9}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES@{P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES}}
+\index{P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES@{P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES}{PREDICAO\_NUM\_SAMPLES}}
+{\footnotesize\ttfamily \#define P\+R\+E\+D\+I\+C\+A\+O\+\_\+\+N\+U\+M\+\_\+\+S\+A\+M\+P\+L\+ES~15}
+
+
+
+Definition at line 6 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::\+Strategy().
+
+\mbox{\Hypertarget{strategy_8cpp_adab46768ffe75a9897a198b161b9e6dd}\label{strategy_8cpp_adab46768ffe75a9897a198b161b9e6dd}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!S\+I\+D\+E\+W\+A\+YS@{S\+I\+D\+E\+W\+A\+YS}}
+\index{S\+I\+D\+E\+W\+A\+YS@{S\+I\+D\+E\+W\+A\+YS}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{S\+I\+D\+E\+W\+A\+YS}{SIDEWAYS}}
+{\footnotesize\ttfamily \#define S\+I\+D\+E\+W\+A\+YS~5}
+
+
+
+Definition at line 20 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::atk\+\_\+routine().
+
+\mbox{\Hypertarget{strategy_8cpp_a93be1ff32befa44d3d6045ce962d9a0a}\label{strategy_8cpp_a93be1ff32befa44d3d6045ce962d9a0a}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!S\+L\+O\+W\+\_\+\+V\+EL@{S\+L\+O\+W\+\_\+\+V\+EL}}
+\index{S\+L\+O\+W\+\_\+\+V\+EL@{S\+L\+O\+W\+\_\+\+V\+EL}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{S\+L\+O\+W\+\_\+\+V\+EL}{SLOW\_VEL}}
+{\footnotesize\ttfamily \#define S\+L\+O\+W\+\_\+\+V\+EL~0.\+35f}
+
+
+
+Definition at line 27 of file strategy.\+cpp.
+
+\mbox{\Hypertarget{strategy_8cpp_a6cbcbd24532a4a29c2003f9a264163d3}\label{strategy_8cpp_a6cbcbd24532a4a29c2003f9a264163d3}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!S\+T\+E\+P\+\_\+\+B\+A\+CK@{S\+T\+E\+P\+\_\+\+B\+A\+CK}}
+\index{S\+T\+E\+P\+\_\+\+B\+A\+CK@{S\+T\+E\+P\+\_\+\+B\+A\+CK}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{S\+T\+E\+P\+\_\+\+B\+A\+CK}{STEP\_BACK}}
+{\footnotesize\ttfamily \#define S\+T\+E\+P\+\_\+\+B\+A\+CK~2}
+
+
+
+Definition at line 17 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::def\+\_\+routine().
+
+\mbox{\Hypertarget{strategy_8cpp_a88a694a4a047e916d0a89feaca69e3aa}\label{strategy_8cpp_a88a694a4a047e916d0a89feaca69e3aa}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE@{T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE}}
+\index{T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE@{T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE}{TRANSITION\_STATE}}
+{\footnotesize\ttfamily \#define T\+R\+A\+N\+S\+I\+T\+I\+O\+N\+\_\+\+S\+T\+A\+TE~4}
+
+
+
+Definition at line 19 of file strategy.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{strategy_8cpp_a10738a2f35566666f846dfde7ecc5a46}\label{strategy_8cpp_a10738a2f35566666f846dfde7ecc5a46}} 
+\index{strategy.\+cpp@{strategy.\+cpp}!compare\+\_\+pos@{compare\+\_\+pos}}
+\index{compare\+\_\+pos@{compare\+\_\+pos}!strategy.\+cpp@{strategy.\+cpp}}
+\subsubsection{\texorpdfstring{compare\+\_\+pos()}{compare\_pos()}}
+{\footnotesize\ttfamily bool compare\+\_\+pos (\begin{DoxyParamCaption}\item[{std\+::pair$<$ int, std\+::pair$<$ double, double $>$ $>$}]{a,  }\item[{std\+::pair$<$ int, std\+::pair$<$ double, double $>$ $>$}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line 133 of file strategy.\+cpp.
+
+
+
+Referenced by Strategy\+::set\+\_\+roles().
+
+
+\begin{DoxyCode}
+133                                                                                                      \{
+134     \textcolor{keywordflow}{return} a.second.first < b.second.first;
+135 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1

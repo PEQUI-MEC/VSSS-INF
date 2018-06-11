@@ -1,0 +1,15 @@
+digraph "nlohmann::basic_json::insert"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node282 [label="nlohmann::basic_json\l::insert",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node282 -> Node283 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node283 [label="nlohmann::detail::invalid\l_iterator::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1invalid__iterator.html#a4e849260a3caa1b288c7e619130c6c09"];
+  Node283 -> Node284 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node284 [label="nlohmann::detail::exception\l::name",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1exception.html#abf41a7e9178356314082284e6cfea278"];
+  Node282 -> Node285 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node285 [label="nlohmann::detail::type\l_error::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1type__error.html#aecc083aea4b698c33d042670ba50c10f"];
+  Node285 -> Node284 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

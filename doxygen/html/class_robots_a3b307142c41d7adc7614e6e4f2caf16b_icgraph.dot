@@ -1,0 +1,26 @@
+digraph "Robots::look_at"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node416 [label="Robots::look_at",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node416 -> Node417 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node417 [label="Strategy::def_wait",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a636339a7d8b809c6bbfb67e0942ae052"];
+  Node417 -> Node418 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node418 [label="Strategy::def_routine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a304c52736ec76d275adda7eeacdd430c"];
+  Node418 -> Node419 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node419 [label="Strategy::get_targets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#ab1c455b23e8b7f3377132a3e243f8f76"];
+  Node419 -> Node420 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node420 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node420 -> Node421 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node421 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node421 -> Node422 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node422 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node416 -> Node423 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node423 [label="Strategy::gk_routine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a0e93b877f1da0c7a608c5641812f54d4"];
+  Node423 -> Node419 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node416 -> Node424 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node424 [label="CamCap::updating_formation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a8bab2cf2a40f386ab20480cfc83ac77c",tooltip="Sends robots to the target position and orientation. "];
+  Node424 -> Node420 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

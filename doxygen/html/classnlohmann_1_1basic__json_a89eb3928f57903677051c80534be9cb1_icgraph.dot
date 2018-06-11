@@ -1,0 +1,40 @@
+digraph "nlohmann::basic_json::find"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node179 [label="nlohmann::basic_json\l::find",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node179 -> Node180 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node180 [label="nlohmann::basic_json\l::diff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a543bd5f7490de54c875b2c0912dc9a49",tooltip="creates a diff as a JSON patch "];
+  Node179 -> Node181 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node181 [label="jsonSaveManager::exists",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a850cd6da63a9b10437c1dc7424dfee13",tooltip="Auxiliar function that checks if a given configuration is already set in our JSON object..."];
+  Node181 -> Node182 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node182 [label="jsonSaveManager::load\l_camera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a6184c9f744044a5ccdf34c6386275df8",tooltip="Load camera configurations from our JSON object to the interface. "];
+  Node182 -> Node183 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node183 [label="jsonSaveManager::load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a79fd35c53290662b58c5a4869376fa2e",tooltip="Loads all avaliable configurations in the given .json file. "];
+  Node183 -> Node184 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node184 [label="VSSS_GUI::V4LInterface\l::__event_bt_load_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a62894fc8a49716b44d3a3c6a445fe880",tooltip="Event triggered when &#39;Load&#39; button is clicked. "];
+  Node184 -> Node185 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node185 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node183 -> Node186 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 [label="VSSS_GUI::V4LInterface\l::__event_bt_quick_load\l_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a3010084dff2d7f93eed40efaab8ee61b",tooltip="Event triggered when &#39;Quick Load&#39; button is clicked. "];
+  Node186 -> Node187 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node187 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node187 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node188 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node186 -> Node185 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node189 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node189 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node189 -> Node185 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node183 -> Node190 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 [label="VSSS_GUI::V4LInterface\l::event_start_game_bt\l_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8c3f91048adebeb0b5aa9838053cdcfe",tooltip="Event triggered when start button is clicked. Starts/finishes video recording. "];
+  Node190 -> Node185 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node181 -> Node191 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node191 [label="jsonSaveManager::load\l_robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a6ddf4a28c77c83f37e3771177226c960",tooltip="Load robot configurations from our JSON object to the interface. "];
+  Node191 -> Node183 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node179 -> Node192 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node192 [label="nlohmann::basic_json\l::operator[]",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ab2318780e5ae692039e816b6ac32c91e",tooltip="read-only access specified object element "];
+  Node179 -> Node193 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node193 [label="nlohmann::basic_json\l::patch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a81e0c41a4a9dff4df2f6973f7f8b2a83",tooltip="applies a JSON patch "];
+}

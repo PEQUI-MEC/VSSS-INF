@@ -1,0 +1,20 @@
+digraph "LS::transpose"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node139 [label="LS::transpose",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node139 -> Node140 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node140 [label="LS::interpolate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_l_s.html#a1657c109024e802aee886d293778079f"];
+  Node140 -> Node141 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node141 [label="LS::estimate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_l_s.html#a595c287e25fe0d0d51e7f06a80f8f991"];
+  Node141 -> Node142 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node142 [label="Strategy::set_Ball",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a7119e796ed0218f4e44418fea1efdf49"];
+  Node142 -> Node143 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node143 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node143 -> Node144 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node144 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node144 -> Node145 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node145 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+}

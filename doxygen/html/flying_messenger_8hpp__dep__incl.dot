@@ -1,0 +1,19 @@
+digraph "src/communication/flyingMessenger.hpp"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node14 [label="src/communication/flying\lMessenger.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="src/gui/controlGUI.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$control_g_u_i_8hpp.html"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="src/camcap.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$camcap_8hpp.html"];
+  Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="src/camcap.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$camcap_8cpp.html"];
+  Node16 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html"];
+  Node15 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="src/gui/controlGUI.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$control_g_u_i_8cpp.html"];
+  Node14 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="src/communication/flying\lMessenger.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$flying_messenger_8cpp.html"];
+}

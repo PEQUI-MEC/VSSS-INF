@@ -1,0 +1,48 @@
+digraph "nlohmann::detail::parse_error::create"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="nlohmann::detail::parse\l_error::create",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="nlohmann::detail::binary\l_reader::expect_eof",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#ad0eebfcfd82778a76e1ae72dec49c25f",tooltip="throw if end of input is not reached "];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="nlohmann::json_pointer\l::get_and_create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1json__pointer.html#a583c726016f440ffe65553935c101ff5",tooltip="create and return a reference to the pointed to value "];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="nlohmann::json_pointer\l::unflatten",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1json__pointer.html#a920065221e3c81676c3211c100d024a7"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="nlohmann::basic_json\l::unflatten",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a74fa3ab2003f2f6f2b69deaafed9126d",tooltip="unflatten a previously flattened JSON value "];
+  Node4 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="nlohmann::detail::binary\l_reader::get_cbor_string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#ac626ec37d1724d9d36d918c6361f8e57",tooltip="reads a CBOR string "];
+  Node4 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="nlohmann::json_pointer\l::get_checked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1json__pointer.html#a366d68a67e40d86676d3bdb52e167294"];
+  Node10 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="nlohmann::basic_json::at",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a8ab61397c10f18b305520da7073b2b45",tooltip="access specified element via JSON Pointer "];
+  Node10 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="nlohmann::basic_json\l::value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a671aea68432ecb28770bbc482918f023",tooltip="access specified object element via JSON Pointer with default value "];
+  Node4 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="nlohmann::detail::binary\l_reader::get_msgpack_string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#aca08d17b5a8230eb6738628934b3b5a5",tooltip="reads a MessagePack string "];
+  Node4 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="nlohmann::detail::binary\l_reader::get_ubjson_size_type",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#a480aae640bb92a7432c0f758081a2cc7",tooltip="determine the type and size for a container "];
+  Node4 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="nlohmann::detail::binary\l_reader::get_ubjson_string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#ae4097317b979174cc366b076bb879814",tooltip="reads a UBJSON string "];
+  Node4 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="nlohmann::detail::binary\l_reader::get_ubjson_value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#ad8507c0dd14bbddc76c7937c0305a15a"];
+  Node4 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="nlohmann::json_pointer\l::get_unchecked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1json__pointer.html#a577512ee6b7f030e8872b4d29fa5c3e5",tooltip="return a reference to the pointed to value "];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="nlohmann::basic_json\l::operator[]",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#ac6946dffeb3be5aa173645f0467a44b3",tooltip="access specified element via JSON Pointer "];
+  Node4 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="nlohmann::detail::binary\l_reader::parse_cbor_internal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#a0d919ee892fbbeedb27ff95c4e4010e1"];
+  Node4 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="nlohmann::detail::binary\l_reader::parse_msgpack\l_internal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#ac6dc6270ddddd0aac65fe6cab53d7cc2"];
+  Node4 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="nlohmann::basic_json\l::patch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a81e0c41a4a9dff4df2f6973f7f8b2a83",tooltip="applies a JSON patch "];
+  Node4 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="nlohmann::json_pointer\l::split",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1json__pointer.html#ae01c32c6a071c2e5198d5dfcce290e50",tooltip="split the string input to reference tokens "];
+  Node4 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="nlohmann::detail::parser\l::throw_exception",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1parser.html#a9ff5745f2ba313e795d6568bae6dddb8"];
+  Node4 -> Node24 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="nlohmann::detail::binary\l_reader::unexpect_eof",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1binary__reader.html#a1dfc55484af3a896c376b41cd99f3e15"];
+}

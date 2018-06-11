@@ -1,0 +1,54 @@
+\hypertarget{structnlohmann_1_1detail_1_1is__compatible__complete__type}{}\section{nlohmann\+:\+:detail\+:\+:is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$ Struct Template Reference}
+\label{structnlohmann_1_1detail_1_1is__compatible__complete__type}\index{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$@{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$\+:
+% FIG 0
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \hyperlink{structnlohmann_1_1detail_1_1is__compatible__complete__type_a34bed4700a302b79feb045b6bdbda9aa}{value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type, typename Compatible\+Complete\+Type$>$\newline
+struct nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$}
+
+
+
+Definition at line 465 of file json.\+hpp.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structnlohmann_1_1detail_1_1is__compatible__complete__type_a34bed4700a302b79feb045b6bdbda9aa}\label{structnlohmann_1_1detail_1_1is__compatible__complete__type_a34bed4700a302b79feb045b6bdbda9aa}} 
+\index{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type@{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type}!value@{value}}
+\index{value@{value}!nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type@{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type}}
+\subsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type , typename Compatible\+Complete\+Type $>$ \\
+constexpr bool \hyperlink{structnlohmann_1_1detail_1_1is__compatible__complete__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type}$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$\+::value\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=
+        not std::is\_base\_of<std::istream, CompatibleCompleteType>::value and
+        not std::is\_same<BasicJsonType, CompatibleCompleteType>::value and
+        not 
+      \hyperlink{structnlohmann_1_1detail_1_1is__basic__json__nested__type_aee5fee744e5298a78d557f2ee5f090db}{is\_basic\_json\_nested\_type<BasicJsonType, CompatibleCompleteType>::value}
+       and
+        \hyperlink{structnlohmann_1_1detail_1_1has__to__json_a18e260c3c6f10328637c4427d3cb3a31}{has\_to\_json<BasicJsonType, CompatibleCompleteType>::value}
+\end{DoxyCode}
+
+
+Definition at line 467 of file json.\+hpp.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

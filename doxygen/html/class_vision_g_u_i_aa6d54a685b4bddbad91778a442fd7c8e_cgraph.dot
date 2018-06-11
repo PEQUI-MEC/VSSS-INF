@@ -1,0 +1,22 @@
+digraph "VisionGUI::__event_bt_left_HSV_calib_clicked"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node100 [label="VisionGUI::__event\l_bt_left_HSV_calib_clicked",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node100 -> Node101 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node101 [label="Vision::getAmin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a563041d47d11e0912227c3ce87dcc22e"];
+  Node100 -> Node102 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node102 [label="Vision::getBlur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ad15cc7e3c696c7f52e30e7974337c74f"];
+  Node100 -> Node103 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node103 [label="Vision::getDilate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a0d07157e3d9bb577940f03365c8f57e8"];
+  Node100 -> Node104 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node104 [label="Vision::getErode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a6cc4617b0af832b4cb94e00cc845c317"];
+  Node100 -> Node105 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node105 [label="Vision::getHue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#adc6eb838fa27551430516e80a547a6bd"];
+  Node100 -> Node106 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node106 [label="Vision::getSaturation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a023ff4cc4ee3a88125fd2a3c60d1b529"];
+  Node100 -> Node107 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node107 [label="Vision::getValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a04d1bcce0fd15a5d66752723f21c0dea"];
+}

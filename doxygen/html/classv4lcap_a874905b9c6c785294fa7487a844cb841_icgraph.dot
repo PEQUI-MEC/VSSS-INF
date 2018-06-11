@@ -1,0 +1,30 @@
+digraph "v4lcap::request_buffers_mmap"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node359 [label="v4lcap::request_buffers_mmap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node359 -> Node360 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node360 [label="v4lcap::init_mmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a04f75c0a68f0e8547925906a488bb50d",tooltip="This method requests buffers from host system to allocate streaming from camera. "];
+  Node360 -> Node361 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node361 [label="VSSS_GUI::V4LInterface\l::__event_bt_start_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac83a8f5a54baf09ade5e3ec24ba91082",tooltip="Event triggered when &#39;start&#39; button is clicked. "];
+  Node361 -> Node362 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node362 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node360 -> Node363 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node363 [label="v4lcap::start_capturing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4a7ee51c878ec735c9a24b517c63df16",tooltip="This method starts capturing and streaming from opened device passing memory type and number of buffe..."];
+  Node363 -> Node361 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node359 -> Node364 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node364 [label="v4lcap::uninit_mmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#aafab5fd381c1d5858cd87f42560a40ab",tooltip="Free all requested buffers. "];
+  Node364 -> Node365 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node365 [label="v4lcap::close_device",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#adbb658a6f3248f24ee7926722e76ca43",tooltip="Close camera communication with pc. "];
+  Node365 -> Node366 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node366 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node366 -> Node362 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node365 -> Node367 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node367 [label="v4lcap::open_device",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a1404aae893a64a8e8859d822a4dfb273",tooltip="By getting device name and emulated format, this method open the connection to the camera..."];
+  Node367 -> Node366 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node365 -> Node368 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node368 [label="v4lcap::~v4lcap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#aa1aaea89befb94cdf3dbb24bf758078f"];
+  Node364 -> Node361 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

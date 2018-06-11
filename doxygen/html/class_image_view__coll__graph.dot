@@ -1,0 +1,21 @@
+digraph "ImageView"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="ImageView",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Gtk::DrawingArea",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pointClicked" ,fontname="Helvetica"];
+  Node4 [label="Point",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" robot_pos\nlook_pos\ntar_pos" ,fontname="Helvetica"];
+  Node5 [label="double",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data" ,fontname="Helvetica"];
+  Node6 [label="char",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" gmm_counter\nwidth\nwarp_counter\nadjust_mat\nwarp_mat\nsector\nheight\nstride\nadj_counter\ngmm_clicks\n..." ,fontname="Helvetica"];
+  Node7 [label="int",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" adjust_rdy\nadjust_event_flag\ngmm_ready_flag\nauto_calib_flag\nsplit_flag\nformation_flag\nwarp_event_flag\ngmm_sample_flag\nhold_warp\nPID_test_flag\n..." ,fontname="Helvetica"];
+  Node8 [label="bool",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" pb" ,fontname="Helvetica"];
+  Node9 [label="RefPtr\< Gdk::Pixbuf \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

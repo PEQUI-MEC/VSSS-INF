@@ -1,0 +1,645 @@
+\hypertarget{class_c_p_u_timer}{}\section{C\+P\+U\+Timer Class Reference}
+\label{class_c_p_u_timer}\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+
+
+{\ttfamily \#include $<$cpu\+Timer.\+hpp$>$}
+
+
+
+Collaboration diagram for C\+P\+U\+Timer\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_p_u_timer_aa06f8e13b3c82bbb8642f4981bfff7e7}{C\+P\+U\+Timer} ()
+\item 
+double \hyperlink{class_c_p_u_timer_a98f96656fd5e6676064ac6e5f3c7621b}{get\+C\+P\+U\+Curr\+Secs} ()
+\item 
+double \hyperlink{class_c_p_u_timer_a9547512dbcec01ea685d291569a87aa4}{get\+C\+P\+U\+Total\+Secs} ()
+\item 
+double \hyperlink{class_c_p_u_timer_a363d9ba80f897fe24914cce080bf3b52}{get\+Crono\+Curr\+Secs} ()
+\item 
+double \hyperlink{class_c_p_u_timer_aa8736023dbfa50166f8e49960ad84a84}{get\+Crono\+Total\+Secs} ()
+\item 
+bool \hyperlink{class_c_p_u_timer_a8712b4f64c79a210e91bbb72ed55bfc1}{start} ()
+\item 
+bool \hyperlink{class_c_p_u_timer_afc986e87c38afb37b7911f8424726d1d}{stop} ()
+\item 
+void \hyperlink{class_c_p_u_timer_ae9c1b873923f73091dae7e5a6051baf6}{reset} ()
+\item 
+void \hyperlink{class_c_p_u_timer_ab11c8b37836afcacfc60341cfa6f21b3}{operator+=} (\hyperlink{class_c_p_u_timer}{C\+P\+U\+Timer} t)
+\item 
+void \hyperlink{class_c_p_u_timer_abbb38873f4469d55406a3c00816590b0}{increase\+C\+P\+U\+Total\+Secs} (double s)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{class_c_p_u_timer_a3403f8cce7b7518e47a1826b8650220c}{get\+C\+P\+U\+Time} ()
+\item 
+double \hyperlink{class_c_p_u_timer_a57da0f833904f3ddf20a640e0f8fe127}{get\+Real\+Time} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{class_c_p_u_timer_a0248a7ebc1ed9fb9bcd4f63f07f9f984}{C\+P\+U\+T\+Start}
+\item 
+double \hyperlink{class_c_p_u_timer_a02e800ccdca6291ee1d00b4c805d69c1}{C\+P\+U\+T\+Stop}
+\item 
+double \hyperlink{class_c_p_u_timer_a097a928f647be3a1e679d702a74119ed}{Crono\+T\+Start}
+\item 
+double \hyperlink{class_c_p_u_timer_aaeaf8c0445112562f3b85ad93994d194}{Crono\+T\+Stop}
+\item 
+double \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{C\+P\+U\+Curr\+Secs}
+\item 
+double \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{C\+P\+U\+Total\+Secs}
+\item 
+double \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{Crono\+Curr\+Secs}
+\item 
+double \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{Crono\+Total\+Secs}
+\item 
+bool \hyperlink{class_c_p_u_timer_ab0f086c04c1b6019db26c44db9812d80}{gottime}
+\item 
+bool \hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 23 of file cpu\+Timer.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_c_p_u_timer_aa06f8e13b3c82bbb8642f4981bfff7e7}\label{class_c_p_u_timer_aa06f8e13b3c82bbb8642f4981bfff7e7}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{C\+P\+U\+Timer()}{CPUTimer()}}
+{\footnotesize\ttfamily C\+P\+U\+Timer\+::\+C\+P\+U\+Timer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Curr\+Secs, C\+P\+U\+Total\+Secs, Crono\+Curr\+Secs, Crono\+Total\+Secs, and started.
+
+
+\begin{DoxyCode}
+11                    \{
+12     \hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started} = \textcolor{keyword}{false};
+13     \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{CPUCurrSecs} = 0;
+14     \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs} = 0;
+15     \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{CronoCurrSecs} = 0;
+16     \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{CronoTotalSecs} = 0;
+17 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_c_p_u_timer_a98f96656fd5e6676064ac6e5f3c7621b}\label{class_c_p_u_timer_a98f96656fd5e6676064ac6e5f3c7621b}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+C\+P\+U\+Curr\+Secs@{get\+C\+P\+U\+Curr\+Secs}}
+\index{get\+C\+P\+U\+Curr\+Secs@{get\+C\+P\+U\+Curr\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+C\+P\+U\+Curr\+Secs()}{getCPUCurrSecs()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+C\+P\+U\+Curr\+Secs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Curr\+Secs.
+
+
+
+Referenced by operator+=().
+
+
+\begin{DoxyCode}
+19                                 \{
+20     \textcolor{keywordflow}{return} \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{CPUCurrSecs};
+21 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{class_c_p_u_timer_a3403f8cce7b7518e47a1826b8650220c}\label{class_c_p_u_timer_a3403f8cce7b7518e47a1826b8650220c}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+C\+P\+U\+Time@{get\+C\+P\+U\+Time}}
+\index{get\+C\+P\+U\+Time@{get\+C\+P\+U\+Time}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+C\+P\+U\+Time()}{getCPUTime()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+C\+P\+U\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns the amount of C\+PU time used by the current process, in seconds, or -\/1.\+0 if an error occurred. 
+
+Definition at line 87 of file cpu\+Timer.\+cpp.
+
+
+
+Referenced by start(), and stop().
+
+
+\begin{DoxyCode}
+87                             \{
+88 \textcolor{preprocessor}{    #if defined(\_POSIX\_TIMERS) && (\_POSIX\_TIMERS > 0)}
+89 
+90     \textcolor{comment}{/* Prefer high-res POSIX timers, when available. */}
+91     clockid\_t id;
+92     \textcolor{keyword}{struct }timespec ts;
+93 
+94 \textcolor{preprocessor}{    #if \_POSIX\_CPUTIME > 0}
+95 
+96     \textcolor{comment}{/* Clock ids vary by OS.  Query the id, if possible. */}
+97     \textcolor{keywordflow}{if} (clock\_getcpuclockid( 0, &\textcolor{keywordtype}{id} ) == -1)
+98 
+99 \textcolor{preprocessor}{    #endif}
+100 
+101 \textcolor{preprocessor}{    #if defined(CLOCK\_PROCESS\_CPUTIME\_ID)}
+102     \textcolor{comment}{/* Use known clock id for AIX, Linux, or Solaris. */}
+103     \textcolor{keywordtype}{id} = CLOCK\_PROCESS\_CPUTIME\_ID;
+104 
+105 \textcolor{preprocessor}{    #elif defined(CLOCK\_VIRTUAL)}
+106     \textcolor{comment}{/* Use known clock id for BSD or HP-UX. */}
+107     \textcolor{keywordtype}{id} = CLOCK\_VIRTUAL;
+108 
+109 \textcolor{preprocessor}{    #else}
+110     \textcolor{keywordtype}{id} = (clockid\_t) - 1;
+111 
+112 \textcolor{preprocessor}{    #endif}
+113 
+114     \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{id} != (clockid\_t) - 1) && (clock\_gettime( \textcolor{keywordtype}{id}, &ts ) != -1))
+115         \textcolor{keywordflow}{return} ((\textcolor{keywordtype}{double}) ts.tv\_sec + (double) ts.tv\_nsec / 1000000000.0);
+116 
+117 \textcolor{preprocessor}{    #endif}
+118 
+119 \textcolor{preprocessor}{    #if defined(RUSAGE\_SELF)}
+120 
+121     \textcolor{keyword}{struct }rusage rusage;
+122 
+123     \textcolor{keywordflow}{if} (getrusage( RUSAGE\_SELF, &rusage ) != -1)
+124         \textcolor{keywordflow}{return} ((\textcolor{keywordtype}{double}) rusage.ru\_utime.tv\_sec + (double) rusage.ru\_utime.tv\_usec / 1000000.0);
+125 
+126 \textcolor{preprocessor}{    #endif}
+127 
+128     \textcolor{comment}{/* Failed. */}
+129     \textcolor{keywordflow}{return} -1.0;
+130 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_c_p_u_timer_a9547512dbcec01ea685d291569a87aa4}\label{class_c_p_u_timer_a9547512dbcec01ea685d291569a87aa4}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+C\+P\+U\+Total\+Secs@{get\+C\+P\+U\+Total\+Secs}}
+\index{get\+C\+P\+U\+Total\+Secs@{get\+C\+P\+U\+Total\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+C\+P\+U\+Total\+Secs()}{getCPUTotalSecs()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+C\+P\+U\+Total\+Secs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Total\+Secs.
+
+
+
+Referenced by operator+=().
+
+
+\begin{DoxyCode}
+23                                  \{
+24     \textcolor{keywordflow}{return} \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs};
+25 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_c_p_u_timer_a363d9ba80f897fe24914cce080bf3b52}\label{class_c_p_u_timer_a363d9ba80f897fe24914cce080bf3b52}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+Crono\+Curr\+Secs@{get\+Crono\+Curr\+Secs}}
+\index{get\+Crono\+Curr\+Secs@{get\+Crono\+Curr\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+Crono\+Curr\+Secs()}{getCronoCurrSecs()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+Crono\+Curr\+Secs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file cpu\+Timer.\+cpp.
+
+
+
+References Crono\+Curr\+Secs.
+
+
+
+Referenced by operator+=().
+
+
+\begin{DoxyCode}
+27                                   \{
+28     \textcolor{keywordflow}{return} \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{CronoCurrSecs};
+29 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{class_c_p_u_timer_aa8736023dbfa50166f8e49960ad84a84}\label{class_c_p_u_timer_aa8736023dbfa50166f8e49960ad84a84}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+Crono\+Total\+Secs@{get\+Crono\+Total\+Secs}}
+\index{get\+Crono\+Total\+Secs@{get\+Crono\+Total\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+Crono\+Total\+Secs()}{getCronoTotalSecs()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+Crono\+Total\+Secs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 31 of file cpu\+Timer.\+cpp.
+
+
+
+References Crono\+Total\+Secs.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and operator+=().
+
+
+\begin{DoxyCode}
+31                                    \{
+32     \textcolor{keywordflow}{return} \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{CronoTotalSecs};
+33 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_c_p_u_timer_a57da0f833904f3ddf20a640e0f8fe127}\label{class_c_p_u_timer_a57da0f833904f3ddf20a640e0f8fe127}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!get\+Real\+Time@{get\+Real\+Time}}
+\index{get\+Real\+Time@{get\+Real\+Time}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{get\+Real\+Time()}{getRealTime()}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::get\+Real\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns the amount of real time used by the current process, in seconds, or -\/1.\+0 if an error occurred. 
+
+Definition at line 136 of file cpu\+Timer.\+cpp.
+
+
+
+Referenced by start(), and stop().
+
+
+\begin{DoxyCode}
+136                               \{
+137 \textcolor{preprocessor}{    #if defined(\_POSIX\_TIMERS) && (\_POSIX\_TIMERS > 0)}
+138     \textcolor{keyword}{struct }timespec ts;
+139 
+140 \textcolor{preprocessor}{    #if defined(CLOCK\_MONOTONIC\_PRECISE)}
+141     \textcolor{comment}{/* BSD. --------------------------------------------- */}
+142     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = CLOCK\_MONOTONIC\_PRECISE;
+143 
+144 \textcolor{preprocessor}{    #elif defined(CLOCK\_MONOTONIC\_RAW)}
+145     \textcolor{comment}{/* Linux. ------------------------------------------- */}
+146     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = CLOCK\_MONOTONIC\_RAW;
+147 
+148 \textcolor{preprocessor}{    #elif defined(CLOCK\_HIGHRES)}
+149     \textcolor{comment}{/* Solaris. ----------------------------------------- */}
+150     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = CLOCK\_HIGHRES;
+151 
+152 \textcolor{preprocessor}{    #elif defined(CLOCK\_MONOTONIC)}
+153     \textcolor{comment}{/* AIX, BSD, Linux, POSIX, Solaris. ----------------- */}
+154     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = CLOCK\_MONOTONIC;
+155 
+156 \textcolor{preprocessor}{    #elif defined(CLOCK\_REALTIME)}
+157     \textcolor{comment}{/* AIX, BSD, HP-UX, Linux, POSIX. ------------------- */}
+158     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = CLOCK\_REALTIME;
+159 
+160 \textcolor{preprocessor}{    #else}
+161     \textcolor{comment}{/* Unknown. */}
+162     \textcolor{keyword}{const} clockid\_t \textcolor{keywordtype}{id} = (clockid\_t) - 1;
+163 
+164 \textcolor{preprocessor}{    #endif}
+165 
+166     \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{id} != (clockid\_t) - 1) && (clock\_gettime( \textcolor{keywordtype}{id}, &ts ) != -1))
+167         \textcolor{keywordflow}{return} ((\textcolor{keywordtype}{double}) ts.tv\_sec + (double) ts.tv\_nsec / 1000000000.0);
+168 
+169 \textcolor{preprocessor}{    #elif defined(\_\_MACH\_\_) && defined(\_\_APPLE\_\_)}
+170     \textcolor{comment}{/* OSX. --------------------------------------------- */}
+171     \textcolor{keyword}{static} \textcolor{keywordtype}{double} timeConvert = 0.0;
+172 
+173     \textcolor{keywordflow}{if} (timeConvert == 0.0) \{
+174         mach\_timebase\_info\_data\_t timeBase;
+175         (void) mach\_timebase\_info( &timeBase );
+176         timeConvert = (double) timeBase.numer / (\textcolor{keywordtype}{double}) timeBase.denom / 1000000000.0;
+177     \}
+178 
+179     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{double}) mach\_absolute\_time( ) * timeConvert;
+180 
+181 \textcolor{preprocessor}{    #else}
+182     \textcolor{comment}{/* Failed. */}
+183     \textcolor{keywordflow}{return} -1.0;
+184 
+185 \textcolor{preprocessor}{    #endif}
+186 
+187     \textcolor{comment}{/* To avoid compilation warnings only!!! */}
+188     \textcolor{keywordflow}{return} -1.0;
+189 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_c_p_u_timer_abbb38873f4469d55406a3c00816590b0}\label{class_c_p_u_timer_abbb38873f4469d55406a3c00816590b0}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!increase\+C\+P\+U\+Total\+Secs@{increase\+C\+P\+U\+Total\+Secs}}
+\index{increase\+C\+P\+U\+Total\+Secs@{increase\+C\+P\+U\+Total\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{increase\+C\+P\+U\+Total\+Secs()}{increaseCPUTotalSecs()}}
+{\footnotesize\ttfamily void C\+P\+U\+Timer\+::increase\+C\+P\+U\+Total\+Secs (\begin{DoxyParamCaption}\item[{double}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 57 of file cpu\+Timer.\+hpp.
+
+
+
+References C\+P\+U\+Total\+Secs.
+
+
+\begin{DoxyCode}
+57                                               \{
+58         \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs} += s;
+59     \};
+\end{DoxyCode}
+\mbox{\Hypertarget{class_c_p_u_timer_ab11c8b37836afcacfc60341cfa6f21b3}\label{class_c_p_u_timer_ab11c8b37836afcacfc60341cfa6f21b3}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily void C\+P\+U\+Timer\+::operator+= (\begin{DoxyParamCaption}\item[{\hyperlink{class_c_p_u_timer}{C\+P\+U\+Timer}}]{t }\end{DoxyParamCaption})}
+
+
+
+Definition at line 76 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Curr\+Secs, C\+P\+U\+Total\+Secs, Crono\+Curr\+Secs, Crono\+Total\+Secs, get\+C\+P\+U\+Curr\+Secs(), get\+C\+P\+U\+Total\+Secs(), get\+Crono\+Curr\+Secs(), and get\+Crono\+Total\+Secs().
+
+
+\begin{DoxyCode}
+76                                       \{
+77     \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{CPUCurrSecs} += t.\hyperlink{class_c_p_u_timer_a98f96656fd5e6676064ac6e5f3c7621b}{getCPUCurrSecs}();
+78     \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs} += t.\hyperlink{class_c_p_u_timer_a9547512dbcec01ea685d291569a87aa4}{getCPUTotalSecs}();
+79     \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{CronoCurrSecs} += t.\hyperlink{class_c_p_u_timer_a363d9ba80f897fe24914cce080bf3b52}{getCronoCurrSecs}();
+80     \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{CronoTotalSecs} += t.\hyperlink{class_c_p_u_timer_aa8736023dbfa50166f8e49960ad84a84}{getCronoTotalSecs}();
+81 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_c_p_u_timer_ae9c1b873923f73091dae7e5a6051baf6}\label{class_c_p_u_timer_ae9c1b873923f73091dae7e5a6051baf6}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!reset@{reset}}
+\index{reset@{reset}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void C\+P\+U\+Timer\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Curr\+Secs, C\+P\+U\+Total\+Secs, Crono\+Curr\+Secs, Crono\+Total\+Secs, and started.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+68                      \{
+69     \hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started} = \textcolor{keyword}{false};
+70     \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{CPUCurrSecs} = 0;
+71     \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs} = 0;
+72     \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{CronoCurrSecs} = 0;
+73     \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{CronoTotalSecs} = 0;
+74 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{class_c_p_u_timer_a8712b4f64c79a210e91bbb72ed55bfc1}\label{class_c_p_u_timer_a8712b4f64c79a210e91bbb72ed55bfc1}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!start@{start}}
+\index{start@{start}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily bool C\+P\+U\+Timer\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Curr\+Secs, C\+P\+U\+T\+Start, Crono\+Curr\+Secs, Crono\+T\+Start, get\+C\+P\+U\+Time(), get\+Real\+Time(), gottime, and started.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+35                      \{
+36     \textcolor{keywordtype}{bool} status = \textcolor{keyword}{true};
+37     \hyperlink{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}{CPUCurrSecs} = 0;
+38     \hyperlink{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}{CronoCurrSecs} = 0;
+39 
+40     \hyperlink{class_c_p_u_timer_a0248a7ebc1ed9fb9bcd4f63f07f9f984}{CPUTStart} = \hyperlink{class_c_p_u_timer_a3403f8cce7b7518e47a1826b8650220c}{getCPUTime}();
+41     \hyperlink{class_c_p_u_timer_a097a928f647be3a1e679d702a74119ed}{CronoTStart} = \hyperlink{class_c_p_u_timer_a57da0f833904f3ddf20a640e0f8fe127}{getRealTime}();
+42 
+43     \hyperlink{class_c_p_u_timer_ab0f086c04c1b6019db26c44db9812d80}{gottime} = \textcolor{keyword}{false};
+44     \hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started} = status;
+45 
+46     \textcolor{keywordflow}{return} (status);
+47 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{class_c_p_u_timer_afc986e87c38afb37b7911f8424726d1d}\label{class_c_p_u_timer_afc986e87c38afb37b7911f8424726d1d}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!stop@{stop}}
+\index{stop@{stop}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily bool C\+P\+U\+Timer\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file cpu\+Timer.\+cpp.
+
+
+
+References C\+P\+U\+Total\+Secs, C\+P\+U\+T\+Start, C\+P\+U\+T\+Stop, Crono\+Total\+Secs, Crono\+T\+Start, Crono\+T\+Stop, get\+C\+P\+U\+Time(), get\+Real\+Time(), and started.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+49                     \{
+50     \textcolor{keywordtype}{bool} status = \textcolor{keyword}{true};
+51 
+52     \textcolor{keywordflow}{if} (\hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started}) \{
+53         \hyperlink{class_c_p_u_timer_a02e800ccdca6291ee1d00b4c805d69c1}{CPUTStop} = \hyperlink{class_c_p_u_timer_a3403f8cce7b7518e47a1826b8650220c}{getCPUTime}();
+54         \hyperlink{class_c_p_u_timer_aaeaf8c0445112562f3b85ad93994d194}{CronoTStop} = \hyperlink{class_c_p_u_timer_a57da0f833904f3ddf20a640e0f8fe127}{getRealTime}();
+55 
+56         \hyperlink{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}{CPUTotalSecs} += \hyperlink{class_c_p_u_timer_a02e800ccdca6291ee1d00b4c805d69c1}{CPUTStop} - \hyperlink{class_c_p_u_timer_a0248a7ebc1ed9fb9bcd4f63f07f9f984}{CPUTStart};
+57         \hyperlink{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}{CronoTotalSecs} += \hyperlink{class_c_p_u_timer_aaeaf8c0445112562f3b85ad93994d194}{CronoTStop} - \hyperlink{class_c_p_u_timer_a097a928f647be3a1e679d702a74119ed}{CronoTStart};
+58     \} \textcolor{keywordflow}{else} \{
+59         std::cout << \textcolor{stringliteral}{"CPUTimer::stop(): called without calling CPUTimer::start() first!\(\backslash\)n"};
+60         status = \textcolor{keyword}{false};
+61     \}
+62 
+63     \hyperlink{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}{started} = \textcolor{keyword}{false};
+64 
+65     \textcolor{keywordflow}{return} status;
+66 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}\label{class_c_p_u_timer_aa34930f260364d48351fac6f5b926c82}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+Curr\+Secs@{C\+P\+U\+Curr\+Secs}}
+\index{C\+P\+U\+Curr\+Secs@{C\+P\+U\+Curr\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{C\+P\+U\+Curr\+Secs}{CPUCurrSecs}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+C\+P\+U\+Curr\+Secs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 72 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by C\+P\+U\+Timer(), get\+C\+P\+U\+Curr\+Secs(), operator+=(), reset(), and start().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}\label{class_c_p_u_timer_a1f61a2313ec71eb67d658c482420abe7}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+Total\+Secs@{C\+P\+U\+Total\+Secs}}
+\index{C\+P\+U\+Total\+Secs@{C\+P\+U\+Total\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{C\+P\+U\+Total\+Secs}{CPUTotalSecs}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+C\+P\+U\+Total\+Secs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 75 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by C\+P\+U\+Timer(), get\+C\+P\+U\+Total\+Secs(), increase\+C\+P\+U\+Total\+Secs(), operator+=(), reset(), and stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a0248a7ebc1ed9fb9bcd4f63f07f9f984}\label{class_c_p_u_timer_a0248a7ebc1ed9fb9bcd4f63f07f9f984}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+T\+Start@{C\+P\+U\+T\+Start}}
+\index{C\+P\+U\+T\+Start@{C\+P\+U\+T\+Start}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{C\+P\+U\+T\+Start}{CPUTStart}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+C\+P\+U\+T\+Start\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 59 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by start(), and stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a02e800ccdca6291ee1d00b4c805d69c1}\label{class_c_p_u_timer_a02e800ccdca6291ee1d00b4c805d69c1}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!C\+P\+U\+T\+Stop@{C\+P\+U\+T\+Stop}}
+\index{C\+P\+U\+T\+Stop@{C\+P\+U\+T\+Stop}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{C\+P\+U\+T\+Stop}{CPUTStop}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+C\+P\+U\+T\+Stop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}\label{class_c_p_u_timer_a5cd38d0e4893710f1c85f1aa03961cbc}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!Crono\+Curr\+Secs@{Crono\+Curr\+Secs}}
+\index{Crono\+Curr\+Secs@{Crono\+Curr\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{Crono\+Curr\+Secs}{CronoCurrSecs}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+Crono\+Curr\+Secs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 78 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by C\+P\+U\+Timer(), get\+Crono\+Curr\+Secs(), operator+=(), reset(), and start().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}\label{class_c_p_u_timer_a9c8ac2ee9f44e8b4365321698cf17493}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!Crono\+Total\+Secs@{Crono\+Total\+Secs}}
+\index{Crono\+Total\+Secs@{Crono\+Total\+Secs}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{Crono\+Total\+Secs}{CronoTotalSecs}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+Crono\+Total\+Secs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 81 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by C\+P\+U\+Timer(), get\+Crono\+Total\+Secs(), operator+=(), reset(), and stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a097a928f647be3a1e679d702a74119ed}\label{class_c_p_u_timer_a097a928f647be3a1e679d702a74119ed}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!Crono\+T\+Start@{Crono\+T\+Start}}
+\index{Crono\+T\+Start@{Crono\+T\+Start}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{Crono\+T\+Start}{CronoTStart}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+Crono\+T\+Start\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by start(), and stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_aaeaf8c0445112562f3b85ad93994d194}\label{class_c_p_u_timer_aaeaf8c0445112562f3b85ad93994d194}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!Crono\+T\+Stop@{Crono\+T\+Stop}}
+\index{Crono\+T\+Stop@{Crono\+T\+Stop}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{Crono\+T\+Stop}{CronoTStop}}
+{\footnotesize\ttfamily double C\+P\+U\+Timer\+::\+Crono\+T\+Stop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 66 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by stop().
+
+\mbox{\Hypertarget{class_c_p_u_timer_ab0f086c04c1b6019db26c44db9812d80}\label{class_c_p_u_timer_ab0f086c04c1b6019db26c44db9812d80}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!gottime@{gottime}}
+\index{gottime@{gottime}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{gottime}{gottime}}
+{\footnotesize\ttfamily bool C\+P\+U\+Timer\+::gottime\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 83 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by start().
+
+\mbox{\Hypertarget{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}\label{class_c_p_u_timer_a8fde2f68dd2f4811400429dcf9a4a6c7}} 
+\index{C\+P\+U\+Timer@{C\+P\+U\+Timer}!started@{started}}
+\index{started@{started}!C\+P\+U\+Timer@{C\+P\+U\+Timer}}
+\subsubsection{\texorpdfstring{started}{started}}
+{\footnotesize\ttfamily bool C\+P\+U\+Timer\+::started\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 84 of file cpu\+Timer.\+hpp.
+
+
+
+Referenced by C\+P\+U\+Timer(), reset(), start(), and stop().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/aux/\hyperlink{cpu_timer_8hpp}{cpu\+Timer.\+hpp}\item 
+src/aux/\hyperlink{cpu_timer_8cpp}{cpu\+Timer.\+cpp}\end{DoxyCompactItemize}

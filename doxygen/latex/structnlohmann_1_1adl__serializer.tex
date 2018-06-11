@@ -1,0 +1,112 @@
+\hypertarget{structnlohmann_1_1adl__serializer}{}\section{nlohmann\+:\+:adl\+\_\+serializer$<$ typename, typename $>$ Struct Template Reference}
+\label{structnlohmann_1_1adl__serializer}\index{nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$@{nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$}}
+
+
+default J\+S\+O\+N\+Serializer template argument  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Value\+Type $>$ }\\static void \hyperlink{structnlohmann_1_1adl__serializer_ab39cad07c1a2bf4414d6cae5215b4e7a}{from\+\_\+json} (Basic\+Json\+Type \&\&j, Value\+Type \&val) noexcept(noexcept(\+::nlohmann\+::from\+\_\+json(std\+::forward$<$ Basic\+Json\+Type $>$(j), val)))
+\begin{DoxyCompactList}\small\item\em convert a J\+S\+ON value to any value type \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Value\+Type $>$ }\\static void \hyperlink{structnlohmann_1_1adl__serializer_adf8cd96afe6ab243b67392dfe35ace89}{to\+\_\+json} (Basic\+Json\+Type \&j, Value\+Type \&\&val) noexcept(noexcept(\+::nlohmann\+::to\+\_\+json(j, std\+::forward$<$ Value\+Type $>$(val))))
+\begin{DoxyCompactList}\small\item\em convert any value type to a J\+S\+ON value \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename, typename$>$\newline
+struct nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$}
+
+default J\+S\+O\+N\+Serializer template argument 
+
+This serializer ignores the template arguments and uses A\+DL (\href{http://en.cppreference.com/w/cpp/language/adl}{\tt argument-\/dependent lookup}) for serialization. 
+
+Definition at line 73 of file json.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structnlohmann_1_1adl__serializer_ab39cad07c1a2bf4414d6cae5215b4e7a}\label{structnlohmann_1_1adl__serializer_ab39cad07c1a2bf4414d6cae5215b4e7a}} 
+\index{nlohmann\+::adl\+\_\+serializer@{nlohmann\+::adl\+\_\+serializer}!from\+\_\+json@{from\+\_\+json}}
+\index{from\+\_\+json@{from\+\_\+json}!nlohmann\+::adl\+\_\+serializer@{nlohmann\+::adl\+\_\+serializer}}
+\subsubsection{\texorpdfstring{from\+\_\+json()}{from\_json()}}
+{\footnotesize\ttfamily template$<$typename , typename $>$ \\
+template$<$typename Basic\+Json\+Type , typename Value\+Type $>$ \\
+static void \hyperlink{structnlohmann_1_1adl__serializer}{nlohmann\+::adl\+\_\+serializer}$<$ typename, typename $>$\+::from\+\_\+json (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type \&\&}]{j,  }\item[{Value\+Type \&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+convert a J\+S\+ON value to any value type 
+
+This function is usually called by the {\ttfamily get()} function of the \hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json} class (either explicit or via conversion operators).
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em j} & J\+S\+ON value to read from \\
+\hline
+\mbox{\tt in,out}  & {\em val} & value to write to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9644 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::from\+\_\+json().
+
+
+\begin{DoxyCode}
+9646     \{
+9647         \hyperlink{namespacenlohmann_1_1detail_a8b99ec9b29f3f20a18fc4281fb784e49}{::nlohmann::from\_json}(std::forward<BasicJsonType>(j), val);
+9648     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{structnlohmann_1_1adl__serializer_adf8cd96afe6ab243b67392dfe35ace89}\label{structnlohmann_1_1adl__serializer_adf8cd96afe6ab243b67392dfe35ace89}} 
+\index{nlohmann\+::adl\+\_\+serializer@{nlohmann\+::adl\+\_\+serializer}!to\+\_\+json@{to\+\_\+json}}
+\index{to\+\_\+json@{to\+\_\+json}!nlohmann\+::adl\+\_\+serializer@{nlohmann\+::adl\+\_\+serializer}}
+\subsubsection{\texorpdfstring{to\+\_\+json()}{to\_json()}}
+{\footnotesize\ttfamily template$<$typename , typename $>$ \\
+template$<$typename Basic\+Json\+Type , typename Value\+Type $>$ \\
+static void \hyperlink{structnlohmann_1_1adl__serializer}{nlohmann\+::adl\+\_\+serializer}$<$ typename, typename $>$\+::to\+\_\+json (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type \&}]{j,  }\item[{Value\+Type \&\&}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+convert any value type to a J\+S\+ON value 
+
+This function is usually called by the constructors of the \hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json} class.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em j} & J\+S\+ON value to write to \\
+\hline
+\mbox{\tt in}  & {\em val} & value to read from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 9660 of file json.\+hpp.
+
+
+
+References N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON, and nlohmann\+::detail\+::to\+\_\+json().
+
+
+\begin{DoxyCode}
+9662     \{
+9663         \hyperlink{namespacenlohmann_1_1detail_aa7a47b08eee864c2c108c04954919648}{::nlohmann::to\_json}(j, std::forward<ValueType>(val));
+9664     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

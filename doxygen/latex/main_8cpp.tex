@@ -1,0 +1,128 @@
+\hypertarget{main_8cpp}{}\section{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
+{\ttfamily \#include \char`\"{}aux/debug.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$gtkmm.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}camcap.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage} ()
+\item 
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file main.\+cpp.
+
+
+
+References debug\+\_\+error, debug\+\_\+log, debug\+\_\+set\+\_\+level, debug\+\_\+set\+\_\+output, debug\+\_\+success, and usage().
+
+
+\begin{DoxyCode}
+24                                  \{
+25     Gtk::Main kit(argc, argv);
+26     Gtk::Window window;
+27 
+28     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i < argc; i++) \{
+29         \textcolor{keywordflow}{if}(\textcolor{keywordtype}{string}(argv[i]) == \textcolor{stringliteral}{"-v"} || \textcolor{keywordtype}{string}(argv[i]) == \textcolor{stringliteral}{"--verbosity"}) \{
+30             \textcolor{keywordflow}{if}(i + 1 < argc) \{
+31                 \textcolor{keywordflow}{try} \{
+32                     \textcolor{keywordtype}{int} verb = stoi(argv[i+1]);
+33                     \hyperlink{debug_8hpp_a1b02524eecef07945f63acf8ef036fe8}{debug\_set\_level}(verb);
+34                     i++;
+35                 \}
+36                 \textcolor{keywordflow}{catch}(...) \{
+37                     \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"This is not a number."});
+38                     \hyperlink{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}();
+39                     \textcolor{keywordflow}{break};
+40                 \}
+41             \} \textcolor{keywordflow}{else} \{
+42                 \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Missing verbosity level."});
+43                 \hyperlink{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}();
+44                 \textcolor{keywordflow}{break};
+45             \}
+46         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\textcolor{keywordtype}{string}(argv[i]) == \textcolor{stringliteral}{"-o"} || \textcolor{keywordtype}{string}(argv[i]) == \textcolor{stringliteral}{"--output"}) \{
+47             \textcolor{keywordflow}{if}(i + 1 < argc) \{
+48                 \textcolor{keywordflow}{if}(\hyperlink{debug_8hpp_a794d2e1b0bc263cfe676fd275e021cc8}{debug\_set\_output}(argv[i+1])) \{
+49                     \hyperlink{debug_8hpp_aab16d4de33d0ed49f629781df5b8429a}{debug\_success}(\textcolor{stringliteral}{"Debug output file set."});
+50                     i++;
+51                 \} \textcolor{keywordflow}{else} \{
+52                     \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Debug output file could not be opened."});
+53                     i++;
+54                 \}
+55             \} \textcolor{keywordflow}{else} \{
+56                 \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Debug output file not informed."});
+57                 \hyperlink{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}();
+58                 \textcolor{keywordflow}{break};
+59             \}
+60         \} \textcolor{keywordflow}{else} \{
+61             \hyperlink{debug_8hpp_ab163a9e3f1ed9f61bd7d743fdf4a161a}{debug\_error}(\textcolor{stringliteral}{"Invalid options."});
+62             \hyperlink{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}();
+63             \textcolor{keywordflow}{break};
+64         \}
+65     \}
+66 
+67     \hyperlink{debug_8hpp_a1b02524eecef07945f63acf8ef036fe8}{debug\_set\_level}(0);
+68     \textcolor{keywordflow}{if}(\hyperlink{debug_8hpp_a794d2e1b0bc263cfe676fd275e021cc8}{debug\_set\_output}(\textcolor{stringliteral}{"debug.log"})) \{
+69         \hyperlink{debug_8hpp_afde3f42696113719c9ae35507125ee6e}{debug\_log}(\textcolor{stringliteral}{"Saving debug information to \(\backslash\)"./debug.log\(\backslash\)""});
+70     \}
+71 
+72     \hyperlink{class_cam_cap}{CamCap} camcap;
+73 
+74     window.set\_position(Gtk::WIN\_POS\_CENTER);
+75     \textcolor{comment}{//window.set\_border\_width(10);}
+76     window.maximize();
+77     window.set\_title(\textcolor{stringliteral}{"VSSS INF - P137"});
+78 
+79     window.add(camcap);
+80 
+81     window.show\_all();
+82 
+83     Gtk::Main::run(window);
+84 
+85     \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+86 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}\label{main_8cpp_a2ef30c42cbc289d899a8be5d2d8f77d0}} 
+\index{main.\+cpp@{main.\+cpp}!usage@{usage}}
+\index{usage@{usage}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file main.\+cpp.
+
+
+
+Referenced by main().
+
+
+\begin{DoxyCode}
+16              \{
+17     cout << \textcolor{stringliteral}{"\(\backslash\)nValid [optional] options: "} << endl;
+18     cout << \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)033[1;37m-v \(\backslash\)033[0m[verbosity level: \(\backslash\)033[1;37m0\(\backslash\)033[0m = log, \(\backslash\)033[1;37m1\(\backslash\)033[0m =
+       success, \(\backslash\)033[1;37m2\(\backslash\)033[0m = warning, \(\backslash\)033[1;37m3\(\backslash\)033[0m = error, \(\backslash\)033[1;37m4\(\backslash\)033[0m = fatal error, \(\backslash\)033[1;37m5\(\backslash\)0
+      33[0m = no messages]"} << endl;
+19     cout << \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)033[1;37m--verbosity \(\backslash\)033[0m[same as -v]"} << endl;
+20     cout << \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)033[1;37m-o \(\backslash\)033[0m[debug output file - default is \(\backslash\)"debug.log\(\backslash\)"]"} << endl;
+21     cout << \textcolor{stringliteral}{"\(\backslash\)t\(\backslash\)033[1;37m--output \(\backslash\)033[0m[same as -o]"} << endl << endl;
+22 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2

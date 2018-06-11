@@ -1,0 +1,43 @@
+digraph "jsonSaveManager::load_robots"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node93 [label="jsonSaveManager::load\l_robots",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node93 -> Node94 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node94 [label="jsonSaveManager::exists",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a850cd6da63a9b10437c1dc7424dfee13",tooltip="Auxiliar function that checks if a given configuration is already set in our JSON object..."];
+  Node94 -> Node95 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node95 [label="nlohmann::basic_json::end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a13e032a02a7fd8a93fdddc2fcbc4763c",tooltip="returns an iterator to one past the last element "];
+  Node95 -> Node96 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node96 [label="nlohmann::detail::iter\l_impl::set_end",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1iter__impl.html#a23e50ad4c13aa62d9ac7f60a123823ee",tooltip="set the iterator past the last value "];
+  Node94 -> Node97 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node97 [label="nlohmann::basic_json\l::find",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#a89eb3928f57903677051c80534be9cb1",tooltip="find an element in a JSON object "];
+  Node93 -> Node98 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node98 [label="Robots::set_default\l_velocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a54b514022589049ad5ae94ac11a453cd"];
+  Node98 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node99 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node99 -> Node100 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node100 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+  Node93 -> Node101 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node101 [label="Robots::set_ID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aea3f1278d0503cd81adc9ceea0a7d1df",tooltip="SETTERS. "];
+  Node101 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node93 -> Node102 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node102 [label="Robots::set_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a3694b6380b113b7c38a252fd3bbfcca3"];
+  Node102 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node93 -> Node103 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node103 [label="RobotGUI::update_ids",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#adb3915e1e117c2d3c1b66607c793819f"];
+  Node103 -> Node104 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node104 [label="Robots::get_ID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a306bb88b37b41cff35018d51d8228d65"];
+  Node104 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node93 -> Node105 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node105 [label="RobotGUI::update_robot\l_functions",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#a88e9422aa99db2dd70403650ab1551a4"];
+  Node105 -> Node106 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node106 [label="Robots::get_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#ac5cdd16502bd325581fb2d732169a326"];
+  Node106 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node93 -> Node107 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node107 [label="RobotGUI::update_speed\l_sliders",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robot_g_u_i.html#a7e7796fabb839c7eea5f82387fd10359"];
+  Node107 -> Node108 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node108 [label="Robots::get_default\l_role_velocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a4778a7c755c5cca4b5d1e2c3b46fb314"];
+  Node108 -> Node99 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

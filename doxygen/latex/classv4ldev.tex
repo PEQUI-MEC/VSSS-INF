@@ -1,0 +1,821 @@
+\hypertarget{classv4ldev}{}\section{v4ldev Class Reference}
+\label{classv4ldev}\index{v4ldev@{v4ldev}}
+
+
+{\ttfamily \#include $<$v4ldev.\+hpp$>$}
+
+
+
+Collaboration diagram for v4ldev\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classv4ldev_a54f840014fd707c2508efcc7a21d031e}{v4ldev} ()
+\item 
+\hyperlink{classv4ldev_ab65f03847a5dcd1f19bcfe33f391740f}{$\sim$v4ldev} ()
+\item 
+bool \hyperlink{classv4ldev_a56dc3abadfc1de069eb973ff4a6dbd1f}{open\+\_\+device} (const char $\ast$devname, bool emulate\+\_\+fmt)
+\item 
+bool \hyperlink{classv4ldev_aee765379811b24150d5a591340d9568d}{query\+\_\+capability} (struct v4l2\+\_\+capability $\ast$cap)
+\item 
+bool \hyperlink{classv4ldev_adb85ceff191f9d0ebc65239c6c8d5e42}{get\+\_\+input\+\_\+index} (int $\ast$input)
+\item 
+bool \hyperlink{classv4ldev_a517ba36f366611d3cd72c8edb5cddd1f}{get\+\_\+input} (struct v4l2\+\_\+input $\ast$input)
+\item 
+bool \hyperlink{classv4ldev_a001ffb48bb1981b038ed6878b148a18e}{get\+\_\+format} (struct v4l2\+\_\+format $\ast$fmt, enum v4l2\+\_\+buf\+\_\+type \hyperlink{classstd_1_1conditional_1_1type}{type})
+\item 
+bool \hyperlink{classv4ldev_a4d296d91d189e8600e298771ae5016b2}{get\+\_\+standard\+\_\+id} (v4l2\+\_\+std\+\_\+id $\ast$std\+\_\+id)
+\item 
+bool \hyperlink{classv4ldev_a76f01fd5ac53c94bca14cfbb13c57f71}{get\+\_\+standard} (struct v4l2\+\_\+standard $\ast$standard)
+\item 
+bool \hyperlink{classv4ldev_ab8ab5bfdaf0ffe3bcf6638dc7465494b}{get\+\_\+stream\+\_\+parameter} (struct v4l2\+\_\+streamparm $\ast$streamparm)
+\item 
+bool \hyperlink{classv4ldev_a8893fba1f5915c2b9a8f6aa6c1e71c52}{get\+\_\+stream\+\_\+parameter} (struct v4l2\+\_\+streamparm $\ast$streamparm, \+\_\+\+\_\+u32 \hyperlink{classstd_1_1conditional_1_1type}{type})
+\item 
+bool \hyperlink{classv4ldev_a8b7c5ca137d864c8ffe32349b0aeb01a}{get\+\_\+control} (struct v4l2\+\_\+control $\ast$ctrl)
+\item 
+bool \hyperlink{classv4ldev_a3244e54e71d070f383bcf3272a588e17}{get\+\_\+control} (struct v4l2\+\_\+control $\ast$ctrl, unsigned int ctrl\+\_\+id)
+\item 
+bool \hyperlink{classv4ldev_a9e4d9ea82e59a99286f4cea51cc08685}{query\+\_\+buffer} (struct v4l2\+\_\+buffer $\ast$buffer)
+\item 
+bool \hyperlink{classv4ldev_ab5b21c7fd5893d82039fd25c6450532c}{query\+\_\+buffer} (struct v4l2\+\_\+buffer $\ast$buf, enum v4l2\+\_\+buf\+\_\+type \hyperlink{classstd_1_1conditional_1_1type}{type}, enum v4l2\+\_\+memory memory, unsigned int index)
+\item 
+bool \hyperlink{classv4ldev_ae53ad5fcd680c9df8e7f2f564e575a35}{enqueue\+\_\+buff} (struct v4l2\+\_\+buffer $\ast$vbuf)
+\item 
+bool \hyperlink{classv4ldev_a4785a96e636f1dea81d2d64ec0c36d5a}{enqueue\+\_\+buff} (struct v4l2\+\_\+buffer $\ast$vbuf, enum v4l2\+\_\+buf\+\_\+type buf\+\_\+type, enum v4l2\+\_\+memory memory, int index)
+\item 
+bool \hyperlink{classv4ldev_a930d11206b595e7f27c7ca240ce332f4}{streamon} (enum v4l2\+\_\+buf\+\_\+type \hyperlink{classstd_1_1conditional_1_1type}{type})
+\item 
+bool \hyperlink{classv4ldev_a969a8c970864242b50f0532ebc38e900}{streamoff} (enum v4l2\+\_\+buf\+\_\+type \hyperlink{classstd_1_1conditional_1_1type}{type})
+\item 
+bool \hyperlink{classv4ldev_a539e3edba551564e19bd1ae21c0cdb26}{dequeue\+\_\+buff} (struct v4l2\+\_\+buffer $\ast$vbuf)
+\item 
+bool \hyperlink{classv4ldev_a699e44c1d314c6a77ad9afc4b6a89078}{dequeue\+\_\+buff} (struct v4l2\+\_\+buffer $\ast$vbuf, unsigned int buf\+\_\+type, unsigned int memory, bool $\ast$again)
+\item 
+bool \hyperlink{classv4ldev_a99fbec860c69f6132154871816aff128}{query\+\_\+control} (struct v4l2\+\_\+queryctrl $\ast$qctrl)
+\item 
+bool \hyperlink{classv4ldev_a95b39e9759d93a2c55dd031ed2ef93c1}{query\+\_\+control\+\_\+menu} (struct v4l2\+\_\+querymenu $\ast$qmenu)
+\item 
+bool \hyperlink{classv4ldev_a432cce3442cbc7d5cf7b295073b4ef0a}{request\+\_\+buffers} (struct v4l2\+\_\+requestbuffers $\ast$req\+\_\+buff)
+\item 
+bool \hyperlink{classv4ldev_a73eafcdc186c7e7e2db2596da1b37e36}{request\+\_\+buffers} (struct v4l2\+\_\+requestbuffers $\ast$req\+\_\+buff, int nbuffers, enum v4l2\+\_\+memory memory, enum v4l2\+\_\+buf\+\_\+type \hyperlink{classstd_1_1conditional_1_1type}{type})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl} (int \hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, int request, void $\ast$arg)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}
+\item 
+bool \hyperlink{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}{emulate\+\_\+format}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 22 of file v4ldev.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classv4ldev_a54f840014fd707c2508efcc7a21d031e}\label{classv4ldev_a54f840014fd707c2508efcc7a21d031e}} 
+\index{v4ldev@{v4ldev}!v4ldev@{v4ldev}}
+\index{v4ldev@{v4ldev}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{v4ldev()}{v4ldev()}}
+{\footnotesize\ttfamily v4ldev\+::v4ldev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file v4ldev.\+cpp.
+
+
+\begin{DoxyCode}
+11 : \hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}(0), \hyperlink{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}{emulate\_format}(\textcolor{keyword}{false}) \{\};
+\end{DoxyCode}
+\mbox{\Hypertarget{classv4ldev_ab65f03847a5dcd1f19bcfe33f391740f}\label{classv4ldev_ab65f03847a5dcd1f19bcfe33f391740f}} 
+\index{v4ldev@{v4ldev}!````~v4ldev@{$\sim$v4ldev}}
+\index{````~v4ldev@{$\sim$v4ldev}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{$\sim$v4ldev()}{~v4ldev()}}
+{\footnotesize\ttfamily v4ldev\+::$\sim$v4ldev (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file v4ldev.\+cpp.
+
+
+\begin{DoxyCode}
+13 \{\};
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classv4ldev_a539e3edba551564e19bd1ae21c0cdb26}\label{classv4ldev_a539e3edba551564e19bd1ae21c0cdb26}} 
+\index{v4ldev@{v4ldev}!dequeue\+\_\+buff@{dequeue\+\_\+buff}}
+\index{dequeue\+\_\+buff@{dequeue\+\_\+buff}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{dequeue\+\_\+buff()}{dequeue\_buff()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::dequeue\+\_\+buff (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{vbuf }\end{DoxyParamCaption})}
+
+
+
+Definition at line 143 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by dequeue\+\_\+buff().
+
+
+\begin{DoxyCode}
+143                                                    \{
+144     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_DQBUF, vbuf) >= 0;
+145 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classv4ldev_a699e44c1d314c6a77ad9afc4b6a89078}\label{classv4ldev_a699e44c1d314c6a77ad9afc4b6a89078}} 
+\index{v4ldev@{v4ldev}!dequeue\+\_\+buff@{dequeue\+\_\+buff}}
+\index{dequeue\+\_\+buff@{dequeue\+\_\+buff}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{dequeue\+\_\+buff()}{dequeue\_buff()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::dequeue\+\_\+buff (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{vbuf,  }\item[{unsigned int}]{buf\+\_\+type,  }\item[{unsigned int}]{memory,  }\item[{bool $\ast$}]{again }\end{DoxyParamCaption})}
+
+
+
+Definition at line 147 of file v4ldev.\+cpp.
+
+
+
+References dequeue\+\_\+buff().
+
+
+\begin{DoxyCode}
+147                                                                                                            
+        \{
+148     memset(vbuf, 0, \textcolor{keyword}{sizeof}(\textcolor{keyword}{struct} v4l2\_buffer));
+149     vbuf->type = buf\_type;
+150     vbuf->memory = memory;
+151     \textcolor{keywordtype}{int} r = \hyperlink{classv4ldev_a539e3edba551564e19bd1ae21c0cdb26}{dequeue\_buff}(vbuf);
+152 
+153     \textcolor{comment}{// if the buffer is not avaliable, try again.}
+154     *again = (r < 0) && (errno == EAGAIN);
+155 
+156     \textcolor{keywordflow}{return} (r >= 0) || (*again);
+157 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classv4ldev_ae53ad5fcd680c9df8e7f2f564e575a35}\label{classv4ldev_ae53ad5fcd680c9df8e7f2f564e575a35}} 
+\index{v4ldev@{v4ldev}!enqueue\+\_\+buff@{enqueue\+\_\+buff}}
+\index{enqueue\+\_\+buff@{enqueue\+\_\+buff}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{enqueue\+\_\+buff()}{enqueue\_buff()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::enqueue\+\_\+buff (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{vbuf }\end{DoxyParamCaption})}
+
+
+
+Definition at line 122 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by enqueue\+\_\+buff().
+
+
+\begin{DoxyCode}
+122                                                    \{
+123     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_QBUF, vbuf) >= 0;
+124 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classv4ldev_a4785a96e636f1dea81d2d64ec0c36d5a}\label{classv4ldev_a4785a96e636f1dea81d2d64ec0c36d5a}} 
+\index{v4ldev@{v4ldev}!enqueue\+\_\+buff@{enqueue\+\_\+buff}}
+\index{enqueue\+\_\+buff@{enqueue\+\_\+buff}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{enqueue\+\_\+buff()}{enqueue\_buff()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::enqueue\+\_\+buff (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{vbuf,  }\item[{enum v4l2\+\_\+buf\+\_\+type}]{buf\+\_\+type,  }\item[{enum v4l2\+\_\+memory}]{memory,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 126 of file v4ldev.\+cpp.
+
+
+
+References enqueue\+\_\+buff().
+
+
+\begin{DoxyCode}
+126                                                                                                            
+               \{
+127     memset(vbuf, 0, \textcolor{keyword}{sizeof}(*vbuf));
+128     vbuf->type = buf\_type;
+129     vbuf->memory = memory;
+130     vbuf->index = index;
+131 
+132     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ae53ad5fcd680c9df8e7f2f564e575a35}{enqueue\_buff}(vbuf);
+133 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{classv4ldev_a8b7c5ca137d864c8ffe32349b0aeb01a}\label{classv4ldev_a8b7c5ca137d864c8ffe32349b0aeb01a}} 
+\index{v4ldev@{v4ldev}!get\+\_\+control@{get\+\_\+control}}
+\index{get\+\_\+control@{get\+\_\+control}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+control()}{get\_control()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+control (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+control $\ast$}]{ctrl }\end{DoxyParamCaption})}
+
+
+
+Definition at line 95 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by get\+\_\+control().
+
+
+\begin{DoxyCode}
+95                                                    \{
+96     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_G\_CTRL, ctrl) >= 0;
+97 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{classv4ldev_a3244e54e71d070f383bcf3272a588e17}\label{classv4ldev_a3244e54e71d070f383bcf3272a588e17}} 
+\index{v4ldev@{v4ldev}!get\+\_\+control@{get\+\_\+control}}
+\index{get\+\_\+control@{get\+\_\+control}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+control()}{get\_control()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+control (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+control $\ast$}]{ctrl,  }\item[{unsigned int}]{ctrl\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 99 of file v4ldev.\+cpp.
+
+
+
+References get\+\_\+control().
+
+
+\begin{DoxyCode}
+99                                                                          \{
+100     ctrl->id = ctrl\_id;
+101     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_a8b7c5ca137d864c8ffe32349b0aeb01a}{get\_control}(ctrl);
+102 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{classv4ldev_a001ffb48bb1981b038ed6878b148a18e}\label{classv4ldev_a001ffb48bb1981b038ed6878b148a18e}} 
+\index{v4ldev@{v4ldev}!get\+\_\+format@{get\+\_\+format}}
+\index{get\+\_\+format@{get\+\_\+format}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+format()}{get\_format()}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+format (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+format $\ast$}]{fmt,  }\item[{enum v4l2\+\_\+buf\+\_\+type}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+\begin{DoxyCode}
+61                                                                          \{
+62     fmt->type = \hyperlink{classstd_1_1conditional_1_1type}{type};
+63     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_G\_FMT, fmt) >= 0;
+64 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{classv4ldev_a517ba36f366611d3cd72c8edb5cddd1f}\label{classv4ldev_a517ba36f366611d3cd72c8edb5cddd1f}} 
+\index{v4ldev@{v4ldev}!get\+\_\+input@{get\+\_\+input}}
+\index{get\+\_\+input@{get\+\_\+input}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+input()}{get\_input()}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+input (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+input $\ast$}]{input }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file v4ldev.\+cpp.
+
+
+
+References fd, get\+\_\+input\+\_\+index(), and xioctl().
+
+
+\begin{DoxyCode}
+53                                                 \{
+54     \textcolor{keywordtype}{int} index;
+55     \textcolor{keywordflow}{if} (!\hyperlink{classv4ldev_adb85ceff191f9d0ebc65239c6c8d5e42}{get\_input\_index}(&index)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+56     input->index = index;
+57 
+58     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_ENUMINPUT, input) >= 0;
+59 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{classv4ldev_adb85ceff191f9d0ebc65239c6c8d5e42}\label{classv4ldev_adb85ceff191f9d0ebc65239c6c8d5e42}} 
+\index{v4ldev@{v4ldev}!get\+\_\+input\+\_\+index@{get\+\_\+input\+\_\+index}}
+\index{get\+\_\+input\+\_\+index@{get\+\_\+input\+\_\+index}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+input\+\_\+index()}{get\_input\_index()}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+input\+\_\+index (\begin{DoxyParamCaption}\item[{int $\ast$}]{input }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by get\+\_\+input().
+
+
+\begin{DoxyCode}
+49                                         \{
+50     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_G\_INPUT, input) >= 0;
+51 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 12
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{classv4ldev_a76f01fd5ac53c94bca14cfbb13c57f71}\label{classv4ldev_a76f01fd5ac53c94bca14cfbb13c57f71}} 
+\index{v4ldev@{v4ldev}!get\+\_\+standard@{get\+\_\+standard}}
+\index{get\+\_\+standard@{get\+\_\+standard}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+standard()}{get\_standard()}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+standard (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+standard $\ast$}]{standard }\end{DoxyParamCaption})}
+
+
+
+Definition at line 70 of file v4ldev.\+cpp.
+
+
+
+References fd, get\+\_\+standard\+\_\+id(), and xioctl().
+
+
+\begin{DoxyCode}
+70                                                          \{
+71     v4l2\_std\_id std\_id;
+72 
+73     \textcolor{keywordflow}{if} (!\hyperlink{classv4ldev_a4d296d91d189e8600e298771ae5016b2}{get\_standard\_id}(&std\_id)) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+74 
+75     standard->id = std\_id;
+76 
+77     \textcolor{keywordflow}{for} (\_\_u32 index = 0;; ++index) \{
+78         standard->index = index;
+79         \textcolor{keywordflow}{if} (standard->id == std\_id) \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+80         \textcolor{keywordflow}{if} (!\hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_ENUMSTD, standard)) \textcolor{keywordflow}{break};
+81     \}
+82     
+83     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+84 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{classv4ldev_a4d296d91d189e8600e298771ae5016b2}\label{classv4ldev_a4d296d91d189e8600e298771ae5016b2}} 
+\index{v4ldev@{v4ldev}!get\+\_\+standard\+\_\+id@{get\+\_\+standard\+\_\+id}}
+\index{get\+\_\+standard\+\_\+id@{get\+\_\+standard\+\_\+id}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+standard\+\_\+id()}{get\_standard\_id()}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+standard\+\_\+id (\begin{DoxyParamCaption}\item[{v4l2\+\_\+std\+\_\+id $\ast$}]{std\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by get\+\_\+standard().
+
+
+\begin{DoxyCode}
+66                                                  \{
+67     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_G\_STD, std\_id) >= 0;
+68 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{classv4ldev_ab8ab5bfdaf0ffe3bcf6638dc7465494b}\label{classv4ldev_ab8ab5bfdaf0ffe3bcf6638dc7465494b}} 
+\index{v4ldev@{v4ldev}!get\+\_\+stream\+\_\+parameter@{get\+\_\+stream\+\_\+parameter}}
+\index{get\+\_\+stream\+\_\+parameter@{get\+\_\+stream\+\_\+parameter}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+stream\+\_\+parameter()}{get\_stream\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+stream\+\_\+parameter (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+streamparm $\ast$}]{streamparm }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by get\+\_\+stream\+\_\+parameter().
+
+
+\begin{DoxyCode}
+86                                                                      \{
+87     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_G\_PARM, streamparm) >= 0;
+88 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{classv4ldev_a8893fba1f5915c2b9a8f6aa6c1e71c52}\label{classv4ldev_a8893fba1f5915c2b9a8f6aa6c1e71c52}} 
+\index{v4ldev@{v4ldev}!get\+\_\+stream\+\_\+parameter@{get\+\_\+stream\+\_\+parameter}}
+\index{get\+\_\+stream\+\_\+parameter@{get\+\_\+stream\+\_\+parameter}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{get\+\_\+stream\+\_\+parameter()}{get\_stream\_parameter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::get\+\_\+stream\+\_\+parameter (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+streamparm $\ast$}]{streamparm,  }\item[{\+\_\+\+\_\+u32}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 90 of file v4ldev.\+cpp.
+
+
+
+References get\+\_\+stream\+\_\+parameter().
+
+
+\begin{DoxyCode}
+90                                                                                  \{
+91     streamparm->type = \hyperlink{classstd_1_1conditional_1_1type}{type};
+92     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab8ab5bfdaf0ffe3bcf6638dc7465494b}{get\_stream\_parameter}(streamparm);
+93 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{classv4ldev_a56dc3abadfc1de069eb973ff4a6dbd1f}\label{classv4ldev_a56dc3abadfc1de069eb973ff4a6dbd1f}} 
+\index{v4ldev@{v4ldev}!open\+\_\+device@{open\+\_\+device}}
+\index{open\+\_\+device@{open\+\_\+device}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{open\+\_\+device()}{open\_device()}}
+{\footnotesize\ttfamily bool v4ldev\+::open\+\_\+device (\begin{DoxyParamCaption}\item[{const char $\ast$}]{devname,  }\item[{bool}]{emulate\+\_\+fmt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file v4ldev.\+cpp.
+
+
+
+References emulate\+\_\+format, fd, and query\+\_\+capability().
+
+
+\begin{DoxyCode}
+15                                                                \{
+16     \hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd} = open(devname, O\_RDWR);
+17     \hyperlink{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}{emulate\_format} = emulate\_fmt;
+18 
+19     \textcolor{keywordflow}{if}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd} < 0) \{
+20         std::cout << \textcolor{stringliteral}{"Can not open "} << devname << \textcolor{stringliteral}{"device!"} << std::endl;
+21         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+22     \}
+23 
+24     \textcolor{keywordflow}{if}(emulate\_fmt) \{
+25         \textcolor{keywordtype}{int} fd2 = v4l2\_fd\_open(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, V4L2\_ENABLE\_ENUM\_FMT\_EMULATION);
+26         \textcolor{keywordflow}{if}(fd2 < 0) \{
+27             std::cout << \textcolor{stringliteral}{"Cannot use libv4l2 wrapper for "} << devname << \textcolor{stringliteral}{"!"} << std::endl;
+28             emulate\_fmt = \textcolor{keyword}{false};
+29         \}
+30     \}
+31 
+32     \textcolor{keyword}{struct }v4l2\_capability cap;
+33     \textcolor{keywordflow}{if}(!\hyperlink{classv4ldev_aee765379811b24150d5a591340d9568d}{query\_capability}(&cap)) \{
+34         std::cout << devname << \textcolor{stringliteral}{" is not a V4L2 device!"} << std::endl;
+35 
+36         \textcolor{keywordflow}{if}(emulate\_fmt) v4l2\_close(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd});
+37         \textcolor{keywordflow}{else} close(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd});
+38 
+39         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+40     \}
+41     
+42     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+43 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 20
+\mbox{\Hypertarget{classv4ldev_a9e4d9ea82e59a99286f4cea51cc08685}\label{classv4ldev_a9e4d9ea82e59a99286f4cea51cc08685}} 
+\index{v4ldev@{v4ldev}!query\+\_\+buffer@{query\+\_\+buffer}}
+\index{query\+\_\+buffer@{query\+\_\+buffer}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{query\+\_\+buffer()}{query\_buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::query\+\_\+buffer (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 104 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by query\+\_\+buffer().
+
+
+\begin{DoxyCode}
+104                                                      \{
+105     \textcolor{keywordtype}{int} r = \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_QUERYBUF, buffer);
+106 
+107     \textcolor{keywordflow}{if} (r >= 0) \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+108 
+109     perror(\textcolor{stringliteral}{"VIDIOC\_QUERYBUF"});
+110 
+111     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+112 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 21
+Here is the caller graph for this function\+:
+% FIG 22
+\mbox{\Hypertarget{classv4ldev_ab5b21c7fd5893d82039fd25c6450532c}\label{classv4ldev_ab5b21c7fd5893d82039fd25c6450532c}} 
+\index{v4ldev@{v4ldev}!query\+\_\+buffer@{query\+\_\+buffer}}
+\index{query\+\_\+buffer@{query\+\_\+buffer}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{query\+\_\+buffer()}{query\_buffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::query\+\_\+buffer (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+buffer $\ast$}]{buf,  }\item[{enum v4l2\+\_\+buf\+\_\+type}]{type,  }\item[{enum v4l2\+\_\+memory}]{memory,  }\item[{unsigned int}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 114 of file v4ldev.\+cpp.
+
+
+
+References query\+\_\+buffer().
+
+
+\begin{DoxyCode}
+114                                                                                                            
+                   \{
+115     buf->type = \hyperlink{classstd_1_1conditional_1_1type}{type};
+116     buf->memory = memory;
+117     buf->index = index;
+118 
+119     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_a9e4d9ea82e59a99286f4cea51cc08685}{query\_buffer}(buf);
+120 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 23
+\mbox{\Hypertarget{classv4ldev_aee765379811b24150d5a591340d9568d}\label{classv4ldev_aee765379811b24150d5a591340d9568d}} 
+\index{v4ldev@{v4ldev}!query\+\_\+capability@{query\+\_\+capability}}
+\index{query\+\_\+capability@{query\+\_\+capability}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{query\+\_\+capability()}{query\_capability()}}
+{\footnotesize\ttfamily bool v4ldev\+::query\+\_\+capability (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+capability $\ast$}]{cap }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by open\+\_\+device().
+
+
+\begin{DoxyCode}
+45                                                           \{
+46     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_QUERYCAP, cap) >= 0;
+47 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 24
+Here is the caller graph for this function\+:
+% FIG 25
+\mbox{\Hypertarget{classv4ldev_a99fbec860c69f6132154871816aff128}\label{classv4ldev_a99fbec860c69f6132154871816aff128}} 
+\index{v4ldev@{v4ldev}!query\+\_\+control@{query\+\_\+control}}
+\index{query\+\_\+control@{query\+\_\+control}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{query\+\_\+control()}{query\_control()}}
+{\footnotesize\ttfamily bool v4ldev\+::query\+\_\+control (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+queryctrl $\ast$}]{qctrl }\end{DoxyParamCaption})}
+
+
+
+Definition at line 159 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+\begin{DoxyCode}
+159                                                         \{
+160     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_QUERYCTRL, qctrl) >= 0;
+161 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 26
+\mbox{\Hypertarget{classv4ldev_a95b39e9759d93a2c55dd031ed2ef93c1}\label{classv4ldev_a95b39e9759d93a2c55dd031ed2ef93c1}} 
+\index{v4ldev@{v4ldev}!query\+\_\+control\+\_\+menu@{query\+\_\+control\+\_\+menu}}
+\index{query\+\_\+control\+\_\+menu@{query\+\_\+control\+\_\+menu}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{query\+\_\+control\+\_\+menu()}{query\_control\_menu()}}
+{\footnotesize\ttfamily bool v4ldev\+::query\+\_\+control\+\_\+menu (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+querymenu $\ast$}]{qmenu }\end{DoxyParamCaption})}
+
+
+
+Definition at line 163 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+\begin{DoxyCode}
+163                                                              \{
+164     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_QUERYMENU, qmenu) >= 0;
+165 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 27
+\mbox{\Hypertarget{classv4ldev_a432cce3442cbc7d5cf7b295073b4ef0a}\label{classv4ldev_a432cce3442cbc7d5cf7b295073b4ef0a}} 
+\index{v4ldev@{v4ldev}!request\+\_\+buffers@{request\+\_\+buffers}}
+\index{request\+\_\+buffers@{request\+\_\+buffers}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{request\+\_\+buffers()}{request\_buffers()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::request\+\_\+buffers (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+requestbuffers $\ast$}]{req\+\_\+buff }\end{DoxyParamCaption})}
+
+
+
+Definition at line 167 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+
+Referenced by request\+\_\+buffers().
+
+
+\begin{DoxyCode}
+167                                                                   \{
+168     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_REQBUFS, req\_buff) >= 0;
+169 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 28
+Here is the caller graph for this function\+:
+% FIG 29
+\mbox{\Hypertarget{classv4ldev_a73eafcdc186c7e7e2db2596da1b37e36}\label{classv4ldev_a73eafcdc186c7e7e2db2596da1b37e36}} 
+\index{v4ldev@{v4ldev}!request\+\_\+buffers@{request\+\_\+buffers}}
+\index{request\+\_\+buffers@{request\+\_\+buffers}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{request\+\_\+buffers()}{request\_buffers()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool v4ldev\+::request\+\_\+buffers (\begin{DoxyParamCaption}\item[{struct v4l2\+\_\+requestbuffers $\ast$}]{req\+\_\+buff,  }\item[{int}]{nbuffers,  }\item[{enum v4l2\+\_\+memory}]{memory,  }\item[{enum v4l2\+\_\+buf\+\_\+type}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 171 of file v4ldev.\+cpp.
+
+
+
+References request\+\_\+buffers().
+
+
+\begin{DoxyCode}
+171                                                                                                            
+                             \{
+172     req\_buff->reserved[0] = 0;
+173     req\_buff->reserved[1] = 0;
+174     req\_buff->count = nbuffers;
+175     req\_buff->memory = memory;
+176     req\_buff->type = \hyperlink{classstd_1_1conditional_1_1type}{type};
+177 
+178     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_a432cce3442cbc7d5cf7b295073b4ef0a}{request\_buffers}(req\_buff);
+179 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 30
+\mbox{\Hypertarget{classv4ldev_a969a8c970864242b50f0532ebc38e900}\label{classv4ldev_a969a8c970864242b50f0532ebc38e900}} 
+\index{v4ldev@{v4ldev}!streamoff@{streamoff}}
+\index{streamoff@{streamoff}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{streamoff()}{streamoff()}}
+{\footnotesize\ttfamily bool v4ldev\+::streamoff (\begin{DoxyParamCaption}\item[{enum v4l2\+\_\+buf\+\_\+type}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 139 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+\begin{DoxyCode}
+139                                               \{
+140     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_STREAMOFF, &\hyperlink{classstd_1_1conditional_1_1type}{type}) >= 0;
+141 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 31
+\mbox{\Hypertarget{classv4ldev_a930d11206b595e7f27c7ca240ce332f4}\label{classv4ldev_a930d11206b595e7f27c7ca240ce332f4}} 
+\index{v4ldev@{v4ldev}!streamon@{streamon}}
+\index{streamon@{streamon}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{streamon()}{streamon()}}
+{\footnotesize\ttfamily bool v4ldev\+::streamon (\begin{DoxyParamCaption}\item[{enum v4l2\+\_\+buf\+\_\+type}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line 135 of file v4ldev.\+cpp.
+
+
+
+References fd, and xioctl().
+
+
+\begin{DoxyCode}
+135                                              \{
+136     \textcolor{keywordflow}{return} \hyperlink{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}{xioctl}(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, VIDIOC\_STREAMON, &\hyperlink{classstd_1_1conditional_1_1type}{type}) >= 0;
+137 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 32
+\mbox{\Hypertarget{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}\label{classv4ldev_ab93cb1ab18254ca362310b006bd2552d}} 
+\index{v4ldev@{v4ldev}!xioctl@{xioctl}}
+\index{xioctl@{xioctl}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{xioctl()}{xioctl()}}
+{\footnotesize\ttfamily int v4ldev\+::xioctl (\begin{DoxyParamCaption}\item[{int}]{fd,  }\item[{int}]{request,  }\item[{void $\ast$}]{arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3 of file v4ldev.\+cpp.
+
+
+
+References emulate\+\_\+format.
+
+
+
+Referenced by dequeue\+\_\+buff(), enqueue\+\_\+buff(), get\+\_\+control(), get\+\_\+format(), get\+\_\+input(), get\+\_\+input\+\_\+index(), get\+\_\+standard(), get\+\_\+standard\+\_\+id(), get\+\_\+stream\+\_\+parameter(), query\+\_\+buffer(), query\+\_\+capability(), query\+\_\+control(), query\+\_\+control\+\_\+menu(), request\+\_\+buffers(), streamoff(), and streamon().
+
+
+\begin{DoxyCode}
+3                                                   \{
+4     \textcolor{keywordtype}{int} r;
+5     \textcolor{keywordflow}{if} (\hyperlink{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}{emulate\_format}) r = v4l2\_ioctl(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, request, arg);
+6     \textcolor{keywordflow}{else} r = ioctl(\hyperlink{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}{fd}, request, arg);
+7 
+8     \textcolor{keywordflow}{return} r;
+9 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 33
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}\label{classv4ldev_a5edb19bf69f780a3b2bcf1d639ec2a87}} 
+\index{v4ldev@{v4ldev}!emulate\+\_\+format@{emulate\+\_\+format}}
+\index{emulate\+\_\+format@{emulate\+\_\+format}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{emulate\+\_\+format}{emulate\_format}}
+{\footnotesize\ttfamily bool v4ldev\+::emulate\+\_\+format\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file v4ldev.\+hpp.
+
+
+
+Referenced by open\+\_\+device(), and xioctl().
+
+\mbox{\Hypertarget{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}\label{classv4ldev_a2cd44be3be75a19ab8bec12b28e29142}} 
+\index{v4ldev@{v4ldev}!fd@{fd}}
+\index{fd@{fd}!v4ldev@{v4ldev}}
+\subsubsection{\texorpdfstring{fd}{fd}}
+{\footnotesize\ttfamily int v4ldev\+::fd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file v4ldev.\+hpp.
+
+
+
+Referenced by dequeue\+\_\+buff(), enqueue\+\_\+buff(), get\+\_\+control(), get\+\_\+format(), get\+\_\+input(), get\+\_\+input\+\_\+index(), get\+\_\+standard(), get\+\_\+standard\+\_\+id(), get\+\_\+stream\+\_\+parameter(), open\+\_\+device(), query\+\_\+buffer(), query\+\_\+capability(), query\+\_\+control(), query\+\_\+control\+\_\+menu(), request\+\_\+buffers(), streamoff(), and streamon().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/capture/\hyperlink{v4ldev_8hpp}{v4ldev.\+hpp}\item 
+src/capture/\hyperlink{v4ldev_8cpp}{v4ldev.\+cpp}\end{DoxyCompactItemize}

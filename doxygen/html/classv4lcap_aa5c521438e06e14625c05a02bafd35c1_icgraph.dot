@@ -1,0 +1,53 @@
+digraph "v4lcap::get_format"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node186 [label="v4lcap::get_format",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node186 -> Node187 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node187 [label="VSSS_GUI::V4LInterface\l::__event_bt_start_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac83a8f5a54baf09ade5e3ec24ba91082",tooltip="Event triggered when &#39;start&#39; button is clicked. "];
+  Node187 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node188 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node186 -> Node189 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node189 [label="VSSS_GUI::V4LInterface\l::__update_cb_format_desc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad2da97031a8ca5d9e2d99f5a5459c267"];
+  Node189 -> Node190 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 [label="VSSS_GUI::V4LInterface\l::__update_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac3fe0a20fd30c6e9505eb375ef63e52e",tooltip="Update all combo box inputs on CaptureGUI. "];
+  Node190 -> Node191 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node191 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node191 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 -> Node192 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node192 [label="VSSS_GUI::V4LInterface\l::__event_cb_input_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a09e546d62cf2363590490c2f9e85c951",tooltip="Event triggered when a new input is selected in Input combobox. "];
+  Node192 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 -> Node193 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node193 [label="VSSS_GUI::V4LInterface\l::__event_cb_standard\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#adaa2a6e1946bb639d5be0ec3eb03cdb5",tooltip="Event triggered when a new stantard is selected in Standard combobox. "];
+  Node193 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 -> Node194 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node194 [label="VSSS_GUI::V4LInterface\l::__event_cb_format_desc\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a41dc791b309dcb6e4469c6cc9d4a4852",tooltip="Event triggered when a new format is selected in Format combobox. "];
+  Node194 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 -> Node195 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node195 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_size\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a49e6f69de18f2bcb54db964375535e9f",tooltip="Event triggered when a new frame size is selected in Frame size combobox. "];
+  Node195 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node190 -> Node196 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node196 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_interval\l_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad78e73dabab1c7caa41a45c363eef205",tooltip="Event triggered when a new interval is selected in Interval combobox. "];
+  Node196 -> Node188 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node197 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node197 [label="VSSS_GUI::V4LInterface\l::__update_cb_frame_interval",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a0eeae871fc38dab3693860f6f391e062"];
+  Node197 -> Node190 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node198 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node198 [label="VSSS_GUI::V4LInterface\l::__update_cb_frame_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ab30bca15d7c9ffb5d3e7bc38ad2def25"];
+  Node198 -> Node190 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node199 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node199 [label="v4lcap::init_mmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a04f75c0a68f0e8547925906a488bb50d",tooltip="This method requests buffers from host system to allocate streaming from camera. "];
+  Node199 -> Node200 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node200 [label="v4lcap::start_capturing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4a7ee51c878ec735c9a24b517c63df16",tooltip="This method starts capturing and streaming from opened device passing memory type and number of buffe..."];
+  Node200 -> Node187 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node199 -> Node187 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node201 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node201 [label="v4lcap::set_frame_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a6ad01c926c3162e858e030c8525cb94b",tooltip="Set the frame size object. "];
+  Node201 -> Node187 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node201 -> Node195 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node186 -> Node202 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node202 [label="v4lcap::set_pixel_format",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a7da8705c4a542bb1118f74435957c471",tooltip="Set the pixel format object. "];
+  Node202 -> Node194 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,17 @@
+digraph "RobotGUI::event_robots_id_done_bt_signal_clicked"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node65 [label="RobotGUI::event_robots\l_id_done_bt_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node65 -> Node66 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node66 [label="Robots::get_ID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a306bb88b37b41cff35018d51d8228d65"];
+  Node66 -> Node67 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node67 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node67 -> Node68 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node68 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+  Node65 -> Node69 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node69 [label="Robots::set_ID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aea3f1278d0503cd81adc9ceea0a7d1df",tooltip="SETTERS. "];
+  Node69 -> Node67 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,1278 @@
+\hypertarget{class_strategy_g_u_i}{}\section{Strategy\+G\+UI Class Reference}
+\label{class_strategy_g_u_i}\index{Strategy\+G\+UI@{Strategy\+G\+UI}}
+
+
+{\ttfamily \#include $<$strategy\+G\+U\+I.\+hpp$>$}
+
+
+
+Inheritance diagram for Strategy\+G\+UI\+:
+% FIG 0
+
+
+Collaboration diagram for Strategy\+G\+UI\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_strategy_g_u_i_1_1_model_columns}{Model\+Columns}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_strategy_g_u_i_a6676ae87f9ccabe157ec8e60f94041b7}{Strategy\+G\+UI} ()
+\begin{DoxyCompactList}\small\item\em Constructor of a \hyperlink{class_strategy_g_u_i}{Strategy\+G\+UI} object. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_aaeb2b9affadab5eafc8885f983a1cc36}{configure\+Test\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Inicialization of labels and values from Test Parameters frame. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a38540d2d52e6bd3955e85adce92dac41}{create\+Formation\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Formation frame creator. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_ab39aceb2dc4fc8b0b571d9284c463b5a}{create\+Transitions\+Frame} ()
+\begin{DoxyCompactList}\small\item\em Transitions frame creator. \end{DoxyCompactList}\item 
+\hyperlink{class_strategy_g_u_i_a3957136621bf4eeeb13df4340b2fcb93}{$\sim$\+Strategy\+G\+UI} ()
+\begin{DoxyCompactList}\small\item\em Destructor of a \hyperlink{class_strategy_g_u_i}{Strategy\+G\+UI} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_strategy_g_u_i_1_1_model_columns}{Model\+Columns} \hyperlink{class_strategy_g_u_i_a5dfaa225c4c52a2dfba9a3a5a677a924}{strategy\+Columns}
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_aeffa5af57b84a289f73e852ea21af347}{menu\+\_\+fm}
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_a81adadee3d628dfe9e52b91856313f5d}{info\+\_\+text\+\_\+fm}
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_a496abab2fd8b0a79a7143337ca8bbc3b}{info\+\_\+img\+\_\+fm}
+\item 
+Gtk\+::\+Tree\+View \hyperlink{class_strategy_g_u_i_a8e921fa14a5dfa50b3c6df24bece55d5}{m\+\_\+\+Tree\+View}
+\item 
+Glib\+::\+Ref\+Ptr$<$ Gtk\+::\+List\+Store $>$ \hyperlink{class_strategy_g_u_i_ab79147b9b65eeb3fd5b8cfa465ebbcd2}{m\+\_\+ref\+Tree\+Model}
+\item 
+Gtk\+::\+V\+Box \hyperlink{class_strategy_g_u_i_a22dd39915a18f382a3a85ce9445a46ea}{menu\+\_\+vbox}
+\item 
+Gtk\+::\+H\+Box \hyperlink{class_strategy_g_u_i_a46039c0024ff8c2ffa23d0c88d52e350}{menu\+\_\+hbox} \mbox{[}2\mbox{]}
+\item 
+Gtk\+::\+Image \hyperlink{class_strategy_g_u_i_a9758531bf189741b6fb3c034cf3b4bab}{strategy\+\_\+img}
+\item 
+Gtk\+::\+Button \hyperlink{class_strategy_g_u_i_a9dee0f0a4764ed3e37d046dc2d2ff48d}{select\+\_\+button}
+\item 
+Gtk\+::\+Scrolled\+Window \hyperlink{class_strategy_g_u_i_a701b920a2ac049a90be53e9f8138ded0}{m\+\_\+\+Scrolled\+Window}
+\item 
+Gtk\+::\+Text\+View \hyperlink{class_strategy_g_u_i_aa75a678c30dcd633646661fff2978611}{strategy\+\_\+description\+\_\+view}
+\item 
+Glib\+::\+Ref\+Ptr$<$ Gtk\+::\+Text\+Buffer $>$ \hyperlink{class_strategy_g_u_i_ae4b31c57b6b7f5ecbfbaa6e73e5347d2}{strategy\+\_\+description\+\_\+text}
+\item 
+\hyperlink{class_strategy}{Strategy} \hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}
+\item 
+bool \hyperlink{class_strategy_g_u_i_a46f3c766dd61236382cc2681372f6538}{updating\+\_\+formation\+\_\+flag} = false
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}{formation\+\_\+fm}
+\item 
+bool \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\+\_\+flag} = false
+\item 
+bool \hyperlink{class_strategy_g_u_i_a83d19a6d98510e3984be7196c740d1fc}{update\+\_\+interface\+\_\+flag} = false
+\item 
+Gtk\+::\+Grid \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\+\_\+grid}
+\item 
+Gtk\+::\+Button \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\+\_\+load\+Formation}
+\item 
+Gtk\+::\+Button \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\+\_\+delete\+Formation}
+\item 
+Gtk\+::\+Toggle\+Button \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\+\_\+create\+Formation}
+\item 
+Gtk\+::\+Button \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\+\_\+save\+Formation}
+\item 
+Gtk\+::\+Combo\+Box\+Text \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\+\_\+box}
+\item 
+Gtk\+::\+Entry \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\+\_\+name\+\_\+entry}
+\item 
+cv\+::\+Point \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\+\_\+positions} \mbox{[}3\mbox{]}
+\item 
+float \hyperlink{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}{formation\+\_\+orientations} \mbox{[}3\mbox{]}
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_a0c1c6c29081524b2f721722867bc0c14}{behavior\+\_\+fm}
+\item 
+Gtk\+::\+Grid \hyperlink{class_strategy_g_u_i_a705ef10226625c54803a2d47424abd32}{behavior\+\_\+grid}
+\item 
+Gtk\+::\+Toggle\+Button \hyperlink{class_strategy_g_u_i_ae35ac01a050961304f3cc374e814c9dd}{bt\+\_\+penalty\+Behavior}
+\item 
+Gtk\+::\+Frame \hyperlink{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}{transitions\+\_\+fm}
+\item 
+Gtk\+::\+Grid \hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\+\_\+grid}
+\item 
+Gtk\+::\+Check\+Button \hyperlink{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}{transitions\+\_\+check}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{class_strategy_g_u_i_a6d19f90621b2b2d6cad000b196e697d9}{unconstant\+\_\+char} (const char $\ast$c\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Converts a constant string to an inconstant one. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_ac0caff70885aad2da169d808d97be3d2}{\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when a formation is selected and \textquotesingle{}load\textquotesingle{} button is clicked. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a5301539a6dc0b88cf402bf62d372c8fb}{\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when the delete button is clicked. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a21327fb17108edba191fa216ec73aafd}{\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when the save button is clicked. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_ada313ae77f231e7007ac83753cbdb5dc}{\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when the \textquotesingle{}create formation\textquotesingle{} button is clicked. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a3b4da86e02b0e51013801fed1ab9807f}{\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when a formation (or none) is selected. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_ab0aaf8ef6a664c6391c6fa0d6de40861}{\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when the \textquotesingle{}penalty\textquotesingle{} button is clicked. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a9ca1e9548a5cf277de63fe92ad92002b}{\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Switches \hyperlink{class_strategy}{Strategy}\textquotesingle{}s full\+\_\+transition\+\_\+enabled flag value. \end{DoxyCompactList}\item 
+void \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{load\+Saved\+Formations} ()
+\begin{DoxyCompactList}\small\item\em Loads formation.\+txt file and appends the saved formations on the checkbox. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 15 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_strategy_g_u_i_a6676ae87f9ccabe157ec8e60f94041b7}\label{class_strategy_g_u_i_a6676ae87f9ccabe157ec8e60f94041b7}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{Strategy\+G\+U\+I()}{StrategyGUI()}}
+{\footnotesize\ttfamily Strategy\+G\+U\+I\+::\+Strategy\+G\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor of a \hyperlink{class_strategy_g_u_i}{Strategy\+G\+UI} object. 
+
+
+
+Definition at line 3 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References configure\+Test\+Frame(), create\+Formation\+Frame(), create\+Transitions\+Frame(), strategy, and Strategy\+::test\+Frame.
+
+
+\begin{DoxyCode}
+3                          \{
+4     \hyperlink{class_strategy_g_u_i_a38540d2d52e6bd3955e85adce92dac41}{createFormationFrame}();
+5     \hyperlink{class_strategy_g_u_i_ab39aceb2dc4fc8b0b571d9284c463b5a}{createTransitionsFrame}();
+6     pack\_start(\hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.\hyperlink{class_strategy_a6fabfc409deb567f30bae2150cfbafad}{testFrame}, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+7     \hyperlink{class_strategy_g_u_i_aaeb2b9affadab5eafc8885f983a1cc36}{configureTestFrame}();
+8 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_strategy_g_u_i_a3957136621bf4eeeb13df4340b2fcb93}\label{class_strategy_g_u_i_a3957136621bf4eeeb13df4340b2fcb93}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!````~Strategy\+G\+UI@{$\sim$\+Strategy\+G\+UI}}
+\index{````~Strategy\+G\+UI@{$\sim$\+Strategy\+G\+UI}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{$\sim$\+Strategy\+G\+U\+I()}{~StrategyGUI()}}
+{\footnotesize\ttfamily Strategy\+G\+U\+I\+::$\sim$\+Strategy\+G\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor of a \hyperlink{class_strategy_g_u_i}{Strategy\+G\+UI} object. 
+
+
+
+Definition at line 10 of file strategy\+G\+U\+I.\+cpp.
+
+
+\begin{DoxyCode}
+10 \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_strategy_g_u_i_ada313ae77f231e7007ac83753cbdb5dc}\label{class_strategy_g_u_i_ada313ae77f231e7007ac83753cbdb5dc}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked}}
+\index{\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked()}{\_event\_createFormation\_bt\_clicked()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when the \textquotesingle{}create formation\textquotesingle{} button is clicked. 
+
+Makes the text field and \textquotesingle{}save\textquotesingle{} button available 
+
+Definition at line 246 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+create\+Formation, bt\+\_\+save\+Formation, formation\+\_\+flag, and formation\+\_\+name\+\_\+entry.
+
+
+
+Referenced by create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+246                                                     \{
+247     \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag} = !\hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag};
+248 
+249     \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_active(!\hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag});
+250     \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag});
+251     \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag});
+252 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_strategy_g_u_i_a5301539a6dc0b88cf402bf62d372c8fb}\label{class_strategy_g_u_i_a5301539a6dc0b88cf402bf62d372c8fb}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked}}
+\index{\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked()}{\_event\_deleteFormation\_bt\_clicked()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when the delete button is clicked. 
+
+Deletes the selected formation from the formations file (config/formation.\+txt) 
+
+Definition at line 89 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+create\+Formation, bt\+\_\+save\+Formation, formation\+\_\+box, formation\+\_\+flag, formation\+\_\+name\+\_\+entry, and load\+Saved\+Formations().
+
+
+
+Referenced by create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+89                                                     \{
+90     std::ofstream tmpTxtFile;
+91     std::ifstream txtFile;
+92     std::string formationName;
+93     std::string line;
+94 
+95     txtFile.open(\textcolor{stringliteral}{"config/formation.txt"});
+96     tmpTxtFile.open(\textcolor{stringliteral}{"config/tmp\_formation.txt"});
+97 
+98     \textcolor{keywordflow}{if}(txtFile.is\_open() && tmpTxtFile.is\_open()) \{
+99         getline(txtFile, line);
+100         \textcolor{comment}{// formações salvas}
+101         \textcolor{keywordtype}{int} n = atoi(line.c\_str());
+102         \textcolor{comment}{// se só tem uma formação salva, apaga o arquivo}
+103         \textcolor{keywordflow}{if}(n-1 == 0) \{
+104             std::cout << \textcolor{stringliteral}{"There was only one formation saved. Formation file deleted.\(\backslash\)n"};
+105             txtFile.close();
+106             tmpTxtFile.close();
+107 
+108             \textcolor{comment}{// desabilita os botões}
+109             \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag} = \textcolor{keyword}{false};
+110             \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_active(\textcolor{keyword}{false});
+111             \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\textcolor{keyword}{false});
+112             \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\textcolor{keyword}{false});
+113             \textcolor{comment}{// salva as alterações}
+114             txtFile.close();
+115             tmpTxtFile.close();
+116             \textcolor{comment}{// remove os arquivos}
+117             system(\textcolor{stringliteral}{"rm -rf config/formation.txt"});
+118             system(\textcolor{stringliteral}{"rm -rf config/tmp\_formation.txt"});
+119             \textcolor{comment}{// atualiza a interface}
+120             \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{loadSavedFormations}();
+121             \textcolor{keywordflow}{return};
+122         \}
+123         \textcolor{comment}{// decrementa o número de formações no novo arquivo}
+124         tmpTxtFile << (n-1) << std::endl;
+125         \textcolor{comment}{// para cada prox linha}
+126         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++) \{
+127             \textcolor{comment}{// move o cursor enquanto não é a linha que eu quero e copia os dados para o novo arquivo}
+128             getline(txtFile, line);
+129             \textcolor{comment}{// ignora a linha selecionada}
+130             \textcolor{keywordflow}{if}(i == \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.get\_active\_row\_number() - 1)
+131                 \textcolor{keywordflow}{continue};
+132 
+133             tmpTxtFile << line << std::endl;
+134         \}
+135 
+136         \textcolor{comment}{// desabilita os botões}
+137         \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag} = \textcolor{keyword}{false};
+138         \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_active(\textcolor{keyword}{false});
+139         \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\textcolor{keyword}{false});
+140         \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\textcolor{keyword}{false});
+141         \textcolor{comment}{// salva as alterações}
+142         txtFile.close();
+143         tmpTxtFile.close();
+144         \textcolor{comment}{// agora as alterações não são mais temporárias}
+145         system(\textcolor{stringliteral}{"rm -rf config/formation.txt"});
+146         system(\textcolor{stringliteral}{"mv config/tmp\_formation.txt config/formation.txt"});
+147         \textcolor{comment}{// atualiza a interface}
+148         \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{loadSavedFormations}();
+149     \} \textcolor{keywordflow}{else} std::cout << \textcolor{stringliteral}{"Could not delete formation.\(\backslash\)n"};
+150 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_strategy_g_u_i_a3b4da86e02b0e51013801fed1ab9807f}\label{class_strategy_g_u_i_a3b4da86e02b0e51013801fed1ab9807f}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed@{\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed}}
+\index{\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed@{\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed()}{\_event\_formation\_box\_changed()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+formation\+\_\+box\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when a formation (or none) is selected. 
+
+Checks if a formation is selected and, case positive, makes the \textquotesingle{}load\textquotesingle{} and \textquotesingle{}save\textquotesingle{} buttons available 
+
+Definition at line 254 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+delete\+Formation, bt\+\_\+load\+Formation, and formation\+\_\+box.
+
+
+
+Referenced by create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+254                                                \{
+255     \textcolor{keywordflow}{if}(\hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.get\_active\_row\_number() == 0) \{
+256         \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.set\_sensitive(\textcolor{keyword}{false});
+257         \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.set\_sensitive(\textcolor{keyword}{false});
+258         \textcolor{keywordflow}{return};
+259     \}
+260     \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.set\_sensitive(\textcolor{keyword}{true});
+261     \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.set\_sensitive(\textcolor{keyword}{true});
+262 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{class_strategy_g_u_i_ac0caff70885aad2da169d808d97be3d2}\label{class_strategy_g_u_i_ac0caff70885aad2da169d808d97be3d2}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked}}
+\index{\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked()}{\_event\_loadFormation\_bt\_clicked()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when a formation is selected and \textquotesingle{}load\textquotesingle{} button is clicked. 
+
+Loads the saved formations file and changes robot\textquotesingle{}s position flags The formation will be updated on camcap 
+
+Definition at line 26 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+delete\+Formation, bt\+\_\+load\+Formation, formation\+\_\+box, formation\+\_\+orientations, formation\+\_\+positions, update\+\_\+interface\+\_\+flag, and updating\+\_\+formation\+\_\+flag.
+
+
+
+Referenced by create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+26                                                   \{
+27     std::ifstream txtFile;
+28     std::string line;
+29     \textcolor{keywordtype}{char} * tmp\_substr;
+30 
+31     \textcolor{keywordflow}{if}(\hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.get\_active\_row\_number() == 0) \{
+32         \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.set\_sensitive(\textcolor{keyword}{false});
+33         \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.set\_sensitive(\textcolor{keyword}{false});
+34         \textcolor{keywordflow}{return};
+35     \}
+36 
+37     txtFile.open(\textcolor{stringliteral}{"config/formation.txt"});
+38 
+39     \textcolor{keywordflow}{if}(txtFile.is\_open()) \{
+40         getline(txtFile, line);
+41         \textcolor{comment}{// formações salvas}
+42         \textcolor{keywordtype}{int} n = atoi(line.c\_str());
+43         \textcolor{comment}{// para cada prox linha}
+44         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++) \{
+45             \textcolor{comment}{// move o cursor enquanto não é a linha que eu quero}
+46             getline(txtFile, line);
+47             \textcolor{keywordflow}{if}(i == \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.get\_active\_row\_number() - 1) \{
+48                 std::vector<std::string> strs;
+49                 boost::split(strs, line, boost::is\_any\_of(\textcolor{stringliteral}{" "}));
+50 
+51                 \textcolor{comment}{// pega robot 1 x position value}
+52                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[0].x = atof(strs.at(1).c\_str());
+53                 \textcolor{comment}{// pega robot 1 y position value}
+54                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[0].y = atof(strs.at(2).c\_str());
+55                 \textcolor{comment}{// pega robot 1 theta position value}
+56                 \hyperlink{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}{formation\_orientations}[0] = atof(strs.at(3).c\_str());
+57 
+58                 \textcolor{comment}{// pega robot 2 x position value}
+59                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[1].x = atof(strs.at(4).c\_str());
+60                 \textcolor{comment}{// pega robot 2 y position value}
+61                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[1].y = atof(strs.at(5).c\_str());
+62                 \textcolor{comment}{// pega robot 2 theta position value}
+63                 formation\_orientations[1] = atof(strs.at(6).c\_str());
+64 
+65                 \textcolor{comment}{// pega robot 3 x position value}
+66                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[2].x = atof(strs.at(7).c\_str());
+67                 \textcolor{comment}{// pega robot 3 y position value}
+68                 \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[2].y = atof(strs.at(8).c\_str());
+69                 \textcolor{comment}{// pega robot 3 theta position value}
+70                 formation\_orientations[2] = atof(strs.at(9).c\_str());
+71             \}
+72         \}
+73         \textcolor{comment}{// atualiza interface}
+74         \hyperlink{class_strategy_g_u_i_a83d19a6d98510e3984be7196c740d1fc}{update\_interface\_flag} = \textcolor{keyword}{true};
+75         std::cout << \textcolor{stringliteral}{"Begin positioning...\(\backslash\)n"};
+76         \textcolor{comment}{// valores disponíveis: formation\_positions e formation\_orientations}
+77         \textcolor{comment}{// isso é atualizado no camcap}
+78 
+79         \textcolor{comment}{// manda atualizar}
+80         \hyperlink{class_strategy_g_u_i_a46f3c766dd61236382cc2681372f6538}{updating\_formation\_flag} = \textcolor{keyword}{true};
+81 
+82         txtFile.close();
+83     \} \textcolor{keywordflow}{else} \{
+84         \textcolor{comment}{// não existem formações salvas}
+85         std::cout << \textcolor{stringliteral}{"You removed the file before I could read it.\(\backslash\)n"};
+86     \}
+87 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_strategy_g_u_i_a21327fb17108edba191fa216ec73aafd}\label{class_strategy_g_u_i_a21327fb17108edba191fa216ec73aafd}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked}}
+\index{\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked@{\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked()}{\_event\_saveFormation\_bt\_clicked()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when the save button is clicked. 
+
+Adds the formation in the formations file (config/formation.\+txt) 
+
+Definition at line 152 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+create\+Formation, bt\+\_\+save\+Formation, formation\+\_\+flag, formation\+\_\+name\+\_\+entry, formation\+\_\+orientations, formation\+\_\+positions, and load\+Saved\+Formations().
+
+
+
+Referenced by create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+152                                                   \{
+153     std::ofstream tmpTxtFile;
+154     std::ifstream txtFile;
+155     std::string formationName;
+156     std::string line;
+157 
+158     \textcolor{keywordflow}{if}(!\hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag}) \{
+159         std::cout << \textcolor{stringliteral}{"Synchronicity error. Flag should be set.\(\backslash\)n"};
+160         \textcolor{keywordflow}{return};
+161     \}
+162 
+163     txtFile.open(\textcolor{stringliteral}{"config/formation.txt"});
+164     tmpTxtFile.open(\textcolor{stringliteral}{"config/tmp\_formation.txt"});
+165 
+166     \textcolor{comment}{// verifica se o nome foi preenchido}
+167     formationName = \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.get\_text();
+168 
+169     \textcolor{keywordflow}{if}(formationName == \textcolor{stringliteral}{""}) \{
+170         std::cout << \textcolor{stringliteral}{"Your formation needs to have a name."};
+171         \textcolor{keywordflow}{return};
+172     \}
+173 
+174     \textcolor{comment}{// coloca a string no formato certo para ser salva no arquivo}
+175     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; formationName[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{
+176         \textcolor{keywordflow}{if}(!(formationName[i] >= \textcolor{charliteral}{'a'} && formationName[i] <= \textcolor{charliteral}{'z'}) && !(formationName[i] >= \textcolor{charliteral}{'A'} && 
+      formationName[i] <= \textcolor{charliteral}{'Z'})) \{
+177             formationName[i] = \textcolor{charliteral}{'\_'};
+178         \}
+179     \}
+180 
+181     \textcolor{keywordflow}{if} (txtFile.is\_open() && tmpTxtFile.is\_open()) \{
+182         getline(txtFile, line);
+183         \textcolor{comment}{// formações salvas}
+184         \textcolor{keywordtype}{int} n = atoi(line.c\_str());
+185         \textcolor{comment}{// incrementa o número de formações no novo arquivo}
+186         tmpTxtFile << (n+1) << std::endl;
+187 
+188         \textcolor{comment}{// para cada prox linha}
+189         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++) \{
+190             \textcolor{comment}{// move o cursor enquanto não é a linha que eu quero e copia os dados para o novo arquivo}
+191             getline(txtFile, line);
+192             tmpTxtFile << line << std::endl;
+193         \}
+194 
+195         \textcolor{comment}{// grava os novos dados no arquivo}
+196         tmpTxtFile << formationName << \textcolor{stringliteral}{" "};
+197 
+198         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 3; i++) \{
+199             \textcolor{comment}{// não importa deixar o " " no final pois na leitura ele é ignorado}
+200             tmpTxtFile << \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[i].x << \textcolor{stringliteral}{" "} << 
+      \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[i].y << \textcolor{stringliteral}{" "} << \hyperlink{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}{formation\_orientations}[i] << \textcolor{stringliteral}{" 
+      "};
+201         \}
+202 
+203         tmpTxtFile << std::endl;
+204 
+205         \textcolor{comment}{// desabilita os botões}
+206         \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag} = \textcolor{keyword}{false};
+207         \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_active(\textcolor{keyword}{false});
+208         \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\textcolor{keyword}{false});
+209         \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\textcolor{keyword}{false});
+210         \textcolor{comment}{// salva as alterações}
+211         txtFile.close();
+212         tmpTxtFile.close();
+213         \textcolor{comment}{// agora as alterações não são mais temporárias}
+214         system(\textcolor{stringliteral}{"rm -rf config/formation.txt"});
+215         system(\textcolor{stringliteral}{"mv config/tmp\_formation.txt config/formation.txt"});
+216         \textcolor{comment}{// atualiza a interface}
+217         \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{loadSavedFormations}();
+218 
+219     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tmpTxtFile.is\_open()) \{ \textcolor{comment}{// primeira formação salva}
+220         tmpTxtFile << 1 << std::endl;
+221         \textcolor{comment}{// grava os novos dados no arquivo}
+222         tmpTxtFile << formationName << \textcolor{stringliteral}{" "};
+223 
+224         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < 3; i++) \{
+225             \textcolor{comment}{// não importa deixar o " " no final pois na leitura ele é ignorado}
+226             tmpTxtFile << \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[i].x << \textcolor{stringliteral}{" "} << 
+      \hyperlink{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}{formation\_positions}[i].y << \textcolor{stringliteral}{" "} << \hyperlink{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}{formation\_orientations}[i] << \textcolor{stringliteral}{" 
+      "};
+227         \}
+228 
+229         tmpTxtFile << std::endl;
+230 
+231         \textcolor{comment}{// desabilita os botões}
+232         \hyperlink{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}{formation\_flag} = \textcolor{keyword}{false};
+233         \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_active(\textcolor{keyword}{false});
+234         \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\textcolor{keyword}{false});
+235         \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\textcolor{keyword}{false});
+236         \textcolor{comment}{// salva as alterações}
+237         tmpTxtFile.close();
+238         \textcolor{comment}{// agora as alterações não são mais temporárias}
+239         system(\textcolor{stringliteral}{"mv config/tmp\_formation.txt config/formation.txt"});
+240         \textcolor{comment}{// atualiza a interface}
+241         \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{loadSavedFormations}();
+242     \} \textcolor{keywordflow}{else} std::cout << \textcolor{stringliteral}{"Could not save formation.\(\backslash\)n"};
+243 
+244 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_strategy_g_u_i_ab0aaf8ef6a664c6391c6fa0d6de40861}\label{class_strategy_g_u_i_ab0aaf8ef6a664c6391c6fa0d6de40861}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior@{\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior}}
+\index{\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior@{\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior()}{\_event\_set\_penalty\_behavior()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+set\+\_\+penalty\+\_\+behavior (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when the \textquotesingle{}penalty\textquotesingle{} button is clicked. 
+
+Not implemented yet \mbox{\Hypertarget{class_strategy_g_u_i_a9ca1e9548a5cf277de63fe92ad92002b}\label{class_strategy_g_u_i_a9ca1e9548a5cf277de63fe92ad92002b}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked@{\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked}}
+\index{\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked@{\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked()}{\_event\_transitions\_checkbox\_signal\_clicked()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::\+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Switches \hyperlink{class_strategy}{Strategy}\textquotesingle{}s full\+\_\+transition\+\_\+enabled flag value. 
+
+
+
+Definition at line 264 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References debug\+\_\+log, strategy, and Strategy\+::transitions\+\_\+enabled.
+
+
+
+Referenced by create\+Transitions\+Frame().
+
+
+\begin{DoxyCode}
+264                                                              \{
+265     \hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.\hyperlink{class_strategy_a6d59806a95ef79a25d30c4f139c94671}{transitions\_enabled} = !\hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.
+      \hyperlink{class_strategy_a6d59806a95ef79a25d30c4f139c94671}{transitions\_enabled};
+266     \hyperlink{debug_8hpp_afde3f42696113719c9ae35507125ee6e}{debug\_log}(\textcolor{stringliteral}{"Transitions: "} + to\_string(\hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.
+      \hyperlink{class_strategy_a6d59806a95ef79a25d30c4f139c94671}{transitions\_enabled}));
+267 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{class_strategy_g_u_i_aaeb2b9affadab5eafc8885f983a1cc36}\label{class_strategy_g_u_i_aaeb2b9affadab5eafc8885f983a1cc36}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!configure\+Test\+Frame@{configure\+Test\+Frame}}
+\index{configure\+Test\+Frame@{configure\+Test\+Frame}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{configure\+Test\+Frame()}{configureTestFrame()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::configure\+Test\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Inicialization of labels and values from Test Parameters frame. 
+
+
+
+Definition at line 317 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References Test\+Frame\+::configure\+H\+Scale(), Test\+Frame\+::set\+Label(), strategy, and Strategy\+::test\+Frame.
+
+
+
+Referenced by Strategy\+G\+U\+I().
+
+
+\begin{DoxyCode}
+317                                      \{
+318     std::string labels[5] = \{\textcolor{stringliteral}{"Goalie Line"}, \textcolor{stringliteral}{"Goalie Offset"}, \textcolor{stringliteral}{"Name 3"}, \textcolor{stringliteral}{"Name 4"}, \textcolor{stringliteral}{"Name 5"}\};
+319     \textcolor{keywordtype}{double} min[5] = \{0, 0, 0, 0, 0\};
+320     \textcolor{keywordtype}{double} max[5] = \{160, 100, 100, 100, 100\};
+321     \textcolor{keywordtype}{double} currentValue[5] = \{60, 15, 20, 30, 40\};
+322     \textcolor{keywordtype}{double} digits[5] = \{0, 0, 0, 0, 0\};
+323     \textcolor{keywordtype}{double} steps[5] = \{5, 1, 1, 1, 1\};
+324 
+325     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 5; i++) \{
+326         \hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.\hyperlink{class_strategy_a6fabfc409deb567f30bae2150cfbafad}{testFrame}.\hyperlink{class_test_frame_a125817ea431fb013eaf2b9f11714bd9b}{setLabel}(i, labels[i]);
+327         \hyperlink{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}{strategy}.\hyperlink{class_strategy_a6fabfc409deb567f30bae2150cfbafad}{testFrame}.\hyperlink{class_test_frame_a11a2d806abe566abbc431bff4b43ab79}{configureHScale}(i, currentValue[i], min[i], max[
+      i], digits[i], steps[i]);
+328     \}
+329 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{class_strategy_g_u_i_a38540d2d52e6bd3955e85adce92dac41}\label{class_strategy_g_u_i_a38540d2d52e6bd3955e85adce92dac41}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!create\+Formation\+Frame@{create\+Formation\+Frame}}
+\index{create\+Formation\+Frame@{create\+Formation\+Frame}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{create\+Formation\+Frame()}{createFormationFrame()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::create\+Formation\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Formation frame creator. 
+
+
+
+Definition at line 331 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+formation\+\_\+box\+\_\+changed(), \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), bt\+\_\+create\+Formation, bt\+\_\+delete\+Formation, bt\+\_\+load\+Formation, bt\+\_\+save\+Formation, formation\+\_\+box, formation\+\_\+fm, formation\+\_\+grid, formation\+\_\+name\+\_\+entry, and load\+Saved\+Formations().
+
+
+
+Referenced by Strategy\+G\+U\+I().
+
+
+\begin{DoxyCode}
+331                                        \{
+332     pack\_start(\hyperlink{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}{formation\_fm}, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+333     \hyperlink{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}{formation\_fm}.add(\hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid});
+334     \hyperlink{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}{formation\_fm}.set\_label(\textcolor{stringliteral}{"Formation"});
+335     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.set\_halign(Gtk::ALIGN\_CENTER);
+336 
+337     \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_label(\textcolor{stringliteral}{"Create Formation"});
+338     \hyperlink{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}{loadSavedFormations}();
+339     \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.set\_label(\textcolor{stringliteral}{"Load"});
+340     \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.set\_label(\textcolor{stringliteral}{"Delete"});
+341     \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_max\_length(30);
+342     \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_width\_chars(30);
+343     \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_text(Glib::ustring::format(\textcolor{stringliteral}{"Formation\_name"}));
+344     \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_label(\textcolor{stringliteral}{"Save"});
+345 
+346     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.set\_border\_width(10);
+347     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.set\_column\_spacing(5);
+348 
+349     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}, 0, 0, 1, 1);
+350     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}, 0, 1, 1, 1);
+351     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}, 1, 1, 1, 1);
+352     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}, 2, 1, 1, 1);
+353     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}, 0, 2, 1, 1);
+354     \hyperlink{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}{formation\_grid}.attach(\hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}, 1, 2, 1, 1);
+355 
+356     \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita quando der start}
+357     \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita quando der start}
+358 
+359     \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita só quando selecionar uma formação}
+360     \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita só quando selecionar uma
+       formação}
+361     \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita só quando o createFormation está
+       ativado}
+362     \hyperlink{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}{formation\_name\_entry}.set\_sensitive(\textcolor{keyword}{false}); \textcolor{comment}{// habilita só quando o createFormation
+       está ativado}
+363 
+364     \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.signal\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_a3b4da86e02b0e51013801fed1ab9807f}{StrategyGUI::\_event\_formation\_box\_changed}));
+365     \hyperlink{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}{bt\_createFormation}.signal\_pressed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_ada313ae77f231e7007ac83753cbdb5dc}{StrategyGUI::\_event\_createFormation\_bt\_clicked}));
+366     \hyperlink{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}{bt\_saveFormation}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_a21327fb17108edba191fa216ec73aafd}{StrategyGUI::\_event\_saveFormation\_bt\_clicked}));
+367     \hyperlink{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}{bt\_loadFormation}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_ac0caff70885aad2da169d808d97be3d2}{StrategyGUI::\_event\_loadFormation\_bt\_clicked}));
+368     \hyperlink{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}{bt\_deleteFormation}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_a5301539a6dc0b88cf402bf62d372c8fb}{StrategyGUI::\_event\_deleteFormation\_bt\_clicked}));
+369 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{class_strategy_g_u_i_ab39aceb2dc4fc8b0b571d9284c463b5a}\label{class_strategy_g_u_i_ab39aceb2dc4fc8b0b571d9284c463b5a}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!create\+Transitions\+Frame@{create\+Transitions\+Frame}}
+\index{create\+Transitions\+Frame@{create\+Transitions\+Frame}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{create\+Transitions\+Frame()}{createTransitionsFrame()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::create\+Transitions\+Frame (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Transitions frame creator. 
+
+
+
+Definition at line 299 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked(), transitions\+\_\+check, transitions\+\_\+fm, and transitions\+\_\+grid.
+
+
+
+Referenced by Strategy\+G\+U\+I().
+
+
+\begin{DoxyCode}
+299                                          \{
+300     pack\_start(\hyperlink{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}{transitions\_fm}, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+301 
+302     \hyperlink{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}{transitions\_fm}.set\_label(\textcolor{stringliteral}{"Transitions"});
+303     \hyperlink{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}{transitions\_fm}.add(\hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\_grid});
+304     
+305     \hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\_grid}.set\_border\_width(10);
+306     \hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\_grid}.set\_column\_spacing(5);
+307     \hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\_grid}.set\_halign(Gtk::ALIGN\_CENTER); 
+308 
+309     \hyperlink{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}{transitions\_grid}.attach(\hyperlink{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}{transitions\_check}, 0, 0, 1, 1);
+310 
+311     \hyperlink{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}{transitions\_check}.set\_label(\textcolor{stringliteral}{"Enable Transitions"});
+312     \hyperlink{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}{transitions\_check}.set\_active();
+313 
+314     \hyperlink{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}{transitions\_check}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_strategy_g_u_i_a9ca1e9548a5cf277de63fe92ad92002b}{StrategyGUI::\_event\_transitions\_checkbox\_signal\_clicked}
+      ));
+315 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}\label{class_strategy_g_u_i_a616a0f321878532cf85cfd02564758b5}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!load\+Saved\+Formations@{load\+Saved\+Formations}}
+\index{load\+Saved\+Formations@{load\+Saved\+Formations}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{load\+Saved\+Formations()}{loadSavedFormations()}}
+{\footnotesize\ttfamily void Strategy\+G\+U\+I\+::load\+Saved\+Formations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Loads formation.\+txt file and appends the saved formations on the checkbox. 
+
+File structure\+: Number of formations formation\+\_\+name r1x r1y r1o r2x r2y r2o r3x r3y r3o 
+
+Definition at line 269 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+References formation\+\_\+box, and unconstant\+\_\+char().
+
+
+
+Referenced by \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), and create\+Formation\+Frame().
+
+
+\begin{DoxyCode}
+269                                       \{
+270     std::ifstream txtFile;
+271     std::string line;
+272 
+273     txtFile.open(\textcolor{stringliteral}{"config/formation.txt"});
+274 
+275     \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.remove\_all();
+276     \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.append(\textcolor{stringliteral}{"None"});
+277 
+278     \textcolor{keywordflow}{if}(txtFile.is\_open()) \{
+279         getline(txtFile, line);
+280         \textcolor{comment}{// formações salvas}
+281         \textcolor{keywordtype}{int} n = atoi(line.c\_str());
+282 
+283         \textcolor{comment}{// para cada prox linha}
+284         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < n; i++) \{
+285             getline(txtFile, line);
+286             \textcolor{comment}{// pega o nome da formação}
+287             \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.append(strtok(\hyperlink{class_strategy_g_u_i_a6d19f90621b2b2d6cad000b196e697d9}{unconstant\_char}(line.c\_str()), \textcolor{stringliteral}{" "}));
+288         \}
+289 
+290         txtFile.close();
+291     \} \textcolor{keywordflow}{else} \{
+292         \textcolor{comment}{// não existem formações salvas}
+293         \textcolor{comment}{// std::cout << "There's no saved robot formations.\(\backslash\)n";}
+294     \}
+295     \textcolor{comment}{// seleciona o None como padrão}
+296     \hyperlink{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}{formation\_box}.set\_active(0);
+297 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{class_strategy_g_u_i_a6d19f90621b2b2d6cad000b196e697d9}\label{class_strategy_g_u_i_a6d19f90621b2b2d6cad000b196e697d9}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!unconstant\+\_\+char@{unconstant\+\_\+char}}
+\index{unconstant\+\_\+char@{unconstant\+\_\+char}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{unconstant\+\_\+char()}{unconstant\_char()}}
+{\footnotesize\ttfamily char $\ast$ Strategy\+G\+U\+I\+::unconstant\+\_\+char (\begin{DoxyParamCaption}\item[{const char $\ast$}]{c\+\_\+str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts a constant string to an inconstant one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\+\_\+str} & Constant string to be converted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+char$\ast$ Not-\/const converted string 
+\end{DoxyReturn}
+
+
+Definition at line 12 of file strategy\+G\+U\+I.\+cpp.
+
+
+
+Referenced by load\+Saved\+Formations().
+
+
+\begin{DoxyCode}
+12                                                       \{
+13     \textcolor{keywordtype}{char} * uc;
+14     \textcolor{keywordtype}{int} len;
+15     \textcolor{comment}{// tamanho da string}
+16     \textcolor{keywordflow}{for}(len = 0; c\_str[len] != \textcolor{charliteral}{'\(\backslash\)0'}; len++);
+17     \textcolor{comment}{// aloca nova string}
+18     uc = (\textcolor{keywordtype}{char} *) malloc(len*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));
+19     \textcolor{comment}{// copia dados}
+20     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < len; i++)
+21         uc[i] = c\_str[i];
+22 
+23     \textcolor{keywordflow}{return} uc;
+24 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_strategy_g_u_i_a0c1c6c29081524b2f721722867bc0c14}\label{class_strategy_g_u_i_a0c1c6c29081524b2f721722867bc0c14}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!behavior\+\_\+fm@{behavior\+\_\+fm}}
+\index{behavior\+\_\+fm@{behavior\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{behavior\+\_\+fm}{behavior\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::behavior\+\_\+fm}
+
+
+
+Definition at line 124 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a705ef10226625c54803a2d47424abd32}\label{class_strategy_g_u_i_a705ef10226625c54803a2d47424abd32}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!behavior\+\_\+grid@{behavior\+\_\+grid}}
+\index{behavior\+\_\+grid@{behavior\+\_\+grid}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{behavior\+\_\+grid}{behavior\_grid}}
+{\footnotesize\ttfamily Gtk\+::\+Grid Strategy\+G\+U\+I\+::behavior\+\_\+grid}
+
+
+
+Definition at line 125 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}\label{class_strategy_g_u_i_ab6edc11fb98709c98ad1815998aa937a}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!bt\+\_\+create\+Formation@{bt\+\_\+create\+Formation}}
+\index{bt\+\_\+create\+Formation@{bt\+\_\+create\+Formation}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+create\+Formation}{bt\_createFormation}}
+{\footnotesize\ttfamily Gtk\+::\+Toggle\+Button Strategy\+G\+U\+I\+::bt\+\_\+create\+Formation}
+
+
+
+Definition at line 117 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), create\+Formation\+Frame(), and Cam\+Cap\+::start\+\_\+signal().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}\label{class_strategy_g_u_i_acce16be9100c9d09a3a9ca2087b8370b}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!bt\+\_\+delete\+Formation@{bt\+\_\+delete\+Formation}}
+\index{bt\+\_\+delete\+Formation@{bt\+\_\+delete\+Formation}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+delete\+Formation}{bt\_deleteFormation}}
+{\footnotesize\ttfamily Gtk\+::\+Button Strategy\+G\+U\+I\+::bt\+\_\+delete\+Formation}
+
+
+
+Definition at line 116 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+formation\+\_\+box\+\_\+changed(), \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), and create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}\label{class_strategy_g_u_i_a89efee7959e39e3c993080d88262521d}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!bt\+\_\+load\+Formation@{bt\+\_\+load\+Formation}}
+\index{bt\+\_\+load\+Formation@{bt\+\_\+load\+Formation}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+load\+Formation}{bt\_loadFormation}}
+{\footnotesize\ttfamily Gtk\+::\+Button Strategy\+G\+U\+I\+::bt\+\_\+load\+Formation}
+
+
+
+Definition at line 115 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+formation\+\_\+box\+\_\+changed(), \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), and create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ae35ac01a050961304f3cc374e814c9dd}\label{class_strategy_g_u_i_ae35ac01a050961304f3cc374e814c9dd}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!bt\+\_\+penalty\+Behavior@{bt\+\_\+penalty\+Behavior}}
+\index{bt\+\_\+penalty\+Behavior@{bt\+\_\+penalty\+Behavior}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+penalty\+Behavior}{bt\_penaltyBehavior}}
+{\footnotesize\ttfamily Gtk\+::\+Toggle\+Button Strategy\+G\+U\+I\+::bt\+\_\+penalty\+Behavior}
+
+
+
+Definition at line 126 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}\label{class_strategy_g_u_i_ae68d7475f55a82e46d74eb8b3cd53b9e}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!bt\+\_\+save\+Formation@{bt\+\_\+save\+Formation}}
+\index{bt\+\_\+save\+Formation@{bt\+\_\+save\+Formation}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+save\+Formation}{bt\_saveFormation}}
+{\footnotesize\ttfamily Gtk\+::\+Button Strategy\+G\+U\+I\+::bt\+\_\+save\+Formation}
+
+
+
+Definition at line 118 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), and create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}\label{class_strategy_g_u_i_a0f2ab3a2cdca1663def9c4ec1e366a5d}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+box@{formation\+\_\+box}}
+\index{formation\+\_\+box@{formation\+\_\+box}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+box}{formation\_box}}
+{\footnotesize\ttfamily Gtk\+::\+Combo\+Box\+Text Strategy\+G\+U\+I\+::formation\+\_\+box}
+
+
+
+Definition at line 119 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+formation\+\_\+box\+\_\+changed(), \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), create\+Formation\+Frame(), load\+Saved\+Formations(), and Cam\+Cap\+::start\+\_\+signal().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}\label{class_strategy_g_u_i_aaac145125516fb8b7fe7137db18cdb58}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+flag@{formation\+\_\+flag}}
+\index{formation\+\_\+flag@{formation\+\_\+flag}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+flag}{formation\_flag}}
+{\footnotesize\ttfamily bool Strategy\+G\+U\+I\+::formation\+\_\+flag = false}
+
+
+
+Definition at line 112 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), and Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}\label{class_strategy_g_u_i_a1e0acda1bb4132bcb704eaf3bb0434f2}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+fm@{formation\+\_\+fm}}
+\index{formation\+\_\+fm@{formation\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+fm}{formation\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::formation\+\_\+fm}
+
+
+
+Definition at line 111 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}\label{class_strategy_g_u_i_a86e01136167ad809807e6341957a850c}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+grid@{formation\+\_\+grid}}
+\index{formation\+\_\+grid@{formation\+\_\+grid}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+grid}{formation\_grid}}
+{\footnotesize\ttfamily Gtk\+::\+Grid Strategy\+G\+U\+I\+::formation\+\_\+grid}
+
+
+
+Definition at line 114 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}\label{class_strategy_g_u_i_a19406b76eaf73c06545aa1c67c0636ce}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+name\+\_\+entry@{formation\+\_\+name\+\_\+entry}}
+\index{formation\+\_\+name\+\_\+entry@{formation\+\_\+name\+\_\+entry}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+name\+\_\+entry}{formation\_name\_entry}}
+{\footnotesize\ttfamily Gtk\+::\+Entry Strategy\+G\+U\+I\+::formation\+\_\+name\+\_\+entry}
+
+
+
+Definition at line 120 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+create\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+delete\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), and create\+Formation\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}\label{class_strategy_g_u_i_ad8d7e6bbfceba5d6284c8825f37ea8a2}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+orientations@{formation\+\_\+orientations}}
+\index{formation\+\_\+orientations@{formation\+\_\+orientations}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+orientations}{formation\_orientations}}
+{\footnotesize\ttfamily float Strategy\+G\+U\+I\+::formation\+\_\+orientations\mbox{[}3\mbox{]}}
+
+Updated only if the flag is activated 
+
+Definition at line 122 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), Cam\+Cap\+::formation\+\_\+creation(), and Cam\+Cap\+::update\+\_\+formation\+\_\+information().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}\label{class_strategy_g_u_i_a4d2d15fe0a25b8d9d8fa56a4cf155ff0}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!formation\+\_\+positions@{formation\+\_\+positions}}
+\index{formation\+\_\+positions@{formation\+\_\+positions}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{formation\+\_\+positions}{formation\_positions}}
+{\footnotesize\ttfamily cv\+::\+Point Strategy\+G\+U\+I\+::formation\+\_\+positions\mbox{[}3\mbox{]}}
+
+Updated only if the flag is activated 
+
+Definition at line 121 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), \+\_\+event\+\_\+save\+Formation\+\_\+bt\+\_\+clicked(), Cam\+Cap\+::formation\+\_\+creation(), and Cam\+Cap\+::update\+\_\+formation\+\_\+information().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a496abab2fd8b0a79a7143337ca8bbc3b}\label{class_strategy_g_u_i_a496abab2fd8b0a79a7143337ca8bbc3b}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!info\+\_\+img\+\_\+fm@{info\+\_\+img\+\_\+fm}}
+\index{info\+\_\+img\+\_\+fm@{info\+\_\+img\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{info\+\_\+img\+\_\+fm}{info\_img\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::info\+\_\+img\+\_\+fm}
+
+
+
+Definition at line 92 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a81adadee3d628dfe9e52b91856313f5d}\label{class_strategy_g_u_i_a81adadee3d628dfe9e52b91856313f5d}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!info\+\_\+text\+\_\+fm@{info\+\_\+text\+\_\+fm}}
+\index{info\+\_\+text\+\_\+fm@{info\+\_\+text\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{info\+\_\+text\+\_\+fm}{info\_text\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::info\+\_\+text\+\_\+fm}
+
+
+
+Definition at line 91 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ab79147b9b65eeb3fd5b8cfa465ebbcd2}\label{class_strategy_g_u_i_ab79147b9b65eeb3fd5b8cfa465ebbcd2}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!m\+\_\+ref\+Tree\+Model@{m\+\_\+ref\+Tree\+Model}}
+\index{m\+\_\+ref\+Tree\+Model@{m\+\_\+ref\+Tree\+Model}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{m\+\_\+ref\+Tree\+Model}{m\_refTreeModel}}
+{\footnotesize\ttfamily Glib\+::\+Ref\+Ptr$<$Gtk\+::\+List\+Store$>$ Strategy\+G\+U\+I\+::m\+\_\+ref\+Tree\+Model}
+
+
+
+Definition at line 94 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a701b920a2ac049a90be53e9f8138ded0}\label{class_strategy_g_u_i_a701b920a2ac049a90be53e9f8138ded0}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!m\+\_\+\+Scrolled\+Window@{m\+\_\+\+Scrolled\+Window}}
+\index{m\+\_\+\+Scrolled\+Window@{m\+\_\+\+Scrolled\+Window}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Scrolled\+Window}{m\_ScrolledWindow}}
+{\footnotesize\ttfamily Gtk\+::\+Scrolled\+Window Strategy\+G\+U\+I\+::m\+\_\+\+Scrolled\+Window}
+
+
+
+Definition at line 103 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a8e921fa14a5dfa50b3c6df24bece55d5}\label{class_strategy_g_u_i_a8e921fa14a5dfa50b3c6df24bece55d5}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!m\+\_\+\+Tree\+View@{m\+\_\+\+Tree\+View}}
+\index{m\+\_\+\+Tree\+View@{m\+\_\+\+Tree\+View}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Tree\+View}{m\_TreeView}}
+{\footnotesize\ttfamily Gtk\+::\+Tree\+View Strategy\+G\+U\+I\+::m\+\_\+\+Tree\+View}
+
+
+
+Definition at line 93 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_aeffa5af57b84a289f73e852ea21af347}\label{class_strategy_g_u_i_aeffa5af57b84a289f73e852ea21af347}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!menu\+\_\+fm@{menu\+\_\+fm}}
+\index{menu\+\_\+fm@{menu\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{menu\+\_\+fm}{menu\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::menu\+\_\+fm}
+
+
+
+Definition at line 90 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a46039c0024ff8c2ffa23d0c88d52e350}\label{class_strategy_g_u_i_a46039c0024ff8c2ffa23d0c88d52e350}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!menu\+\_\+hbox@{menu\+\_\+hbox}}
+\index{menu\+\_\+hbox@{menu\+\_\+hbox}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{menu\+\_\+hbox}{menu\_hbox}}
+{\footnotesize\ttfamily Gtk\+::\+H\+Box Strategy\+G\+U\+I\+::menu\+\_\+hbox\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 97 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a22dd39915a18f382a3a85ce9445a46ea}\label{class_strategy_g_u_i_a22dd39915a18f382a3a85ce9445a46ea}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!menu\+\_\+vbox@{menu\+\_\+vbox}}
+\index{menu\+\_\+vbox@{menu\+\_\+vbox}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{menu\+\_\+vbox}{menu\_vbox}}
+{\footnotesize\ttfamily Gtk\+::\+V\+Box Strategy\+G\+U\+I\+::menu\+\_\+vbox}
+
+
+
+Definition at line 96 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a9dee0f0a4764ed3e37d046dc2d2ff48d}\label{class_strategy_g_u_i_a9dee0f0a4764ed3e37d046dc2d2ff48d}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!select\+\_\+button@{select\+\_\+button}}
+\index{select\+\_\+button@{select\+\_\+button}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{select\+\_\+button}{select\_button}}
+{\footnotesize\ttfamily Gtk\+::\+Button Strategy\+G\+U\+I\+::select\+\_\+button}
+
+
+
+Definition at line 101 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}\label{class_strategy_g_u_i_af8e7b112adca9d3de45cbb0ab00a80bb}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!strategy@{strategy}}
+\index{strategy@{strategy}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{strategy}{strategy}}
+{\footnotesize\ttfamily \hyperlink{class_strategy}{Strategy} Strategy\+G\+U\+I\+::strategy}
+
+
+
+Definition at line 107 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+transitions\+\_\+checkbox\+\_\+signal\+\_\+clicked(), Cam\+Cap\+::capture\+\_\+and\+\_\+show(), configure\+Test\+Frame(), Cam\+Cap\+::start\+\_\+signal(), and Strategy\+G\+U\+I().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ae4b31c57b6b7f5ecbfbaa6e73e5347d2}\label{class_strategy_g_u_i_ae4b31c57b6b7f5ecbfbaa6e73e5347d2}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!strategy\+\_\+description\+\_\+text@{strategy\+\_\+description\+\_\+text}}
+\index{strategy\+\_\+description\+\_\+text@{strategy\+\_\+description\+\_\+text}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{strategy\+\_\+description\+\_\+text}{strategy\_description\_text}}
+{\footnotesize\ttfamily Glib\+::\+Ref\+Ptr$<$Gtk\+::\+Text\+Buffer$>$ Strategy\+G\+U\+I\+::strategy\+\_\+description\+\_\+text}
+
+
+
+Definition at line 105 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_aa75a678c30dcd633646661fff2978611}\label{class_strategy_g_u_i_aa75a678c30dcd633646661fff2978611}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!strategy\+\_\+description\+\_\+view@{strategy\+\_\+description\+\_\+view}}
+\index{strategy\+\_\+description\+\_\+view@{strategy\+\_\+description\+\_\+view}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{strategy\+\_\+description\+\_\+view}{strategy\_description\_view}}
+{\footnotesize\ttfamily Gtk\+::\+Text\+View Strategy\+G\+U\+I\+::strategy\+\_\+description\+\_\+view}
+
+
+
+Definition at line 104 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a9758531bf189741b6fb3c034cf3b4bab}\label{class_strategy_g_u_i_a9758531bf189741b6fb3c034cf3b4bab}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!strategy\+\_\+img@{strategy\+\_\+img}}
+\index{strategy\+\_\+img@{strategy\+\_\+img}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{strategy\+\_\+img}{strategy\_img}}
+{\footnotesize\ttfamily Gtk\+::\+Image Strategy\+G\+U\+I\+::strategy\+\_\+img}
+
+
+
+Definition at line 99 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a5dfaa225c4c52a2dfba9a3a5a677a924}\label{class_strategy_g_u_i_a5dfaa225c4c52a2dfba9a3a5a677a924}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!strategy\+Columns@{strategy\+Columns}}
+\index{strategy\+Columns@{strategy\+Columns}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{strategy\+Columns}{strategyColumns}}
+{\footnotesize\ttfamily \hyperlink{class_strategy_g_u_i_1_1_model_columns}{Model\+Columns} Strategy\+G\+U\+I\+::strategy\+Columns}
+
+
+
+Definition at line 88 of file strategy\+G\+U\+I.\+hpp.
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}\label{class_strategy_g_u_i_ad74384d402b07845c2f9632f1382420b}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!transitions\+\_\+check@{transitions\+\_\+check}}
+\index{transitions\+\_\+check@{transitions\+\_\+check}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{transitions\+\_\+check}{transitions\_check}}
+{\footnotesize\ttfamily Gtk\+::\+Check\+Button Strategy\+G\+U\+I\+::transitions\+\_\+check}
+
+
+
+Definition at line 129 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by create\+Transitions\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}\label{class_strategy_g_u_i_ab3d47a7a0fb8e1f7e030c4daad0ca8ec}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!transitions\+\_\+fm@{transitions\+\_\+fm}}
+\index{transitions\+\_\+fm@{transitions\+\_\+fm}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{transitions\+\_\+fm}{transitions\_fm}}
+{\footnotesize\ttfamily Gtk\+::\+Frame Strategy\+G\+U\+I\+::transitions\+\_\+fm}
+
+
+
+Definition at line 127 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by create\+Transitions\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}\label{class_strategy_g_u_i_a1be6ca5d69ec2de3a1349ad480c9eb73}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!transitions\+\_\+grid@{transitions\+\_\+grid}}
+\index{transitions\+\_\+grid@{transitions\+\_\+grid}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{transitions\+\_\+grid}{transitions\_grid}}
+{\footnotesize\ttfamily Gtk\+::\+Grid Strategy\+G\+U\+I\+::transitions\+\_\+grid}
+
+
+
+Definition at line 128 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by create\+Transitions\+Frame().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a83d19a6d98510e3984be7196c740d1fc}\label{class_strategy_g_u_i_a83d19a6d98510e3984be7196c740d1fc}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!update\+\_\+interface\+\_\+flag@{update\+\_\+interface\+\_\+flag}}
+\index{update\+\_\+interface\+\_\+flag@{update\+\_\+interface\+\_\+flag}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{update\+\_\+interface\+\_\+flag}{update\_interface\_flag}}
+{\footnotesize\ttfamily bool Strategy\+G\+U\+I\+::update\+\_\+interface\+\_\+flag = false}
+
+
+
+Definition at line 113 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), and Cam\+Cap\+::formation\+\_\+creation().
+
+\mbox{\Hypertarget{class_strategy_g_u_i_a46f3c766dd61236382cc2681372f6538}\label{class_strategy_g_u_i_a46f3c766dd61236382cc2681372f6538}} 
+\index{Strategy\+G\+UI@{Strategy\+G\+UI}!updating\+\_\+formation\+\_\+flag@{updating\+\_\+formation\+\_\+flag}}
+\index{updating\+\_\+formation\+\_\+flag@{updating\+\_\+formation\+\_\+flag}!Strategy\+G\+UI@{Strategy\+G\+UI}}
+\subsubsection{\texorpdfstring{updating\+\_\+formation\+\_\+flag}{updating\_formation\_flag}}
+{\footnotesize\ttfamily bool Strategy\+G\+U\+I\+::updating\+\_\+formation\+\_\+flag = false}
+
+
+
+Definition at line 109 of file strategy\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+event\+\_\+load\+Formation\+\_\+bt\+\_\+clicked(), Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and Cam\+Cap\+::updating\+\_\+formation().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/\hyperlink{strategy_g_u_i_8hpp}{strategy\+G\+U\+I.\+hpp}\item 
+src/gui/\hyperlink{strategy_g_u_i_8cpp}{strategy\+G\+U\+I.\+cpp}\end{DoxyCompactItemize}

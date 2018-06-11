@@ -1,0 +1,38 @@
+digraph "Vision::setBlur"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node317 [label="Vision::setBlur",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node317 -> Node318 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node318 [label="VisionGUI::HScale_Blur\l_value_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#a2f959701d835dd3fb53b20698754c013",tooltip="Call Vision&#39;s setBlur method passsing Blur value as a parameter. "];
+  Node318 -> Node319 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node319 [label="VisionGUI::__create\l_frm_hsv",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#a5022537a86f97e3eb1e037044301a0f7",tooltip="Creates HSV calibration frame and its inner elements. Ataches interface signals (button pressing/clic..."];
+  Node319 -> Node320 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node320 [label="VisionGUI::VisionGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#ae6e821e61b7cf4e0aada2044a2bd2aca"];
+  Node317 -> Node321 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node321 [label="jsonSaveManager::load\l_camera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a6184c9f744044a5ccdf34c6386275df8",tooltip="Load camera configurations from our JSON object to the interface. "];
+  Node321 -> Node322 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node322 [label="jsonSaveManager::load",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a79fd35c53290662b58c5a4869376fa2e",tooltip="Loads all avaliable configurations in the given .json file. "];
+  Node322 -> Node323 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node323 [label="VSSS_GUI::V4LInterface\l::__event_bt_load_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a62894fc8a49716b44d3a3c6a445fe880",tooltip="Event triggered when &#39;Load&#39; button is clicked. "];
+  Node323 -> Node324 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node324 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node322 -> Node325 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node325 [label="VSSS_GUI::V4LInterface\l::__event_bt_quick_load\l_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a3010084dff2d7f93eed40efaab8ee61b",tooltip="Event triggered when &#39;Quick Load&#39; button is clicked. "];
+  Node325 -> Node326 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node326 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node326 -> Node327 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node327 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node325 -> Node324 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node325 -> Node328 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node328 [label="VSSS_GUI::V4LInterface\l::__event_cb_device_changed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#af38c88f726a7ff9fab089ab9ed20c03c",tooltip="Event triggered when a new device is selected in Device combobox. "];
+  Node328 -> Node324 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node322 -> Node329 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node329 [label="VSSS_GUI::V4LInterface\l::event_start_game_bt\l_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8c3f91048adebeb0b5aa9838053cdcfe",tooltip="Event triggered when start button is clicked. Starts/finishes video recording. "];
+  Node329 -> Node324 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node317 -> Node330 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node330 [label="Vision::preloadHSV",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ac0c3f793197c5fec6dddb22ff7c7383c",tooltip="Loads default values to vision object, making callibration easier. "];
+  Node330 -> Node326 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

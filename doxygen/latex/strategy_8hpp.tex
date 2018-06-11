@@ -1,0 +1,100 @@
+\hypertarget{strategy_8hpp}{}\section{src/strategy.hpp File Reference}
+\label{strategy_8hpp}\index{src/strategy.\+hpp@{src/strategy.\+hpp}}
+{\ttfamily \#include \char`\"{}aux/debug.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}opencv2/opencv.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}aux/ls.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}robots.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gui/test\+Frame.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+Include dependency graph for strategy.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_strategy}{Strategy}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{strategy_8hpp_a11f808c4481e347f5ea9a10237470606}{N\+\_\+\+R\+O\+B\+O\+TS}~3
+\item 
+\#define \hyperlink{strategy_8hpp_a2cfb8f1dc12a40494d3679765c799742}{B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS}~0
+\item 
+\#define \hyperlink{strategy_8hpp_a8a115d5877f5ae5a0cb0e0dbd2fcb9ec}{B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS}~1
+\item 
+\#define \hyperlink{strategy_8hpp_aff56f4135d5c1aa39f7e6298d11ba516}{B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS}~2
+\item 
+\#define \hyperlink{strategy_8hpp_a186367f814d697648df4b8e000e9202a}{N\+O\+\_\+\+O\+BS}~3
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{strategy_8hpp_a2cfb8f1dc12a40494d3679765c799742}\label{strategy_8hpp_a2cfb8f1dc12a40494d3679765c799742}} 
+\index{strategy.\+hpp@{strategy.\+hpp}!B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS}}
+\index{B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS}!strategy.\+hpp@{strategy.\+hpp}}
+\subsubsection{\texorpdfstring{B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS}{BALL\_IS\_OBS}}
+{\footnotesize\ttfamily \#define B\+A\+L\+L\+\_\+\+I\+S\+\_\+\+O\+BS~0}
+
+
+
+Definition at line 15 of file strategy.\+hpp.
+
+
+
+Referenced by Strategy\+::pot\+Field().
+
+\mbox{\Hypertarget{strategy_8hpp_aff56f4135d5c1aa39f7e6298d11ba516}\label{strategy_8hpp_aff56f4135d5c1aa39f7e6298d11ba516}} 
+\index{strategy.\+hpp@{strategy.\+hpp}!B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS}}
+\index{B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS}!strategy.\+hpp@{strategy.\+hpp}}
+\subsubsection{\texorpdfstring{B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS}{BALL\_NOT\_OBS}}
+{\footnotesize\ttfamily \#define B\+A\+L\+L\+\_\+\+N\+O\+T\+\_\+\+O\+BS~2}
+
+
+
+Definition at line 17 of file strategy.\+hpp.
+
+
+
+Referenced by Strategy\+::pot\+Field().
+
+\mbox{\Hypertarget{strategy_8hpp_a8a115d5877f5ae5a0cb0e0dbd2fcb9ec}\label{strategy_8hpp_a8a115d5877f5ae5a0cb0e0dbd2fcb9ec}} 
+\index{strategy.\+hpp@{strategy.\+hpp}!B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS}}
+\index{B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS@{B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS}!strategy.\+hpp@{strategy.\+hpp}}
+\subsubsection{\texorpdfstring{B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS}{BALL\_ONLY\_OBS}}
+{\footnotesize\ttfamily \#define B\+A\+L\+L\+\_\+\+O\+N\+L\+Y\+\_\+\+O\+BS~1}
+
+
+
+Definition at line 16 of file strategy.\+hpp.
+
+
+
+Referenced by Strategy\+::pot\+\_\+field\+\_\+around(), and Strategy\+::pot\+Field().
+
+\mbox{\Hypertarget{strategy_8hpp_a11f808c4481e347f5ea9a10237470606}\label{strategy_8hpp_a11f808c4481e347f5ea9a10237470606}} 
+\index{strategy.\+hpp@{strategy.\+hpp}!N\+\_\+\+R\+O\+B\+O\+TS@{N\+\_\+\+R\+O\+B\+O\+TS}}
+\index{N\+\_\+\+R\+O\+B\+O\+TS@{N\+\_\+\+R\+O\+B\+O\+TS}!strategy.\+hpp@{strategy.\+hpp}}
+\subsubsection{\texorpdfstring{N\+\_\+\+R\+O\+B\+O\+TS}{N\_ROBOTS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+R\+O\+B\+O\+TS~3}
+
+
+
+Definition at line 13 of file strategy.\+hpp.
+
+\mbox{\Hypertarget{strategy_8hpp_a186367f814d697648df4b8e000e9202a}\label{strategy_8hpp_a186367f814d697648df4b8e000e9202a}} 
+\index{strategy.\+hpp@{strategy.\+hpp}!N\+O\+\_\+\+O\+BS@{N\+O\+\_\+\+O\+BS}}
+\index{N\+O\+\_\+\+O\+BS@{N\+O\+\_\+\+O\+BS}!strategy.\+hpp@{strategy.\+hpp}}
+\subsubsection{\texorpdfstring{N\+O\+\_\+\+O\+BS}{NO\_OBS}}
+{\footnotesize\ttfamily \#define N\+O\+\_\+\+O\+BS~3}
+
+
+
+Definition at line 18 of file strategy.\+hpp.
+
+
+
+Referenced by Strategy\+::pot\+Field().
+

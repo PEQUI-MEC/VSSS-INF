@@ -1,0 +1,14 @@
+digraph "ControlGUI::_send_test"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node36 [label="ControlGUI::_send_test",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node36 -> Node37 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node37 [label="ControlGUI::get_robot_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_control_g_u_i.html#ae165819cbfce64d6604aac836faf9f1a"];
+  Node36 -> Node38 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node38 [label="ControlGUI::isFloat",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_control_g_u_i.html#ad2912b87e92a5db7125da7264c57cbde",tooltip="Checks if a string is a float number. "];
+  Node36 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node39 [label="FlyingMessenger::send_msg",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_flying_messenger.html#a6cb8e42cf99c0a11afbb441db28864a3",tooltip="This method calls sendMessage method from xbee (instance of SerialCom class) and pass id and msg..."];
+}

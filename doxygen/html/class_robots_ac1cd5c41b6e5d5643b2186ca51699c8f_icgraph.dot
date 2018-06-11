@@ -1,0 +1,41 @@
+digraph "Robots::set_target"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node585 [label="Robots::set_target",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node585 -> Node586 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node586 [label="Strategy::atk_routine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a7af0ec883fe9e80c31cf030ce203f956"];
+  Node586 -> Node587 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node587 [label="Strategy::get_targets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#ab1c455b23e8b7f3377132a3e243f8f76"];
+  Node587 -> Node588 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node588 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node588 -> Node589 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node589 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node589 -> Node590 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node590 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node585 -> Node591 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node591 [label="Strategy::collision\l_check",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a8d1fa6e7cb13f7eb135bc853beef462d"];
+  Node591 -> Node587 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node592 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node592 [label="Strategy::crop_targets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a641f0314f2b05faa6d6838351a479f38"];
+  Node592 -> Node593 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node593 [label="Strategy::def_routine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a304c52736ec76d275adda7eeacdd430c"];
+  Node593 -> Node587 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node593 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node594 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node594 [label="Strategy::gk_routine",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a0e93b877f1da0c7a608c5641812f54d4"];
+  Node594 -> Node587 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node595 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 [label="Robots::kick",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#afb5fa179562bd2f6f45c9231c2bbca88"];
+  Node595 -> Node586 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node595 -> Node593 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node596 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node596 [label="CamCap::PID_test",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a93f8ee79ed618c215139e40eb0485c9f",tooltip="Executes the &#39;PID Test on click&#39; at the control panel. "];
+  Node596 -> Node588 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node585 -> Node597 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node597 [label="Strategy::pot_field\l_around",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#aef2ebe9a76fdb114d547f024e332b3d3"];
+  Node597 -> Node586 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node597 -> Node593 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

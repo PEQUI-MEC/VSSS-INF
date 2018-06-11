@@ -1,0 +1,248 @@
+\hypertarget{struct_robots_1_1_robot}{}\section{Robots\+:\+:Robot Struct Reference}
+\label{struct_robots_1_1_robot}\index{Robots\+::\+Robot@{Robots\+::\+Robot}}
+
+
+Collaboration diagram for Robots\+:\+:Robot\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Point \hyperlink{struct_robots_1_1_robot_a94c80cc2e1bfad2bfcc12c0e3c463e68}{position} = cv\+::\+Point(-\/1, -\/1)
+\item 
+cv\+::\+Point \hyperlink{struct_robots_1_1_robot_aa704ae0b73b952e80f990c529abf1f9c}{secondary} = cv\+::\+Point(-\/1, -\/1)
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s front point. \end{DoxyCompactList}\item 
+cv\+::\+Point \hyperlink{struct_robots_1_1_robot_a71780fa2401e52712b9bdc1699275063}{target} = cv\+::\+Point(-\/1, -\/1)
+\item 
+double \hyperlink{struct_robots_1_1_robot_aa2a6cb8cbdbbdeb8be6c6f552277b3e8}{orientation} = 0
+\item 
+double \hyperlink{struct_robots_1_1_robot_a6f2debee501324c946adf01dfddec728}{target\+Orientation} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+O\+R\+I\+E\+N\+T\+A\+T\+I\+ON target orientation. \end{DoxyCompactList}\item 
+int \hyperlink{struct_robots_1_1_robot_a8a6fa150b5dead69ab5a94ec92046f71}{role} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s role for strategy. \end{DoxyCompactList}\item 
+double \hyperlink{struct_robots_1_1_robot_a7be046467fb2c4ad455c5394667be2ad}{trans\+Angle} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+V\+E\+C\+T\+OR angle to its current orientation. \end{DoxyCompactList}\item 
+\hyperlink{class_robots_adcc7ae7fbb9bdc57a26ee70fa1ae88e5}{C\+MD} \hyperlink{struct_robots_1_1_robot_a3b0d74c67bc694279130a2f280d7096a}{cmd\+Type} = \hyperlink{serial_w_8hpp_a440f0e10bb28b153f5661c934bc6b89f}{C\+M\+D\+::\+P\+O\+S\+I\+T\+I\+ON}
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s command type, using C\+M\+D\+\_\+$\ast$ constants. \end{DoxyCompactList}\item 
+float \hyperlink{struct_robots_1_1_robot_a348bcae40a653cce3fd9fe42746d1bb8}{vmax} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s maximum velocity. \end{DoxyCompactList}\item 
+float \hyperlink{struct_robots_1_1_robot_aa0bc346c181a40b29735bfec12d94ca7}{Vl} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+S\+P\+E\+ED left and right wheel\textquotesingle{}s velocity. \end{DoxyCompactList}\item 
+float \hyperlink{struct_robots_1_1_robot_a7f9ac93eb83da8ea2dbb8a9aa75ad9f1}{Vr} = 0
+\item 
+bool \hyperlink{struct_robots_1_1_robot_afebd5333f53eb0da7da943b43ebfde3a}{fixed\+Pos} = false
+\begin{DoxyCompactList}\small\item\em Indicates if this robot has a fixed position (same position over time does not indicate collision) \end{DoxyCompactList}\item 
+bool \hyperlink{struct_robots_1_1_robot_af1e1627b59f42d4b49db7a46c9c04389}{using\+Pot\+Field} = false
+\begin{DoxyCompactList}\small\item\em Indicates if this robot is using potential field. \end{DoxyCompactList}\item 
+int \hyperlink{struct_robots_1_1_robot_ad161e93e13655a26146a5b5cd3d8f34b}{status} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s status defined by strategy. \end{DoxyCompactList}\item 
+char \hyperlink{struct_robots_1_1_robot_a3ce196fc3922dc0d256273d33f29da50}{ID} = \textquotesingle{}A\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em This robot\textquotesingle{}s hardware ID. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An internal structure to keep robot information. This structure cannot be seen by other classes -\/ use encapsulated objects (like \hyperlink{struct_robots_1_1_command}{Robots\+::\+Command} or \hyperlink{struct_robots_1_1___status}{Robots\+::\+\_\+\+Status}) to communicate \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s information. 
+
+Definition at line 94 of file robots.\+hpp.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_robots_1_1_robot_a3b0d74c67bc694279130a2f280d7096a}\label{struct_robots_1_1_robot_a3b0d74c67bc694279130a2f280d7096a}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!cmd\+Type@{cmd\+Type}}
+\index{cmd\+Type@{cmd\+Type}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{cmd\+Type}{cmdType}}
+{\footnotesize\ttfamily \hyperlink{class_robots_adcc7ae7fbb9bdc57a26ee70fa1ae88e5}{C\+MD} Robots\+::\+Robot\+::cmd\+Type = \hyperlink{serial_w_8hpp_a440f0e10bb28b153f5661c934bc6b89f}{C\+M\+D\+::\+P\+O\+S\+I\+T\+I\+ON}}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s command type, using C\+M\+D\+\_\+$\ast$ constants. 
+
+
+
+Definition at line 131 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_afebd5333f53eb0da7da943b43ebfde3a}\label{struct_robots_1_1_robot_afebd5333f53eb0da7da943b43ebfde3a}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!fixed\+Pos@{fixed\+Pos}}
+\index{fixed\+Pos@{fixed\+Pos}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{fixed\+Pos}{fixedPos}}
+{\footnotesize\ttfamily bool Robots\+::\+Robot\+::fixed\+Pos = false}
+
+
+
+Indicates if this robot has a fixed position (same position over time does not indicate collision) 
+
+
+
+Definition at line 140 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a3ce196fc3922dc0d256273d33f29da50}\label{struct_robots_1_1_robot_a3ce196fc3922dc0d256273d33f29da50}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!ID@{ID}}
+\index{ID@{ID}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{ID}{ID}}
+{\footnotesize\ttfamily char Robots\+::\+Robot\+::\+ID = \textquotesingle{}A\textquotesingle{}}
+
+
+
+This robot\textquotesingle{}s hardware ID. 
+
+
+
+Definition at line 149 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_aa2a6cb8cbdbbdeb8be6c6f552277b3e8}\label{struct_robots_1_1_robot_aa2a6cb8cbdbbdeb8be6c6f552277b3e8}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!orientation@{orientation}}
+\index{orientation@{orientation}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{orientation}{orientation}}
+{\footnotesize\ttfamily double Robots\+::\+Robot\+::orientation = 0}
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s orientation. 0 (or -\/0) tells us the robot is facing the opponent goal directly. 180 (or -\/180) tells us the robot is facing our goal directly. -\/90 tells us the robot is facing the upper side (smaller values of Y) of the field. 90 tells us the robot is facing the down side (higher values of Y) of the field. 
+
+Definition at line 119 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a94c80cc2e1bfad2bfcc12c0e3c463e68}\label{struct_robots_1_1_robot_a94c80cc2e1bfad2bfcc12c0e3c463e68}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!position@{position}}
+\index{position@{position}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily cv\+::\+Point Robots\+::\+Robot\+::position = cv\+::\+Point(-\/1, -\/1)}
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s position. (-\/1, -\/1) means that it has not been set yet. The robot\textquotesingle{}s last position is maintained if we can\textquotesingle{}t determine it in the actual frame. Remember\+: Y grows down, not up. X behaves normally. 
+
+Definition at line 101 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a8a6fa150b5dead69ab5a94ec92046f71}\label{struct_robots_1_1_robot_a8a6fa150b5dead69ab5a94ec92046f71}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!role@{role}}
+\index{role@{role}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{role}{role}}
+{\footnotesize\ttfamily int Robots\+::\+Robot\+::role = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s role for strategy. 
+
+
+
+Definition at line 125 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_aa704ae0b73b952e80f990c529abf1f9c}\label{struct_robots_1_1_robot_aa704ae0b73b952e80f990c529abf1f9c}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!secondary@{secondary}}
+\index{secondary@{secondary}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{secondary}{secondary}}
+{\footnotesize\ttfamily cv\+::\+Point Robots\+::\+Robot\+::secondary = cv\+::\+Point(-\/1, -\/1)}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s front point. 
+
+
+
+Definition at line 104 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_ad161e93e13655a26146a5b5cd3d8f34b}\label{struct_robots_1_1_robot_ad161e93e13655a26146a5b5cd3d8f34b}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!status@{status}}
+\index{status@{status}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily int Robots\+::\+Robot\+::status = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s status defined by strategy. 
+
+
+
+Definition at line 146 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a71780fa2401e52712b9bdc1699275063}\label{struct_robots_1_1_robot_a71780fa2401e52712b9bdc1699275063}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!target@{target}}
+\index{target@{target}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily cv\+::\+Point Robots\+::\+Robot\+::target = cv\+::\+Point(-\/1, -\/1)}
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON target position (-\/1, -\/1) means that the target is not set. 
+
+Definition at line 110 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a6f2debee501324c946adf01dfddec728}\label{struct_robots_1_1_robot_a6f2debee501324c946adf01dfddec728}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!target\+Orientation@{target\+Orientation}}
+\index{target\+Orientation@{target\+Orientation}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{target\+Orientation}{targetOrientation}}
+{\footnotesize\ttfamily double Robots\+::\+Robot\+::target\+Orientation = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+O\+R\+I\+E\+N\+T\+A\+T\+I\+ON target orientation. 
+
+
+
+Definition at line 122 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a7be046467fb2c4ad455c5394667be2ad}\label{struct_robots_1_1_robot_a7be046467fb2c4ad455c5394667be2ad}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!trans\+Angle@{trans\+Angle}}
+\index{trans\+Angle@{trans\+Angle}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{trans\+Angle}{transAngle}}
+{\footnotesize\ttfamily double Robots\+::\+Robot\+::trans\+Angle = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+V\+E\+C\+T\+OR angle to its current orientation. 
+
+
+
+Definition at line 128 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_af1e1627b59f42d4b49db7a46c9c04389}\label{struct_robots_1_1_robot_af1e1627b59f42d4b49db7a46c9c04389}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!using\+Pot\+Field@{using\+Pot\+Field}}
+\index{using\+Pot\+Field@{using\+Pot\+Field}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{using\+Pot\+Field}{usingPotField}}
+{\footnotesize\ttfamily bool Robots\+::\+Robot\+::using\+Pot\+Field = false}
+
+
+
+Indicates if this robot is using potential field. 
+
+
+
+Definition at line 143 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_aa0bc346c181a40b29735bfec12d94ca7}\label{struct_robots_1_1_robot_aa0bc346c181a40b29735bfec12d94ca7}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!Vl@{Vl}}
+\index{Vl@{Vl}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{Vl}{Vl}}
+{\footnotesize\ttfamily float Robots\+::\+Robot\+::\+Vl = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s C\+M\+D\+\_\+\+S\+P\+E\+ED left and right wheel\textquotesingle{}s velocity. 
+
+
+
+Definition at line 137 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a348bcae40a653cce3fd9fe42746d1bb8}\label{struct_robots_1_1_robot_a348bcae40a653cce3fd9fe42746d1bb8}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!vmax@{vmax}}
+\index{vmax@{vmax}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{vmax}{vmax}}
+{\footnotesize\ttfamily float Robots\+::\+Robot\+::vmax = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s maximum velocity. 
+
+
+
+Definition at line 134 of file robots.\+hpp.
+
+\mbox{\Hypertarget{struct_robots_1_1_robot_a7f9ac93eb83da8ea2dbb8a9aa75ad9f1}\label{struct_robots_1_1_robot_a7f9ac93eb83da8ea2dbb8a9aa75ad9f1}} 
+\index{Robots\+::\+Robot@{Robots\+::\+Robot}!Vr@{Vr}}
+\index{Vr@{Vr}!Robots\+::\+Robot@{Robots\+::\+Robot}}
+\subsubsection{\texorpdfstring{Vr}{Vr}}
+{\footnotesize\ttfamily float Robots\+::\+Robot\+::\+Vr = 0}
+
+
+
+Definition at line 137 of file robots.\+hpp.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{robots_8hpp}{robots.\+hpp}\end{DoxyCompactItemize}

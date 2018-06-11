@@ -1,0 +1,38 @@
+digraph "Vision::run"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node260 [label="Vision::run",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node260 -> Node261 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node261 [label="Vision::findTags",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a7321350b5ea7648219a4cd4f0f7ca48e"];
+  Node261 -> Node262 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node262 [label="Vision::segmentAndSearch",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a0e43481439b4b670f5dd66caefa09494",tooltip="invokes posProcessing() and searchTags() methods "];
+  Node262 -> Node263 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node263 [label="Vision::posProcessing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#af00cb00dca3916c4beebbd140ec8b153",tooltip="Executes medianBlur, erode and dilate. "];
+  Node262 -> Node264 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node264 [label="Vision::searchTags",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a717cabba99a7e8d5613df6dc699e31fe"];
+  Node260 -> Node265 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node265 [label="Vision::pick_a_tag",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ada61d6f3bfc003a8e0e49bb5ee3516a3",tooltip="uses inSphere() method "];
+  Node265 -> Node266 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node266 [label="Vision::inSphere",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a52fc530a0beea6bc8821cb83c5ae2cc5"];
+  Node266 -> Node267 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node267 [label="Vision::calcDistance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a4f6f281bd1aaacad29c9e48f4d8fb1b9"];
+  Node265 -> Node268 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node268 [label="Robots::set_orientation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a9040aa6c409fe67186aaa52f9183b7c1"];
+  Node268 -> Node269 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node269 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node269 -> Node270 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node270 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+  Node265 -> Node271 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node271 [label="Robots::set_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a96ac427f418c25db0c74295f75a58cbb"];
+  Node271 -> Node269 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node265 -> Node272 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node272 [label="Robots::set_secondary_tag",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a40620e7ef7a3003736ab1c0b82c2b3b2"];
+  Node272 -> Node269 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node260 -> Node273 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node273 [label="Vision::preProcessing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a6d23298e695a938d2491ae1f6264c694"];
+  Node260 -> Node274 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node274 [label="Vision::recordToVideo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a2ce5281f1eb08b71952407ef2a3f5eab"];
+}

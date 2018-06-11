@@ -1,0 +1,20 @@
+digraph "VSSS_GUI::V4LInterface::__set_control_hscale"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node537 [label="VSSS_GUI::V4LInterface\l::__set_control_hscale",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node537 -> Node538 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node538 [label="VSSS_GUI::V4LInterface\l::__update_control_widgets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#afbb5daccfdce20180578025c108ef65b"];
+  Node538 -> Node539 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node539 [label="VSSS_GUI::V4LInterface\l::__block_control_signals",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a677d3f2d0246528bafd19cf2d3dccf98"];
+  Node538 -> Node540 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node540 [label="v4lcap::get_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#affd6d918400a56e165d7a3e4fab8bdae",tooltip="Get the control object. "];
+  Node540 -> Node541 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node541 [label="v4lcap::xioctl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ab5aaa5a8c0df17f5ca57e0b5170232cb"];
+  Node537 -> Node540 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node537 -> Node542 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node542 [label="v4lcap::set_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a863a15d2d66cc0b7367dcc9cba64e0bd",tooltip="Set the control object. "];
+  Node542 -> Node541 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

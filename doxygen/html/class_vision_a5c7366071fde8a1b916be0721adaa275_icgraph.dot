@@ -1,0 +1,20 @@
+digraph "Vision::finishVideo"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node22 [label="Vision::finishVideo",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node22 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="VisionGUI::bt_record\l_video_pressed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#a78a250ff8c2520a56dce79d824dbeb85",tooltip="Starts video recording when &#39;REC&#39; button is pressed, changing its label to &#39;Stop&#39;, and vice-versa. If &#39;Video name&#39; textfield is empty, a numeric ID value will be assigned. "];
+  Node23 -> Node24 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="VisionGUI::__create\l_frm_capture",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#a9b0cac7f32fc402ce5aaff0325e39b77",tooltip="Creates HSV calibration frame and its inner elements. Ataches interface signals (button pressing/clic..."];
+  Node24 -> Node25 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="VisionGUI::VisionGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#ae6e821e61b7cf4e0aada2044a2bd2aca"];
+  Node22 -> Node26 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node26 [label="VSSS_GUI::V4LInterface\l::event_start_game_bt\l_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8c3f91048adebeb0b5aa9838053cdcfe",tooltip="Event triggered when start button is clicked. Starts/finishes video recording. "];
+  Node26 -> Node27 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node22 -> Node28 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="VisionGUI::~VisionGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#ae4892f8f0cff14a0d65ee55261b08999"];
+}

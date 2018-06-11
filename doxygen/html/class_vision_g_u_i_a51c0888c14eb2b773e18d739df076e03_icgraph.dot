@@ -1,0 +1,20 @@
+digraph "VisionGUI::__event_rb_split_mode_clicked"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node139 [label="VisionGUI::__event\l_rb_split_mode_clicked",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node139 -> Node140 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node140 [label="VisionGUI::__create\l_frm_split_view",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#aab78b384bacc2a12d385b1baef011ed4",tooltip="Creates Split View frame and its inner elements. Ataches interface signals (signals pressing/clicking..."];
+  Node140 -> Node141 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node141 [label="VisionGUI::VisionGUI",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#ae6e821e61b7cf4e0aada2044a2bd2aca"];
+  Node139 -> Node142 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node142 [label="VisionGUI::selectFrame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision_g_u_i.html#a26659931ea77f5b975fe1d0ce101c74c"];
+  Node142 -> Node143 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node143 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node143 -> Node144 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node144 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node144 -> Node145 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node145 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+}

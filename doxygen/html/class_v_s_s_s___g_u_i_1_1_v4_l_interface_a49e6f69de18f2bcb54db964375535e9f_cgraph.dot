@@ -1,0 +1,58 @@
+digraph "VSSS_GUI::V4LInterface::__event_cb_frame_size_changed"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node442 [label="VSSS_GUI::V4LInterface\l::__event_cb_frame_size\l_changed",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node442 -> Node443 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node443 [label="VSSS_GUI::V4LInterface\l::__update_all",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac3fe0a20fd30c6e9505eb375ef63e52e",tooltip="Update all combo box inputs on CaptureGUI. "];
+  Node443 -> Node444 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node444 [label="VSSS_GUI::V4LInterface\l::__update_cb_input",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a33ec32eed4c06634040616c52b588e01"];
+  Node444 -> Node445 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node445 [label="v4lcap::get_input",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a11e01d9043a7cb3537a772cc3a5bacb5",tooltip="Get the input object. "];
+  Node445 -> Node446 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node446 [label="v4lcap::get_input_index",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ad6cf8417903c40e86a087a236cd39337",tooltip="Get the input index object. "];
+  Node446 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node447 [label="v4lcap::xioctl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ab5aaa5a8c0df17f5ca57e0b5170232cb"];
+  Node445 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node444 -> Node448 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node448 [label="v4lcap::enum_video\l_input",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a77a9eda7d80dcf417afd97e6417d900b",tooltip="Enumerate video inputs. "];
+  Node448 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node443 -> Node449 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node449 [label="VSSS_GUI::V4LInterface\l::__update_cb_standard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a0decb6d5b23790bf902f9d202d727235"];
+  Node449 -> Node450 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node450 [label="v4lcap::get_standard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ad3ae859cc6d6d99146619ba550514aab",tooltip="Get the standard object. "];
+  Node450 -> Node451 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node451 [label="v4lcap::enum_video\l_standard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a236476c3f736c1870a63ed79f4c1d5a9",tooltip="Enumerate supported video. "];
+  Node451 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node450 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node449 -> Node451 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node443 -> Node452 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node452 [label="VSSS_GUI::V4LInterface\l::__update_cb_format_desc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad2da97031a8ca5d9e2d99f5a5459c267"];
+  Node452 -> Node453 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node453 [label="v4lcap::get_format",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#aa5c521438e06e14625c05a02bafd35c1",tooltip="Get the format object. "];
+  Node453 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node452 -> Node454 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node454 [label="v4lcap::enum_image\l_format",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4f5a8ccdd2a75e9d2f2d4d541fdb84dd",tooltip="Enumerate image formats. "];
+  Node454 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node443 -> Node455 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node455 [label="VSSS_GUI::V4LInterface\l::__update_cb_frame_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ab30bca15d7c9ffb5d3e7bc38ad2def25"];
+  Node455 -> Node453 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node455 -> Node456 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node456 [label="v4lcap::enum_frame_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a6b806d7b2bfce38081f71fe01f380f6f",tooltip="Enumerate frame sizes. "];
+  Node456 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node443 -> Node457 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node457 [label="VSSS_GUI::V4LInterface\l::__update_cb_frame_interval",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a0eeae871fc38dab3693860f6f391e062"];
+  Node457 -> Node453 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node457 -> Node458 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node458 [label="v4lcap::get_stream\l_parameter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a067a6b97d6c4d3ea83454132f1d3c87e",tooltip="Get the stream parameter object. "];
+  Node458 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node457 -> Node459 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node459 [label="v4lcap::enum_frame\l_interval",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#af4e34a5583945f2d24dd0cb298b5e191",tooltip="enumerate frame intervals "];
+  Node459 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node442 -> Node460 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node460 [label="v4lcap::set_frame_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a6ad01c926c3162e858e030c8525cb94b",tooltip="Set the frame size object. "];
+  Node460 -> Node453 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node460 -> Node447 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

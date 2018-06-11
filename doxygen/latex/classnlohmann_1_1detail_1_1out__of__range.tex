@@ -1,0 +1,132 @@
+\hypertarget{classnlohmann_1_1detail_1_1out__of__range}{}\section{nlohmann\+:\+:detail\+:\+:out\+\_\+of\+\_\+range Class Reference}
+\label{classnlohmann_1_1detail_1_1out__of__range}\index{nlohmann\+::detail\+::out\+\_\+of\+\_\+range@{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}}
+
+
+exception indicating access out of the defined range  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Inheritance diagram for nlohmann\+:\+:detail\+:\+:out\+\_\+of\+\_\+range\+:
+% FIG 0
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:out\+\_\+of\+\_\+range\+:
+% FIG 1
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classnlohmann_1_1detail_1_1out__of__range}{out\+\_\+of\+\_\+range} \hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{create} (int id\+\_\+, const \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std\+::string} \&what\+\_\+arg)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1out__of__range_ab5fe402019dba957558499502f0fd731}{out\+\_\+of\+\_\+range} (int id\+\_\+, const char $\ast$what\+\_\+arg)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+exception indicating access out of the defined range 
+
+This exception is thrown in case a library function is called on an input parameter that exceeds the expected range, for instance in case of array indices or nonexisting object keys.
+
+Exceptions have ids 4xx.
+
+\tabulinesep=1mm
+\begin{longtabu} spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name / id }&\textbf{ example message }&\textbf{ description  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\rowcolor{\tableheadbgcolor}\textbf{ name / id }&\textbf{ example message }&\textbf{ description  }\\\cline{1-3}
+\endhead
+json.\+exception.\+out\+\_\+of\+\_\+range.\+401 &array index 3 is out of range &The provided array index {\itshape i} is larger than {\itshape size-\/1}. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+402 &array index \textquotesingle{}-\/\textquotesingle{} (3) is out of range &The special array index {\ttfamily -\/} in a J\+S\+ON Pointer never describes a valid element of the array, but the index past the end. That is, it can only be used to add elements at this position, but not to read it. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+403 &key \textquotesingle{}foo\textquotesingle{} not found &The provided key was not found in the J\+S\+ON object. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+404 &unresolved reference token \textquotesingle{}foo\textquotesingle{} &A reference token in a J\+S\+ON Pointer could not be resolved. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+405 &J\+S\+ON pointer has no parent &The J\+S\+ON Patch operations \textquotesingle{}remove\textquotesingle{} and \textquotesingle{}add\textquotesingle{} can not be applied to the root element of the J\+S\+ON value. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+406 &number overflow parsing \textquotesingle{}10\+E1000\textquotesingle{} &A parsed number could not be stored as without changing it to NaN or I\+NF. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+407 &number overflow serializing \textquotesingle{}9223372036854775808\textquotesingle{} &U\+B\+J\+S\+ON only supports integers numbers up to 9223372036854775807. \\\cline{1-3}
+json.\+exception.\+out\+\_\+of\+\_\+range.\+408 &excessive array size\+: 8658170730974374167 &The size (following {\ttfamily \#}) of an U\+B\+J\+S\+ON array or object exceeds the maximal capacity. \\\cline{1-3}
+\end{longtabu}
+\{The following code shows how an {\ttfamily \hyperlink{classnlohmann_1_1detail_1_1out__of__range}{out\+\_\+of\+\_\+range}} exception can be caught.,\hyperlink{classnlohmann_1_1detail_1_1out__of__range}{out\+\_\+of\+\_\+range}\}
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classnlohmann_1_1detail_1_1exception}{exception} for the base class of the library exceptions 
+
+\hyperlink{classnlohmann_1_1detail_1_1parse__error}{parse\+\_\+error} for exceptions indicating a parse error 
+
+\hyperlink{classnlohmann_1_1detail_1_1invalid__iterator}{invalid\+\_\+iterator} for exceptions indicating errors with iterators 
+
+\hyperlink{classnlohmann_1_1detail_1_1type__error}{type\+\_\+error} for exceptions indicating executing a member function with a wrong type 
+
+\hyperlink{classnlohmann_1_1detail_1_1other__error}{other\+\_\+error} for exceptions indicating other library errors
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+version 3.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 773 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1out__of__range_ab5fe402019dba957558499502f0fd731}\label{classnlohmann_1_1detail_1_1out__of__range_ab5fe402019dba957558499502f0fd731}} 
+\index{nlohmann\+::detail\+::out\+\_\+of\+\_\+range@{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}!out\+\_\+of\+\_\+range@{out\+\_\+of\+\_\+range}}
+\index{out\+\_\+of\+\_\+range@{out\+\_\+of\+\_\+range}!nlohmann\+::detail\+::out\+\_\+of\+\_\+range@{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}}
+\subsubsection{\texorpdfstring{out\+\_\+of\+\_\+range()}{out\_of\_range()}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::out\+\_\+of\+\_\+range (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+,  }\item[{const char $\ast$}]{what\+\_\+arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 783 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+783 : \hyperlink{classnlohmann_1_1detail_1_1exception_ae323ad0d53bc724414c2233164e65657}{exception}(id\_, what\_arg) \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}\label{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}} 
+\index{nlohmann\+::detail\+::out\+\_\+of\+\_\+range@{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}!create@{create}}
+\index{create@{create}!nlohmann\+::detail\+::out\+\_\+of\+\_\+range@{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}}
+\subsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily static \hyperlink{classnlohmann_1_1detail_1_1out__of__range}{out\+\_\+of\+\_\+range} nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+,  }\item[{const \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std\+::string} \&}]{what\+\_\+arg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line 776 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::exception\+::name(), and nlohmann\+::detail\+::string.
+
+
+
+Referenced by nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::array\+\_\+index(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::erase(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+array(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+object(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked(), nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$\+::parse\+\_\+internal(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::pop\+\_\+back(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::top(), and nlohmann\+::detail\+::binary\+\_\+writer$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+number\+\_\+with\+\_\+ubjson\+\_\+prefix().
+
+
+\begin{DoxyCode}
+777     \{
+778         \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string} w = \hyperlink{classnlohmann_1_1detail_1_1exception_abf41a7e9178356314082284e6cfea278}{exception::name}(\textcolor{stringliteral}{"out\_of\_range"}, id\_) + what\_arg;
+779         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1out__of__range_ab5fe402019dba957558499502f0fd731}{out\_of\_range}(id\_, w.c\_str());
+780     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

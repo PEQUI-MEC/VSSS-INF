@@ -1,0 +1,90 @@
+\hypertarget{struct_robots_1_1_command_1_1___msg}{}\section{Robots\+:\+:Command\+:\+:\+\_\+\+Msg Struct Reference}
+\label{struct_robots_1_1_command_1_1___msg}\index{Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}}
+
+
+The message (would be nice to use Union data structure but cv\+::\+Point has a constructor)  
+
+
+
+
+{\ttfamily \#include $<$robots.\+hpp$>$}
+
+
+
+Collaboration diagram for Robots\+:\+:Command\+:\+:\+\_\+\+Msg\+:
+% FIG 0
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_robots_1_1_command_1_1___msg_1_1___velocity}{\+\_\+\+Velocity}
+\begin{DoxyCompactList}\small\item\em C\+M\+D\+\_\+\+S\+P\+E\+ED target wheel velocities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Point \hyperlink{struct_robots_1_1_command_1_1___msg_a86e7180d8d9c511620c703377870775e}{target} = cv\+::\+Point(-\/1, -\/1)
+\begin{DoxyCompactList}\small\item\em C\+M\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON target position. \end{DoxyCompactList}\item 
+double \hyperlink{struct_robots_1_1_command_1_1___msg_a21599dd0707b283bf1ba1f25544bfb1d}{theta} = 0
+\begin{DoxyCompactList}\small\item\em C\+M\+D\+\_\+\+V\+E\+C\+T\+OR or C\+M\+D\+\_\+\+O\+R\+I\+E\+N\+T\+A\+T\+I\+ON target orientation. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_robots_1_1_command_1_1___msg_1_1___velocity}{Robots\+::\+Command\+::\+\_\+\+Msg\+::\+\_\+\+Velocity} \hyperlink{struct_robots_1_1_command_1_1___msg_a539fff26601e0902fcf867eab3e08d79}{Velocity}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The message (would be nice to use Union data structure but cv\+::\+Point has a constructor) 
+
+Definition at line 73 of file robots.\+hpp.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_robots_1_1_command_1_1___msg_a86e7180d8d9c511620c703377870775e}\label{struct_robots_1_1_command_1_1___msg_a86e7180d8d9c511620c703377870775e}} 
+\index{Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}!target@{target}}
+\index{target@{target}!Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}}
+\subsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily cv\+::\+Point Robots\+::\+Command\+::\+\_\+\+Msg\+::target = cv\+::\+Point(-\/1, -\/1)}
+
+
+
+C\+M\+D\+\_\+\+P\+O\+S\+I\+T\+I\+ON target position. 
+
+
+
+Definition at line 75 of file robots.\+hpp.
+
+
+
+Referenced by Flying\+Messenger\+::position\+\_\+msg().
+
+\mbox{\Hypertarget{struct_robots_1_1_command_1_1___msg_a21599dd0707b283bf1ba1f25544bfb1d}\label{struct_robots_1_1_command_1_1___msg_a21599dd0707b283bf1ba1f25544bfb1d}} 
+\index{Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}!theta@{theta}}
+\index{theta@{theta}!Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}}
+\subsubsection{\texorpdfstring{theta}{theta}}
+{\footnotesize\ttfamily double Robots\+::\+Command\+::\+\_\+\+Msg\+::theta = 0}
+
+
+
+C\+M\+D\+\_\+\+V\+E\+C\+T\+OR or C\+M\+D\+\_\+\+O\+R\+I\+E\+N\+T\+A\+T\+I\+ON target orientation. 
+
+
+
+Definition at line 78 of file robots.\+hpp.
+
+
+
+Referenced by Flying\+Messenger\+::orientation\+\_\+msg(), and Flying\+Messenger\+::vector\+\_\+msg().
+
+\mbox{\Hypertarget{struct_robots_1_1_command_1_1___msg_a539fff26601e0902fcf867eab3e08d79}\label{struct_robots_1_1_command_1_1___msg_a539fff26601e0902fcf867eab3e08d79}} 
+\index{Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}!Velocity@{Velocity}}
+\index{Velocity@{Velocity}!Robots\+::\+Command\+::\+\_\+\+Msg@{Robots\+::\+Command\+::\+\_\+\+Msg}}
+\subsubsection{\texorpdfstring{Velocity}{Velocity}}
+{\footnotesize\ttfamily struct \hyperlink{struct_robots_1_1_command_1_1___msg_1_1___velocity}{Robots\+::\+Command\+::\+\_\+\+Msg\+::\+\_\+\+Velocity}  Robots\+::\+Command\+::\+\_\+\+Msg\+::\+Velocity}
+
+
+
+Referenced by Flying\+Messenger\+::speed\+\_\+msg().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{robots_8hpp}{robots.\+hpp}\end{DoxyCompactItemize}

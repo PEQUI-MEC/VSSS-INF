@@ -1,0 +1,26 @@
+digraph "nlohmann::basic_json&lt; ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer &gt;"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="nlohmann::basic_json\l\< ObjectType, ArrayType,\l StringType, BooleanType,\l NumberIntegerType, NumberUnsigned\lType, NumberFloatType, AllocatorType,\l JSONSerializer \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_value" ,fontname="Helvetica"];
+  Node2 [label="nlohmann::basic_json\l\< ObjectType, ArrayType,\l StringType, BooleanType,\l NumberIntegerType, NumberUnsigned\lType, NumberFloatType, AllocatorType,\l JSONSerializer \>::json_value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$unionnlohmann_1_1basic__json_1_1json__value.html",tooltip="a JSON value "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" object" ,fontname="Helvetica"];
+  Node3 [label="object_t *",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" number_integer" ,fontname="Helvetica"];
+  Node4 [label="NumberIntegerType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" number_float" ,fontname="Helvetica"];
+  Node5 [label="NumberFloatType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" number_unsigned" ,fontname="Helvetica"];
+  Node6 [label="NumberUnsignedType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" string" ,fontname="Helvetica"];
+  Node7 [label="string_t *",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" boolean" ,fontname="Helvetica"];
+  Node8 [label="BooleanType",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" array" ,fontname="Helvetica"];
+  Node9 [label="array_t *",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_type" ,fontname="Helvetica"];
+  Node10 [label="value_t",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

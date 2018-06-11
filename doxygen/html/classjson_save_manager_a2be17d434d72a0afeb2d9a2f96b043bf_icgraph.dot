@@ -1,0 +1,20 @@
+digraph "jsonSaveManager::write_configs_to_file"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node192 [label="jsonSaveManager::write\l_configs_to_file",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node192 -> Node193 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node193 [label="jsonSaveManager::save",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a3e628f770c39e0111b46dac21d966171",tooltip="Saves all volatile data set in the interface to a given .json file. "];
+  Node193 -> Node194 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node194 [label="VSSS_GUI::V4LInterface\l::__event_bt_quick_save\l_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a018c35ae221964d08f1abb40ba01abcf",tooltip="Event triggered when &#39;Quick Save&#39; button is clicked. "];
+  Node194 -> Node195 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node195 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node193 -> Node196 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node196 [label="VSSS_GUI::V4LInterface\l::__event_bt_save_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a86cbf672edfd408bcac975be8dbacffd",tooltip="Event triggered when &#39;Save&#39; button is clicked. "];
+  Node196 -> Node195 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node193 -> Node197 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node197 [label="VSSS_GUI::V4LInterface\l::event_start_game_bt\l_signal_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8c3f91048adebeb0b5aa9838053cdcfe",tooltip="Event triggered when start button is clicked. Starts/finishes video recording. "];
+  Node197 -> Node195 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

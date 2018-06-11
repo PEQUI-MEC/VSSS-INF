@@ -1,0 +1,1064 @@
+\hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl}{}\section{nlohmann\+:\+:detail\+:\+:dtoa\+\_\+impl Namespace Reference}
+\label{namespacenlohmann_1_1detail_1_1dtoa__impl}\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+
+
+implements the Grisu2 algorithm for binary to decimal floating-\/point conversion.  
+
+
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1boundaries}{boundaries}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power}{cached\+\_\+power}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Target , typename Source $>$ }\\Target \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a1c5d30eb51e5e994a3f48bde104d2ce8}{reinterpret\+\_\+bits} (const Source source)
+\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1boundaries}{boundaries} \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}{compute\+\_\+boundaries} (Float\+Type value)
+\item 
+\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power}{cached\+\_\+power} \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_adbf329a18c5cf854a3477327afd2200b}{get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent} (int e)
+\item 
+int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a264df2b5a7e19b864859161f3501155e}{find\+\_\+largest\+\_\+pow10} (const uint32\+\_\+t n, uint32\+\_\+t \&pow10)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}{grisu2\+\_\+round} (char $\ast$buf, int len, uint64\+\_\+t dist, uint64\+\_\+t delta, uint64\+\_\+t rest, uint64\+\_\+t ten\+\_\+k)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9b899c72b0e1e3dd46d75c2b4e6bcdfb}{grisu2\+\_\+digit\+\_\+gen} (char $\ast$buffer, int \&length, int \&decimal\+\_\+exponent, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} M\+\_\+minus, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} w, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} M\+\_\+plus)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a05b681dcb8569b9784c6dccfadb01633}{grisu2} (char $\ast$buf, int \&len, int \&decimal\+\_\+exponent, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} m\+\_\+minus, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} v, \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp} m\+\_\+plus)
+\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_aab7a9670a4f4704a5d0347ad7588576b}{grisu2} (char $\ast$buf, int \&len, int \&decimal\+\_\+exponent, Float\+Type value)
+\item 
+char $\ast$ \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a84733638b826eda624488f5fa4521e0b}{append\+\_\+exponent} (char $\ast$buf, int e)
+\begin{DoxyCompactList}\small\item\em appends a decimal representation of e to buf \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a12c1c5d8b46ba9702186445e73f86afe}{format\+\_\+buffer} (char $\ast$buf, int len, int decimal\+\_\+exponent, int min\+\_\+exp, int max\+\_\+exp)
+\begin{DoxyCompactList}\small\item\em prettify v = buf $\ast$ 10$^\wedge$decimal\+\_\+exponent \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{k\+Alpha} = -\/60
+\item 
+constexpr int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}{k\+Gamma} = -\/32
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+implements the Grisu2 algorithm for binary to decimal floating-\/point conversion. 
+
+This implementation is a slightly modified version of the reference implementation which may be obtained from \href{http://florian.loitsch.com/publications}{\tt http\+://florian.\+loitsch.\+com/publications} (bench.\+tar.\+gz).
+
+The code is distributed under the M\+IT license, Copyright (c) 2009 Florian Loitsch.
+
+For a detailed description of the algorithm see\+:
+
+\mbox{[}1\mbox{]} Loitsch, \char`\"{}\+Printing Floating-\/\+Point Numbers Quickly and Accurately with
+    Integers\char`\"{}, Proceedings of the A\+CM S\+I\+G\+P\+L\+AN 2010 Conference on Programming Language Design and Implementation, P\+L\+DI 2010 \mbox{[}2\mbox{]} Burger, Dybvig, \char`\"{}\+Printing Floating-\/\+Point Numbers Quickly and Accurately\char`\"{}, Proceedings of the A\+CM S\+I\+G\+P\+L\+AN 1996 Conference on Programming Language Design and Implementation, P\+L\+DI 1996 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a84733638b826eda624488f5fa4521e0b}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a84733638b826eda624488f5fa4521e0b}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!append\+\_\+exponent@{append\+\_\+exponent}}
+\index{append\+\_\+exponent@{append\+\_\+exponent}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{append\+\_\+exponent()}{append\_exponent()}}
+{\footnotesize\ttfamily char$\ast$ nlohmann\+::detail\+::dtoa\+\_\+impl\+::append\+\_\+exponent (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+appends a decimal representation of e to buf 
+
+\begin{DoxyReturn}{Returns}
+a pointer to the element following the exponent. 
+\end{DoxyReturn}
+\begin{DoxyPrecond}{Precondition}
+-\/1000 $<$ e $<$ 1000 
+\end{DoxyPrecond}
+
+
+Definition at line 8053 of file json.\+hpp.
+
+
+
+Referenced by format\+\_\+buffer().
+
+
+\begin{DoxyCode}
+8054 \{
+8055     assert(e > -1000);
+8056     assert(e <  1000);
+8057 
+8058     \textcolor{keywordflow}{if} (e < 0)
+8059     \{
+8060         e = -e;
+8061         *buf++ = \textcolor{charliteral}{'-'};
+8062     \}
+8063     \textcolor{keywordflow}{else}
+8064     \{
+8065         *buf++ = \textcolor{charliteral}{'+'};
+8066     \}
+8067 
+8068     uint32\_t k = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(e);
+8069     \textcolor{keywordflow}{if} (k < 10)
+8070     \{
+8071         \textcolor{comment}{// Always print at least two digits in the exponent.}
+8072         \textcolor{comment}{// This is for compatibility with printf("%g").}
+8073         *buf++ = \textcolor{charliteral}{'0'};
+8074         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k);
+8075     \}
+8076     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k < 100)
+8077     \{
+8078         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k / 10);
+8079         k %= 10;
+8080         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k);
+8081     \}
+8082     \textcolor{keywordflow}{else}
+8083     \{
+8084         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k / 100);
+8085         k %= 100;
+8086         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k / 10);
+8087         k %= 10;
+8088         *buf++ = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + k);
+8089     \}
+8090 
+8091     \textcolor{keywordflow}{return} buf;
+8092 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 0
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!compute\+\_\+boundaries@{compute\+\_\+boundaries}}
+\index{compute\+\_\+boundaries@{compute\+\_\+boundaries}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{compute\+\_\+boundaries()}{compute\_boundaries()}}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1boundaries}{boundaries} nlohmann\+::detail\+::dtoa\+\_\+impl\+::compute\+\_\+boundaries (\begin{DoxyParamCaption}\item[{Float\+Type}]{value }\end{DoxyParamCaption})}
+
+Compute the (normalized) diyfp representing the input number \textquotesingle{}value\textquotesingle{} and its boundaries.
+
+\begin{DoxyPrecond}{Precondition}
+value must be finite and positive 
+\end{DoxyPrecond}
+
+
+Definition at line 7316 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::e, and nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::f.
+
+
+
+Referenced by grisu2().
+
+
+\begin{DoxyCode}
+7317 \{
+7318     assert(std::isfinite(value));
+7319     assert(value > 0);
+7320 
+7321     \textcolor{comment}{// Convert the IEEE representation into a diyfp.}
+7322     \textcolor{comment}{//}
+7323     \textcolor{comment}{// If v is denormal:}
+7324     \textcolor{comment}{//      value = 0.F * 2^(1 - bias) = (          F) * 2^(1 - bias - (p-1))}
+7325     \textcolor{comment}{// If v is normalized:}
+7326     \textcolor{comment}{//      value = 1.F * 2^(E - bias) = (2^(p-1) + F) * 2^(E - bias - (p-1))}
+7327 
+7328     static\_assert(std::numeric\_limits<FloatType>::is\_iec559,
+7329                   \textcolor{stringliteral}{"internal error: dtoa\_short requires an IEEE-754 floating-point implementation"});
+7330 
+7331     constexpr \textcolor{keywordtype}{int}      kPrecision = std::numeric\_limits<FloatType>::digits; \textcolor{comment}{// = p (includes the hidden
+       bit)}
+7332     constexpr \textcolor{keywordtype}{int}      kBias      = std::numeric\_limits<FloatType>::max\_exponent - 1 + (kPrecision - 1);
+7333     constexpr \textcolor{keywordtype}{int}      kMinExp    = 1 - kBias;
+7334     constexpr uint64\_t kHiddenBit = uint64\_t\{1\} << (kPrecision - 1); \textcolor{comment}{// = 2^(p-1)}
+7335 
+7336     \textcolor{keyword}{using} bits\_type = \textcolor{keyword}{typename} std::conditional< kPrecision == 24, uint32\_t, uint64\_t >::type;
+7337 
+7338     \textcolor{keyword}{const} uint64\_t bits = reinterpret\_bits<bits\_type>(value);
+7339     \textcolor{keyword}{const} uint64\_t E = bits >> (kPrecision - 1);
+7340     \textcolor{keyword}{const} uint64\_t F = bits & (kHiddenBit - 1);
+7341 
+7342     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} is\_denormal = (E == 0);
+7343     \textcolor{keyword}{const} diyfp v = is\_denormal
+7344                     ? diyfp(F, kMinExp)
+7345                     : diyfp(F + kHiddenBit, static\_cast<int>(E) - kBias);
+7346 
+7347     \textcolor{comment}{// Compute the boundaries m- and m+ of the floating-point value}
+7348     \textcolor{comment}{// v = f * 2^e.}
+7349     \textcolor{comment}{//}
+7350     \textcolor{comment}{// Determine v- and v+, the floating-point predecessor and successor if v,}
+7351     \textcolor{comment}{// respectively.}
+7352     \textcolor{comment}{//}
+7353     \textcolor{comment}{//      v- = v - 2^e        if f != 2^(p-1) or e == e\_min                (A)}
+7354     \textcolor{comment}{//         = v - 2^(e-1)    if f == 2^(p-1) and e > e\_min                (B)}
+7355     \textcolor{comment}{//}
+7356     \textcolor{comment}{//      v+ = v + 2^e}
+7357     \textcolor{comment}{//}
+7358     \textcolor{comment}{// Let m- = (v- + v) / 2 and m+ = (v + v+) / 2. All real numbers \_strictly\_}
+7359     \textcolor{comment}{// between m- and m+ round to v, regardless of how the input rounding}
+7360     \textcolor{comment}{// algorithm breaks ties.}
+7361     \textcolor{comment}{//}
+7362     \textcolor{comment}{//      ---+-------------+-------------+-------------+-------------+---  (A)}
+7363     \textcolor{comment}{//         v-            m-            v             m+            v+}
+7364     \textcolor{comment}{//}
+7365     \textcolor{comment}{//      -----------------+------+------+-------------+-------------+---  (B)}
+7366     \textcolor{comment}{//                       v-     m-     v             m+            v+}
+7367 
+7368     \textcolor{keyword}{const} \textcolor{keywordtype}{bool} lower\_boundary\_is\_closer = (F == 0 and E > 1);
+7369     \textcolor{keyword}{const} diyfp m\_plus = diyfp(2 * v.f + 1, v.e - 1);
+7370     \textcolor{keyword}{const} diyfp m\_minus = lower\_boundary\_is\_closer
+7371                           ? diyfp(4 * v.f - 1, v.e - 2)  \textcolor{comment}{// (B)}
+7372                           : diyfp(2 * v.f - 1, v.e - 1); \textcolor{comment}{// (A)}
+7373 
+7374     \textcolor{comment}{// Determine the normalized w+ = m+.}
+7375     \textcolor{keyword}{const} diyfp w\_plus = diyfp::normalize(m\_plus);
+7376 
+7377     \textcolor{comment}{// Determine w- = m- such that e\_(w-) = e\_(w+).}
+7378     \textcolor{keyword}{const} diyfp w\_minus = diyfp::normalize\_to(m\_minus, w\_plus.e);
+7379 
+7380     \textcolor{keywordflow}{return} \{diyfp::normalize(v), w\_minus, w\_plus\};
+7381 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a264df2b5a7e19b864859161f3501155e}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a264df2b5a7e19b864859161f3501155e}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!find\+\_\+largest\+\_\+pow10@{find\+\_\+largest\+\_\+pow10}}
+\index{find\+\_\+largest\+\_\+pow10@{find\+\_\+largest\+\_\+pow10}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{find\+\_\+largest\+\_\+pow10()}{find\_largest\_pow10()}}
+{\footnotesize\ttfamily int nlohmann\+::detail\+::dtoa\+\_\+impl\+::find\+\_\+largest\+\_\+pow10 (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{n,  }\item[{uint32\+\_\+t \&}]{pow10 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+For n != 0, returns k, such that pow10 \+:= 10$^\wedge$(k-\/1) $<$= n $<$ 10$^\wedge$k. For n == 0, returns 1 and sets pow10 \+:= 1. 
+
+Definition at line 7619 of file json.\+hpp.
+
+
+
+Referenced by grisu2\+\_\+digit\+\_\+gen().
+
+
+\begin{DoxyCode}
+7620 \{
+7621     \textcolor{comment}{// LCOV\_EXCL\_START}
+7622     \textcolor{keywordflow}{if} (n >= 1000000000)
+7623     \{
+7624         pow10 = 1000000000;
+7625         \textcolor{keywordflow}{return} 10;
+7626     \}
+7627     \textcolor{comment}{// LCOV\_EXCL\_STOP}
+7628     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 100000000)
+7629     \{
+7630         pow10 = 100000000;
+7631         \textcolor{keywordflow}{return}  9;
+7632     \}
+7633     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 10000000)
+7634     \{
+7635         pow10 = 10000000;
+7636         \textcolor{keywordflow}{return}  8;
+7637     \}
+7638     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 1000000)
+7639     \{
+7640         pow10 = 1000000;
+7641         \textcolor{keywordflow}{return}  7;
+7642     \}
+7643     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 100000)
+7644     \{
+7645         pow10 = 100000;
+7646         \textcolor{keywordflow}{return}  6;
+7647     \}
+7648     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 10000)
+7649     \{
+7650         pow10 = 10000;
+7651         \textcolor{keywordflow}{return}  5;
+7652     \}
+7653     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 1000)
+7654     \{
+7655         pow10 = 1000;
+7656         \textcolor{keywordflow}{return}  4;
+7657     \}
+7658     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 100)
+7659     \{
+7660         pow10 = 100;
+7661         \textcolor{keywordflow}{return}  3;
+7662     \}
+7663     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (n >= 10)
+7664     \{
+7665         pow10 = 10;
+7666         \textcolor{keywordflow}{return}  2;
+7667     \}
+7668     \textcolor{keywordflow}{else}
+7669     \{
+7670         pow10 = 1;
+7671         \textcolor{keywordflow}{return} 1;
+7672     \}
+7673 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a12c1c5d8b46ba9702186445e73f86afe}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a12c1c5d8b46ba9702186445e73f86afe}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!format\+\_\+buffer@{format\+\_\+buffer}}
+\index{format\+\_\+buffer@{format\+\_\+buffer}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{format\+\_\+buffer()}{format\_buffer()}}
+{\footnotesize\ttfamily char$\ast$ nlohmann\+::detail\+::dtoa\+\_\+impl\+::format\+\_\+buffer (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{len,  }\item[{int}]{decimal\+\_\+exponent,  }\item[{int}]{min\+\_\+exp,  }\item[{int}]{max\+\_\+exp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+prettify v = buf $\ast$ 10$^\wedge$decimal\+\_\+exponent 
+
+If v is in the range \mbox{[}10$^\wedge$min\+\_\+exp, 10$^\wedge$max\+\_\+exp) it will be printed in fixed-\/point notation. Otherwise it will be printed in exponential notation.
+
+\begin{DoxyPrecond}{Precondition}
+min\+\_\+exp $<$ 0 
+
+max\+\_\+exp $>$ 0 
+\end{DoxyPrecond}
+
+
+Definition at line 8103 of file json.\+hpp.
+
+
+
+References append\+\_\+exponent().
+
+
+
+Referenced by nlohmann\+::detail\+::to\+\_\+chars().
+
+
+\begin{DoxyCode}
+8105 \{
+8106     assert(min\_exp < 0);
+8107     assert(max\_exp > 0);
+8108 
+8109     \textcolor{keyword}{const} \textcolor{keywordtype}{int} k = len;
+8110     \textcolor{keyword}{const} \textcolor{keywordtype}{int} n = len + decimal\_exponent;
+8111 
+8112     \textcolor{comment}{// v = buf * 10^(n-k)}
+8113     \textcolor{comment}{// k is the length of the buffer (number of decimal digits)}
+8114     \textcolor{comment}{// n is the position of the decimal point relative to the start of the buffer.}
+8115 
+8116     \textcolor{keywordflow}{if} (k <= n and n <= max\_exp)
+8117     \{
+8118         \textcolor{comment}{// digits[000]}
+8119         \textcolor{comment}{// len <= max\_exp + 2}
+8120 
+8121         std::memset(buf + k, \textcolor{charliteral}{'0'}, static\_cast<size\_t>(n - k));
+8122         \textcolor{comment}{// Make it look like a floating-point number (#362, #378)}
+8123         buf[n + 0] = \textcolor{charliteral}{'.'};
+8124         buf[n + 1] = \textcolor{charliteral}{'0'};
+8125         \textcolor{keywordflow}{return} buf + (n + 2);
+8126     \}
+8127 
+8128     \textcolor{keywordflow}{if} (0 < n and n <= max\_exp)
+8129     \{
+8130         \textcolor{comment}{// dig.its}
+8131         \textcolor{comment}{// len <= max\_digits10 + 1}
+8132 
+8133         assert(k > n);
+8134 
+8135         std::memmove(buf + (n + 1), buf + n, static\_cast<size\_t>(k - n));
+8136         buf[n] = \textcolor{charliteral}{'.'};
+8137         \textcolor{keywordflow}{return} buf + (k + 1);
+8138     \}
+8139 
+8140     \textcolor{keywordflow}{if} (min\_exp < n and n <= 0)
+8141     \{
+8142         \textcolor{comment}{// 0.[000]digits}
+8143         \textcolor{comment}{// len <= 2 + (-min\_exp - 1) + max\_digits10}
+8144 
+8145         std::memmove(buf + (2 + -n), buf, static\_cast<size\_t>(k));
+8146         buf[0] = \textcolor{charliteral}{'0'};
+8147         buf[1] = \textcolor{charliteral}{'.'};
+8148         std::memset(buf + 2, \textcolor{charliteral}{'0'}, static\_cast<size\_t>(-n));
+8149         \textcolor{keywordflow}{return} buf + (2 + (-n) + k);
+8150     \}
+8151 
+8152     \textcolor{keywordflow}{if} (k == 1)
+8153     \{
+8154         \textcolor{comment}{// dE+123}
+8155         \textcolor{comment}{// len <= 1 + 5}
+8156 
+8157         buf += 1;
+8158     \}
+8159     \textcolor{keywordflow}{else}
+8160     \{
+8161         \textcolor{comment}{// d.igitsE+123}
+8162         \textcolor{comment}{// len <= max\_digits10 + 1 + 5}
+8163 
+8164         std::memmove(buf + 2, buf + 1, static\_cast<size\_t>(k - 1));
+8165         buf[1] = \textcolor{charliteral}{'.'};
+8166         buf += 1 + k;
+8167     \}
+8168 
+8169     *buf++ = \textcolor{charliteral}{'e'};
+8170     \textcolor{keywordflow}{return} \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a84733638b826eda624488f5fa4521e0b}{append\_exponent}(buf, n - 1);
+8171 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_adbf329a18c5cf854a3477327afd2200b}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_adbf329a18c5cf854a3477327afd2200b}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent@{get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent}}
+\index{get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent@{get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent()}{get\_cached\_power\_for\_binary\_exponent()}}
+{\footnotesize\ttfamily \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power}{cached\+\_\+power} nlohmann\+::detail\+::dtoa\+\_\+impl\+::get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent (\begin{DoxyParamCaption}\item[{int}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+For a normalized diyfp w = f $\ast$ 2$^\wedge$e, this function returns a (normalized) cached power-\/of-\/ten c = f\+\_\+c $\ast$ 2$^\wedge$e\+\_\+c, such that the exponent of the product w $\ast$ c satisfies (Definition 3.\+2 from \mbox{[}1\mbox{]}) \begin{DoxyVerb} alpha <= e_c + e + q <= gamma.\end{DoxyVerb}
+ 
+
+Definition at line 7455 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::dtoa\+\_\+impl\+::cached\+\_\+power\+::e.
+
+
+
+Referenced by grisu2().
+
+
+\begin{DoxyCode}
+7456 \{
+7457     \textcolor{comment}{// Now}
+7458     \textcolor{comment}{//}
+7459     \textcolor{comment}{//      alpha <= e\_c + e + q <= gamma                                    (1)}
+7460     \textcolor{comment}{//      ==> f\_c * 2^alpha <= c * 2^e * 2^q}
+7461     \textcolor{comment}{//}
+7462     \textcolor{comment}{// and since the c's are normalized, 2^(q-1) <= f\_c,}
+7463     \textcolor{comment}{//}
+7464     \textcolor{comment}{//      ==> 2^(q - 1 + alpha) <= c * 2^(e + q)}
+7465     \textcolor{comment}{//      ==> 2^(alpha - e - 1) <= c}
+7466     \textcolor{comment}{//}
+7467     \textcolor{comment}{// If c were an exakt power of ten, i.e. c = 10^k, one may determine k as}
+7468     \textcolor{comment}{//}
+7469     \textcolor{comment}{//      k = ceil( log\_10( 2^(alpha - e - 1) ) )}
+7470     \textcolor{comment}{//        = ceil( (alpha - e - 1) * log\_10(2) )}
+7471     \textcolor{comment}{//}
+7472     \textcolor{comment}{// From the paper:}
+7473     \textcolor{comment}{// "In theory the result of the procedure could be wrong since c is rounded,}
+7474     \textcolor{comment}{//  and the computation itself is approximated [...]. In practice, however,}
+7475     \textcolor{comment}{//  this simple function is sufficient."}
+7476     \textcolor{comment}{//}
+7477     \textcolor{comment}{// For IEEE double precision floating-point numbers converted into}
+7478     \textcolor{comment}{// normalized diyfp's w = f * 2^e, with q = 64,}
+7479     \textcolor{comment}{//}
+7480     \textcolor{comment}{//      e >= -1022      (min IEEE exponent)}
+7481     \textcolor{comment}{//           -52        (p - 1)}
+7482     \textcolor{comment}{//           -52        (p - 1, possibly normalize denormal IEEE numbers)}
+7483     \textcolor{comment}{//           -11        (normalize the diyfp)}
+7484     \textcolor{comment}{//         = -1137}
+7485     \textcolor{comment}{//}
+7486     \textcolor{comment}{// and}
+7487     \textcolor{comment}{//}
+7488     \textcolor{comment}{//      e <= +1023      (max IEEE exponent)}
+7489     \textcolor{comment}{//           -52        (p - 1)}
+7490     \textcolor{comment}{//           -11        (normalize the diyfp)}
+7491     \textcolor{comment}{//         = 960}
+7492     \textcolor{comment}{//}
+7493     \textcolor{comment}{// This binary exponent range [-1137,960] results in a decimal exponent}
+7494     \textcolor{comment}{// range [-307,324]. One does not need to store a cached power for each}
+7495     \textcolor{comment}{// k in this range. For each such k it suffices to find a cached power}
+7496     \textcolor{comment}{// such that the exponent of the product lies in [alpha,gamma].}
+7497     \textcolor{comment}{// This implies that the difference of the decimal exponents of adjacent}
+7498     \textcolor{comment}{// table entries must be less than or equal to}
+7499     \textcolor{comment}{//}
+7500     \textcolor{comment}{//      floor( (gamma - alpha) * log\_10(2) ) = 8.}
+7501     \textcolor{comment}{//}
+7502     \textcolor{comment}{// (A smaller distance gamma-alpha would require a larger table.)}
+7503 
+7504     \textcolor{comment}{// NB:}
+7505     \textcolor{comment}{// Actually this function returns c, such that -60 <= e\_c + e + 64 <= -34.}
+7506 
+7507     constexpr \textcolor{keywordtype}{int} kCachedPowersSize = 79;
+7508     constexpr \textcolor{keywordtype}{int} kCachedPowersMinDecExp = -300;
+7509     constexpr \textcolor{keywordtype}{int} kCachedPowersDecStep = 8;
+7510 
+7511     \textcolor{keyword}{static} constexpr cached\_power kCachedPowers[] =
+7512     \{
+7513         \{ 0xAB70FE17C79AC6CA, -1060, -300 \},
+7514         \{ 0xFF77B1FCBEBCDC4F, -1034, -292 \},
+7515         \{ 0xBE5691EF416BD60C, -1007, -284 \},
+7516         \{ 0x8DD01FAD907FFC3C,  -980, -276 \},
+7517         \{ 0xD3515C2831559A83,  -954, -268 \},
+7518         \{ 0x9D71AC8FADA6C9B5,  -927, -260 \},
+7519         \{ 0xEA9C227723EE8BCB,  -901, -252 \},
+7520         \{ 0xAECC49914078536D,  -874, -244 \},
+7521         \{ 0x823C12795DB6CE57,  -847, -236 \},
+7522         \{ 0xC21094364DFB5637,  -821, -228 \},
+7523         \{ 0x9096EA6F3848984F,  -794, -220 \},
+7524         \{ 0xD77485CB25823AC7,  -768, -212 \},
+7525         \{ 0xA086CFCD97BF97F4,  -741, -204 \},
+7526         \{ 0xEF340A98172AACE5,  -715, -196 \},
+7527         \{ 0xB23867FB2A35B28E,  -688, -188 \},
+7528         \{ 0x84C8D4DFD2C63F3B,  -661, -180 \},
+7529         \{ 0xC5DD44271AD3CDBA,  -635, -172 \},
+7530         \{ 0x936B9FCEBB25C996,  -608, -164 \},
+7531         \{ 0xDBAC6C247D62A584,  -582, -156 \},
+7532         \{ 0xA3AB66580D5FDAF6,  -555, -148 \},
+7533         \{ 0xF3E2F893DEC3F126,  -529, -140 \},
+7534         \{ 0xB5B5ADA8AAFF80B8,  -502, -132 \},
+7535         \{ 0x87625F056C7C4A8B,  -475, -124 \},
+7536         \{ 0xC9BCFF6034C13053,  -449, -116 \},
+7537         \{ 0x964E858C91BA2655,  -422, -108 \},
+7538         \{ 0xDFF9772470297EBD,  -396, -100 \},
+7539         \{ 0xA6DFBD9FB8E5B88F,  -369,  -92 \},
+7540         \{ 0xF8A95FCF88747D94,  -343,  -84 \},
+7541         \{ 0xB94470938FA89BCF,  -316,  -76 \},
+7542         \{ 0x8A08F0F8BF0F156B,  -289,  -68 \},
+7543         \{ 0xCDB02555653131B6,  -263,  -60 \},
+7544         \{ 0x993FE2C6D07B7FAC,  -236,  -52 \},
+7545         \{ 0xE45C10C42A2B3B06,  -210,  -44 \},
+7546         \{ 0xAA242499697392D3,  -183,  -36 \},
+7547         \{ 0xFD87B5F28300CA0E,  -157,  -28 \},
+7548         \{ 0xBCE5086492111AEB,  -130,  -20 \},
+7549         \{ 0x8CBCCC096F5088CC,  -103,  -12 \},
+7550         \{ 0xD1B71758E219652C,   -77,   -4 \},
+7551         \{ 0x9C40000000000000,   -50,    4 \},
+7552         \{ 0xE8D4A51000000000,   -24,   12 \},
+7553         \{ 0xAD78EBC5AC620000,     3,   20 \},
+7554         \{ 0x813F3978F8940984,    30,   28 \},
+7555         \{ 0xC097CE7BC90715B3,    56,   36 \},
+7556         \{ 0x8F7E32CE7BEA5C70,    83,   44 \},
+7557         \{ 0xD5D238A4ABE98068,   109,   52 \},
+7558         \{ 0x9F4F2726179A2245,   136,   60 \},
+7559         \{ 0xED63A231D4C4FB27,   162,   68 \},
+7560         \{ 0xB0DE65388CC8ADA8,   189,   76 \},
+7561         \{ 0x83C7088E1AAB65DB,   216,   84 \},
+7562         \{ 0xC45D1DF942711D9A,   242,   92 \},
+7563         \{ 0x924D692CA61BE758,   269,  100 \},
+7564         \{ 0xDA01EE641A708DEA,   295,  108 \},
+7565         \{ 0xA26DA3999AEF774A,   322,  116 \},
+7566         \{ 0xF209787BB47D6B85,   348,  124 \},
+7567         \{ 0xB454E4A179DD1877,   375,  132 \},
+7568         \{ 0x865B86925B9BC5C2,   402,  140 \},
+7569         \{ 0xC83553C5C8965D3D,   428,  148 \},
+7570         \{ 0x952AB45CFA97A0B3,   455,  156 \},
+7571         \{ 0xDE469FBD99A05FE3,   481,  164 \},
+7572         \{ 0xA59BC234DB398C25,   508,  172 \},
+7573         \{ 0xF6C69A72A3989F5C,   534,  180 \},
+7574         \{ 0xB7DCBF5354E9BECE,   561,  188 \},
+7575         \{ 0x88FCF317F22241E2,   588,  196 \},
+7576         \{ 0xCC20CE9BD35C78A5,   614,  204 \},
+7577         \{ 0x98165AF37B2153DF,   641,  212 \},
+7578         \{ 0xE2A0B5DC971F303A,   667,  220 \},
+7579         \{ 0xA8D9D1535CE3B396,   694,  228 \},
+7580         \{ 0xFB9B7CD9A4A7443C,   720,  236 \},
+7581         \{ 0xBB764C4CA7A44410,   747,  244 \},
+7582         \{ 0x8BAB8EEFB6409C1A,   774,  252 \},
+7583         \{ 0xD01FEF10A657842C,   800,  260 \},
+7584         \{ 0x9B10A4E5E9913129,   827,  268 \},
+7585         \{ 0xE7109BFBA19C0C9D,   853,  276 \},
+7586         \{ 0xAC2820D9623BF429,   880,  284 \},
+7587         \{ 0x80444B5E7AA7CF85,   907,  292 \},
+7588         \{ 0xBF21E44003ACDD2D,   933,  300 \},
+7589         \{ 0x8E679C2F5E44FF8F,   960,  308 \},
+7590         \{ 0xD433179D9C8CB841,   986,  316 \},
+7591         \{ 0x9E19DB92B4E31BA9,  1013,  324 \},
+7592     \};
+7593 
+7594     \textcolor{comment}{// This computation gives exactly the same results for k as}
+7595     \textcolor{comment}{//      k = ceil((kAlpha - e - 1) * 0.30102999566398114)}
+7596     \textcolor{comment}{// for |e| <= 1500, but doesn't require floating-point operations.}
+7597     \textcolor{comment}{// NB: log\_10(2) ~= 78913 / 2^18}
+7598     assert(e >= -1500);
+7599     assert(e <=  1500);
+7600     \textcolor{keyword}{const} \textcolor{keywordtype}{int} f = \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{kAlpha} - e - 1;
+7601     \textcolor{keyword}{const} \textcolor{keywordtype}{int} k = (f * 78913) / (1 << 18) + (f > 0);
+7602 
+7603     \textcolor{keyword}{const} \textcolor{keywordtype}{int} index = (-kCachedPowersMinDecExp + k + (kCachedPowersDecStep - 1)) / kCachedPowersDecStep;
+7604     assert(index >= 0);
+7605     assert(index < kCachedPowersSize);
+7606     \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\textcolor{keyword}{>}(kCachedPowersSize); \textcolor{comment}{// Fix warning.}
+7607 
+7608     \textcolor{keyword}{const} cached\_power cached = kCachedPowers[index];
+7609     assert(\hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{kAlpha} <= cached.e + e + 64);
+7610     assert(\hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}{kGamma} >= cached.e + e + 64);
+7611 
+7612     \textcolor{keywordflow}{return} cached;
+7613 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a05b681dcb8569b9784c6dccfadb01633}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a05b681dcb8569b9784c6dccfadb01633}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!grisu2@{grisu2}}
+\index{grisu2@{grisu2}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{grisu2()}{grisu2()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2 (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int \&}]{len,  }\item[{int \&}]{decimal\+\_\+exponent,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{m\+\_\+minus,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{v,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{m\+\_\+plus }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+v = buf $\ast$ 10$^\wedge$decimal\+\_\+exponent len is the length of the buffer (number of decimal digits) The buffer must be large enough, i.\+e. $>$= max\+\_\+digits10. 
+
+Definition at line 7956 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::e, nlohmann\+::detail\+::dtoa\+\_\+impl\+::cached\+\_\+power\+::e, nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::f, nlohmann\+::detail\+::dtoa\+\_\+impl\+::cached\+\_\+power\+::f, get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent(), grisu2\+\_\+digit\+\_\+gen(), and nlohmann\+::detail\+::dtoa\+\_\+impl\+::cached\+\_\+power\+::k.
+
+
+
+Referenced by nlohmann\+::detail\+::to\+\_\+chars().
+
+
+\begin{DoxyCode}
+7958 \{
+7959     assert(m\_plus.e == m\_minus.e);
+7960     assert(m\_plus.e == v.e);
+7961 
+7962     \textcolor{comment}{//  --------(-----------------------+-----------------------)--------    (A)}
+7963     \textcolor{comment}{//          m-                      v                       m+}
+7964     \textcolor{comment}{//}
+7965     \textcolor{comment}{//  --------------------(-----------+-----------------------)--------    (B)}
+7966     \textcolor{comment}{//                      m-          v                       m+}
+7967     \textcolor{comment}{//}
+7968     \textcolor{comment}{// First scale v (and m- and m+) such that the exponent is in the range}
+7969     \textcolor{comment}{// [alpha, gamma].}
+7970 
+7971     \textcolor{keyword}{const} cached\_power cached = \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_adbf329a18c5cf854a3477327afd2200b}{get\_cached\_power\_for\_binary\_exponent}(
+      m\_plus.e);
+7972 
+7973     \textcolor{keyword}{const} diyfp c\_minus\_k(cached.f, cached.e); \textcolor{comment}{// = c ~= 10^-k}
+7974 
+7975     \textcolor{comment}{// The exponent of the products is = v.e + c\_minus\_k.e + q and is in the range [alpha,gamma]}
+7976     \textcolor{keyword}{const} diyfp w       = diyfp::mul(v,       c\_minus\_k);
+7977     \textcolor{keyword}{const} diyfp w\_minus = diyfp::mul(m\_minus, c\_minus\_k);
+7978     \textcolor{keyword}{const} diyfp w\_plus  = diyfp::mul(m\_plus,  c\_minus\_k);
+7979 
+7980     \textcolor{comment}{//  ----(---+---)---------------(---+---)---------------(---+---)----}
+7981     \textcolor{comment}{//          w-                      w                       w+}
+7982     \textcolor{comment}{//          = c*m-                  = c*v                   = c*m+}
+7983     \textcolor{comment}{//}
+7984     \textcolor{comment}{// diyfp::mul rounds its result and c\_minus\_k is approximated too. w, w- and}
+7985     \textcolor{comment}{// w+ are now off by a small amount.}
+7986     \textcolor{comment}{// In fact:}
+7987     \textcolor{comment}{//}
+7988     \textcolor{comment}{//      w - v * 10^k < 1 ulp}
+7989     \textcolor{comment}{//}
+7990     \textcolor{comment}{// To account for this inaccuracy, add resp. subtract 1 ulp.}
+7991     \textcolor{comment}{//}
+7992     \textcolor{comment}{//  --------+---[---------------(---+---)---------------]---+--------}
+7993     \textcolor{comment}{//          w-  M-                  w                   M+  w+}
+7994     \textcolor{comment}{//}
+7995     \textcolor{comment}{// Now any number in [M-, M+] (bounds included) will round to w when input,}
+7996     \textcolor{comment}{// regardless of how the input rounding algorithm breaks ties.}
+7997     \textcolor{comment}{//}
+7998     \textcolor{comment}{// And digit\_gen generates the shortest possible such number in [M-, M+].}
+7999     \textcolor{comment}{// Note that this does not mean that Grisu2 always generates the shortest}
+8000     \textcolor{comment}{// possible number in the interval (m-, m+).}
+8001     \textcolor{keyword}{const} diyfp M\_minus(w\_minus.f + 1, w\_minus.e);
+8002     \textcolor{keyword}{const} diyfp M\_plus (w\_plus.f  - 1, w\_plus.e );
+8003 
+8004     decimal\_exponent = -cached.k; \textcolor{comment}{// = -(-k) = k}
+8005 
+8006     \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9b899c72b0e1e3dd46d75c2b4e6bcdfb}{grisu2\_digit\_gen}(buf, len, decimal\_exponent, M\_minus, w, M\_plus);
+8007 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_aab7a9670a4f4704a5d0347ad7588576b}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_aab7a9670a4f4704a5d0347ad7588576b}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!grisu2@{grisu2}}
+\index{grisu2@{grisu2}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{grisu2()}{grisu2()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Float\+Type $>$ \\
+void nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2 (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int \&}]{len,  }\item[{int \&}]{decimal\+\_\+exponent,  }\item[{Float\+Type}]{value }\end{DoxyParamCaption})}
+
+v = buf $\ast$ 10$^\wedge$decimal\+\_\+exponent len is the length of the buffer (number of decimal digits) The buffer must be large enough, i.\+e. $>$= max\+\_\+digits10. 
+
+Definition at line 8015 of file json.\+hpp.
+
+
+
+References compute\+\_\+boundaries(), nlohmann\+::detail\+::dtoa\+\_\+impl\+::boundaries\+::minus, nlohmann\+::detail\+::dtoa\+\_\+impl\+::boundaries\+::plus, and nlohmann\+::detail\+::dtoa\+\_\+impl\+::boundaries\+::w.
+
+
+\begin{DoxyCode}
+8016 \{
+8017     static\_assert(diyfp::kPrecision >= std::numeric\_limits<FloatType>::digits + 3,
+8018                   \textcolor{stringliteral}{"internal error: not enough precision"});
+8019 
+8020     assert(std::isfinite(value));
+8021     assert(value > 0);
+8022 
+8023     \textcolor{comment}{// If the neighbors (and boundaries) of 'value' are always computed for double-precision}
+8024     \textcolor{comment}{// numbers, all float's can be recovered using strtod (and strtof). However, the resulting}
+8025     \textcolor{comment}{// decimal representations are not exactly "short".}
+8026     \textcolor{comment}{//}
+8027     \textcolor{comment}{// The documentation for 'std::to\_chars' (http://en.cppreference.com/w/cpp/utility/to\_chars)}
+8028     \textcolor{comment}{// says "value is converted to a string as if by std::sprintf in the default ("C") locale"}
+8029     \textcolor{comment}{// and since sprintf promotes float's to double's, I think this is exactly what 'std::to\_chars'}
+8030     \textcolor{comment}{// does.}
+8031     \textcolor{comment}{// On the other hand, the documentation for 'std::to\_chars' requires that "parsing the}
+8032     \textcolor{comment}{// representation using the corresponding std::from\_chars function recovers value exactly". That}
+8033     \textcolor{comment}{// indicates that single precision floating-point numbers should be recovered using}
+8034     \textcolor{comment}{// 'std::strtof'.}
+8035     \textcolor{comment}{//}
+8036     \textcolor{comment}{// NB: If the neighbors are computed for single-precision numbers, there is a single float}
+8037     \textcolor{comment}{//     (7.0385307e-26f) which can't be recovered using strtod. The resulting double precision}
+8038     \textcolor{comment}{//     value is off by 1 ulp.}
+8039 \textcolor{preprocessor}{#if 0}
+8040     \textcolor{keyword}{const} boundaries w = \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}{compute\_boundaries}(static\_cast<double>(value));
+8041 \textcolor{preprocessor}{#else}
+8042     \textcolor{keyword}{const} boundaries w = \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}{compute\_boundaries}(value);
+8043 \textcolor{preprocessor}{#endif}
+8044 
+8045     \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_aab7a9670a4f4704a5d0347ad7588576b}{grisu2}(buf, len, decimal\_exponent, w.minus, w.w, w.plus);
+8046 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a9b899c72b0e1e3dd46d75c2b4e6bcdfb}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a9b899c72b0e1e3dd46d75c2b4e6bcdfb}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!grisu2\+\_\+digit\+\_\+gen@{grisu2\+\_\+digit\+\_\+gen}}
+\index{grisu2\+\_\+digit\+\_\+gen@{grisu2\+\_\+digit\+\_\+gen}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{grisu2\+\_\+digit\+\_\+gen()}{grisu2\_digit\_gen()}}
+{\footnotesize\ttfamily void nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2\+\_\+digit\+\_\+gen (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{int \&}]{length,  }\item[{int \&}]{decimal\+\_\+exponent,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{M\+\_\+minus,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{w,  }\item[{\hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{diyfp}}]{M\+\_\+plus }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generates V = buffer $\ast$ 10$^\wedge$decimal\+\_\+exponent, such that M-\/ $<$= V $<$= M+. M-\/ and M+ must be normalized and share the same exponent -\/60 $<$= e $<$= -\/32. 
+
+Definition at line 7716 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::e, nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp\+::f, find\+\_\+largest\+\_\+pow10(), and grisu2\+\_\+round().
+
+
+
+Referenced by grisu2().
+
+
+\begin{DoxyCode}
+7718 \{
+7719     static\_assert(\hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{kAlpha} >= -60, \textcolor{stringliteral}{"internal error"});
+7720     static\_assert(\hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}{kGamma} <= -32, \textcolor{stringliteral}{"internal error"});
+7721 
+7722     \textcolor{comment}{// Generates the digits (and the exponent) of a decimal floating-point}
+7723     \textcolor{comment}{// number V = buffer * 10^decimal\_exponent in the range [M-, M+]. The diyfp's}
+7724     \textcolor{comment}{// w, M- and M+ share the same exponent e, which satisfies alpha <= e <= gamma.}
+7725     \textcolor{comment}{//}
+7726     \textcolor{comment}{//               <--------------------------- delta ---->}
+7727     \textcolor{comment}{//                                  <---- dist --------->}
+7728     \textcolor{comment}{// --------------[------------------+-------------------]--------------}
+7729     \textcolor{comment}{//               M-                 w                   M+}
+7730     \textcolor{comment}{//}
+7731     \textcolor{comment}{// Grisu2 generates the digits of M+ from left to right and stops as soon as}
+7732     \textcolor{comment}{// V is in [M-,M+].}
+7733 
+7734     assert(M\_plus.e >= \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{kAlpha});
+7735     assert(M\_plus.e <= \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}{kGamma});
+7736 
+7737     uint64\_t delta = diyfp::sub(M\_plus, M\_minus).f; \textcolor{comment}{// (significand of (M+ - M-), implicit exponent is e)}
+7738     uint64\_t dist  = diyfp::sub(M\_plus, w      ).f; \textcolor{comment}{// (significand of (M+ - w ), implicit exponent is e)}
+7739 
+7740     \textcolor{comment}{// Split M+ = f * 2^e into two parts p1 and p2 (note: e < 0):}
+7741     \textcolor{comment}{//}
+7742     \textcolor{comment}{//      M+ = f * 2^e}
+7743     \textcolor{comment}{//         = ((f div 2^-e) * 2^-e + (f mod 2^-e)) * 2^e}
+7744     \textcolor{comment}{//         = ((p1        ) * 2^-e + (p2        )) * 2^e}
+7745     \textcolor{comment}{//         = p1 + p2 * 2^e}
+7746 
+7747     \textcolor{keyword}{const} diyfp one(uint64\_t\{1\} << -M\_plus.e, M\_plus.e);
+7748 
+7749     uint32\_t p1 = \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(M\_plus.f >> -one.e); \textcolor{comment}{// p1 = f div 2^-e (Since -e >= 32, p1 fits
+       into a 32-bit int.)}
+7750     uint64\_t p2 = M\_plus.f & (one.f - 1);                    \textcolor{comment}{// p2 = f mod 2^-e}
+7751 
+7752     \textcolor{comment}{// 1)}
+7753     \textcolor{comment}{//}
+7754     \textcolor{comment}{// Generate the digits of the integral part p1 = d[n-1]...d[1]d[0]}
+7755 
+7756     assert(p1 > 0);
+7757 
+7758     uint32\_t pow10;
+7759     \textcolor{keyword}{const} \textcolor{keywordtype}{int} k = \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a264df2b5a7e19b864859161f3501155e}{find\_largest\_pow10}(p1, pow10);
+7760 
+7761     \textcolor{comment}{//      10^(k-1) <= p1 < 10^k, pow10 = 10^(k-1)}
+7762     \textcolor{comment}{//}
+7763     \textcolor{comment}{//      p1 = (p1 div 10^(k-1)) * 10^(k-1) + (p1 mod 10^(k-1))}
+7764     \textcolor{comment}{//         = (d[k-1]         ) * 10^(k-1) + (p1 mod 10^(k-1))}
+7765     \textcolor{comment}{//}
+7766     \textcolor{comment}{//      M+ = p1                                             + p2 * 2^e}
+7767     \textcolor{comment}{//         = d[k-1] * 10^(k-1) + (p1 mod 10^(k-1))          + p2 * 2^e}
+7768     \textcolor{comment}{//         = d[k-1] * 10^(k-1) + ((p1 mod 10^(k-1)) * 2^-e + p2) * 2^e}
+7769     \textcolor{comment}{//         = d[k-1] * 10^(k-1) + (                         rest) * 2^e}
+7770     \textcolor{comment}{//}
+7771     \textcolor{comment}{// Now generate the digits d[n] of p1 from left to right (n = k-1,...,0)}
+7772     \textcolor{comment}{//}
+7773     \textcolor{comment}{//      p1 = d[k-1]...d[n] * 10^n + d[n-1]...d[0]}
+7774     \textcolor{comment}{//}
+7775     \textcolor{comment}{// but stop as soon as}
+7776     \textcolor{comment}{//}
+7777     \textcolor{comment}{//      rest * 2^e = (d[n-1]...d[0] * 2^-e + p2) * 2^e <= delta * 2^e}
+7778 
+7779     \textcolor{keywordtype}{int} n = k;
+7780     \textcolor{keywordflow}{while} (n > 0)
+7781     \{
+7782         \textcolor{comment}{// Invariants:}
+7783         \textcolor{comment}{//      M+ = buffer * 10^n + (p1 + p2 * 2^e)    (buffer = 0 for n = k)}
+7784         \textcolor{comment}{//      pow10 = 10^(n-1) <= p1 < 10^n}
+7785         \textcolor{comment}{//}
+7786         \textcolor{keyword}{const} uint32\_t d = p1 / pow10;  \textcolor{comment}{// d = p1 div 10^(n-1)}
+7787         \textcolor{keyword}{const} uint32\_t r = p1 % pow10;  \textcolor{comment}{// r = p1 mod 10^(n-1)}
+7788         \textcolor{comment}{//}
+7789         \textcolor{comment}{//      M+ = buffer * 10^n + (d * 10^(n-1) + r) + p2 * 2^e}
+7790         \textcolor{comment}{//         = (buffer * 10 + d) * 10^(n-1) + (r + p2 * 2^e)}
+7791         \textcolor{comment}{//}
+7792         assert(d <= 9);
+7793         buffer[length++] = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + d); \textcolor{comment}{// buffer := buffer * 10 + d}
+7794         \textcolor{comment}{//}
+7795         \textcolor{comment}{//      M+ = buffer * 10^(n-1) + (r + p2 * 2^e)}
+7796         \textcolor{comment}{//}
+7797         p1 = r;
+7798         n--;
+7799         \textcolor{comment}{//}
+7800         \textcolor{comment}{//      M+ = buffer * 10^n + (p1 + p2 * 2^e)}
+7801         \textcolor{comment}{//      pow10 = 10^n}
+7802         \textcolor{comment}{//}
+7803 
+7804         \textcolor{comment}{// Now check if enough digits have been generated.}
+7805         \textcolor{comment}{// Compute}
+7806         \textcolor{comment}{//}
+7807         \textcolor{comment}{//      p1 + p2 * 2^e = (p1 * 2^-e + p2) * 2^e = rest * 2^e}
+7808         \textcolor{comment}{//}
+7809         \textcolor{comment}{// Note:}
+7810         \textcolor{comment}{// Since rest and delta share the same exponent e, it suffices to}
+7811         \textcolor{comment}{// compare the significands.}
+7812         \textcolor{keyword}{const} uint64\_t rest = (uint64\_t\{p1\} << -one.e) + p2;
+7813         \textcolor{keywordflow}{if} (rest <= delta)
+7814         \{
+7815             \textcolor{comment}{// V = buffer * 10^n, with M- <= V <= M+.}
+7816 
+7817             decimal\_exponent += n;
+7818 
+7819             \textcolor{comment}{// We may now just stop. But instead look if the buffer could be}
+7820             \textcolor{comment}{// decremented to bring V closer to w.}
+7821             \textcolor{comment}{//}
+7822             \textcolor{comment}{// pow10 = 10^n is now 1 ulp in the decimal representation V.}
+7823             \textcolor{comment}{// The rounding procedure works with diyfp's with an implicit}
+7824             \textcolor{comment}{// exponent of e.}
+7825             \textcolor{comment}{//}
+7826             \textcolor{comment}{//      10^n = (10^n * 2^-e) * 2^e = ulp * 2^e}
+7827             \textcolor{comment}{//}
+7828             \textcolor{keyword}{const} uint64\_t ten\_n = uint64\_t\{pow10\} << -one.e;
+7829             \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}{grisu2\_round}(buffer, length, dist, delta, rest, ten\_n);
+7830 
+7831             \textcolor{keywordflow}{return};
+7832         \}
+7833 
+7834         pow10 /= 10;
+7835         \textcolor{comment}{//}
+7836         \textcolor{comment}{//      pow10 = 10^(n-1) <= p1 < 10^n}
+7837         \textcolor{comment}{// Invariants restored.}
+7838     \}
+7839 
+7840     \textcolor{comment}{// 2)}
+7841     \textcolor{comment}{//}
+7842     \textcolor{comment}{// The digits of the integral part have been generated:}
+7843     \textcolor{comment}{//}
+7844     \textcolor{comment}{//      M+ = d[k-1]...d[1]d[0] + p2 * 2^e}
+7845     \textcolor{comment}{//         = buffer            + p2 * 2^e}
+7846     \textcolor{comment}{//}
+7847     \textcolor{comment}{// Now generate the digits of the fractional part p2 * 2^e.}
+7848     \textcolor{comment}{//}
+7849     \textcolor{comment}{// Note:}
+7850     \textcolor{comment}{// No decimal point is generated: the exponent is adjusted instead.}
+7851     \textcolor{comment}{//}
+7852     \textcolor{comment}{// p2 actually represents the fraction}
+7853     \textcolor{comment}{//}
+7854     \textcolor{comment}{//      p2 * 2^e}
+7855     \textcolor{comment}{//          = p2 / 2^-e}
+7856     \textcolor{comment}{//          = d[-1] / 10^1 + d[-2] / 10^2 + ...}
+7857     \textcolor{comment}{//}
+7858     \textcolor{comment}{// Now generate the digits d[-m] of p1 from left to right (m = 1,2,...)}
+7859     \textcolor{comment}{//}
+7860     \textcolor{comment}{//      p2 * 2^e = d[-1]d[-2]...d[-m] * 10^-m}
+7861     \textcolor{comment}{//                      + 10^-m * (d[-m-1] / 10^1 + d[-m-2] / 10^2 + ...)}
+7862     \textcolor{comment}{//}
+7863     \textcolor{comment}{// using}
+7864     \textcolor{comment}{//}
+7865     \textcolor{comment}{//      10^m * p2 = ((10^m * p2) div 2^-e) * 2^-e + ((10^m * p2) mod 2^-e)}
+7866     \textcolor{comment}{//                = (                   d) * 2^-e + (                   r)}
+7867     \textcolor{comment}{//}
+7868     \textcolor{comment}{// or}
+7869     \textcolor{comment}{//      10^m * p2 * 2^e = d + r * 2^e}
+7870     \textcolor{comment}{//}
+7871     \textcolor{comment}{// i.e.}
+7872     \textcolor{comment}{//}
+7873     \textcolor{comment}{//      M+ = buffer + p2 * 2^e}
+7874     \textcolor{comment}{//         = buffer + 10^-m * (d + r * 2^e)}
+7875     \textcolor{comment}{//         = (buffer * 10^m + d) * 10^-m + 10^-m * r * 2^e}
+7876     \textcolor{comment}{//}
+7877     \textcolor{comment}{// and stop as soon as 10^-m * r * 2^e <= delta * 2^e}
+7878 
+7879     assert(p2 > delta);
+7880 
+7881     \textcolor{keywordtype}{int} m = 0;
+7882     \textcolor{keywordflow}{for} (;;)
+7883     \{
+7884         \textcolor{comment}{// Invariant:}
+7885         \textcolor{comment}{//      M+ = buffer * 10^-m + 10^-m * (d[-m-1] / 10 + d[-m-2] / 10^2 + ...) * 2^e}
+7886         \textcolor{comment}{//         = buffer * 10^-m + 10^-m * (p2                                 ) * 2^e}
+7887         \textcolor{comment}{//         = buffer * 10^-m + 10^-m * (1/10 * (10 * p2)                   ) * 2^e}
+7888         \textcolor{comment}{//         = buffer * 10^-m + 10^-m * (1/10 * ((10*p2 div 2^-e) * 2^-e + (10*p2 mod 2^-e)) * 2^e}
+7889         \textcolor{comment}{//}
+7890         assert(p2 <= UINT64\_MAX / 10);
+7891         p2 *= 10;
+7892         \textcolor{keyword}{const} uint64\_t d = p2 >> -one.e;     \textcolor{comment}{// d = (10 * p2) div 2^-e}
+7893         \textcolor{keyword}{const} uint64\_t r = p2 & (one.f - 1); \textcolor{comment}{// r = (10 * p2) mod 2^-e}
+7894         \textcolor{comment}{//}
+7895         \textcolor{comment}{//      M+ = buffer * 10^-m + 10^-m * (1/10 * (d * 2^-e + r) * 2^e}
+7896         \textcolor{comment}{//         = buffer * 10^-m + 10^-m * (1/10 * (d + r * 2^e))}
+7897         \textcolor{comment}{//         = (buffer * 10 + d) * 10^(-m-1) + 10^(-m-1) * r * 2^e}
+7898         \textcolor{comment}{//}
+7899         assert(d <= 9);
+7900         buffer[length++] = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + d); \textcolor{comment}{// buffer := buffer * 10 + d}
+7901         \textcolor{comment}{//}
+7902         \textcolor{comment}{//      M+ = buffer * 10^(-m-1) + 10^(-m-1) * r * 2^e}
+7903         \textcolor{comment}{//}
+7904         p2 = r;
+7905         m++;
+7906         \textcolor{comment}{//}
+7907         \textcolor{comment}{//      M+ = buffer * 10^-m + 10^-m * p2 * 2^e}
+7908         \textcolor{comment}{// Invariant restored.}
+7909 
+7910         \textcolor{comment}{// Check if enough digits have been generated.}
+7911         \textcolor{comment}{//}
+7912         \textcolor{comment}{//      10^-m * p2 * 2^e <= delta * 2^e}
+7913         \textcolor{comment}{//              p2 * 2^e <= 10^m * delta * 2^e}
+7914         \textcolor{comment}{//                    p2 <= 10^m * delta}
+7915         delta *= 10;
+7916         dist  *= 10;
+7917         \textcolor{keywordflow}{if} (p2 <= delta)
+7918         \{
+7919             \textcolor{keywordflow}{break};
+7920         \}
+7921     \}
+7922 
+7923     \textcolor{comment}{// V = buffer * 10^-m, with M- <= V <= M+.}
+7924 
+7925     decimal\_exponent -= m;
+7926 
+7927     \textcolor{comment}{// 1 ulp in the decimal representation is now 10^-m.}
+7928     \textcolor{comment}{// Since delta and dist are now scaled by 10^m, we need to do the}
+7929     \textcolor{comment}{// same with ulp in order to keep the units in sync.}
+7930     \textcolor{comment}{//}
+7931     \textcolor{comment}{//      10^m * 10^-m = 1 = 2^-e * 2^e = ten\_m * 2^e}
+7932     \textcolor{comment}{//}
+7933     \textcolor{keyword}{const} uint64\_t ten\_m = one.f;
+7934     \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}{grisu2\_round}(buffer, length, dist, delta, p2, ten\_m);
+7935 
+7936     \textcolor{comment}{// By construction this algorithm generates the shortest possible decimal}
+7937     \textcolor{comment}{// number (Loitsch, Theorem 6.2) which rounds back to w.}
+7938     \textcolor{comment}{// For an input number of precision p, at least}
+7939     \textcolor{comment}{//}
+7940     \textcolor{comment}{//      N = 1 + ceil(p * log\_10(2))}
+7941     \textcolor{comment}{//}
+7942     \textcolor{comment}{// decimal digits are sufficient to identify all binary floating-point}
+7943     \textcolor{comment}{// numbers (Matula, "In-and-Out conversions").}
+7944     \textcolor{comment}{// This implies that the algorithm does not produce more than N decimal}
+7945     \textcolor{comment}{// digits.}
+7946     \textcolor{comment}{//}
+7947     \textcolor{comment}{//      N = 17 for p = 53 (IEEE double precision)}
+7948     \textcolor{comment}{//      N = 9  for p = 24 (IEEE single precision)}
+7949 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 9
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!grisu2\+\_\+round@{grisu2\+\_\+round}}
+\index{grisu2\+\_\+round@{grisu2\+\_\+round}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{grisu2\+\_\+round()}{grisu2\_round()}}
+{\footnotesize\ttfamily void nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2\+\_\+round (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{int}]{len,  }\item[{uint64\+\_\+t}]{dist,  }\item[{uint64\+\_\+t}]{delta,  }\item[{uint64\+\_\+t}]{rest,  }\item[{uint64\+\_\+t}]{ten\+\_\+k }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 7675 of file json.\+hpp.
+
+
+
+Referenced by grisu2\+\_\+digit\+\_\+gen().
+
+
+\begin{DoxyCode}
+7677 \{
+7678     assert(len >= 1);
+7679     assert(dist <= delta);
+7680     assert(rest <= delta);
+7681     assert(ten\_k > 0);
+7682 
+7683     \textcolor{comment}{//               <--------------------------- delta ---->}
+7684     \textcolor{comment}{//                                  <---- dist --------->}
+7685     \textcolor{comment}{// --------------[------------------+-------------------]--------------}
+7686     \textcolor{comment}{//               M-                 w                   M+}
+7687     \textcolor{comment}{//}
+7688     \textcolor{comment}{//                                  ten\_k}
+7689     \textcolor{comment}{//                                <------>}
+7690     \textcolor{comment}{//                                       <---- rest ---->}
+7691     \textcolor{comment}{// --------------[------------------+----+--------------]--------------}
+7692     \textcolor{comment}{//                                  w    V}
+7693     \textcolor{comment}{//                                       = buf * 10^k}
+7694     \textcolor{comment}{//}
+7695     \textcolor{comment}{// ten\_k represents a unit-in-the-last-place in the decimal representation}
+7696     \textcolor{comment}{// stored in buf.}
+7697     \textcolor{comment}{// Decrement buf by ten\_k while this takes buf closer to w.}
+7698 
+7699     \textcolor{comment}{// The tests are written in this order to avoid overflow in unsigned}
+7700     \textcolor{comment}{// integer arithmetic.}
+7701 
+7702     \textcolor{keywordflow}{while} (rest < dist
+7703             and delta - rest >= ten\_k
+7704             and (rest + ten\_k < dist or dist - rest > rest + ten\_k - dist))
+7705     \{
+7706         assert(buf[len - 1] != \textcolor{charliteral}{'0'});
+7707         buf[len - 1]--;
+7708         rest += ten\_k;
+7709     \}
+7710 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a1c5d30eb51e5e994a3f48bde104d2ce8}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a1c5d30eb51e5e994a3f48bde104d2ce8}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!reinterpret\+\_\+bits@{reinterpret\+\_\+bits}}
+\index{reinterpret\+\_\+bits@{reinterpret\+\_\+bits}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{reinterpret\+\_\+bits()}{reinterpret\_bits()}}
+{\footnotesize\ttfamily template$<$typename Target , typename Source $>$ \\
+Target nlohmann\+::detail\+::dtoa\+\_\+impl\+::reinterpret\+\_\+bits (\begin{DoxyParamCaption}\item[{const Source}]{source }\end{DoxyParamCaption})}
+
+
+
+Definition at line 7174 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+7175 \{
+7176     static\_assert(\textcolor{keyword}{sizeof}(Target) == \textcolor{keyword}{sizeof}(Source), \textcolor{stringliteral}{"size mismatch"});
+7177 
+7178     Target target;
+7179     std::memcpy(&target, &source, \textcolor{keyword}{sizeof}(Source));
+7180     \textcolor{keywordflow}{return} target;
+7181 \}
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!k\+Alpha@{k\+Alpha}}
+\index{k\+Alpha@{k\+Alpha}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{k\+Alpha}{kAlpha}}
+{\footnotesize\ttfamily constexpr int nlohmann\+::detail\+::dtoa\+\_\+impl\+::k\+Alpha = -\/60}
+
+
+
+Definition at line 7438 of file json.\+hpp.
+
+\mbox{\Hypertarget{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}\label{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}} 
+\index{nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}!k\+Gamma@{k\+Gamma}}
+\index{k\+Gamma@{k\+Gamma}!nlohmann\+::detail\+::dtoa\+\_\+impl@{nlohmann\+::detail\+::dtoa\+\_\+impl}}
+\subsubsection{\texorpdfstring{k\+Gamma}{kGamma}}
+{\footnotesize\ttfamily constexpr int nlohmann\+::detail\+::dtoa\+\_\+impl\+::k\+Gamma = -\/32}
+
+
+
+Definition at line 7439 of file json.\+hpp.
+

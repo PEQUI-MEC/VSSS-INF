@@ -1,0 +1,28 @@
+digraph "v4lcap::enqueue_buff"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node41 [label="v4lcap::enqueue_buff",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node41 -> Node42 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node42 [label="v4lcap::enqueue_buff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#acf3b811bf1d1db9842fef40e930813d7"];
+  Node41 -> Node43 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node43 [label="v4lcap::grab_raw",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a2974ed334916901ebfd9a59aed2428e8"];
+  Node41 -> Node44 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node44 [label="v4lcap::grab_rgb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4ef7f2a17a32f5b89bf9ddce123a3b52"];
+  Node44 -> Node45 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node45 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node45 -> Node46 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node46 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node46 -> Node47 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node47 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+  Node44 -> Node48 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node48 [label="VSSS_GUI::V4LInterface\l::grab_rgb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a4253d7fbc31e63ce398d47317baaf3a5"];
+  Node41 -> Node49 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node49 [label="v4lcap::start_capturing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4a7ee51c878ec735c9a24b517c63df16",tooltip="This method starts capturing and streaming from opened device passing memory type and number of buffe..."];
+  Node49 -> Node50 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node50 [label="VSSS_GUI::V4LInterface\l::__event_bt_start_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac83a8f5a54baf09ade5e3ec24ba91082",tooltip="Event triggered when &#39;start&#39; button is clicked. "];
+  Node50 -> Node51 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node51 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+}

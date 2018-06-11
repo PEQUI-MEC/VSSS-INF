@@ -1,0 +1,729 @@
+\hypertarget{json_8hpp}{}\section{src/lib/json.hpp File Reference}
+\label{json_8hpp}\index{src/lib/json.\+hpp@{src/lib/json.\+hpp}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$ciso646$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$initializer\+\_\+list$>$}\newline
+{\ttfamily \#include $<$iosfwd$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$numeric$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$type\+\_\+traits$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$array$>$}\newline
+{\ttfamily \#include $<$forward\+\_\+list$>$}\newline
+{\ttfamily \#include $<$tuple$>$}\newline
+{\ttfamily \#include $<$valarray$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$ios$>$}\newline
+{\ttfamily \#include $<$istream$>$}\newline
+{\ttfamily \#include $<$clocale$>$}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$ostream$>$}\newline
+{\ttfamily \#include $<$cstdio$>$}\newline
+Include dependency graph for json.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnlohmann_1_1adl__serializer}{nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$}
+\begin{DoxyCompactList}\small\item\em default J\+S\+O\+N\+Serializer template argument \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1basic__json}{nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$}
+\begin{DoxyCompactList}\small\item\em a class to store J\+S\+ON values \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em J\+S\+ON Pointer. \end{DoxyCompactList}\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__basic__json}{nlohmann\+::detail\+::is\+\_\+basic\+\_\+json$<$ typename $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__basic__json_3_01basic__json_3_01_object_type_00_01_array_type_0003b7300f70a161f2a79dcaaba1e567bb}{nlohmann\+::detail\+::is\+\_\+basic\+\_\+json$<$ basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$ $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1index__sequence}{nlohmann\+::detail\+::index\+\_\+sequence$<$ Ints $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1merge__and__renumber}{nlohmann\+::detail\+::merge\+\_\+and\+\_\+renumber$<$ Sequence1, Sequence2 $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1merge__and__renumber_3_01index__sequence_3_01_i1_8_8_8_01_4_00_01indf5ec8c9c7b5107e4b381e3ca4c1be2ca}{nlohmann\+::detail\+::merge\+\_\+and\+\_\+renumber$<$ index\+\_\+sequence$<$ I1... $>$, index\+\_\+sequence$<$ I2... $>$ $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1make__index__sequence}{nlohmann\+::detail\+::make\+\_\+index\+\_\+sequence$<$ N $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1make__index__sequence_3_010_01_4}{nlohmann\+::detail\+::make\+\_\+index\+\_\+sequence$<$ 0 $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1make__index__sequence_3_011_01_4}{nlohmann\+::detail\+::make\+\_\+index\+\_\+sequence$<$ 1 $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1conjunction}{nlohmann\+::detail\+::conjunction$<$... $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1conjunction_3_01_b1_01_4}{nlohmann\+::detail\+::conjunction$<$ B1 $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1conjunction_3_01_b1_00_01_bn_8_8_8_01_4}{nlohmann\+::detail\+::conjunction$<$ B1, Bn... $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1negation}{nlohmann\+::detail\+::negation$<$ B $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1priority__tag}{nlohmann\+::detail\+::priority\+\_\+tag$<$ N $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1priority__tag_3_010_01_4}{nlohmann\+::detail\+::priority\+\_\+tag$<$ 0 $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__complete__type}{nlohmann\+::detail\+::is\+\_\+complete\+\_\+type$<$ T, typename $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__complete__type_3_01_t_00_01decltype_07void_07sizeof_07_t_08_08_08_4}{nlohmann\+::detail\+::is\+\_\+complete\+\_\+type$<$ T, decltype(void(sizeof(\+T)))$>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__mapped__type}{nlohmann\+::detail\+::has\+\_\+mapped\+\_\+type$<$ T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__key__type}{nlohmann\+::detail\+::has\+\_\+key\+\_\+type$<$ T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__value__type}{nlohmann\+::detail\+::has\+\_\+value\+\_\+type$<$ T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__iterator}{nlohmann\+::detail\+::has\+\_\+iterator$<$ T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__object__type__impl}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+object\+\_\+type\+\_\+impl$<$ B, Real\+Type, Compatible\+Object\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__object__type__impl_3_01true_00_01_real_type_00_01_compatible_object_type_01_4}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+object\+\_\+type\+\_\+impl$<$ true, Real\+Type, Compatible\+Object\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__object__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+object\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Object\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__basic__json__nested__type}{nlohmann\+::detail\+::is\+\_\+basic\+\_\+json\+\_\+nested\+\_\+type$<$ Basic\+Json\+Type, T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__array__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+array\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Array\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__integer__type__impl}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+integer\+\_\+type\+\_\+impl$<$ bool, typename, typename $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__integer__type__impl_3_01true_00_01_real_integer_type78b0ba77f36a8c8169cdb79b01d1a4bf}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+integer\+\_\+type\+\_\+impl$<$ true, Real\+Integer\+Type, Compatible\+Number\+Integer\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__integer__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+integer\+\_\+type$<$ Real\+Integer\+Type, Compatible\+Number\+Integer\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__from__json}{nlohmann\+::detail\+::has\+\_\+from\+\_\+json$<$ Basic\+Json\+Type, T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__non__default__from__json}{nlohmann\+::detail\+::has\+\_\+non\+\_\+default\+\_\+from\+\_\+json$<$ Basic\+Json\+Type, T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1has__to__json}{nlohmann\+::detail\+::has\+\_\+to\+\_\+json$<$ Basic\+Json\+Type, T $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__complete__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+complete\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Complete\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1is__compatible__type}{nlohmann\+::detail\+::is\+\_\+compatible\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Type $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1static__const}{nlohmann\+::detail\+::static\+\_\+const$<$ T $>$}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1exception}{nlohmann\+::detail\+::exception}
+\begin{DoxyCompactList}\small\item\em general exception of the \hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json} class \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1parse__error}{nlohmann\+::detail\+::parse\+\_\+error}
+\begin{DoxyCompactList}\small\item\em exception indicating a parse error \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1invalid__iterator}{nlohmann\+::detail\+::invalid\+\_\+iterator}
+\begin{DoxyCompactList}\small\item\em exception indicating errors with iterators \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1type__error}{nlohmann\+::detail\+::type\+\_\+error}
+\begin{DoxyCompactList}\small\item\em exception indicating executing a member function with a wrong type \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1out__of__range}{nlohmann\+::detail\+::out\+\_\+of\+\_\+range}
+\begin{DoxyCompactList}\small\item\em exception indicating access out of the defined range \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1other__error}{nlohmann\+::detail\+::other\+\_\+error}
+\begin{DoxyCompactList}\small\item\em exception indicating other library errors \end{DoxyCompactList}\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1from__json__fn}{nlohmann\+::detail\+::from\+\_\+json\+\_\+fn}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1boolean_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::boolean $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1string_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::string $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__float_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::number\+\_\+float $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__unsigned_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::number\+\_\+unsigned $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1number__integer_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::number\+\_\+integer $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1array_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::array $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1external__constructor_3_01value__t_1_1object_01_4}{nlohmann\+::detail\+::external\+\_\+constructor$<$ value\+\_\+t\+::object $>$}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1to__json__fn}{nlohmann\+::detail\+::to\+\_\+json\+\_\+fn}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1input__adapter__protocol}{nlohmann\+::detail\+::input\+\_\+adapter\+\_\+protocol}
+\begin{DoxyCompactList}\small\item\em abstract input adapter interface \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1input__stream__adapter}{nlohmann\+::detail\+::input\+\_\+stream\+\_\+adapter}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}
+\begin{DoxyCompactList}\small\item\em input adapter for buffer input \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1input__adapter}{nlohmann\+::detail\+::input\+\_\+adapter}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1lexer}{nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em lexical analysis \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em syntax analysis \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1primitive__iterator__t}{nlohmann\+::detail\+::primitive\+\_\+iterator\+\_\+t}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1internal__iterator}{nlohmann\+::detail\+::internal\+\_\+iterator$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em an iterator value \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1iteration__proxy}{nlohmann\+::detail\+::iteration\+\_\+proxy$<$ Iterator\+Type $>$}
+\begin{DoxyCompactList}\small\item\em proxy class for the items() function \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1iter__impl}{nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em a template for a bidirectional iterator for the \hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json} class \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1iteration__proxy}{nlohmann\+::detail\+::iteration\+\_\+proxy$<$ Iterator\+Type $>$}
+\begin{DoxyCompactList}\small\item\em proxy class for the items() function \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1iteration__proxy_1_1iteration__proxy__internal}{nlohmann\+::detail\+::iteration\+\_\+proxy$<$ Iterator\+Type $>$\+::iteration\+\_\+proxy\+\_\+internal}
+\begin{DoxyCompactList}\small\item\em helper class for iteration \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1json__reverse__iterator}{nlohmann\+::detail\+::json\+\_\+reverse\+\_\+iterator$<$ Base $>$}
+\begin{DoxyCompactList}\small\item\em a template for a reverse iterator class \end{DoxyCompactList}\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1output__adapter__protocol}{nlohmann\+::detail\+::output\+\_\+adapter\+\_\+protocol$<$ Char\+Type $>$}
+\begin{DoxyCompactList}\small\item\em abstract output adapter interface \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1output__vector__adapter}{nlohmann\+::detail\+::output\+\_\+vector\+\_\+adapter$<$ Char\+Type $>$}
+\begin{DoxyCompactList}\small\item\em output adapter for byte vectors \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1output__stream__adapter}{nlohmann\+::detail\+::output\+\_\+stream\+\_\+adapter$<$ Char\+Type $>$}
+\begin{DoxyCompactList}\small\item\em output adapter for output streams \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1output__string__adapter}{nlohmann\+::detail\+::output\+\_\+string\+\_\+adapter$<$ Char\+Type $>$}
+\begin{DoxyCompactList}\small\item\em output adapter for basic\+\_\+string \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter$<$ Char\+Type $>$}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em deserialization of C\+B\+OR and Message\+Pack values \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1detail_1_1binary__writer}{nlohmann\+::detail\+::binary\+\_\+writer$<$ Basic\+Json\+Type, Char\+Type $>$}
+\begin{DoxyCompactList}\small\item\em serialization to C\+B\+OR and Message\+Pack values \end{DoxyCompactList}\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1diyfp}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::diyfp}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1boundaries}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::boundaries}
+\item 
+struct \hyperlink{structnlohmann_1_1detail_1_1dtoa__impl_1_1cached__power}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::cached\+\_\+power}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$}
+\item 
+class \hyperlink{classnlohmann_1_1detail_1_1json__ref}{nlohmann\+::detail\+::json\+\_\+ref$<$ Basic\+Json\+Type $>$}
+\item 
+class \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$}
+\begin{DoxyCompactList}\small\item\em J\+S\+ON Pointer. \end{DoxyCompactList}\item 
+struct \hyperlink{structnlohmann_1_1adl__serializer}{nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$}
+\begin{DoxyCompactList}\small\item\em default J\+S\+O\+N\+Serializer template argument \end{DoxyCompactList}\item 
+class \hyperlink{classnlohmann_1_1basic__json}{nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$}
+\begin{DoxyCompactList}\small\item\em a class to store J\+S\+ON values \end{DoxyCompactList}\item 
+union \hyperlink{unionnlohmann_1_1basic__json_1_1json__value}{nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::json\+\_\+value}
+\begin{DoxyCompactList}\small\item\em a J\+S\+ON value \end{DoxyCompactList}\item 
+struct \hyperlink{structstd_1_1hash_3_01nlohmann_1_1json_01_4}{std\+::hash$<$ nlohmann\+::json $>$}
+\begin{DoxyCompactList}\small\item\em hash value for J\+S\+ON objects \end{DoxyCompactList}\item 
+struct \hyperlink{structstd_1_1less_3_01_1_1nlohmann_1_1detail_1_1value__t_01_4}{std\+::less$<$ \+::nlohmann\+::detail\+::value\+\_\+t $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacenlohmann}{nlohmann}
+\begin{DoxyCompactList}\small\item\em namespace for Niels Lohmann \end{DoxyCompactList}\item 
+ \hyperlink{namespacenlohmann_1_1detail}{nlohmann\+::detail}
+\begin{DoxyCompactList}\small\item\em detail namespace with internal helper functions \end{DoxyCompactList}\item 
+ \hyperlink{namespacenlohmann_1_1anonymous__namespace_02json_8hpp_03}{nlohmann\+::anonymous\+\_\+namespace\{json.\+hpp\}}
+\begin{DoxyCompactList}\small\item\em namespace to hold default {\ttfamily to\+\_\+json} function \end{DoxyCompactList}\item 
+ \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl}{nlohmann\+::detail\+::dtoa\+\_\+impl}
+\begin{DoxyCompactList}\small\item\em implements the Grisu2 algorithm for binary to decimal floating-\/point conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{json_8hpp_a7c94253db90041af11dd946a49f0f8a4}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR}~3
+\item 
+\#define \hyperlink{json_8hpp_ab5ca1e164894d78d3276d2e5fe58c5e3}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR}~1
+\item 
+\#define \hyperlink{json_8hpp_a307e0238ebc35e99ea45c68823eb83eb}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH}~1
+\item 
+\#define \hyperlink{json_8hpp_a301794d1861959f579ba2a58faec2f36}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP}
+\item 
+\#define \hyperlink{json_8hpp_a584fd8f49cd7f4ecf5baba15b5b53cdd}{J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED}
+\item 
+\#define \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{J\+S\+O\+N\+\_\+\+T\+H\+R\+OW}(exception)~std\+::abort()
+\item 
+\#define \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{J\+S\+O\+N\+\_\+\+T\+RY}~if(true)
+\item 
+\#define \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{J\+S\+O\+N\+\_\+\+C\+A\+T\+CH}(exception)~if(false)
+\item 
+\#define \hyperlink{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}{J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY}(x)~x
+\item 
+\#define \hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY}(x)~x
+\item 
+\#define \hyperlink{json_8hpp_a0643bd74c2dc6f0e4e420b8190ea8f0f}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON}
+\item 
+\#define \hyperlink{json_8hpp_a80b7254e63f199a1f656f07ae551f632}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL}
+\item 
+\#define \hyperlink{json_8hpp_ac0c80a819c5b9029a9344b3841f1cfd7}{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER}(\hyperlink{classstd_1_1conditional_1_1type}{type})
+\begin{DoxyCompactList}\small\item\em Helper to determine whether there\textquotesingle{}s a key\+\_\+type for T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} = basic\+\_\+json$<$$>$
+\begin{DoxyCompactList}\small\item\em default J\+S\+ON class \end{DoxyCompactList}\item 
+{\footnotesize template$<$bool B, typename T  = void$>$ }\\using \hyperlink{namespacenlohmann_1_1detail_a02bcbc878bee413f25b985ada771aa9c}{nlohmann\+::detail\+::enable\+\_\+if\+\_\+t} = typename std\+::enable\+\_\+if$<$ B, T $>$\+::\hyperlink{classstd_1_1conditional_1_1type}{type}
+\item 
+{\footnotesize template$<$typename T $>$ }\\using \hyperlink{namespacenlohmann_1_1detail_a53a082eedad9f4729fcd8fed552a21f7}{nlohmann\+::detail\+::uncvref\+\_\+t} = typename std\+::remove\+\_\+cv$<$ typename std\+::remove\+\_\+reference$<$ T $>$\+::\hyperlink{classstd_1_1conditional_1_1type}{type} $>$\+::\hyperlink{classstd_1_1conditional_1_1type}{type}
+\item 
+{\footnotesize template$<$typename... Ts$>$ }\\using \hyperlink{namespacenlohmann_1_1detail_a24800493c6ec02ce033dcbb47b7fd28e}{nlohmann\+::detail\+::index\+\_\+sequence\+\_\+for} = make\+\_\+index\+\_\+sequence$<$ sizeof...(Ts)$>$
+\item 
+using \hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{nlohmann\+::detail\+::input\+\_\+adapter\+\_\+t} = std\+::shared\+\_\+ptr$<$ input\+\_\+adapter\+\_\+protocol $>$
+\begin{DoxyCompactList}\small\item\em a type to simplify interfaces \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Char\+Type $>$ }\\using \hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{nlohmann\+::detail\+::output\+\_\+adapter\+\_\+t} = std\+::shared\+\_\+ptr$<$ output\+\_\+adapter\+\_\+protocol$<$ Char\+Type $>$ $>$
+\begin{DoxyCompactList}\small\item\em a type to simplify interfaces \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985}{nlohmann\+::detail\+::value\+\_\+t} \+: std\+::uint8\+\_\+t \{ \newline
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{nlohmann\+::detail\+::value\+\_\+t\+::null}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{nlohmann\+::detail\+::value\+\_\+t\+::object}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{nlohmann\+::detail\+::value\+\_\+t\+::array}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{nlohmann\+::detail\+::value\+\_\+t\+::string}, 
+\newline
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{nlohmann\+::detail\+::value\+\_\+t\+::boolean}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{nlohmann\+::detail\+::value\+\_\+t\+::number\+\_\+integer}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{nlohmann\+::detail\+::value\+\_\+t\+::number\+\_\+unsigned}, 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{nlohmann\+::detail\+::value\+\_\+t\+::number\+\_\+float}, 
+\newline
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{nlohmann\+::detail\+::value\+\_\+t\+::discarded}
+ \}\begin{DoxyCompactList}\small\item\em the J\+S\+ON type enumeration \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespacenlohmann_1_1detail_a09169efff3bd1771fff29bd92cea19e0}{nlohmann\+::detail\+::operator$<$} (const value\+\_\+t lhs, const value\+\_\+t rhs) noexcept
+\begin{DoxyCompactList}\small\item\em comparison operator for J\+S\+ON types \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Arithmetic\+Type , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+arithmetic$<$ Arithmetic\+Type $>$\+::value and not std\+::is\+\_\+same$<$ Arithmetic\+Type, typename Basic\+Json\+Type\+::boolean\+\_\+t $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a85955b9c6dd31846e4b8e891f78614b6}{nlohmann\+::detail\+::get\+\_\+arithmetic\+\_\+value} (const Basic\+Json\+Type \&j, Arithmetic\+Type \&val)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a58117f225f43d03e3a0a4a6f3d77c9d9}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::boolean\+\_\+t \&b)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_ad74d89f77ada7a57eff38b43d4bf2335}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::string\+\_\+t \&s)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a7cb5dd7d46a60e65f9a8e0873b3f7dd8}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t \&val)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_ace4d5680ba413d9fd897ccb5d9c61a1c}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t \&val)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a047d881e611fcac709dc318f730a1732}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t \&val)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Enum\+Type , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+enum$<$ Enum\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a5440d650150d01e8015133521351b459}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, Enum\+Type \&e)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_abc62958462b916726b89f25fa381a129}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::array\+\_\+t \&arr)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , typename Allocator , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+convertible$<$ Basic\+Json\+Type, T $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a5cfb765aad92795abd7fda29d017272a}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, std\+::forward\+\_\+list$<$ T, Allocator $>$ \&l)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+convertible$<$ Basic\+Json\+Type, T $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a3df497b1d3977f071b488ecac1401517}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, std\+::valarray$<$ T $>$ \&l)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Array\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_ac53673a5ce29fb69b96d41dad33cb3b0}{nlohmann\+::detail\+::from\+\_\+json\+\_\+array\+\_\+impl} (const Basic\+Json\+Type \&j, Compatible\+Array\+Type \&arr, priority\+\_\+tag$<$ 0 $>$)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Array\+Type $>$ }\\auto \hyperlink{namespacenlohmann_1_1detail_a57f93ed57254a1639087cdc316e0fb83}{nlohmann\+::detail\+::from\+\_\+json\+\_\+array\+\_\+impl} (const Basic\+Json\+Type \&j, Compatible\+Array\+Type \&arr, priority\+\_\+tag$<$ 1 $>$) -\/$>$ decltype(arr.\+reserve(std\+::declval$<$ typename Compatible\+Array\+Type\+::size\+\_\+type $>$()), void())
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , std\+::size\+\_\+t N$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a46b0781205d0bdc5a959343b389966a4}{nlohmann\+::detail\+::from\+\_\+json\+\_\+array\+\_\+impl} (const Basic\+Json\+Type \&j, std\+::array$<$ T, N $>$ \&arr, priority\+\_\+tag$<$ 2 $>$)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Array\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+array\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Array\+Type $>$\+::value and not std\+::is\+\_\+same$<$ typename Basic\+Json\+Type\+::array\+\_\+t, Compatible\+Array\+Type $>$\+::value and std\+::is\+\_\+constructible$<$ Basic\+Json\+Type, typename Compatible\+Array\+Type\+::value\+\_\+type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a8dcac00852dbe1f61d1e78135b19d428}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, Compatible\+Array\+Type \&arr)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Object\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+object\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Object\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a5e7a3674e8ac46f8feebad9712d7c55f}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, Compatible\+Object\+Type \&obj)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Arithmetic\+Type , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+arithmetic$<$ Arithmetic\+Type $>$\+::value and not std\+::is\+\_\+same$<$ Arithmetic\+Type, typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t $>$\+::value and not std\+::is\+\_\+same$<$ Arithmetic\+Type, typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t $>$\+::value and not std\+::is\+\_\+same$<$ Arithmetic\+Type, typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t $>$\+::value and not std\+::is\+\_\+same$<$ Arithmetic\+Type, typename Basic\+Json\+Type\+::boolean\+\_\+t $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a839b0ab50d2c9bce669068f56bc41202}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, Arithmetic\+Type \&val)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename A1 , typename A2 $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_aae9f9c2601074e323d49428132cc293d}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, std\+::pair$<$ A1, A2 $>$ \&p)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Tuple , std\+::size\+\_\+t... Idx$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a28253915d9db4a0112d60eaee0422949}{nlohmann\+::detail\+::from\+\_\+json\+\_\+tuple\+\_\+impl} (const Basic\+Json\+Type \&j, Tuple \&t, index\+\_\+sequence$<$ Idx... $>$)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename... Args$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a8b99ec9b29f3f20a18fc4281fb784e49}{nlohmann\+::detail\+::from\+\_\+json} (const Basic\+Json\+Type \&j, std\+::tuple$<$ Args... $>$ \&t)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ T, typename Basic\+Json\+Type\+::boolean\+\_\+t $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a1a804b98cbe89b7e44b698f2ca860490}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, T b) noexcept
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+String , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+constructible$<$ typename Basic\+Json\+Type\+::string\+\_\+t, Compatible\+String $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a7356ed05cdbbb080cee80e1211e1c6c9}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const Compatible\+String \&s)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a4aa1ca6b7c61bf19d1f30ea5b669f68e}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::string\+\_\+t \&\&s)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Float\+Type , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+floating\+\_\+point$<$ Float\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a22bffdc8bc7e43af380ba2050696b230}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, Float\+Type val) noexcept
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Number\+Unsigned\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+integer\+\_\+type$<$ typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t, Compatible\+Number\+Unsigned\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_ae5fd66b5517b3b5a6c6b9fd9f29ba8dc}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, Compatible\+Number\+Unsigned\+Type val) noexcept
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Number\+Integer\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+integer\+\_\+type$<$ typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t, Compatible\+Number\+Integer\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a91fe576be579c8c2fdd14610605c6dd2}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, Compatible\+Number\+Integer\+Type val) noexcept
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Enum\+Type , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+enum$<$ Enum\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a0c8b159dba71981d6c555d284cf6e2bf}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, Enum\+Type e) noexcept
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_aeca6fb5fede5ed1e12a4420d98a5692b}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const std\+::vector$<$ bool $>$ \&e)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Array\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+array\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Array\+Type $>$\+::value or std\+::is\+\_\+same$<$ typename Basic\+Json\+Type\+::array\+\_\+t, Compatible\+Array\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a3afebc132c5ff83f9cd160e52030fdfd}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const Compatible\+Array\+Type \&arr)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+convertible$<$ T, Basic\+Json\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_afd18898316e9a20a6458877d2ee27d31}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, std\+::valarray$<$ T $>$ arr)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_aa0fd1b5788e9ba37e31da43dda738cb5}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::array\+\_\+t \&\&arr)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Compatible\+Object\+Type , enable\+\_\+if\+\_\+t$<$ is\+\_\+compatible\+\_\+object\+\_\+type$<$ Basic\+Json\+Type, Compatible\+Object\+Type $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a24c9c12f3839c94e09532f08de85e949}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const Compatible\+Object\+Type \&obj)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_ac9f7a5542851c61d93740148eaec509f}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, typename Basic\+Json\+Type\+::object\+\_\+t \&\&obj)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename T , std\+::size\+\_\+t N, enable\+\_\+if\+\_\+t$<$ not std\+::is\+\_\+constructible$<$ typename Basic\+Json\+Type\+::string\+\_\+t, T(\&)\mbox{[}\+N\mbox{]}$>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a8c4d301fc51996e3c5c1257fb92ace20}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, T(\&arr)\mbox{[}N\mbox{]})
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename... Args$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_aa30611f74062379d3420c40487cf3bb3}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const std\+::pair$<$ Args... $>$ \&p)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename Tuple , std\+::size\+\_\+t... Idx$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_a510dfa15b01e9a8afe31600a27b28199}{nlohmann\+::detail\+::to\+\_\+json\+\_\+tuple\+\_\+impl} (Basic\+Json\+Type \&j, const Tuple \&t, index\+\_\+sequence$<$ Idx... $>$)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type , typename... Args$>$ }\\void \hyperlink{namespacenlohmann_1_1detail_aa7a47b08eee864c2c108c04954919648}{nlohmann\+::detail\+::to\+\_\+json} (Basic\+Json\+Type \&j, const std\+::tuple$<$ Args... $>$ \&t)
+\item 
+{\footnotesize template$<$typename Target , typename Source $>$ }\\Target \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a1c5d30eb51e5e994a3f48bde104d2ce8}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::reinterpret\+\_\+bits} (const Source source)
+\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\boundaries \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a22b6e37654ac93c6d0d9c06ec1bf5ded}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::compute\+\_\+boundaries} (Float\+Type value)
+\item 
+cached\+\_\+power \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_adbf329a18c5cf854a3477327afd2200b}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::get\+\_\+cached\+\_\+power\+\_\+for\+\_\+binary\+\_\+exponent} (int e)
+\item 
+int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a264df2b5a7e19b864859161f3501155e}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::find\+\_\+largest\+\_\+pow10} (const uint32\+\_\+t n, uint32\+\_\+t \&pow10)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9e66e6d0f072aa4fc0627bffc5b1cbd8}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2\+\_\+round} (char $\ast$buf, int len, uint64\+\_\+t dist, uint64\+\_\+t delta, uint64\+\_\+t rest, uint64\+\_\+t ten\+\_\+k)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a9b899c72b0e1e3dd46d75c2b4e6bcdfb}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2\+\_\+digit\+\_\+gen} (char $\ast$buffer, int \&length, int \&decimal\+\_\+exponent, diyfp M\+\_\+minus, diyfp w, diyfp M\+\_\+plus)
+\item 
+void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a05b681dcb8569b9784c6dccfadb01633}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2} (char $\ast$buf, int \&len, int \&decimal\+\_\+exponent, diyfp m\+\_\+minus, diyfp v, diyfp m\+\_\+plus)
+\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\void \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_aab7a9670a4f4704a5d0347ad7588576b}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::grisu2} (char $\ast$buf, int \&len, int \&decimal\+\_\+exponent, Float\+Type value)
+\item 
+char $\ast$ \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a84733638b826eda624488f5fa4521e0b}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::append\+\_\+exponent} (char $\ast$buf, int e)
+\begin{DoxyCompactList}\small\item\em appends a decimal representation of e to buf \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a12c1c5d8b46ba9702186445e73f86afe}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::format\+\_\+buffer} (char $\ast$buf, int len, int decimal\+\_\+exponent, int min\+\_\+exp, int max\+\_\+exp)
+\begin{DoxyCompactList}\small\item\em prettify v = buf $\ast$ 10$^\wedge$decimal\+\_\+exponent \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Float\+Type $>$ }\\char $\ast$ \hyperlink{namespacenlohmann_1_1detail_a6192f1eab05fbbc5c35edb8368c8fc57}{nlohmann\+::detail\+::to\+\_\+chars} (char $\ast$first, char $\ast$last, Float\+Type value)
+\begin{DoxyCompactList}\small\item\em generates a decimal representation of the floating-\/point number value in \mbox{[}first, last). \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\void \hyperlink{json_8hpp_a907191b7578e209391ce938e3b2afdf7}{std\+::swap} (\hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} \&j1, \hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} \&j2) noexcept(is\+\_\+nothrow\+\_\+move\+\_\+constructible$<$ \hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} $>$\+::value and is\+\_\+nothrow\+\_\+move\+\_\+assignable$<$ \hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} $>$\+::value)
+\begin{DoxyCompactList}\small\item\em exchanges the values of two J\+S\+ON objects \end{DoxyCompactList}\item 
+\hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} \hyperlink{json_8hpp_a106b949d848bb8243a7cf94f11bcebf1}{operator\char`\"{}\char`\"{} \+\_\+json} (const char $\ast$s, std\+::size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em user-\/defined string literal for J\+S\+ON values \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1basic__json_a6886a5001f5b449ad316101a311ce536}{nlohmann\+::json\+::json\+\_\+pointer} \hyperlink{json_8hpp_aa2015c6dc3a0fb76fc526cfecef2286a}{operator\char`\"{}\char`\"{} \+\_\+json\+\_\+pointer} (const char $\ast$s, std\+::size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em user-\/defined string literal for J\+S\+ON pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr const auto \& \hyperlink{namespacenlohmann_1_1anonymous__namespace_02json_8hpp_03_a69afe041fa2aeac2239b65ae88b64af8}{nlohmann\+::anonymous\+\_\+namespace\{json.\+hpp\}\+::from\+\_\+json} = detail\+::static\+\_\+const$<$detail\+::from\+\_\+json\+\_\+fn$>$\+::value
+\item 
+constexpr const auto \& \hyperlink{namespacenlohmann_1_1anonymous__namespace_02json_8hpp_03_a455d0daa616e67bbb74d81cf3ba15e79}{nlohmann\+::anonymous\+\_\+namespace\{json.\+hpp\}\+::to\+\_\+json} = detail\+::static\+\_\+const$<$detail\+::to\+\_\+json\+\_\+fn$>$\+::value
+\item 
+constexpr int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_ac1ea1316de0b4a219f707c76b1db1966}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::k\+Alpha} = -\/60
+\item 
+constexpr int \hyperlink{namespacenlohmann_1_1detail_1_1dtoa__impl_a4a750fcc38da1ce68b7e25ab3a230e20}{nlohmann\+::detail\+::dtoa\+\_\+impl\+::k\+Gamma} = -\/32
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}\label{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+C\+A\+T\+CH@{J\+S\+O\+N\+\_\+\+C\+A\+T\+CH}}
+\index{J\+S\+O\+N\+\_\+\+C\+A\+T\+CH@{J\+S\+O\+N\+\_\+\+C\+A\+T\+CH}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+C\+A\+T\+CH}{JSON\_CATCH}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+C\+A\+T\+CH(\begin{DoxyParamCaption}\item[{}]{exception }\end{DoxyParamCaption})~if(false)}
+
+
+
+Definition at line 160 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+and\+\_\+create(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value().
+
+\mbox{\Hypertarget{json_8hpp_a584fd8f49cd7f4ecf5baba15b5b53cdd}\label{json_8hpp_a584fd8f49cd7f4ecf5baba15b5b53cdd}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED@{J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED}}
+\index{J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED@{J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED}{JSON\_DEPRECATED}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+ED}
+
+
+
+Definition at line 149 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::accept(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::crend(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::iterator\+\_\+wrapper().
+
+\mbox{\Hypertarget{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}\label{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY@{J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY}}
+\index{J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY@{J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY}{JSON\_LIKELY}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+
+
+
+Definition at line 182 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$\+::dump\+\_\+escaped(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::erase(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::get(), nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::get\+\_\+character(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::get\+\_\+impl(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::get\+\_\+ref\+\_\+impl(), nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::insert(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::key(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::next\+\_\+byte\+\_\+in\+\_\+range(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator$\ast$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator-\/$>$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator\mbox{[}$\,$\mbox{]}(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::operator\mbox{[}$\,$\mbox{]}(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::scan\+\_\+string(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::swap(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::unget(), nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::unget\+\_\+character(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value().
+
+\mbox{\Hypertarget{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}\label{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+T\+H\+R\+OW@{J\+S\+O\+N\+\_\+\+T\+H\+R\+OW}}
+\index{J\+S\+O\+N\+\_\+\+T\+H\+R\+OW@{J\+S\+O\+N\+\_\+\+T\+H\+R\+OW}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+T\+H\+R\+OW}{JSON\_THROW}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+T\+H\+R\+OW(\begin{DoxyParamCaption}\item[{}]{exception }\end{DoxyParamCaption})~std\+::abort()}
+
+
+
+Definition at line 158 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::array\+\_\+index(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::basic\+\_\+json(), nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$\+::dump\+\_\+escaped(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::emplace(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::emplace\+\_\+back(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::erase(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::expect\+\_\+eof(), nlohmann\+::detail\+::from\+\_\+json(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+and\+\_\+create(), nlohmann\+::detail\+::get\+\_\+arithmetic\+\_\+value(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+cbor\+\_\+string(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::get\+\_\+impl(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+msgpack\+\_\+string(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::get\+\_\+ref\+\_\+impl(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+array(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+object(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+size\+\_\+type(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+string(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+value(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::insert(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::json\+\_\+value\+::json\+\_\+value(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::key(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator$\ast$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator+=(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator-\/(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator-\/$>$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator$<$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator==(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator\mbox{[}$\,$\mbox{]}(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::operator\mbox{[}$\,$\mbox{]}(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::parse\+\_\+cbor\+\_\+internal(), nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$\+::parse\+\_\+internal(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::parse\+\_\+msgpack\+\_\+internal(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::pop\+\_\+back(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::push\+\_\+back(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::split(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::swap(), nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$\+::throw\+\_\+exception(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::top(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::unexpect\+\_\+eof(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::unflatten(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::update(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value(), and nlohmann\+::detail\+::binary\+\_\+writer$<$ Basic\+Json\+Type, Char\+Type $>$\+::write\+\_\+number\+\_\+with\+\_\+ubjson\+\_\+prefix().
+
+\mbox{\Hypertarget{json_8hpp_a985d3b82445302c57257f6432f261fe9}\label{json_8hpp_a985d3b82445302c57257f6432f261fe9}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+T\+RY@{J\+S\+O\+N\+\_\+\+T\+RY}}
+\index{J\+S\+O\+N\+\_\+\+T\+RY@{J\+S\+O\+N\+\_\+\+T\+RY}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+T\+RY}{JSON\_TRY}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+T\+RY~if(true)}
+
+
+
+Definition at line 159 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+and\+\_\+create(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value().
+
+\mbox{\Hypertarget{json_8hpp_ab77582407c64944e7db1ea95ab520253}\label{json_8hpp_ab77582407c64944e7db1ea95ab520253}} 
+\index{json.\+hpp@{json.\+hpp}!J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY@{J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY}}
+\index{J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY@{J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY}{JSON\_UNLIKELY}}
+{\footnotesize\ttfamily \#define J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~x}
+
+
+
+Definition at line 183 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::array\+\_\+index(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::basic\+\_\+json(), nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$\+::dump(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::emplace(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::emplace\+\_\+back(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::erase(), nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$\+::expect(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::expect\+\_\+eof(), nlohmann\+::detail\+::from\+\_\+json(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+array(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+object(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+value(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::insert(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::json\+\_\+value\+::json\+\_\+value(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator$<$(), nlohmann\+::detail\+::iter\+\_\+impl$<$ Basic\+Json\+Type $>$\+::operator==(), nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$\+::parse\+\_\+internal(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::pop\+\_\+back(), nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::push\+\_\+back(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::scan\+\_\+literal(), nlohmann\+::detail\+::lexer$<$ Basic\+Json\+Type $>$\+::scan\+\_\+string(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::split(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::top(), nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+::unexpect\+\_\+eof(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::unflatten(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::update().
+
+\mbox{\Hypertarget{json_8hpp_a80b7254e63f199a1f656f07ae551f632}\label{json_8hpp_a80b7254e63f199a1f656f07ae551f632}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL}{NLOHMANN\_BASIC\_JSON\_TPL}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+PL}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+basic\_json<ObjectType, ArrayType, StringType, BooleanType,             \(\backslash\)
+    NumberIntegerType, NumberUnsignedType, NumberFloatType,                \(\backslash\)
+    AllocatorType, JSONSerializer>
+\end{DoxyCode}
+
+
+Definition at line 205 of file json.\+hpp.
+
+\mbox{\Hypertarget{json_8hpp_a0643bd74c2dc6f0e4e420b8190ea8f0f}\label{json_8hpp_a0643bd74c2dc6f0e4e420b8190ea8f0f}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON}{NLOHMANN\_BASIC\_JSON\_TPL\_DECLARATION}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+B\+A\+S\+I\+C\+\_\+\+J\+S\+O\+N\+\_\+\+T\+P\+L\+\_\+\+D\+E\+C\+L\+A\+R\+A\+T\+I\+ON}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{template}<\textcolor{keyword}{template}<\textcolor{keyword}{typename}, \textcolor{keyword}{typename}, \textcolor{keyword}{typename}...> \textcolor{keyword}{class }ObjectType,   \(\backslash\)
+             template<\textcolor{keyword}{typename}, \textcolor{keyword}{typename}...> \textcolor{keyword}{class }ArrayType,              \(\backslash\)
+             class StringType, \textcolor{keyword}{class }BooleanType, \textcolor{keyword}{class }NumberIntegerType, \(\backslash\)
+             class NumberUnsignedType, \textcolor{keyword}{class }NumberFloatType,              \(\backslash\)
+             template<typename> \textcolor{keyword}{class }AllocatorType,                       \(\backslash\)
+             template<typename, typename = void> \textcolor{keyword}{class }JSONSerializer>
+\end{DoxyCode}
+
+
+Definition at line 197 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::adl\+\_\+serializer$<$ typename, typename $>$\+::to\+\_\+json().
+
+\mbox{\Hypertarget{json_8hpp_a301794d1861959f579ba2a58faec2f36}\label{json_8hpp_a301794d1861959f579ba2a58faec2f36}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP}{NLOHMANN\_JSON\_FWD\_HPP}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+F\+W\+D\+\_\+\+H\+PP}
+
+
+
+Definition at line 50 of file json.\+hpp.
+
+\mbox{\Hypertarget{json_8hpp_ac0c80a819c5b9029a9344b3841f1cfd7}\label{json_8hpp_ac0c80a819c5b9029a9344b3841f1cfd7}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER}{NLOHMANN\_JSON\_HAS\_HELPER}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+H\+A\+S\+\_\+\+H\+E\+L\+P\+ER(\begin{DoxyParamCaption}\item[{}]{\hyperlink{classstd_1_1conditional_1_1type}{type} }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keyword}{template}<\textcolor{keyword}{typename} T> \textcolor{keyword}{struct }has\_##\hyperlink{classstd_1_1conditional_1_1type}{type} \{                                  \(\backslash\)
+    private:                                                                  \(\backslash\)
+        template<typename U, typename = typename U::type>                     \(\backslash\)
+        static \textcolor{keywordtype}{int} detect(U &&);                                              \(\backslash\)
+        static \textcolor{keywordtype}{void} detect(...);                                              \(\backslash\)
+    public:                                                                   \(\backslash\)
+        static constexpr \textcolor{keywordtype}{bool} value =                                         \(\backslash\)
+                std::is\_integral<decltype(detect(std::declval<T>()))>::value; \(\backslash\)
+    \}
+\end{DoxyCode}
+
+
+Helper to determine whether there\textquotesingle{}s a key\+\_\+type for T. 
+
+This helper is used to tell associative containers apart from other containers such as sequence containers. For instance, {\ttfamily std\+::map} passes the test as it contains a {\ttfamily mapped\+\_\+type}, whereas {\ttfamily std\+::vector} fails the test.
+
+\begin{DoxySeeAlso}{See also}
+\href{http://stackoverflow.com/a/7728728/266378}{\tt http\+://stackoverflow.\+com/a/7728728/266378} 
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+version 1.\+0.\+0, overworked in version 2.\+0.\+6 
+\end{DoxySince}
+
+
+Definition at line 220 of file json.\+hpp.
+
+\mbox{\Hypertarget{json_8hpp_a7c94253db90041af11dd946a49f0f8a4}\label{json_8hpp_a7c94253db90041af11dd946a49f0f8a4}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR}{NLOHMANN\_JSON\_VERSION\_MAJOR}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR~3}
+
+
+
+Definition at line 32 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::meta().
+
+\mbox{\Hypertarget{json_8hpp_ab5ca1e164894d78d3276d2e5fe58c5e3}\label{json_8hpp_ab5ca1e164894d78d3276d2e5fe58c5e3}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR}{NLOHMANN\_JSON\_VERSION\_MINOR}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+I\+N\+OR~1}
+
+
+
+Definition at line 33 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::meta().
+
+\mbox{\Hypertarget{json_8hpp_a307e0238ebc35e99ea45c68823eb83eb}\label{json_8hpp_a307e0238ebc35e99ea45c68823eb83eb}} 
+\index{json.\+hpp@{json.\+hpp}!N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH}}
+\index{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH@{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH}{NLOHMANN\_JSON\_VERSION\_PATCH}}
+{\footnotesize\ttfamily \#define N\+L\+O\+H\+M\+A\+N\+N\+\_\+\+J\+S\+O\+N\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+P\+A\+T\+CH~1}
+
+
+
+Definition at line 34 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::meta().
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{json_8hpp_a106b949d848bb8243a7cf94f11bcebf1}\label{json_8hpp_a106b949d848bb8243a7cf94f11bcebf1}} 
+\index{json.\+hpp@{json.\+hpp}!operator\char`\"{}\char`\"{} \+\_\+json@{operator"""" \+\_\+json}}
+\index{operator\char`\"{}\char`\"{} \+\_\+json@{operator"""" \+\_\+json}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{operator"""" \+\_\+json()}{operator"" \_json()}}
+{\footnotesize\ttfamily \hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} operator\char`\"{}\char`\"{} \+\_\+json (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{std\+::size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+user-\/defined string literal for J\+S\+ON values 
+
+This operator implements a user-\/defined string literal for J\+S\+ON objects. It can be used by adding {\ttfamily \char`\"{}\+\_\+json\char`\"{}} to a string literal and returns a J\+S\+ON object if no parse error occurred.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & a string representation of a J\+S\+ON object \\
+\hline
+\mbox{\tt in}  & {\em n} & the length of string {\itshape s} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a J\+S\+ON object
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+version 1.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 17142 of file json.\+hpp.
+
+
+
+References nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::parse().
+
+
+\begin{DoxyCode}
+17143 \{
+17144     \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1basic__json_aa9676414f2e36383c4b181fe856aa3c0}{nlohmann::json::parse}(s, s + n);
+17145 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{json_8hpp_aa2015c6dc3a0fb76fc526cfecef2286a}\label{json_8hpp_aa2015c6dc3a0fb76fc526cfecef2286a}} 
+\index{json.\+hpp@{json.\+hpp}!operator\char`\"{}\char`\"{} \+\_\+json\+\_\+pointer@{operator"""" \+\_\+json\+\_\+pointer}}
+\index{operator\char`\"{}\char`\"{} \+\_\+json\+\_\+pointer@{operator"""" \+\_\+json\+\_\+pointer}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{operator"""" \+\_\+json\+\_\+pointer()}{operator"" \_json\_pointer()}}
+{\footnotesize\ttfamily \hyperlink{classnlohmann_1_1basic__json_a6886a5001f5b449ad316101a311ce536}{nlohmann\+::json\+::json\+\_\+pointer} operator\char`\"{}\char`\"{} \+\_\+json\+\_\+pointer (\begin{DoxyParamCaption}\item[{const char $\ast$}]{s,  }\item[{std\+::size\+\_\+t}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+user-\/defined string literal for J\+S\+ON pointer 
+
+This operator implements a user-\/defined string literal for J\+S\+ON Pointers. It can be used by adding {\ttfamily \char`\"{}\+\_\+json\+\_\+pointer\char`\"{}} to a string literal and returns a J\+S\+ON pointer object if no parse error occurred.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & a string representation of a J\+S\+ON Pointer \\
+\hline
+\mbox{\tt in}  & {\em n} & the length of string {\itshape s} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a J\+S\+ON pointer object
+\end{DoxyReturn}
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 17160 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::string.
+
+
+\begin{DoxyCode}
+17161 \{
+17162     \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1basic__json_a6886a5001f5b449ad316101a311ce536}{nlohmann::json::json\_pointer}(std::string(s, n));
+17163 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{json_8hpp_file_a907191b7578e209391ce938e3b2afdf7}\label{json_8hpp_file_a907191b7578e209391ce938e3b2afdf7}} 
+\index{json.\+hpp@{json.\+hpp}!swap@{swap}}
+\index{swap@{swap}!json.\+hpp@{json.\+hpp}}
+\subsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily template$<$$>$ \\
+void std\+::swap (\begin{DoxyParamCaption}\item[{\hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} \&}]{j1,  }\item[{\hyperlink{namespacenlohmann_a2bfd99e845a2e5cd90aeaf1b1431f474}{nlohmann\+::json} \&}]{j2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+exchanges the values of two J\+S\+ON objects 
+
+\begin{DoxySince}{Since}
+version 1.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 17084 of file json.\+hpp.
+
+
+
+References std\+::swap().
+
+
+
+Referenced by std\+::swap().
+
+
+\begin{DoxyCode}
+17089 \{
+17090     j1.\hyperlink{classnlohmann_1_1basic__json_a8c9d932353e1ab98a7dc2fc27e002031}{swap}(j2);
+17091 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4

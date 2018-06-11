@@ -1,0 +1,1877 @@
+\hypertarget{class_vision_g_u_i}{}\section{Vision\+G\+UI Class Reference}
+\label{class_vision_g_u_i}\index{Vision\+G\+UI@{Vision\+G\+UI}}
+
+
+{\ttfamily \#include $<$vision\+G\+U\+I.\+hpp$>$}
+
+
+
+Inheritance diagram for Vision\+G\+UI\+:
+% FIG 0
+
+
+Collaboration diagram for Vision\+G\+UI\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_vision_g_u_i_a26659931ea77f5b975fe1d0ce101c74c}{select\+Frame} (int sector)
+\item 
+void \hyperlink{class_vision_g_u_i_afd0b5f34c6a9691ab2fe83c49abae95a}{set\+Frame\+Size} (int in\+Width, int in\+Height)
+\item 
+bool \hyperlink{class_vision_g_u_i_a2d3a0e0b04ac1b80070e9123ec354d83}{get\+Is\+Split\+View} ()
+\item 
+\hyperlink{class_vision_g_u_i_ae6e821e61b7cf4e0aada2044a2bd2aca}{Vision\+G\+UI} ()
+\item 
+\hyperlink{class_vision_g_u_i_ae4892f8f0cff14a0d65ee55261b08999}{$\sim$\+Vision\+G\+UI} ()
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_vision}{Vision} $\ast$ \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}
+\item 
+Gtk\+::\+Toggle\+Button \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\+\_\+\+H\+S\+V\+\_\+calib}
+\item 
+int \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\+\_\+id}
+\item 
+bool \hyperlink{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}{H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag}
+\item 
+Gtk\+::\+Radio\+Button \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\+\_\+original\+\_\+view}
+\item 
+Gtk\+::\+Radio\+Button \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\+\_\+split\+\_\+view}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{H\+Scale\+\_\+\+Hmin}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{H\+Scale\+\_\+\+Smin}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{H\+Scale\+\_\+\+Vmin}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{H\+Scale\+\_\+\+Hmax}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{H\+Scale\+\_\+\+Smax}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{H\+Scale\+\_\+\+Vmax}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{H\+Scale\+\_\+\+Dilate}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{H\+Scale\+\_\+\+Erode}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{H\+Scale\+\_\+\+Blur}
+\item 
+Gtk\+::\+Scale \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{H\+Scale\+\_\+\+Amin}
+\item 
+Gtk\+::\+Toggle\+Button \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\+\_\+record\+\_\+video}
+\item 
+Gtk\+::\+Button \hyperlink{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}{bt\+\_\+save\+\_\+picture}
+\item 
+Gtk\+::\+Entry \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\+\_\+video\+\_\+name}
+\item 
+Gtk\+::\+Entry \hyperlink{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}{en\+\_\+picture\+\_\+name}
+\item 
+Gtk\+::\+Radio\+Button \hyperlink{class_vision_g_u_i_aef9153130a527b6fae636466cd3ef77f}{rb\+\_\+mode\+\_\+\+G\+MM}
+\item 
+Gtk\+::\+Radio\+Button \hyperlink{class_vision_g_u_i_a43f330d4bc43b11333bb90b3e9f3cc2a}{rb\+\_\+mode\+\_\+\+H\+SV}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}{\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when H\+SV Calib button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}{\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when H\+SV Calib right button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_aa6d54a685b4bddbad91778a442fd7c8e}{\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when H\+SV Calib left button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a5e1378fbaf15105bd898f6fd9e2d3d0e}{\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Event triggered when \textquotesingle{}Main $<$-\/$>$ Adv\textquotesingle{} button is pressed. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Turns \textquotesingle{}is\+Split\+View\textquotesingle{} flag active when triggered when Split mode is selected. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a0f0a52b29ccd843b3e5a200d2618cd6a}{bt\+\_\+save\+\_\+picture\+\_\+clicked} ()
+\begin{DoxyCompactList}\small\item\em Saves the actual frame image in /media/pictures when \textquotesingle{}save\textquotesingle{} button is clicked If \textquotesingle{}Picture name\textquotesingle{} textfield is empty, a numeric ID value will be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a78a250ff8c2520a56dce79d824dbeb85}{bt\+\_\+record\+\_\+video\+\_\+pressed} ()
+\begin{DoxyCompactList}\small\item\em Starts video recording when \textquotesingle{}R\+EC\textquotesingle{} button is pressed, changing its label to \textquotesingle{}Stop\textquotesingle{}, and vice-\/versa. If \textquotesingle{}Video name\textquotesingle{} textfield is empty, a numeric ID value will be assigned. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a5022537a86f97e3eb1e037044301a0f7}{\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv} ()
+\begin{DoxyCompactList}\small\item\em Creates H\+SV calibration frame and its inner elements. Ataches interface signals (button pressing/clicking, values change) to events. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a9b0cac7f32fc402ce5aaff0325e39b77}{\+\_\+\+\_\+create\+\_\+frm\+\_\+capture} ()
+\begin{DoxyCompactList}\small\item\em Creates H\+SV calibration frame and its inner elements. Ataches interface signals (button pressing/clicking) to events. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_aab78b384bacc2a12d385b1baef011ed4}{\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view} ()
+\begin{DoxyCompactList}\small\item\em Creates Split View frame and its inner elements. Ataches interface signals (signals pressing/clicking) to events. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a8c01178ecd9d517e941bd6075d69bcdd}{H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Hue method passsing Hmin value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a4e521dabf97b0820f40272290b471ed2}{H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Saturation method passsing Smin value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_aaba5ce7bcd87c9ce9101f409695b3bd9}{H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Value method passsing Vmin value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_ad12a91dfc3c8cd3ef213d4d518d85267}{H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Hue method passsing Hmax value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a37cc33977d0cfdb559bf156ffad949ad}{H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Saturation method passsing Smax value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a8446a9425209abafa824d6a8cb539248}{H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Value method passsing Vmax value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a77d74bbe2fdcc16d5cf18094d257d219}{H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Dilate method passsing Dilate value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a945e5a987bdfb5b1d5d97bd18231d211}{H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s Erode method passsing Erode value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a2f959701d835dd3fb53b20698754c013}{H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Blur method passsing Blur value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a5ac13b6caa3cef4ddc8137c432b645ba}{H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed} ()
+\begin{DoxyCompactList}\small\item\em Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Amin method passsing Amin value as a parameter. \end{DoxyCompactList}\item 
+void \hyperlink{class_vision_g_u_i_a39e2afb8ee3002e43b15758604597c9c}{init\+\_\+calib\+\_\+params} ()
+\begin{DoxyCompactList}\small\item\em Sets initial calibration parameter values shown at interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}{is\+Split\+View}
+\item 
+int \hyperlink{class_vision_g_u_i_a45478a68d6dcd492aa57b2b4a1f14e32}{pic\+Index}
+\item 
+int \hyperlink{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}{vid\+Index}
+\item 
+Gtk\+::\+Label \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{H\+S\+V\+\_\+label}
+\item 
+Gtk\+::\+Button \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\+\_\+\+H\+S\+V\+\_\+left}
+\item 
+Gtk\+::\+Button \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\+\_\+\+H\+S\+V\+\_\+right}
+\item 
+Gtk\+::\+Button \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\+\_\+switch\+Main\+Adv}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file vision\+G\+U\+I.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_vision_g_u_i_ae6e821e61b7cf4e0aada2044a2bd2aca}\label{class_vision_g_u_i_ae6e821e61b7cf4e0aada2044a2bd2aca}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!Vision\+G\+UI@{Vision\+G\+UI}}
+\index{Vision\+G\+UI@{Vision\+G\+UI}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{Vision\+G\+U\+I()}{VisionGUI()}}
+{\footnotesize\ttfamily Vision\+G\+U\+I\+::\+Vision\+G\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 581 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+\+\_\+create\+\_\+frm\+\_\+capture(), \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view(), init\+\_\+calib\+\_\+params(), and vision.
+
+
+\begin{DoxyCode}
+581                      :
+582   \hyperlink{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}{HSV\_calib\_event\_flag}(\textcolor{keyword}{false}), \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}(0), \hyperlink{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}{vidIndex}(0), 
+      \hyperlink{class_vision_g_u_i_a45478a68d6dcd492aa57b2b4a1f14e32}{picIndex}(0), \hyperlink{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}{isSplitView}(\textcolor{keyword}{false})
+583 \{
+584 
+585     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision} = \textcolor{keyword}{new} \hyperlink{class_vision}{Vision}(640, 480);
+586 
+587     \hyperlink{class_vision_g_u_i_a9b0cac7f32fc402ce5aaff0325e39b77}{\_\_create\_frm\_capture}();
+588     \hyperlink{class_vision_g_u_i_aab78b384bacc2a12d385b1baef011ed4}{\_\_create\_frm\_split\_view}();
+589     \hyperlink{class_vision_g_u_i_a5022537a86f97e3eb1e037044301a0f7}{\_\_create\_frm\_hsv}();
+590 
+591     \hyperlink{class_vision_g_u_i_a39e2afb8ee3002e43b15758604597c9c}{init\_calib\_params}();
+592 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_vision_g_u_i_ae4892f8f0cff14a0d65ee55261b08999}\label{class_vision_g_u_i_ae4892f8f0cff14a0d65ee55261b08999}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!````~Vision\+G\+UI@{$\sim$\+Vision\+G\+UI}}
+\index{````~Vision\+G\+UI@{$\sim$\+Vision\+G\+UI}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{$\sim$\+Vision\+G\+U\+I()}{~VisionGUI()}}
+{\footnotesize\ttfamily Vision\+G\+U\+I\+::$\sim$\+Vision\+G\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 594 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References Vision\+::finish\+Video(), Vision\+::is\+Recording(), and vision.
+
+
+\begin{DoxyCode}
+594                       \{
+595     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a7990c9cb8684e1d1c92a5b6aa99abe6f}{isRecording}()) \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a5c7366071fde8a1b916be0721adaa275}{finishVideo}();
+596 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_vision_g_u_i_a9b0cac7f32fc402ce5aaff0325e39b77}\label{class_vision_g_u_i_a9b0cac7f32fc402ce5aaff0325e39b77}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+create\+\_\+frm\+\_\+capture@{\+\_\+\+\_\+create\+\_\+frm\+\_\+capture}}
+\index{\+\_\+\+\_\+create\+\_\+frm\+\_\+capture@{\+\_\+\+\_\+create\+\_\+frm\+\_\+capture}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+create\+\_\+frm\+\_\+capture()}{\_\_create\_frm\_capture()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+create\+\_\+frm\+\_\+capture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates H\+SV calibration frame and its inner elements. Ataches interface signals (button pressing/clicking) to events. 
+
+
+
+Definition at line 49 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+record\+\_\+video, bt\+\_\+record\+\_\+video\+\_\+pressed(), bt\+\_\+save\+\_\+picture, bt\+\_\+save\+\_\+picture\+\_\+clicked(), en\+\_\+picture\+\_\+name, and en\+\_\+video\+\_\+name.
+
+
+
+Referenced by Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+49                                      \{
+50     Gtk::VBox * vbox;
+51     Gtk::Grid * grid;
+52     Gtk::Label * label;
+53     Gtk::Frame * frame;
+54 
+55     vbox = \textcolor{keyword}{new} Gtk::VBox();
+56     grid = \textcolor{keyword}{new} Gtk::Grid();
+57     frame = \textcolor{keyword}{new} Gtk::Frame();
+58 
+59     pack\_start(*frame, \textcolor{keyword}{false}, \textcolor{keyword}{false}, 5);
+60 
+61     frame->add(*vbox);
+62     vbox->pack\_start(*grid, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+63     vbox->set\_halign(Gtk::ALIGN\_CENTER);
+64     vbox->set\_valign(Gtk::ALIGN\_CENTER);
+65 
+66     frame->set\_label(\textcolor{stringliteral}{"Video/Image Capture"});
+67 
+68     grid->set\_border\_width(5);
+69     grid->set\_column\_spacing(10);
+70     grid->set\_row\_spacing(5);
+71 
+72     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Picture Name:"});
+73     label->set\_alignment(1.0);
+74     grid->attach(*label, 0, 0, 1, 1);
+75     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Video Name:"});
+76     label->set\_alignment(1.0);
+77     grid->attach(*label, 0, 1, 1, 1);
+78 
+79     grid->attach(\hyperlink{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}{en\_picture\_name}, 1, 0, 1, 1);
+80     grid->attach(\hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}, 1, 1, 1, 1);
+81 
+82     \hyperlink{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}{bt\_save\_picture}.set\_label(\textcolor{stringliteral}{"Save"});
+83     \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}.set\_label(\textcolor{stringliteral}{"REC"});
+84     grid->attach(\hyperlink{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}{bt\_save\_picture}, 2, 0, 1, 1);
+85     grid->attach(\hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}, 2, 1, 1, 1);
+86 
+87     \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.set\_state(Gtk::STATE\_INSENSITIVE);
+88     \hyperlink{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}{en\_picture\_name}.set\_state(Gtk::STATE\_INSENSITIVE);
+89     \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}.set\_state(Gtk::STATE\_INSENSITIVE);
+90     \hyperlink{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}{bt\_save\_picture}.set\_state(Gtk::STATE\_INSENSITIVE);
+91 
+92     \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}.signal\_pressed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a78a250ff8c2520a56dce79d824dbeb85}{VisionGUI::bt\_record\_video\_pressed}));
+93     \hyperlink{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}{bt\_save\_picture}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a0f0a52b29ccd843b3e5a200d2618cd6a}{VisionGUI::bt\_save\_picture\_clicked}));
+94 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{class_vision_g_u_i_a5022537a86f97e3eb1e037044301a0f7}\label{class_vision_g_u_i_a5022537a86f97e3eb1e037044301a0f7}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv@{\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv}}
+\index{\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv@{\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv()}{\_\_create\_frm\_hsv()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+create\+\_\+frm\+\_\+hsv (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates H\+SV calibration frame and its inner elements. Ataches interface signals (button pressing/clicking, values change) to events. 
+
+
+
+Definition at line 125 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), bt\+\_\+\+H\+S\+V\+\_\+calib, bt\+\_\+\+H\+S\+V\+\_\+left, bt\+\_\+\+H\+S\+V\+\_\+right, bt\+\_\+switch\+Main\+Adv, H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Blur, H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Dilate, H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Erode, H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmin, H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smin, H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmax, H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmin, H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed(), and H\+S\+V\+\_\+label.
+
+
+
+Referenced by Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+125                                  \{
+126     Gtk::VBox * vbox;
+127     Gtk::Grid * grid;
+128     Gtk::Label * label;
+129     Gtk::Frame * frame;
+130 
+131     vbox = \textcolor{keyword}{new} Gtk::VBox();
+132     grid = \textcolor{keyword}{new} Gtk::Grid();
+133     frame = \textcolor{keyword}{new} Gtk::Frame();
+134 
+135     pack\_start(*frame, \textcolor{keyword}{false}, \textcolor{keyword}{false}, 5);
+136 
+137     frame->add(*vbox);
+138     vbox->pack\_start(*grid, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+139     vbox->set\_halign(Gtk::ALIGN\_CENTER);
+140     vbox->set\_valign(Gtk::ALIGN\_CENTER);
+141 
+142     frame->set\_label(\textcolor{stringliteral}{"HSV Calibration"});
+143 
+144     grid->set\_border\_width(5);
+145     grid->set\_column\_spacing(15);
+146     grid->set\_row\_spacing(0);
+147     \textcolor{comment}{// grid->set\_column\_homogeneous(true);}
+148 
+149     \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.set\_label(\textcolor{stringliteral}{"HSV Calib."});
+150     grid->attach(\hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}, 0, 0, 1, 1);
+151 
+152     \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}.set\_label(\textcolor{stringliteral}{" < "});
+153     grid->attach(\hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}, 2, 0, 1, 1);
+154     \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Main"});
+155     grid->attach(\hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}, 3, 0, 1, 1);
+156     \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}.set\_label(\textcolor{stringliteral}{" > "});
+157     grid->attach(\hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}, 4, 0, 1, 1);
+158 
+159     \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}.set\_label(\textcolor{stringliteral}{"Main <-> Adv"});
+160     grid->attach(\hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}, 6, 0, 1, 1);
+161 
+162     grid = \textcolor{keyword}{new} Gtk::Grid();
+163     grid->set\_border\_width(5);
+164     grid->set\_column\_spacing(15);
+165     grid->set\_row\_spacing(0);
+166     grid->set\_column\_homogeneous(\textcolor{keyword}{true});
+167     vbox->pack\_start(*grid, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+168 
+169     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Hmin:"});
+170     label->set\_alignment(1.0, 1.0);
+171     grid->attach(*label, 0, 0, 1, 1);
+172 
+173     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_digits(0);
+174     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_increments(1,1);
+175     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_range(0,255);
+176     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_value\_pos(Gtk::POS\_TOP);
+177     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_draw\_value();
+178     grid->attach(\hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}, 1, 0, 2, 1);
+179 
+180     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Hmax:"});
+181     label->set\_alignment(1.0, 1.0);
+182     grid->attach(*label, 3, 0, 1, 1);
+183 
+184     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_digits(0);
+185     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_increments(1,1);
+186     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_range(0,180);
+187     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_value\_pos(Gtk::POS\_TOP);
+188     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_draw\_value();
+189     grid->attach(\hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}, 4, 0, 2, 1);
+190 
+191     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Smin:"});
+192     label->set\_alignment(1.0, 1.0);
+193     grid->attach(*label, 0, 1, 1, 1);
+194 
+195     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_digits(0);
+196     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_increments(1,1);
+197     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_range(0,255);
+198     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_value\_pos(Gtk::POS\_TOP);
+199     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_draw\_value();
+200     grid->attach(\hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}, 1, 1, 2, 1);
+201 
+202     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Smax:"});
+203     label->set\_alignment(1.0, 1.0);
+204     grid->attach(*label, 3, 1, 1, 1);
+205 
+206     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_digits(0);
+207     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_increments(1,1);
+208     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_range(0,255);
+209     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_value\_pos(Gtk::POS\_TOP);
+210     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_draw\_value();
+211 
+212     grid->attach(\hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax},4, 1, 2, 1);
+213 
+214     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Vmin:"});
+215     label->set\_alignment(1.0, 1.0);
+216     grid->attach(*label, 0, 2, 1, 1);
+217 
+218     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_digits(0);
+219     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_increments(1,1);
+220     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_range(0,255);
+221     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_value\_pos(Gtk::POS\_TOP);
+222     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_draw\_value();
+223     grid->attach(\hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}, 1, 2, 2, 1);
+224 
+225     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Vmax:"});
+226     label->set\_alignment(1.0, 1.0);
+227     grid->attach(*label, 3, 2, 1, 1);
+228 
+229     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_digits(0);
+230     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_increments(1,1);
+231     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_range(0,255);
+232     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_value\_pos(Gtk::POS\_TOP);
+233     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_draw\_value();
+234 
+235     grid->attach(\hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}, 4, 2, 2, 1);
+236 
+237     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Erode:"});
+238     label->set\_alignment(1.0, 1.0);
+239     grid->attach(*label, 0, 3, 1, 1);
+240 
+241     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_digits(0);
+242     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_increments(1,1);
+243     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_range(0,50);
+244     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_value\_pos(Gtk::POS\_TOP);
+245     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_draw\_value();
+246     grid->attach(\hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}, 1, 3, 2, 1);
+247 
+248     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Dilate:"});
+249     label->set\_alignment(1.0, 1.0);
+250     grid->attach(*label, 3, 3, 1, 1);
+251 
+252     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_digits(0);
+253     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_increments(1,1);
+254     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_range(0,50);
+255     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_value\_pos(Gtk::POS\_TOP);
+256     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_draw\_value();
+257     grid->attach(\hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}, 4, 3, 2, 1);
+258 
+259     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Blur:"});
+260     label->set\_alignment(1.0, 1.0);
+261     grid->attach(*label, 0, 4, 1, 1);
+262 
+263     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_digits(0);
+264     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_increments(2,2);
+265     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_range(3,9);
+266     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_value\_pos(Gtk::POS\_TOP);
+267     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_draw\_value();
+268     grid->attach(\hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}, 1, 4, 2, 1);
+269 
+270     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Amin:"});
+271     label->set\_alignment(1.0, 1.0);
+272     grid->attach(*label, 3, 4, 1, 1);
+273 
+274     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_digits(0);
+275     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_increments(1,1);
+276     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_range(0,200);
+277     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_value\_pos(Gtk::POS\_TOP);
+278     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_draw\_value();
+279 
+280     grid->attach(\hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}, 4, 4, 2, 1);
+281 
+282     \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.set\_state(Gtk::STATE\_INSENSITIVE);
+283     \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}.set\_state(Gtk::STATE\_INSENSITIVE);
+284     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_state(Gtk::STATE\_INSENSITIVE);
+285     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_state(Gtk::STATE\_INSENSITIVE);
+286     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_state(Gtk::STATE\_INSENSITIVE);
+287     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_state(Gtk::STATE\_INSENSITIVE);
+288     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_state(Gtk::STATE\_INSENSITIVE);
+289     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_state(Gtk::STATE\_INSENSITIVE);
+290     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_state(Gtk::STATE\_INSENSITIVE);
+291     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_state(Gtk::STATE\_INSENSITIVE);
+292     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_state(Gtk::STATE\_INSENSITIVE);
+293     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_state(Gtk::STATE\_INSENSITIVE);
+294     \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}.set\_state(Gtk::STATE\_INSENSITIVE);
+295     \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}.set\_state(Gtk::STATE\_INSENSITIVE);
+296 
+297     \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.signal\_pressed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}{VisionGUI::\_\_event\_bt\_HSV\_calib\_pressed}));
+298     \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}{VisionGUI::\_\_event\_bt\_right\_HSV\_calib\_clicked}));
+299     \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_aa6d54a685b4bddbad91778a442fd7c8e}{VisionGUI::\_\_event\_bt\_left\_HSV\_calib\_clicked}));
+300     \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a5e1378fbaf15105bd898f6fd9e2d3d0e}{VisionGUI::\_\_event\_bt\_switchMainAdv\_clicked}));
+301     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a8c01178ecd9d517e941bd6075d69bcdd}{VisionGUI::HScale\_Hmin\_value\_changed}));
+302     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_ad12a91dfc3c8cd3ef213d4d518d85267}{VisionGUI::HScale\_Hmax\_value\_changed}));
+303     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a4e521dabf97b0820f40272290b471ed2}{VisionGUI::HScale\_Smin\_value\_changed}));
+304     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a37cc33977d0cfdb559bf156ffad949ad}{VisionGUI::HScale\_Smax\_value\_changed}));
+305     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_aaba5ce7bcd87c9ce9101f409695b3bd9}{VisionGUI::HScale\_Vmin\_value\_changed}));
+306     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a8446a9425209abafa824d6a8cb539248}{VisionGUI::HScale\_Vmax\_value\_changed}));
+307     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a945e5a987bdfb5b1d5d97bd18231d211}{VisionGUI::HScale\_Erode\_value\_changed}));
+308     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a77d74bbe2fdcc16d5cf18094d257d219}{VisionGUI::HScale\_Dilate\_value\_changed}));
+309     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a2f959701d835dd3fb53b20698754c013}{VisionGUI::HScale\_Blur\_value\_changed}));
+310     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.signal\_value\_changed().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a5ac13b6caa3cef4ddc8137c432b645ba}{VisionGUI::HScale\_Amin\_value\_changed}));
+311 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{class_vision_g_u_i_aab78b384bacc2a12d385b1baef011ed4}\label{class_vision_g_u_i_aab78b384bacc2a12d385b1baef011ed4}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view@{\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view}}
+\index{\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view@{\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view()}{\_\_create\_frm\_split\_view()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates Split View frame and its inner elements. Ataches interface signals (signals pressing/clicking) to events. 
+
+
+
+Definition at line 3 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked(), rb\+\_\+original\+\_\+view, and rb\+\_\+split\+\_\+view.
+
+
+
+Referenced by Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+3                                         \{
+4     Gtk::VBox * vbox;
+5     Gtk::Grid * grid;
+6     Gtk::Label * label;
+7     Gtk::Frame * frame;
+8 
+9     vbox = \textcolor{keyword}{new} Gtk::VBox();
+10     grid = \textcolor{keyword}{new} Gtk::Grid();
+11     frame = \textcolor{keyword}{new} Gtk::Frame();
+12 
+13     pack\_start(*frame, \textcolor{keyword}{false}, \textcolor{keyword}{false}, 5);
+14 
+15     frame->add(*vbox);
+16     vbox->pack\_start(*grid, \textcolor{keyword}{false}, \textcolor{keyword}{true}, 5);
+17     vbox->set\_halign(Gtk::ALIGN\_CENTER);
+18     vbox->set\_valign(Gtk::ALIGN\_CENTER);
+19 
+20     frame->set\_label(\textcolor{stringliteral}{"Split View"});
+21 
+22     grid->set\_border\_width(5);
+23     grid->set\_column\_spacing(10);
+24     grid->set\_row\_spacing(5);
+25 
+26     label = \textcolor{keyword}{new} Gtk::Label(\textcolor{stringliteral}{"Select Mode: "});
+27     grid->attach(*label, 0, 0, 1, 1);
+28     \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_label(\textcolor{stringliteral}{"Original"});
+29     grid->attach(\hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}, 1, 0, 1, 1);
+30     \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}.set\_label(\textcolor{stringliteral}{"Split"});
+31     \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}.join\_group(\hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view});
+32     grid->attach(\hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}, 2, 0, 1, 1);
+33 
+34     \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_state(Gtk::STATE\_INSENSITIVE);
+35     \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}.set\_state(Gtk::STATE\_INSENSITIVE);
+36 
+37     \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{VisionGUI::\_\_event\_rb\_split\_mode\_clicked}));
+38     \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}.signal\_clicked().connect(sigc::mem\_fun(*\textcolor{keyword}{this}, &
+      \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{VisionGUI::\_\_event\_rb\_split\_mode\_clicked}));
+39 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}\label{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed@{\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed}}
+\index{\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed@{\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed()}{\_\_event\_bt\_HSV\_calib\_pressed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when H\+SV Calib button is pressed. 
+
+Switches H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag value and turns calibration parameters (non)editable 
+
+Definition at line 375 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+\+H\+S\+V\+\_\+left, bt\+\_\+\+H\+S\+V\+\_\+right, bt\+\_\+switch\+Main\+Adv, H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Blur, H\+Scale\+\_\+\+Dilate, H\+Scale\+\_\+\+Erode, H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Hmin, H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Smin, H\+Scale\+\_\+\+Vmax, H\+Scale\+\_\+\+Vmin, and H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), and select\+Frame().
+
+
+\begin{DoxyCode}
+375                                              \{
+376     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}{HSV\_calib\_event\_flag}) \{
+377         \hyperlink{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}{HSV\_calib\_event\_flag}=\textcolor{keyword}{false};
+378         \textcolor{comment}{// VisionGUI::\_\_event\_auto\_save();}
+379         \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_state(Gtk::STATE\_INSENSITIVE);
+380         \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_state(Gtk::STATE\_INSENSITIVE);
+381         \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_state(Gtk::STATE\_INSENSITIVE);
+382         \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_state(Gtk::STATE\_INSENSITIVE);
+383         \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_state(Gtk::STATE\_INSENSITIVE);
+384         \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_state(Gtk::STATE\_INSENSITIVE);
+385         \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_state(Gtk::STATE\_INSENSITIVE);
+386         \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_state(Gtk::STATE\_INSENSITIVE);
+387         \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_state(Gtk::STATE\_INSENSITIVE);
+388         \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_state(Gtk::STATE\_INSENSITIVE);
+389         \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}.set\_state(Gtk::STATE\_INSENSITIVE);
+390         \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}.set\_state(Gtk::STATE\_INSENSITIVE);
+391         \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}.set\_state(Gtk::STATE\_INSENSITIVE);
+392     \} \textcolor{keywordflow}{else} \{
+393         \hyperlink{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}{HSV\_calib\_event\_flag}=\textcolor{keyword}{true};
+394         \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_state(Gtk::STATE\_NORMAL);
+395         \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_state(Gtk::STATE\_NORMAL);
+396         \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_state(Gtk::STATE\_NORMAL);
+397         \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_state(Gtk::STATE\_NORMAL);
+398         \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_state(Gtk::STATE\_NORMAL);
+399         \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_state(Gtk::STATE\_NORMAL);
+400         \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_state(Gtk::STATE\_NORMAL);
+401         \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_state(Gtk::STATE\_NORMAL);
+402         \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_state(Gtk::STATE\_NORMAL);
+403         \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_state(Gtk::STATE\_NORMAL);
+404         \hyperlink{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}{bt\_HSV\_right}.set\_state(Gtk::STATE\_NORMAL);
+405         \hyperlink{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}{bt\_HSV\_left}.set\_state(Gtk::STATE\_NORMAL);
+406         \hyperlink{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}{bt\_switchMainAdv}.set\_state(Gtk::STATE\_NORMAL);
+407     \}
+408 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{class_vision_g_u_i_aa6d54a685b4bddbad91778a442fd7c8e}\label{class_vision_g_u_i_aa6d54a685b4bddbad91778a442fd7c8e}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked}}
+\index{\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked()}{\_\_event\_bt\_left\_HSV\_calib\_clicked()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when H\+SV Calib left button is pressed. 
+
+Jump to the previous calibration category and loads its parameters values 
+
+Definition at line 511 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References Vision\+::get\+Amin(), Vision\+::get\+Blur(), Vision\+::get\+Dilate(), Vision\+::get\+Erode(), Vision\+::get\+Hue(), Vision\+::get\+Saturation(), Vision\+::get\+Value(), H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Blur, H\+Scale\+\_\+\+Dilate, H\+Scale\+\_\+\+Erode, H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Hmin, H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Smin, H\+Scale\+\_\+\+Vmax, H\+Scale\+\_\+\+Vmin, H\+S\+V\+\_\+label, Img\+\_\+id, and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+511                                                   \{
+512     \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}-1;
+513 
+514     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} < 0) \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = 3;
+515 
+516     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+517     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+518 
+519     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+520     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+521 
+522     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+523     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+524 
+525     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a0d07157e3d9bb577940f03365c8f57e8}{getDilate}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+526     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a6cc4617b0af832b4cb94e00cc845c317}{getErode}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+527 
+528     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}{getBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+529     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a563041d47d11e0912227c3ce87dcc22e}{getAmin}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+530 
+531     \textcolor{keywordflow}{switch}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}) \{
+532         \textcolor{keywordflow}{case} 0:
+533 
+534             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Main"});
+535             \textcolor{keywordflow}{break};
+536 
+537         \textcolor{keywordflow}{case} 1:
+538 
+539             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Green"});
+540             \textcolor{keywordflow}{break};
+541 
+542         \textcolor{keywordflow}{case} 2:
+543 
+544             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Ball"});
+545             \textcolor{keywordflow}{break};
+546 
+547         \textcolor{keywordflow}{case} 3:
+548 
+549             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Opp."});
+550             \textcolor{keywordflow}{break};
+551 
+552         \textcolor{keywordflow}{default}:
+553             \textcolor{keywordflow}{break};
+554     \}
+555 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}\label{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked}}
+\index{\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked()}{\_\_event\_bt\_right\_HSV\_calib\_clicked()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when H\+SV Calib right button is pressed. 
+
+Jump to the next calibration category and loads its parameters values 
+
+Definition at line 465 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References Vision\+::get\+Amin(), Vision\+::get\+Blur(), Vision\+::get\+Dilate(), Vision\+::get\+Erode(), Vision\+::get\+Hue(), Vision\+::get\+Saturation(), Vision\+::get\+Value(), H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Blur, H\+Scale\+\_\+\+Dilate, H\+Scale\+\_\+\+Erode, H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Hmin, H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Smin, H\+Scale\+\_\+\+Vmax, H\+Scale\+\_\+\+Vmin, H\+S\+V\+\_\+label, Img\+\_\+id, and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), and select\+Frame().
+
+
+\begin{DoxyCode}
+465                                                    \{
+466     \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} + 1;
+467 
+468     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} > 3) \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = 0;
+469 
+470     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+471     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+472 
+473     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+474     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+475 
+476     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+477     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+478 
+479     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a0d07157e3d9bb577940f03365c8f57e8}{getDilate}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+480     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a6cc4617b0af832b4cb94e00cc845c317}{getErode}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+481 
+482     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}{getBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+483     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a563041d47d11e0912227c3ce87dcc22e}{getAmin}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+484 
+485     \textcolor{keywordflow}{switch}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}) \{
+486         \textcolor{keywordflow}{case} 0:
+487 
+488             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Main"});
+489             \textcolor{keywordflow}{break};
+490 
+491         \textcolor{keywordflow}{case} 1:
+492 
+493             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Green"});
+494             \textcolor{keywordflow}{break};
+495 
+496         \textcolor{keywordflow}{case} 2:
+497 
+498             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Ball"});
+499             \textcolor{keywordflow}{break};
+500 
+501         \textcolor{keywordflow}{case} 3:
+502 
+503             \hyperlink{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}{HSV\_label}.set\_text(\textcolor{stringliteral}{"Opp."});
+504             \textcolor{keywordflow}{break};
+505 
+506         \textcolor{keywordflow}{default}:
+507             \textcolor{keywordflow}{break};
+508     \}
+509 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{class_vision_g_u_i_a5e1378fbaf15105bd898f6fd9e2d3d0e}\label{class_vision_g_u_i_a5e1378fbaf15105bd898f6fd9e2d3d0e}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked}}
+\index{\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked()}{\_\_event\_bt\_switchMainAdv\_clicked()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Event triggered when \textquotesingle{}Main $<$-\/$>$ Adv\textquotesingle{} button is pressed. 
+
+Switches host team and adversary calibration parameters 
+
+Definition at line 313 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References Vision\+::get\+Amin(), Vision\+::get\+Blur(), Vision\+::get\+Dilate(), Vision\+::get\+Erode(), Vision\+::get\+Hue(), Vision\+::get\+Saturation(), Vision\+::get\+Value(), H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Blur, H\+Scale\+\_\+\+Dilate, H\+Scale\+\_\+\+Erode, H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Hmin, H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Smin, H\+Scale\+\_\+\+Vmax, H\+Scale\+\_\+\+Vmin, Img\+\_\+id, Vision\+::switch\+Main\+With\+Adv(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+313                                                  \{
+314     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a11fa5150abbd3b37e78999b46b7b3a84}{switchMainWithAdv}();
+315     \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+316     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+317     \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+318     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+319     \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0));
+320     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1));
+321     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a563041d47d11e0912227c3ce87dcc22e}{getAmin}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+322     \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}{getBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+323     \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a6cc4617b0af832b4cb94e00cc845c317}{getErode}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+324     \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.set\_value(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a0d07157e3d9bb577940f03365c8f57e8}{getDilate}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}));
+325 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}\label{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked}}
+\index{\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked@{\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked()}{\_\_event\_rb\_split\_mode\_clicked()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Turns \textquotesingle{}is\+Split\+View\textquotesingle{} flag active when triggered when Split mode is selected. 
+
+
+
+Definition at line 41 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References is\+Split\+View, and rb\+\_\+split\+\_\+view.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view(), and select\+Frame().
+
+
+\begin{DoxyCode}
+41                                               \{
+42     \hyperlink{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}{isSplitView} = \hyperlink{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}{rb\_split\_view}.get\_active();
+43 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 17
+\mbox{\Hypertarget{class_vision_g_u_i_a78a250ff8c2520a56dce79d824dbeb85}\label{class_vision_g_u_i_a78a250ff8c2520a56dce79d824dbeb85}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+record\+\_\+video\+\_\+pressed@{bt\+\_\+record\+\_\+video\+\_\+pressed}}
+\index{bt\+\_\+record\+\_\+video\+\_\+pressed@{bt\+\_\+record\+\_\+video\+\_\+pressed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+record\+\_\+video\+\_\+pressed()}{bt\_record\_video\_pressed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::bt\+\_\+record\+\_\+video\+\_\+pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts video recording when \textquotesingle{}R\+EC\textquotesingle{} button is pressed, changing its label to \textquotesingle{}Stop\textquotesingle{}, and vice-\/versa. If \textquotesingle{}Video name\textquotesingle{} textfield is empty, a numeric ID value will be assigned. 
+
+
+
+Definition at line 96 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References bt\+\_\+record\+\_\+video, en\+\_\+video\+\_\+name, Vision\+::finish\+Video(), Vision\+::is\+Recording(), Vision\+::start\+New\+Video(), vid\+Index, and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture().
+
+
+\begin{DoxyCode}
+96                                         \{
+97     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a7990c9cb8684e1d1c92a5b6aa99abe6f}{isRecording}()) \{
+98         \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a5c7366071fde8a1b916be0721adaa275}{finishVideo}();
+99         \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}.set\_label(\textcolor{stringliteral}{"REC"});
+100         \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.set\_text(\textcolor{stringliteral}{""});
+101         \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.set\_state(Gtk::STATE\_NORMAL);
+102     \} \textcolor{keywordflow}{else} \{
+103         std::string name = \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.get\_text();
+104 
+105         \hyperlink{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}{bt\_record\_video}.set\_label(\textcolor{stringliteral}{"Stop"});
+106         \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.set\_state(Gtk::STATE\_INSENSITIVE);
+107         \textcolor{keywordflow}{if}(name.empty()) \{
+108           \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_ae3ec43e811508f326910f99c416332db}{startNewVideo}(std::to\_string(\hyperlink{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}{vidIndex}++));
+109           \hyperlink{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}{en\_video\_name}.set\_text(std::to\_string(\hyperlink{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}{vidIndex}));
+110       \} \textcolor{keywordflow}{else} \{
+111           \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_ae3ec43e811508f326910f99c416332db}{startNewVideo}(name);
+112       \}
+113   \}
+114 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 18
+Here is the caller graph for this function\+:
+% FIG 19
+\mbox{\Hypertarget{class_vision_g_u_i_a0f0a52b29ccd843b3e5a200d2618cd6a}\label{class_vision_g_u_i_a0f0a52b29ccd843b3e5a200d2618cd6a}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+save\+\_\+picture\+\_\+clicked@{bt\+\_\+save\+\_\+picture\+\_\+clicked}}
+\index{bt\+\_\+save\+\_\+picture\+\_\+clicked@{bt\+\_\+save\+\_\+picture\+\_\+clicked}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+save\+\_\+picture\+\_\+clicked()}{bt\_save\_picture\_clicked()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::bt\+\_\+save\+\_\+picture\+\_\+clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Saves the actual frame image in /media/pictures when \textquotesingle{}save\textquotesingle{} button is clicked If \textquotesingle{}Picture name\textquotesingle{} textfield is empty, a numeric ID value will be assigned. 
+
+
+
+Definition at line 116 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References en\+\_\+picture\+\_\+name, pic\+Index, Vision\+::save\+Picture(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture().
+
+
+\begin{DoxyCode}
+116                                         \{
+117     std::string name = \hyperlink{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}{en\_picture\_name}.get\_text();
+118 
+119     \textcolor{keywordflow}{if}(name.empty()) \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a324ad2f355fa414ee484e8ce9b247ffc}{savePicture}(std::to\_string(
+      \hyperlink{class_vision_g_u_i_a45478a68d6dcd492aa57b2b4a1f14e32}{picIndex}++));
+120     \textcolor{keywordflow}{else} \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a324ad2f355fa414ee484e8ce9b247ffc}{savePicture}(name);
+121 
+122     \hyperlink{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}{en\_picture\_name}.set\_text(\textcolor{stringliteral}{""});
+123 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 20
+Here is the caller graph for this function\+:
+% FIG 21
+\mbox{\Hypertarget{class_vision_g_u_i_a2d3a0e0b04ac1b80070e9123ec354d83}\label{class_vision_g_u_i_a2d3a0e0b04ac1b80070e9123ec354d83}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!get\+Is\+Split\+View@{get\+Is\+Split\+View}}
+\index{get\+Is\+Split\+View@{get\+Is\+Split\+View}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{get\+Is\+Split\+View()}{getIsSplitView()}}
+{\footnotesize\ttfamily bool Vision\+G\+U\+I\+::get\+Is\+Split\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References is\+Split\+View.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+45                                \{
+46   \textcolor{keywordflow}{return} \hyperlink{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}{isSplitView};
+47 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 22
+\mbox{\Hypertarget{class_vision_g_u_i_a5ac13b6caa3cef4ddc8137c432b645ba}\label{class_vision_g_u_i_a5ac13b6caa3cef4ddc8137c432b645ba}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed()}{HScale\_Amin\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Amin method passsing Amin value as a parameter. 
+
+
+
+Definition at line 351 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Amin, Img\+\_\+id, Vision\+::set\+Amin(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+351                                           \{
+352     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.get\_value());
+353 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 23
+Here is the caller graph for this function\+:
+% FIG 24
+\mbox{\Hypertarget{class_vision_g_u_i_a2f959701d835dd3fb53b20698754c013}\label{class_vision_g_u_i_a2f959701d835dd3fb53b20698754c013}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed()}{HScale\_Blur\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Blur method passsing Blur value as a parameter. 
+
+
+
+Definition at line 365 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Blur, Img\+\_\+id, Vision\+::set\+Blur(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+365                                           \{
+366     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.get\_value() < 3) \{
+367         \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{setBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 3);
+368     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.get\_value() % 2 == 0)\{
+369         \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{setBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.get\_value()+1);
+370     \} \textcolor{keywordflow}{else}\{
+371         \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{setBlur}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, (\textcolor{keywordtype}{int})\hyperlink{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}{HScale\_Blur}.get\_value());
+372     \}
+373 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 25
+Here is the caller graph for this function\+:
+% FIG 26
+\mbox{\Hypertarget{class_vision_g_u_i_a77d74bbe2fdcc16d5cf18094d257d219}\label{class_vision_g_u_i_a77d74bbe2fdcc16d5cf18094d257d219}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed()}{HScale\_Dilate\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Dilate method passsing Dilate value as a parameter. 
+
+
+
+Definition at line 355 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Dilate, Img\+\_\+id, Vision\+::set\+Dilate(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+355                                             \{
+356     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.get\_value() < 0) \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a5a763aa322837556ab83f39ffb7e9391}{setDilate}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0);
+357     \textcolor{keywordflow}{else} \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a5a763aa322837556ab83f39ffb7e9391}{setDilate}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}{HScale\_Dilate}.get\_value());
+358 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 27
+Here is the caller graph for this function\+:
+% FIG 28
+\mbox{\Hypertarget{class_vision_g_u_i_a945e5a987bdfb5b1d5d97bd18231d211}\label{class_vision_g_u_i_a945e5a987bdfb5b1d5d97bd18231d211}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed()}{HScale\_Erode\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s Erode method passsing Erode value as a parameter. 
+
+
+
+Definition at line 360 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Erode, Img\+\_\+id, Vision\+::set\+Erode(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+360                                            \{
+361     \textcolor{keywordflow}{if}(\hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.get\_value() < 0) \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{setErode}(
+      \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0);
+362     \textcolor{keywordflow}{else} \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{setErode}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}{HScale\_Erode}.get\_value());
+363 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 29
+Here is the caller graph for this function\+:
+% FIG 30
+\mbox{\Hypertarget{class_vision_g_u_i_ad12a91dfc3c8cd3ef213d4d518d85267}\label{class_vision_g_u_i_ad12a91dfc3c8cd3ef213d4d518d85267}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed()}{HScale\_Hmax\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Hue method passsing Hmax value as a parameter. 
+
+
+
+Definition at line 339 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Hmax, Img\+\_\+id, Vision\+::set\+Hue(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+339                                           \{
+340     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.get\_value());
+341 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 31
+Here is the caller graph for this function\+:
+% FIG 32
+\mbox{\Hypertarget{class_vision_g_u_i_a8c01178ecd9d517e941bd6075d69bcdd}\label{class_vision_g_u_i_a8c01178ecd9d517e941bd6075d69bcdd}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed()}{HScale\_Hmin\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Hue method passsing Hmin value as a parameter. 
+
+
+
+Definition at line 327 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Hmin, Img\+\_\+id, Vision\+::set\+Hue(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+327                                           \{
+328     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}{HScale\_Hmin}.get\_value());
+329 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 33
+Here is the caller graph for this function\+:
+% FIG 34
+\mbox{\Hypertarget{class_vision_g_u_i_a37cc33977d0cfdb559bf156ffad949ad}\label{class_vision_g_u_i_a37cc33977d0cfdb559bf156ffad949ad}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed()}{HScale\_Smax\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Saturation method passsing Smax value as a parameter. 
+
+
+
+Definition at line 343 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Smax, Img\+\_\+id, Vision\+::set\+Saturation(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+343                                           \{
+344     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.get\_value());
+345 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 35
+Here is the caller graph for this function\+:
+% FIG 36
+\mbox{\Hypertarget{class_vision_g_u_i_a4e521dabf97b0820f40272290b471ed2}\label{class_vision_g_u_i_a4e521dabf97b0820f40272290b471ed2}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed()}{HScale\_Smin\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Saturation method passsing Smin value as a parameter. 
+
+
+
+Definition at line 331 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Smin, Img\+\_\+id, Vision\+::set\+Saturation(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+331                                           \{
+332     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}{HScale\_Smin}.get\_value());
+333 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 37
+Here is the caller graph for this function\+:
+% FIG 38
+\mbox{\Hypertarget{class_vision_g_u_i_a8446a9425209abafa824d6a8cb539248}\label{class_vision_g_u_i_a8446a9425209abafa824d6a8cb539248}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed()}{HScale\_Vmax\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Value method passsing Vmax value as a parameter. 
+
+
+
+Definition at line 347 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Vmax, Img\+\_\+id, Vision\+::set\+Value(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+347                                           \{
+348     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 1, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.get\_value());
+349 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 39
+Here is the caller graph for this function\+:
+% FIG 40
+\mbox{\Hypertarget{class_vision_g_u_i_aaba5ce7bcd87c9ce9101f409695b3bd9}\label{class_vision_g_u_i_aaba5ce7bcd87c9ce9101f409695b3bd9}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed}}
+\index{H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed@{H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed()}{HScale\_Vmin\_value\_changed()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Call \hyperlink{class_vision}{Vision}\textquotesingle{}s set\+Value method passsing Vmin value as a parameter. 
+
+
+
+Definition at line 335 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Vmin, Img\+\_\+id, Vision\+::set\+Value(), and vision.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv().
+
+
+\begin{DoxyCode}
+335                                           \{
+336     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(\hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id}, 0, (\textcolor{keywordtype}{int}) \hyperlink{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}{HScale\_Vmin}.get\_value());
+337 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 41
+Here is the caller graph for this function\+:
+% FIG 42
+\mbox{\Hypertarget{class_vision_g_u_i_a39e2afb8ee3002e43b15758604597c9c}\label{class_vision_g_u_i_a39e2afb8ee3002e43b15758604597c9c}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!init\+\_\+calib\+\_\+params@{init\+\_\+calib\+\_\+params}}
+\index{init\+\_\+calib\+\_\+params@{init\+\_\+calib\+\_\+params}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{init\+\_\+calib\+\_\+params()}{init\_calib\_params()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::init\+\_\+calib\+\_\+params (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets initial calibration parameter values shown at interface. 
+
+
+
+Definition at line 557 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References H\+Scale\+\_\+\+Amin, H\+Scale\+\_\+\+Hmax, H\+Scale\+\_\+\+Smax, H\+Scale\+\_\+\+Vmax, Vision\+::set\+Calib\+Params(), and vision.
+
+
+
+Referenced by Vision\+G\+U\+I().
+
+
+\begin{DoxyCode}
+557                                   \{
+558     \textcolor{comment}{// Inicializar variáveis de calibração}
+559     \textcolor{keywordtype}{int} H[5][2] = \{ \{0,180\}, \{0,180\}, \{0,180\}, \{0,180\}, \{0,180\} \};
+560     \textcolor{keywordtype}{int} S[5][2] = \{ \{0, 255\}, \{0, 255\}, \{0, 255\}, \{0, 255\}, \{0, 255\} \};
+561     \textcolor{keywordtype}{int} V[5][2] = \{ \{0, 255\}, \{0, 255\}, \{0, 255\}, \{0, 255\}, \{0, 255\} \};
+562     \textcolor{keywordtype}{int} B[5] \{3, 3, 3, 3, 3\};
+563     \textcolor{keywordtype}{int} D[5] = \{0, 0, 0, 0, 0\};
+564     \textcolor{keywordtype}{int} E[5] = \{0, 0, 0, 0, 0\};
+565     \textcolor{keywordtype}{int} Amin[5] = \{150, 90, 90, 115, 50\};
+566 
+567     \textcolor{comment}{// Configurar os valores iniciais de calibração}
+568     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a5871e49c1e8bdfd214c602707e8dfffc}{setCalibParams}(H, S, V, Amin, E, D, B);
+569 
+570     \textcolor{comment}{// Corrigir os valores mostrados na interface}
+571     \hyperlink{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}{HScale\_Hmax}.set\_value(H[0][1]);
+572     \hyperlink{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}{HScale\_Smax}.set\_value(S[0][1]);
+573     \hyperlink{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}{HScale\_Vmax}.set\_value(V[0][1]);
+574     \hyperlink{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}{HScale\_Amin}.set\_value(Amin[0]);
+575 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 43
+Here is the caller graph for this function\+:
+% FIG 44
+\mbox{\Hypertarget{class_vision_g_u_i_a26659931ea77f5b975fe1d0ce101c74c}\label{class_vision_g_u_i_a26659931ea77f5b975fe1d0ce101c74c}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!select\+Frame@{select\+Frame}}
+\index{select\+Frame@{select\+Frame}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{select\+Frame()}{selectFrame()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::select\+Frame (\begin{DoxyParamCaption}\item[{int}]{sector }\end{DoxyParamCaption})}
+
+
+
+Definition at line 410 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked(), bt\+\_\+\+H\+S\+V\+\_\+calib, Img\+\_\+id, and rb\+\_\+original\+\_\+view.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+410                                       \{
+411     \textcolor{keywordflow}{switch} (sector) \{
+412         \textcolor{keywordflow}{case} 0:
+413 
+414             \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_active(\textcolor{keyword}{true});
+415             \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{\_\_event\_rb\_split\_mode\_clicked}();
+416             \textcolor{keywordflow}{break};
+417 
+418         \textcolor{keywordflow}{case} 1:
+419 
+420             \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = 3;
+421             \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_active(\textcolor{keyword}{true});
+422             \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{\_\_event\_rb\_split\_mode\_clicked}();
+423             \hyperlink{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}{\_\_event\_bt\_right\_HSV\_calib\_clicked}();
+424 
+425             \textcolor{keywordflow}{if}(!\hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.get\_active()) \{
+426                 \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.set\_active(\textcolor{keyword}{true});
+427                 \hyperlink{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}{\_\_event\_bt\_HSV\_calib\_pressed}();
+428             \}
+429 
+430             \textcolor{keywordflow}{break};
+431 
+432         \textcolor{keywordflow}{case} 2:
+433 
+434             \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = 0;
+435             \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_active(\textcolor{keyword}{true});
+436             \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{\_\_event\_rb\_split\_mode\_clicked}();
+437             \hyperlink{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}{\_\_event\_bt\_right\_HSV\_calib\_clicked}();
+438 
+439             \textcolor{keywordflow}{if}(!\hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.get\_active()) \{
+440                 \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.set\_active(\textcolor{keyword}{true});
+441                 \hyperlink{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}{\_\_event\_bt\_HSV\_calib\_pressed}();
+442             \}
+443 
+444             \textcolor{keywordflow}{break};
+445 
+446         \textcolor{keywordflow}{case} 3:
+447 
+448             \hyperlink{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}{Img\_id} = 1;
+449             \hyperlink{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}{rb\_original\_view}.set\_active(\textcolor{keyword}{true});
+450             \hyperlink{class_vision_g_u_i_a51c0888c14eb2b773e18d739df076e03}{\_\_event\_rb\_split\_mode\_clicked}();
+451             \hyperlink{class_vision_g_u_i_a5de4edcfe2bd349f940dc605a52bc70b}{\_\_event\_bt\_right\_HSV\_calib\_clicked}();
+452 
+453             \textcolor{keywordflow}{if}(!\hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.get\_active()) \{
+454                 \hyperlink{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}{bt\_HSV\_calib}.set\_active(\textcolor{keyword}{true});
+455                 \hyperlink{class_vision_g_u_i_ad476738b0d45d8decb5d5789c7cbc611}{\_\_event\_bt\_HSV\_calib\_pressed}();
+456             \}
+457 
+458             \textcolor{keywordflow}{break};
+459 
+460         \textcolor{keywordflow}{default}:
+461             \textcolor{keywordflow}{break};
+462     \}
+463 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 45
+Here is the caller graph for this function\+:
+% FIG 46
+\mbox{\Hypertarget{class_vision_g_u_i_afd0b5f34c6a9691ab2fe83c49abae95a}\label{class_vision_g_u_i_afd0b5f34c6a9691ab2fe83c49abae95a}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!set\+Frame\+Size@{set\+Frame\+Size}}
+\index{set\+Frame\+Size@{set\+Frame\+Size}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{set\+Frame\+Size()}{setFrameSize()}}
+{\footnotesize\ttfamily void Vision\+G\+U\+I\+::set\+Frame\+Size (\begin{DoxyParamCaption}\item[{int}]{in\+Width,  }\item[{int}]{in\+Height }\end{DoxyParamCaption})}
+
+
+
+Definition at line 577 of file vision\+G\+U\+I.\+cpp.
+
+
+
+References Vision\+::set\+Frame\+Size(), and vision.
+
+
+
+Referenced by Cam\+Cap\+::start\+\_\+signal().
+
+
+\begin{DoxyCode}
+577                                                       \{
+578     \hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision}->\hyperlink{class_vision_a363ee40ff45ed78c4895df2d42ef2d84}{setFrameSize}(inWidth, inHeight);
+579 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 47
+Here is the caller graph for this function\+:
+% FIG 48
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}\label{class_vision_g_u_i_a9506af83c1ee97d1b4f32b3fbb53fc48}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+\+H\+S\+V\+\_\+calib@{bt\+\_\+\+H\+S\+V\+\_\+calib}}
+\index{bt\+\_\+\+H\+S\+V\+\_\+calib@{bt\+\_\+\+H\+S\+V\+\_\+calib}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+\+H\+S\+V\+\_\+calib}{bt\_HSV\_calib}}
+{\footnotesize\ttfamily Gtk\+::\+Toggle\+Button Vision\+G\+U\+I\+::bt\+\_\+\+H\+S\+V\+\_\+calib}
+
+
+
+Definition at line 16 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), and select\+Frame().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}\label{class_vision_g_u_i_a98323988d4a353190a02c827de0cecbf}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+\+H\+S\+V\+\_\+left@{bt\+\_\+\+H\+S\+V\+\_\+left}}
+\index{bt\+\_\+\+H\+S\+V\+\_\+left@{bt\+\_\+\+H\+S\+V\+\_\+left}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+\+H\+S\+V\+\_\+left}{bt\_HSV\_left}}
+{\footnotesize\ttfamily Gtk\+::\+Button Vision\+G\+U\+I\+::bt\+\_\+\+H\+S\+V\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), and \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}\label{class_vision_g_u_i_a3b19593890776c5c77e1a39ac3af627d}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+\+H\+S\+V\+\_\+right@{bt\+\_\+\+H\+S\+V\+\_\+right}}
+\index{bt\+\_\+\+H\+S\+V\+\_\+right@{bt\+\_\+\+H\+S\+V\+\_\+right}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+\+H\+S\+V\+\_\+right}{bt\_HSV\_right}}
+{\footnotesize\ttfamily Gtk\+::\+Button Vision\+G\+U\+I\+::bt\+\_\+\+H\+S\+V\+\_\+right\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), and \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}\label{class_vision_g_u_i_a19751ae6ddc4bef7fcc0edee42820714}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+record\+\_\+video@{bt\+\_\+record\+\_\+video}}
+\index{bt\+\_\+record\+\_\+video@{bt\+\_\+record\+\_\+video}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+record\+\_\+video}{bt\_record\_video}}
+{\footnotesize\ttfamily Gtk\+::\+Toggle\+Button Vision\+G\+U\+I\+::bt\+\_\+record\+\_\+video}
+
+
+
+Definition at line 38 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), bt\+\_\+record\+\_\+video\+\_\+pressed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}\label{class_vision_g_u_i_afe4bb4a504f404134cc5887e3c352ab4}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+save\+\_\+picture@{bt\+\_\+save\+\_\+picture}}
+\index{bt\+\_\+save\+\_\+picture@{bt\+\_\+save\+\_\+picture}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+save\+\_\+picture}{bt\_save\_picture}}
+{\footnotesize\ttfamily Gtk\+::\+Button Vision\+G\+U\+I\+::bt\+\_\+save\+\_\+picture}
+
+
+
+Definition at line 39 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}\label{class_vision_g_u_i_a62b2427b20780649d71611c6cdb6a10a}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!bt\+\_\+switch\+Main\+Adv@{bt\+\_\+switch\+Main\+Adv}}
+\index{bt\+\_\+switch\+Main\+Adv@{bt\+\_\+switch\+Main\+Adv}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{bt\+\_\+switch\+Main\+Adv}{bt\_switchMainAdv}}
+{\footnotesize\ttfamily Gtk\+::\+Button Vision\+G\+U\+I\+::bt\+\_\+switch\+Main\+Adv\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 65 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), and \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed().
+
+\mbox{\Hypertarget{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}\label{class_vision_g_u_i_aea52285dc471a5611d8170d162ef3210}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!en\+\_\+picture\+\_\+name@{en\+\_\+picture\+\_\+name}}
+\index{en\+\_\+picture\+\_\+name@{en\+\_\+picture\+\_\+name}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{en\+\_\+picture\+\_\+name}{en\_picture\_name}}
+{\footnotesize\ttfamily Gtk\+::\+Entry Vision\+G\+U\+I\+::en\+\_\+picture\+\_\+name}
+
+
+
+Definition at line 40 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), and bt\+\_\+save\+\_\+picture\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}\label{class_vision_g_u_i_ab09e0f327e58a9d8e10ae343037a3ce2}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!en\+\_\+video\+\_\+name@{en\+\_\+video\+\_\+name}}
+\index{en\+\_\+video\+\_\+name@{en\+\_\+video\+\_\+name}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{en\+\_\+video\+\_\+name}{en\_video\_name}}
+{\footnotesize\ttfamily Gtk\+::\+Entry Vision\+G\+U\+I\+::en\+\_\+video\+\_\+name}
+
+
+
+Definition at line 40 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+capture(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), bt\+\_\+record\+\_\+video\+\_\+pressed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}\label{class_vision_g_u_i_a72d3a4fe84821ceafeb4293f196aacd7}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Amin@{H\+Scale\+\_\+\+Amin}}
+\index{H\+Scale\+\_\+\+Amin@{H\+Scale\+\_\+\+Amin}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Amin}{HScale\_Amin}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Amin}
+
+
+
+Definition at line 36 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed(), init\+\_\+calib\+\_\+params(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}\label{class_vision_g_u_i_a88fa2852521012287ae804404280c57f}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Blur@{H\+Scale\+\_\+\+Blur}}
+\index{H\+Scale\+\_\+\+Blur@{H\+Scale\+\_\+\+Blur}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Blur}{HScale\_Blur}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Blur}
+
+
+
+Definition at line 34 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}\label{class_vision_g_u_i_a6a7c757a11a2699e841b6b49fe18d1de}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Dilate@{H\+Scale\+\_\+\+Dilate}}
+\index{H\+Scale\+\_\+\+Dilate@{H\+Scale\+\_\+\+Dilate}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Dilate}{HScale\_Dilate}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Dilate}
+
+
+
+Definition at line 31 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}\label{class_vision_g_u_i_ad4bc77416f4e50fa03a7cc7f64a2d78e}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Erode@{H\+Scale\+\_\+\+Erode}}
+\index{H\+Scale\+\_\+\+Erode@{H\+Scale\+\_\+\+Erode}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Erode}{HScale\_Erode}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Erode}
+
+
+
+Definition at line 32 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}\label{class_vision_g_u_i_a0b1bb9b8a70bd1f93427f71d0e885313}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Hmax@{H\+Scale\+\_\+\+Hmax}}
+\index{H\+Scale\+\_\+\+Hmax@{H\+Scale\+\_\+\+Hmax}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Hmax}{HScale\_Hmax}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmax}
+
+
+
+Definition at line 27 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed(), init\+\_\+calib\+\_\+params(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}\label{class_vision_g_u_i_a8cc0de8ce9ca9c05d1c47176b724ecc3}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Hmin@{H\+Scale\+\_\+\+Hmin}}
+\index{H\+Scale\+\_\+\+Hmin@{H\+Scale\+\_\+\+Hmin}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Hmin}{HScale\_Hmin}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Hmin}
+
+
+
+Definition at line 24 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}\label{class_vision_g_u_i_a147e8499bd7412fdb732103c0754f013}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Smax@{H\+Scale\+\_\+\+Smax}}
+\index{H\+Scale\+\_\+\+Smax@{H\+Scale\+\_\+\+Smax}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Smax}{HScale\_Smax}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smax}
+
+
+
+Definition at line 28 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed(), init\+\_\+calib\+\_\+params(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}\label{class_vision_g_u_i_a23eb7af1cc6d3a055892de4704b48126}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Smin@{H\+Scale\+\_\+\+Smin}}
+\index{H\+Scale\+\_\+\+Smin@{H\+Scale\+\_\+\+Smin}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Smin}{HScale\_Smin}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Smin}
+
+
+
+Definition at line 25 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}\label{class_vision_g_u_i_ab277d08dcce9e2521b9d4c542be69247}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Vmax@{H\+Scale\+\_\+\+Vmax}}
+\index{H\+Scale\+\_\+\+Vmax@{H\+Scale\+\_\+\+Vmax}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Vmax}{HScale\_Vmax}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmax}
+
+
+
+Definition at line 29 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed(), init\+\_\+calib\+\_\+params(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}\label{class_vision_g_u_i_a8a1e7f6d4357eceab8e47fe0fb523cf9}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+Scale\+\_\+\+Vmin@{H\+Scale\+\_\+\+Vmin}}
+\index{H\+Scale\+\_\+\+Vmin@{H\+Scale\+\_\+\+Vmin}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+Scale\+\_\+\+Vmin}{HScale\_Vmin}}
+{\footnotesize\ttfamily Gtk\+::\+Scale Vision\+G\+U\+I\+::\+H\+Scale\+\_\+\+Vmin}
+
+
+
+Definition at line 26 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}\label{class_vision_g_u_i_ac732afeda7552e0c1dc4db8d63633be2}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag@{H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag}}
+\index{H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag@{H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag}{HSV\_calib\_event\_flag}}
+{\footnotesize\ttfamily bool Vision\+G\+U\+I\+::\+H\+S\+V\+\_\+calib\+\_\+event\+\_\+flag}
+
+
+
+Definition at line 20 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+event\+\_\+bt\+\_\+\+H\+S\+V\+\_\+calib\+\_\+pressed(), and Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}\label{class_vision_g_u_i_a87c626e284e122d0e95e66277a484dd3}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!H\+S\+V\+\_\+label@{H\+S\+V\+\_\+label}}
+\index{H\+S\+V\+\_\+label@{H\+S\+V\+\_\+label}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{H\+S\+V\+\_\+label}{HSV\_label}}
+{\footnotesize\ttfamily Gtk\+::\+Label Vision\+G\+U\+I\+::\+H\+S\+V\+\_\+label\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 62 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+hsv(), \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), and \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}\label{class_vision_g_u_i_a4a46f114bc58e0f1d56b655f4bc8f9d8}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!Img\+\_\+id@{Img\+\_\+id}}
+\index{Img\+\_\+id@{Img\+\_\+id}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{Img\+\_\+id}{Img\_id}}
+{\footnotesize\ttfamily int Vision\+G\+U\+I\+::\+Img\+\_\+id}
+
+
+
+Definition at line 18 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), Cam\+Cap\+::capture\+\_\+and\+\_\+show(), H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed(), select\+Frame(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}\label{class_vision_g_u_i_a7706a668c306ffcfbb12fbb16e05f478}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!is\+Split\+View@{is\+Split\+View}}
+\index{is\+Split\+View@{is\+Split\+View}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{is\+Split\+View}{isSplitView}}
+{\footnotesize\ttfamily bool Vision\+G\+U\+I\+::is\+Split\+View\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 56 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked(), and get\+Is\+Split\+View().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a45478a68d6dcd492aa57b2b4a1f14e32}\label{class_vision_g_u_i_a45478a68d6dcd492aa57b2b4a1f14e32}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!pic\+Index@{pic\+Index}}
+\index{pic\+Index@{pic\+Index}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{pic\+Index}{picIndex}}
+{\footnotesize\ttfamily int Vision\+G\+U\+I\+::pic\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 59 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by bt\+\_\+save\+\_\+picture\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_aef9153130a527b6fae636466cd3ef77f}\label{class_vision_g_u_i_aef9153130a527b6fae636466cd3ef77f}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!rb\+\_\+mode\+\_\+\+G\+MM@{rb\+\_\+mode\+\_\+\+G\+MM}}
+\index{rb\+\_\+mode\+\_\+\+G\+MM@{rb\+\_\+mode\+\_\+\+G\+MM}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{rb\+\_\+mode\+\_\+\+G\+MM}{rb\_mode\_GMM}}
+{\footnotesize\ttfamily Gtk\+::\+Radio\+Button Vision\+G\+U\+I\+::rb\+\_\+mode\+\_\+\+G\+MM}
+
+
+
+Definition at line 43 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a43f330d4bc43b11333bb90b3e9f3cc2a}\label{class_vision_g_u_i_a43f330d4bc43b11333bb90b3e9f3cc2a}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!rb\+\_\+mode\+\_\+\+H\+SV@{rb\+\_\+mode\+\_\+\+H\+SV}}
+\index{rb\+\_\+mode\+\_\+\+H\+SV@{rb\+\_\+mode\+\_\+\+H\+SV}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{rb\+\_\+mode\+\_\+\+H\+SV}{rb\_mode\_HSV}}
+{\footnotesize\ttfamily Gtk\+::\+Radio\+Button Vision\+G\+U\+I\+::rb\+\_\+mode\+\_\+\+H\+SV}
+
+
+
+Definition at line 43 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}\label{class_vision_g_u_i_abb4ca4d613412da2ce06c55a8a37a7f2}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!rb\+\_\+original\+\_\+view@{rb\+\_\+original\+\_\+view}}
+\index{rb\+\_\+original\+\_\+view@{rb\+\_\+original\+\_\+view}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{rb\+\_\+original\+\_\+view}{rb\_original\_view}}
+{\footnotesize\ttfamily Gtk\+::\+Radio\+Button Vision\+G\+U\+I\+::rb\+\_\+original\+\_\+view}
+
+
+
+Definition at line 22 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), and select\+Frame().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}\label{class_vision_g_u_i_a7fec73756125a9e179f91cde80658897}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!rb\+\_\+split\+\_\+view@{rb\+\_\+split\+\_\+view}}
+\index{rb\+\_\+split\+\_\+view@{rb\+\_\+split\+\_\+view}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{rb\+\_\+split\+\_\+view}{rb\_split\_view}}
+{\footnotesize\ttfamily Gtk\+::\+Radio\+Button Vision\+G\+U\+I\+::rb\+\_\+split\+\_\+view}
+
+
+
+Definition at line 22 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+create\+\_\+frm\+\_\+split\+\_\+view(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+start\+\_\+clicked(), and \+\_\+\+\_\+event\+\_\+rb\+\_\+split\+\_\+mode\+\_\+clicked().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}\label{class_vision_g_u_i_a778e610a8026011498e6a685d88b3fbe}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!vid\+Index@{vid\+Index}}
+\index{vid\+Index@{vid\+Index}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{vid\+Index}{vidIndex}}
+{\footnotesize\ttfamily int Vision\+G\+U\+I\+::vid\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 59 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by bt\+\_\+record\+\_\+video\+\_\+pressed().
+
+\mbox{\Hypertarget{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}\label{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}} 
+\index{Vision\+G\+UI@{Vision\+G\+UI}!vision@{vision}}
+\index{vision@{vision}!Vision\+G\+UI@{Vision\+G\+UI}}
+\subsubsection{\texorpdfstring{vision}{vision}}
+{\footnotesize\ttfamily \hyperlink{class_vision}{Vision}$\ast$ Vision\+G\+U\+I\+::vision}
+
+
+
+Definition at line 15 of file vision\+G\+U\+I.\+hpp.
+
+
+
+Referenced by \+\_\+\+\_\+event\+\_\+bt\+\_\+left\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+right\+\_\+\+H\+S\+V\+\_\+calib\+\_\+clicked(), \+\_\+\+\_\+event\+\_\+bt\+\_\+switch\+Main\+Adv\+\_\+clicked(), bt\+\_\+record\+\_\+video\+\_\+pressed(), bt\+\_\+save\+\_\+picture\+\_\+clicked(), Cam\+Cap\+::capture\+\_\+and\+\_\+show(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked(), H\+Scale\+\_\+\+Amin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Blur\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Dilate\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Erode\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Hmin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Smin\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmax\+\_\+value\+\_\+changed(), H\+Scale\+\_\+\+Vmin\+\_\+value\+\_\+changed(), init\+\_\+calib\+\_\+params(), json\+Save\+Manager\+::load\+\_\+camera(), json\+Save\+Manager\+::save\+\_\+camera(), set\+Frame\+Size(), Cam\+Cap\+::start\+\_\+signal(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera(), Cam\+Cap\+::update\+All\+Positions(), Vision\+G\+U\+I(), and $\sim$\+Vision\+G\+U\+I().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/\hyperlink{vision_g_u_i_8hpp}{vision\+G\+U\+I.\+hpp}\item 
+src/gui/\hyperlink{vision_g_u_i_8cpp}{vision\+G\+U\+I.\+cpp}\end{DoxyCompactItemize}

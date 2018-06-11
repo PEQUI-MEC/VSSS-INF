@@ -1,0 +1,638 @@
+\hypertarget{classjson_save_manager}{}\section{json\+Save\+Manager Class Reference}
+\label{classjson_save_manager}\index{json\+Save\+Manager@{json\+Save\+Manager}}
+
+
+{\ttfamily \#include $<$json\+Save\+Manager.\+h$>$}
+
+
+
+Collaboration diagram for json\+Save\+Manager\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classjson_save_manager_a1fdb652ff4085dbe3c563b47b850e68e}{json\+Save\+Manager} (\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface}{V4\+L\+Interface} $\ast$interf)
+\begin{DoxyCompactList}\small\item\em Constructor for J\+S\+ON Save Manager. \char`\"{}explicit\char`\"{} means that all params types must be satisfied. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a79fd35c53290662b58c5a4869376fa2e}{load} (std\+::string file\+\_\+path=\char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Loads all avaliable configurations in the given .json file. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a3e628f770c39e0111b46dac21d966171}{save} (std\+::string file\+\_\+path=\char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Saves all volatile data set in the interface to a given .json file. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_ad5acf46f5a0620389055c16c3faa2519}{save\+\_\+robots} ()
+\begin{DoxyCompactList}\small\item\em Save robot configurations from interface to our J\+S\+ON object. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a6ddf4a28c77c83f37e3771177226c960}{load\+\_\+robots} ()
+\begin{DoxyCompactList}\small\item\em Load robot configurations from our J\+S\+ON object to the interface. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a437ba67544a0115bf0242c85b92018b3}{save\+\_\+camera} ()
+\begin{DoxyCompactList}\small\item\em Save camera configurations from interface to our J\+S\+ON object. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a6184c9f744044a5ccdf34c6386275df8}{load\+\_\+camera} ()
+\begin{DoxyCompactList}\small\item\em Load camera configurations from our J\+S\+ON object to the interface. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}{config\+\_\+matrix} (\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} \&mat\+\_\+config, int(\&mat)\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, bool \hyperlink{classjson_save_manager_a3e628f770c39e0111b46dac21d966171}{save})
+\begin{DoxyCompactList}\small\item\em Configures vision\textquotesingle{}s warp matrix to match it\textquotesingle{}s defaults. \end{DoxyCompactList}\item 
+int \hyperlink{classjson_save_manager_a71683c4903b413a1311e5b10b519ad41}{read\+\_\+configs\+\_\+from\+\_\+file} (std\+::string file\+\_\+path=\char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Read a given file and place it\textquotesingle{}s data in our J\+S\+ON object. \end{DoxyCompactList}\item 
+void \hyperlink{classjson_save_manager_a2be17d434d72a0afeb2d9a2f96b043bf}{write\+\_\+configs\+\_\+to\+\_\+file} (std\+::string file\+\_\+path=\char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Actually writes our J\+S\+ON object in the given file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists} (\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} \&config, std\+::string name)
+\begin{DoxyCompactList}\small\item\em Auxiliar function that checks if a given configuration is already set in our J\+S\+ON object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}
+\begin{DoxyCompactList}\small\item\em Global J\+S\+ON object that keeps data between save/load calls. \end{DoxyCompactList}\item 
+\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface}{V4\+L\+Interface} $\ast$ \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}
+\begin{DoxyCompactList}\small\item\em Pointer to main interface object. Used to get/set it\textquotesingle{}s values at runtime. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file json\+Save\+Manager.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classjson_save_manager_a1fdb652ff4085dbe3c563b47b850e68e}\label{classjson_save_manager_a1fdb652ff4085dbe3c563b47b850e68e}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!json\+Save\+Manager@{json\+Save\+Manager}}
+\index{json\+Save\+Manager@{json\+Save\+Manager}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{json\+Save\+Manager()}{jsonSaveManager()}}
+{\footnotesize\ttfamily json\+Save\+Manager\+::json\+Save\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface}{V4\+L\+Interface} $\ast$}]{interf }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for J\+S\+ON Save Manager. \char`\"{}explicit\char`\"{} means that all params types must be satisfied. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em interf} & Main interface object. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file json\+Save\+Manager.\+h.
+
+
+\begin{DoxyCode}
+42 :\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}(interf)\{\};
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}\label{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!config\+\_\+matrix@{config\+\_\+matrix}}
+\index{config\+\_\+matrix@{config\+\_\+matrix}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{config\+\_\+matrix()}{config\_matrix()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::config\+\_\+matrix (\begin{DoxyParamCaption}\item[{\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} \&}]{mat\+\_\+config,  }\item[{int(\&)}]{mat\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{bool}]{save }\end{DoxyParamCaption})}
+
+
+
+Configures vision\textquotesingle{}s warp matrix to match it\textquotesingle{}s defaults. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mat\+\_\+config} & Ready-\/to-\/save warp matrix. \\
+\hline
+{\em mat} & Ready-\/to-\/load warp matrix. \\
+\hline
+{\em save} & The direction of the conversion. \char`\"{}true\char`\"{} converts data from \textquotesingle{}mat\textquotesingle{} to \textquotesingle{}mat\+\_\+config\textquotesingle{}; false converts data from \textquotesingle{}mat\+\_\+config\textquotesingle{} to \textquotesingle{}mat\textquotesingle{}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 154 of file json\+Save\+Manager.\+cpp.
+
+
+
+Referenced by load\+\_\+camera(), and save\+\_\+camera().
+
+
+\begin{DoxyCode}
+154                                                                                 \{
+155     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; ++i) \{
+156         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 2; ++j) \{
+157             \textcolor{keywordtype}{string} pos\_string = \textcolor{stringliteral}{"["}+std::to\_string(i)+\textcolor{stringliteral}{"]["}+std::to\_string(j)+\textcolor{stringliteral}{"]"};
+158             \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a3e628f770c39e0111b46dac21d966171}{save}) mat\_config[pos\_string] = mat[i][j];
+159             \textcolor{keywordflow}{else} mat[i][j] = mat\_config[pos\_string];
+160         \}
+161     \}
+162 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}\label{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!exists@{exists}}
+\index{exists@{exists}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{exists()}{exists()}}
+{\footnotesize\ttfamily bool json\+Save\+Manager\+::exists (\begin{DoxyParamCaption}\item[{\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} \&}]{config,  }\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Auxiliar function that checks if a given configuration is already set in our J\+S\+ON object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Our J\+S\+ON configuration object. \\
+\hline
+{\em name} & Name of the given configuration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the configuration exists; false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line 188 of file json\+Save\+Manager.\+cpp.
+
+
+
+References nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::end(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::find().
+
+
+
+Referenced by load\+\_\+camera(), and load\+\_\+robots().
+
+
+\begin{DoxyCode}
+188                                                       \{
+189     \textcolor{keywordflow}{return} (config.\hyperlink{classnlohmann_1_1basic__json_a89eb3928f57903677051c80534be9cb1}{find}(name) != config.\hyperlink{classnlohmann_1_1basic__json_a13e032a02a7fd8a93fdddc2fcbc4763c}{end}());
+190 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classjson_save_manager_a79fd35c53290662b58c5a4869376fa2e}\label{classjson_save_manager_a79fd35c53290662b58c5a4869376fa2e}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!load@{load}}
+\index{load@{load}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+\_\+path = {\ttfamily \char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Loads all avaliable configurations in the given .json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & Path to the .json file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 5 of file json\+Save\+Manager.\+cpp.
+
+
+
+References debug\+\_\+warning, load\+\_\+camera(), load\+\_\+robots(), and read\+\_\+configs\+\_\+from\+\_\+file().
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+load\+\_\+clicked(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+quick\+\_\+load\+\_\+clicked(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked().
+
+
+\begin{DoxyCode}
+5                                                  \{
+6     \textcolor{keywordtype}{int} error = \hyperlink{classjson_save_manager_a71683c4903b413a1311e5b10b519ad41}{read\_configs\_from\_file}(file\_path);
+7 
+8     \textcolor{keywordflow}{if}(error == 1) \hyperlink{debug_8hpp_a82185c5a131fe76d2d21364ef6db6144}{debug\_warning}(\textcolor{stringliteral}{"File "} + file\_path + \textcolor{stringliteral}{" not found"});
+9     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(error == 2) \hyperlink{debug_8hpp_a82185c5a131fe76d2d21364ef6db6144}{debug\_warning}(file\_path + \textcolor{stringliteral}{" is not a valid JSON file"});
+10 
+11     \textcolor{keywordflow}{if}(!error)\{
+12         \hyperlink{classjson_save_manager_a6184c9f744044a5ccdf34c6386275df8}{load\_camera}();
+13         \hyperlink{classjson_save_manager_a6ddf4a28c77c83f37e3771177226c960}{load\_robots}();
+14     \}
+15 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+Here is the caller graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classjson_save_manager_a6184c9f744044a5ccdf34c6386275df8}\label{classjson_save_manager_a6184c9f744044a5ccdf34c6386275df8}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!load\+\_\+camera@{load\+\_\+camera}}
+\index{load\+\_\+camera@{load\+\_\+camera}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{load\+\_\+camera()}{load\_camera()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::load\+\_\+camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load camera configurations from our J\+S\+ON object to the interface. 
+
+
+
+Definition at line 102 of file json\+Save\+Manager.\+cpp.
+
+
+
+References Image\+View\+::adjust\+\_\+mat, Image\+View\+::adjust\+\_\+rdy, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::camera\+\_\+card, config\+\_\+matrix(), configs, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::ctrl\+\_\+list\+\_\+default, exists(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::image\+View, interface, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::offsetL, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::offsetR, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+\_\+\+\_\+ctrl\+\_\+holder\+::qctrl, v4lcap\+::set\+\_\+control(), Vision\+::set\+Amin(), Vision\+::set\+Blur(), Vision\+::set\+Dilate(), Vision\+::set\+Erode(), Vision\+::set\+Hue(), Vision\+::set\+Saturation(), Vision\+::set\+Value(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::vcap, Vision\+G\+U\+I\+::vision, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::vision\+G\+UI, Image\+View\+::warp\+\_\+mat, and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::warped.
+
+
+
+Referenced by load().
+
+
+\begin{DoxyCode}
+102                                   \{
+103     \textcolor{keywordflow}{if}(!\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(\hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}[\textcolor{stringliteral}{"Cameras"}], \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7842aff21c2c295a77e75567ff50f25c}{camera\_card})) \textcolor{keywordflow}{return};
+104     \hyperlink{classnlohmann_1_1basic__json}{json}& camera\_config = \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}[\textcolor{stringliteral}{"Cameras"}][\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->
+      \hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7842aff21c2c295a77e75567ff50f25c}{camera\_card}];
+105 
+106     \textcolor{keywordtype}{string} hsv\_calibs[4] = \{\textcolor{stringliteral}{"Main"}, \textcolor{stringliteral}{"Green"}, \textcolor{stringliteral}{"Ball"}, \textcolor{stringliteral}{"Opp."}\};
+107     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; ++i) \{
+108         \hyperlink{classnlohmann_1_1basic__json}{json}& hsv = camera\_config[\textcolor{stringliteral}{"HSV Calibration"}][hsv\_calibs[i]];
+109         \hyperlink{class_vision}{Vision}& vision = *(\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7a2432ad62a960423bc3370abe5c8930}{visionGUI}.\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision});
+110 
+111         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"hue\_min"})) vision.\hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(i, 0, hsv[\textcolor{stringliteral}{"hue\_min"}]);
+112         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"hue\_max"})) vision.\hyperlink{class_vision_a3c3ebea1a7c54c69f2da94b78aaf79f1}{setHue}(i, 1, hsv[\textcolor{stringliteral}{"hue\_max"}]);
+113         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"saturation\_min"})) vision.\hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(i, 0, hsv[\textcolor{stringliteral}{"saturation\_min
+      "}]);
+114         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"saturation\_max"})) vision.\hyperlink{class_vision_a4a07d52d53fa8626e6dd7b36fed89841}{setSaturation}(i, 1, hsv[\textcolor{stringliteral}{"saturation\_max
+      "}]);
+115         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"value\_min"})) vision.\hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(i, 0, hsv[\textcolor{stringliteral}{"value\_min"}]);
+116         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"value\_max"})) vision.\hyperlink{class_vision_a43213a295e6e199c261d141118be14ad}{setValue}(i, 1, hsv[\textcolor{stringliteral}{"value\_max"}]);
+117         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"dilate"})) vision.\hyperlink{class_vision_a5a763aa322837556ab83f39ffb7e9391}{setDilate}(i, hsv[\textcolor{stringliteral}{"dilate"}]);
+118         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"erode"})) vision.\hyperlink{class_vision_a1313404c61d1518f8b8cb354377ed5f1}{setErode}(i, hsv[\textcolor{stringliteral}{"erode"}]);
+119         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"blur"})) vision.\hyperlink{class_vision_aa40b48aebdf61dfda490fbc2620d2ac3}{setBlur}(i, hsv[\textcolor{stringliteral}{"blur"}]);
+120         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(hsv, \textcolor{stringliteral}{"amin"})) vision.\hyperlink{class_vision_a15483736197991fac542022fd9652472}{setAmin}(i, hsv[\textcolor{stringliteral}{"amin"}]);
+121     \}
+122 
+123     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(camera\_config, \textcolor{stringliteral}{"warp\_mat"}))\{
+124         \hyperlink{classnlohmann_1_1basic__json}{json}& warp\_mat = camera\_config[\textcolor{stringliteral}{"warp\_mat"}];
+125         \hyperlink{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}{config\_matrix}(warp\_mat, \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.
+      \hyperlink{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}{warp\_mat}, \textcolor{keyword}{false});
+126         \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ac87d2ec65167aae1177178f6bffce0ed}{warped} = \textcolor{keyword}{true};
+127     \} \textcolor{keywordflow}{else} \{
+128         \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ac87d2ec65167aae1177178f6bffce0ed}{warped} = \textcolor{keyword}{false};
+129     \}
+130 
+131     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(camera\_config, \textcolor{stringliteral}{"adjust\_mat"})) \{
+132         \hyperlink{classnlohmann_1_1basic__json}{json} &adjust\_mat = camera\_config[\textcolor{stringliteral}{"adjust\_mat"}];
+133         \hyperlink{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}{config\_matrix}(adjust\_mat, \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.
+      \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}, \textcolor{keyword}{false});
+134         \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.\hyperlink{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}{adjust\_rdy} = \textcolor{keyword}{true};
+135     \} \textcolor{keywordflow}{else} \{
+136         \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.\hyperlink{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}{adjust\_rdy}= \textcolor{keyword}{false};
+137     \}
+138 
+139     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(camera\_config, \textcolor{stringliteral}{"offsetL"})) \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a4e43fc5295bdec46e8e2fd24bf719e0b}{offsetL} = camera\_config[\textcolor{stringliteral}{"offsetL"}
+      ];
+140     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(camera\_config, \textcolor{stringliteral}{"offsetR"})) \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a8bb9caa477b417f549198ea059375f06}{offsetR} = camera\_config[\textcolor{stringliteral}{"offsetR"}
+      ];
+141 
+142     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(camera\_config, \textcolor{stringliteral}{"Camera Properties"}))\{
+143         \hyperlink{classnlohmann_1_1basic__json}{json}& properties\_config = camera\_config[\textcolor{stringliteral}{"Camera Properties"}];
+144         \textcolor{keywordflow}{for}(\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder}{ControlHolder}& ctrl : \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->
+      \hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a97faf21f7b67c8ef15ceeafa377c6ea4}{ctrl\_list\_default}) \{
+145             \textcolor{keywordtype}{string} name = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{string}((\textcolor{keywordtype}{char} *) ctrl.\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder_ab215a49cfe0350894f78df2243fd0148}{qctrl}.name);
+146             \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(properties\_config, name))\{
+147                 \textcolor{keywordtype}{int} value = properties\_config[name];
+148                 \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7ece61f4ccc6d5321c445e60f34e7f33}{vcap}.\hyperlink{classv4lcap_a863a15d2d66cc0b7367dcc9cba64e0bd}{set\_control}(ctrl.\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder_ab215a49cfe0350894f78df2243fd0148}{qctrl}.id, value);
+149             \}
+150         \}
+151     \}
+152 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+Here is the caller graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{classjson_save_manager_a6ddf4a28c77c83f37e3771177226c960}\label{classjson_save_manager_a6ddf4a28c77c83f37e3771177226c960}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!load\+\_\+robots@{load\+\_\+robots}}
+\index{load\+\_\+robots@{load\+\_\+robots}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{load\+\_\+robots()}{load\_robots()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::load\+\_\+robots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load robot configurations from our J\+S\+ON object to the interface. 
+
+
+
+Definition at line 37 of file json\+Save\+Manager.\+cpp.
+
+
+
+References configs, exists(), interface, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::robot\+G\+UI, Robots\+::set\+\_\+default\+\_\+velocity(), Robots\+::set\+\_\+\+I\+D(), Robots\+::set\+\_\+role(), Robots\+::\+S\+I\+ZE, Robot\+G\+U\+I\+::update\+\_\+ids(), Robot\+G\+U\+I\+::update\+\_\+robot\+\_\+functions(), and Robot\+G\+U\+I\+::update\+\_\+speed\+\_\+sliders().
+
+
+
+Referenced by load().
+
+
+\begin{DoxyCode}
+37                                   \{
+38     \textcolor{keywordflow}{if}(!\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(\hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}, \textcolor{stringliteral}{"Robots"})) \textcolor{keywordflow}{return};
+39     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_robots_ae9df2f1d345ad6740f0459956cdd4712}{Robots::SIZE}; ++i) \{
+40         \hyperlink{classnlohmann_1_1basic__json}{json}& robot\_config = \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}[\textcolor{stringliteral}{"Robots"}][\textcolor{stringliteral}{"Robot "}+std::to\_string(i+1)];
+41 
+42         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(robot\_config, \textcolor{stringliteral}{"ID"}))\{
+43             \textcolor{keywordtype}{string} \textcolor{keywordtype}{id} = robot\_config[\textcolor{stringliteral}{"ID"}];
+44             \textcolor{comment}{// debug\_log("setting id: " + id);}
+45             \hyperlink{class_robots_aea3f1278d0503cd81adc9ceea0a7d1df}{Robots::set\_ID}(i, \textcolor{keywordtype}{id}[0]);
+46         \}
+47         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(robot\_config, \textcolor{stringliteral}{"role"})) \{
+48             \hyperlink{class_robots_a3694b6380b113b7c38a252fd3bbfcca3}{Robots::set\_role}(i, robot\_config[\textcolor{stringliteral}{"role"}]);
+49         \}
+50         \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a850cd6da63a9b10437c1dc7424dfee13}{exists}(robot\_config, \textcolor{stringliteral}{"speed"}))\{
+51             \textcolor{keywordtype}{string} tmp\_speed = robot\_config[\textcolor{stringliteral}{"speed"}];
+52             \hyperlink{class_robots_a54b514022589049ad5ae94ac11a453cd}{Robots::set\_default\_velocity}(i, stof(tmp\_speed));
+53         \}
+54     \}
+55     \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ad7fa1969bc6892bad70672aacaa960c7}{robotGUI}.\hyperlink{class_robot_g_u_i_adb3915e1e117c2d3c1b66607c793819f}{update\_ids}();
+56     \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ad7fa1969bc6892bad70672aacaa960c7}{robotGUI}.\hyperlink{class_robot_g_u_i_a88e9422aa99db2dd70403650ab1551a4}{update\_robot\_functions}();
+57     \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ad7fa1969bc6892bad70672aacaa960c7}{robotGUI}.\hyperlink{class_robot_g_u_i_a7e7796fabb839c7eea5f82387fd10359}{update\_speed\_sliders}();
+58 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{classjson_save_manager_a71683c4903b413a1311e5b10b519ad41}\label{classjson_save_manager_a71683c4903b413a1311e5b10b519ad41}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!read\+\_\+configs\+\_\+from\+\_\+file@{read\+\_\+configs\+\_\+from\+\_\+file}}
+\index{read\+\_\+configs\+\_\+from\+\_\+file@{read\+\_\+configs\+\_\+from\+\_\+file}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{read\+\_\+configs\+\_\+from\+\_\+file()}{read\_configs\_from\_file()}}
+{\footnotesize\ttfamily int json\+Save\+Manager\+::read\+\_\+configs\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+\_\+path = {\ttfamily \char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Read a given file and place it\textquotesingle{}s data in our J\+S\+ON object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & Path to the .json file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 case load is successful; 1 case file couldn\textquotesingle{}t be opened; 2 case parse error; 3 case unknown error. 
+\end{DoxyReturn}
+
+
+Definition at line 164 of file json\+Save\+Manager.\+cpp.
+
+
+
+References configs.
+
+
+
+Referenced by load(), and save().
+
+
+\begin{DoxyCode}
+164                                                             \{
+165     \textcolor{keywordflow}{try} \{
+166         std::ifstream file(file\_path);
+167         \textcolor{keywordflow}{if}(file.is\_open()) \{
+168             file >> \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs};
+169             file.close();
+170         \}
+171         \textcolor{keywordflow}{else} \textcolor{keywordflow}{return} 1;
+172     \} \textcolor{keywordflow}{catch}(std::exception& e) \{
+173         \textcolor{keywordtype}{string} error = e.what();
+174         \textcolor{keywordflow}{if}(error.find(\textcolor{stringliteral}{"parse\_error"}) != string::npos)
+175             \textcolor{keywordflow}{return} 2;
+176         \textcolor{keywordflow}{return} 3;
+177     \}
+178     \textcolor{keywordflow}{return} 0;
+179 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{classjson_save_manager_a3e628f770c39e0111b46dac21d966171}\label{classjson_save_manager_a3e628f770c39e0111b46dac21d966171}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!save@{save}}
+\index{save@{save}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::save (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+\_\+path = {\ttfamily \char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Saves all volatile data set in the interface to a given .json file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & Path to the .json file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file json\+Save\+Manager.\+cpp.
+
+
+
+References debug\+\_\+log, debug\+\_\+warning, read\+\_\+configs\+\_\+from\+\_\+file(), save\+\_\+camera(), save\+\_\+robots(), and write\+\_\+configs\+\_\+to\+\_\+file().
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+quick\+\_\+save\+\_\+clicked(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+save\+\_\+clicked(), and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::event\+\_\+start\+\_\+game\+\_\+bt\+\_\+signal\+\_\+clicked().
+
+
+\begin{DoxyCode}
+17                                                  \{
+18     \textcolor{keywordtype}{int} error = \hyperlink{classjson_save_manager_a71683c4903b413a1311e5b10b519ad41}{read\_configs\_from\_file}(file\_path);
+19     \textcolor{keywordflow}{if}(error == 1) \hyperlink{debug_8hpp_afde3f42696113719c9ae35507125ee6e}{debug\_log}(\textcolor{stringliteral}{"Creating "} + file\_path);
+20     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(error == 2) \hyperlink{debug_8hpp_a82185c5a131fe76d2d21364ef6db6144}{debug\_warning}(file\_path + \textcolor{stringliteral}{" is not a valid JSON file, will be
+       overwritten"});
+21 
+22     \hyperlink{classjson_save_manager_a437ba67544a0115bf0242c85b92018b3}{save\_camera}();
+23     \hyperlink{classjson_save_manager_ad5acf46f5a0620389055c16c3faa2519}{save\_robots}();
+24     \hyperlink{classjson_save_manager_a2be17d434d72a0afeb2d9a2f96b043bf}{write\_configs\_to\_file}(file\_path);
+25 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{classjson_save_manager_a437ba67544a0115bf0242c85b92018b3}\label{classjson_save_manager_a437ba67544a0115bf0242c85b92018b3}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!save\+\_\+camera@{save\+\_\+camera}}
+\index{save\+\_\+camera@{save\+\_\+camera}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{save\+\_\+camera()}{save\_camera()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::save\+\_\+camera (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Save camera configurations from interface to our J\+S\+ON object. 
+
+
+
+Definition at line 60 of file json\+Save\+Manager.\+cpp.
+
+
+
+References Image\+View\+::adjust\+\_\+mat, Image\+View\+::adjust\+\_\+rdy, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::camera\+\_\+card, config\+\_\+matrix(), configs, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::ctrl\+\_\+list\+\_\+default, v4lcap\+::get\+\_\+control(), Vision\+::get\+Amin(), Vision\+::get\+Blur(), Vision\+::get\+Dilate(), Vision\+::get\+Erode(), Vision\+::get\+Hue(), Vision\+::get\+Saturation(), Vision\+::get\+Value(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::image\+View, interface, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::offsetL, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::offsetR, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+\_\+\+\_\+ctrl\+\_\+holder\+::qctrl, nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::vcap, Vision\+G\+U\+I\+::vision, V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::vision\+G\+UI, Image\+View\+::warp\+\_\+mat, and V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::warped.
+
+
+
+Referenced by save().
+
+
+\begin{DoxyCode}
+60                                   \{
+61     \hyperlink{classnlohmann_1_1basic__json}{json}& camera\_config = \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}[\textcolor{stringliteral}{"Cameras"}][\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->
+      \hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7842aff21c2c295a77e75567ff50f25c}{camera\_card}];
+62     \textcolor{keywordtype}{string} hsv\_calibs[4] = \{\textcolor{stringliteral}{"Main"}, \textcolor{stringliteral}{"Green"}, \textcolor{stringliteral}{"Ball"}, \textcolor{stringliteral}{"Opp."}\};
+63 
+64     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 4; ++i) \{
+65         \hyperlink{classnlohmann_1_1basic__json}{json}& hsv = camera\_config[\textcolor{stringliteral}{"HSV Calibration"}][hsv\_calibs[i]];
+66         \hyperlink{class_vision}{Vision}& vision = *(\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7a2432ad62a960423bc3370abe5c8930}{visionGUI}.\hyperlink{class_vision_g_u_i_a36aba058af844ec6cbe0c945c616cd5f}{vision});
+67 
+68         hsv[\textcolor{stringliteral}{"hue\_min"}] = vision.\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(i, 0);
+69         hsv[\textcolor{stringliteral}{"hue\_max"}] = vision.\hyperlink{class_vision_adc6eb838fa27551430516e80a547a6bd}{getHue}(i, 1);
+70         hsv[\textcolor{stringliteral}{"saturation\_min"}] = vision.\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(i, 0);
+71         hsv[\textcolor{stringliteral}{"saturation\_max"}] = vision.\hyperlink{class_vision_a023ff4cc4ee3a88125fd2a3c60d1b529}{getSaturation}(i, 1);
+72         hsv[\textcolor{stringliteral}{"value\_min"}] = vision.\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(i, 0);
+73         hsv[\textcolor{stringliteral}{"value\_max"}] = vision.\hyperlink{class_vision_a04d1bcce0fd15a5d66752723f21c0dea}{getValue}(i, 1);
+74         hsv[\textcolor{stringliteral}{"dilate"}] = vision.\hyperlink{class_vision_a0d07157e3d9bb577940f03365c8f57e8}{getDilate}(i);
+75         hsv[\textcolor{stringliteral}{"erode"}] = vision.\hyperlink{class_vision_a6cc4617b0af832b4cb94e00cc845c317}{getErode}(i);
+76         hsv[\textcolor{stringliteral}{"blur"}] = vision.\hyperlink{class_vision_ad15cc7e3c696c7f52e30e7974337c74f}{getBlur}(i);
+77         hsv[\textcolor{stringliteral}{"amin"}] = vision.\hyperlink{class_vision_a563041d47d11e0912227c3ce87dcc22e}{getAmin}(i);
+78     \}
+79 
+80     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_ac87d2ec65167aae1177178f6bffce0ed}{warped}) \{
+81         \hyperlink{classnlohmann_1_1basic__json}{json} &warp\_mat = camera\_config[\textcolor{stringliteral}{"warp\_mat"}];
+82         \hyperlink{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}{config\_matrix}(warp\_mat, \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.
+      \hyperlink{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}{warp\_mat}, \textcolor{keyword}{true});
+83     \}
+84 
+85     \textcolor{keywordflow}{if}(\hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.\hyperlink{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}{adjust\_rdy}) \{
+86         \hyperlink{classnlohmann_1_1basic__json}{json} &adjust\_mat = camera\_config[\textcolor{stringliteral}{"adjust\_mat"}];
+87         \hyperlink{classjson_save_manager_ae135d7cd743cba1f0801e80934fdd824}{config\_matrix}(adjust\_mat, \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a2c99f4d9fad8a34fa98d5b61beb06745}{imageView}.
+      \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}, \textcolor{keyword}{true});
+88     \}
+89 
+90     camera\_config[\textcolor{stringliteral}{"offsetL"}] = \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a4e43fc5295bdec46e8e2fd24bf719e0b}{offsetL};
+91     camera\_config[\textcolor{stringliteral}{"offsetR"}] = \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a8bb9caa477b417f549198ea059375f06}{offsetR};
+92 
+93     \hyperlink{classnlohmann_1_1basic__json}{json}& properties\_config = camera\_config[\textcolor{stringliteral}{"Camera Properties"}];
+94     \textcolor{keywordflow}{for}(\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder}{ControlHolder} ctrl : \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a97faf21f7b67c8ef15ceeafa377c6ea4}{ctrl\_list\_default}) \{
+95         v4l2\_control control\{\};
+96         \hyperlink{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}{interface}->\hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface_a7ece61f4ccc6d5321c445e60f34e7f33}{vcap}.\hyperlink{classv4lcap_affd6d918400a56e165d7a3e4fab8bdae}{get\_control}(&control, ctrl.\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder_ab215a49cfe0350894f78df2243fd0148}{qctrl}.id);
+97         \textcolor{keywordtype}{string} name = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{string}((\textcolor{keywordtype}{char} *) ctrl.\hyperlink{struct_v_s_s_s___g_u_i_1_1____ctrl__holder_ab215a49cfe0350894f78df2243fd0148}{qctrl}.name);
+98         properties\_config[name] = control.\hyperlink{classnlohmann_1_1basic__json_adcf8ca5079f5db993820bf50036bf45d}{value};
+99     \}
+100 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 13
+Here is the caller graph for this function\+:
+% FIG 14
+\mbox{\Hypertarget{classjson_save_manager_ad5acf46f5a0620389055c16c3faa2519}\label{classjson_save_manager_ad5acf46f5a0620389055c16c3faa2519}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!save\+\_\+robots@{save\+\_\+robots}}
+\index{save\+\_\+robots@{save\+\_\+robots}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{save\+\_\+robots()}{save\_robots()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::save\+\_\+robots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Save robot configurations from interface to our J\+S\+ON object. 
+
+
+
+Definition at line 27 of file json\+Save\+Manager.\+cpp.
+
+
+
+References configs, Robots\+::get\+\_\+default\+\_\+velocity(), Robots\+::get\+\_\+\+I\+D(), Robots\+::get\+\_\+role(), and Robots\+::\+S\+I\+ZE.
+
+
+
+Referenced by save().
+
+
+\begin{DoxyCode}
+27                                   \{
+28     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < \hyperlink{class_robots_ae9df2f1d345ad6740f0459956cdd4712}{Robots::SIZE}; ++i) \{
+29         \hyperlink{classnlohmann_1_1basic__json}{json}& robot\_config = \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs}[\textcolor{stringliteral}{"Robots"}][\textcolor{stringliteral}{"Robot "}+std::to\_string(i+1)];
+30         \textcolor{comment}{// debug\_warning(string(1, Robots::get\_ID(i)));}
+31         robot\_config[\textcolor{stringliteral}{"ID"}] = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{string}(1, \hyperlink{class_robots_a306bb88b37b41cff35018d51d8228d65}{Robots::get\_ID}(i));
+32         robot\_config[\textcolor{stringliteral}{"role"}] = \hyperlink{class_robots_ac5cdd16502bd325581fb2d732169a326}{Robots::get\_role}(i);
+33         robot\_config[\textcolor{stringliteral}{"speed"}] = to\_string(round(\hyperlink{class_robots_a3b226dd339a3b7a41c120f7d6a1bc515}{Robots::get\_default\_velocity}(i)
+      *1000)/1000); \textcolor{comment}{// salvar como string pois double zoa as casas decimais}
+34     \}
+35 \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 15
+Here is the caller graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{classjson_save_manager_a2be17d434d72a0afeb2d9a2f96b043bf}\label{classjson_save_manager_a2be17d434d72a0afeb2d9a2f96b043bf}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!write\+\_\+configs\+\_\+to\+\_\+file@{write\+\_\+configs\+\_\+to\+\_\+file}}
+\index{write\+\_\+configs\+\_\+to\+\_\+file@{write\+\_\+configs\+\_\+to\+\_\+file}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{write\+\_\+configs\+\_\+to\+\_\+file()}{write\_configs\_to\_file()}}
+{\footnotesize\ttfamily void json\+Save\+Manager\+::write\+\_\+configs\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+\_\+path = {\ttfamily \char`\"{}config/\hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{quicksave.\+json}\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Actually writes our J\+S\+ON object in the given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & Path to the .json file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 181 of file json\+Save\+Manager.\+cpp.
+
+
+
+References configs, and debug\+\_\+success.
+
+
+
+Referenced by save().
+
+
+\begin{DoxyCode}
+181                                                             \{
+182     std::ofstream file(file\_path);
+183     file << std::setw(4) << \hyperlink{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}{configs} << endl;
+184     file.close();
+185     \hyperlink{debug_8hpp_aab16d4de33d0ed49f629781df5b8429a}{debug\_success}(\textcolor{stringliteral}{"Config file written."});
+186 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}\label{classjson_save_manager_acfbca58deba9ed712131c20a8f965dfd}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!configs@{configs}}
+\index{configs@{configs}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{configs}{configs}}
+{\footnotesize\ttfamily \hyperlink{json_save_manager_8h_ab701e3ac61a85b337ec5c1abaad6742d}{json} json\+Save\+Manager\+::configs\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Global J\+S\+ON object that keeps data between save/load calls. 
+
+
+
+Definition at line 20 of file json\+Save\+Manager.\+h.
+
+
+
+Referenced by load\+\_\+camera(), load\+\_\+robots(), read\+\_\+configs\+\_\+from\+\_\+file(), save\+\_\+camera(), save\+\_\+robots(), and write\+\_\+configs\+\_\+to\+\_\+file().
+
+\mbox{\Hypertarget{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}\label{classjson_save_manager_a91983cf64bdd03c74cd6d4576cb521cf}} 
+\index{json\+Save\+Manager@{json\+Save\+Manager}!interface@{interface}}
+\index{interface@{interface}!json\+Save\+Manager@{json\+Save\+Manager}}
+\subsubsection{\texorpdfstring{interface}{interface}}
+{\footnotesize\ttfamily \hyperlink{class_v_s_s_s___g_u_i_1_1_v4_l_interface}{V4\+L\+Interface}$\ast$ json\+Save\+Manager\+::interface\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to main interface object. Used to get/set it\textquotesingle{}s values at runtime. 
+
+
+
+Definition at line 25 of file json\+Save\+Manager.\+h.
+
+
+
+Referenced by load\+\_\+camera(), load\+\_\+robots(), and save\+\_\+camera().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/aux/\hyperlink{json_save_manager_8h}{json\+Save\+Manager.\+h}\item 
+src/aux/\hyperlink{json_save_manager_8cpp}{json\+Save\+Manager.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,56 @@
+digraph "v4ldev::xioctl"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node92 [label="v4ldev::xioctl",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node92 -> Node93 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node93 [label="v4ldev::dequeue_buff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a539e3edba551564e19bd1ae21c0cdb26"];
+  Node93 -> Node94 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node94 [label="v4ldev::dequeue_buff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a699e44c1d314c6a77ad9afc4b6a89078"];
+  Node92 -> Node95 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node95 [label="v4ldev::enqueue_buff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#ae53ad5fcd680c9df8e7f2f564e575a35"];
+  Node95 -> Node96 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node96 [label="v4ldev::enqueue_buff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a4785a96e636f1dea81d2d64ec0c36d5a"];
+  Node92 -> Node97 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node97 [label="v4ldev::get_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a8b7c5ca137d864c8ffe32349b0aeb01a"];
+  Node97 -> Node98 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node98 [label="v4ldev::get_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a3244e54e71d070f383bcf3272a588e17"];
+  Node92 -> Node99 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node99 [label="v4ldev::get_format",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a001ffb48bb1981b038ed6878b148a18e"];
+  Node92 -> Node100 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node100 [label="v4ldev::get_input",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a517ba36f366611d3cd72c8edb5cddd1f"];
+  Node92 -> Node101 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node101 [label="v4ldev::get_input_index",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#adb85ceff191f9d0ebc65239c6c8d5e42"];
+  Node101 -> Node100 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node92 -> Node102 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node102 [label="v4ldev::get_standard",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a76f01fd5ac53c94bca14cfbb13c57f71"];
+  Node92 -> Node103 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node103 [label="v4ldev::get_standard_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a4d296d91d189e8600e298771ae5016b2"];
+  Node103 -> Node102 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node92 -> Node104 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node104 [label="v4ldev::get_stream\l_parameter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#ab8ab5bfdaf0ffe3bcf6638dc7465494b"];
+  Node104 -> Node105 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node105 [label="v4ldev::get_stream\l_parameter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a8893fba1f5915c2b9a8f6aa6c1e71c52"];
+  Node92 -> Node106 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node106 [label="v4ldev::query_buffer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a9e4d9ea82e59a99286f4cea51cc08685"];
+  Node106 -> Node107 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node107 [label="v4ldev::query_buffer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#ab5b21c7fd5893d82039fd25c6450532c"];
+  Node92 -> Node108 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node108 [label="v4ldev::query_capability",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#aee765379811b24150d5a591340d9568d"];
+  Node108 -> Node109 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node109 [label="v4ldev::open_device",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a56dc3abadfc1de069eb973ff4a6dbd1f"];
+  Node92 -> Node110 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node110 [label="v4ldev::query_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a99fbec860c69f6132154871816aff128"];
+  Node92 -> Node111 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node111 [label="v4ldev::query_control_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a95b39e9759d93a2c55dd031ed2ef93c1"];
+  Node92 -> Node112 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node112 [label="v4ldev::request_buffers",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a432cce3442cbc7d5cf7b295073b4ef0a"];
+  Node112 -> Node113 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node113 [label="v4ldev::request_buffers",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a73eafcdc186c7e7e2db2596da1b37e36"];
+  Node92 -> Node114 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node114 [label="v4ldev::streamoff",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a969a8c970864242b50f0532ebc38e900"];
+  Node92 -> Node115 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node115 [label="v4ldev::streamon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4ldev.html#a930d11206b595e7f27c7ca240ce332f4"];
+}

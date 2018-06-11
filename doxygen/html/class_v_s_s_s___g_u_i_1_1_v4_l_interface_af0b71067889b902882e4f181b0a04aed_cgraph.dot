@@ -1,0 +1,36 @@
+digraph "VSSS_GUI::V4LInterface::__make_control_list_default"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node508 [label="VSSS_GUI::V4LInterface\l::__make_control_list\l_default",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node508 -> Node509 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node509 [label="VSSS_GUI::V4LInterface\l::__set_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ad6eddc5cedbaf1b0e87b330aae937b46"];
+  Node509 -> Node510 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node510 [label="v4lcap::set_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a863a15d2d66cc0b7367dcc9cba64e0bd",tooltip="Set the control object. "];
+  Node510 -> Node511 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node511 [label="v4lcap::xioctl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ab5aaa5a8c0df17f5ca57e0b5170232cb"];
+  Node509 -> Node512 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node512 [label="VSSS_GUI::V4LInterface\l::__update_control_widgets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#afbb5daccfdce20180578025c108ef65b"];
+  Node512 -> Node513 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node513 [label="VSSS_GUI::V4LInterface\l::__block_control_signals",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a677d3f2d0246528bafd19cf2d3dccf98"];
+  Node512 -> Node514 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node514 [label="v4lcap::get_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#affd6d918400a56e165d7a3e4fab8bdae",tooltip="Get the control object. "];
+  Node514 -> Node511 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node508 -> Node515 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node515 [label="VSSS_GUI::V4LInterface\l::__set_control_hscale",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#aa14a838434102fd12d5d0ffbc242e753"];
+  Node515 -> Node510 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node515 -> Node514 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node515 -> Node512 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node508 -> Node516 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node516 [label="v4lcap::enum_control\l_default",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a34897884f1bfc348eea63d49d09417f7"];
+  Node516 -> Node517 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node517 [label="v4lcap::query_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#acede842207240d9eb3b4a8d99ff32fc4",tooltip="Query control options. "];
+  Node517 -> Node511 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node508 -> Node518 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node518 [label="v4lcap::enum_control_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a9d192d856a6f4243a4a4508beef2e211",tooltip="Fills menu controll with values. "];
+  Node518 -> Node519 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node519 [label="v4lcap::query_control_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#aa23f5ba6c1828dc3af8258d8a33b95e4",tooltip="Query control menu. "];
+  Node519 -> Node511 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

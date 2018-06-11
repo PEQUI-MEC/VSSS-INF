@@ -1,0 +1,22 @@
+digraph "LS::retrosubstitutionL"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node109 [label="LS::retrosubstitutionL",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node109 -> Node110 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node110 [label="LS::solveSystem",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_l_s.html#afa8644e9204234a188c3ea0269b4b039"];
+  Node110 -> Node111 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node111 [label="LS::interpolate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_l_s.html#a1657c109024e802aee886d293778079f"];
+  Node111 -> Node112 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node112 [label="LS::estimate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_l_s.html#a595c287e25fe0d0d51e7f06a80f8f991"];
+  Node112 -> Node113 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node113 [label="Strategy::set_Ball",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#a7119e796ed0218f4e44418fea1efdf49"];
+  Node113 -> Node114 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node114 [label="CamCap::capture_and_show",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#a87f384c5fec40a0ccfd7833347fec0df",tooltip="Captures camera frames and shows it in the interface. "];
+  Node114 -> Node115 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node115 [label="CamCap::start_signal",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#ae676e6624dd821ad494a80e68a41e249",tooltip="Interface adjustments after &#39;start&#39; button is clicked. "];
+  Node115 -> Node116 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node116 [label="CamCap::CamCap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_cam_cap.html#afe0db98a5f72bc9b261dcb78e2840da6",tooltip="Constructor of a CamCap object. "];
+}

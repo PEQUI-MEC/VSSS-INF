@@ -1,0 +1,14 @@
+digraph "VisionGUI::bt_record_video_pressed"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node146 [label="VisionGUI::bt_record\l_video_pressed",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node146 -> Node147 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node147 [label="Vision::finishVideo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a5c7366071fde8a1b916be0721adaa275"];
+  Node146 -> Node148 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node148 [label="Vision::isRecording",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a7990c9cb8684e1d1c92a5b6aa99abe6f"];
+  Node146 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node149 [label="Vision::startNewVideo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ae3ec43e811508f326910f99c416332db"];
+}

@@ -1,0 +1,1305 @@
+\hypertarget{classnlohmann_1_1json__pointer}{}\section{nlohmann\+:\+:json\+\_\+pointer$<$ Basic\+Json\+Type $>$ Class Template Reference}
+\label{classnlohmann_1_1json__pointer}\index{nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$@{nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$}}
+
+
+J\+S\+ON Pointer.  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}{json\+\_\+pointer} (const std\+::string \&s=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em create J\+S\+ON pointer \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classnlohmann_1_1json__pointer_ad7d3a3a215db8fe0964e644a918dcccb}{to\+\_\+string} () const noexcept
+\begin{DoxyCompactList}\small\item\em return a string representation of the J\+S\+ON pointer \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1json__pointer_ae9015c658f99cf3d48a8563accc79988}{operator std\+::string} () const
+\begin{DoxyCompactList}\small\item\em return a string representation of the J\+S\+ON pointer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\+\_\+index} (const std\+::string \&s)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classnlohmann_1_1json__pointer_a4d523606a8b40cef73e976e61b6fd383}{pop\+\_\+back} ()
+\begin{DoxyCompactList}\small\item\em remove and return last reference pointer \end{DoxyCompactList}\item 
+bool \hyperlink{classnlohmann_1_1json__pointer_aa7cd421aaccabea7ffcf953f7ff96362}{is\+\_\+root} () const
+\begin{DoxyCompactList}\small\item\em return whether pointer points to the root document \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} \hyperlink{classnlohmann_1_1json__pointer_a00eff109d9a0091e42ada9b16b90c8d9}{top} () const
+\item 
+Basic\+Json\+Type \& \hyperlink{classnlohmann_1_1json__pointer_a583c726016f440ffe65553935c101ff5}{get\+\_\+and\+\_\+create} (Basic\+Json\+Type \&j) const
+\begin{DoxyCompactList}\small\item\em create and return a reference to the pointed to value \end{DoxyCompactList}\item 
+Basic\+Json\+Type \& \hyperlink{classnlohmann_1_1json__pointer_a577512ee6b7f030e8872b4d29fa5c3e5}{get\+\_\+unchecked} (Basic\+Json\+Type $\ast$ptr) const
+\begin{DoxyCompactList}\small\item\em return a reference to the pointed to value \end{DoxyCompactList}\item 
+Basic\+Json\+Type \& \hyperlink{classnlohmann_1_1json__pointer_a366d68a67e40d86676d3bdb52e167294}{get\+\_\+checked} (Basic\+Json\+Type $\ast$ptr) const
+\item 
+const Basic\+Json\+Type \& \hyperlink{classnlohmann_1_1json__pointer_ad6a01f8e1556eef68e5a49b33fef1548}{get\+\_\+unchecked} (const Basic\+Json\+Type $\ast$ptr) const
+\begin{DoxyCompactList}\small\item\em return a const reference to the pointed to value \end{DoxyCompactList}\item 
+const Basic\+Json\+Type \& \hyperlink{classnlohmann_1_1json__pointer_a55a5bbbc3007e479607304a3e8cb9bf5}{get\+\_\+checked} (const Basic\+Json\+Type $\ast$ptr) const
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ std\+::string $>$ \hyperlink{classnlohmann_1_1json__pointer_ae01c32c6a071c2e5198d5dfcce290e50}{split} (const std\+::string \&reference\+\_\+string)
+\begin{DoxyCompactList}\small\item\em split the string input to reference tokens \end{DoxyCompactList}\item 
+static void \hyperlink{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}{replace\+\_\+substring} (std\+::string \&s, const std\+::string \&f, const std\+::string \&t)
+\begin{DoxyCompactList}\small\item\em replace all occurrences of a substring by another string \end{DoxyCompactList}\item 
+static std\+::string \hyperlink{classnlohmann_1_1json__pointer_a8abf3577f9a0087f29a233893cdc73ad}{escape} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em escape \char`\"{}$\sim$\char`\"{}\char`\"{} to \char`\"{}$\sim$0\char`\"{} and \char`\"{}/\char`\"{} to \char`\"{}$\sim$1" \end{DoxyCompactList}\item 
+static void \hyperlink{classnlohmann_1_1json__pointer_ab85442d5fbcc289b79beeefc2175446f}{unescape} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em unescape \char`\"{}$\sim$1\char`\"{} to tilde and \char`\"{}$\sim$0\char`\"{} to slash (order is important!) \end{DoxyCompactList}\item 
+static void \hyperlink{classnlohmann_1_1json__pointer_ab0d7759d0caa6a0c0187916da28e6ee7}{flatten} (const std\+::string \&reference\+\_\+string, const Basic\+Json\+Type \&value, Basic\+Json\+Type \&result)
+\item 
+static Basic\+Json\+Type \hyperlink{classnlohmann_1_1json__pointer_a920065221e3c81676c3211c100d024a7}{unflatten} (const Basic\+Json\+Type \&value)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\+\_\+tokens}
+\begin{DoxyCompactList}\small\item\em the reference tokens \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$template$<$ typename, typename, typename... $>$ class Object\+Type, template$<$ typename, typename... $>$ class Array\+Type, class String\+Type , class Boolean\+Type , class Number\+Integer\+Type , class Number\+Unsigned\+Type , class Number\+Float\+Type , template$<$ typename $>$ class Allocator\+Type, template$<$ typename, typename=void $>$ class J\+S\+O\+N\+Serializer$>$ }\\class \hyperlink{classnlohmann_1_1json__pointer_a95c261a91520bb66a51b6e142a9cf4b3}{basic\+\_\+json}
+\item 
+bool \hyperlink{classnlohmann_1_1json__pointer_a4667ef558c8c3f8a646bfda0c6654653}{operator==} (\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} const \&lhs, \hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} const \&rhs) noexcept
+\item 
+bool \hyperlink{classnlohmann_1_1json__pointer_a6779edcf28e6f018a3bbb29c0b4b5e1e}{operator!=} (\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} const \&lhs, \hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} const \&rhs) noexcept
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type$>$\newline
+class nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$}
+
+J\+S\+ON Pointer. 
+
+A J\+S\+ON pointer defines a string syntax for identifying a specific value within a J\+S\+ON document. It can be used with functions {\ttfamily at} and {\ttfamily operator\mbox{[}\mbox{]}}. Furthermore, J\+S\+ON pointers are the base for J\+S\+ON patches.
+
+\begin{DoxySeeAlso}{See also}
+\href{https://tools.ietf.org/html/rfc6901}{\tt R\+FC 6901}
+\end{DoxySeeAlso}
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 99 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}\label{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!json\+\_\+pointer@{json\+\_\+pointer}}
+\index{json\+\_\+pointer@{json\+\_\+pointer}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{json\+\_\+pointer()}{json\_pointer()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+create J\+S\+ON pointer 
+
+Create a J\+S\+ON pointer according to the syntax described in \href{https://tools.ietf.org/html/rfc6901#section-3}{\tt Section 3 of R\+F\+C6901}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & string representing the J\+S\+ON pointer; if omitted, the empty string is assumed which references the whole J\+S\+ON value\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+107} & if the given J\+S\+ON pointer {\itshape s} is nonempty and does not begin with a slash ({\ttfamily /}); see example below\\
+\hline
+{\em parse\+\_\+error.\+108} & if a tilde ({\ttfamily $\sim$}) in the given J\+S\+ON pointer {\itshape s} is not followed by {\ttfamily 0} (representing {\ttfamily $\sim$}) or {\ttfamily 1} (representing {\ttfamily /}); see example below\\
+\hline
+\end{DoxyExceptions}
+\{The example shows the construction several valid J\+S\+ON pointers as well as the exceptional behavior.,\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer}\}
+
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 8964 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8965         : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}(\hyperlink{classnlohmann_1_1json__pointer_ae01c32c6a071c2e5198d5dfcce290e50}{split}(s))
+8966     \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}\label{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!array\+\_\+index@{array\+\_\+index}}
+\index{array\+\_\+index@{array\+\_\+index}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{array\+\_\+index()}{array\_index()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static int \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::array\+\_\+index (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & reference token to be converted into an array index\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+integer representation of {\itshape s} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\+\_\+of\+\_\+range.\+404} & if string {\itshape s} could not be converted to an integer \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9006 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch().
+
+
+\begin{DoxyCode}
+9007     \{
+9008         std::size\_t processed\_chars = 0;
+9009         \textcolor{keyword}{const} \textcolor{keywordtype}{int} res = std::stoi(s, &processed\_chars);
+9010 
+9011         \textcolor{comment}{// check if the string was completely read}
+9012         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(processed\_chars != s.size()))
+9013         \{
+9014             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(404, \textcolor{stringliteral}{"unresolved
+       reference token '"} + s + \textcolor{stringliteral}{"'"}));
+9015         \}
+9016 
+9017         \textcolor{keywordflow}{return} res;
+9018     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a8abf3577f9a0087f29a233893cdc73ad}\label{classnlohmann_1_1json__pointer_a8abf3577f9a0087f29a233893cdc73ad}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!escape@{escape}}
+\index{escape@{escape}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{escape()}{escape()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static std\+::string \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::escape (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+escape \char`\"{}$\sim$\char`\"{}\char`\"{} to \char`\"{}$\sim$0\char`\"{} and \char`\"{}/\char`\"{} to \char`\"{}$\sim$1" 
+
+
+
+Definition at line 9491 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::diff().
+
+
+\begin{DoxyCode}
+9492     \{
+9493         \hyperlink{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}{replace\_substring}(s, \textcolor{stringliteral}{"~"}, \textcolor{stringliteral}{"~0"});
+9494         \hyperlink{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}{replace\_substring}(s, \textcolor{stringliteral}{"/"}, \textcolor{stringliteral}{"~1"});
+9495         \textcolor{keywordflow}{return} s;
+9496     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ab0d7759d0caa6a0c0187916da28e6ee7}\label{classnlohmann_1_1json__pointer_ab0d7759d0caa6a0c0187916da28e6ee7}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!flatten@{flatten}}
+\index{flatten@{flatten}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{flatten()}{flatten()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static void \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::flatten (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reference\+\_\+string,  }\item[{const Basic\+Json\+Type \&}]{value,  }\item[{Basic\+Json\+Type \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em reference\+\_\+string} & the reference string to the current value \\
+\hline
+\mbox{\tt in}  & {\em value} & the value to consider \\
+\hline
+\mbox{\tt in,out}  & {\em result} & the result object to insert values to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Empty objects or arrays are flattened to {\ttfamily null}. 
+\end{DoxyNote}
+
+
+Definition at line 9512 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, and nlohmann\+::detail\+::object.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::flatten().
+
+
+\begin{DoxyCode}
+9515     \{
+9516         \textcolor{keywordflow}{switch} (value.m\_type)
+9517         \{
+9518             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9519             \{
+9520                 \textcolor{keywordflow}{if} (value.m\_value.array->empty())
+9521                 \{
+9522                     \textcolor{comment}{// flatten empty array as null}
+9523                     result[reference\_string] = \textcolor{keyword}{nullptr};
+9524                 \}
+9525                 \textcolor{keywordflow}{else}
+9526                 \{
+9527                     \textcolor{comment}{// iterate array and use index as reference string}
+9528                     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < value.m\_value.array->size(); ++i)
+9529                     \{
+9530                         \hyperlink{classnlohmann_1_1json__pointer_ab0d7759d0caa6a0c0187916da28e6ee7}{flatten}(reference\_string + \textcolor{stringliteral}{"/"} + std::to\_string(i),
+9531                                 value.m\_value.array->operator[](i), result);
+9532                     \}
+9533                 \}
+9534                 \textcolor{keywordflow}{break};
+9535             \}
+9536 
+9537             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9538             \{
+9539                 \textcolor{keywordflow}{if} (value.m\_value.object->empty())
+9540                 \{
+9541                     \textcolor{comment}{// flatten empty object as null}
+9542                     result[reference\_string] = \textcolor{keyword}{nullptr};
+9543                 \}
+9544                 \textcolor{keywordflow}{else}
+9545                 \{
+9546                     \textcolor{comment}{// iterate object and use keys as reference string}
+9547                     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& element : *value.m\_value.object)
+9548                     \{
+9549                         \hyperlink{classnlohmann_1_1json__pointer_ab0d7759d0caa6a0c0187916da28e6ee7}{flatten}(reference\_string + \textcolor{stringliteral}{"/"} + \hyperlink{classnlohmann_1_1json__pointer_a8abf3577f9a0087f29a233893cdc73ad}{escape}(element.first), element.second
+      , result);
+9550                     \}
+9551                 \}
+9552                 \textcolor{keywordflow}{break};
+9553             \}
+9554 
+9555             \textcolor{keywordflow}{default}:
+9556             \{
+9557                 \textcolor{comment}{// add primitive value with its reference string}
+9558                 result[reference\_string] = value;
+9559                 \textcolor{keywordflow}{break};
+9560             \}
+9561         \}
+9562     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a583c726016f440ffe65553935c101ff5}\label{classnlohmann_1_1json__pointer_a583c726016f440ffe65553935c101ff5}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!get\+\_\+and\+\_\+create@{get\+\_\+and\+\_\+create}}
+\index{get\+\_\+and\+\_\+create@{get\+\_\+and\+\_\+create}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{get\+\_\+and\+\_\+create()}{get\_and\_create()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type\& \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::get\+\_\+and\+\_\+create (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type \&}]{j }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+create and return a reference to the pointed to value 
+
+Linear in the number of reference tokens.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+109} & if array index is not a number \\
+\hline
+{\em type\+\_\+error.\+313} & if value cannot be unflattened \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9063 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), nlohmann\+::detail\+::type\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+C\+A\+T\+CH, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+T\+RY, nlohmann\+::detail\+::null, and nlohmann\+::detail\+::object.
+
+
+
+Referenced by nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::unflatten().
+
+
+\begin{DoxyCode}
+9064     \{
+9065         \textcolor{keyword}{using} size\_type = \textcolor{keyword}{typename} BasicJsonType::size\_type;
+9066         \textcolor{keyword}{auto} result = &j;
+9067 
+9068         \textcolor{comment}{// in case no reference tokens exist, return a reference to the JSON value}
+9069         \textcolor{comment}{// j which will be overwritten by a primitive value}
+9070         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& reference\_token : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens})
+9071         \{
+9072             \textcolor{keywordflow}{switch} (result->m\_type)
+9073             \{
+9074                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{detail::value\_t::null}:
+9075                 \{
+9076                     \textcolor{keywordflow}{if} (reference\_token == \textcolor{stringliteral}{"0"})
+9077                     \{
+9078                         \textcolor{comment}{// start a new array if reference token is 0}
+9079                         result = &result->operator[](0);
+9080                     \}
+9081                     \textcolor{keywordflow}{else}
+9082                     \{
+9083                         \textcolor{comment}{// start a new object otherwise}
+9084                         result = &result->operator[](reference\_token);
+9085                     \}
+9086                     \textcolor{keywordflow}{break};
+9087                 \}
+9088 
+9089                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9090                 \{
+9091                     \textcolor{comment}{// create an entry in the object}
+9092                     result = &result->operator[](reference\_token);
+9093                     \textcolor{keywordflow}{break};
+9094                 \}
+9095 
+9096                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9097                 \{
+9098                     \textcolor{comment}{// create an entry in the array}
+9099                     \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{JSON\_TRY}
+9100                     \{
+9101                         result = &result->operator[](\textcolor{keyword}{static\_cast<}size\_type\textcolor{keyword}{>}(
+      \hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\_index}(reference\_token)));
+9102                     \}
+9103                     \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{JSON\_CATCH}(std::invalid\_argument&)
+9104                     \{
+9105                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(109, 0,
+       \textcolor{stringliteral}{"array index '"} + reference\_token + \textcolor{stringliteral}{"' is not a number"}));
+9106                     \}
+9107                     \textcolor{keywordflow}{break};
+9108                 \}
+9109 
+9110                 \textcolor{comment}{/*}
+9111 \textcolor{comment}{                The following code is only reached if there exists a reference}
+9112 \textcolor{comment}{                token \_and\_ the current value is primitive. In this case, we have}
+9113 \textcolor{comment}{                an error situation, because primitive values may only occur as}
+9114 \textcolor{comment}{                single value; that is, with an empty list of reference tokens.}
+9115 \textcolor{comment}{                */}
+9116                 \textcolor{keywordflow}{default}:
+9117                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1type__error_aecc083aea4b698c33d042670ba50c10f}{detail::type\_error::create}(313, \textcolor{stringliteral}{"invalid
+       value to unflatten"}));
+9118             \}
+9119         \}
+9120 
+9121         \textcolor{keywordflow}{return} *result;
+9122     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a366d68a67e40d86676d3bdb52e167294}\label{classnlohmann_1_1json__pointer_a366d68a67e40d86676d3bdb52e167294}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!get\+\_\+checked@{get\+\_\+checked}}
+\index{get\+\_\+checked@{get\+\_\+checked}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{get\+\_\+checked()}{get\_checked()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type\& \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type $\ast$}]{ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+106} & if an array index begins with \textquotesingle{}0\textquotesingle{} \\
+\hline
+{\em parse\+\_\+error.\+109} & if an array index was not a number \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+402} & if the array index \textquotesingle{}-\/\textquotesingle{} is used \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+404} & if the J\+S\+ON pointer can not be resolved \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9219 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+C\+A\+T\+CH, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+T\+RY, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, and nlohmann\+::detail\+::object.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::at(), and nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::value().
+
+
+\begin{DoxyCode}
+9220     \{
+9221         \textcolor{keyword}{using} size\_type = \textcolor{keyword}{typename} BasicJsonType::size\_type;
+9222         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& reference\_token : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens})
+9223         \{
+9224             \textcolor{keywordflow}{switch} (ptr->m\_type)
+9225             \{
+9226                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9227                 \{
+9228                     \textcolor{comment}{// note: at performs range check}
+9229                     ptr = &ptr->at(reference\_token);
+9230                     \textcolor{keywordflow}{break};
+9231                 \}
+9232 
+9233                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9234                 \{
+9235                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token == \textcolor{stringliteral}{"-"}))
+9236                     \{
+9237                         \textcolor{comment}{// "-" always fails the range check}
+9238                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(402,
+9239                                                                 \textcolor{stringliteral}{"array index '-' ("} + std::to\_string(ptr->
+      m\_value.array->size()) +
+9240                                                                 \textcolor{stringliteral}{") is out of range"}));
+9241                     \}
+9242 
+9243                     \textcolor{comment}{// error condition (cf. RFC 6901, Sect. 4)}
+9244                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token.size() > 1 and reference\_token[0] == \textcolor{charliteral}{'0'}
+      ))
+9245                     \{
+9246                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(106, 0,
+9247                                                                \textcolor{stringliteral}{"array index '"} + reference\_token +
+9248                                                                \textcolor{stringliteral}{"' must not begin with '0'"}));
+9249                     \}
+9250 
+9251                     \textcolor{comment}{// note: at performs range check}
+9252                     \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{JSON\_TRY}
+9253                     \{
+9254                         ptr = &ptr->at(static\_cast<size\_type>(\hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\_index}(reference\_token)));
+9255                     \}
+9256                     \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{JSON\_CATCH}(std::invalid\_argument&)
+9257                     \{
+9258                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(109, 0,
+       \textcolor{stringliteral}{"array index '"} + reference\_token + \textcolor{stringliteral}{"' is not a number"}));
+9259                     \}
+9260                     \textcolor{keywordflow}{break};
+9261                 \}
+9262 
+9263                 \textcolor{keywordflow}{default}:
+9264                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(404, \textcolor{stringliteral}{"
+      unresolved reference token '"} + reference\_token + \textcolor{stringliteral}{"'"}));
+9265             \}
+9266         \}
+9267 
+9268         \textcolor{keywordflow}{return} *ptr;
+9269     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 7
+Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a55a5bbbc3007e479607304a3e8cb9bf5}\label{classnlohmann_1_1json__pointer_a55a5bbbc3007e479607304a3e8cb9bf5}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!get\+\_\+checked@{get\+\_\+checked}}
+\index{get\+\_\+checked@{get\+\_\+checked}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{get\+\_\+checked()}{get\_checked()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const Basic\+Json\+Type\& \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::get\+\_\+checked (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type $\ast$}]{ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+106} & if an array index begins with \textquotesingle{}0\textquotesingle{} \\
+\hline
+{\em parse\+\_\+error.\+109} & if an array index was not a number \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+402} & if the array index \textquotesingle{}-\/\textquotesingle{} is used \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+404} & if the J\+S\+ON pointer can not be resolved \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9343 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+C\+A\+T\+CH, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+T\+RY, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, and nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+9344     \{
+9345         \textcolor{keyword}{using} size\_type = \textcolor{keyword}{typename} BasicJsonType::size\_type;
+9346         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& reference\_token : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens})
+9347         \{
+9348             \textcolor{keywordflow}{switch} (ptr->m\_type)
+9349             \{
+9350                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9351                 \{
+9352                     \textcolor{comment}{// note: at performs range check}
+9353                     ptr = &ptr->at(reference\_token);
+9354                     \textcolor{keywordflow}{break};
+9355                 \}
+9356 
+9357                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9358                 \{
+9359                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token == \textcolor{stringliteral}{"-"}))
+9360                     \{
+9361                         \textcolor{comment}{// "-" always fails the range check}
+9362                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(402,
+9363                                                                 \textcolor{stringliteral}{"array index '-' ("} + std::to\_string(ptr->
+      m\_value.array->size()) +
+9364                                                                 \textcolor{stringliteral}{") is out of range"}));
+9365                     \}
+9366 
+9367                     \textcolor{comment}{// error condition (cf. RFC 6901, Sect. 4)}
+9368                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token.size() > 1 and reference\_token[0] == \textcolor{charliteral}{'0'}
+      ))
+9369                     \{
+9370                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(106, 0,
+9371                                                                \textcolor{stringliteral}{"array index '"} + reference\_token +
+9372                                                                \textcolor{stringliteral}{"' must not begin with '0'"}));
+9373                     \}
+9374 
+9375                     \textcolor{comment}{// note: at performs range check}
+9376                     \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{JSON\_TRY}
+9377                     \{
+9378                         ptr = &ptr->at(static\_cast<size\_type>(\hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\_index}(reference\_token)));
+9379                     \}
+9380                     \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{JSON\_CATCH}(std::invalid\_argument&)
+9381                     \{
+9382                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(109, 0,
+       \textcolor{stringliteral}{"array index '"} + reference\_token + \textcolor{stringliteral}{"' is not a number"}));
+9383                     \}
+9384                     \textcolor{keywordflow}{break};
+9385                 \}
+9386 
+9387                 \textcolor{keywordflow}{default}:
+9388                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(404, \textcolor{stringliteral}{"
+      unresolved reference token '"} + reference\_token + \textcolor{stringliteral}{"'"}));
+9389             \}
+9390         \}
+9391 
+9392         \textcolor{keywordflow}{return} *ptr;
+9393     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a577512ee6b7f030e8872b4d29fa5c3e5}\label{classnlohmann_1_1json__pointer_a577512ee6b7f030e8872b4d29fa5c3e5}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!get\+\_\+unchecked@{get\+\_\+unchecked}}
+\index{get\+\_\+unchecked@{get\+\_\+unchecked}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{get\+\_\+unchecked()}{get\_unchecked()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type\& \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked (\begin{DoxyParamCaption}\item[{Basic\+Json\+Type $\ast$}]{ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+return a reference to the pointed to value 
+
+\begin{DoxyNote}{Note}
+This version does not throw if a value is not present, but tries to create nested values instead. For instance, calling this function with pointer {\ttfamily \char`\"{}/this/that\char`\"{}} on a null value is equivalent to calling {\ttfamily operator\mbox{[}\mbox{]}(\char`\"{}this\char`\"{}).operator\mbox{[}\mbox{]}(\char`\"{}that\char`\"{})} on that value, effectively changing the null value to an object.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ptr} & a J\+S\+ON value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to the J\+S\+ON value pointed to by the J\+S\+ON pointer
+\end{DoxyReturn}
+Linear in the length of the J\+S\+ON pointer.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+106} & if an array index begins with \textquotesingle{}0\textquotesingle{} \\
+\hline
+{\em parse\+\_\+error.\+109} & if an array index was not a number \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+404} & if the J\+S\+ON pointer can not be resolved \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9143 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+C\+A\+T\+CH, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+T\+RY, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, nlohmann\+::detail\+::null, and nlohmann\+::detail\+::object.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::operator\mbox{[}$\,$\mbox{]}().
+
+
+\begin{DoxyCode}
+9144     \{
+9145         \textcolor{keyword}{using} size\_type = \textcolor{keyword}{typename} BasicJsonType::size\_type;
+9146         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& reference\_token : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens})
+9147         \{
+9148             \textcolor{comment}{// convert null values to arrays or objects before continuing}
+9149             \textcolor{keywordflow}{if} (ptr->m\_type == \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{detail::value\_t::null})
+9150             \{
+9151                 \textcolor{comment}{// check if reference token is a number}
+9152                 \textcolor{keyword}{const} \textcolor{keywordtype}{bool} nums =
+9153                     std::all\_of(reference\_token.begin(), reference\_token.end(),
+9154                                 [](\textcolor{keyword}{const} \textcolor{keywordtype}{char} x)
+9155                 \{
+9156                     \textcolor{keywordflow}{return} (x >= \textcolor{charliteral}{'0'} and x <= \textcolor{charliteral}{'9'});
+9157                 \});
+9158 
+9159                 \textcolor{comment}{// change value to array for numbers or "-" or to object otherwise}
+9160                 *ptr = (nums or reference\_token == \textcolor{stringliteral}{"-"})
+9161                        ? \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}
+9162                        : \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object};
+9163             \}
+9164 
+9165             \textcolor{keywordflow}{switch} (ptr->m\_type)
+9166             \{
+9167                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9168                 \{
+9169                     \textcolor{comment}{// use unchecked object access}
+9170                     ptr = &ptr->operator[](reference\_token);
+9171                     \textcolor{keywordflow}{break};
+9172                 \}
+9173 
+9174                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9175                 \{
+9176                     \textcolor{comment}{// error condition (cf. RFC 6901, Sect. 4)}
+9177                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token.size() > 1 and reference\_token[0] == \textcolor{charliteral}{'0'}
+      ))
+9178                     \{
+9179                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(106, 0,
+9180                                                                \textcolor{stringliteral}{"array index '"} + reference\_token +
+9181                                                                \textcolor{stringliteral}{"' must not begin with '0'"}));
+9182                     \}
+9183 
+9184                     \textcolor{keywordflow}{if} (reference\_token == \textcolor{stringliteral}{"-"})
+9185                     \{
+9186                         \textcolor{comment}{// explicitly treat "-" as index beyond the end}
+9187                         ptr = &ptr->operator[](ptr->m\_value.array->size());
+9188                     \}
+9189                     \textcolor{keywordflow}{else}
+9190                     \{
+9191                         \textcolor{comment}{// convert array index to number; unchecked access}
+9192                         \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{JSON\_TRY}
+9193                         \{
+9194                             ptr = &ptr->operator[](
+9195                                 \textcolor{keyword}{static\_cast<}size\_type\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\_index}(reference\_token)));
+9196                         \}
+9197                         \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{JSON\_CATCH}(std::invalid\_argument&)
+9198                         \{
+9199                             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(109
+      , 0, \textcolor{stringliteral}{"array index '"} + reference\_token + \textcolor{stringliteral}{"' is not a number"}));
+9200                         \}
+9201                     \}
+9202                     \textcolor{keywordflow}{break};
+9203                 \}
+9204 
+9205                 \textcolor{keywordflow}{default}:
+9206                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(404, \textcolor{stringliteral}{"
+      unresolved reference token '"} + reference\_token + \textcolor{stringliteral}{"'"}));
+9207             \}
+9208         \}
+9209 
+9210         \textcolor{keywordflow}{return} *ptr;
+9211     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 10
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ad6a01f8e1556eef68e5a49b33fef1548}\label{classnlohmann_1_1json__pointer_ad6a01f8e1556eef68e5a49b33fef1548}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!get\+\_\+unchecked@{get\+\_\+unchecked}}
+\index{get\+\_\+unchecked@{get\+\_\+unchecked}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{get\+\_\+unchecked()}{get\_unchecked()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const Basic\+Json\+Type\& \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::get\+\_\+unchecked (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type $\ast$}]{ptr }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+return a const reference to the pointed to value 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ptr} & a J\+S\+ON value\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+const reference to the J\+S\+ON value pointed to by the J\+S\+ON pointer
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+106} & if an array index begins with \textquotesingle{}0\textquotesingle{} \\
+\hline
+{\em parse\+\_\+error.\+109} & if an array index was not a number \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+402} & if the array index \textquotesingle{}-\/\textquotesingle{} is used \\
+\hline
+{\em out\+\_\+of\+\_\+range.\+404} & if the J\+S\+ON pointer can not be resolved \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9284 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+C\+A\+T\+CH, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+T\+RY, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, and nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+9285     \{
+9286         \textcolor{keyword}{using} size\_type = \textcolor{keyword}{typename} BasicJsonType::size\_type;
+9287         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& reference\_token : \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens})
+9288         \{
+9289             \textcolor{keywordflow}{switch} (ptr->m\_type)
+9290             \{
+9291                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{detail::value\_t::object}:
+9292                 \{
+9293                     \textcolor{comment}{// use unchecked object access}
+9294                     ptr = &ptr->operator[](reference\_token);
+9295                     \textcolor{keywordflow}{break};
+9296                 \}
+9297 
+9298                 \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{detail::value\_t::array}:
+9299                 \{
+9300                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token == \textcolor{stringliteral}{"-"}))
+9301                     \{
+9302                         \textcolor{comment}{// "-" cannot be used for const access}
+9303                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(402,
+9304                                                                 \textcolor{stringliteral}{"array index '-' ("} + std::to\_string(ptr->
+      m\_value.array->size()) +
+9305                                                                 \textcolor{stringliteral}{") is out of range"}));
+9306                     \}
+9307 
+9308                     \textcolor{comment}{// error condition (cf. RFC 6901, Sect. 4)}
+9309                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_token.size() > 1 and reference\_token[0] == \textcolor{charliteral}{'0'}
+      ))
+9310                     \{
+9311                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(106, 0,
+9312                                                                \textcolor{stringliteral}{"array index '"} + reference\_token +
+9313                                                                \textcolor{stringliteral}{"' must not begin with '0'"}));
+9314                     \}
+9315 
+9316                     \textcolor{comment}{// use unchecked array access}
+9317                     \hyperlink{json_8hpp_a985d3b82445302c57257f6432f261fe9}{JSON\_TRY}
+9318                     \{
+9319                         ptr = &ptr->operator[](
+9320                             \textcolor{keyword}{static\_cast<}size\_type\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1json__pointer_ac53f5b79dd91da78743c437832f57ce4}{array\_index}(reference\_token)));
+9321                     \}
+9322                     \hyperlink{json_8hpp_a6954bec49ed2a2dfb938c1131c82740a}{JSON\_CATCH}(std::invalid\_argument&)
+9323                     \{
+9324                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(109, 0,
+       \textcolor{stringliteral}{"array index '"} + reference\_token + \textcolor{stringliteral}{"' is not a number"}));
+9325                     \}
+9326                     \textcolor{keywordflow}{break};
+9327                 \}
+9328 
+9329                 \textcolor{keywordflow}{default}:
+9330                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(404, \textcolor{stringliteral}{"
+      unresolved reference token '"} + reference\_token + \textcolor{stringliteral}{"'"}));
+9331             \}
+9332         \}
+9333 
+9334         \textcolor{keywordflow}{return} *ptr;
+9335     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_aa7cd421aaccabea7ffcf953f7ff96362}\label{classnlohmann_1_1json__pointer_aa7cd421aaccabea7ffcf953f7ff96362}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!is\+\_\+root@{is\+\_\+root}}
+\index{is\+\_\+root@{is\+\_\+root}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{is\+\_\+root()}{is\_root()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::is\+\_\+root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+return whether pointer points to the root document 
+
+
+
+Definition at line 9038 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch().
+
+
+\begin{DoxyCode}
+9039     \{
+9040         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}.empty();
+9041     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ae9015c658f99cf3d48a8563accc79988}\label{classnlohmann_1_1json__pointer_ae9015c658f99cf3d48a8563accc79988}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!operator std\+::string@{operator std\+::string}}
+\index{operator std\+::string@{operator std\+::string}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{operator std\+::string()}{operator std::string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::operator std\+::string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+return a string representation of the J\+S\+ON pointer 
+
+\begin{DoxyInvariant}{Invariant}
+For each J\+S\+ON pointer {\ttfamily ptr}, it holds\+: 
+\begin{DoxyCode}
+ptr == \hyperlink{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}{json\_pointer}(ptr.to\_string());
+\end{DoxyCode}
+
+\end{DoxyInvariant}
+\begin{DoxyReturn}{Returns}
+a string representation of the J\+S\+ON pointer
+\end{DoxyReturn}
+\{The example shows the result of {\ttfamily to\+\_\+string}., json\+\_\+pointer\+\_\+\+\_\+to\+\_\+string\}
+
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 8994 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8995     \{
+8996         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1json__pointer_ad7d3a3a215db8fe0964e644a918dcccb}{to\_string}();
+8997     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a4d523606a8b40cef73e976e61b6fd383}\label{classnlohmann_1_1json__pointer_a4d523606a8b40cef73e976e61b6fd383}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!pop\+\_\+back@{pop\+\_\+back}}
+\index{pop\+\_\+back@{pop\+\_\+back}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{pop\+\_\+back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+std\+::string \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::pop\+\_\+back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+remove and return last reference pointer 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em out\+\_\+of\+\_\+range.\+405} & if J\+S\+ON pointer has no parent \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9025 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch().
+
+
+\begin{DoxyCode}
+9026     \{
+9027         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1json__pointer_aa7cd421aaccabea7ffcf953f7ff96362}{is\_root}()))
+9028         \{
+9029             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(405, \textcolor{stringliteral}{"JSON
+       pointer has no parent"}));
+9030         \}
+9031 
+9032         \textcolor{keyword}{auto} last = \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}.back();
+9033         \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}.pop\_back();
+9034         \textcolor{keywordflow}{return} last;
+9035     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 14
+Here is the caller graph for this function\+:
+% FIG 15
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}\label{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!replace\+\_\+substring@{replace\+\_\+substring}}
+\index{replace\+\_\+substring@{replace\+\_\+substring}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{replace\+\_\+substring()}{replace\_substring()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static void \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::replace\+\_\+substring (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s,  }\item[{const std\+::string \&}]{f,  }\item[{const std\+::string \&}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+replace all occurrences of a substring by another string 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em s} & the string to manipulate; changed so that all occurrences of {\itshape f} are replaced with {\itshape t} \\
+\hline
+\mbox{\tt in}  & {\em f} & the substring to replace with {\itshape t} \\
+\hline
+\mbox{\tt in}  & {\em t} & the string to replace {\itshape f} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The search string {\itshape f} must not be empty. {\bfseries This precondition is enforced with an assertion.}
+\end{DoxyPrecond}
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 9479 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+9481     \{
+9482         assert(not f.empty());
+9483         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} pos = s.find(f);                \textcolor{comment}{// find first occurrence of f}
+9484                 pos != std::string::npos;         \textcolor{comment}{// make sure f was found}
+9485                 s.replace(pos, f.size(), t),      \textcolor{comment}{// replace with t, and}
+9486                 pos = s.find(f, pos + t.size()))  \textcolor{comment}{// find next occurrence of f}
+9487         \{\}
+9488     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ae01c32c6a071c2e5198d5dfcce290e50}\label{classnlohmann_1_1json__pointer_ae01c32c6a071c2e5198d5dfcce290e50}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!split@{split}}
+\index{split@{split}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{split()}{split()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static std\+::vector$<$std\+::string$>$ \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::split (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{reference\+\_\+string }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+split the string input to reference tokens 
+
+\begin{DoxyNote}{Note}
+This function is only called by the \hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} constructor. All exceptions below are documented there.
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+107} & if the pointer is not empty or begins with \textquotesingle{}/\textquotesingle{} \\
+\hline
+{\em parse\+\_\+error.\+108} & if character \textquotesingle{}$\sim$\textquotesingle{} is not followed by \textquotesingle{}0\textquotesingle{} or \textquotesingle{}1\textquotesingle{} \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9404 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+9405     \{
+9406         std::vector<std::string> result;
+9407 
+9408         \textcolor{comment}{// special case: empty reference string -> no reference tokens}
+9409         \textcolor{keywordflow}{if} (reference\_string.empty())
+9410         \{
+9411             \textcolor{keywordflow}{return} result;
+9412         \}
+9413 
+9414         \textcolor{comment}{// check if nonempty reference string begins with slash}
+9415         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(reference\_string[0] != \textcolor{charliteral}{'/'}))
+9416         \{
+9417             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(107, 1,
+9418                                                    \textcolor{stringliteral}{"JSON pointer must be empty or begin with '/' - was: '"} 
+      +
+9419                                                    reference\_string + \textcolor{stringliteral}{"'"}));
+9420         \}
+9421 
+9422         \textcolor{comment}{// extract the reference tokens:}
+9423         \textcolor{comment}{// - slash: position of the last read slash (or end of string)}
+9424         \textcolor{comment}{// - start: position after the previous slash}
+9425         \textcolor{keywordflow}{for} (
+9426             \textcolor{comment}{// search for the first slash after the first character}
+9427             std::size\_t slash = reference\_string.find\_first\_of(\textcolor{charliteral}{'/'}, 1),
+9428             \textcolor{comment}{// set the beginning of the first reference token}
+9429             start = 1;
+9430             \textcolor{comment}{// we can stop if start == string::npos+1 = 0}
+9431             start != 0;
+9432             \textcolor{comment}{// set the beginning of the next reference token}
+9433             \textcolor{comment}{// (will eventually be 0 if slash == std::string::npos)}
+9434             start = slash + 1,
+9435             \textcolor{comment}{// find next slash}
+9436             slash = reference\_string.find\_first\_of(\textcolor{charliteral}{'/'}, start))
+9437         \{
+9438             \textcolor{comment}{// use the text between the beginning of the reference token}
+9439             \textcolor{comment}{// (start) and the last slash (slash).}
+9440             \textcolor{keyword}{auto} reference\_token = reference\_string.substr(start, slash - start);
+9441 
+9442             \textcolor{comment}{// check reference tokens are properly escaped}
+9443             \textcolor{keywordflow}{for} (std::size\_t pos = reference\_token.find\_first\_of(\textcolor{charliteral}{'~'});
+9444                     pos != std::string::npos;
+9445                     pos = reference\_token.find\_first\_of(\textcolor{charliteral}{'~'}, pos + 1))
+9446             \{
+9447                 assert(reference\_token[pos] == \textcolor{charliteral}{'~'});
+9448 
+9449                 \textcolor{comment}{// ~ must be followed by 0 or 1}
+9450                 \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(pos == reference\_token.size() - 1 or
+9451                                   (reference\_token[pos + 1] != \textcolor{charliteral}{'0'} and
+9452                                    reference\_token[pos + 1] != \textcolor{charliteral}{'1'})))
+9453                 \{
+9454                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{detail::parse\_error::create}(108, 0, \textcolor{stringliteral}{"
+      escape character '~' must be followed with '0' or '1'"}));
+9455                 \}
+9456             \}
+9457 
+9458             \textcolor{comment}{// finally, store the reference token}
+9459             \hyperlink{classnlohmann_1_1json__pointer_ab85442d5fbcc289b79beeefc2175446f}{unescape}(reference\_token);
+9460             result.push\_back(reference\_token);
+9461         \}
+9462 
+9463         \textcolor{keywordflow}{return} result;
+9464     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 16
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ad7d3a3a215db8fe0964e644a918dcccb}\label{classnlohmann_1_1json__pointer_ad7d3a3a215db8fe0964e644a918dcccb}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!to\+\_\+string@{to\+\_\+string}}
+\index{to\+\_\+string@{to\+\_\+string}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{to\+\_\+string()}{to\_string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+std\+::string \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::to\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+
+
+return a string representation of the J\+S\+ON pointer 
+
+\begin{DoxyInvariant}{Invariant}
+For each J\+S\+ON pointer {\ttfamily ptr}, it holds\+: 
+\begin{DoxyCode}
+ptr == \hyperlink{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}{json\_pointer}(ptr.to\_string());
+\end{DoxyCode}
+
+\end{DoxyInvariant}
+\begin{DoxyReturn}{Returns}
+a string representation of the J\+S\+ON pointer
+\end{DoxyReturn}
+\{The example shows the result of {\ttfamily to\+\_\+string}., json\+\_\+pointer\+\_\+\+\_\+to\+\_\+string\}
+
+\begin{DoxySince}{Since}
+version 2.\+0.\+0 
+\end{DoxySince}
+
+
+Definition at line 8983 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::string.
+
+
+\begin{DoxyCode}
+8984     \{
+8985         \textcolor{keywordflow}{return} std::accumulate(\hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}.begin(), 
+      \hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}.end(),
+8986                                std::string\{\},
+8987                                [](\textcolor{keyword}{const} std::string & a, \textcolor{keyword}{const} std::string & b)
+8988         \{
+8989             \textcolor{keywordflow}{return} a + \textcolor{stringliteral}{"/"} + \hyperlink{classnlohmann_1_1json__pointer_a8abf3577f9a0087f29a233893cdc73ad}{escape}(b);
+8990         \});
+8991     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a00eff109d9a0091e42ada9b16b90c8d9}\label{classnlohmann_1_1json__pointer_a00eff109d9a0091e42ada9b16b90c8d9}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!top@{top}}
+\index{top@{top}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{top()}{top()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer} \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 9043 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, and nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::reference\+\_\+tokens.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::patch().
+
+
+\begin{DoxyCode}
+9044     \{
+9045         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1json__pointer_aa7cd421aaccabea7ffcf953f7ff96362}{is\_root}()))
+9046         \{
+9047             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{detail::out\_of\_range::create}(405, \textcolor{stringliteral}{"JSON
+       pointer has no parent"}));
+9048         \}
+9049 
+9050         \hyperlink{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}{json\_pointer} result = *\textcolor{keyword}{this};
+9051         result.reference\_tokens = \{\hyperlink{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}{reference\_tokens}[0]\};
+9052         \textcolor{keywordflow}{return} result;
+9053     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 17
+Here is the caller graph for this function\+:
+% FIG 18
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_ab85442d5fbcc289b79beeefc2175446f}\label{classnlohmann_1_1json__pointer_ab85442d5fbcc289b79beeefc2175446f}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!unescape@{unescape}}
+\index{unescape@{unescape}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{unescape()}{unescape()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static void \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::unescape (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+unescape \char`\"{}$\sim$1\char`\"{} to tilde and \char`\"{}$\sim$0\char`\"{} to slash (order is important!) 
+
+
+
+Definition at line 9499 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+9500     \{
+9501         \hyperlink{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}{replace\_substring}(s, \textcolor{stringliteral}{"~1"}, \textcolor{stringliteral}{"/"});
+9502         \hyperlink{classnlohmann_1_1json__pointer_aa7649d30da9fc10b0e20704a27aea2a9}{replace\_substring}(s, \textcolor{stringliteral}{"~0"}, \textcolor{stringliteral}{"~"});
+9503     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a920065221e3c81676c3211c100d024a7}\label{classnlohmann_1_1json__pointer_a920065221e3c81676c3211c100d024a7}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!unflatten@{unflatten}}
+\index{unflatten@{unflatten}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{unflatten()}{unflatten()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static Basic\+Json\+Type \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::unflatten (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em value} & flattened J\+S\+ON\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+unflattened J\+S\+ON
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+109} & if array index is not a number \\
+\hline
+{\em type\+\_\+error.\+314} & if value is not an object \\
+\hline
+{\em type\+\_\+error.\+315} & if object values are not primitive \\
+\hline
+{\em type\+\_\+error.\+313} & if value cannot be unflattened \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 9575 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::type\+\_\+error\+::create(), nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::get\+\_\+and\+\_\+create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::unflatten().
+
+
+\begin{DoxyCode}
+9576     \{
+9577         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(not value.is\_object()))
+9578         \{
+9579             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1type__error_aecc083aea4b698c33d042670ba50c10f}{detail::type\_error::create}(314, \textcolor{stringliteral}{"only objects
+       can be unflattened"}));
+9580         \}
+9581 
+9582         BasicJsonType result;
+9583 
+9584         \textcolor{comment}{// iterate the JSON object values}
+9585         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}& element : *value.m\_value.object)
+9586         \{
+9587             \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(not element.second.is\_primitive()))
+9588             \{
+9589                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1type__error_aecc083aea4b698c33d042670ba50c10f}{detail::type\_error::create}(315, \textcolor{stringliteral}{"values in
+       object must be primitive"}));
+9590             \}
+9591 
+9592             \textcolor{comment}{// assign value to reference pointed to by JSON pointer; Note that if}
+9593             \textcolor{comment}{// the JSON pointer is "" (i.e., points to the whole value), function}
+9594             \textcolor{comment}{// get\_and\_create returns a reference to result itself. An assignment}
+9595             \textcolor{comment}{// will then create a primitive value.}
+9596             \hyperlink{classnlohmann_1_1json__pointer_a7f32d7c62841f0c4a6784cf741a6e4f8}{json\_pointer}(element.first).get\_and\_create(result) = element.second;
+9597         \}
+9598 
+9599         \textcolor{keywordflow}{return} result;
+9600     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 19
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a95c261a91520bb66a51b6e142a9cf4b3}\label{classnlohmann_1_1json__pointer_a95c261a91520bb66a51b6e142a9cf4b3}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!basic\+\_\+json@{basic\+\_\+json}}
+\index{basic\+\_\+json@{basic\+\_\+json}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{basic\+\_\+json}{basic\_json}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$template$<$ typename, typename, typename... $>$ class Object\+Type, template$<$ typename, typename... $>$ class Array\+Type, class String\+Type , class Boolean\+Type , class Number\+Integer\+Type , class Number\+Unsigned\+Type , class Number\+Float\+Type , template$<$ typename $>$ class Allocator\+Type, template$<$ typename, typename=void $>$ class J\+S\+O\+N\+Serializer$>$ \\
+friend class \hyperlink{classnlohmann_1_1basic__json}{basic\+\_\+json}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 8940 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a6779edcf28e6f018a3bbb29c0b4b5e1e}\label{classnlohmann_1_1json__pointer_a6779edcf28e6f018a3bbb29c0b4b5e1e}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{operator"!=}{operator!=}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer}$<$ Basic\+Json\+Type $>$ const \&}]{lhs,  }\item[{\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer}$<$ Basic\+Json\+Type $>$ const \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 9608 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+9610     \{
+9611         \textcolor{keywordflow}{return} not (lhs == rhs);
+9612     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a4667ef558c8c3f8a646bfda0c6654653}\label{classnlohmann_1_1json__pointer_a4667ef558c8c3f8a646bfda0c6654653}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!operator==@{operator==}}
+\index{operator==@{operator==}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{operator==}{operator==}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer}$<$ Basic\+Json\+Type $>$ const \&}]{lhs,  }\item[{\hyperlink{classnlohmann_1_1json__pointer}{json\+\_\+pointer}$<$ Basic\+Json\+Type $>$ const \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Definition at line 9602 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+9604     \{
+9605         \textcolor{keywordflow}{return} (lhs.reference\_tokens == rhs.reference\_tokens);
+9606     \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}\label{classnlohmann_1_1json__pointer_a07a990a6838de4f38ee9d881e7b9fd61}} 
+\index{nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}!reference\+\_\+tokens@{reference\+\_\+tokens}}
+\index{reference\+\_\+tokens@{reference\+\_\+tokens}!nlohmann\+::json\+\_\+pointer@{nlohmann\+::json\+\_\+pointer}}
+\subsubsection{\texorpdfstring{reference\+\_\+tokens}{reference\_tokens}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+std\+::vector$<$std\+::string$>$ \hyperlink{classnlohmann_1_1json__pointer}{nlohmann\+::json\+\_\+pointer}$<$ Basic\+Json\+Type $>$\+::reference\+\_\+tokens\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the reference tokens 
+
+
+
+Definition at line 9615 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::json\+\_\+pointer$<$ Basic\+Json\+Type $>$\+::top().
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

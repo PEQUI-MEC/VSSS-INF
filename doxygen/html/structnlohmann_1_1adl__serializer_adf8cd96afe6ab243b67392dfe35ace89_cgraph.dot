@@ -1,0 +1,12 @@
+digraph "nlohmann::adl_serializer::to_json"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node4 [label="nlohmann::adl_serializer\l::to_json",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="nlohmann::detail::to_json",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacenlohmann_1_1detail.html#aa7a47b08eee864c2c108c04954919648"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="nlohmann::detail::to\l_json_tuple_impl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$namespacenlohmann_1_1detail.html#a510dfa15b01e9a8afe31600a27b28199"];
+}

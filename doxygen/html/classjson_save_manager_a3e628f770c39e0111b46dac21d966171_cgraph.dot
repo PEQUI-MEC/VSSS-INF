@@ -1,0 +1,54 @@
+digraph "jsonSaveManager::save"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node131 [label="jsonSaveManager::save",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node131 -> Node132 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node132 [label="jsonSaveManager::read\l_configs_from_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a71683c4903b413a1311e5b10b519ad41",tooltip="Read a given file and place it&#39;s data in our JSON object. "];
+  Node131 -> Node133 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node133 [label="jsonSaveManager::save\l_camera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a437ba67544a0115bf0242c85b92018b3",tooltip="Save camera configurations from interface to our JSON object. "];
+  Node133 -> Node134 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node134 [label="Vision::getHue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#adc6eb838fa27551430516e80a547a6bd"];
+  Node133 -> Node135 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node135 [label="Vision::getSaturation",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a023ff4cc4ee3a88125fd2a3c60d1b529"];
+  Node133 -> Node136 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node136 [label="Vision::getValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a04d1bcce0fd15a5d66752723f21c0dea"];
+  Node133 -> Node137 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node137 [label="Vision::getDilate",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a0d07157e3d9bb577940f03365c8f57e8"];
+  Node133 -> Node138 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node138 [label="Vision::getErode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a6cc4617b0af832b4cb94e00cc845c317"];
+  Node133 -> Node139 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node139 [label="Vision::getBlur",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#ad15cc7e3c696c7f52e30e7974337c74f"];
+  Node133 -> Node140 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node140 [label="Vision::getAmin",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_vision.html#a563041d47d11e0912227c3ce87dcc22e"];
+  Node133 -> Node141 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node141 [label="jsonSaveManager::config\l_matrix",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#ae135d7cd743cba1f0801e80934fdd824",tooltip="Configures vision&#39;s warp matrix to match it&#39;s defaults. "];
+  Node133 -> Node142 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node142 [label="v4lcap::get_control",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#affd6d918400a56e165d7a3e4fab8bdae",tooltip="Get the control object. "];
+  Node142 -> Node143 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node143 [label="v4lcap::xioctl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ab5aaa5a8c0df17f5ca57e0b5170232cb"];
+  Node133 -> Node144 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node144 [label="nlohmann::basic_json\l::value",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1basic__json.html#adcf8ca5079f5db993820bf50036bf45d",tooltip="access specified object element with default value "];
+  Node144 -> Node145 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node145 [label="nlohmann::detail::type\l_error::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1type__error.html#aecc083aea4b698c33d042670ba50c10f"];
+  Node145 -> Node146 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node146 [label="nlohmann::detail::exception\l::name",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1exception.html#abf41a7e9178356314082284e6cfea278"];
+  Node131 -> Node147 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node147 [label="jsonSaveManager::save\l_robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#ad5acf46f5a0620389055c16c3faa2519",tooltip="Save robot configurations from interface to our JSON object. "];
+  Node147 -> Node148 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node148 [label="Robots::get_ID",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a306bb88b37b41cff35018d51d8228d65"];
+  Node148 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node149 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node149 -> Node150 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node150 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+  Node147 -> Node151 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node151 [label="Robots::get_role",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#ac5cdd16502bd325581fb2d732169a326"];
+  Node151 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node147 -> Node152 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node152 [label="Robots::get_default\l_velocity",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a3b226dd339a3b7a41c120f7d6a1bc515"];
+  Node152 -> Node149 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node131 -> Node153 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node153 [label="jsonSaveManager::write\l_configs_to_file",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classjson_save_manager.html#a2be17d434d72a0afeb2d9a2f96b043bf",tooltip="Actually writes our JSON object in the given file. "];
+}

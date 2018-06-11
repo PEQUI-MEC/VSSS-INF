@@ -1,0 +1,810 @@
+\hypertarget{class_image_view}{}\section{Image\+View Class Reference}
+\label{class_image_view}\index{Image\+View@{Image\+View}}
+
+
+{\ttfamily \#include $<$image\+View.\+hpp$>$}
+
+
+
+Inheritance diagram for Image\+View\+:
+% FIG 0
+
+
+Collaboration diagram for Image\+View\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_image_view_a8382a8ee74d8ff437f0be6cffc2ba957}{Image\+View} ()
+\item 
+void \hyperlink{class_image_view_a34baa17952c6cbc4374f1bb6bdbbd757}{set\+\_\+data} (unsigned char $\ast$\hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data}, int \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}, int \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height})
+\item 
+unsigned char $\ast$ \hyperlink{class_image_view_af3323f3942cccd3faea6ddd549c3759f}{get\+\_\+data} ()
+\item 
+int \hyperlink{class_image_view_a2bbc02fd7818b11ef0caa13f95ac300c}{get\+\_\+width} ()
+\item 
+int \hyperlink{class_image_view_ac39cc5773b4611c5835d9b62512531cc}{get\+\_\+height} ()
+\item 
+void \hyperlink{class_image_view_a52c3ac86c941bcdfdd4fd8c711e53184}{disable\+\_\+image\+\_\+show} ()
+\item 
+void \hyperlink{class_image_view_a1c14fbed1a32a6f159c9916b6bd04d0a}{refresh} ()
+\item 
+virtual bool \hyperlink{class_image_view_a4a09cb2c02f13ca6ed325cc023634ff9}{on\+\_\+draw} (const Cairo\+::\+Ref\+Ptr$<$ Cairo\+::\+Context $>$ \&cr)
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char $\ast$ \hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data}
+\item 
+int \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}
+\item 
+int \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}
+\item 
+int \hyperlink{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}{stride}
+\item 
+int \hyperlink{class_image_view_a88c64a515c30ba486252ba440bf9f9eb}{gmm\+\_\+clicks} \mbox{[}2\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}{warp\+\_\+mat} \mbox{[}4\mbox{]}\mbox{[}2\mbox{]}
+\item 
+int \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\+\_\+mat} \mbox{[}4\mbox{]}\mbox{[}2\mbox{]}
+\item 
+double \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\+\_\+pos} \mbox{[}2\mbox{]}
+\item 
+double \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\+\_\+pos} \mbox{[}2\mbox{]}
+\item 
+double \hyperlink{class_image_view_af6562e3dfd03c0fb66826a7a5bd6e759}{look\+\_\+pos} \mbox{[}2\mbox{]}
+\item 
+cv\+::\+Point \hyperlink{class_image_view_aaf921d074e2f66a95b190439c19c2a9f}{point\+Clicked}
+\item 
+int \hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\+\_\+counter} =0
+\item 
+int \hyperlink{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}{adj\+\_\+counter} =0
+\item 
+int \hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\+\_\+counter} = 0
+\item 
+bool \hyperlink{class_image_view_a1a2a3e02d28b64343e62e17069fb1fd8}{warp\+\_\+event\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_ad94a51f7cd15b92c8c9defa5fb745b6d}{P\+I\+D\+\_\+test\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_a44427e978ef9239514b7149ebf59022c}{formation\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_abc6c43376871979a67c86b041025ab07}{adjust\+\_\+event\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_a93112870dda714b0bbe59b8f6cfe4b99}{hold\+\_\+warp} = false
+\item 
+bool \hyperlink{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}{adjust\+\_\+rdy} = false
+\item 
+bool \hyperlink{class_image_view_af9ca8bbc458a3cbd3838113637606806}{auto\+\_\+calib\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_a8256ad985182f4fdb62f15d48c9ddc9f}{gmm\+\_\+sample\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_abf9a90b70c0fb02bf94a35e4a98ae50b}{gmm\+\_\+ready\+\_\+flag} = false
+\item 
+bool \hyperlink{class_image_view_af347599c5ea679b8ed0ca867f3a942c5}{split\+\_\+flag} = false
+\item 
+int \hyperlink{class_image_view_a0a5a7071e17e23864058b755b515e9ab}{sector} = -\/1
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_image_view_ab7d917a1282ba8cdd902d49a4cd0d0cc}{on\+\_\+button\+\_\+press\+\_\+event} (Gdk\+Event\+Button $\ast$event)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Glib\+::\+Ref\+Ptr$<$ Gdk\+::\+Pixbuf $>$ \hyperlink{class_image_view_aad080a9649488e9141f2ce0256dd4035}{pb}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file image\+View.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_image_view_a8382a8ee74d8ff437f0be6cffc2ba957}\label{class_image_view_a8382a8ee74d8ff437f0be6cffc2ba957}} 
+\index{Image\+View@{Image\+View}!Image\+View@{Image\+View}}
+\index{Image\+View@{Image\+View}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{Image\+View()}{ImageView()}}
+{\footnotesize\ttfamily Image\+View\+::\+Image\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 111 of file image\+View.\+cpp.
+
+
+
+References robot\+\_\+pos, and tar\+\_\+pos.
+
+
+\begin{DoxyCode}
+111                      : \hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data}(0), \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}(0), \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}(0), \hyperlink{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}{stride}(0) \{
+112     \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[1] = 0;
+113     \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[0] = 0;
+114     \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[1] = -1;
+115     \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[0] = -1;
+116 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_image_view_a52c3ac86c941bcdfdd4fd8c711e53184}\label{class_image_view_a52c3ac86c941bcdfdd4fd8c711e53184}} 
+\index{Image\+View@{Image\+View}!disable\+\_\+image\+\_\+show@{disable\+\_\+image\+\_\+show}}
+\index{disable\+\_\+image\+\_\+show@{disable\+\_\+image\+\_\+show}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{disable\+\_\+image\+\_\+show()}{disable\_image\_show()}}
+{\footnotesize\ttfamily void Image\+View\+::disable\+\_\+image\+\_\+show (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 137 of file image\+View.\+cpp.
+
+
+
+References data, height, stride, and width.
+
+
+
+Referenced by Cam\+Cap\+::start\+\_\+signal(), and Cam\+Cap\+::$\sim$\+Cam\+Cap().
+
+
+\begin{DoxyCode}
+137                                    \{
+138     \hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data} = 0;
+139     \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width} = 0;
+140     \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height} = 0;
+141     \hyperlink{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}{stride} = 0;
+142 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{class_image_view_af3323f3942cccd3faea6ddd549c3759f}\label{class_image_view_af3323f3942cccd3faea6ddd549c3759f}} 
+\index{Image\+View@{Image\+View}!get\+\_\+data@{get\+\_\+data}}
+\index{get\+\_\+data@{get\+\_\+data}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{get\+\_\+data()}{get\_data()}}
+{\footnotesize\ttfamily unsigned char $\ast$ Image\+View\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 125 of file image\+View.\+cpp.
+
+
+
+References data.
+
+
+\begin{DoxyCode}
+125                                     \{
+126     \textcolor{keywordflow}{return} this->\hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data};
+127 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_image_view_ac39cc5773b4611c5835d9b62512531cc}\label{class_image_view_ac39cc5773b4611c5835d9b62512531cc}} 
+\index{Image\+View@{Image\+View}!get\+\_\+height@{get\+\_\+height}}
+\index{get\+\_\+height@{get\+\_\+height}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{get\+\_\+height()}{get\_height()}}
+{\footnotesize\ttfamily int Image\+View\+::get\+\_\+height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 133 of file image\+View.\+cpp.
+
+
+
+References height.
+
+
+\begin{DoxyCode}
+133                           \{
+134     \textcolor{keywordflow}{return} this->\hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height};
+135 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_image_view_a2bbc02fd7818b11ef0caa13f95ac300c}\label{class_image_view_a2bbc02fd7818b11ef0caa13f95ac300c}} 
+\index{Image\+View@{Image\+View}!get\+\_\+width@{get\+\_\+width}}
+\index{get\+\_\+width@{get\+\_\+width}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{get\+\_\+width()}{get\_width()}}
+{\footnotesize\ttfamily int Image\+View\+::get\+\_\+width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 129 of file image\+View.\+cpp.
+
+
+
+References width.
+
+
+\begin{DoxyCode}
+129                          \{
+130     \textcolor{keywordflow}{return} this->\hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width};
+131 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_image_view_ab7d917a1282ba8cdd902d49a4cd0d0cc}\label{class_image_view_ab7d917a1282ba8cdd902d49a4cd0d0cc}} 
+\index{Image\+View@{Image\+View}!on\+\_\+button\+\_\+press\+\_\+event@{on\+\_\+button\+\_\+press\+\_\+event}}
+\index{on\+\_\+button\+\_\+press\+\_\+event@{on\+\_\+button\+\_\+press\+\_\+event}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{on\+\_\+button\+\_\+press\+\_\+event()}{on\_button\_press\_event()}}
+{\footnotesize\ttfamily bool Image\+View\+::on\+\_\+button\+\_\+press\+\_\+event (\begin{DoxyParamCaption}\item[{Gdk\+Event\+Button $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}
+
+
+
+Definition at line 3 of file image\+View.\+cpp.
+
+
+
+References adj\+\_\+counter, adjust\+\_\+event\+\_\+flag, adjust\+\_\+mat, adjust\+\_\+rdy, formation\+\_\+flag, gmm\+\_\+clicks, gmm\+\_\+counter, gmm\+\_\+ready\+\_\+flag, gmm\+\_\+sample\+\_\+flag, height, hold\+\_\+warp, look\+\_\+pos, P\+I\+D\+\_\+test\+\_\+flag, robot\+\_\+pos, sector, split\+\_\+flag, tar\+\_\+pos, warp\+\_\+counter, warp\+\_\+event\+\_\+flag, warp\+\_\+mat, and width.
+
+
+\begin{DoxyCode}
+3                                                            \{
+4     \textcolor{keywordflow}{if}(\hyperlink{class_image_view_a8256ad985182f4fdb62f15d48c9ddc9f}{gmm\_sample\_flag} && event->button == 1) \{
+5         \hyperlink{class_image_view_a88c64a515c30ba486252ba440bf9f9eb}{gmm\_clicks}[\hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\_counter}][0] = \textcolor{keyword}{event}->x;
+6         \hyperlink{class_image_view_a88c64a515c30ba486252ba440bf9f9eb}{gmm\_clicks}[\hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\_counter}][1] = \textcolor{keyword}{event}->y;
+7 
+8         \textcolor{keywordflow}{if}(\hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\_counter} == 1) \{
+9             \hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\_counter} = 0;
+10             \hyperlink{class_image_view_abf9a90b70c0fb02bf94a35e4a98ae50b}{gmm\_ready\_flag} = \textcolor{keyword}{true};
+11         \} \textcolor{keywordflow}{else} \hyperlink{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}{gmm\_counter}++;
+12     \}
+13 
+14     \textcolor{keywordflow}{if}(\hyperlink{class_image_view_af347599c5ea679b8ed0ca867f3a942c5}{split\_flag}) \{
+15         \textcolor{keywordflow}{if}(event->x <= \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}/2 && event->y <= \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+16             \hyperlink{class_image_view_a0a5a7071e17e23864058b755b515e9ab}{sector} = 0;
+17         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->x <= \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}/2 && event->y > \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+18             \hyperlink{class_image_view_a0a5a7071e17e23864058b755b515e9ab}{sector} = 2;
+19         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->x > \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}/2 && event->y <= \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+20             \hyperlink{class_image_view_a0a5a7071e17e23864058b755b515e9ab}{sector} = 1;
+21         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->x > \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}/2 && event->y > \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+22             \hyperlink{class_image_view_a0a5a7071e17e23864058b755b515e9ab}{sector} = 3;
+23         \}
+24     \}
+25 
+26     \textcolor{keywordflow}{if}(\hyperlink{class_image_view_a1a2a3e02d28b64343e62e17069fb1fd8}{warp\_event\_flag}) \{
+27         \textcolor{comment}{//std::cerr <<"EVENT"<<std::endl;}
+28         \textcolor{keywordflow}{if}(event->button == 1) \{
+29             \textcolor{comment}{//std::cerr << event->x <<" "<< event->y<< std::endl;}
+30             \hyperlink{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}{warp\_mat}[\hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\_counter}][0] =  \textcolor{keyword}{event}->x;
+31             \hyperlink{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}{warp\_mat}[\hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\_counter}][1] =  \textcolor{keyword}{event}->y;
+32             \hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\_counter}++;
+33 
+34             \textcolor{keywordflow}{if}(\hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\_counter} == 4)\{
+35                 \textcolor{comment}{//std::cerr <<"COUNTER END"<<std::endl;}
+36                 \hyperlink{class_image_view_a1a2a3e02d28b64343e62e17069fb1fd8}{warp\_event\_flag} = \textcolor{keyword}{false};
+37                 \hyperlink{class_image_view_a93112870dda714b0bbe59b8f6cfe4b99}{hold\_warp} = \textcolor{keyword}{true};
+38                 \hyperlink{class_image_view_af8b73549a44458562570771774f7b04b}{warp\_counter}=0;
+39             \}
+40             \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+41         \}
+42         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+43     \}
+44 
+45     \textcolor{keywordflow}{if}(\hyperlink{class_image_view_abc6c43376871979a67c86b041025ab07}{adjust\_event\_flag}) \{
+46         \textcolor{keywordflow}{if}(event->button == 1) \{
+47             \hyperlink{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}{adj\_counter}++;
+48             \textcolor{comment}{//std::cerr << event->x <<" "<< event->y<< std::endl;}
+49             std::cerr << \hyperlink{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}{adj\_counter} << std::endl;
+50 
+51             \textcolor{keywordflow}{if}(event->x < \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}/2) \{
+52                 \textcolor{keywordflow}{if}(event->y < \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+53                     \textcolor{comment}{//std::cerr <<"ESQUERDA SUPERIOR"<<std::endl;}
+54                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[0][0] = \textcolor{keyword}{event}->x;
+55                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[0][1] = \textcolor{keyword}{event}->y;
+56                 \} \textcolor{keywordflow}{else} \{
+57                     \textcolor{comment}{//std::cerr <<"ESQUERDA INFERIOR"<<std::endl;}
+58                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[1][0] = \textcolor{keyword}{event}->x;
+59                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[1][1] = \textcolor{keyword}{event}->y;
+60                 \}
+61             \} \textcolor{keywordflow}{else} \{
+62                 \textcolor{keywordflow}{if}(event->y < \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}/2) \{
+63                     \textcolor{comment}{//std::cerr <<"DIREITA SUPERIOR"<<std::endl;}
+64                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[2][0] = \textcolor{keyword}{event}->x;
+65                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[2][1] = \textcolor{keyword}{event}->y;
+66                 \} \textcolor{keywordflow}{else} \{
+67                     \textcolor{comment}{//std::cerr <<"DIREITA INFERIOR"<<std::endl;}
+68                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[3][0] = \textcolor{keyword}{event}->x;
+69                     \hyperlink{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}{adjust\_mat}[3][1] = \textcolor{keyword}{event}->y;
+70                 \}
+71             \}
+72             \textcolor{keywordflow}{if}(\hyperlink{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}{adj\_counter} == 4)\{
+73                 \hyperlink{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}{adjust\_rdy} = \textcolor{keyword}{true};
+74                 \hyperlink{class_image_view_abc6c43376871979a67c86b041025ab07}{adjust\_event\_flag} = \textcolor{keyword}{false};
+75                 \hyperlink{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}{adj\_counter} = 0;
+76                 \textcolor{comment}{//std::cerr << "ADJ END"<< std::endl;}
+77             \}
+78         \}
+79     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{class_image_view_ad94a51f7cd15b92c8c9defa5fb745b6d}{PID\_test\_flag}) \{
+80         \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[0] = 0;
+81         \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[1] = 0;
+82         \textcolor{keywordflow}{if}(event->button == 1) \{
+83             \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[0] = \textcolor{keyword}{event}->x;
+84             \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[1] = \textcolor{keyword}{event}->y;
+85             \textcolor{comment}{//std::cerr <<robot\_pos[0] <<"  -  "<<robot\_pos[1]<<std::endl;}
+86         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->button == 3) \{
+87             \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[0] = \textcolor{keyword}{event}->x;
+88             \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[1] = \textcolor{keyword}{event}->y;
+89             \textcolor{comment}{//std::cerr <<tar\_pos[0] <<"  -  "<<tar\_pos[1]<<std::endl;}
+90         \}
+91     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\hyperlink{class_image_view_a44427e978ef9239514b7149ebf59022c}{formation\_flag}) \{
+92         \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[0]= -1;
+93         \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[1]= -1;
+94 
+95         \textcolor{keywordflow}{if}(event->button == 1) \{
+96             \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[0] = \textcolor{keyword}{event}->x;
+97             \hyperlink{class_image_view_ab97c018602b91e96f318dc92af222aa5}{robot\_pos}[1] = \textcolor{keyword}{event}->y;
+98 
+99             \textcolor{comment}{//std::cerr <<robot\_pos[0] <<"  -  "<<robot\_pos[1]<<std::endl;}
+100         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->button == 2) \{
+101             \hyperlink{class_image_view_af6562e3dfd03c0fb66826a7a5bd6e759}{look\_pos}[0] = \textcolor{keyword}{event}->x;
+102             \hyperlink{class_image_view_af6562e3dfd03c0fb66826a7a5bd6e759}{look\_pos}[1] = \textcolor{keyword}{event}->y;
+103         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(event->button == 3) \{
+104             \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[0] = \textcolor{keyword}{event}->x;
+105             \hyperlink{class_image_view_a569238a3b9d094c11637673dba40bf29}{tar\_pos}[1] = \textcolor{keyword}{event}->y;
+106             \textcolor{comment}{//std::cerr <<tar\_pos[0] <<"  -  "<<tar\_pos[1]<<std::endl;}
+107         \}
+108     \}
+109 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_image_view_a4a09cb2c02f13ca6ed325cc023634ff9}\label{class_image_view_a4a09cb2c02f13ca6ed325cc023634ff9}} 
+\index{Image\+View@{Image\+View}!on\+\_\+draw@{on\+\_\+draw}}
+\index{on\+\_\+draw@{on\+\_\+draw}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{on\+\_\+draw()}{on\_draw()}}
+{\footnotesize\ttfamily bool Image\+View\+::on\+\_\+draw (\begin{DoxyParamCaption}\item[{const Cairo\+::\+Ref\+Ptr$<$ Cairo\+::\+Context $>$ \&}]{cr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Definition at line 148 of file image\+View.\+cpp.
+
+
+
+References data, height, pb, stride, and width.
+
+
+\begin{DoxyCode}
+148                                                            \{
+149     add\_events(Gdk::BUTTON\_PRESS\_MASK);
+150     \textcolor{keywordflow}{if}(!\hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data}) \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+151 
+152     \hyperlink{class_image_view_aad080a9649488e9141f2ce0256dd4035}{pb} = Gdk::Pixbuf::create\_from\_data(\hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data}, Gdk::COLORSPACE\_RGB, \textcolor{keyword}{false}, 8, 
+      \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width}, \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height}, \hyperlink{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}{stride});
+153     Gdk::Cairo::set\_source\_pixbuf(cr, \hyperlink{class_image_view_aad080a9649488e9141f2ce0256dd4035}{pb}, 0, 0);
+154     cr->paint();
+155 
+156 \textcolor{comment}{//              cr->set\_line\_width(5.0);}
+157 \textcolor{comment}{//              cr->set\_source\_rgb(1, 0, 0);}
+158 \textcolor{comment}{//              cr->move\_to(0, 0);}
+159 \textcolor{comment}{//              cr->line\_to(width, height);}
+160 \textcolor{comment}{//              cr->stroke();}
+161 \textcolor{comment}{//}
+162 \textcolor{comment}{//              // http://developer.gnome.org/pangomm/unstable/classPango\_1\_1FontDescription.html}
+163 \textcolor{comment}{//              Pango::FontDescription font;}
+164 \textcolor{comment}{//              font.set\_family("Monospace");}
+165 \textcolor{comment}{//              font.set\_weight(Pango::WEIGHT\_BOLD);}
+166 \textcolor{comment}{//              // http://developer.gnome.org/pangomm/unstable/classPango\_1\_1Layout.html}
+167 \textcolor{comment}{//              Glib::RefPtr<Pango::Layout> layout = create\_pango\_layout("Hi there!");}
+168 \textcolor{comment}{//              layout->set\_font\_description(font);}
+169 \textcolor{comment}{//              int text\_width;}
+170 \textcolor{comment}{//              int text\_height;}
+171 \textcolor{comment}{//              //get the text dimensions (it updates the variables -- by reference)}
+172 \textcolor{comment}{//              layout->get\_pixel\_size(text\_width, text\_height);}
+173 \textcolor{comment}{//              // Position the text in the middle}
+174 \textcolor{comment}{//              cr->move\_to(10, 10);}
+175 \textcolor{comment}{//              layout->show\_in\_cairo\_context(cr);}
+176 
+177     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+178 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{class_image_view_a1c14fbed1a32a6f159c9916b6bd04d0a}\label{class_image_view_a1c14fbed1a32a6f159c9916b6bd04d0a}} 
+\index{Image\+View@{Image\+View}!refresh@{refresh}}
+\index{refresh@{refresh}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{refresh()}{refresh()}}
+{\footnotesize\ttfamily void Image\+View\+::refresh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 144 of file image\+View.\+cpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+144                         \{
+145     this->queue\_draw();
+146 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{class_image_view_a34baa17952c6cbc4374f1bb6bdbbd757}\label{class_image_view_a34baa17952c6cbc4374f1bb6bdbbd757}} 
+\index{Image\+View@{Image\+View}!set\+\_\+data@{set\+\_\+data}}
+\index{set\+\_\+data@{set\+\_\+data}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{set\+\_\+data()}{set\_data()}}
+{\footnotesize\ttfamily void Image\+View\+::set\+\_\+data (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})}
+
+
+
+Definition at line 118 of file image\+View.\+cpp.
+
+
+
+References data, height, stride, and width.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show().
+
+
+\begin{DoxyCode}
+118                                                                     \{
+119     this->\hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data} = \hyperlink{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}{data};
+120     this->\hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width} = \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width};
+121     this->\hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height} = \hyperlink{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}{height};
+122     this->\hyperlink{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}{stride} = \hyperlink{class_image_view_a5a491c5256173430d4b16d9abea80727}{width} * 3;
+123 \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}\label{class_image_view_a69f2acef8641170135ff89dd6d4e9e6c}} 
+\index{Image\+View@{Image\+View}!adj\+\_\+counter@{adj\+\_\+counter}}
+\index{adj\+\_\+counter@{adj\+\_\+counter}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{adj\+\_\+counter}{adj\_counter}}
+{\footnotesize\ttfamily int Image\+View\+::adj\+\_\+counter =0}
+
+
+
+Definition at line 37 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_abc6c43376871979a67c86b041025ab07}\label{class_image_view_abc6c43376871979a67c86b041025ab07}} 
+\index{Image\+View@{Image\+View}!adjust\+\_\+event\+\_\+flag@{adjust\+\_\+event\+\_\+flag}}
+\index{adjust\+\_\+event\+\_\+flag@{adjust\+\_\+event\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{adjust\+\_\+event\+\_\+flag}{adjust\_event\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::adjust\+\_\+event\+\_\+flag = false}
+
+
+
+Definition at line 42 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), on\+\_\+button\+\_\+press\+\_\+event(), and Cam\+Cap\+::warp\+\_\+transform().
+
+\mbox{\Hypertarget{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}\label{class_image_view_a59c7771f6220f24b661c3ba8ea3b27f1}} 
+\index{Image\+View@{Image\+View}!adjust\+\_\+mat@{adjust\+\_\+mat}}
+\index{adjust\+\_\+mat@{adjust\+\_\+mat}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{adjust\+\_\+mat}{adjust\_mat}}
+{\footnotesize\ttfamily int Image\+View\+::adjust\+\_\+mat\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 30 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::\+Cam\+Cap(), json\+Save\+Manager\+::load\+\_\+camera(), on\+\_\+button\+\_\+press\+\_\+event(), json\+Save\+Manager\+::save\+\_\+camera(), and Cam\+Cap\+::warp\+\_\+transform().
+
+\mbox{\Hypertarget{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}\label{class_image_view_a9a73e324dd284f7b6b33b760b9a21c33}} 
+\index{Image\+View@{Image\+View}!adjust\+\_\+rdy@{adjust\+\_\+rdy}}
+\index{adjust\+\_\+rdy@{adjust\+\_\+rdy}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{adjust\+\_\+rdy}{adjust\_rdy}}
+{\footnotesize\ttfamily bool Image\+View\+::adjust\+\_\+rdy = false}
+
+
+
+Definition at line 44 of file image\+View.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+reset\+\_\+warp\+\_\+clicked(), json\+Save\+Manager\+::load\+\_\+camera(), on\+\_\+button\+\_\+press\+\_\+event(), json\+Save\+Manager\+::save\+\_\+camera(), V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::update\+\_\+interface\+\_\+camera(), and Cam\+Cap\+::warp\+\_\+transform().
+
+\mbox{\Hypertarget{class_image_view_af9ca8bbc458a3cbd3838113637606806}\label{class_image_view_af9ca8bbc458a3cbd3838113637606806}} 
+\index{Image\+View@{Image\+View}!auto\+\_\+calib\+\_\+flag@{auto\+\_\+calib\+\_\+flag}}
+\index{auto\+\_\+calib\+\_\+flag@{auto\+\_\+calib\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{auto\+\_\+calib\+\_\+flag}{auto\_calib\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::auto\+\_\+calib\+\_\+flag = false}
+
+
+
+Definition at line 45 of file image\+View.\+hpp.
+
+\mbox{\Hypertarget{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}\label{class_image_view_aafc2f72cb5d3cbc5f23eb303b30982da}} 
+\index{Image\+View@{Image\+View}!data@{data}}
+\index{data@{data}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily unsigned char$\ast$ Image\+View\+::data}
+
+
+
+Definition at line 24 of file image\+View.\+hpp.
+
+
+
+Referenced by disable\+\_\+image\+\_\+show(), get\+\_\+data(), on\+\_\+draw(), and set\+\_\+data().
+
+\mbox{\Hypertarget{class_image_view_a44427e978ef9239514b7149ebf59022c}\label{class_image_view_a44427e978ef9239514b7149ebf59022c}} 
+\index{Image\+View@{Image\+View}!formation\+\_\+flag@{formation\+\_\+flag}}
+\index{formation\+\_\+flag@{formation\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{formation\+\_\+flag}{formation\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::formation\+\_\+flag = false}
+
+
+
+Definition at line 41 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a88c64a515c30ba486252ba440bf9f9eb}\label{class_image_view_a88c64a515c30ba486252ba440bf9f9eb}} 
+\index{Image\+View@{Image\+View}!gmm\+\_\+clicks@{gmm\+\_\+clicks}}
+\index{gmm\+\_\+clicks@{gmm\+\_\+clicks}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{gmm\+\_\+clicks}{gmm\_clicks}}
+{\footnotesize\ttfamily int Image\+View\+::gmm\+\_\+clicks\mbox{[}2\mbox{]}\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 27 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}\label{class_image_view_a1d02972f5193d7ce806802dd2505f1f2}} 
+\index{Image\+View@{Image\+View}!gmm\+\_\+counter@{gmm\+\_\+counter}}
+\index{gmm\+\_\+counter@{gmm\+\_\+counter}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{gmm\+\_\+counter}{gmm\_counter}}
+{\footnotesize\ttfamily int Image\+View\+::gmm\+\_\+counter = 0}
+
+
+
+Definition at line 38 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_abf9a90b70c0fb02bf94a35e4a98ae50b}\label{class_image_view_abf9a90b70c0fb02bf94a35e4a98ae50b}} 
+\index{Image\+View@{Image\+View}!gmm\+\_\+ready\+\_\+flag@{gmm\+\_\+ready\+\_\+flag}}
+\index{gmm\+\_\+ready\+\_\+flag@{gmm\+\_\+ready\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{gmm\+\_\+ready\+\_\+flag}{gmm\_ready\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::gmm\+\_\+ready\+\_\+flag = false}
+
+
+
+Definition at line 47 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a8256ad985182f4fdb62f15d48c9ddc9f}\label{class_image_view_a8256ad985182f4fdb62f15d48c9ddc9f}} 
+\index{Image\+View@{Image\+View}!gmm\+\_\+sample\+\_\+flag@{gmm\+\_\+sample\+\_\+flag}}
+\index{gmm\+\_\+sample\+\_\+flag@{gmm\+\_\+sample\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{gmm\+\_\+sample\+\_\+flag}{gmm\_sample\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::gmm\+\_\+sample\+\_\+flag = false}
+
+
+
+Definition at line 46 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}\label{class_image_view_a3e4a6ddf0a10ae710405cdd6e73924f6}} 
+\index{Image\+View@{Image\+View}!height@{height}}
+\index{height@{height}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int Image\+View\+::height}
+
+
+
+Definition at line 25 of file image\+View.\+hpp.
+
+
+
+Referenced by disable\+\_\+image\+\_\+show(), get\+\_\+height(), on\+\_\+button\+\_\+press\+\_\+event(), on\+\_\+draw(), and set\+\_\+data().
+
+\mbox{\Hypertarget{class_image_view_a93112870dda714b0bbe59b8f6cfe4b99}\label{class_image_view_a93112870dda714b0bbe59b8f6cfe4b99}} 
+\index{Image\+View@{Image\+View}!hold\+\_\+warp@{hold\+\_\+warp}}
+\index{hold\+\_\+warp@{hold\+\_\+warp}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{hold\+\_\+warp}{hold\_warp}}
+{\footnotesize\ttfamily bool Image\+View\+::hold\+\_\+warp = false}
+
+
+
+Definition at line 43 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_af6562e3dfd03c0fb66826a7a5bd6e759}\label{class_image_view_af6562e3dfd03c0fb66826a7a5bd6e759}} 
+\index{Image\+View@{Image\+View}!look\+\_\+pos@{look\+\_\+pos}}
+\index{look\+\_\+pos@{look\+\_\+pos}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{look\+\_\+pos}{look\_pos}}
+{\footnotesize\ttfamily double Image\+View\+::look\+\_\+pos\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 33 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::formation\+\_\+creation(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_aad080a9649488e9141f2ce0256dd4035}\label{class_image_view_aad080a9649488e9141f2ce0256dd4035}} 
+\index{Image\+View@{Image\+View}!pb@{pb}}
+\index{pb@{pb}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{pb}{pb}}
+{\footnotesize\ttfamily Glib\+::\+Ref\+Ptr$<$Gdk\+::\+Pixbuf$>$ Image\+View\+::pb\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file image\+View.\+hpp.
+
+
+
+Referenced by on\+\_\+draw().
+
+\mbox{\Hypertarget{class_image_view_ad94a51f7cd15b92c8c9defa5fb745b6d}\label{class_image_view_ad94a51f7cd15b92c8c9defa5fb745b6d}} 
+\index{Image\+View@{Image\+View}!P\+I\+D\+\_\+test\+\_\+flag@{P\+I\+D\+\_\+test\+\_\+flag}}
+\index{P\+I\+D\+\_\+test\+\_\+flag@{P\+I\+D\+\_\+test\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{P\+I\+D\+\_\+test\+\_\+flag}{PID\_test\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::\+P\+I\+D\+\_\+test\+\_\+flag = false}
+
+
+
+Definition at line 40 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_aaf921d074e2f66a95b190439c19c2a9f}\label{class_image_view_aaf921d074e2f66a95b190439c19c2a9f}} 
+\index{Image\+View@{Image\+View}!point\+Clicked@{point\+Clicked}}
+\index{point\+Clicked@{point\+Clicked}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{point\+Clicked}{pointClicked}}
+{\footnotesize\ttfamily cv\+::\+Point Image\+View\+::point\+Clicked}
+
+
+
+Definition at line 34 of file image\+View.\+hpp.
+
+\mbox{\Hypertarget{class_image_view_ab97c018602b91e96f318dc92af222aa5}\label{class_image_view_ab97c018602b91e96f318dc92af222aa5}} 
+\index{Image\+View@{Image\+View}!robot\+\_\+pos@{robot\+\_\+pos}}
+\index{robot\+\_\+pos@{robot\+\_\+pos}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{robot\+\_\+pos}{robot\_pos}}
+{\footnotesize\ttfamily double Image\+View\+::robot\+\_\+pos\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 32 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::formation\+\_\+creation(), Image\+View(), on\+\_\+button\+\_\+press\+\_\+event(), and Cam\+Cap\+::\+P\+I\+D\+\_\+test().
+
+\mbox{\Hypertarget{class_image_view_a0a5a7071e17e23864058b755b515e9ab}\label{class_image_view_a0a5a7071e17e23864058b755b515e9ab}} 
+\index{Image\+View@{Image\+View}!sector@{sector}}
+\index{sector@{sector}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{sector}{sector}}
+{\footnotesize\ttfamily int Image\+View\+::sector = -\/1}
+
+
+
+Definition at line 49 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_af347599c5ea679b8ed0ca867f3a942c5}\label{class_image_view_af347599c5ea679b8ed0ca867f3a942c5}} 
+\index{Image\+View@{Image\+View}!split\+\_\+flag@{split\+\_\+flag}}
+\index{split\+\_\+flag@{split\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{split\+\_\+flag}{split\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::split\+\_\+flag = false}
+
+
+
+Definition at line 48 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}\label{class_image_view_aee8be5a0041dbc9c04cdc439d08cc3df}} 
+\index{Image\+View@{Image\+View}!stride@{stride}}
+\index{stride@{stride}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{stride}{stride}}
+{\footnotesize\ttfamily int Image\+View\+::stride}
+
+
+
+Definition at line 25 of file image\+View.\+hpp.
+
+
+
+Referenced by disable\+\_\+image\+\_\+show(), on\+\_\+draw(), and set\+\_\+data().
+
+\mbox{\Hypertarget{class_image_view_a569238a3b9d094c11637673dba40bf29}\label{class_image_view_a569238a3b9d094c11637673dba40bf29}} 
+\index{Image\+View@{Image\+View}!tar\+\_\+pos@{tar\+\_\+pos}}
+\index{tar\+\_\+pos@{tar\+\_\+pos}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{tar\+\_\+pos}{tar\_pos}}
+{\footnotesize\ttfamily double Image\+View\+::tar\+\_\+pos\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 31 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::formation\+\_\+creation(), Image\+View(), on\+\_\+button\+\_\+press\+\_\+event(), and Cam\+Cap\+::\+P\+I\+D\+\_\+test().
+
+\mbox{\Hypertarget{class_image_view_af8b73549a44458562570771774f7b04b}\label{class_image_view_af8b73549a44458562570771774f7b04b}} 
+\index{Image\+View@{Image\+View}!warp\+\_\+counter@{warp\+\_\+counter}}
+\index{warp\+\_\+counter@{warp\+\_\+counter}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{warp\+\_\+counter}{warp\_counter}}
+{\footnotesize\ttfamily int Image\+View\+::warp\+\_\+counter =0}
+
+
+
+Definition at line 36 of file image\+View.\+hpp.
+
+
+
+Referenced by Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a1a2a3e02d28b64343e62e17069fb1fd8}\label{class_image_view_a1a2a3e02d28b64343e62e17069fb1fd8}} 
+\index{Image\+View@{Image\+View}!warp\+\_\+event\+\_\+flag@{warp\+\_\+event\+\_\+flag}}
+\index{warp\+\_\+event\+\_\+flag@{warp\+\_\+event\+\_\+flag}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{warp\+\_\+event\+\_\+flag}{warp\_event\_flag}}
+{\footnotesize\ttfamily bool Image\+View\+::warp\+\_\+event\+\_\+flag = false}
+
+
+
+Definition at line 39 of file image\+View.\+hpp.
+
+
+
+Referenced by V\+S\+S\+S\+\_\+\+G\+U\+I\+::\+V4\+L\+Interface\+::\+\_\+\+\_\+event\+\_\+bt\+\_\+warp\+\_\+clicked(), Cam\+Cap\+::capture\+\_\+and\+\_\+show(), and on\+\_\+button\+\_\+press\+\_\+event().
+
+\mbox{\Hypertarget{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}\label{class_image_view_a483ffadadbb0b3059073c3c6af37bdc7}} 
+\index{Image\+View@{Image\+View}!warp\+\_\+mat@{warp\+\_\+mat}}
+\index{warp\+\_\+mat@{warp\+\_\+mat}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{warp\+\_\+mat}{warp\_mat}}
+{\footnotesize\ttfamily int Image\+View\+::warp\+\_\+mat\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}}
+
+
+
+Definition at line 29 of file image\+View.\+hpp.
+
+
+
+Referenced by json\+Save\+Manager\+::load\+\_\+camera(), on\+\_\+button\+\_\+press\+\_\+event(), json\+Save\+Manager\+::save\+\_\+camera(), and Cam\+Cap\+::warp\+\_\+transform().
+
+\mbox{\Hypertarget{class_image_view_a5a491c5256173430d4b16d9abea80727}\label{class_image_view_a5a491c5256173430d4b16d9abea80727}} 
+\index{Image\+View@{Image\+View}!width@{width}}
+\index{width@{width}!Image\+View@{Image\+View}}
+\subsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int Image\+View\+::width}
+
+
+
+Definition at line 25 of file image\+View.\+hpp.
+
+
+
+Referenced by disable\+\_\+image\+\_\+show(), get\+\_\+width(), on\+\_\+button\+\_\+press\+\_\+event(), on\+\_\+draw(), and set\+\_\+data().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/gui/\hyperlink{image_view_8hpp}{image\+View.\+hpp}\item 
+src/gui/\hyperlink{image_view_8cpp}{image\+View.\+cpp}\end{DoxyCompactItemize}

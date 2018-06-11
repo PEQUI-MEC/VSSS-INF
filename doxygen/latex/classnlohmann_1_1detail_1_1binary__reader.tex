@@ -1,0 +1,2008 @@
+\hypertarget{classnlohmann_1_1detail_1_1binary__reader}{}\section{nlohmann\+:\+:detail\+:\+:binary\+\_\+reader$<$ Basic\+Json\+Type $>$ Class Template Reference}
+\label{classnlohmann_1_1detail_1_1binary__reader}\index{nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$@{nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$}}
+
+
+deserialization of C\+B\+OR and Message\+Pack values  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:binary\+\_\+reader$<$ Basic\+Json\+Type $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e643baadaf4c31718cd74833bdd542f}{binary\+\_\+reader} (\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} adapter)
+\begin{DoxyCompactList}\small\item\em create a binary reader \end{DoxyCompactList}\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a04bcdc8f55b26fafa9775a2f89e48fc2}{parse\+\_\+cbor} (const bool strict)
+\begin{DoxyCompactList}\small\item\em create a J\+S\+ON value from C\+B\+OR input \end{DoxyCompactList}\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ab4a4a6f5ab3cc77aac374c9c889e580e}{parse\+\_\+msgpack} (const bool strict)
+\begin{DoxyCompactList}\small\item\em create a J\+S\+ON value from Message\+Pack input \end{DoxyCompactList}\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad0be02d1df4ba4fbe601b0985f5300ac}{parse\+\_\+ubjson} (const bool strict)
+\begin{DoxyCompactList}\small\item\em create a J\+S\+ON value from U\+B\+J\+S\+ON input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1d8f70f95d241354f86a0b9ae711c1c3}{little\+\_\+endianess} (int num=1) noexcept
+\begin{DoxyCompactList}\small\item\em determine system byte order \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\+\_\+integer\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}{number\+\_\+unsigned\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} = typename Basic\+Json\+Type\+::string\+\_\+t
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}{parse\+\_\+cbor\+\_\+internal} (const bool get\+\_\+char=true)
+\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6dc6270ddddd0aac65fe6cab53d7cc2}{parse\+\_\+msgpack\+\_\+internal} ()
+\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\+\_\+ubjson\+\_\+internal} (const bool get\+\_\+char=true)
+\item 
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a715bbe54c5066921fcb72f0067871a72}{get} ()
+\begin{DoxyCompactList}\small\item\em get next character from the input \end{DoxyCompactList}\item 
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\+\_\+ignore\+\_\+noop} ()
+\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\Number\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3e87e5b33764fc085bfce41d64247279}{get\+\_\+number} ()
+\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\+\_\+string} (const Number\+Type len)
+\begin{DoxyCompactList}\small\item\em create a string by reading characters from the input \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}{get\+\_\+cbor\+\_\+string} ()
+\begin{DoxyCompactList}\small\item\em reads a C\+B\+OR string \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\+\_\+cbor\+\_\+array} (const Number\+Type len)
+\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\+\_\+cbor\+\_\+object} (const Number\+Type len)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}{get\+\_\+msgpack\+\_\+string} ()
+\begin{DoxyCompactList}\small\item\em reads a Message\+Pack string \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}{get\+\_\+msgpack\+\_\+array} (const Number\+Type len)
+\item 
+{\footnotesize template$<$typename Number\+Type $>$ }\\Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}{get\+\_\+msgpack\+\_\+object} (const Number\+Type len)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}{get\+\_\+ubjson\+\_\+string} (const bool get\+\_\+char=true)
+\begin{DoxyCompactList}\small\item\em reads a U\+B\+J\+S\+ON string \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::size\+\_\+t, int $>$ \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a480aae640bb92a7432c0f758081a2cc7}{get\+\_\+ubjson\+\_\+size\+\_\+type} ()
+\begin{DoxyCompactList}\small\item\em determine the type and size for a container \end{DoxyCompactList}\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad8507c0dd14bbddc76c7937c0305a15a}{get\+\_\+ubjson\+\_\+value} (const int prefix)
+\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ab808b713f938c625c22c20f2ac7ff3cf}{get\+\_\+ubjson\+\_\+array} ()
+\item 
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd127298effd88e0d42f5b70cb5791b}{get\+\_\+ubjson\+\_\+object} ()
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}{expect\+\_\+eof} () const
+\begin{DoxyCompactList}\small\item\em throw if end of input is not reached \end{DoxyCompactList}\item 
+void \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\+\_\+eof} () const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}{ia} = nullptr
+\begin{DoxyCompactList}\small\item\em input adapter \end{DoxyCompactList}\item 
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} = std\+::char\+\_\+traits$<$char$>$\+::eof()
+\begin{DoxyCompactList}\small\item\em the current character \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\+\_\+read} = 0
+\begin{DoxyCompactList}\small\item\em the number of characters read \end{DoxyCompactList}\item 
+const bool \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a54c18bdb48cccf35a8f941640e0fcea4}{is\+\_\+little\+\_\+endian} = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1d8f70f95d241354f86a0b9ae711c1c3}{little\+\_\+endianess}()
+\begin{DoxyCompactList}\small\item\em whether we can assume little endianess \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type$>$\newline
+class nlohmann\+::detail\+::binary\+\_\+reader$<$ Basic\+Json\+Type $>$}
+
+deserialization of C\+B\+OR and Message\+Pack values 
+
+Definition at line 4862 of file json.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}\label{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}}
+\index{number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{number\+\_\+integer\+\_\+t}{number\_integer\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\+\_\+integer\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4864 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}\label{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}}
+\index{number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{number\+\_\+unsigned\+\_\+t}{number\_unsigned\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}{number\+\_\+unsigned\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4865 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}\label{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!string\+\_\+t@{string\+\_\+t}}
+\index{string\+\_\+t@{string\+\_\+t}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{string\+\_\+t}{string\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} =  typename Basic\+Json\+Type\+::string\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4866 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a7e643baadaf4c31718cd74833bdd542f}\label{classnlohmann_1_1detail_1_1binary__reader_a7e643baadaf4c31718cd74833bdd542f}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!binary\+\_\+reader@{binary\+\_\+reader}}
+\index{binary\+\_\+reader@{binary\+\_\+reader}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{binary\+\_\+reader()}{binary\_reader()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1binary__reader}{binary\+\_\+reader} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t}}]{adapter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+create a binary reader 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em adapter} & input adapter to read from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4874 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4874                                                     : \hyperlink{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}{ia}(std::move(adapter))
+4875     \{
+4876         assert(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}{ia});
+4877     \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}\label{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!expect\+\_\+eof@{expect\+\_\+eof}}
+\index{expect\+\_\+eof@{expect\+\_\+eof}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{expect\+\_\+eof()}{expect\_eof()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::expect\+\_\+eof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+throw if end of input is not reached 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input not ended \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 6167 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+6168     \{
+6169         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} != std::char\_traits<char>::eof()))
+6170         \{
+6171             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(110, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"expected end of input"}));
+6172         \}
+6173     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a715bbe54c5066921fcb72f0067871a72}\label{classnlohmann_1_1detail_1_1binary__reader_a715bbe54c5066921fcb72f0067871a72}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get@{get}}
+\index{get@{get}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+get next character from the input 
+
+This function provides the interface to the used input adapter. It does not throw in case the input reached E\+OF, but returns a -\/\textquotesingle{}ve valued {\ttfamily std\+::char\+\_\+traits$<$char$>$\+::eof()} in that case.
+
+\begin{DoxyReturn}{Returns}
+character read from the input 
+\end{DoxyReturn}
+
+
+Definition at line 5621 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+5622     \{
+5623         ++\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read};
+5624         \textcolor{keywordflow}{return} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}{ia}->get\_character());
+5625     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}\label{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+cbor\+\_\+array@{get\+\_\+cbor\+\_\+array}}
+\index{get\+\_\+cbor\+\_\+array@{get\+\_\+cbor\+\_\+array}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+cbor\+\_\+array()}{get\_cbor\_array()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+cbor\+\_\+array (\begin{DoxyParamCaption}\item[{const Number\+Type}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5793 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array.
+
+
+\begin{DoxyCode}
+5794     \{
+5795         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+5796         std::generate\_n(std::back\_inserter(*result.m\_value.array), len, [\textcolor{keyword}{this}]()
+5797         \{
+5798             return parse\_cbor\_internal();
+5799         \});
+5800         \textcolor{keywordflow}{return} result;
+5801     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}\label{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+cbor\+\_\+object@{get\+\_\+cbor\+\_\+object}}
+\index{get\+\_\+cbor\+\_\+object@{get\+\_\+cbor\+\_\+object}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+cbor\+\_\+object()}{get\_cbor\_object()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+cbor\+\_\+object (\begin{DoxyParamCaption}\item[{const Number\+Type}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5804 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+5805     \{
+5806         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+5807         std::generate\_n(std::inserter(*result.m\_value.object,
+5808                                       result.m\_value.object->end()),
+5809                         len, [\textcolor{keyword}{this}]()
+5810         \{
+5811             \textcolor{keyword}{get}();
+5812             \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}{get\_cbor\_string}();
+5813             \textcolor{keyword}{auto} val = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}{parse\_cbor\_internal}();
+5814             \textcolor{keywordflow}{return} std::make\_pair(std::move(key), std::move(val));
+5815         \});
+5816         \textcolor{keywordflow}{return} result;
+5817     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}\label{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+cbor\+\_\+string@{get\+\_\+cbor\+\_\+string}}
+\index{get\+\_\+cbor\+\_\+string@{get\+\_\+cbor\+\_\+string}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+cbor\+\_\+string()}{get\_cbor\_string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+cbor\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+reads a C\+B\+OR string 
+
+This function first reads starting bytes to determine the expected string length and then copies this number of bytes into a string. Additionally, C\+B\+OR\textquotesingle{}s strings with indefinite lengths are supported.
+
+\begin{DoxyReturn}{Returns}
+string
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended \\
+\hline
+{\em parse\+\_\+error.\+113} & if an unexpected byte is read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 5718 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), and J\+S\+O\+N\+\_\+\+T\+H\+R\+OW.
+
+
+\begin{DoxyCode}
+5719     \{
+5720         \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5721 
+5722         \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current})
+5723         \{
+5724             \textcolor{comment}{// UTF-8 string (0x00..0x17 bytes follow)}
+5725             \textcolor{keywordflow}{case} 0x60:
+5726             \textcolor{keywordflow}{case} 0x61:
+5727             \textcolor{keywordflow}{case} 0x62:
+5728             \textcolor{keywordflow}{case} 0x63:
+5729             \textcolor{keywordflow}{case} 0x64:
+5730             \textcolor{keywordflow}{case} 0x65:
+5731             \textcolor{keywordflow}{case} 0x66:
+5732             \textcolor{keywordflow}{case} 0x67:
+5733             \textcolor{keywordflow}{case} 0x68:
+5734             \textcolor{keywordflow}{case} 0x69:
+5735             \textcolor{keywordflow}{case} 0x6A:
+5736             \textcolor{keywordflow}{case} 0x6B:
+5737             \textcolor{keywordflow}{case} 0x6C:
+5738             \textcolor{keywordflow}{case} 0x6D:
+5739             \textcolor{keywordflow}{case} 0x6E:
+5740             \textcolor{keywordflow}{case} 0x6F:
+5741             \textcolor{keywordflow}{case} 0x70:
+5742             \textcolor{keywordflow}{case} 0x71:
+5743             \textcolor{keywordflow}{case} 0x72:
+5744             \textcolor{keywordflow}{case} 0x73:
+5745             \textcolor{keywordflow}{case} 0x74:
+5746             \textcolor{keywordflow}{case} 0x75:
+5747             \textcolor{keywordflow}{case} 0x76:
+5748             \textcolor{keywordflow}{case} 0x77:
+5749             \{
+5750                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x1F);
+5751             \}
+5752 
+5753             \textcolor{keywordflow}{case} 0x78: \textcolor{comment}{// UTF-8 string (one-byte uint8\_t for n follows)}
+5754             \{
+5755                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint8\_t>());
+5756             \}
+5757 
+5758             \textcolor{keywordflow}{case} 0x79: \textcolor{comment}{// UTF-8 string (two-byte uint16\_t for n follow)}
+5759             \{
+5760                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint16\_t>());
+5761             \}
+5762 
+5763             \textcolor{keywordflow}{case} 0x7A: \textcolor{comment}{// UTF-8 string (four-byte uint32\_t for n follow)}
+5764             \{
+5765                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint32\_t>());
+5766             \}
+5767 
+5768             \textcolor{keywordflow}{case} 0x7B: \textcolor{comment}{// UTF-8 string (eight-byte uint64\_t for n follow)}
+5769             \{
+5770                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint64\_t>());
+5771             \}
+5772 
+5773             \textcolor{keywordflow}{case} 0x7F: \textcolor{comment}{// UTF-8 string (indefinite length)}
+5774             \{
+5775                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\_t} result;
+5776                 \textcolor{keywordflow}{while} (\textcolor{keyword}{get}() != 0xFF)
+5777                 \{
+5778                     result.append(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}{get\_cbor\_string}());
+5779                 \}
+5780                 \textcolor{keywordflow}{return} result;
+5781             \}
+5782 
+5783             \textcolor{keywordflow}{default}:
+5784             \{
+5785                 std::stringstream ss;
+5786                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5787                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(113, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"expected a CBOR string; last byte: 0x"} + ss.str()));
+5788             \}
+5789         \}
+5790     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}\label{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ignore\+\_\+noop@{get\+\_\+ignore\+\_\+noop}}
+\index{get\+\_\+ignore\+\_\+noop@{get\+\_\+ignore\+\_\+noop}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ignore\+\_\+noop()}{get\_ignore\_noop()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ignore\+\_\+noop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\begin{DoxyReturn}{Returns}
+character read from the input after ignoring all \textquotesingle{}N\textquotesingle{} entries 
+\end{DoxyReturn}
+
+
+Definition at line 5630 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+5631     \{
+5632         \textcolor{keywordflow}{do}
+5633         \{
+5634             \textcolor{keyword}{get}();
+5635         \}
+5636         \textcolor{keywordflow}{while} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} == \textcolor{charliteral}{'N'});
+5637 
+5638         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5639     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}\label{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+msgpack\+\_\+array@{get\+\_\+msgpack\+\_\+array}}
+\index{get\+\_\+msgpack\+\_\+array@{get\+\_\+msgpack\+\_\+array}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+msgpack\+\_\+array()}{get\_msgpack\_array()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+msgpack\+\_\+array (\begin{DoxyParamCaption}\item[{const Number\+Type}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5899 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array.
+
+
+\begin{DoxyCode}
+5900     \{
+5901         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+5902         std::generate\_n(std::back\_inserter(*result.m\_value.array), len, [\textcolor{keyword}{this}]()
+5903         \{
+5904             return parse\_msgpack\_internal();
+5905         \});
+5906         \textcolor{keywordflow}{return} result;
+5907     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}\label{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+msgpack\+\_\+object@{get\+\_\+msgpack\+\_\+object}}
+\index{get\+\_\+msgpack\+\_\+object@{get\+\_\+msgpack\+\_\+object}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+msgpack\+\_\+object()}{get\_msgpack\_object()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+msgpack\+\_\+object (\begin{DoxyParamCaption}\item[{const Number\+Type}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5910 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+5911     \{
+5912         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+5913         std::generate\_n(std::inserter(*result.m\_value.object,
+5914                                       result.m\_value.object->end()),
+5915                         len, [\textcolor{keyword}{this}]()
+5916         \{
+5917             \textcolor{keyword}{get}();
+5918             \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}{get\_msgpack\_string}();
+5919             \textcolor{keyword}{auto} val = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6dc6270ddddd0aac65fe6cab53d7cc2}{parse\_msgpack\_internal}();
+5920             \textcolor{keywordflow}{return} std::make\_pair(std::move(key), std::move(val));
+5921         \});
+5922         \textcolor{keywordflow}{return} result;
+5923     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}\label{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+msgpack\+\_\+string@{get\+\_\+msgpack\+\_\+string}}
+\index{get\+\_\+msgpack\+\_\+string@{get\+\_\+msgpack\+\_\+string}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+msgpack\+\_\+string()}{get\_msgpack\_string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+msgpack\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+reads a Message\+Pack string 
+
+This function first reads starting bytes to determine the expected string length and then copies this number of bytes into a string.
+
+\begin{DoxyReturn}{Returns}
+string
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended \\
+\hline
+{\em parse\+\_\+error.\+113} & if an unexpected byte is read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 5830 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), and J\+S\+O\+N\+\_\+\+T\+H\+R\+OW.
+
+
+\begin{DoxyCode}
+5831     \{
+5832         \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5833 
+5834         \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current})
+5835         \{
+5836             \textcolor{comment}{// fixstr}
+5837             \textcolor{keywordflow}{case} 0xA0:
+5838             \textcolor{keywordflow}{case} 0xA1:
+5839             \textcolor{keywordflow}{case} 0xA2:
+5840             \textcolor{keywordflow}{case} 0xA3:
+5841             \textcolor{keywordflow}{case} 0xA4:
+5842             \textcolor{keywordflow}{case} 0xA5:
+5843             \textcolor{keywordflow}{case} 0xA6:
+5844             \textcolor{keywordflow}{case} 0xA7:
+5845             \textcolor{keywordflow}{case} 0xA8:
+5846             \textcolor{keywordflow}{case} 0xA9:
+5847             \textcolor{keywordflow}{case} 0xAA:
+5848             \textcolor{keywordflow}{case} 0xAB:
+5849             \textcolor{keywordflow}{case} 0xAC:
+5850             \textcolor{keywordflow}{case} 0xAD:
+5851             \textcolor{keywordflow}{case} 0xAE:
+5852             \textcolor{keywordflow}{case} 0xAF:
+5853             \textcolor{keywordflow}{case} 0xB0:
+5854             \textcolor{keywordflow}{case} 0xB1:
+5855             \textcolor{keywordflow}{case} 0xB2:
+5856             \textcolor{keywordflow}{case} 0xB3:
+5857             \textcolor{keywordflow}{case} 0xB4:
+5858             \textcolor{keywordflow}{case} 0xB5:
+5859             \textcolor{keywordflow}{case} 0xB6:
+5860             \textcolor{keywordflow}{case} 0xB7:
+5861             \textcolor{keywordflow}{case} 0xB8:
+5862             \textcolor{keywordflow}{case} 0xB9:
+5863             \textcolor{keywordflow}{case} 0xBA:
+5864             \textcolor{keywordflow}{case} 0xBB:
+5865             \textcolor{keywordflow}{case} 0xBC:
+5866             \textcolor{keywordflow}{case} 0xBD:
+5867             \textcolor{keywordflow}{case} 0xBE:
+5868             \textcolor{keywordflow}{case} 0xBF:
+5869             \{
+5870                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x1F);
+5871             \}
+5872 
+5873             \textcolor{keywordflow}{case} 0xD9: \textcolor{comment}{// str 8}
+5874             \{
+5875                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint8\_t>());
+5876             \}
+5877 
+5878             \textcolor{keywordflow}{case} 0xDA: \textcolor{comment}{// str 16}
+5879             \{
+5880                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint16\_t>());
+5881             \}
+5882 
+5883             \textcolor{keywordflow}{case} 0xDB: \textcolor{comment}{// str 32}
+5884             \{
+5885                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint32\_t>());
+5886             \}
+5887 
+5888             \textcolor{keywordflow}{default}:
+5889             \{
+5890                 std::stringstream ss;
+5891                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5892                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(113, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+5893                                                \textcolor{stringliteral}{"expected a MessagePack string; last byte: 0x"} + ss.str()));
+5894             \}
+5895         \}
+5896     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a3e87e5b33764fc085bfce41d64247279}\label{classnlohmann_1_1detail_1_1binary__reader_a3e87e5b33764fc085bfce41d64247279}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+number@{get\+\_\+number}}
+\index{get\+\_\+number@{get\+\_\+number}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+number()}{get\_number()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+Number\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5654 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+5655     \{
+5656         \textcolor{comment}{// step 1: read input into array with system's byte order}
+5657         std::array<uint8\_t, sizeof(NumberType)> vec;
+5658         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < \textcolor{keyword}{sizeof}(NumberType); ++i)
+5659         \{
+5660             \textcolor{keyword}{get}();
+5661             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5662 
+5663             \textcolor{comment}{// reverse byte order prior to conversion if necessary}
+5664             \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a54c18bdb48cccf35a8f941640e0fcea4}{is\_little\_endian})
+5665             \{
+5666                 vec[\textcolor{keyword}{sizeof}(NumberType) - i - 1] = static\_cast<uint8\_t>(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5667             \}
+5668             \textcolor{keywordflow}{else}
+5669             \{
+5670                 vec[i] = \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current}); \textcolor{comment}{// LCOV\_EXCL\_LINE}
+5671             \}
+5672         \}
+5673 
+5674         \textcolor{comment}{// step 2: convert array into number of type T and return}
+5675         NumberType result;
+5676         std::memcpy(&result, vec.data(), \textcolor{keyword}{sizeof}(NumberType));
+5677         \textcolor{keywordflow}{return} result;
+5678     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}\label{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+string@{get\+\_\+string}}
+\index{get\+\_\+string@{get\+\_\+string}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+string()}{get\_string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+string (\begin{DoxyParamCaption}\item[{const Number\+Type}]{len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+create a string by reading characters from the input 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em len} & number of bytes to read\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+We can not reserve {\itshape len} bytes for the result, because {\itshape len} may be too large. Usually, \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\+\_\+eof()} detects the end of the input before we run out of string memory.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+string created by reading {\itshape len} bytes
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input has less than {\itshape len} bytes \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 5694 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+5695     \{
+5696         \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\_t} result;
+5697         std::generate\_n(std::back\_inserter(result), len, [\textcolor{keyword}{this}]()
+5698         \{
+5699             \textcolor{keyword}{get}();
+5700             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5701             \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5702         \});
+5703         \textcolor{keywordflow}{return} result;
+5704     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ab808b713f938c625c22c20f2ac7ff3cf}\label{classnlohmann_1_1detail_1_1binary__reader_ab808b713f938c625c22c20f2ac7ff3cf}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ubjson\+\_\+array@{get\+\_\+ubjson\+\_\+array}}
+\index{get\+\_\+ubjson\+\_\+array@{get\+\_\+ubjson\+\_\+array}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ubjson\+\_\+array()}{get\_ubjson\_array()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+array (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 6069 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+6070     \{
+6071         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+6072         \textcolor{keyword}{const} \textcolor{keyword}{auto} size\_and\_type = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a480aae640bb92a7432c0f758081a2cc7}{get\_ubjson\_size\_type}();
+6073 
+6074         \textcolor{keywordflow}{if} (size\_and\_type.first != string\_t::npos)
+6075         \{
+6076             \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(size\_and\_type.first > result.max\_size()))
+6077             \{
+6078                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{out\_of\_range::create}(408,
+6079                                                 \textcolor{stringliteral}{"excessive array size: "} + std::to\_string(size\_and\_type.
+      first)));
+6080             \}
+6081 
+6082             \textcolor{keywordflow}{if} (size\_and\_type.second != 0)
+6083             \{
+6084                 \textcolor{keywordflow}{if} (size\_and\_type.second != \textcolor{charliteral}{'N'})
+6085                 \{
+6086                     std::generate\_n(std::back\_inserter(*result.m\_value.array),
+6087                                     size\_and\_type.first, [\textcolor{keyword}{this}, size\_and\_type]()
+6088                     \{
+6089                         return get\_ubjson\_value(size\_and\_type.second);
+6090                     \});
+6091                 \}
+6092             \}
+6093             \textcolor{keywordflow}{else}
+6094             \{
+6095                 std::generate\_n(std::back\_inserter(*result.m\_value.array),
+6096                                 size\_and\_type.first, [\textcolor{keyword}{this}]()
+6097                 \{
+6098                     return parse\_ubjson\_internal();
+6099                 \});
+6100             \}
+6101         \}
+6102         \textcolor{keywordflow}{else}
+6103         \{
+6104             \textcolor{keywordflow}{while} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} != \textcolor{charliteral}{']'})
+6105             \{
+6106                 result.push\_back(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}(\textcolor{keyword}{false}));
+6107                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}();
+6108             \}
+6109         \}
+6110 
+6111         \textcolor{keywordflow}{return} result;
+6112     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a8fd127298effd88e0d42f5b70cb5791b}\label{classnlohmann_1_1detail_1_1binary__reader_a8fd127298effd88e0d42f5b70cb5791b}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ubjson\+\_\+object@{get\+\_\+ubjson\+\_\+object}}
+\index{get\+\_\+ubjson\+\_\+object@{get\+\_\+ubjson\+\_\+object}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ubjson\+\_\+object()}{get\_ubjson\_object()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 6114 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, and nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+6115     \{
+6116         BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+6117         \textcolor{keyword}{const} \textcolor{keyword}{auto} size\_and\_type = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a480aae640bb92a7432c0f758081a2cc7}{get\_ubjson\_size\_type}();
+6118 
+6119         \textcolor{keywordflow}{if} (size\_and\_type.first != string\_t::npos)
+6120         \{
+6121             \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(size\_and\_type.first > result.max\_size()))
+6122             \{
+6123                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{out\_of\_range::create}(408,
+6124                                                 \textcolor{stringliteral}{"excessive object size: "} + std::to\_string(size\_and\_type.
+      first)));
+6125             \}
+6126 
+6127             \textcolor{keywordflow}{if} (size\_and\_type.second != 0)
+6128             \{
+6129                 std::generate\_n(std::inserter(*result.m\_value.object,
+6130                                               result.m\_value.object->end()),
+6131                                 size\_and\_type.first, [\textcolor{keyword}{this}, size\_and\_type]()
+6132                 \{
+6133                     \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}{get\_ubjson\_string}();
+6134                     \textcolor{keyword}{auto} val = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad8507c0dd14bbddc76c7937c0305a15a}{get\_ubjson\_value}(size\_and\_type.second);
+6135                     \textcolor{keywordflow}{return} std::make\_pair(std::move(key), std::move(val));
+6136                 \});
+6137             \}
+6138             \textcolor{keywordflow}{else}
+6139             \{
+6140                 std::generate\_n(std::inserter(*result.m\_value.object,
+6141                                               result.m\_value.object->end()),
+6142                                 size\_and\_type.first, [\textcolor{keyword}{this}]()
+6143                 \{
+6144                     \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}{get\_ubjson\_string}();
+6145                     \textcolor{keyword}{auto} val = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}();
+6146                     \textcolor{keywordflow}{return} std::make\_pair(std::move(key), std::move(val));
+6147                 \});
+6148             \}
+6149         \}
+6150         \textcolor{keywordflow}{else}
+6151         \{
+6152             \textcolor{keywordflow}{while} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} != \textcolor{charliteral}{'\}'})
+6153             \{
+6154                 \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}{get\_ubjson\_string}(\textcolor{keyword}{false});
+6155                 result[std::move(key)] = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}();
+6156                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}();
+6157             \}
+6158         \}
+6159 
+6160         \textcolor{keywordflow}{return} result;
+6161     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a480aae640bb92a7432c0f758081a2cc7}\label{classnlohmann_1_1detail_1_1binary__reader_a480aae640bb92a7432c0f758081a2cc7}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ubjson\+\_\+size\+\_\+type@{get\+\_\+ubjson\+\_\+size\+\_\+type}}
+\index{get\+\_\+ubjson\+\_\+size\+\_\+type@{get\+\_\+ubjson\+\_\+size\+\_\+type}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ubjson\+\_\+size\+\_\+type()}{get\_ubjson\_size\_type()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+std\+::pair$<$std\+::size\+\_\+t, int$>$ \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+size\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+determine the type and size for a container 
+
+In the optimized U\+B\+J\+S\+ON format, a type and a size can be provided to allow for a more compact representation.
+
+\begin{DoxyReturn}{Returns}
+pair of the size and the type 
+\end{DoxyReturn}
+
+
+Definition at line 5978 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), and J\+S\+O\+N\+\_\+\+T\+H\+R\+OW.
+
+
+\begin{DoxyCode}
+5979     \{
+5980         std::size\_t sz = string\_t::npos;
+5981         \textcolor{keywordtype}{int} tc = 0;
+5982 
+5983         \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}();
+5984 
+5985         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} == \textcolor{charliteral}{'$'})
+5986         \{
+5987             tc = \textcolor{keyword}{get}();  \textcolor{comment}{// must not ignore 'N', because 'N' maybe the type}
+5988             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5989 
+5990             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}();
+5991             \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} != \textcolor{charliteral}{'#'})
+5992             \{
+5993                 std::stringstream ss;
+5994                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5995                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(112, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+5996                                                \textcolor{stringliteral}{"expected '#' after UBJSON type information; last byte: 0x"} 
+      + ss.str()));
+5997             \}
+5998             sz = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}();
+5999         \}
+6000         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} == \textcolor{charliteral}{'#'})
+6001         \{
+6002             sz = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}();
+6003         \}
+6004 
+6005         \textcolor{keywordflow}{return} std::make\_pair(sz, tc);
+6006     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}\label{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ubjson\+\_\+string@{get\+\_\+ubjson\+\_\+string}}
+\index{get\+\_\+ubjson\+\_\+string@{get\+\_\+ubjson\+\_\+string}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ubjson\+\_\+string()}{get\_ubjson\_string()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+string (\begin{DoxyParamCaption}\item[{const bool}]{get\+\_\+char = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+reads a U\+B\+J\+S\+ON string 
+
+This function is either called after reading the \textquotesingle{}S\textquotesingle{} byte explicitly indicating a string, or in case of an object key where the \textquotesingle{}S\textquotesingle{} byte can be left out.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em get\+\_\+char} & whether a new character should be retrieved from the input (true, default) or whether the last read character should be considered instead\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended \\
+\hline
+{\em parse\+\_\+error.\+113} & if an unexpected byte is read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 5941 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), and J\+S\+O\+N\+\_\+\+T\+H\+R\+OW.
+
+
+\begin{DoxyCode}
+5942     \{
+5943         \textcolor{keywordflow}{if} (get\_char)
+5944         \{
+5945             \textcolor{keyword}{get}();  \textcolor{comment}{// TODO: may we ignore N here?}
+5946         \}
+5947 
+5948         \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5949 
+5950         \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current})
+5951         \{
+5952             \textcolor{keywordflow}{case} \textcolor{charliteral}{'U'}:
+5953                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<uint8\_t>());
+5954             \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+5955                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<int8\_t>());
+5956             \textcolor{keywordflow}{case} \textcolor{charliteral}{'I'}:
+5957                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<int16\_t>());
+5958             \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:
+5959                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<int32\_t>());
+5960             \textcolor{keywordflow}{case} \textcolor{charliteral}{'L'}:
+5961                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a195b573a807da6d5841a898c6f74e03c}{get\_string}(get\_number<int64\_t>());
+5962             \textcolor{keywordflow}{default}:
+5963                 std::stringstream ss;
+5964                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5965                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(113, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+5966                                                \textcolor{stringliteral}{"expected a UBJSON string; last byte: 0x"} + ss.str()));
+5967         \}
+5968     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 7
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ad8507c0dd14bbddc76c7937c0305a15a}\label{classnlohmann_1_1detail_1_1binary__reader_ad8507c0dd14bbddc76c7937c0305a15a}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!get\+\_\+ubjson\+\_\+value@{get\+\_\+ubjson\+\_\+value}}
+\index{get\+\_\+ubjson\+\_\+value@{get\+\_\+ubjson\+\_\+value}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{get\+\_\+ubjson\+\_\+value()}{get\_ubjson\_value()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::get\+\_\+ubjson\+\_\+value (\begin{DoxyParamCaption}\item[{const int}]{prefix }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 6008 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+6009     \{
+6010         \textcolor{keywordflow}{switch} (prefix)
+6011         \{
+6012             \textcolor{keywordflow}{case} std::char\_traits<char>::eof():  \textcolor{comment}{// EOF}
+6013                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(parse\_error::create(110, \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"unexpected end of
+       input"}));
+6014 
+6015             \textcolor{keywordflow}{case} \textcolor{charliteral}{'T'}:  \textcolor{comment}{// true}
+6016                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+6017             \textcolor{keywordflow}{case} \textcolor{charliteral}{'F'}:  \textcolor{comment}{// false}
+6018                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+6019 
+6020             \textcolor{keywordflow}{case} \textcolor{charliteral}{'Z'}:  \textcolor{comment}{// null}
+6021                 \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};
+6022 
+6023             \textcolor{keywordflow}{case} \textcolor{charliteral}{'U'}:
+6024                 \textcolor{keywordflow}{return} get\_number<uint8\_t>();
+6025             \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+6026                 \textcolor{keywordflow}{return} get\_number<int8\_t>();
+6027             \textcolor{keywordflow}{case} \textcolor{charliteral}{'I'}:
+6028                 \textcolor{keywordflow}{return} get\_number<int16\_t>();
+6029             \textcolor{keywordflow}{case} \textcolor{charliteral}{'l'}:
+6030                 \textcolor{keywordflow}{return} get\_number<int32\_t>();
+6031             \textcolor{keywordflow}{case} \textcolor{charliteral}{'L'}:
+6032                 \textcolor{keywordflow}{return} get\_number<int64\_t>();
+6033             \textcolor{keywordflow}{case} \textcolor{charliteral}{'d'}:
+6034                 \textcolor{keywordflow}{return} get\_number<float>();
+6035             \textcolor{keywordflow}{case} \textcolor{charliteral}{'D'}:
+6036                 \textcolor{keywordflow}{return} get\_number<double>();
+6037 
+6038             \textcolor{keywordflow}{case} \textcolor{charliteral}{'C'}:  \textcolor{comment}{// char}
+6039             \{
+6040                 \textcolor{keyword}{get}();
+6041                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+6042                 \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} > 127))
+6043                 \{
+6044                     std::stringstream ss;
+6045                     ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+6046                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(113, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+6047                                                    \textcolor{stringliteral}{"byte after 'C' must be in range 0x00..0x7F; last byte:
+       0x"} + ss.str()));
+6048                 \}
+6049                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a889a8702ca8aa45e99136bc31ea898e9}{string\_t}(1, static\_cast<char>(current));
+6050             \}
+6051 
+6052             \textcolor{keywordflow}{case} \textcolor{charliteral}{'S'}:  \textcolor{comment}{// string}
+6053                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ae4097317b979174cc366b076bb879814}{get\_ubjson\_string}();
+6054 
+6055             \textcolor{keywordflow}{case} \textcolor{charliteral}{'['}:  \textcolor{comment}{// array}
+6056                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ab808b713f938c625c22c20f2ac7ff3cf}{get\_ubjson\_array}();
+6057 
+6058             \textcolor{keywordflow}{case} \textcolor{charliteral}{'\{'}:  \textcolor{comment}{// object}
+6059                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd127298effd88e0d42f5b70cb5791b}{get\_ubjson\_object}();
+6060 
+6061             \textcolor{keywordflow}{default}: \textcolor{comment}{// anything else}
+6062                 std::stringstream ss;
+6063                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+6064                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(112, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+6065                                                \textcolor{stringliteral}{"error reading UBJSON; last byte: 0x"} + ss.str()));
+6066         \}
+6067     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a1d8f70f95d241354f86a0b9ae711c1c3}\label{classnlohmann_1_1detail_1_1binary__reader_a1d8f70f95d241354f86a0b9ae711c1c3}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!little\+\_\+endianess@{little\+\_\+endianess}}
+\index{little\+\_\+endianess@{little\+\_\+endianess}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{little\+\_\+endianess()}{little\_endianess()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static constexpr bool \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::little\+\_\+endianess (\begin{DoxyParamCaption}\item[{int}]{num = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+
+
+determine system byte order 
+
+\begin{DoxyReturn}{Returns}
+true if and only if system\textquotesingle{}s byte order is little endian
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+from \href{http://stackoverflow.com/a/1001328/266378}{\tt http\+://stackoverflow.\+com/a/1001328/266378} 
+\end{DoxyNote}
+
+
+Definition at line 4949 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4950     \{
+4951         \textcolor{keywordflow}{return} (*reinterpret\_cast<char*>(&num) == 1);
+4952     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a04bcdc8f55b26fafa9775a2f89e48fc2}\label{classnlohmann_1_1detail_1_1binary__reader_a04bcdc8f55b26fafa9775a2f89e48fc2}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+cbor@{parse\+\_\+cbor}}
+\index{parse\+\_\+cbor@{parse\+\_\+cbor}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+cbor()}{parse\_cbor()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+cbor (\begin{DoxyParamCaption}\item[{const bool}]{strict }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+create a J\+S\+ON value from C\+B\+OR input 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strict} & whether to expect the input to be consumed completed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+J\+S\+ON value created from C\+B\+OR input
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended unexpectedly or the end of file was not reached when {\itshape strict} was set to true \\
+\hline
+{\em parse\+\_\+error.\+112} & if unsupported byte was read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 4889 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::from\+\_\+cbor().
+
+
+\begin{DoxyCode}
+4890     \{
+4891         \textcolor{keyword}{const} \textcolor{keyword}{auto} res = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}{parse\_cbor\_internal}();
+4892         \textcolor{keywordflow}{if} (strict)
+4893         \{
+4894             \textcolor{keyword}{get}();
+4895             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}{expect\_eof}();
+4896         \}
+4897         \textcolor{keywordflow}{return} res;
+4898     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}\label{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+cbor\+\_\+internal@{parse\+\_\+cbor\+\_\+internal}}
+\index{parse\+\_\+cbor\+\_\+internal@{parse\+\_\+cbor\+\_\+internal}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+cbor\+\_\+internal()}{parse\_cbor\_internal()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+cbor\+\_\+internal (\begin{DoxyParamCaption}\item[{const bool}]{get\+\_\+char = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em get\+\_\+char} & whether a new character should be retrieved from the input (true, default) or whether the last read character should be considered instead \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 4960 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, nlohmann\+::detail\+::null, and nlohmann\+::detail\+::object.
+
+
+\begin{DoxyCode}
+4961     \{
+4962         \textcolor{keywordflow}{switch} (get\_char ? \textcolor{keyword}{get}() : \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current})
+4963         \{
+4964             \textcolor{comment}{// EOF}
+4965             \textcolor{keywordflow}{case} std::char\_traits<char>::eof():
+4966                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(parse\_error::create(110, \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"unexpected end of
+       input"}));
+4967 
+4968             \textcolor{comment}{// Integer 0x00..0x17 (0..23)}
+4969             \textcolor{keywordflow}{case} 0x00:
+4970             \textcolor{keywordflow}{case} 0x01:
+4971             \textcolor{keywordflow}{case} 0x02:
+4972             \textcolor{keywordflow}{case} 0x03:
+4973             \textcolor{keywordflow}{case} 0x04:
+4974             \textcolor{keywordflow}{case} 0x05:
+4975             \textcolor{keywordflow}{case} 0x06:
+4976             \textcolor{keywordflow}{case} 0x07:
+4977             \textcolor{keywordflow}{case} 0x08:
+4978             \textcolor{keywordflow}{case} 0x09:
+4979             \textcolor{keywordflow}{case} 0x0A:
+4980             \textcolor{keywordflow}{case} 0x0B:
+4981             \textcolor{keywordflow}{case} 0x0C:
+4982             \textcolor{keywordflow}{case} 0x0D:
+4983             \textcolor{keywordflow}{case} 0x0E:
+4984             \textcolor{keywordflow}{case} 0x0F:
+4985             \textcolor{keywordflow}{case} 0x10:
+4986             \textcolor{keywordflow}{case} 0x11:
+4987             \textcolor{keywordflow}{case} 0x12:
+4988             \textcolor{keywordflow}{case} 0x13:
+4989             \textcolor{keywordflow}{case} 0x14:
+4990             \textcolor{keywordflow}{case} 0x15:
+4991             \textcolor{keywordflow}{case} 0x16:
+4992             \textcolor{keywordflow}{case} 0x17:
+4993                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}{number\_unsigned\_t}\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+4994 
+4995             \textcolor{keywordflow}{case} 0x18: \textcolor{comment}{// Unsigned integer (one-byte uint8\_t follows)}
+4996                 \textcolor{keywordflow}{return} get\_number<uint8\_t>();
+4997 
+4998             \textcolor{keywordflow}{case} 0x19: \textcolor{comment}{// Unsigned integer (two-byte uint16\_t follows)}
+4999                 \textcolor{keywordflow}{return} get\_number<uint16\_t>();
+5000 
+5001             \textcolor{keywordflow}{case} 0x1A: \textcolor{comment}{// Unsigned integer (four-byte uint32\_t follows)}
+5002                 \textcolor{keywordflow}{return} get\_number<uint32\_t>();
+5003 
+5004             \textcolor{keywordflow}{case} 0x1B: \textcolor{comment}{// Unsigned integer (eight-byte uint64\_t follows)}
+5005                 \textcolor{keywordflow}{return} get\_number<uint64\_t>();
+5006 
+5007             \textcolor{comment}{// Negative integer -1-0x00..-1-0x17 (-1..-24)}
+5008             \textcolor{keywordflow}{case} 0x20:
+5009             \textcolor{keywordflow}{case} 0x21:
+5010             \textcolor{keywordflow}{case} 0x22:
+5011             \textcolor{keywordflow}{case} 0x23:
+5012             \textcolor{keywordflow}{case} 0x24:
+5013             \textcolor{keywordflow}{case} 0x25:
+5014             \textcolor{keywordflow}{case} 0x26:
+5015             \textcolor{keywordflow}{case} 0x27:
+5016             \textcolor{keywordflow}{case} 0x28:
+5017             \textcolor{keywordflow}{case} 0x29:
+5018             \textcolor{keywordflow}{case} 0x2A:
+5019             \textcolor{keywordflow}{case} 0x2B:
+5020             \textcolor{keywordflow}{case} 0x2C:
+5021             \textcolor{keywordflow}{case} 0x2D:
+5022             \textcolor{keywordflow}{case} 0x2E:
+5023             \textcolor{keywordflow}{case} 0x2F:
+5024             \textcolor{keywordflow}{case} 0x30:
+5025             \textcolor{keywordflow}{case} 0x31:
+5026             \textcolor{keywordflow}{case} 0x32:
+5027             \textcolor{keywordflow}{case} 0x33:
+5028             \textcolor{keywordflow}{case} 0x34:
+5029             \textcolor{keywordflow}{case} 0x35:
+5030             \textcolor{keywordflow}{case} 0x36:
+5031             \textcolor{keywordflow}{case} 0x37:
+5032                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(0x20 - 1 - \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5033 
+5034             \textcolor{keywordflow}{case} 0x38: \textcolor{comment}{// Negative integer (one-byte uint8\_t follows)}
+5035             \{
+5036                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\_integer\_t}\textcolor{keyword}{>}(-1) - get\_number<uint8\_t>();
+5037             \}
+5038 
+5039             \textcolor{keywordflow}{case} 0x39: \textcolor{comment}{// Negative integer -1-n (two-byte uint16\_t follows)}
+5040             \{
+5041                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\_integer\_t}\textcolor{keyword}{>}(-1) - get\_number<uint16\_t>();
+5042             \}
+5043 
+5044             \textcolor{keywordflow}{case} 0x3A: \textcolor{comment}{// Negative integer -1-n (four-byte uint32\_t follows)}
+5045             \{
+5046                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\_integer\_t}\textcolor{keyword}{>}(-1) - get\_number<uint32\_t>();
+5047             \}
+5048 
+5049             \textcolor{keywordflow}{case} 0x3B: \textcolor{comment}{// Negative integer -1-n (eight-byte uint64\_t follows)}
+5050             \{
+5051                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6065302a10df2e78ed23a0e02e832bf}{number\_integer\_t}\textcolor{keyword}{>}(-1) -
+5052                        static\_cast<number\_integer\_t>(get\_number<uint64\_t>());
+5053             \}
+5054 
+5055             \textcolor{comment}{// UTF-8 string (0x00..0x17 bytes follow)}
+5056             \textcolor{keywordflow}{case} 0x60:
+5057             \textcolor{keywordflow}{case} 0x61:
+5058             \textcolor{keywordflow}{case} 0x62:
+5059             \textcolor{keywordflow}{case} 0x63:
+5060             \textcolor{keywordflow}{case} 0x64:
+5061             \textcolor{keywordflow}{case} 0x65:
+5062             \textcolor{keywordflow}{case} 0x66:
+5063             \textcolor{keywordflow}{case} 0x67:
+5064             \textcolor{keywordflow}{case} 0x68:
+5065             \textcolor{keywordflow}{case} 0x69:
+5066             \textcolor{keywordflow}{case} 0x6A:
+5067             \textcolor{keywordflow}{case} 0x6B:
+5068             \textcolor{keywordflow}{case} 0x6C:
+5069             \textcolor{keywordflow}{case} 0x6D:
+5070             \textcolor{keywordflow}{case} 0x6E:
+5071             \textcolor{keywordflow}{case} 0x6F:
+5072             \textcolor{keywordflow}{case} 0x70:
+5073             \textcolor{keywordflow}{case} 0x71:
+5074             \textcolor{keywordflow}{case} 0x72:
+5075             \textcolor{keywordflow}{case} 0x73:
+5076             \textcolor{keywordflow}{case} 0x74:
+5077             \textcolor{keywordflow}{case} 0x75:
+5078             \textcolor{keywordflow}{case} 0x76:
+5079             \textcolor{keywordflow}{case} 0x77:
+5080             \textcolor{keywordflow}{case} 0x78: \textcolor{comment}{// UTF-8 string (one-byte uint8\_t for n follows)}
+5081             \textcolor{keywordflow}{case} 0x79: \textcolor{comment}{// UTF-8 string (two-byte uint16\_t for n follow)}
+5082             \textcolor{keywordflow}{case} 0x7A: \textcolor{comment}{// UTF-8 string (four-byte uint32\_t for n follow)}
+5083             \textcolor{keywordflow}{case} 0x7B: \textcolor{comment}{// UTF-8 string (eight-byte uint64\_t for n follow)}
+5084             \textcolor{keywordflow}{case} 0x7F: \textcolor{comment}{// UTF-8 string (indefinite length)}
+5085             \{
+5086                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}{get\_cbor\_string}();
+5087             \}
+5088 
+5089             \textcolor{comment}{// array (0x00..0x17 data items follow)}
+5090             \textcolor{keywordflow}{case} 0x80:
+5091             \textcolor{keywordflow}{case} 0x81:
+5092             \textcolor{keywordflow}{case} 0x82:
+5093             \textcolor{keywordflow}{case} 0x83:
+5094             \textcolor{keywordflow}{case} 0x84:
+5095             \textcolor{keywordflow}{case} 0x85:
+5096             \textcolor{keywordflow}{case} 0x86:
+5097             \textcolor{keywordflow}{case} 0x87:
+5098             \textcolor{keywordflow}{case} 0x88:
+5099             \textcolor{keywordflow}{case} 0x89:
+5100             \textcolor{keywordflow}{case} 0x8A:
+5101             \textcolor{keywordflow}{case} 0x8B:
+5102             \textcolor{keywordflow}{case} 0x8C:
+5103             \textcolor{keywordflow}{case} 0x8D:
+5104             \textcolor{keywordflow}{case} 0x8E:
+5105             \textcolor{keywordflow}{case} 0x8F:
+5106             \textcolor{keywordflow}{case} 0x90:
+5107             \textcolor{keywordflow}{case} 0x91:
+5108             \textcolor{keywordflow}{case} 0x92:
+5109             \textcolor{keywordflow}{case} 0x93:
+5110             \textcolor{keywordflow}{case} 0x94:
+5111             \textcolor{keywordflow}{case} 0x95:
+5112             \textcolor{keywordflow}{case} 0x96:
+5113             \textcolor{keywordflow}{case} 0x97:
+5114             \{
+5115                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\_cbor\_array}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x1F);
+5116             \}
+5117 
+5118             \textcolor{keywordflow}{case} 0x98: \textcolor{comment}{// array (one-byte uint8\_t for n follows)}
+5119             \{
+5120                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\_cbor\_array}(get\_number<uint8\_t>());
+5121             \}
+5122 
+5123             \textcolor{keywordflow}{case} 0x99: \textcolor{comment}{// array (two-byte uint16\_t for n follow)}
+5124             \{
+5125                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\_cbor\_array}(get\_number<uint16\_t>());
+5126             \}
+5127 
+5128             \textcolor{keywordflow}{case} 0x9A: \textcolor{comment}{// array (four-byte uint32\_t for n follow)}
+5129             \{
+5130                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\_cbor\_array}(get\_number<uint32\_t>());
+5131             \}
+5132 
+5133             \textcolor{keywordflow}{case} 0x9B: \textcolor{comment}{// array (eight-byte uint64\_t for n follow)}
+5134             \{
+5135                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a3ee69f0eabc2325477dd00689a00449b}{get\_cbor\_array}(get\_number<uint64\_t>());
+5136             \}
+5137 
+5138             \textcolor{keywordflow}{case} 0x9F: \textcolor{comment}{// array (indefinite length)}
+5139             \{
+5140                 BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+5141                 \textcolor{keywordflow}{while} (\textcolor{keyword}{get}() != 0xFF)
+5142                 \{
+5143                     result.push\_back(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}{parse\_cbor\_internal}(\textcolor{keyword}{false}));
+5144                 \}
+5145                 \textcolor{keywordflow}{return} result;
+5146             \}
+5147 
+5148             \textcolor{comment}{// map (0x00..0x17 pairs of data items follow)}
+5149             \textcolor{keywordflow}{case} 0xA0:
+5150             \textcolor{keywordflow}{case} 0xA1:
+5151             \textcolor{keywordflow}{case} 0xA2:
+5152             \textcolor{keywordflow}{case} 0xA3:
+5153             \textcolor{keywordflow}{case} 0xA4:
+5154             \textcolor{keywordflow}{case} 0xA5:
+5155             \textcolor{keywordflow}{case} 0xA6:
+5156             \textcolor{keywordflow}{case} 0xA7:
+5157             \textcolor{keywordflow}{case} 0xA8:
+5158             \textcolor{keywordflow}{case} 0xA9:
+5159             \textcolor{keywordflow}{case} 0xAA:
+5160             \textcolor{keywordflow}{case} 0xAB:
+5161             \textcolor{keywordflow}{case} 0xAC:
+5162             \textcolor{keywordflow}{case} 0xAD:
+5163             \textcolor{keywordflow}{case} 0xAE:
+5164             \textcolor{keywordflow}{case} 0xAF:
+5165             \textcolor{keywordflow}{case} 0xB0:
+5166             \textcolor{keywordflow}{case} 0xB1:
+5167             \textcolor{keywordflow}{case} 0xB2:
+5168             \textcolor{keywordflow}{case} 0xB3:
+5169             \textcolor{keywordflow}{case} 0xB4:
+5170             \textcolor{keywordflow}{case} 0xB5:
+5171             \textcolor{keywordflow}{case} 0xB6:
+5172             \textcolor{keywordflow}{case} 0xB7:
+5173             \{
+5174                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\_cbor\_object}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x1F);
+5175             \}
+5176 
+5177             \textcolor{keywordflow}{case} 0xB8: \textcolor{comment}{// map (one-byte uint8\_t for n follows)}
+5178             \{
+5179                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\_cbor\_object}(get\_number<uint8\_t>());
+5180             \}
+5181 
+5182             \textcolor{keywordflow}{case} 0xB9: \textcolor{comment}{// map (two-byte uint16\_t for n follow)}
+5183             \{
+5184                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\_cbor\_object}(get\_number<uint16\_t>());
+5185             \}
+5186 
+5187             \textcolor{keywordflow}{case} 0xBA: \textcolor{comment}{// map (four-byte uint32\_t for n follow)}
+5188             \{
+5189                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\_cbor\_object}(get\_number<uint32\_t>());
+5190             \}
+5191 
+5192             \textcolor{keywordflow}{case} 0xBB: \textcolor{comment}{// map (eight-byte uint64\_t for n follow)}
+5193             \{
+5194                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac10de53e05ff19b4860c73f52a6871a9}{get\_cbor\_object}(get\_number<uint64\_t>());
+5195             \}
+5196 
+5197             \textcolor{keywordflow}{case} 0xBF: \textcolor{comment}{// map (indefinite length)}
+5198             \{
+5199                 BasicJsonType result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+5200                 \textcolor{keywordflow}{while} (\textcolor{keyword}{get}() != 0xFF)
+5201                 \{
+5202                     \textcolor{keyword}{auto} key = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac626ec37d1724d9d36d918c6361f8e57}{get\_cbor\_string}();
+5203                     result[key] = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a0d919ee892fbbeedb27ff95c4e4010e1}{parse\_cbor\_internal}();
+5204                 \}
+5205                 \textcolor{keywordflow}{return} result;
+5206             \}
+5207 
+5208             \textcolor{keywordflow}{case} 0xF4: \textcolor{comment}{// false}
+5209             \{
+5210                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+5211             \}
+5212 
+5213             \textcolor{keywordflow}{case} 0xF5: \textcolor{comment}{// true}
+5214             \{
+5215                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+5216             \}
+5217 
+5218             \textcolor{keywordflow}{case} 0xF6: \textcolor{comment}{// null}
+5219             \{
+5220                 \textcolor{keywordflow}{return} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null};
+5221             \}
+5222 
+5223             \textcolor{keywordflow}{case} 0xF9: \textcolor{comment}{// Half-Precision Float (two-byte IEEE 754)}
+5224             \{
+5225                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} byte1 = \textcolor{keyword}{get}();
+5226                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5227                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} byte2 = \textcolor{keyword}{get}();
+5228                 \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}{unexpect\_eof}();
+5229 
+5230                 \textcolor{comment}{// code from RFC 7049, Appendix D, Figure 3:}
+5231                 \textcolor{comment}{// As half-precision floating-point numbers were only added}
+5232                 \textcolor{comment}{// to IEEE 754 in 2008, today's programming platforms often}
+5233                 \textcolor{comment}{// still only have limited support for them. It is very}
+5234                 \textcolor{comment}{// easy to include at least decoding support for them even}
+5235                 \textcolor{comment}{// without such support. An example of a small decoder for}
+5236                 \textcolor{comment}{// half-precision floating-point numbers in the C language}
+5237                 \textcolor{comment}{// is shown in Fig. 3.}
+5238                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} half = (byte1 << 8) + byte2;
+5239                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} exp = (half >> 10) & 0x1F;
+5240                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} mant = half & 0x3FF;
+5241                 \textcolor{keywordtype}{double} val;
+5242                 \textcolor{keywordflow}{if} (exp == 0)
+5243                 \{
+5244                     val = std::ldexp(mant, -24);
+5245                 \}
+5246                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (exp != 31)
+5247                 \{
+5248                     val = std::ldexp(mant + 1024, exp - 25);
+5249                 \}
+5250                 \textcolor{keywordflow}{else}
+5251                 \{
+5252                     val = (mant == 0) ? std::numeric\_limits<double>::infinity()
+5253                           : std::numeric\_limits<double>::quiet\_NaN();
+5254                 \}
+5255                 \textcolor{keywordflow}{return} (half & 0x8000) != 0 ? -val : val;
+5256             \}
+5257 
+5258             \textcolor{keywordflow}{case} 0xFA: \textcolor{comment}{// Single-Precision Float (four-byte IEEE 754)}
+5259             \{
+5260                 \textcolor{keywordflow}{return} get\_number<float>();
+5261             \}
+5262 
+5263             \textcolor{keywordflow}{case} 0xFB: \textcolor{comment}{// Double-Precision Float (eight-byte IEEE 754)}
+5264             \{
+5265                 \textcolor{keywordflow}{return} get\_number<double>();
+5266             \}
+5267 
+5268             \textcolor{keywordflow}{default}: \textcolor{comment}{// anything else (0xFF is handled inside the other types)}
+5269             \{
+5270                 std::stringstream ss;
+5271                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5272                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(112, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"error reading CBOR; last byte: 0x"} + ss.str()));
+5273             \}
+5274         \}
+5275     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 10
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ab4a4a6f5ab3cc77aac374c9c889e580e}\label{classnlohmann_1_1detail_1_1binary__reader_ab4a4a6f5ab3cc77aac374c9c889e580e}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+msgpack@{parse\+\_\+msgpack}}
+\index{parse\+\_\+msgpack@{parse\+\_\+msgpack}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+msgpack()}{parse\_msgpack()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+msgpack (\begin{DoxyParamCaption}\item[{const bool}]{strict }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+create a J\+S\+ON value from Message\+Pack input 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strict} & whether to expect the input to be consumed completed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+J\+S\+ON value created from Message\+Pack input
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended unexpectedly or the end of file was not reached when {\itshape strict} was set to true \\
+\hline
+{\em parse\+\_\+error.\+112} & if unsupported byte was read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 4910 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::from\+\_\+msgpack().
+
+
+\begin{DoxyCode}
+4911     \{
+4912         \textcolor{keyword}{const} \textcolor{keyword}{auto} res = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ac6dc6270ddddd0aac65fe6cab53d7cc2}{parse\_msgpack\_internal}();
+4913         \textcolor{keywordflow}{if} (strict)
+4914         \{
+4915             \textcolor{keyword}{get}();
+4916             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}{expect\_eof}();
+4917         \}
+4918         \textcolor{keywordflow}{return} res;
+4919     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 11
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ac6dc6270ddddd0aac65fe6cab53d7cc2}\label{classnlohmann_1_1detail_1_1binary__reader_ac6dc6270ddddd0aac65fe6cab53d7cc2}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+msgpack\+\_\+internal@{parse\+\_\+msgpack\+\_\+internal}}
+\index{parse\+\_\+msgpack\+\_\+internal@{parse\+\_\+msgpack\+\_\+internal}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+msgpack\+\_\+internal()}{parse\_msgpack\_internal()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+msgpack\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 5277 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and nlohmann\+::detail\+::null.
+
+
+\begin{DoxyCode}
+5278     \{
+5279         \textcolor{keywordflow}{switch} (\textcolor{keyword}{get}())
+5280         \{
+5281             \textcolor{comment}{// EOF}
+5282             \textcolor{keywordflow}{case} std::char\_traits<char>::eof():
+5283                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(parse\_error::create(110, \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"unexpected end of
+       input"}));
+5284 
+5285             \textcolor{comment}{// positive fixint}
+5286             \textcolor{keywordflow}{case} 0x00:
+5287             \textcolor{keywordflow}{case} 0x01:
+5288             \textcolor{keywordflow}{case} 0x02:
+5289             \textcolor{keywordflow}{case} 0x03:
+5290             \textcolor{keywordflow}{case} 0x04:
+5291             \textcolor{keywordflow}{case} 0x05:
+5292             \textcolor{keywordflow}{case} 0x06:
+5293             \textcolor{keywordflow}{case} 0x07:
+5294             \textcolor{keywordflow}{case} 0x08:
+5295             \textcolor{keywordflow}{case} 0x09:
+5296             \textcolor{keywordflow}{case} 0x0A:
+5297             \textcolor{keywordflow}{case} 0x0B:
+5298             \textcolor{keywordflow}{case} 0x0C:
+5299             \textcolor{keywordflow}{case} 0x0D:
+5300             \textcolor{keywordflow}{case} 0x0E:
+5301             \textcolor{keywordflow}{case} 0x0F:
+5302             \textcolor{keywordflow}{case} 0x10:
+5303             \textcolor{keywordflow}{case} 0x11:
+5304             \textcolor{keywordflow}{case} 0x12:
+5305             \textcolor{keywordflow}{case} 0x13:
+5306             \textcolor{keywordflow}{case} 0x14:
+5307             \textcolor{keywordflow}{case} 0x15:
+5308             \textcolor{keywordflow}{case} 0x16:
+5309             \textcolor{keywordflow}{case} 0x17:
+5310             \textcolor{keywordflow}{case} 0x18:
+5311             \textcolor{keywordflow}{case} 0x19:
+5312             \textcolor{keywordflow}{case} 0x1A:
+5313             \textcolor{keywordflow}{case} 0x1B:
+5314             \textcolor{keywordflow}{case} 0x1C:
+5315             \textcolor{keywordflow}{case} 0x1D:
+5316             \textcolor{keywordflow}{case} 0x1E:
+5317             \textcolor{keywordflow}{case} 0x1F:
+5318             \textcolor{keywordflow}{case} 0x20:
+5319             \textcolor{keywordflow}{case} 0x21:
+5320             \textcolor{keywordflow}{case} 0x22:
+5321             \textcolor{keywordflow}{case} 0x23:
+5322             \textcolor{keywordflow}{case} 0x24:
+5323             \textcolor{keywordflow}{case} 0x25:
+5324             \textcolor{keywordflow}{case} 0x26:
+5325             \textcolor{keywordflow}{case} 0x27:
+5326             \textcolor{keywordflow}{case} 0x28:
+5327             \textcolor{keywordflow}{case} 0x29:
+5328             \textcolor{keywordflow}{case} 0x2A:
+5329             \textcolor{keywordflow}{case} 0x2B:
+5330             \textcolor{keywordflow}{case} 0x2C:
+5331             \textcolor{keywordflow}{case} 0x2D:
+5332             \textcolor{keywordflow}{case} 0x2E:
+5333             \textcolor{keywordflow}{case} 0x2F:
+5334             \textcolor{keywordflow}{case} 0x30:
+5335             \textcolor{keywordflow}{case} 0x31:
+5336             \textcolor{keywordflow}{case} 0x32:
+5337             \textcolor{keywordflow}{case} 0x33:
+5338             \textcolor{keywordflow}{case} 0x34:
+5339             \textcolor{keywordflow}{case} 0x35:
+5340             \textcolor{keywordflow}{case} 0x36:
+5341             \textcolor{keywordflow}{case} 0x37:
+5342             \textcolor{keywordflow}{case} 0x38:
+5343             \textcolor{keywordflow}{case} 0x39:
+5344             \textcolor{keywordflow}{case} 0x3A:
+5345             \textcolor{keywordflow}{case} 0x3B:
+5346             \textcolor{keywordflow}{case} 0x3C:
+5347             \textcolor{keywordflow}{case} 0x3D:
+5348             \textcolor{keywordflow}{case} 0x3E:
+5349             \textcolor{keywordflow}{case} 0x3F:
+5350             \textcolor{keywordflow}{case} 0x40:
+5351             \textcolor{keywordflow}{case} 0x41:
+5352             \textcolor{keywordflow}{case} 0x42:
+5353             \textcolor{keywordflow}{case} 0x43:
+5354             \textcolor{keywordflow}{case} 0x44:
+5355             \textcolor{keywordflow}{case} 0x45:
+5356             \textcolor{keywordflow}{case} 0x46:
+5357             \textcolor{keywordflow}{case} 0x47:
+5358             \textcolor{keywordflow}{case} 0x48:
+5359             \textcolor{keywordflow}{case} 0x49:
+5360             \textcolor{keywordflow}{case} 0x4A:
+5361             \textcolor{keywordflow}{case} 0x4B:
+5362             \textcolor{keywordflow}{case} 0x4C:
+5363             \textcolor{keywordflow}{case} 0x4D:
+5364             \textcolor{keywordflow}{case} 0x4E:
+5365             \textcolor{keywordflow}{case} 0x4F:
+5366             \textcolor{keywordflow}{case} 0x50:
+5367             \textcolor{keywordflow}{case} 0x51:
+5368             \textcolor{keywordflow}{case} 0x52:
+5369             \textcolor{keywordflow}{case} 0x53:
+5370             \textcolor{keywordflow}{case} 0x54:
+5371             \textcolor{keywordflow}{case} 0x55:
+5372             \textcolor{keywordflow}{case} 0x56:
+5373             \textcolor{keywordflow}{case} 0x57:
+5374             \textcolor{keywordflow}{case} 0x58:
+5375             \textcolor{keywordflow}{case} 0x59:
+5376             \textcolor{keywordflow}{case} 0x5A:
+5377             \textcolor{keywordflow}{case} 0x5B:
+5378             \textcolor{keywordflow}{case} 0x5C:
+5379             \textcolor{keywordflow}{case} 0x5D:
+5380             \textcolor{keywordflow}{case} 0x5E:
+5381             \textcolor{keywordflow}{case} 0x5F:
+5382             \textcolor{keywordflow}{case} 0x60:
+5383             \textcolor{keywordflow}{case} 0x61:
+5384             \textcolor{keywordflow}{case} 0x62:
+5385             \textcolor{keywordflow}{case} 0x63:
+5386             \textcolor{keywordflow}{case} 0x64:
+5387             \textcolor{keywordflow}{case} 0x65:
+5388             \textcolor{keywordflow}{case} 0x66:
+5389             \textcolor{keywordflow}{case} 0x67:
+5390             \textcolor{keywordflow}{case} 0x68:
+5391             \textcolor{keywordflow}{case} 0x69:
+5392             \textcolor{keywordflow}{case} 0x6A:
+5393             \textcolor{keywordflow}{case} 0x6B:
+5394             \textcolor{keywordflow}{case} 0x6C:
+5395             \textcolor{keywordflow}{case} 0x6D:
+5396             \textcolor{keywordflow}{case} 0x6E:
+5397             \textcolor{keywordflow}{case} 0x6F:
+5398             \textcolor{keywordflow}{case} 0x70:
+5399             \textcolor{keywordflow}{case} 0x71:
+5400             \textcolor{keywordflow}{case} 0x72:
+5401             \textcolor{keywordflow}{case} 0x73:
+5402             \textcolor{keywordflow}{case} 0x74:
+5403             \textcolor{keywordflow}{case} 0x75:
+5404             \textcolor{keywordflow}{case} 0x76:
+5405             \textcolor{keywordflow}{case} 0x77:
+5406             \textcolor{keywordflow}{case} 0x78:
+5407             \textcolor{keywordflow}{case} 0x79:
+5408             \textcolor{keywordflow}{case} 0x7A:
+5409             \textcolor{keywordflow}{case} 0x7B:
+5410             \textcolor{keywordflow}{case} 0x7C:
+5411             \textcolor{keywordflow}{case} 0x7D:
+5412             \textcolor{keywordflow}{case} 0x7E:
+5413             \textcolor{keywordflow}{case} 0x7F:
+5414                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a6e87a28ccbfdb4afcc2c93df9f9dbe74}{number\_unsigned\_t}\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5415 
+5416             \textcolor{comment}{// fixmap}
+5417             \textcolor{keywordflow}{case} 0x80:
+5418             \textcolor{keywordflow}{case} 0x81:
+5419             \textcolor{keywordflow}{case} 0x82:
+5420             \textcolor{keywordflow}{case} 0x83:
+5421             \textcolor{keywordflow}{case} 0x84:
+5422             \textcolor{keywordflow}{case} 0x85:
+5423             \textcolor{keywordflow}{case} 0x86:
+5424             \textcolor{keywordflow}{case} 0x87:
+5425             \textcolor{keywordflow}{case} 0x88:
+5426             \textcolor{keywordflow}{case} 0x89:
+5427             \textcolor{keywordflow}{case} 0x8A:
+5428             \textcolor{keywordflow}{case} 0x8B:
+5429             \textcolor{keywordflow}{case} 0x8C:
+5430             \textcolor{keywordflow}{case} 0x8D:
+5431             \textcolor{keywordflow}{case} 0x8E:
+5432             \textcolor{keywordflow}{case} 0x8F:
+5433             \{
+5434                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}{get\_msgpack\_object}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x0F);
+5435             \}
+5436 
+5437             \textcolor{comment}{// fixarray}
+5438             \textcolor{keywordflow}{case} 0x90:
+5439             \textcolor{keywordflow}{case} 0x91:
+5440             \textcolor{keywordflow}{case} 0x92:
+5441             \textcolor{keywordflow}{case} 0x93:
+5442             \textcolor{keywordflow}{case} 0x94:
+5443             \textcolor{keywordflow}{case} 0x95:
+5444             \textcolor{keywordflow}{case} 0x96:
+5445             \textcolor{keywordflow}{case} 0x97:
+5446             \textcolor{keywordflow}{case} 0x98:
+5447             \textcolor{keywordflow}{case} 0x99:
+5448             \textcolor{keywordflow}{case} 0x9A:
+5449             \textcolor{keywordflow}{case} 0x9B:
+5450             \textcolor{keywordflow}{case} 0x9C:
+5451             \textcolor{keywordflow}{case} 0x9D:
+5452             \textcolor{keywordflow}{case} 0x9E:
+5453             \textcolor{keywordflow}{case} 0x9F:
+5454             \{
+5455                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}{get\_msgpack\_array}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} & 0x0F);
+5456             \}
+5457 
+5458             \textcolor{comment}{// fixstr}
+5459             \textcolor{keywordflow}{case} 0xA0:
+5460             \textcolor{keywordflow}{case} 0xA1:
+5461             \textcolor{keywordflow}{case} 0xA2:
+5462             \textcolor{keywordflow}{case} 0xA3:
+5463             \textcolor{keywordflow}{case} 0xA4:
+5464             \textcolor{keywordflow}{case} 0xA5:
+5465             \textcolor{keywordflow}{case} 0xA6:
+5466             \textcolor{keywordflow}{case} 0xA7:
+5467             \textcolor{keywordflow}{case} 0xA8:
+5468             \textcolor{keywordflow}{case} 0xA9:
+5469             \textcolor{keywordflow}{case} 0xAA:
+5470             \textcolor{keywordflow}{case} 0xAB:
+5471             \textcolor{keywordflow}{case} 0xAC:
+5472             \textcolor{keywordflow}{case} 0xAD:
+5473             \textcolor{keywordflow}{case} 0xAE:
+5474             \textcolor{keywordflow}{case} 0xAF:
+5475             \textcolor{keywordflow}{case} 0xB0:
+5476             \textcolor{keywordflow}{case} 0xB1:
+5477             \textcolor{keywordflow}{case} 0xB2:
+5478             \textcolor{keywordflow}{case} 0xB3:
+5479             \textcolor{keywordflow}{case} 0xB4:
+5480             \textcolor{keywordflow}{case} 0xB5:
+5481             \textcolor{keywordflow}{case} 0xB6:
+5482             \textcolor{keywordflow}{case} 0xB7:
+5483             \textcolor{keywordflow}{case} 0xB8:
+5484             \textcolor{keywordflow}{case} 0xB9:
+5485             \textcolor{keywordflow}{case} 0xBA:
+5486             \textcolor{keywordflow}{case} 0xBB:
+5487             \textcolor{keywordflow}{case} 0xBC:
+5488             \textcolor{keywordflow}{case} 0xBD:
+5489             \textcolor{keywordflow}{case} 0xBE:
+5490             \textcolor{keywordflow}{case} 0xBF:
+5491                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}{get\_msgpack\_string}();
+5492 
+5493             \textcolor{keywordflow}{case} 0xC0: \textcolor{comment}{// nil}
+5494                 \textcolor{keywordflow}{return} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null};
+5495 
+5496             \textcolor{keywordflow}{case} 0xC2: \textcolor{comment}{// false}
+5497                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+5498 
+5499             \textcolor{keywordflow}{case} 0xC3: \textcolor{comment}{// true}
+5500                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+5501 
+5502             \textcolor{keywordflow}{case} 0xCA: \textcolor{comment}{// float 32}
+5503                 \textcolor{keywordflow}{return} get\_number<float>();
+5504 
+5505             \textcolor{keywordflow}{case} 0xCB: \textcolor{comment}{// float 64}
+5506                 \textcolor{keywordflow}{return} get\_number<double>();
+5507 
+5508             \textcolor{keywordflow}{case} 0xCC: \textcolor{comment}{// uint 8}
+5509                 \textcolor{keywordflow}{return} get\_number<uint8\_t>();
+5510 
+5511             \textcolor{keywordflow}{case} 0xCD: \textcolor{comment}{// uint 16}
+5512                 \textcolor{keywordflow}{return} get\_number<uint16\_t>();
+5513 
+5514             \textcolor{keywordflow}{case} 0xCE: \textcolor{comment}{// uint 32}
+5515                 \textcolor{keywordflow}{return} get\_number<uint32\_t>();
+5516 
+5517             \textcolor{keywordflow}{case} 0xCF: \textcolor{comment}{// uint 64}
+5518                 \textcolor{keywordflow}{return} get\_number<uint64\_t>();
+5519 
+5520             \textcolor{keywordflow}{case} 0xD0: \textcolor{comment}{// int 8}
+5521                 \textcolor{keywordflow}{return} get\_number<int8\_t>();
+5522 
+5523             \textcolor{keywordflow}{case} 0xD1: \textcolor{comment}{// int 16}
+5524                 \textcolor{keywordflow}{return} get\_number<int16\_t>();
+5525 
+5526             \textcolor{keywordflow}{case} 0xD2: \textcolor{comment}{// int 32}
+5527                 \textcolor{keywordflow}{return} get\_number<int32\_t>();
+5528 
+5529             \textcolor{keywordflow}{case} 0xD3: \textcolor{comment}{// int 64}
+5530                 \textcolor{keywordflow}{return} get\_number<int64\_t>();
+5531 
+5532             \textcolor{keywordflow}{case} 0xD9: \textcolor{comment}{// str 8}
+5533             \textcolor{keywordflow}{case} 0xDA: \textcolor{comment}{// str 16}
+5534             \textcolor{keywordflow}{case} 0xDB: \textcolor{comment}{// str 32}
+5535                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_aca08d17b5a8230eb6738628934b3b5a5}{get\_msgpack\_string}();
+5536 
+5537             \textcolor{keywordflow}{case} 0xDC: \textcolor{comment}{// array 16}
+5538             \{
+5539                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}{get\_msgpack\_array}(get\_number<uint16\_t>());
+5540             \}
+5541 
+5542             \textcolor{keywordflow}{case} 0xDD: \textcolor{comment}{// array 32}
+5543             \{
+5544                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7adeb751743afe4233d75d351252bc93}{get\_msgpack\_array}(get\_number<uint32\_t>());
+5545             \}
+5546 
+5547             \textcolor{keywordflow}{case} 0xDE: \textcolor{comment}{// map 16}
+5548             \{
+5549                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}{get\_msgpack\_object}(get\_number<uint16\_t>());
+5550             \}
+5551 
+5552             \textcolor{keywordflow}{case} 0xDF: \textcolor{comment}{// map 32}
+5553             \{
+5554                 \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a8fd9972d8bbb03b49acbaaf641151859}{get\_msgpack\_object}(get\_number<uint32\_t>());
+5555             \}
+5556 
+5557             \textcolor{comment}{// positive fixint}
+5558             \textcolor{keywordflow}{case} 0xE0:
+5559             \textcolor{keywordflow}{case} 0xE1:
+5560             \textcolor{keywordflow}{case} 0xE2:
+5561             \textcolor{keywordflow}{case} 0xE3:
+5562             \textcolor{keywordflow}{case} 0xE4:
+5563             \textcolor{keywordflow}{case} 0xE5:
+5564             \textcolor{keywordflow}{case} 0xE6:
+5565             \textcolor{keywordflow}{case} 0xE7:
+5566             \textcolor{keywordflow}{case} 0xE8:
+5567             \textcolor{keywordflow}{case} 0xE9:
+5568             \textcolor{keywordflow}{case} 0xEA:
+5569             \textcolor{keywordflow}{case} 0xEB:
+5570             \textcolor{keywordflow}{case} 0xEC:
+5571             \textcolor{keywordflow}{case} 0xED:
+5572             \textcolor{keywordflow}{case} 0xEE:
+5573             \textcolor{keywordflow}{case} 0xEF:
+5574             \textcolor{keywordflow}{case} 0xF0:
+5575             \textcolor{keywordflow}{case} 0xF1:
+5576             \textcolor{keywordflow}{case} 0xF2:
+5577             \textcolor{keywordflow}{case} 0xF3:
+5578             \textcolor{keywordflow}{case} 0xF4:
+5579             \textcolor{keywordflow}{case} 0xF5:
+5580             \textcolor{keywordflow}{case} 0xF6:
+5581             \textcolor{keywordflow}{case} 0xF7:
+5582             \textcolor{keywordflow}{case} 0xF8:
+5583             \textcolor{keywordflow}{case} 0xF9:
+5584             \textcolor{keywordflow}{case} 0xFA:
+5585             \textcolor{keywordflow}{case} 0xFB:
+5586             \textcolor{keywordflow}{case} 0xFC:
+5587             \textcolor{keywordflow}{case} 0xFD:
+5588             \textcolor{keywordflow}{case} 0xFE:
+5589             \textcolor{keywordflow}{case} 0xFF:
+5590                 \textcolor{keywordflow}{return} \textcolor{keyword}{static\_cast<}int8\_t\textcolor{keyword}{>}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5591 
+5592             \textcolor{keywordflow}{default}: \textcolor{comment}{// anything else}
+5593             \{
+5594                 std::stringstream ss;
+5595                 ss << std::setw(2) << std::uppercase << std::setfill(\textcolor{charliteral}{'0'}) << std::hex << 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current};
+5596                 \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(112, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read},
+5597                                                \textcolor{stringliteral}{"error reading MessagePack; last byte: 0x"} + ss.str()));
+5598             \}
+5599         \}
+5600     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 12
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_ad0be02d1df4ba4fbe601b0985f5300ac}\label{classnlohmann_1_1detail_1_1binary__reader_ad0be02d1df4ba4fbe601b0985f5300ac}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+ubjson@{parse\+\_\+ubjson}}
+\index{parse\+\_\+ubjson@{parse\+\_\+ubjson}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+ubjson()}{parse\_ubjson()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+ubjson (\begin{DoxyParamCaption}\item[{const bool}]{strict }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+create a J\+S\+ON value from U\+B\+J\+S\+ON input 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strict} & whether to expect the input to be consumed completed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+J\+S\+ON value created from U\+B\+J\+S\+ON input
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended unexpectedly or the end of file was not reached when {\itshape strict} was set to true \\
+\hline
+{\em parse\+\_\+error.\+112} & if unsupported byte was read \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 4931 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::from\+\_\+ubjson().
+
+
+\begin{DoxyCode}
+4932     \{
+4933         \textcolor{keyword}{const} \textcolor{keyword}{auto} res = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}{parse\_ubjson\_internal}();
+4934         \textcolor{keywordflow}{if} (strict)
+4935         \{
+4936             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}();
+4937             \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad0eebfcfd82778a76e1ae72dec49c25f}{expect\_eof}();
+4938         \}
+4939         \textcolor{keywordflow}{return} res;
+4940     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 13
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}\label{classnlohmann_1_1detail_1_1binary__reader_a439e369278be4412b05f3481c226eafa}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!parse\+\_\+ubjson\+\_\+internal@{parse\+\_\+ubjson\+\_\+internal}}
+\index{parse\+\_\+ubjson\+\_\+internal@{parse\+\_\+ubjson\+\_\+internal}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+ubjson\+\_\+internal()}{parse\_ubjson\_internal()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+Basic\+Json\+Type \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+ubjson\+\_\+internal (\begin{DoxyParamCaption}\item[{const bool}]{get\+\_\+char = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em get\+\_\+char} & whether a new character should be retrieved from the input (true, default) or whether the last read character should be considered instead \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 5607 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+5608     \{
+5609         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1binary__reader_ad8507c0dd14bbddc76c7937c0305a15a}{get\_ubjson\_value}(get\_char ? \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a372a4b61f0c57f3d4f1e9484a416a3cd}{get\_ignore\_noop}() : 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current});
+5610     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}\label{classnlohmann_1_1detail_1_1binary__reader_a1dfc55484af3a896c376b41cd99f3e15}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!unexpect\+\_\+eof@{unexpect\+\_\+eof}}
+\index{unexpect\+\_\+eof@{unexpect\+\_\+eof}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{unexpect\+\_\+eof()}{unexpect\_eof()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::unexpect\+\_\+eof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+if end of input is reached 
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+110} & if input ended \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 6179 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+6180     \{
+6181         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}{current} == std::char\_traits<char>::eof()))
+6182         \{
+6183             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(110, 
+      \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}{chars\_read}, \textcolor{stringliteral}{"unexpected end of input"}));
+6184         \}
+6185     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}\label{classnlohmann_1_1detail_1_1binary__reader_a2dbde0b7390100efe0bfc54e21c3a34b}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!chars\+\_\+read@{chars\+\_\+read}}
+\index{chars\+\_\+read@{chars\+\_\+read}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{chars\+\_\+read}{chars\_read}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+std\+::size\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::chars\+\_\+read = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the number of characters read 
+
+
+
+Definition at line 6195 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}\label{classnlohmann_1_1detail_1_1binary__reader_a7e994e201b215cd6d6ae28a1853f43e0}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!current@{current}}
+\index{current@{current}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{current}{current}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+int \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::current = std\+::char\+\_\+traits$<$char$>$\+::eof()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the current character 
+
+
+
+Definition at line 6192 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}\label{classnlohmann_1_1detail_1_1binary__reader_adae482b45b2bb733cad3efce034a8b71}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!ia@{ia}}
+\index{ia@{ia}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{ia}{ia}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::ia = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+input adapter 
+
+
+
+Definition at line 6189 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1binary__reader_a54c18bdb48cccf35a8f941640e0fcea4}\label{classnlohmann_1_1detail_1_1binary__reader_a54c18bdb48cccf35a8f941640e0fcea4}} 
+\index{nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}!is\+\_\+little\+\_\+endian@{is\+\_\+little\+\_\+endian}}
+\index{is\+\_\+little\+\_\+endian@{is\+\_\+little\+\_\+endian}!nlohmann\+::detail\+::binary\+\_\+reader@{nlohmann\+::detail\+::binary\+\_\+reader}}
+\subsubsection{\texorpdfstring{is\+\_\+little\+\_\+endian}{is\_little\_endian}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const bool \hyperlink{classnlohmann_1_1detail_1_1binary__reader}{nlohmann\+::detail\+::binary\+\_\+reader}$<$ Basic\+Json\+Type $>$\+::is\+\_\+little\+\_\+endian = \hyperlink{classnlohmann_1_1detail_1_1binary__reader_a1d8f70f95d241354f86a0b9ae711c1c3}{little\+\_\+endianess}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+whether we can assume little endianess 
+
+
+
+Definition at line 6198 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

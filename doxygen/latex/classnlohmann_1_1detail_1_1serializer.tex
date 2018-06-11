@@ -1,0 +1,1026 @@
+\hypertarget{classnlohmann_1_1detail_1_1serializer}{}\section{nlohmann\+:\+:detail\+:\+:serializer$<$ Basic\+Json\+Type $>$ Class Template Reference}
+\label{classnlohmann_1_1detail_1_1serializer}\index{nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$@{nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:serializer$<$ Basic\+Json\+Type $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1serializer_a3076c4514179654cc81d17048439c24a}{serializer} (\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$ char $>$ s, const char ichar)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1serializer_ae3771351ec4cb892bec707edeb56dc31}{serializer} (const \hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer} \&)=delete
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer} \& \hyperlink{classnlohmann_1_1detail_1_1serializer_a5f14c33012477b9f9876dc54d97009a0}{operator=} (const \hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer} \&)=delete
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump} (const Basic\+Json\+Type \&val, const bool pretty\+\_\+print, const bool ensure\+\_\+ascii, const unsigned int indent\+\_\+step, const unsigned int current\+\_\+indent=0)
+\begin{DoxyCompactList}\small\item\em internal implementation of the serialization function \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} = typename Basic\+Json\+Type\+::string\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1serializer_ae7b1df1c70bdec1371f297567726a198}{number\+\_\+integer\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1serializer_a16c7b7a726a38ff0c06dce7ba7968391}{number\+\_\+unsigned\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\+\_\+escaped} (const \hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} \&s, const bool ensure\+\_\+ascii)
+\begin{DoxyCompactList}\small\item\em dump escaped string \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Number\+Type , detail\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ Number\+Type, number\+\_\+unsigned\+\_\+t $>$\+::value or std\+::is\+\_\+same$<$ Number\+Type, number\+\_\+integer\+\_\+t $>$\+::value, int $>$  = 0$>$ }\\void \hyperlink{classnlohmann_1_1detail_1_1serializer_a944f6dea8dbe2961da145d2f62fa2c2f}{dump\+\_\+integer} (Number\+Type x)
+\begin{DoxyCompactList}\small\item\em dump an integer \end{DoxyCompactList}\item 
+void \hyperlink{classnlohmann_1_1detail_1_1serializer_a6d652a3bfa581cf1cd7790d6d11ea52f}{dump\+\_\+float} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t} x)
+\begin{DoxyCompactList}\small\item\em dump a floating-\/point number \end{DoxyCompactList}\item 
+void \hyperlink{classnlohmann_1_1detail_1_1serializer_a24b0fe45dc774441237bde198a133d8a}{dump\+\_\+float} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t} x, std\+::true\+\_\+type)
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1serializer_a331dad892fc00313f928fdaa6bc8f849}{dump\+\_\+float} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t} x, std\+::false\+\_\+type)
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer_a1cc5cb2f6993cefedad087a6cef0e8fb}{decode} (uint8\+\_\+t \&state, uint32\+\_\+t \&codep, const uint8\+\_\+t byte) noexcept
+\begin{DoxyCompactList}\small\item\em check whether a string is U\+T\+F-\/8 encoded \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$ char $>$ \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o} = nullptr
+\begin{DoxyCompactList}\small\item\em the output of the serializer \end{DoxyCompactList}\item 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{std\+::array}$<$ char, 64 $>$ \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\+\_\+buffer} \{\{\}\}
+\begin{DoxyCompactList}\small\item\em a (hopefully) large enough character buffer \end{DoxyCompactList}\item 
+const std\+::lconv $\ast$ \hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc} = nullptr
+\begin{DoxyCompactList}\small\item\em the locale \end{DoxyCompactList}\item 
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}{thousands\+\_\+sep} = \textquotesingle{}\textbackslash{}0\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em the locale\textquotesingle{}s thousand separator character \end{DoxyCompactList}\item 
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}{decimal\+\_\+point} = \textquotesingle{}\textbackslash{}0\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em the locale\textquotesingle{}s decimal point character \end{DoxyCompactList}\item 
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{std\+::array}$<$ char, 512 $>$ \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\+\_\+buffer} \{\{\}\}
+\begin{DoxyCompactList}\small\item\em string buffer \end{DoxyCompactList}\item 
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer_a9a55e6b028d09676fe35aefa0c72ea5b}{indent\+\_\+char}
+\begin{DoxyCompactList}\small\item\em the indentation character \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\+\_\+string}
+\begin{DoxyCompactList}\small\item\em the indentation string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}{U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT} = 0
+\item 
+static constexpr uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer_a6bcc08c64319454fb9d72c3f438efee1}{U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type$>$\newline
+class nlohmann\+::detail\+::serializer$<$ Basic\+Json\+Type $>$}
+
+
+
+Definition at line 8252 of file json.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}\label{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!number\+\_\+float\+\_\+t@{number\+\_\+float\+\_\+t}}
+\index{number\+\_\+float\+\_\+t@{number\+\_\+float\+\_\+t}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{number\+\_\+float\+\_\+t}{number\_float\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 8255 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_ae7b1df1c70bdec1371f297567726a198}\label{classnlohmann_1_1detail_1_1serializer_ae7b1df1c70bdec1371f297567726a198}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}}
+\index{number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{number\+\_\+integer\+\_\+t}{number\_integer\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer_ae7b1df1c70bdec1371f297567726a198}{number\+\_\+integer\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 8256 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a16c7b7a726a38ff0c06dce7ba7968391}\label{classnlohmann_1_1detail_1_1serializer_a16c7b7a726a38ff0c06dce7ba7968391}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}}
+\index{number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{number\+\_\+unsigned\+\_\+t}{number\_unsigned\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer_a16c7b7a726a38ff0c06dce7ba7968391}{number\+\_\+unsigned\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 8257 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}\label{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!string\+\_\+t@{string\+\_\+t}}
+\index{string\+\_\+t@{string\+\_\+t}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{string\+\_\+t}{string\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} =  typename Basic\+Json\+Type\+::string\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 8254 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a3076c4514179654cc81d17048439c24a}\label{classnlohmann_1_1detail_1_1serializer_a3076c4514179654cc81d17048439c24a}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!serializer@{serializer}}
+\index{serializer@{serializer}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{serializer()}{serializer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$ char $>$}]{s,  }\item[{const char}]{ichar }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & output stream to serialize to \\
+\hline
+\mbox{\tt in}  & {\em ichar} & indentation character to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8266 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8267         : \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}(std::move(s)), \hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc}(std::localeconv()),
+8268           \hyperlink{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}{thousands\_sep}(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc}->thousands\_sep == \textcolor{keyword}{nullptr} ? \textcolor{charliteral}{'\(\backslash\)0'} : * (
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc}->thousands\_sep)),
+8269           \hyperlink{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}{decimal\_point}(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc}->decimal\_point == \textcolor{keyword}{nullptr} ? \textcolor{charliteral}{'\(\backslash\)0'} : * (
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}{loc}->decimal\_point)),
+8270           \hyperlink{classnlohmann_1_1detail_1_1serializer_a9a55e6b028d09676fe35aefa0c72ea5b}{indent\_char}(ichar), \hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}(512, 
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a9a55e6b028d09676fe35aefa0c72ea5b}{indent\_char})
+8271     \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_ae3771351ec4cb892bec707edeb56dc31}\label{classnlohmann_1_1detail_1_1serializer_ae3771351ec4cb892bec707edeb56dc31}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!serializer@{serializer}}
+\index{serializer@{serializer}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{serializer()}{serializer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer} (\begin{DoxyParamCaption}\item[{const \hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer}$<$ Basic\+Json\+Type $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a1cc5cb2f6993cefedad087a6cef0e8fb}\label{classnlohmann_1_1detail_1_1serializer_a1cc5cb2f6993cefedad087a6cef0e8fb}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!decode@{decode}}
+\index{decode@{decode}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+static uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::decode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \&}]{state,  }\item[{uint32\+\_\+t \&}]{codep,  }\item[{const uint8\+\_\+t}]{byte }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}, {\ttfamily [noexcept]}}
+
+
+
+check whether a string is U\+T\+F-\/8 encoded 
+
+The function checks each byte of a string whether it is U\+T\+F-\/8 encoded. The result of the check is stored in the {\itshape state} parameter. The function must be called initially with state 0 (accept). State 1 means the string must be rejected, because the current byte is not allowed. If the string is completely processed, but the state is non-\/zero, the string ended prematurely; that is, the last byte indicated more bytes should have followed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em state} & the state of the decoding \\
+\hline
+\mbox{\tt in,out}  & {\em codep} & codepoint (valid only if resulting state is U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT) \\
+\hline
+\mbox{\tt in}  & {\em byte} & next byte to decode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+new state
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The function has been edited\+: a \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{std\+::array} is used.
+\end{DoxyNote}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2008-\/2009 Bjoern Hoehrmann \href{mailto:bjoern@hoehrmann.de}{\tt bjoern@hoehrmann.\+de} 
+\end{DoxyCopyright}
+\begin{DoxySeeAlso}{See also}
+\href{http://bjoern.hoehrmann.de/utf-8/decoder/dfa/}{\tt http\+://bjoern.\+hoehrmann.\+de/utf-\/8/decoder/dfa/} 
+\end{DoxySeeAlso}
+
+
+Definition at line 8796 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8797     \{
+8798         \textcolor{keyword}{static} \textcolor{keyword}{const} std::array<uint8\_t, 400> utf8d =
+8799         \{
+8800             \{
+8801                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      , 0, \textcolor{comment}{// 00..1F}
+8802                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      , 0, \textcolor{comment}{// 20..3F}
+8803                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      , 0, \textcolor{comment}{// 40..5F}
+8804                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      , 0, \textcolor{comment}{// 60..7F}
+8805                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9
+      , 9, \textcolor{comment}{// 80..9F}
+8806                 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7
+      , 7, \textcolor{comment}{// A0..BF}
+8807                 8, 8, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2
+      , 2, \textcolor{comment}{// C0..DF}
+8808                 0xA, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x4, 0x3, 0x3, \textcolor{comment}{// E0..EF}
+8809                 0xB, 0x6, 0x6, 0x6, 0x5, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, \textcolor{comment}{// F0..FF}
+8810                 0x0, 0x1, 0x2, 0x3, 0x5, 0x8, 0x7, 0x1, 0x1, 0x1, 0x4, 0x6, 0x1, 0x1, 0x1, 0x1, \textcolor{comment}{// s0..s0}
+8811                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1
+      , 1, \textcolor{comment}{// s1..s2}
+8812                 1, 2, 1, 1, 1, 1, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1
+      , 1, \textcolor{comment}{// s3..s4}
+8813                 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1
+      , 1, \textcolor{comment}{// s5..s6}
+8814                 1, 3, 1, 1, 1, 1, 1, 3, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+      , 1 \textcolor{comment}{// s7..s8}
+8815             \}
+8816         \};
+8817 
+8818         \textcolor{keyword}{const} uint8\_t \hyperlink{classstd_1_1conditional_1_1type}{type} = utf8d[byte];
+8819 
+8820         codep = (state != \hyperlink{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}{UTF8\_ACCEPT})
+8821                 ? (byte & 0x3fu) | (codep << 6)
+8822                 : static\_cast<uint32\_t>(0xff >> type) & (byte);
+8823 
+8824         state = utf8d[256u + state * 16u + type];
+8825         \textcolor{keywordflow}{return} state;
+8826     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}\label{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump@{dump}}
+\index{dump@{dump}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump()}{dump()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump (\begin{DoxyParamCaption}\item[{const Basic\+Json\+Type \&}]{val,  }\item[{const bool}]{pretty\+\_\+print,  }\item[{const bool}]{ensure\+\_\+ascii,  }\item[{const unsigned int}]{indent\+\_\+step,  }\item[{const unsigned int}]{current\+\_\+indent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+internal implementation of the serialization function 
+
+This function is called by the public member function dump and organizes the serialization internally. The indentation level is propagated as additional parameter. In case of arrays and objects, the function is called recursively.
+
+
+\begin{DoxyItemize}
+\item strings and object keys are escaped using {\ttfamily escape\+\_\+string()}
+\item integer numbers are converted implicitly via {\ttfamily operator$<$$<$}
+\item floating-\/point numbers are converted to a string using {\ttfamily \char`\"{}\%g\char`\"{}} format
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em val} & value to serialize \\
+\hline
+\mbox{\tt in}  & {\em pretty\+\_\+print} & whether the output shall be pretty-\/printed \\
+\hline
+\mbox{\tt in}  & {\em indent\+\_\+step} & the indent level \\
+\hline
+\mbox{\tt in}  & {\em current\+\_\+indent} & the current indent level (only used internally) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8294 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::boolean, nlohmann\+::detail\+::discarded, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, nlohmann\+::detail\+::null, nlohmann\+::detail\+::number\+\_\+float, nlohmann\+::detail\+::number\+\_\+integer, nlohmann\+::detail\+::number\+\_\+unsigned, nlohmann\+::detail\+::object, and nlohmann\+::detail\+::string.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::dump().
+
+
+\begin{DoxyCode}
+8298     \{
+8299         \textcolor{keywordflow}{switch} (val.m\_type)
+8300         \{
+8301             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object}:
+8302             \{
+8303                 \textcolor{keywordflow}{if} (val.m\_value.object->empty())
+8304                 \{
+8305                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\{\}"}, 2);
+8306                     \textcolor{keywordflow}{return};
+8307                 \}
+8308 
+8309                 \textcolor{keywordflow}{if} (pretty\_print)
+8310                 \{
+8311                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\{\(\backslash\)n"}, 2);
+8312 
+8313                     \textcolor{comment}{// variable to hold indentation for recursive calls}
+8314                     \textcolor{keyword}{const} \textcolor{keyword}{auto} new\_indent = current\_indent + indent\_step;
+8315                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.size() < new\_indent))
+8316                     \{
+8317                         \hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.resize(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.size() * 2, \textcolor{charliteral}{' '});
+8318                     \}
+8319 
+8320                     \textcolor{comment}{// first n-1 elements}
+8321                     \textcolor{keyword}{auto} i = val.m\_value.object->cbegin();
+8322                     \textcolor{keywordflow}{for} (std::size\_t cnt = 0; cnt < val.m\_value.object->size() - 1; ++cnt, ++i)
+8323                     \{
+8324                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), new\_indent);
+8325                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8326                         \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\_escaped}(i->first, ensure\_ascii);
+8327                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\(\backslash\)": "}, 3);
+8328                         \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(i->second, \textcolor{keyword}{true}, ensure\_ascii, indent\_step, new\_indent);
+8329                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{",\(\backslash\)n"}, 2);
+8330                     \}
+8331 
+8332                     \textcolor{comment}{// last element}
+8333                     assert(i != val.m\_value.object->cend());
+8334                     assert(std::next(i) == val.m\_value.object->cend());
+8335                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), new\_indent);
+8336                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8337                     \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\_escaped}(i->first, ensure\_ascii);
+8338                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\(\backslash\)": "}, 3);
+8339                     \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(i->second, \textcolor{keyword}{true}, ensure\_ascii, indent\_step, new\_indent);
+8340 
+8341                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)n'});
+8342                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), current\_indent);
+8343                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\}'});
+8344                 \}
+8345                 \textcolor{keywordflow}{else}
+8346                 \{
+8347                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\{'});
+8348 
+8349                     \textcolor{comment}{// first n-1 elements}
+8350                     \textcolor{keyword}{auto} i = val.m\_value.object->cbegin();
+8351                     \textcolor{keywordflow}{for} (std::size\_t cnt = 0; cnt < val.m\_value.object->size() - 1; ++cnt, ++i)
+8352                     \{
+8353                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8354                         \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\_escaped}(i->first, ensure\_ascii);
+8355                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\(\backslash\)":"}, 2);
+8356                         \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(i->second, \textcolor{keyword}{false}, ensure\_ascii, indent\_step, current\_indent);
+8357                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{','});
+8358                     \}
+8359 
+8360                     \textcolor{comment}{// last element}
+8361                     assert(i != val.m\_value.object->cend());
+8362                     assert(std::next(i) == val.m\_value.object->cend());
+8363                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8364                     \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\_escaped}(i->first, ensure\_ascii);
+8365                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"\(\backslash\)":"}, 2);
+8366                     \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(i->second, \textcolor{keyword}{false}, ensure\_ascii, indent\_step, current\_indent);
+8367 
+8368                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\}'});
+8369                 \}
+8370 
+8371                 \textcolor{keywordflow}{return};
+8372             \}
+8373 
+8374             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array}:
+8375             \{
+8376                 \textcolor{keywordflow}{if} (val.m\_value.array->empty())
+8377                 \{
+8378                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"[]"}, 2);
+8379                     \textcolor{keywordflow}{return};
+8380                 \}
+8381 
+8382                 \textcolor{keywordflow}{if} (pretty\_print)
+8383                 \{
+8384                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"[\(\backslash\)n"}, 2);
+8385 
+8386                     \textcolor{comment}{// variable to hold indentation for recursive calls}
+8387                     \textcolor{keyword}{const} \textcolor{keyword}{auto} new\_indent = current\_indent + indent\_step;
+8388                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.size() < new\_indent))
+8389                     \{
+8390                         \hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.resize(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.size() * 2, \textcolor{charliteral}{' '});
+8391                     \}
+8392 
+8393                     \textcolor{comment}{// first n-1 elements}
+8394                     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = val.m\_value.array->cbegin();
+8395                             i != val.m\_value.array->cend() - 1; ++i)
+8396                     \{
+8397                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), new\_indent);
+8398                         \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(*i, \textcolor{keyword}{true}, ensure\_ascii, indent\_step, new\_indent);
+8399                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{",\(\backslash\)n"}, 2);
+8400                     \}
+8401 
+8402                     \textcolor{comment}{// last element}
+8403                     assert(not val.m\_value.array->empty());
+8404                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), new\_indent);
+8405                     \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(val.m\_value.array->back(), \textcolor{keyword}{true}, ensure\_ascii, indent\_step, new\_indent);
+8406 
+8407                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)n'});
+8408                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}{indent\_string}.c\_str(), current\_indent);
+8409                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{']'});
+8410                 \}
+8411                 \textcolor{keywordflow}{else}
+8412                 \{
+8413                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'['});
+8414 
+8415                     \textcolor{comment}{// first n-1 elements}
+8416                     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} i = val.m\_value.array->cbegin();
+8417                             i != val.m\_value.array->cend() - 1; ++i)
+8418                     \{
+8419                         \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(*i, \textcolor{keyword}{false}, ensure\_ascii, indent\_step, current\_indent);
+8420                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{','});
+8421                     \}
+8422 
+8423                     \textcolor{comment}{// last element}
+8424                     assert(not val.m\_value.array->empty());
+8425                     \hyperlink{classnlohmann_1_1detail_1_1serializer_a95460ebd1a535a543e5a0ec52e00f48b}{dump}(val.m\_value.array->back(), \textcolor{keyword}{false}, ensure\_ascii, indent\_step, current\_indent);
+8426 
+8427                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{']'});
+8428                 \}
+8429 
+8430                 \textcolor{keywordflow}{return};
+8431             \}
+8432 
+8433             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string}:
+8434             \{
+8435                 \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8436                 \hyperlink{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}{dump\_escaped}(*val.m\_value.string, ensure\_ascii);
+8437                 \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'\(\backslash\)"'});
+8438                 \textcolor{keywordflow}{return};
+8439             \}
+8440 
+8441             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean}:
+8442             \{
+8443                 \textcolor{keywordflow}{if} (val.m\_value.boolean)
+8444                 \{
+8445                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"true"}, 4);
+8446                 \}
+8447                 \textcolor{keywordflow}{else}
+8448                 \{
+8449                     \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"false"}, 5);
+8450                 \}
+8451                 \textcolor{keywordflow}{return};
+8452             \}
+8453 
+8454             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer}:
+8455             \{
+8456                 \hyperlink{classnlohmann_1_1detail_1_1serializer_a944f6dea8dbe2961da145d2f62fa2c2f}{dump\_integer}(val.m\_value.number\_integer);
+8457                 \textcolor{keywordflow}{return};
+8458             \}
+8459 
+8460             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned}:
+8461             \{
+8462                 \hyperlink{classnlohmann_1_1detail_1_1serializer_a944f6dea8dbe2961da145d2f62fa2c2f}{dump\_integer}(val.m\_value.number\_unsigned);
+8463                 \textcolor{keywordflow}{return};
+8464             \}
+8465 
+8466             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float}:
+8467             \{
+8468                 \hyperlink{classnlohmann_1_1detail_1_1serializer_a6d652a3bfa581cf1cd7790d6d11ea52f}{dump\_float}(val.m\_value.number\_float);
+8469                 \textcolor{keywordflow}{return};
+8470             \}
+8471 
+8472             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded}:
+8473             \{
+8474                 \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"<discarded>"}, 11);
+8475                 \textcolor{keywordflow}{return};
+8476             \}
+8477 
+8478             \textcolor{keywordflow}{case} \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null}:
+8479             \{
+8480                 \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"null"}, 4);
+8481                 \textcolor{keywordflow}{return};
+8482             \}
+8483         \}
+8484     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}\label{classnlohmann_1_1detail_1_1serializer_ac1f8d1165b44149bd8be397dce68ea05}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump\+\_\+escaped@{dump\+\_\+escaped}}
+\index{dump\+\_\+escaped@{dump\+\_\+escaped}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump\+\_\+escaped()}{dump\_escaped()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump\+\_\+escaped (\begin{DoxyParamCaption}\item[{const \hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} \&}]{s,  }\item[{const bool}]{ensure\+\_\+ascii }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+dump escaped string 
+
+Escape a string by replacing certain special characters by a sequence of an escape character (backslash) and another character and other control characters by a sequence of \char`\"{}\textbackslash{}u\char`\"{} followed by a four-\/digit hex representation. The escaped string is written to output stream {\itshape o}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em s} & the string to escape \\
+\hline
+\mbox{\tt in}  & {\em ensure\+\_\+ascii} & whether to escape non-\/\+A\+S\+C\+II characters with  sequences\\
+\hline
+\end{DoxyParams}
+Linear in the length of string {\itshape s}. 
+
+Definition at line 8501 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::type\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY, and J\+S\+O\+N\+\_\+\+T\+H\+R\+OW.
+
+
+\begin{DoxyCode}
+8502     \{
+8503         uint32\_t codepoint;
+8504         uint8\_t state = \hyperlink{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}{UTF8\_ACCEPT};
+8505         std::size\_t bytes = 0;  \textcolor{comment}{// number of bytes written to string\_buffer}
+8506 
+8507         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < s.size(); ++i)
+8508         \{
+8509             \textcolor{keyword}{const} \textcolor{keyword}{auto} byte = \textcolor{keyword}{static\_cast<}uint8\_t\textcolor{keyword}{>}(s[i]);
+8510 
+8511             \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a1cc5cb2f6993cefedad087a6cef0e8fb}{decode}(state, codepoint, byte))
+8512             \{
+8513                 \textcolor{keywordflow}{case} \hyperlink{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}{UTF8\_ACCEPT}:  \textcolor{comment}{// decode found a new code point}
+8514                 \{
+8515                     \textcolor{keywordflow}{switch} (codepoint)
+8516                     \{
+8517                         \textcolor{keywordflow}{case} 0x08: \textcolor{comment}{// backspace}
+8518                         \{
+8519                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8520                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'b'};
+8521                             \textcolor{keywordflow}{break};
+8522                         \}
+8523 
+8524                         \textcolor{keywordflow}{case} 0x09: \textcolor{comment}{// horizontal tab}
+8525                         \{
+8526                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8527                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'t'};
+8528                             \textcolor{keywordflow}{break};
+8529                         \}
+8530 
+8531                         \textcolor{keywordflow}{case} 0x0A: \textcolor{comment}{// newline}
+8532                         \{
+8533                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8534                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'n'};
+8535                             \textcolor{keywordflow}{break};
+8536                         \}
+8537 
+8538                         \textcolor{keywordflow}{case} 0x0C: \textcolor{comment}{// formfeed}
+8539                         \{
+8540                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8541                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'f'};
+8542                             \textcolor{keywordflow}{break};
+8543                         \}
+8544 
+8545                         \textcolor{keywordflow}{case} 0x0D: \textcolor{comment}{// carriage return}
+8546                         \{
+8547                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8548                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'r'};
+8549                             \textcolor{keywordflow}{break};
+8550                         \}
+8551 
+8552                         \textcolor{keywordflow}{case} 0x22: \textcolor{comment}{// quotation mark}
+8553                         \{
+8554                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8555                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)"'};
+8556                             \textcolor{keywordflow}{break};
+8557                         \}
+8558 
+8559                         \textcolor{keywordflow}{case} 0x5C: \textcolor{comment}{// reverse solidus}
+8560                         \{
+8561                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8562                             \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = \textcolor{charliteral}{'\(\backslash\)\(\backslash\)'};
+8563                             \textcolor{keywordflow}{break};
+8564                         \}
+8565 
+8566                         \textcolor{keywordflow}{default}:
+8567                         \{
+8568                             \textcolor{comment}{// escape control characters (0x00..0x1F) or, if}
+8569                             \textcolor{comment}{// ensure\_ascii parameter is used, non-ASCII characters}
+8570                             \textcolor{keywordflow}{if} ((codepoint <= 0x1F) or (ensure\_ascii and (codepoint >= 0x7F)))
+8571                             \{
+8572                                 \textcolor{keywordflow}{if} (codepoint <= 0xFFFF)
+8573                                 \{
+8574                                     std::snprintf(\hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}.data() + bytes, 7, \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)u%04x"},
+8575                                                   \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(codepoint));
+8576                                     bytes += 6;
+8577                                 \}
+8578                                 \textcolor{keywordflow}{else}
+8579                                 \{
+8580                                     std::snprintf(\hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}.data() + bytes, 13, \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)u%04x\(\backslash\)\(\backslash\)
+      u%04x"},
+8581                                                   \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(0xD7C0 + (codepoint >> 10)),
+8582                                                   \textcolor{keyword}{static\_cast<}uint16\_t\textcolor{keyword}{>}(0xDC00 + (codepoint & 0x3FF)));
+8583                                     bytes += 12;
+8584                                 \}
+8585                             \}
+8586                             \textcolor{keywordflow}{else}
+8587                             \{
+8588                                 \textcolor{comment}{// copy byte to buffer (all previous bytes}
+8589                                 \textcolor{comment}{// been copied have in default case above)}
+8590                                 \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = s[i];
+8591                             \}
+8592                             \textcolor{keywordflow}{break};
+8593                         \}
+8594                     \}
+8595 
+8596                     \textcolor{comment}{// write buffer and reset index; there must be 13 bytes}
+8597                     \textcolor{comment}{// left, as this is the maximal number of bytes to be}
+8598                     \textcolor{comment}{// written ("\(\backslash\)uxxxx\(\backslash\)uxxxx\(\backslash\)0") for one code point}
+8599                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}.size() - bytes < 13)
+8600                     \{
+8601                         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}.data(), bytes);
+8602                         bytes = 0;
+8603                     \}
+8604                     \textcolor{keywordflow}{break};
+8605                 \}
+8606 
+8607                 \textcolor{keywordflow}{case} \hyperlink{classnlohmann_1_1detail_1_1serializer_a6bcc08c64319454fb9d72c3f438efee1}{UTF8\_REJECT}:  \textcolor{comment}{// decode found invalid UTF-8 byte}
+8608                 \{
+8609                     std::stringstream ss;
+8610                     ss << std::setw(2) << std::uppercase << std::setfill('0') << std::hex <<
+       static\_cast<int>(byte);
+8611                     \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1type__error_aecc083aea4b698c33d042670ba50c10f}{type\_error::create}(316, \textcolor{stringliteral}{"invalid UTF-8 byte at
+       index "} + std::to\_string(i) + \textcolor{stringliteral}{": 0x"} + ss.str()));
+8612                 \}
+8613 
+8614                 \textcolor{keywordflow}{default}:  \textcolor{comment}{// decode found yet incomplete multi-byte code point}
+8615                 \{
+8616                     \textcolor{keywordflow}{if} (not ensure\_ascii)
+8617                     \{
+8618                         \textcolor{comment}{// code point will not be escaped - copy byte to buffer}
+8619                         \hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}[bytes++] = s[i];
+8620                     \}
+8621                     \textcolor{keywordflow}{break};
+8622                 \}
+8623             \}
+8624         \}
+8625 
+8626         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}{JSON\_LIKELY}(state == \hyperlink{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}{UTF8\_ACCEPT}))
+8627         \{
+8628             \textcolor{comment}{// write buffer}
+8629             \textcolor{keywordflow}{if} (bytes > 0)
+8630             \{
+8631                 \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}{string\_buffer}.data(), bytes);
+8632             \}
+8633         \}
+8634         \textcolor{keywordflow}{else}
+8635         \{
+8636             \textcolor{comment}{// we finish reading, but do not accept: string was incomplete}
+8637             std::stringstream ss;
+8638             ss << std::setw(2) << std::uppercase << std::setfill('0') << std::hex << static\_cast<int>(\textcolor{keyword}{
+      static\_cast<}uint8\_t\textcolor{keyword}{>}(s.back()));
+8639             \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1type__error_aecc083aea4b698c33d042670ba50c10f}{type\_error::create}(316, \textcolor{stringliteral}{"incomplete UTF-8 string; last
+       byte: 0x"} + ss.str()));
+8640         \}
+8641     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a6d652a3bfa581cf1cd7790d6d11ea52f}\label{classnlohmann_1_1detail_1_1serializer_a6d652a3bfa581cf1cd7790d6d11ea52f}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump\+\_\+float@{dump\+\_\+float}}
+\index{dump\+\_\+float@{dump\+\_\+float}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump\+\_\+float()}{dump\_float()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump\+\_\+float (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t}}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+dump a floating-\/point number 
+
+Dump a given floating-\/point number to output stream {\itshape o}. Works internally with {\itshape number\+\_\+buffer}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & floating-\/point number to dump \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 8697 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8698     \{
+8699         \textcolor{comment}{// NaN / inf}
+8700         \textcolor{keywordflow}{if} (not std::isfinite(x))
+8701         \{
+8702             \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{"null"}, 4);
+8703             \textcolor{keywordflow}{return};
+8704         \}
+8705 
+8706         \textcolor{comment}{// If number\_float\_t is an IEEE-754 single or double precision number,}
+8707         \textcolor{comment}{// use the Grisu2 algorithm to produce short numbers which are}
+8708         \textcolor{comment}{// guaranteed to round-trip, using strtof and strtod, resp.}
+8709         \textcolor{comment}{//}
+8710         \textcolor{comment}{// NB: The test below works if <long double> == <double>.}
+8711         \textcolor{keyword}{static} constexpr \textcolor{keywordtype}{bool} is\_ieee\_single\_or\_double
+8712             = (std::numeric\_limits<number\_float\_t>::is\_iec559 and 
+      std::numeric\_limits<number\_float\_t>::digits == 24 and std::numeric\_limits<number\_float\_t>::max\_exponent == 128) or
+8713               (std::numeric\_limits<number\_float\_t>::is\_iec559 and 
+      std::numeric\_limits<number\_float\_t>::digits == 53 and std::numeric\_limits<number\_float\_t>::max\_exponent == 1024);
+8714 
+8715         \hyperlink{classnlohmann_1_1detail_1_1serializer_a6d652a3bfa581cf1cd7790d6d11ea52f}{dump\_float}(x, std::integral\_constant<bool, is\_ieee\_single\_or\_double>());
+8716     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a24b0fe45dc774441237bde198a133d8a}\label{classnlohmann_1_1detail_1_1serializer_a24b0fe45dc774441237bde198a133d8a}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump\+\_\+float@{dump\+\_\+float}}
+\index{dump\+\_\+float@{dump\+\_\+float}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump\+\_\+float()}{dump\_float()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump\+\_\+float (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t}}]{x,  }\item[{std\+::true\+\_\+type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 8718 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::to\+\_\+chars().
+
+
+\begin{DoxyCode}
+8719     \{
+8720         \textcolor{keywordtype}{char}* begin = \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.data();
+8721         \textcolor{keywordtype}{char}* end = \hyperlink{namespacenlohmann_1_1detail_a6192f1eab05fbbc5c35edb8368c8fc57}{::nlohmann::detail::to\_chars}(begin, begin + 
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.size(), x);
+8722 
+8723         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(begin, static\_cast<size\_t>(end - begin));
+8724     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a331dad892fc00313f928fdaa6bc8f849}\label{classnlohmann_1_1detail_1_1serializer_a331dad892fc00313f928fdaa6bc8f849}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump\+\_\+float@{dump\+\_\+float}}
+\index{dump\+\_\+float@{dump\+\_\+float}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump\+\_\+float()}{dump\_float()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump\+\_\+float (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1detail_1_1serializer_a460c6794fbabbb2ae83380e987a6c030}{number\+\_\+float\+\_\+t}}]{x,  }\item[{std\+::false\+\_\+type}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 8726 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8727     \{
+8728         \textcolor{comment}{// get number of digits for a float -> text -> float round-trip}
+8729         \textcolor{keyword}{static} constexpr \textcolor{keyword}{auto} d = std::numeric\_limits<number\_float\_t>::max\_digits10;
+8730 
+8731         \textcolor{comment}{// the actual conversion}
+8732         std::ptrdiff\_t len = snprintf(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.data(), 
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.size(), \textcolor{stringliteral}{"%.*g"}, d, x);
+8733 
+8734         \textcolor{comment}{// negative value indicates an error}
+8735         assert(len > 0);
+8736         \textcolor{comment}{// check if buffer was large enough}
+8737         assert(static\_cast<std::size\_t>(len) < \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.size());
+8738 
+8739         \textcolor{comment}{// erase thousands separator}
+8740         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}{thousands\_sep} != \textcolor{charliteral}{'\(\backslash\)0'})
+8741         \{
+8742             \textcolor{keyword}{const} \textcolor{keyword}{auto} end = std::remove(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin(),
+8743                                          \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin() + len, 
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}{thousands\_sep});
+8744             std::fill(end, \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.end(), \textcolor{charliteral}{'\(\backslash\)0'});
+8745             assert((end - \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin()) <= len);
+8746             len = (end - \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin());
+8747         \}
+8748 
+8749         \textcolor{comment}{// convert decimal point to '.'}
+8750         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}{decimal\_point} != \textcolor{charliteral}{'\(\backslash\)0'} and \hyperlink{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}{decimal\_point} != \textcolor{charliteral}{'.'})
+8751         \{
+8752             \textcolor{keyword}{const} \textcolor{keyword}{auto} dec\_pos = std::find(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin(), 
+      \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.end(), \hyperlink{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}{decimal\_point});
+8753             \textcolor{keywordflow}{if} (dec\_pos != \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.end())
+8754             \{
+8755                 *dec\_pos = \textcolor{charliteral}{'.'};
+8756             \}
+8757         \}
+8758 
+8759         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.data(), \textcolor{keyword}{static\_cast<}std::size\_t\textcolor{keyword}{>}(len));
+8760 
+8761         \textcolor{comment}{// determine if need to append ".0"}
+8762         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} value\_is\_int\_like =
+8763             std::none\_of(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin(), \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin() + len + 1,
+8764                          [](\textcolor{keywordtype}{char} c)
+8765         \{
+8766             \textcolor{keywordflow}{return} (c == \textcolor{charliteral}{'.'} or c == \textcolor{charliteral}{'e'});
+8767         \});
+8768 
+8769         \textcolor{keywordflow}{if} (value\_is\_int\_like)
+8770         \{
+8771             \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\textcolor{stringliteral}{".0"}, 2);
+8772         \}
+8773     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a944f6dea8dbe2961da145d2f62fa2c2f}\label{classnlohmann_1_1detail_1_1serializer_a944f6dea8dbe2961da145d2f62fa2c2f}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!dump\+\_\+integer@{dump\+\_\+integer}}
+\index{dump\+\_\+integer@{dump\+\_\+integer}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{dump\+\_\+integer()}{dump\_integer()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+template$<$typename Number\+Type , detail\+::enable\+\_\+if\+\_\+t$<$ std\+::is\+\_\+same$<$ Number\+Type, number\+\_\+unsigned\+\_\+t $>$\+::value or std\+::is\+\_\+same$<$ Number\+Type, number\+\_\+integer\+\_\+t $>$\+::value, int $>$  = 0$>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::dump\+\_\+integer (\begin{DoxyParamCaption}\item[{Number\+Type}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+dump an integer 
+
+Dump a given integer to output stream {\itshape o}. Works internally with {\itshape number\+\_\+buffer}.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em x} & integer number (signed or unsigned) to dump \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Number\+Type} & either {\itshape number\+\_\+integer\+\_\+t} or {\itshape number\+\_\+unsigned\+\_\+t} \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 8656 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+8657     \{
+8658         \textcolor{comment}{// special case for "0"}
+8659         \textcolor{keywordflow}{if} (x == 0)
+8660         \{
+8661             \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_character(\textcolor{charliteral}{'0'});
+8662             \textcolor{keywordflow}{return};
+8663         \}
+8664 
+8665         \textcolor{keyword}{const} \textcolor{keywordtype}{bool} is\_negative = (x <= 0) and (x != 0);  \textcolor{comment}{// see issue #755}
+8666         std::size\_t i = 0;
+8667 
+8668         \textcolor{keywordflow}{while} (x != 0)
+8669         \{
+8670             \textcolor{comment}{// spare 1 byte for '\(\backslash\)0'}
+8671             assert(i < \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.size() - 1);
+8672 
+8673             \textcolor{keyword}{const} \textcolor{keyword}{auto} digit = std::labs(static\_cast<long>(x % 10));
+8674             \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}[i++] = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(\textcolor{charliteral}{'0'} + digit);
+8675             x /= 10;
+8676         \}
+8677 
+8678         \textcolor{keywordflow}{if} (is\_negative)
+8679         \{
+8680             \textcolor{comment}{// make sure there is capacity for the '-'}
+8681             assert(i < \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.size() - 2);
+8682             \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}[i++] = \textcolor{charliteral}{'-'};
+8683         \}
+8684 
+8685         std::reverse(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin(), \hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.begin() + i);
+8686         \hyperlink{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}{o}->write\_characters(\hyperlink{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}{number\_buffer}.data(), i);
+8687     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a5f14c33012477b9f9876dc54d97009a0}\label{classnlohmann_1_1detail_1_1serializer_a5f14c33012477b9f9876dc54d97009a0}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!operator=@{operator=}}
+\index{operator=@{operator=}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer}\& \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classnlohmann_1_1detail_1_1serializer}{serializer}$<$ Basic\+Json\+Type $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}\label{classnlohmann_1_1detail_1_1serializer_a311e5d6f4b31d5be0eb3c0cb20b6965a}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!decimal\+\_\+point@{decimal\+\_\+point}}
+\index{decimal\+\_\+point@{decimal\+\_\+point}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{decimal\+\_\+point}{decimal\_point}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::decimal\+\_\+point = \textquotesingle{}\textbackslash{}0\textquotesingle{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the locale\textquotesingle{}s decimal point character 
+
+
+
+Definition at line 8840 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a9a55e6b028d09676fe35aefa0c72ea5b}\label{classnlohmann_1_1detail_1_1serializer_a9a55e6b028d09676fe35aefa0c72ea5b}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!indent\+\_\+char@{indent\+\_\+char}}
+\index{indent\+\_\+char@{indent\+\_\+char}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{indent\+\_\+char}{indent\_char}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::indent\+\_\+char\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the indentation character 
+
+
+
+Definition at line 8846 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}\label{classnlohmann_1_1detail_1_1serializer_ae9268a10d88a5526e32735a55a132fc6}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!indent\+\_\+string@{indent\+\_\+string}}
+\index{indent\+\_\+string@{indent\+\_\+string}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{indent\+\_\+string}{indent\_string}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1serializer_ad08aa54fac1dd0a453320c54137d45ba}{string\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::indent\+\_\+string\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the indentation string 
+
+
+
+Definition at line 8848 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}\label{classnlohmann_1_1detail_1_1serializer_a1952945b7652afb59d3903cc8457a589}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!loc@{loc}}
+\index{loc@{loc}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{loc}{loc}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const std\+::lconv$\ast$ \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::loc = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the locale 
+
+
+
+Definition at line 8836 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}\label{classnlohmann_1_1detail_1_1serializer_a1a9d8b344a6cb47728a3519693ec03d1}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!number\+\_\+buffer@{number\+\_\+buffer}}
+\index{number\+\_\+buffer@{number\+\_\+buffer}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{number\+\_\+buffer}{number\_buffer}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{std\+::array}$<$char, 64$>$ \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::number\+\_\+buffer \{\{\}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+a (hopefully) large enough character buffer 
+
+
+
+Definition at line 8833 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}\label{classnlohmann_1_1detail_1_1serializer_acf3c88660d3cbc65fc71c4d84f2a9f59}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!o@{o}}
+\index{o@{o}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{o}{o}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$char$>$ \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::o = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the output of the serializer 
+
+
+
+Definition at line 8830 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}\label{classnlohmann_1_1detail_1_1serializer_a9c9b7ca63a66e59e5e7ffe8a2acf5c8f}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!string\+\_\+buffer@{string\+\_\+buffer}}
+\index{string\+\_\+buffer@{string\+\_\+buffer}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{string\+\_\+buffer}{string\_buffer}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{std\+::array}$<$char, 512$>$ \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::string\+\_\+buffer \{\{\}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+string buffer 
+
+
+
+Definition at line 8843 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}\label{classnlohmann_1_1detail_1_1serializer_a78a6ae833bb6cf7f00cb0d51db114b14}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!thousands\+\_\+sep@{thousands\+\_\+sep}}
+\index{thousands\+\_\+sep@{thousands\+\_\+sep}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{thousands\+\_\+sep}{thousands\_sep}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const char \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::thousands\+\_\+sep = \textquotesingle{}\textbackslash{}0\textquotesingle{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the locale\textquotesingle{}s thousand separator character 
+
+
+
+Definition at line 8838 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}\label{classnlohmann_1_1detail_1_1serializer_a52898111c3bbd130b2481dbef93c7292}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT@{U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT}}
+\index{U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT@{U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT}{UTF8\_ACCEPT}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+constexpr uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::U\+T\+F8\+\_\+\+A\+C\+C\+E\+PT = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 8258 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1serializer_a6bcc08c64319454fb9d72c3f438efee1}\label{classnlohmann_1_1detail_1_1serializer_a6bcc08c64319454fb9d72c3f438efee1}} 
+\index{nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}!U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT@{U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT}}
+\index{U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT@{U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT}!nlohmann\+::detail\+::serializer@{nlohmann\+::detail\+::serializer}}
+\subsubsection{\texorpdfstring{U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT}{UTF8\_REJECT}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+constexpr uint8\+\_\+t \hyperlink{classnlohmann_1_1detail_1_1serializer}{nlohmann\+::detail\+::serializer}$<$ Basic\+Json\+Type $>$\+::U\+T\+F8\+\_\+\+R\+E\+J\+E\+CT = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line 8259 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

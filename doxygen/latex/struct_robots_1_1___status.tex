@@ -1,0 +1,85 @@
+\hypertarget{struct_robots_1_1___status}{}\section{Robots\+:\+:\+\_\+\+Status Struct Reference}
+\label{struct_robots_1_1___status}\index{Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}}
+
+
+A structure to communicate \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s Status.  
+
+
+
+
+{\ttfamily \#include $<$robots.\+hpp$>$}
+
+
+
+Collaboration diagram for Robots\+:\+:\+\_\+\+Status\+:
+% FIG 0
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+cv\+::\+Point \hyperlink{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}{position} = cv\+::\+Point(-\/1, -\/1)
+\item 
+double \hyperlink{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}{orientation} = 0
+\item 
+float \hyperlink{struct_robots_1_1___status_a2d97c7aa10c75f32c10d25d0683450a3}{vmax} = 0
+\begin{DoxyCompactList}\small\item\em \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s maximum velocity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A structure to communicate \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s Status. 
+
+Definition at line 39 of file robots.\+hpp.
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}\label{struct_robots_1_1___status_ae7a5a28b09e25cf94607fc00b57f7c7e}} 
+\index{Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}!orientation@{orientation}}
+\index{orientation@{orientation}!Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}}
+\subsubsection{\texorpdfstring{orientation}{orientation}}
+{\footnotesize\ttfamily double Robots\+::\+\_\+\+Status\+::orientation = 0}
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s orientation. 0 (or -\/0) tells us the robot is facing the opponent goal directly. 180 (or -\/180) tells us the robot is facing our goal directly. -\/90 tells us the robot is facing the upper side (smaller values of Y) of the field. 90 tells us the robot is facing the down side (higher values of Y) of the field. 
+
+Definition at line 55 of file robots.\+hpp.
+
+
+
+Referenced by Vision\+::in\+Sphere(), Flying\+Messenger\+::orientation\+\_\+msg(), Vision\+::pick\+\_\+a\+\_\+tag(), Flying\+Messenger\+::position\+\_\+msg(), and Flying\+Messenger\+::vector\+\_\+msg().
+
+\mbox{\Hypertarget{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}\label{struct_robots_1_1___status_a9ae95d6ec38055984ee4eaac82138373}} 
+\index{Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}!position@{position}}
+\index{position@{position}!Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}}
+\subsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily cv\+::\+Point Robots\+::\+\_\+\+Status\+::position = cv\+::\+Point(-\/1, -\/1)}
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s position. (-\/1, -\/1) means that it has not been set yet. The robot\textquotesingle{}s last position is maintained if we can\textquotesingle{}t determine it in the actual frame. Remember\+: Y grows down, not up. X behaves normally. 
+
+Definition at line 46 of file robots.\+hpp.
+
+
+
+Referenced by Vision\+::in\+Sphere(), Vision\+::pick\+\_\+a\+\_\+tag(), and Flying\+Messenger\+::position\+\_\+msg().
+
+\mbox{\Hypertarget{struct_robots_1_1___status_a2d97c7aa10c75f32c10d25d0683450a3}\label{struct_robots_1_1___status_a2d97c7aa10c75f32c10d25d0683450a3}} 
+\index{Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}!vmax@{vmax}}
+\index{vmax@{vmax}!Robots\+::\+\_\+\+Status@{Robots\+::\+\_\+\+Status}}
+\subsubsection{\texorpdfstring{vmax}{vmax}}
+{\footnotesize\ttfamily float Robots\+::\+\_\+\+Status\+::vmax = 0}
+
+
+
+\hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s maximum velocity. 
+
+
+
+Definition at line 58 of file robots.\+hpp.
+
+
+
+Referenced by Flying\+Messenger\+::orientation\+\_\+msg(), Flying\+Messenger\+::position\+\_\+msg(), and Flying\+Messenger\+::vector\+\_\+msg().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\hyperlink{robots_8hpp}{robots.\+hpp}\end{DoxyCompactItemize}

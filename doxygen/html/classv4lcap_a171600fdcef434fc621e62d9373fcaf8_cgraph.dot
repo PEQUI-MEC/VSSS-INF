@@ -1,0 +1,12 @@
+digraph "v4lcap::streamon"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node466 [label="v4lcap::streamon",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node466 -> Node467 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node467 [label="v4lcap::streamon",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#abb1f77b86c0368cd40dab1fb8d4a2565",tooltip="Query stream to initiate. "];
+  Node467 -> Node468 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node468 [label="v4lcap::xioctl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#ab5aaa5a8c0df17f5ca57e0b5170232cb"];
+}

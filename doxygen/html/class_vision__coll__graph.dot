@@ -1,0 +1,30 @@
+digraph "Vision"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Vision",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" ball" ,fontname="Helvetica"];
+  Node2 [label="Point",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" video" ,fontname="Helvetica"];
+  Node3 [label="VideoWriter",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" advRobots" ,fontname="Helvetica"];
+  Node4 [label="std::vector\< cv::Point \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Helvetica"];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" threshold_threads" ,fontname="Helvetica"];
+  Node5 [label="thread_group",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" splitFrame\nin_frame\nhsv_frame" ,fontname="Helvetica"];
+  Node6 [label="Mat",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node7 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" width\nhue\nMAX_ADV\nheight\nblur\nsaturation\nTOTAL_COLORS\nMAIN\nvalue\nareaMin\n..." ,fontname="Helvetica"];
+  Node7 [label="int",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node8 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" bOnAir" ,fontname="Helvetica"];
+  Node8 [label="bool",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node9 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" tags" ,fontname="Helvetica"];
+  Node9 [label="std::vector\< std::vector\l\< Tag \> \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node10 -> Node9 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Helvetica"];
+  Node10 [label="vector\< Tag \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" threshold_frame" ,fontname="Helvetica"];
+  Node11 [label="std::vector\< cv::Mat \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node11 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" elements" ,fontname="Helvetica"];
+}

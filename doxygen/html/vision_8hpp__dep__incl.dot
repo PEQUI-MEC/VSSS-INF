@@ -1,0 +1,31 @@
+digraph "src/vision/vision.hpp"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node14 [label="src/vision/vision.hpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="src/gui/visionGUI.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$vision_g_u_i_8hpp.html"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="src/gui/v4linterface.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$v4linterface_8hpp.html"];
+  Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="src/aux/jsonSaveManager.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$json_save_manager_8h.html"];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="src/aux/jsonSaveManager.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$json_save_manager_8cpp.html"];
+  Node17 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="src/gui/v4linterfaceEvents.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$v4linterface_events_8cpp.html"];
+  Node16 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="src/camcap.hpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$camcap_8hpp.html"];
+  Node20 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="src/camcap.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$camcap_8cpp.html"];
+  Node20 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="src/main.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8cpp.html"];
+  Node16 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="src/gui/v4linterface.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$v4linterface_8cpp.html"];
+  Node16 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node24 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="src/gui/visionGUI.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$vision_g_u_i_8cpp.html"];
+  Node14 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 -> Node25 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node25 [label="src/vision/vision.cpp",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$vision_8cpp.html"];
+}

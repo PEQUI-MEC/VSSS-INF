@@ -1,0 +1,201 @@
+\hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter}{}\section{nlohmann\+:\+:detail\+:\+:input\+\_\+buffer\+\_\+adapter Class Reference}
+\label{classnlohmann_1_1detail_1_1input__buffer__adapter}\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+
+
+input adapter for buffer input  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Inheritance diagram for nlohmann\+:\+:detail\+:\+:input\+\_\+buffer\+\_\+adapter\+:
+% FIG 0
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:input\+\_\+buffer\+\_\+adapter\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_aee9d094d369bcd8f110eae4a175a8fa9}{input\+\_\+buffer\+\_\+adapter} (const char $\ast$b, const std\+::size\+\_\+t l)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_ada76d7b75c5d6b989af0e18687ef07b6}{input\+\_\+buffer\+\_\+adapter} (const \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter} \&)=delete
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter} \& \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a0871125057d993684ba8e45fb2b8a76b}{operator=} (\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter} \&)=delete
+\item 
+std\+::char\+\_\+traits$<$ char $>$\+::int\+\_\+type \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_ae9e195b04f3551fafb0925aafba00124}{get\+\_\+character} () noexcept override
+\begin{DoxyCompactList}\small\item\em get a character \mbox{[}0,255\mbox{]} or std\+::char\+\_\+traits$<$char$>$\+::eof(). \end{DoxyCompactList}\item 
+void \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_ae2464d8e963d2ae617b080f2df2550a1}{unget\+\_\+character} () noexcept override
+\begin{DoxyCompactList}\small\item\em restore the last non-\/eof() character to input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor}
+\begin{DoxyCompactList}\small\item\em pointer to the current character \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a14e1f701754e9cc819af0fc883e6e139}{limit}
+\begin{DoxyCompactList}\small\item\em pointer past the last character \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a028e9bb232143d8a2b6b204fa28c3493}{start}
+\begin{DoxyCompactList}\small\item\em pointer to the first character \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+input adapter for buffer input 
+
+Definition at line 1697 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_aee9d094d369bcd8f110eae4a175a8fa9}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_aee9d094d369bcd8f110eae4a175a8fa9}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!input\+\_\+buffer\+\_\+adapter@{input\+\_\+buffer\+\_\+adapter}}
+\index{input\+\_\+buffer\+\_\+adapter@{input\+\_\+buffer\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+buffer\+\_\+adapter()}{input\_buffer\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::input\+\_\+buffer\+\_\+adapter (\begin{DoxyParamCaption}\item[{const char $\ast$}]{b,  }\item[{const std\+::size\+\_\+t}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1700 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1701         : \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor}(b), \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a14e1f701754e9cc819af0fc883e6e139}{limit}(b + l), \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a028e9bb232143d8a2b6b204fa28c3493}{start}(b)
+1702     \{
+1703         \textcolor{comment}{// skip byte order mark}
+1704         \textcolor{keywordflow}{if} (l >= 3 and b[0] == \textcolor{stringliteral}{'\(\backslash\)xEF'} and b[1] == \textcolor{stringliteral}{'\(\backslash\)xBB'} and b[2] == \textcolor{stringliteral}{'\(\backslash\)xBF'})
+1705         \{
+1706             \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor} += 3;
+1707         \}
+1708     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_ada76d7b75c5d6b989af0e18687ef07b6}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_ada76d7b75c5d6b989af0e18687ef07b6}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!input\+\_\+buffer\+\_\+adapter@{input\+\_\+buffer\+\_\+adapter}}
+\index{input\+\_\+buffer\+\_\+adapter@{input\+\_\+buffer\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+buffer\+\_\+adapter()}{input\_buffer\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::input\+\_\+buffer\+\_\+adapter (\begin{DoxyParamCaption}\item[{const \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_ae9e195b04f3551fafb0925aafba00124}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_ae9e195b04f3551fafb0925aafba00124}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!get\+\_\+character@{get\+\_\+character}}
+\index{get\+\_\+character@{get\+\_\+character}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{get\+\_\+character()}{get\_character()}}
+{\footnotesize\ttfamily std\+::char\+\_\+traits$<$char$>$\+::int\+\_\+type nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::get\+\_\+character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+get a character \mbox{[}0,255\mbox{]} or std\+::char\+\_\+traits$<$char$>$\+::eof(). 
+
+
+
+Implements \hyperlink{structnlohmann_1_1detail_1_1input__adapter__protocol_aac10a6a4048a8ce8e2ed50277692a3ca}{nlohmann\+::detail\+::input\+\_\+adapter\+\_\+protocol}.
+
+
+
+Definition at line 1714 of file json.\+hpp.
+
+
+
+References J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+1715     \{
+1716         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}{JSON\_LIKELY}(\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor} < \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a14e1f701754e9cc819af0fc883e6e139}{limit}))
+1717         \{
+1718             \textcolor{keywordflow}{return} std::char\_traits<char>::to\_int\_type(*(\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor}++));
+1719         \}
+1720 
+1721         \textcolor{keywordflow}{return} std::char\_traits<char>::eof();
+1722     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_a0871125057d993684ba8e45fb2b8a76b}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_a0871125057d993684ba8e45fb2b8a76b}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!operator=@{operator=}}
+\index{operator=@{operator=}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter}\& nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter}{input\+\_\+buffer\+\_\+adapter} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_ae2464d8e963d2ae617b080f2df2550a1}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_ae2464d8e963d2ae617b080f2df2550a1}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!unget\+\_\+character@{unget\+\_\+character}}
+\index{unget\+\_\+character@{unget\+\_\+character}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{unget\+\_\+character()}{unget\_character()}}
+{\footnotesize\ttfamily void nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::unget\+\_\+character (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [noexcept]}}
+
+
+
+restore the last non-\/eof() character to input 
+
+
+
+Implements \hyperlink{structnlohmann_1_1detail_1_1input__adapter__protocol_aeb5cac3e86e8df6cfe48cc42de2e9225}{nlohmann\+::detail\+::input\+\_\+adapter\+\_\+protocol}.
+
+
+
+Definition at line 1724 of file json.\+hpp.
+
+
+
+References J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+1725     \{
+1726         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}{JSON\_LIKELY}(\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor} > \hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a028e9bb232143d8a2b6b204fa28c3493}{start}))
+1727         \{
+1728             --\hyperlink{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}{cursor};
+1729         \}
+1730     \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_a49e6c8b6555af489a45ef51737eafa1c}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!cursor@{cursor}}
+\index{cursor@{cursor}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{cursor}{cursor}}
+{\footnotesize\ttfamily const char$\ast$ nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::cursor\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+pointer to the current character 
+
+
+
+Definition at line 1734 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_a14e1f701754e9cc819af0fc883e6e139}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_a14e1f701754e9cc819af0fc883e6e139}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!limit@{limit}}
+\index{limit@{limit}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{limit}{limit}}
+{\footnotesize\ttfamily const char$\ast$ nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::limit\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+pointer past the last character 
+
+
+
+Definition at line 1736 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__buffer__adapter_a028e9bb232143d8a2b6b204fa28c3493}\label{classnlohmann_1_1detail_1_1input__buffer__adapter_a028e9bb232143d8a2b6b204fa28c3493}} 
+\index{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}!start@{start}}
+\index{start@{start}!nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily const char$\ast$ nlohmann\+::detail\+::input\+\_\+buffer\+\_\+adapter\+::start\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+pointer to the first character 
+
+
+
+Definition at line 1738 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

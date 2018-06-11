@@ -1,0 +1,24 @@
+digraph "Graphical Class Hierarchy"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node117 [label="ColumnRecord",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node117 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_fmtdesc \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node119 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node119 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_frmivalenum \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node120 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node120 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_frmsizeenum \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node121 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node121 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_input \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node122 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node122 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_querymenu \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node123 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node123 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< struct\l v4l2_standard \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+  Node117 -> Node124 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node124 [label="StrategyGUI::ModelColumns",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy_g_u_i_1_1_model_columns.html"];
+  Node117 -> Node125 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node125 [label="VSSS_GUI::V4LInterface\l::ModelColumn\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface_1_1_model_column.html"];
+}

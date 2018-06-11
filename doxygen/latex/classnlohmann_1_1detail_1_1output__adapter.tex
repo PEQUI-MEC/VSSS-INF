@@ -1,0 +1,123 @@
+\hypertarget{classnlohmann_1_1detail_1_1output__adapter}{}\section{nlohmann\+:\+:detail\+:\+:output\+\_\+adapter$<$ Char\+Type $>$ Class Template Reference}
+\label{classnlohmann_1_1detail_1_1output__adapter}\index{nlohmann\+::detail\+::output\+\_\+adapter$<$ Char\+Type $>$@{nlohmann\+::detail\+::output\+\_\+adapter$<$ Char\+Type $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:output\+\_\+adapter$<$ Char\+Type $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter_a117bda35bc3de85fd2f5f2153d9705b4}{output\+\_\+adapter} (std\+::vector$<$ Char\+Type $>$ \&vec)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter_ac086bc101f246eb815e46f17a9e68a4a}{output\+\_\+adapter} (std\+::basic\+\_\+ostream$<$ Char\+Type $>$ \&s)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter_a07f996a817ffb420022cea56425f7d5c}{output\+\_\+adapter} (std\+::basic\+\_\+string$<$ Char\+Type $>$ \&s)
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter_adee7a0e124f483d9945b8b85c73d7957}{operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$ Char\+Type $>$ \hyperlink{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}{oa} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Char\+Type$>$\newline
+class nlohmann\+::detail\+::output\+\_\+adapter$<$ Char\+Type $>$}
+
+
+
+Definition at line 4800 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1output__adapter_a117bda35bc3de85fd2f5f2153d9705b4}\label{classnlohmann_1_1detail_1_1output__adapter_a117bda35bc3de85fd2f5f2153d9705b4}} 
+\index{nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}!output\+\_\+adapter@{output\+\_\+adapter}}
+\index{output\+\_\+adapter@{output\+\_\+adapter}!nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}}
+\subsubsection{\texorpdfstring{output\+\_\+adapter()}{output\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename Char\+Type$>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter}$<$ Char\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{output\+\_\+adapter} (\begin{DoxyParamCaption}\item[{std\+::vector$<$ Char\+Type $>$ \&}]{vec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4803 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4804         : \hyperlink{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}{oa}(std::make\_shared<output\_vector\_adapter<CharType>>(vec)) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1output__adapter_ac086bc101f246eb815e46f17a9e68a4a}\label{classnlohmann_1_1detail_1_1output__adapter_ac086bc101f246eb815e46f17a9e68a4a}} 
+\index{nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}!output\+\_\+adapter@{output\+\_\+adapter}}
+\index{output\+\_\+adapter@{output\+\_\+adapter}!nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}}
+\subsubsection{\texorpdfstring{output\+\_\+adapter()}{output\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename Char\+Type$>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter}$<$ Char\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{output\+\_\+adapter} (\begin{DoxyParamCaption}\item[{std\+::basic\+\_\+ostream$<$ Char\+Type $>$ \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4806 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4807         : \hyperlink{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}{oa}(std::make\_shared<output\_stream\_adapter<CharType>>(s)) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1output__adapter_a07f996a817ffb420022cea56425f7d5c}\label{classnlohmann_1_1detail_1_1output__adapter_a07f996a817ffb420022cea56425f7d5c}} 
+\index{nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}!output\+\_\+adapter@{output\+\_\+adapter}}
+\index{output\+\_\+adapter@{output\+\_\+adapter}!nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}}
+\subsubsection{\texorpdfstring{output\+\_\+adapter()}{output\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename Char\+Type$>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter}$<$ Char\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{output\+\_\+adapter} (\begin{DoxyParamCaption}\item[{std\+::basic\+\_\+string$<$ Char\+Type $>$ \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4809 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4810         : \hyperlink{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}{oa}(std::make\_shared<output\_string\_adapter<CharType>>(s)) \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1output__adapter_adee7a0e124f483d9945b8b85c73d7957}\label{classnlohmann_1_1detail_1_1output__adapter_adee7a0e124f483d9945b8b85c73d7957}} 
+\index{nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}!operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$@{operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$}}
+\index{operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$@{operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$}!nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}}
+\subsubsection{\texorpdfstring{operator output\+\_\+adapter\+\_\+t$<$ Char\+Type $>$()}{operator output\_adapter\_t< CharType >()}}
+{\footnotesize\ttfamily template$<$typename Char\+Type$>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter}$<$ Char\+Type $>$\+::operator \hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$ Char\+Type $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 4812 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+4813     \{
+4814         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}{oa};
+4815     \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}\label{classnlohmann_1_1detail_1_1output__adapter_a91f4b157cc22524555a5dce16aa56278}} 
+\index{nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}!oa@{oa}}
+\index{oa@{oa}!nlohmann\+::detail\+::output\+\_\+adapter@{nlohmann\+::detail\+::output\+\_\+adapter}}
+\subsubsection{\texorpdfstring{oa}{oa}}
+{\footnotesize\ttfamily template$<$typename Char\+Type$>$ \\
+\hyperlink{namespacenlohmann_1_1detail_a9b680ddfb58f27eb53a67229447fc556}{output\+\_\+adapter\+\_\+t}$<$Char\+Type$>$ \hyperlink{classnlohmann_1_1detail_1_1output__adapter}{nlohmann\+::detail\+::output\+\_\+adapter}$<$ Char\+Type $>$\+::oa = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 4818 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

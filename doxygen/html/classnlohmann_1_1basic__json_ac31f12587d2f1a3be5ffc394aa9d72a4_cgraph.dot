@@ -1,0 +1,12 @@
+digraph "nlohmann::basic_json::swap"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node486 [label="nlohmann::basic_json\l::swap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node486 -> Node487 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node487 [label="nlohmann::detail::type\l_error::create",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1type__error.html#aecc083aea4b698c33d042670ba50c10f"];
+  Node487 -> Node488 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node488 [label="nlohmann::detail::exception\l::name",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classnlohmann_1_1detail_1_1exception.html#abf41a7e9178356314082284e6cfea278"];
+}

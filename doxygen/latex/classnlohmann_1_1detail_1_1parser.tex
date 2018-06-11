@@ -1,0 +1,1017 @@
+\hypertarget{classnlohmann_1_1detail_1_1parser}{}\section{nlohmann\+:\+:detail\+:\+:parser$<$ Basic\+Json\+Type $>$ Class Template Reference}
+\label{classnlohmann_1_1detail_1_1parser}\index{nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$@{nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$}}
+
+
+syntax analysis  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:parser$<$ Basic\+Json\+Type $>$\+:
+% FIG 0
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}{parse\+\_\+event\+\_\+t} \+: uint8\+\_\+t \{ \newline
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeae73f17027cb0acbb537f29d0a6944b26}{parse\+\_\+event\+\_\+t\+::object\+\_\+start}, 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaf63e2a2468a37aa4f394fcc3bcb8249c}{parse\+\_\+event\+\_\+t\+::object\+\_\+end}, 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaa4388a3d92419edbb1c6efd4d52461f3}{parse\+\_\+event\+\_\+t\+::array\+\_\+start}, 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea49642fb732aa2e112188fba1f9d3ef7f}{parse\+\_\+event\+\_\+t\+::array\+\_\+end}, 
+\newline
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea3c6e0b8a9c15224a8228b9a98ca1531d}{parse\+\_\+event\+\_\+t\+::key}, 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea2063c1608d6e0baf80249c42e2be5804}{parse\+\_\+event\+\_\+t\+::value}
+ \}
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t} = std\+::function$<$ bool(int \hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}{parse\+\_\+event\+\_\+t} event, Basic\+Json\+Type \&parsed)$>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a693aa2a6c0cc665e0e45bacf055460e6}{parser} (\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{detail\+::input\+\_\+adapter\+\_\+t} adapter, const \hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t} cb=nullptr, const bool allow\+\_\+exceptions\+\_\+=true)
+\begin{DoxyCompactList}\small\item\em a parser reading from an input adapter \end{DoxyCompactList}\item 
+void \hyperlink{classnlohmann_1_1detail_1_1parser_a14338d8f3174601c0b2b7ef28752ab17}{parse} (const bool strict, Basic\+Json\+Type \&result)
+\begin{DoxyCompactList}\small\item\em public parser interface \end{DoxyCompactList}\item 
+bool \hyperlink{classnlohmann_1_1detail_1_1parser_a20997b42262856935b60fc91bf05bf3f}{accept} (const bool strict=true)
+\begin{DoxyCompactList}\small\item\em public accept interface \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_aa0362897269e0a7e50ae07be05f42d8e}{number\+\_\+integer\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_a3773ccef366c61da2e6a8c0eda36d0ec}{number\+\_\+unsigned\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_a8ca8e734da0632c2731fc3b9547dcf28}{number\+\_\+float\+\_\+t} = typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}{lexer\+\_\+t} = \hyperlink{classnlohmann_1_1detail_1_1lexer}{lexer}$<$ Basic\+Json\+Type $>$
+\item 
+using \hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} = typename \hyperlink{classnlohmann_1_1detail_1_1lexer_a3f313cdbe187cababfc5e06f0b69b098}{lexer\+\_\+t\+::token\+\_\+type}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}{parse\+\_\+internal} (bool keep, Basic\+Json\+Type \&result)
+\begin{DoxyCompactList}\small\item\em the actual parser \end{DoxyCompactList}\item 
+bool \hyperlink{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}{accept\+\_\+internal} ()
+\begin{DoxyCompactList}\small\item\em the actual acceptor \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\+\_\+token} ()
+\begin{DoxyCompactList}\small\item\em get next token from lexer \end{DoxyCompactList}\item 
+bool \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect} (\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} t)
+\item 
+void \hyperlink{classnlohmann_1_1detail_1_1parser_a9ff5745f2ba313e795d6568bae6dddb8}{throw\+\_\+exception} () const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth} = 0
+\begin{DoxyCompactList}\small\item\em current level of recursion \end{DoxyCompactList}\item 
+const \hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} = nullptr
+\begin{DoxyCompactList}\small\item\em callback function \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\+\_\+token} = token\+\_\+type\+::uninitialized
+\begin{DoxyCompactList}\small\item\em the type of the last read token \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}{lexer\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\+\_\+lexer}
+\begin{DoxyCompactList}\small\item\em the lexer \end{DoxyCompactList}\item 
+bool \hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored} = false
+\begin{DoxyCompactList}\small\item\em whether a syntax error occurred \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}{expected} = token\+\_\+type\+::uninitialized
+\begin{DoxyCompactList}\small\item\em possible reason for the syntax error \end{DoxyCompactList}\item 
+const bool \hyperlink{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}{allow\+\_\+exceptions} = true
+\begin{DoxyCompactList}\small\item\em whether to throw exceptions in case of errors \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Basic\+Json\+Type$>$\newline
+class nlohmann\+::detail\+::parser$<$ Basic\+Json\+Type $>$}
+
+syntax analysis 
+
+This class implements a recursive decent parser. 
+
+Definition at line 3153 of file json.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}\label{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!lexer\+\_\+t@{lexer\+\_\+t}}
+\index{lexer\+\_\+t@{lexer\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{lexer\+\_\+t}{lexer\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}{lexer\+\_\+t} =  \hyperlink{classnlohmann_1_1detail_1_1lexer}{lexer}$<$Basic\+Json\+Type$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3158 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a8ca8e734da0632c2731fc3b9547dcf28}\label{classnlohmann_1_1detail_1_1parser_a8ca8e734da0632c2731fc3b9547dcf28}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!number\+\_\+float\+\_\+t@{number\+\_\+float\+\_\+t}}
+\index{number\+\_\+float\+\_\+t@{number\+\_\+float\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{number\+\_\+float\+\_\+t}{number\_float\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_a8ca8e734da0632c2731fc3b9547dcf28}{number\+\_\+float\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+float\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3157 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_aa0362897269e0a7e50ae07be05f42d8e}\label{classnlohmann_1_1detail_1_1parser_aa0362897269e0a7e50ae07be05f42d8e}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}}
+\index{number\+\_\+integer\+\_\+t@{number\+\_\+integer\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{number\+\_\+integer\+\_\+t}{number\_integer\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_aa0362897269e0a7e50ae07be05f42d8e}{number\+\_\+integer\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+integer\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3155 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a3773ccef366c61da2e6a8c0eda36d0ec}\label{classnlohmann_1_1detail_1_1parser_a3773ccef366c61da2e6a8c0eda36d0ec}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}}
+\index{number\+\_\+unsigned\+\_\+t@{number\+\_\+unsigned\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{number\+\_\+unsigned\+\_\+t}{number\_unsigned\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_a3773ccef366c61da2e6a8c0eda36d0ec}{number\+\_\+unsigned\+\_\+t} =  typename Basic\+Json\+Type\+::number\+\_\+unsigned\+\_\+t\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3156 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}\label{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!parser\+\_\+callback\+\_\+t@{parser\+\_\+callback\+\_\+t}}
+\index{parser\+\_\+callback\+\_\+t@{parser\+\_\+callback\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{parser\+\_\+callback\+\_\+t}{parser\_callback\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t} =  std\+::function$<$bool(int \hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}{parse\+\_\+event\+\_\+t} event, Basic\+Json\+Type\& parsed)$>$}
+
+
+
+Definition at line 3179 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}\label{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!token\+\_\+type@{token\+\_\+type}}
+\index{token\+\_\+type@{token\+\_\+type}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{token\+\_\+type}{token\_type}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+using \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} =  typename \hyperlink{classnlohmann_1_1detail_1_1lexer_a3f313cdbe187cababfc5e06f0b69b098}{lexer\+\_\+t\+::token\+\_\+type}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 3159 of file json.\+hpp.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!parse\+\_\+event\+\_\+t@{parse\+\_\+event\+\_\+t}}
+\index{parse\+\_\+event\+\_\+t@{parse\+\_\+event\+\_\+t}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+event\+\_\+t}{parse\_event\_t}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+enum \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebe}{nlohmann\+::detail\+::parser\+::parse\+\_\+event\+\_\+t} \+: uint8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{object\+\_\+start@{object\+\_\+start}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!object\+\_\+start@{object\+\_\+start}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeae73f17027cb0acbb537f29d0a6944b26}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeae73f17027cb0acbb537f29d0a6944b26}} 
+object\+\_\+start&the parser read {\ttfamily \{} and started to process a J\+S\+ON object \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{object\+\_\+end@{object\+\_\+end}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!object\+\_\+end@{object\+\_\+end}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaf63e2a2468a37aa4f394fcc3bcb8249c}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaf63e2a2468a37aa4f394fcc3bcb8249c}} 
+object\+\_\+end&the parser read {\ttfamily \}} and finished processing a J\+S\+ON object \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{array\+\_\+start@{array\+\_\+start}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!array\+\_\+start@{array\+\_\+start}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaa4388a3d92419edbb1c6efd4d52461f3}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaa4388a3d92419edbb1c6efd4d52461f3}} 
+array\+\_\+start&the parser read {\ttfamily \mbox{[}} and started to process a J\+S\+ON array \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{array\+\_\+end@{array\+\_\+end}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!array\+\_\+end@{array\+\_\+end}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea49642fb732aa2e112188fba1f9d3ef7f}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea49642fb732aa2e112188fba1f9d3ef7f}} 
+array\+\_\+end&the parser read {\ttfamily \mbox{]}} and finished processing a J\+S\+ON array \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{key@{key}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!key@{key}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea3c6e0b8a9c15224a8228b9a98ca1531d}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea3c6e0b8a9c15224a8228b9a98ca1531d}} 
+key&the parser read a key of a value in an object \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{value@{value}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!value@{value}}}\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea2063c1608d6e0baf80249c42e2be5804}\label{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea2063c1608d6e0baf80249c42e2be5804}} 
+value&the parser finished reading a J\+S\+ON value \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 3162 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+3162                              : uint8\_t
+3163     \{
+3165         object\_start,
+3167         object\_end,
+3169         array\_start,
+3171         array\_end,
+3173         key,
+3175         value
+3176     \};
+\end{DoxyCode}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a693aa2a6c0cc665e0e45bacf055460e6}\label{classnlohmann_1_1detail_1_1parser_a693aa2a6c0cc665e0e45bacf055460e6}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!parser@{parser}}
+\index{parser@{parser}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{parser()}{parser()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::\hyperlink{classnlohmann_1_1detail_1_1parser}{parser} (\begin{DoxyParamCaption}\item[{\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{detail\+::input\+\_\+adapter\+\_\+t}}]{adapter,  }\item[{const \hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t}}]{cb = {\ttfamily nullptr},  }\item[{const bool}]{allow\+\_\+exceptions\+\_\+ = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+a parser reading from an input adapter 
+
+
+
+Definition at line 3182 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+3185         : \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(cb), \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}(adapter), \hyperlink{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}{allow\_exceptions}(allow\_exceptions\_
+      )
+3186     \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a20997b42262856935b60fc91bf05bf3f}\label{classnlohmann_1_1detail_1_1parser_a20997b42262856935b60fc91bf05bf3f}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!accept@{accept}}
+\index{accept@{accept}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::accept (\begin{DoxyParamCaption}\item[{const bool}]{strict = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+public accept interface 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strict} & whether to expect the last token to be E\+OF \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether the input is a proper J\+S\+ON text 
+\end{DoxyReturn}
+
+
+Definition at line 3234 of file json.\+hpp.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::accept().
+
+
+\begin{DoxyCode}
+3235     \{
+3236         \textcolor{comment}{// read first token}
+3237         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3238 
+3239         \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}{accept\_internal}())
+3240         \{
+3241             \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3242         \}
+3243 
+3244         \textcolor{comment}{// strict => last token must be EOF}
+3245         \textcolor{keywordflow}{return} not strict or (\hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}() == token\_type::end\_of\_input);
+3246     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 1
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}\label{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!accept\+\_\+internal@{accept\+\_\+internal}}
+\index{accept\+\_\+internal@{accept\+\_\+internal}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{accept\+\_\+internal()}{accept\_internal()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::accept\+\_\+internal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+the actual acceptor 
+
+\begin{DoxyInvariant}{Invariant}
+1. The last token is not yet processed. Therefore, the caller of this function must make sure a token has been read.
+\begin{DoxyEnumerate}
+\item When this function returns, the last token is processed. That is, the last read character was already considered.
+\end{DoxyEnumerate}
+\end{DoxyInvariant}
+This invariant makes sure that no token needs to be \char`\"{}unput\char`\"{}. 
+
+Definition at line 3543 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+3544     \{
+3545         \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token})
+3546         \{
+3547             \textcolor{keywordflow}{case} token\_type::begin\_object:
+3548             \{
+3549                 \textcolor{comment}{// read next token}
+3550                 \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3551 
+3552                 \textcolor{comment}{// closing \} -> we are done}
+3553                 \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_object)
+3554                 \{
+3555                     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+3556                 \}
+3557 
+3558                 \textcolor{comment}{// parse values}
+3559                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+3560                 \{
+3561                     \textcolor{comment}{// parse key}
+3562                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} != token\_type::value\_string)
+3563                     \{
+3564                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3565                     \}
+3566 
+3567                     \textcolor{comment}{// parse separator (:)}
+3568                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3569                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} != token\_type::name\_separator)
+3570                     \{
+3571                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3572                     \}
+3573 
+3574                     \textcolor{comment}{// parse value}
+3575                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3576                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}{accept\_internal}())
+3577                     \{
+3578                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3579                     \}
+3580 
+3581                     \textcolor{comment}{// comma -> next value}
+3582                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3583                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::value\_separator)
+3584                     \{
+3585                         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3586                         \textcolor{keywordflow}{continue};
+3587                     \}
+3588 
+3589                     \textcolor{comment}{// closing \}}
+3590                     \textcolor{keywordflow}{return} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_object);
+3591                 \}
+3592             \}
+3593 
+3594             \textcolor{keywordflow}{case} token\_type::begin\_array:
+3595             \{
+3596                 \textcolor{comment}{// read next token}
+3597                 \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3598 
+3599                 \textcolor{comment}{// closing ] -> we are done}
+3600                 \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_array)
+3601                 \{
+3602                     \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+3603                 \}
+3604 
+3605                 \textcolor{comment}{// parse values}
+3606                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+3607                 \{
+3608                     \textcolor{comment}{// parse value}
+3609                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_ae74703484283dbb328277a6f8c559bf8}{accept\_internal}())
+3610                     \{
+3611                         \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3612                     \}
+3613 
+3614                     \textcolor{comment}{// comma -> next value}
+3615                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3616                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::value\_separator)
+3617                     \{
+3618                         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3619                         \textcolor{keywordflow}{continue};
+3620                     \}
+3621 
+3622                     \textcolor{comment}{// closing ]}
+3623                     \textcolor{keywordflow}{return} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_array);
+3624                 \}
+3625             \}
+3626 
+3627             \textcolor{keywordflow}{case} token\_type::value\_float:
+3628             \{
+3629                 \textcolor{comment}{// reject infinity or NAN}
+3630                 \textcolor{keywordflow}{return} std::isfinite(\hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_number\_float());
+3631             \}
+3632 
+3633             \textcolor{keywordflow}{case} token\_type::literal\_false:
+3634             \textcolor{keywordflow}{case} token\_type::literal\_null:
+3635             \textcolor{keywordflow}{case} token\_type::literal\_true:
+3636             \textcolor{keywordflow}{case} token\_type::value\_integer:
+3637             \textcolor{keywordflow}{case} token\_type::value\_string:
+3638             \textcolor{keywordflow}{case} token\_type::value\_unsigned:
+3639                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+3640 
+3641             \textcolor{keywordflow}{default}: \textcolor{comment}{// the last token was unexpected}
+3642                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3643         \}
+3644     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}\label{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!expect@{expect}}
+\index{expect@{expect}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{expect()}{expect()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::expect (\begin{DoxyParamCaption}\item[{\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type}}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+101} & if expected token did not occur \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 3655 of file json.\+hpp.
+
+
+
+References J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+3656     \{
+3657         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(t != \hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token}))
+3658         \{
+3659             \hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored} = \textcolor{keyword}{true};
+3660             \hyperlink{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}{expected} = t;
+3661             \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}{allow\_exceptions})
+3662             \{
+3663                 \hyperlink{classnlohmann_1_1detail_1_1parser_a9ff5745f2ba313e795d6568bae6dddb8}{throw\_exception}();
+3664             \}
+3665             \textcolor{keywordflow}{else}
+3666             \{
+3667                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+3668             \}
+3669         \}
+3670 
+3671         \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+3672     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}\label{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!get\+\_\+token@{get\+\_\+token}}
+\index{get\+\_\+token@{get\+\_\+token}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{get\+\_\+token()}{get\_token()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::get\+\_\+token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+get next token from lexer 
+
+
+
+Definition at line 3647 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+3648     \{
+3649         \textcolor{keywordflow}{return} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.scan());
+3650     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a14338d8f3174601c0b2b7ef28752ab17}\label{classnlohmann_1_1detail_1_1parser_a14338d8f3174601c0b2b7ef28752ab17}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!parse@{parse}}
+\index{parse@{parse}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::parse (\begin{DoxyParamCaption}\item[{const bool}]{strict,  }\item[{Basic\+Json\+Type \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+public parser interface 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em strict} & whether to expect the last token to be E\+OF \\
+\hline
+\mbox{\tt in,out}  & {\em result} & parsed J\+S\+ON value\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+101} & in case of an unexpected token \\
+\hline
+{\em parse\+\_\+error.\+102} & if to\+\_\+unicode fails or surrogate error \\
+\hline
+{\em parse\+\_\+error.\+103} & if to\+\_\+unicode fails \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 3198 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::discarded.
+
+
+
+Referenced by nlohmann\+::basic\+\_\+json$<$ Object\+Type, Array\+Type, String\+Type, Boolean\+Type, Number\+Integer\+Type, Number\+Unsigned\+Type, Number\+Float\+Type, Allocator\+Type, J\+S\+O\+N\+Serializer $>$\+::parse().
+
+
+\begin{DoxyCode}
+3199     \{
+3200         \textcolor{comment}{// read first token}
+3201         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3202 
+3203         \hyperlink{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}{parse\_internal}(\textcolor{keyword}{true}, result);
+3204         result.assert\_invariant();
+3205 
+3206         \textcolor{comment}{// in strict mode, input must be completely read}
+3207         \textcolor{keywordflow}{if} (strict)
+3208         \{
+3209             \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3210             \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::end\_of\_input);
+3211         \}
+3212 
+3213         \textcolor{comment}{// in case of an error, return discarded value}
+3214         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored})
+3215         \{
+3216             result = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3217             \textcolor{keywordflow}{return};
+3218         \}
+3219 
+3220         \textcolor{comment}{// set top-level value to null if it was discarded by the callback}
+3221         \textcolor{comment}{// function}
+3222         \textcolor{keywordflow}{if} (result.is\_discarded())
+3223         \{
+3224             result = \textcolor{keyword}{nullptr};
+3225         \}
+3226     \}
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}\label{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!parse\+\_\+internal@{parse\+\_\+internal}}
+\index{parse\+\_\+internal@{parse\+\_\+internal}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+internal()}{parse\_internal()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::parse\+\_\+internal (\begin{DoxyParamCaption}\item[{bool}]{keep,  }\item[{Basic\+Json\+Type \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+the actual parser 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em parse\+\_\+error.\+101} & in case of an unexpected token \\
+\hline
+{\em parse\+\_\+error.\+102} & if to\+\_\+unicode fails or surrogate error \\
+\hline
+{\em parse\+\_\+error.\+103} & if to\+\_\+unicode fails \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line 3255 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::array, nlohmann\+::detail\+::boolean, nlohmann\+::detail\+::out\+\_\+of\+\_\+range\+::create(), nlohmann\+::detail\+::discarded, J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, J\+S\+O\+N\+\_\+\+U\+N\+L\+I\+K\+E\+LY, nlohmann\+::detail\+::null, nlohmann\+::detail\+::number\+\_\+float, nlohmann\+::detail\+::number\+\_\+integer, nlohmann\+::detail\+::number\+\_\+unsigned, nlohmann\+::detail\+::object, and nlohmann\+::detail\+::string.
+
+
+\begin{DoxyCode}
+3256     \{
+3257         \textcolor{comment}{// never parse after a parse error was detected}
+3258         assert(not \hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored});
+3259 
+3260         \textcolor{comment}{// start with a discarded value}
+3261         \textcolor{keywordflow}{if} (not result.is\_discarded())
+3262         \{
+3263             result.m\_value.destroy(result.m\_type);
+3264             result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3265         \}
+3266 
+3267         \textcolor{keywordflow}{switch} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token})
+3268         \{
+3269             \textcolor{keywordflow}{case} token\_type::begin\_object:
+3270             \{
+3271                 \textcolor{keywordflow}{if} (keep)
+3272                 \{
+3273                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback})
+3274                     \{
+3275                         keep = \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}++, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeae73f17027cb0acbb537f29d0a6944b26}{parse\_event\_t::object\_start}, result);
+3276                     \}
+3277 
+3278                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} or keep)
+3279                     \{
+3280                         \textcolor{comment}{// explicitly set result to object to cope with \{\}}
+3281                         result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+3282                         result.m\_value = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985aa8cfde6331bd59eb2ac96f8911c4b666}{value\_t::object};
+3283                     \}
+3284                 \}
+3285 
+3286                 \textcolor{comment}{// read next token}
+3287                 \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3288 
+3289                 \textcolor{comment}{// closing \} -> we are done}
+3290                 \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_object)
+3291                 \{
+3292                     \textcolor{keywordflow}{if} (keep and \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} and not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(--
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaf63e2a2468a37aa4f394fcc3bcb8249c}{parse\_event\_t::object\_end}, result))
+3293                     \{
+3294                         result.m\_value.destroy(result.m\_type);
+3295                         result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3296                     \}
+3297                     \textcolor{keywordflow}{break};
+3298                 \}
+3299 
+3300                 \textcolor{comment}{// parse values}
+3301                 \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string} key;
+3302                 BasicJsonType value;
+3303                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+3304                 \{
+3305                     \textcolor{comment}{// store key}
+3306                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::value\_string))
+3307                     \{
+3308                         \textcolor{keywordflow}{return};
+3309                     \}
+3310                     key = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.move\_string();
+3311 
+3312                     \textcolor{keywordtype}{bool} keep\_tag = \textcolor{keyword}{false};
+3313                     \textcolor{keywordflow}{if} (keep)
+3314                     \{
+3315                         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback})
+3316                         \{
+3317                             BasicJsonType k(key);
+3318                             keep\_tag = \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea3c6e0b8a9c15224a8228b9a98ca1531d}{parse\_event\_t::key}, k);
+3319                         \}
+3320                         \textcolor{keywordflow}{else}
+3321                         \{
+3322                             keep\_tag = \textcolor{keyword}{true};
+3323                         \}
+3324                     \}
+3325 
+3326                     \textcolor{comment}{// parse separator (:)}
+3327                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3328                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::name\_separator))
+3329                     \{
+3330                         \textcolor{keywordflow}{return};
+3331                     \}
+3332 
+3333                     \textcolor{comment}{// parse and add value}
+3334                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3335                     value.m\_value.destroy(value.m\_type);
+3336                     value.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3337                     \hyperlink{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}{parse\_internal}(keep, value);
+3338 
+3339                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored}))
+3340                     \{
+3341                         \textcolor{keywordflow}{return};
+3342                     \}
+3343 
+3344                     \textcolor{keywordflow}{if} (keep and keep\_tag and not value.is\_discarded())
+3345                     \{
+3346                         result.m\_value.object->emplace(std::move(key), std::move(value));
+3347                     \}
+3348 
+3349                     \textcolor{comment}{// comma -> next value}
+3350                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3351                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::value\_separator)
+3352                     \{
+3353                         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3354                         \textcolor{keywordflow}{continue};
+3355                     \}
+3356 
+3357                     \textcolor{comment}{// closing \}}
+3358                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::end\_object))
+3359                     \{
+3360                         \textcolor{keywordflow}{return};
+3361                     \}
+3362                     \textcolor{keywordflow}{break};
+3363                 \}
+3364 
+3365                 \textcolor{keywordflow}{if} (keep and \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} and not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(--\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaf63e2a2468a37aa4f394fcc3bcb8249c}{parse\_event\_t::object\_end}, result))
+3366                 \{
+3367                     result.m\_value.destroy(result.m\_type);
+3368                     result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3369                 \}
+3370                 \textcolor{keywordflow}{break};
+3371             \}
+3372 
+3373             \textcolor{keywordflow}{case} token\_type::begin\_array:
+3374             \{
+3375                 \textcolor{keywordflow}{if} (keep)
+3376                 \{
+3377                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback})
+3378                     \{
+3379                         keep = \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}++, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebeaa4388a3d92419edbb1c6efd4d52461f3}{parse\_event\_t::array\_start}, result);
+3380                     \}
+3381 
+3382                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} or keep)
+3383                     \{
+3384                         \textcolor{comment}{// explicitly set result to array to cope with []}
+3385                         result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+3386                         result.m\_value = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{value\_t::array};
+3387                     \}
+3388                 \}
+3389 
+3390                 \textcolor{comment}{// read next token}
+3391                 \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3392 
+3393                 \textcolor{comment}{// closing ] -> we are done}
+3394                 \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::end\_array)
+3395                 \{
+3396                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} and not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(--\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea49642fb732aa2e112188fba1f9d3ef7f}{parse\_event\_t::array\_end}, result))
+3397                     \{
+3398                         result.m\_value.destroy(result.m\_type);
+3399                         result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3400                     \}
+3401                     \textcolor{keywordflow}{break};
+3402                 \}
+3403 
+3404                 \textcolor{comment}{// parse values}
+3405                 BasicJsonType value;
+3406                 \textcolor{keywordflow}{while} (\textcolor{keyword}{true})
+3407                 \{
+3408                     \textcolor{comment}{// parse value}
+3409                     value.m\_value.destroy(value.m\_type);
+3410                     value.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3411                     \hyperlink{classnlohmann_1_1detail_1_1parser_ace714b4bfb791f97050e0b380d2b50c3}{parse\_internal}(keep, value);
+3412 
+3413                     \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(\hyperlink{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}{errored}))
+3414                     \{
+3415                         \textcolor{keywordflow}{return};
+3416                     \}
+3417 
+3418                     \textcolor{keywordflow}{if} (keep and not value.is\_discarded())
+3419                     \{
+3420                         result.m\_value.array->push\_back(std::move(value));
+3421                     \}
+3422 
+3423                     \textcolor{comment}{// comma -> next value}
+3424                     \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3425                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::value\_separator)
+3426                     \{
+3427                         \hyperlink{classnlohmann_1_1detail_1_1parser_a33f3859d0dd402445b5859070fd24bab}{get\_token}();
+3428                         \textcolor{keywordflow}{continue};
+3429                     \}
+3430 
+3431                     \textcolor{comment}{// closing ]}
+3432                     \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::end\_array))
+3433                     \{
+3434                         \textcolor{keywordflow}{return};
+3435                     \}
+3436                     \textcolor{keywordflow}{break};
+3437                 \}
+3438 
+3439                 \textcolor{keywordflow}{if} (keep and \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} and not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(--\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea49642fb732aa2e112188fba1f9d3ef7f}{parse\_event\_t::array\_end}, result))
+3440                 \{
+3441                     result.m\_value.destroy(result.m\_type);
+3442                     result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3443                 \}
+3444                 \textcolor{keywordflow}{break};
+3445             \}
+3446 
+3447             \textcolor{keywordflow}{case} token\_type::literal\_null:
+3448             \{
+3449                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a37a6259cc0c1dae299a7866489dff0bd}{value\_t::null};
+3450                 \textcolor{keywordflow}{break};
+3451             \}
+3452 
+3453             \textcolor{keywordflow}{case} token\_type::value\_string:
+3454             \{
+3455                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{value\_t::string};
+3456                 result.m\_value = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.move\_string();
+3457                 \textcolor{keywordflow}{break};
+3458             \}
+3459 
+3460             \textcolor{keywordflow}{case} token\_type::literal\_true:
+3461             \{
+3462                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean};
+3463                 result.m\_value = \textcolor{keyword}{true};
+3464                 \textcolor{keywordflow}{break};
+3465             \}
+3466 
+3467             \textcolor{keywordflow}{case} token\_type::literal\_false:
+3468             \{
+3469                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a84e2c64f38f78ba3ea5c905ab5a2da27}{value\_t::boolean};
+3470                 result.m\_value = \textcolor{keyword}{false};
+3471                 \textcolor{keywordflow}{break};
+3472             \}
+3473 
+3474             \textcolor{keywordflow}{case} token\_type::value\_unsigned:
+3475             \{
+3476                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985adce7cc8ec29055c4158828921f2f265e}{value\_t::number\_unsigned};
+3477                 result.m\_value = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_number\_unsigned();
+3478                 \textcolor{keywordflow}{break};
+3479             \}
+3480 
+3481             \textcolor{keywordflow}{case} token\_type::value\_integer:
+3482             \{
+3483                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a5763da164f8659d94a56e29df64b4bcc}{value\_t::number\_integer};
+3484                 result.m\_value = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_number\_integer();
+3485                 \textcolor{keywordflow}{break};
+3486             \}
+3487 
+3488             \textcolor{keywordflow}{case} token\_type::value\_float:
+3489             \{
+3490                 result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ad9966ecb59667235a57b4b999a649eef}{value\_t::number\_float};
+3491                 result.m\_value = \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_number\_float();
+3492 
+3493                 \textcolor{comment}{// throw in case of infinity or NAN}
+3494                 \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_ab77582407c64944e7db1ea95ab520253}{JSON\_UNLIKELY}(not std::isfinite(result.m\_value.number\_float)))
+3495                 \{
+3496                     \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}{allow\_exceptions})
+3497                     \{
+3498                         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1out__of__range_a3f6d82a6f967c4728a1ec735a7867073}{out\_of\_range::create}(406, \textcolor{stringliteral}{"number overflow
+       parsing '"} +
+3499                                                         \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_token\_string() + \textcolor{stringliteral}{"'"}));
+3500                     \}
+3501                     \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::uninitialized);
+3502                 \}
+3503                 \textcolor{keywordflow}{break};
+3504             \}
+3505 
+3506             \textcolor{keywordflow}{case} token\_type::parse\_error:
+3507             \{
+3508                 \textcolor{comment}{// using "uninitialized" to avoid "expected" message}
+3509                 \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::uninitialized))
+3510                 \{
+3511                     \textcolor{keywordflow}{return};
+3512                 \}
+3513                 \textcolor{keywordflow}{break}; \textcolor{comment}{// LCOV\_EXCL\_LINE}
+3514             \}
+3515 
+3516             \textcolor{keywordflow}{default}:
+3517             \{
+3518                 \textcolor{comment}{// the last token was unexpected; we expected a value}
+3519                 \textcolor{keywordflow}{if} (not \hyperlink{classnlohmann_1_1detail_1_1parser_a9abcc7b005c70ee67ce669c398273516}{expect}(token\_type::literal\_or\_value))
+3520                 \{
+3521                     \textcolor{keywordflow}{return};
+3522                 \}
+3523                 \textcolor{keywordflow}{break}; \textcolor{comment}{// LCOV\_EXCL\_LINE}
+3524             \}
+3525         \}
+3526 
+3527         \textcolor{keywordflow}{if} (keep and \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback} and not \hyperlink{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}{callback}(\hyperlink{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}{depth}, 
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a37ac88c864dda495f72cb62776b0bebea2063c1608d6e0baf80249c42e2be5804}{parse\_event\_t::value}, result))
+3528         \{
+3529             result.m\_type = \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985a94708897ec9db8647dfe695714c98e46}{value\_t::discarded};
+3530         \}
+3531     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a9ff5745f2ba313e795d6568bae6dddb8}\label{classnlohmann_1_1detail_1_1parser_a9ff5745f2ba313e795d6568bae6dddb8}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!throw\+\_\+exception@{throw\+\_\+exception}}
+\index{throw\+\_\+exception@{throw\+\_\+exception}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{throw\+\_\+exception()}{throw\_exception()}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+void \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::throw\+\_\+exception (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line 3674 of file json.\+hpp.
+
+
+
+References nlohmann\+::detail\+::parse\+\_\+error\+::create(), J\+S\+O\+N\+\_\+\+T\+H\+R\+OW, and nlohmann\+::detail\+::string.
+
+
+\begin{DoxyCode}
+3675     \{
+3676         \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string} error\_msg = \textcolor{stringliteral}{"syntax error - "};
+3677         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token} == token\_type::parse\_error)
+3678         \{
+3679             error\_msg += \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string}(\hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_error\_message()) + \textcolor{stringliteral}{"; last read: '"} +
+3680                          \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_token\_string() + \textcolor{stringliteral}{"'"};
+3681         \}
+3682         \textcolor{keywordflow}{else}
+3683         \{
+3684             error\_msg += \textcolor{stringliteral}{"unexpected "} + \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string}(lexer\_t::token\_type\_name(
+      \hyperlink{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}{last\_token}));
+3685         \}
+3686 
+3687         \textcolor{keywordflow}{if} (\hyperlink{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}{expected} != token\_type::uninitialized)
+3688         \{
+3689             error\_msg += \textcolor{stringliteral}{"; expected "} + \hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985ab45cffe084dd3d20d928bee85e7b0f21}{std::string}(lexer\_t::token\_type\_name(
+      \hyperlink{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}{expected}));
+3690         \}
+3691 
+3692         \hyperlink{json_8hpp_a6c274f6db2e65c1b66c7d41b06ad690f}{JSON\_THROW}(\hyperlink{classnlohmann_1_1detail_1_1parse__error_a9fd60ad6bce80fd99686ad332faefd37}{parse\_error::create}(101, \hyperlink{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}{m\_lexer}.get\_position(), 
+      error\_msg));
+3693     \}
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}\label{classnlohmann_1_1detail_1_1parser_a3de1ea054cfa606e79fa07741f081b5f}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!allow\+\_\+exceptions@{allow\+\_\+exceptions}}
+\index{allow\+\_\+exceptions@{allow\+\_\+exceptions}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{allow\+\_\+exceptions}{allow\_exceptions}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const bool \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::allow\+\_\+exceptions = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+whether to throw exceptions in case of errors 
+
+
+
+Definition at line 3709 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}\label{classnlohmann_1_1detail_1_1parser_a7600d272ec605e3ffdc8512b3585f476}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!callback@{callback}}
+\index{callback@{callback}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+const \hyperlink{classnlohmann_1_1detail_1_1parser_ad250ad4f2b4af4a497e727c963162ff1}{parser\+\_\+callback\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::callback = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+callback function 
+
+
+
+Definition at line 3699 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}\label{classnlohmann_1_1detail_1_1parser_a49dca6af052e9cab3a48dc1eaa163063}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!depth@{depth}}
+\index{depth@{depth}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{depth}{depth}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+int \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::depth = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+current level of recursion 
+
+
+
+Definition at line 3697 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}\label{classnlohmann_1_1detail_1_1parser_af6a116454a868ebb6628c6137c3dd77d}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!errored@{errored}}
+\index{errored@{errored}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{errored}{errored}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+bool \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::errored = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+whether a syntax error occurred 
+
+
+
+Definition at line 3705 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}\label{classnlohmann_1_1detail_1_1parser_ad055620d886819b26dabc1dfb80c7fb7}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!expected@{expected}}
+\index{expected@{expected}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{expected}{expected}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::expected = token\+\_\+type\+::uninitialized\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+possible reason for the syntax error 
+
+
+
+Definition at line 3707 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}\label{classnlohmann_1_1detail_1_1parser_a932e49f6f4d291557846744319245994}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!last\+\_\+token@{last\+\_\+token}}
+\index{last\+\_\+token@{last\+\_\+token}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{last\+\_\+token}{last\_token}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1parser_a21d247111b332785b7acf3f8e487d117}{token\+\_\+type} \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::last\+\_\+token = token\+\_\+type\+::uninitialized\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the type of the last read token 
+
+
+
+Definition at line 3701 of file json.\+hpp.
+
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}\label{classnlohmann_1_1detail_1_1parser_a22dcc815551a4052b87797b34171b352}} 
+\index{nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}!m\+\_\+lexer@{m\+\_\+lexer}}
+\index{m\+\_\+lexer@{m\+\_\+lexer}!nlohmann\+::detail\+::parser@{nlohmann\+::detail\+::parser}}
+\subsubsection{\texorpdfstring{m\+\_\+lexer}{m\_lexer}}
+{\footnotesize\ttfamily template$<$typename Basic\+Json\+Type $>$ \\
+\hyperlink{classnlohmann_1_1detail_1_1parser_a16030c5af158a94d1c799f82ff3a0147}{lexer\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1parser}{nlohmann\+::detail\+::parser}$<$ Basic\+Json\+Type $>$\+::m\+\_\+lexer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the lexer 
+
+
+
+Definition at line 3703 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

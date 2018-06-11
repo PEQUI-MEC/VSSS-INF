@@ -1,0 +1,20 @@
+digraph "v4lcap::query_buffer"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node305 [label="v4lcap::query_buffer",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node305 -> Node306 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node306 [label="v4lcap::init_mmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a04f75c0a68f0e8547925906a488bb50d",tooltip="This method requests buffers from host system to allocate streaming from camera. "];
+  Node306 -> Node307 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node307 [label="VSSS_GUI::V4LInterface\l::__event_bt_start_clicked",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#ac83a8f5a54baf09ade5e3ec24ba91082",tooltip="Event triggered when &#39;start&#39; button is clicked. "];
+  Node307 -> Node308 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node308 [label="VSSS_GUI::V4LInterface\l::V4LInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_v_s_s_s___g_u_i_1_1_v4_l_interface.html#a8fafd828eacc6d5480649fa9fddc7ee4",tooltip="Constructor of a V4LInterface object. "];
+  Node306 -> Node309 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node309 [label="v4lcap::start_capturing",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a4a7ee51c878ec735c9a24b517c63df16",tooltip="This method starts capturing and streaming from opened device passing memory type and number of buffe..."];
+  Node309 -> Node307 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node305 -> Node310 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node310 [label="v4lcap::query_buffer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classv4lcap.html#a6e853d36a5e4c7959f36cc0669389c4a"];
+  Node305 -> Node309 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

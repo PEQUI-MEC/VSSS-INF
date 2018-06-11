@@ -1,0 +1,81 @@
+\hypertarget{robots_8hpp}{}\section{src/robots.hpp File Reference}
+\label{robots_8hpp}\index{src/robots.\+hpp@{src/robots.\+hpp}}
+
+
+Robot\textquotesingle{}s Manager Singleton Class.  
+
+
+{\ttfamily \#include \char`\"{}opencv2/opencv.\+hpp\char`\"{}}\newline
+Include dependency graph for robots.\+hpp\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_robots}{Robots}
+\item 
+struct \hyperlink{struct_robots_1_1___status}{Robots\+::\+\_\+\+Status}
+\begin{DoxyCompactList}\small\item\em A structure to communicate \hyperlink{struct_robots_1_1_robot}{Robot}\textquotesingle{}s Status. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_robots_1_1_command}{Robots\+::\+Command}
+\begin{DoxyCompactList}\small\item\em A structure to encapsulate and communicate \hyperlink{struct_robots_1_1_robot}{Robot} commands. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_robots_1_1_command_1_1___msg}{Robots\+::\+Command\+::\+\_\+\+Msg}
+\begin{DoxyCompactList}\small\item\em The message (would be nice to use Union data structure but cv\+::\+Point has a constructor) \end{DoxyCompactList}\item 
+struct \hyperlink{struct_robots_1_1_command_1_1___msg_1_1___velocity}{Robots\+::\+Command\+::\+\_\+\+Msg\+::\+\_\+\+Velocity}
+\begin{DoxyCompactList}\small\item\em C\+M\+D\+\_\+\+S\+P\+E\+ED target wheel velocities. \end{DoxyCompactList}\item 
+struct \hyperlink{struct_robots_1_1_robot}{Robots\+::\+Robot}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{robots_8hpp_ae3e6ae8f87cdc750c0b99bc609d9ae43}{check\+\_\+index}(...)~\+\_\+check\+\_\+index(\+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\item 
+\#define \hyperlink{robots_8hpp_a11f808c4481e347f5ea9a10237470606}{N\+\_\+\+R\+O\+B\+O\+TS}~3
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Robot\textquotesingle{}s Manager Singleton Class. 
+
+\begin{DoxyAuthor}{Author}
+Bryan Lincoln @ Pequi Mecânico 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+19/05/2018 
+\end{DoxyDate}
+\begin{DoxySeeAlso}{See also}
+\href{https://www.facebook.com/NucleoPMec/}{\tt https\+://www.\+facebook.\+com/\+Nucleo\+P\+Mec/} 
+
+\href{https://www.instagram.com/pequimecanico}{\tt https\+://www.\+instagram.\+com/pequimecanico} 
+\end{DoxySeeAlso}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{robots_8hpp_ae3e6ae8f87cdc750c0b99bc609d9ae43}\label{robots_8hpp_ae3e6ae8f87cdc750c0b99bc609d9ae43}} 
+\index{robots.\+hpp@{robots.\+hpp}!check\+\_\+index@{check\+\_\+index}}
+\index{check\+\_\+index@{check\+\_\+index}!robots.\+hpp@{robots.\+hpp}}
+\subsubsection{\texorpdfstring{check\+\_\+index}{check\_index}}
+{\footnotesize\ttfamily \#define check\+\_\+index(\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})~\+\_\+check\+\_\+index(\+\_\+\+\_\+\+F\+U\+N\+C\+T\+I\+O\+N\+\_\+\+\_\+, \+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+
+
+
+Definition at line 14 of file robots.\+hpp.
+
+
+
+Referenced by Robots\+::get\+\_\+cmd\+Type(), Robots\+::get\+\_\+default\+\_\+role\+\_\+velocity(), Robots\+::get\+\_\+default\+\_\+velocity(), Robots\+::get\+\_\+fixed\+Pos(), Robots\+::get\+\_\+\+I\+D(), Robots\+::get\+\_\+orientation(), Robots\+::get\+\_\+position(), Robots\+::get\+\_\+role(), Robots\+::get\+\_\+secondary\+\_\+tag(), Robots\+::get\+\_\+status(), Robots\+::get\+\_\+target(), Robots\+::get\+\_\+trans\+Angle(), Robots\+::get\+\_\+using\+Pot\+Field(), Robots\+::get\+\_\+velocity(), Robots\+::is\+\_\+posistion\+\_\+set(), Robots\+::is\+\_\+target\+\_\+set(), Robots\+::kick(), Robots\+::look\+\_\+at(), Robots\+::set\+\_\+cmd\+Type(), Robots\+::set\+\_\+command(), Robots\+::set\+\_\+default\+\_\+role\+\_\+velocity(), Robots\+::set\+\_\+default\+\_\+velocity(), Robots\+::set\+\_\+fixed\+Pos(), Robots\+::set\+\_\+\+I\+D(), Robots\+::set\+\_\+orientation(), Robots\+::set\+\_\+position(), Robots\+::set\+\_\+role(), Robots\+::set\+\_\+secondary\+\_\+tag(), Robots\+::set\+\_\+status(), Robots\+::set\+\_\+target(), Robots\+::set\+\_\+trans\+Angle(), Robots\+::set\+\_\+using\+Pot\+Field(), Robots\+::set\+\_\+velocity(), Robots\+::spin\+\_\+clockwise(), Robots\+::spin\+\_\+counter\+\_\+clockwise(), and Robots\+::stop().
+
+\mbox{\Hypertarget{robots_8hpp_a11f808c4481e347f5ea9a10237470606}\label{robots_8hpp_a11f808c4481e347f5ea9a10237470606}} 
+\index{robots.\+hpp@{robots.\+hpp}!N\+\_\+\+R\+O\+B\+O\+TS@{N\+\_\+\+R\+O\+B\+O\+TS}}
+\index{N\+\_\+\+R\+O\+B\+O\+TS@{N\+\_\+\+R\+O\+B\+O\+TS}!robots.\+hpp@{robots.\+hpp}}
+\subsubsection{\texorpdfstring{N\+\_\+\+R\+O\+B\+O\+TS}{N\_ROBOTS}}
+{\footnotesize\ttfamily \#define N\+\_\+\+R\+O\+B\+O\+TS~3}
+
+
+
+Definition at line 15 of file robots.\+hpp.
+
+
+
+Referenced by Robots\+::\+\_\+check\+\_\+index(), Robots\+::get\+\_\+commands(), Strategy\+::get\+\_\+targets(), and Robots\+::\+Robots().
+

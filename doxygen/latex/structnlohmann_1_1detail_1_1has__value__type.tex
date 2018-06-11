@@ -1,0 +1,69 @@
+\hypertarget{structnlohmann_1_1detail_1_1has__value__type}{}\section{nlohmann\+:\+:detail\+:\+:has\+\_\+value\+\_\+type$<$ T $>$ Struct Template Reference}
+\label{structnlohmann_1_1detail_1_1has__value__type}\index{nlohmann\+::detail\+::has\+\_\+value\+\_\+type$<$ T $>$@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type$<$ T $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:has\+\_\+value\+\_\+type$<$ T $>$\+:
+% FIG 0
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \hyperlink{structnlohmann_1_1detail_1_1has__value__type_a30f340b25fe9dbb525c7675ae4df94e6}{value} = std\+::is\+\_\+integral$<$decltype(\hyperlink{structnlohmann_1_1detail_1_1has__value__type_a42b4183da4cb26f67fb15247dcc1f067}{detect}(std\+::declval$<$T$>$()))$>$\+::value
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename U , typename  = typename U\+:: value\+\_\+type$>$ }\\static int \hyperlink{structnlohmann_1_1detail_1_1has__value__type_a42b4183da4cb26f67fb15247dcc1f067}{detect} (U \&\&)
+\item 
+static void \hyperlink{structnlohmann_1_1detail_1_1has__value__type_a786ed7348908707566a7beae86f332b2}{detect} (...)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct nlohmann\+::detail\+::has\+\_\+value\+\_\+type$<$ T $>$}
+
+
+
+Definition at line 342 of file json.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structnlohmann_1_1detail_1_1has__value__type_a42b4183da4cb26f67fb15247dcc1f067}\label{structnlohmann_1_1detail_1_1has__value__type_a42b4183da4cb26f67fb15247dcc1f067}} 
+\index{nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}!detect@{detect}}
+\index{detect@{detect}!nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}}
+\subsubsection{\texorpdfstring{detect()}{detect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+template$<$typename U , typename  = typename U\+:: value\+\_\+type$>$ \\
+static int \hyperlink{structnlohmann_1_1detail_1_1has__value__type}{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}$<$ T $>$\+::detect (\begin{DoxyParamCaption}\item[{U \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{structnlohmann_1_1detail_1_1has__value__type_a786ed7348908707566a7beae86f332b2}\label{structnlohmann_1_1detail_1_1has__value__type_a786ed7348908707566a7beae86f332b2}} 
+\index{nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}!detect@{detect}}
+\index{detect@{detect}!nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}}
+\subsubsection{\texorpdfstring{detect()}{detect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static void \hyperlink{structnlohmann_1_1detail_1_1has__value__type}{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}$<$ T $>$\+::detect (\begin{DoxyParamCaption}\item[{}]{... }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{structnlohmann_1_1detail_1_1has__value__type_a30f340b25fe9dbb525c7675ae4df94e6}\label{structnlohmann_1_1detail_1_1has__value__type_a30f340b25fe9dbb525c7675ae4df94e6}} 
+\index{nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}!value@{value}}
+\index{value@{value}!nlohmann\+::detail\+::has\+\_\+value\+\_\+type@{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}}
+\subsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+constexpr bool \hyperlink{structnlohmann_1_1detail_1_1has__value__type}{nlohmann\+::detail\+::has\+\_\+value\+\_\+type}$<$ T $>$\+::value = std\+::is\+\_\+integral$<$decltype(\hyperlink{structnlohmann_1_1detail_1_1has__value__type_a42b4183da4cb26f67fb15247dcc1f067}{detect}(std\+::declval$<$T$>$()))$>$\+::value\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 342 of file json.\+hpp.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

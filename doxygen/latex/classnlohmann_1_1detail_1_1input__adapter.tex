@@ -1,0 +1,248 @@
+\hypertarget{classnlohmann_1_1detail_1_1input__adapter}{}\section{nlohmann\+:\+:detail\+:\+:input\+\_\+adapter Class Reference}
+\label{classnlohmann_1_1detail_1_1input__adapter}\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+
+
+Collaboration diagram for nlohmann\+:\+:detail\+:\+:input\+\_\+adapter\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}{input\+\_\+adapter} (std\+::istream \&i)
+\begin{DoxyCompactList}\small\item\em input adapter for input stream \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__adapter_af002dd2e53ac0855a03cb68d0ce626b2}{input\+\_\+adapter} (std\+::istream \&\&i)
+\begin{DoxyCompactList}\small\item\em input adapter for input stream \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename CharT , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+pointer$<$ Char\+T $>$\+::value and std\+::is\+\_\+integral$<$ typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type $>$\+::value and sizeof(typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type)==1, int $>$\+::type  = 0$>$ }\\\hyperlink{classnlohmann_1_1detail_1_1input__adapter_a37816622d79ab4a1a76f4d7e872b65e1}{input\+\_\+adapter} (CharT b, std\+::size\+\_\+t l)
+\begin{DoxyCompactList}\small\item\em input adapter for buffer \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename CharT , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+pointer$<$ Char\+T $>$\+::value and std\+::is\+\_\+integral$<$ typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type $>$\+::value and sizeof(typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type)==1, int $>$\+::type  = 0$>$ }\\\hyperlink{classnlohmann_1_1detail_1_1input__adapter_a86f035d9c4319360014b922b5e433ced}{input\+\_\+adapter} (CharT b)
+\begin{DoxyCompactList}\small\item\em input adapter for string literal \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Iterator\+Type , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+same$<$ typename std\+::iterator\+\_\+traits$<$ Iterator\+Type $>$\+::iterator\+\_\+category, std\+::random\+\_\+access\+\_\+iterator\+\_\+tag $>$\+::value, int $>$\+::type  = 0$>$ }\\\hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad6824b0f792691f75186c527fa31a6b4}{input\+\_\+adapter} (Iterator\+Type first, Iterator\+Type last)
+\begin{DoxyCompactList}\small\item\em input adapter for iterator range with contiguous storage \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T , std\+::size\+\_\+t N$>$ }\\\hyperlink{classnlohmann_1_1detail_1_1input__adapter_aa2392138bf8307df1994dc7eb22d51ce}{input\+\_\+adapter} (T(\&\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{array})\mbox{[}N\mbox{]})
+\begin{DoxyCompactList}\small\item\em input adapter for array \end{DoxyCompactList}\item 
+{\footnotesize template$<$class Contiguous\+Container , typename std\+::enable\+\_\+if$<$ not std\+::is\+\_\+pointer$<$ Contiguous\+Container $>$\+::value and std\+::is\+\_\+base\+\_\+of$<$ std\+::random\+\_\+access\+\_\+iterator\+\_\+tag, typename std\+::iterator\+\_\+traits$<$ decltype(std\+::begin(std\+::declval$<$ Contiguous\+Container const $>$()))$>$\+::iterator\+\_\+category $>$\+::value, int $>$\+::type  = 0$>$ }\\\hyperlink{classnlohmann_1_1detail_1_1input__adapter_a6f92fe82cb49a508dbfb297c5630cc7f}{input\+\_\+adapter} (const Contiguous\+Container \&c)
+\begin{DoxyCompactList}\small\item\em input adapter for contiguous container \end{DoxyCompactList}\item 
+\hyperlink{classnlohmann_1_1detail_1_1input__adapter_a4ef04b9490247fc38f3d1c2a9e18789b}{operator input\+\_\+adapter\+\_\+t} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia} = nullptr
+\begin{DoxyCompactList}\small\item\em the actual adapter \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 1741 of file json.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}\label{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for input stream 
+
+
+
+Definition at line 1747 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1748         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia}(std::make\_shared<input\_stream\_adapter>(i)) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_af002dd2e53ac0855a03cb68d0ce626b2}\label{classnlohmann_1_1detail_1_1input__adapter_af002dd2e53ac0855a03cb68d0ce626b2}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{std\+::istream \&\&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for input stream 
+
+
+
+Definition at line 1751 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1752         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia}(std::make\_shared<input\_stream\_adapter>(i)) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_a37816622d79ab4a1a76f4d7e872b65e1}\label{classnlohmann_1_1detail_1_1input__adapter_a37816622d79ab4a1a76f4d7e872b65e1}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+pointer$<$ Char\+T $>$\+::value and std\+::is\+\_\+integral$<$ typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type $>$\+::value and sizeof(typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type)==1, int $>$\+::type  = 0$>$ \\
+nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{CharT}]{b,  }\item[{std\+::size\+\_\+t}]{l }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for buffer 
+
+
+
+Definition at line 1761 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1762         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia}(std::make\_shared<input\_buffer\_adapter>(reinterpret\_cast<const char*>(b), l)) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_a86f035d9c4319360014b922b5e433ced}\label{classnlohmann_1_1detail_1_1input__adapter_a86f035d9c4319360014b922b5e433ced}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily template$<$typename CharT , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+pointer$<$ Char\+T $>$\+::value and std\+::is\+\_\+integral$<$ typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type $>$\+::value and sizeof(typename std\+::remove\+\_\+pointer$<$ Char\+T $>$\+::type)==1, int $>$\+::type  = 0$>$ \\
+nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{CharT}]{b }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for string literal 
+
+
+
+Definition at line 1773 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1774         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}{input\_adapter}(reinterpret\_cast<const char*>(b),
+1775                         std::strlen(reinterpret\_cast<const char*>(b))) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_ad6824b0f792691f75186c527fa31a6b4}\label{classnlohmann_1_1detail_1_1input__adapter_ad6824b0f792691f75186c527fa31a6b4}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily template$<$class Iterator\+Type , typename std\+::enable\+\_\+if$<$ std\+::is\+\_\+same$<$ typename std\+::iterator\+\_\+traits$<$ Iterator\+Type $>$\+::iterator\+\_\+category, std\+::random\+\_\+access\+\_\+iterator\+\_\+tag $>$\+::value, int $>$\+::type  = 0$>$ \\
+nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{Iterator\+Type}]{first,  }\item[{Iterator\+Type}]{last }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for iterator range with contiguous storage 
+
+
+
+Definition at line 1782 of file json.\+hpp.
+
+
+
+References J\+S\+O\+N\+\_\+\+L\+I\+K\+E\+LY.
+
+
+\begin{DoxyCode}
+1783     \{
+1784         \textcolor{comment}{// assertion to check that the iterator range is indeed contiguous,}
+1785         \textcolor{comment}{// see http://stackoverflow.com/a/35008842/266378 for more discussion}
+1786         assert(std::accumulate(
+1787                    first, last, std::pair<bool, int>(\textcolor{keyword}{true}, 0),
+1788                    [&first](std::pair<bool, int> res, decltype(*first) val)
+1789         \{
+1790             res.first &= (val == *(std::next(std::addressof(*first), res.second++)));
+1791             \textcolor{keywordflow}{return} res;
+1792         \}).first);
+1793 
+1794         \textcolor{comment}{// assertion to check that each element is 1 byte long}
+1795         static\_assert(
+1796             \textcolor{keyword}{sizeof}(\textcolor{keyword}{typename} std::iterator\_traits<IteratorType>::value\_type) == 1,
+1797             \textcolor{stringliteral}{"each element in the iterator range must have the size of 1 byte"});
+1798 
+1799         \textcolor{keyword}{const} \textcolor{keyword}{auto} len = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(std::distance(first, last));
+1800         \textcolor{keywordflow}{if} (\hyperlink{json_8hpp_a41ecd1c4cf7c3d56477b9b685b5daa72}{JSON\_LIKELY}(len > 0))
+1801         \{
+1802             \textcolor{comment}{// there is at least one element: use the address of first}
+1803             \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia} = std::make\_shared<input\_buffer\_adapter>(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(&(*first)), len);
+1804         \}
+1805         \textcolor{keywordflow}{else}
+1806         \{
+1807             \textcolor{comment}{// the address of first cannot be used: use nullptr}
+1808             \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia} = std::make\_shared<input\_buffer\_adapter>(\textcolor{keyword}{nullptr}, len);
+1809         \}
+1810     \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_aa2392138bf8307df1994dc7eb22d51ce}\label{classnlohmann_1_1detail_1_1input__adapter_aa2392138bf8307df1994dc7eb22d51ce}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily template$<$class T , std\+::size\+\_\+t N$>$ \\
+nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{T(\&)}]{array\mbox{[}\+N\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for array 
+
+
+
+Definition at line 1814 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1815         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}{input\_adapter}(std::begin(\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{array}), std::end(\hyperlink{namespacenlohmann_1_1detail_a1ed8fc6239da25abcaf681d30ace4985af1f713c9e000f5d3f280adbd124df4f5}{array})) \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_a6f92fe82cb49a508dbfb297c5630cc7f}\label{classnlohmann_1_1detail_1_1input__adapter_a6f92fe82cb49a508dbfb297c5630cc7f}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!input\+\_\+adapter@{input\+\_\+adapter}}
+\index{input\+\_\+adapter@{input\+\_\+adapter}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{input\+\_\+adapter()}{input\_adapter()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily template$<$class Contiguous\+Container , typename std\+::enable\+\_\+if$<$ not std\+::is\+\_\+pointer$<$ Contiguous\+Container $>$\+::value and std\+::is\+\_\+base\+\_\+of$<$ std\+::random\+\_\+access\+\_\+iterator\+\_\+tag, typename std\+::iterator\+\_\+traits$<$ decltype(std\+::begin(std\+::declval$<$ Contiguous\+Container const $>$()))$>$\+::iterator\+\_\+category $>$\+::value, int $>$\+::type  = 0$>$ \\
+nlohmann\+::detail\+::input\+\_\+adapter\+::input\+\_\+adapter (\begin{DoxyParamCaption}\item[{const Contiguous\+Container \&}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+input adapter for contiguous container 
+
+
+
+Definition at line 1822 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1823         : \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ae89f11268d4724b3080473f7218abe86}{input\_adapter}(std::begin(c), std::end(c)) \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_a4ef04b9490247fc38f3d1c2a9e18789b}\label{classnlohmann_1_1detail_1_1input__adapter_a4ef04b9490247fc38f3d1c2a9e18789b}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!operator input\+\_\+adapter\+\_\+t@{operator input\+\_\+adapter\+\_\+t}}
+\index{operator input\+\_\+adapter\+\_\+t@{operator input\+\_\+adapter\+\_\+t}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{operator input\+\_\+adapter\+\_\+t()}{operator input\_adapter\_t()}}
+{\footnotesize\ttfamily nlohmann\+::detail\+::input\+\_\+adapter\+::operator \hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 1825 of file json.\+hpp.
+
+
+\begin{DoxyCode}
+1826     \{
+1827         \textcolor{keywordflow}{return} \hyperlink{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}{ia};
+1828     \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\mbox{\Hypertarget{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}\label{classnlohmann_1_1detail_1_1input__adapter_ad5a11d0b65b68f6950cfbe8c8366b7da}} 
+\index{nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}!ia@{ia}}
+\index{ia@{ia}!nlohmann\+::detail\+::input\+\_\+adapter@{nlohmann\+::detail\+::input\+\_\+adapter}}
+\subsubsection{\texorpdfstring{ia}{ia}}
+{\footnotesize\ttfamily \hyperlink{namespacenlohmann_1_1detail_ae132f8cd5bb24c5e9b40ad0eafedf1c2}{input\+\_\+adapter\+\_\+t} nlohmann\+::detail\+::input\+\_\+adapter\+::ia = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the actual adapter 
+
+
+
+Definition at line 1832 of file json.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/lib/\hyperlink{json_8hpp}{json.\+hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,16 @@
+digraph "Strategy::is_near"
+{
+ // INTERACTIVE_SVG=YES
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node258 [label="Strategy::is_near",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node258 -> Node259 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node259 [label="Strategy::distance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_strategy.html#aacce05caed71553c4efd2d28c9c3aa39"];
+  Node258 -> Node260 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node260 [label="Robots::get_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a1fca8f2f5070176faa6ba1efa2f1ff14"];
+  Node260 -> Node261 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node261 [label="Robots::get_instance",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#a589bce74db5f34af384952d48435168f"];
+  Node261 -> Node262 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node262 [label="Robots::Robots",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_robots.html#aa2745a48ebd3e52b9a3020f6afbcb25d",tooltip="Initializes our arrays. "];
+}
