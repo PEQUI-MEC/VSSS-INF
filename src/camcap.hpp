@@ -50,7 +50,7 @@ public:
     int timerCounter = 0;
     CPUTimer timer;
 
-    bool fixed_ball[3];
+    bool fixed_ball[Robots::SIZE];
     bool KF_FIRST = true;
 
     unsigned char * data;
@@ -64,8 +64,8 @@ public:
     cv::Point Ball_Est;
     cv::Point Ball_kf_est;
 
-    cv::Point virtual_robots_positions[3];
-    float virtual_robots_orientations[3];
+    cv::Point virtual_robots_positions[Robots::SIZE];
+    cv::Point virtual_robots_orientations[Robots::SIZE];
     int virtual_robot_selected = -1;
 
     StrategyGUI strategyGUI;
@@ -79,7 +79,7 @@ public:
     Gtk::Notebook notebook;
 
     sigc::connection con;
-    
+
     boost::thread msg_thread;
 	boost::condition_variable data_ready_cond;
 	boost::mutex data_ready_mutex;
@@ -90,21 +90,21 @@ public:
 	 * @details Sets ball position, robot's orientation and positions (both actual and prediction)
 	 */
     void updateAllPositions();
-    
+
     /**
 	 * @brief Interface adjustments after 'start' button is clicked
 	 * @param b Variable that indicates whether start/stop button was clicked
-	 * @return true 
+	 * @return true
 	 */
     bool start_signal(bool b);
-    
+
     /**
 	 * @brief Captures camera frames and shows it in the interface
 	 * @details It also draw elements (target circles, arrows, virtual robots) and triggers some events (formation change, warp, hsv and pid buttons)
-	 * @return bool true 
+	 * @return bool true
 	 */
     bool capture_and_show();
-    
+
     /**
 	 * @brief Draws an arrow between two given points
 	 * @param img Cameraflow
@@ -114,79 +114,52 @@ public:
 	 * @param thickness Arrow's line thickness
 	 * @param line_type The way that pixels are connected. Each pixel has 8 neighbors by default
 	 * @param shift Number of fractional bits in the point coordinates
-	 * @param tipLength Length of the arrow tip  
+	 * @param tipLength Length of the arrow tip
 	 */
     void arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
         int thickness=1, int line_type=8, int shift=0, double tipLength=0.1);
-        
-    //void sendCmdToRobots(std::vector<Robot>&robot_list, bool &xbeeIsConnected);
 
-    //void sendCmdToRobots(std::vector<Robot>&robot_list);
-
-    /** 
+    /**
     * @brief Send robots to its estimated positions
     * @param robots Vector cointaining all robots instances
     */
     void send_cmd_thread();
-	
+
     /**
     * @brief Notifies all waiting threads through a conditional variable
     */
 	void notify_data_ready();
-            
+
     /**
-	 * @brief Calculates the euclidean distance between two given points
-	 * @param a First point
-	 * @param b Second point
-	 * @return Linear distance between a and b
-	 */
-    double distance(cv::Point a, cv::Point b);
-    
-     /**
-	 * @brief Calculates the angular distance between two given points
-	 * @param alpha First point
-	 * @param beta Second point
-	 * @return Angle between alpha and beta
-	 */
-    double angular_distance(double alpha, double beta);
-    
-    /**
-	 * @brief Sends robots to the target position and orientation
+	 * Sends robots to the target position and orientation
 	 */
     void updating_formation();
-    
+
      /**
-	 * @brief Creates the formation (creation and load) interface
+	 * Updates virtual robot's position and orientation at camcap and strategyGUI
 	 */
     void formation_creation();
-   
-    /**
-	 * @brief Updates information given by interface in strategy
-	 */
-    void update_formation_information();
-    
-    //void transformTargets (std::vector<Robot>&robot_list);
 
 	 /**
 	 * @brief Executes the 'PID Test on click' at the control panel
      * @details Handles only 1 selected robot at time by setting it's target
-	 */	
+	 */
     void PID_test();
-    
+
     /**
 	 * @brief Adjusts the image framing
-	 */	
+	 */
     void warp_transform(cv::Mat cameraFlow);
-    
+
     /**
 	 * @brief Constructor of a CamCap object
 	 * @details Sets variables and append elements to the interface
-	 */	
+	 */
     CamCap();
-    
+
     /**
 	 * @brief Destructor of a CamCap object
-	 */	
+	 */
     ~CamCap();
 };
 

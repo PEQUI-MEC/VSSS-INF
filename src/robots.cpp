@@ -1,4 +1,5 @@
 #include "aux/debug.hpp"
+#include "aux/equations.hpp"
 #include "robots.hpp"
 
 /* Null, because instance will be initialized on demand.
@@ -281,4 +282,17 @@ void Robots::kick(int robot, cv::Point target) {
     // !TODO verificar a necessidade do último cast pra double
     get_instance()->list.at(robot).transAngle = double(-atan2(double(target.y - pos.y), double(target.x - pos.x)));
     get_instance()->list.at(robot).vmax = MAX_VEL;
+}
+
+// !TODO usar velocidade proporcional à distancias sem hardcode
+void Robots::manage_velocity(int robot, cv::Point target) {
+    if(!check_index(robot)) return;
+    cv::Point pos = get_instance()->list.at(robot).position;
+    double dist = EQ::distance(pos, target);
+    if(dist > 200)
+        get_instance()->list.at(robot).vmax = 0.8;
+    else if(dist > 80)
+        get_instance()->list.at(robot).vmax = 0.4;
+    else
+        get_instance()->list.at(robot).vmax = 0.1;
 }

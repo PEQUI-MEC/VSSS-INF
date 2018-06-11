@@ -1,13 +1,5 @@
 #include "controlGUI.hpp"
 
-bool ControlGUI::get_PID_test_flag() {
-    return PID_test_flag;
-}
-
-void ControlGUI::set_PID_test_flag(bool input) {
-    PID_test_flag = input;
-}
-
 ControlGUI::ControlGUI() {
     Serial_Enabled = false;
     // Adicionar o frame do Serial e sua VBOX
@@ -500,27 +492,4 @@ void ControlGUI::_create_status_frame() {
         status_lb[i].set_text("Offline");
         status_grid.attach(status_lb[i], 3, i+1, 1, 1);
     }
-}
-
-bool ControlGUI::checkPIDvalues(){
-    std::string value;
-    int counter;
-
-    for(int i = 0; i < 3; i++) {
-        counter = 0;
-        value.clear();
-        value.append(pid_box[i].get_text());
-        std::cout << i << ": " << value << std::endl;
-
-        if(value.front() == '.' || value.back() == '.')
-            return false;
-
-        for(int j = 0; j < value.size(); j++) {
-            if (value[j] == '.') counter++;
-            if (!isdigit(value[j]) && value[j] != '.') return false;
-        }
-
-        if(counter > 1) return false;
-    }
-    return true;
 }

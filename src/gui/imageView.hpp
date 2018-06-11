@@ -24,27 +24,21 @@ public:
 	unsigned char * data;
 	int width, height, stride;
 
-	int gmm_clicks[2][2];
-
 	int warp_mat[4][2];
 	int adjust_mat[4][2];
-	double tar_pos[2];
-	double robot_pos[2];
-	double look_pos[2];
+	int tar_pos[2];
+	int robot_pos[2];
+	int look_pos[2];
 	cv::Point pointClicked;
 
 	int warp_counter =0;
 	int adj_counter =0;
-	int gmm_counter = 0;
 	bool warp_event_flag = false;
 	bool PID_test_flag = false;
 	bool formation_flag = false;
 	bool adjust_event_flag = false;
 	bool hold_warp = false;
 	bool adjust_rdy = false;
-	bool auto_calib_flag = false;
-	bool gmm_sample_flag = false;
-	bool gmm_ready_flag = false;
 	bool split_flag = false;
 	int sector = -1;
 

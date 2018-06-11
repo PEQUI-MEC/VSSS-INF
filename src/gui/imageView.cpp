@@ -1,16 +1,6 @@
 #include "imageView.hpp"
 
 bool ImageView::on_button_press_event(GdkEventButton *event) {
-	if(gmm_sample_flag && event->button == 1) {
-		gmm_clicks[gmm_counter][0] = event->x;
-		gmm_clicks[gmm_counter][1] = event->y;
-
-		if(gmm_counter == 1) {
-			gmm_counter = 0;
-			gmm_ready_flag = true;
-		} else gmm_counter++;
-	}
-
 	if(split_flag) {
 		if(event->x <= width/2 && event->y <= height/2) {
 			sector = 0;

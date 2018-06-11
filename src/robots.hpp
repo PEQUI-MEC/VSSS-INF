@@ -520,6 +520,13 @@ public:
      * @param target The robot's kick target.
      */
     static void kick(int robot, cv::Point target);
+
+    /**
+     * Manages the maximum velocity in order to obtain precision
+     * @param robot Robot's index.
+     * @param target The robot's target
+     */
+    static void manage_velocity(int robot, cv::Point target);
 };
 
 #endif /* ROBOTS_HPP_ */
