@@ -11,11 +11,14 @@
 #include <vector>
 
 #define N_ROBOTS 3
+
+/*
 // potField
 #define BALL_IS_OBS 0
 #define BALL_ONLY_OBS 1
 #define BALL_NOT_OBS 2
 #define NO_OBS 3
+ */
 
 
 class Strategy {
@@ -31,6 +34,7 @@ public:
 	LS LS_ball_x;
 	LS LS_ball_y;
 
+	/*
 	double pot_thetaX = 0;
 	double pot_thetaY = 0;
 	double pot_theta = 0;
@@ -40,22 +44,23 @@ public:
 	double pot_angle[5];
 	double ball_angle = 0;
 	double ball_mag = 0;
+    */
 
 	std::vector<cv::Point> adv;
 	int collision_count[N_ROBOTS];
 	double past_transangle[N_ROBOTS];
 	cv::Point past_position[N_ROBOTS];
 	int atk, def, gk, opp;
-	double lock_angle;
+	// double lock_angle;
 
 	int frames_blocked;
 
 	bool transitions_enabled = true;
 
 	int t = 0;
-	int timeout = 0;
-	int transition_timeout = 0;
-	bool action1 = false;
+	// int timeout = 0;
+	// int transition_timeout = 0;
+	// bool action1 = false;
 
 	Strategy();
 	
@@ -71,7 +76,7 @@ public:
 	
 	void fixed_position_check(int i);
 	
-	bool offensive_adv();
+	// bool offensive_adv();
 	
 	void collision_check(int i);
 	
@@ -80,14 +85,14 @@ public:
 	bool is_near(int i, cv::Point point);
 	
 	void position_to_vector(int i);
-	
-	double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS);
-	
-	int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst);
+
+	// double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS);
+
+	// int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst);
 	
 	void def_wait(int i);
-	
-	void pot_field_around(int i);
+
+	// void pot_field_around(int i);
 	
 	void crop_targets(int i);
 	

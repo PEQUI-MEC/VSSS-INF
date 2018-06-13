@@ -16,15 +16,15 @@
 #define CORNER_STATE 1
 #define	STEP_BACK 2
 // #define	ADVANCING_STATE 3
-#define	TRANSITION_STATE 4
+// #define	TRANSITION_STATE 4
 #define	SIDEWAYS 5
 #define DEF_CORNER_STATE 6
 #define ATK_PENALTI_STATE 7
 
 // velocidade
 #define MAX_VEL 1.4f
-#define MEDIAN_VEL 0.8f
-#define SLOW_VEL 0.35f
+// #define MEDIAN_VEL 0.8f
+// #define SLOW_VEL 0.35f
 
 using namespace CONST;
 
@@ -133,6 +133,7 @@ void Strategy::reset_flags() {
 bool compare_pos(std::pair<int, std::pair<double, double> > a, std::pair<int, std::pair<double, double> > b) {
     return a.second.first < b.second.first;
 }
+
 void Strategy::set_roles() {
 	if(!transitions_enabled) {
 		for(int i = 0; i < Robots::SIZE; i++) {
@@ -461,6 +462,7 @@ void Strategy::position_to_vector(int i) {
 		Robots::set_transAngle(i, atan2(double(Robots::get_position(i).y - Robots::get_target(i).y), - double(Robots::get_position(i).x - Robots::get_target(i).x)));
 }
 
+/*
 double Strategy::potField(int robot_index, cv::Point goal, int behavior) {
 	Robots::set_usingPotField(robot_index, true);
 
@@ -681,6 +683,7 @@ int Strategy::pot_rotation_decision(int robot_index,cv::Point goal, cv::Point ob
 		}
 	}
 }
+*/
 
 void Strategy::def_wait(int i) {
     Robots::set_fixedPos(i, true);
@@ -689,6 +692,7 @@ void Strategy::def_wait(int i) {
 	}
 }
 
+/*
 void Strategy::pot_field_around(int i) {
     Robots::set_usingPotField(i, true);
 
@@ -735,6 +739,7 @@ void Strategy::pot_field_around(int i) {
 		action1 = true;
 	}
 }
+*/
 
 void Strategy::crop_targets(int i) {
     cv::Point target = Robots::get_target(i);
@@ -795,7 +800,7 @@ void Strategy::atk_routine(int i) {
 		case NORMAL_STATE:
 			// leva a bola pro gol deles
 			Robots::set_cmdType(i, Robots::CMD::VECTOR);
-			pot_field_around(i);
+			// pot_field_around(i);
 
 			break;
 
@@ -985,7 +990,7 @@ void Strategy::def_routine(int i) {
 				Robots::set_target(i, Ball);
 			}
 			else {
-				pot_field_around(i);
+				// pot_field_around(i);
 				crop_targets(i);
 			}
 
