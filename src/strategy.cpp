@@ -65,7 +65,7 @@ void Strategy::set_constants(int w, int h) {
     // variáveis ajustáveis
     corner_atk_limit = COORD_BOX_ATK_X - ABS_ROBOT_SIZE;
     def_corner_line = COORD_BOX_DEF_X;
-    // def_line = ABS_GOAL_TO_GOAL_WIDTH/3;
+    def_line = ABS_GOAL_TO_GOAL_WIDTH/3;
     // possession_distance = ABS_ROBOT_SIZE;
     collision_radius = ABS_ROBOT_SIZE/2;
     fixed_pos_distance = ABS_ROBOT_SIZE;
@@ -774,16 +774,21 @@ void Strategy::atk_routine(int i) {
 		} else {
 			//Robots::position(i,Ball,goal);
 		}
-	} else if (Ball.x > Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) {
+	} else if (Ball.x > Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) { //Bola na frente do atacante e do defensor
 			//Robots::position(i,Ball,goal);
-	} else if (Ball.x < Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) {
+	} else if (Ball.x < Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) { //Bola entre o atacante e o defensor
 			Robots::set_velocity(i,SLOW_VEL);
 			//Robots::set_position(i, cv::Point(BANHEIRA, COORD_GOAL_UP_Y));
 			Robots::set_target(i, cv::Point(BANHEIRA, COORD_GOAL_UP_Y));
 
-	} else {
+	} else if(Ball.x < Robots::get_position(i).x && Ball.x < Robots::get_position(def).x) { //Bola atrás do atacante e do defensor
+		if(ball.y < COORD_GOAL_MID_Y){
 			Robots::set_velocity(i,MAX_VEL);
-			//volta
+			Robots::set_target(i, cv::Point(def_line, COORD_GOAL_UP_Y));	//volta pra parte de cima do gol
+		}else{
+			Robots::set_velocity(i,MAX_VEL);
+			Robots::set_target(i, cv::Point(def_line, COORD_GOAL_DOWN_Y));	//volta pra parte de baixo do gol
+		}
 	}
 
 	//cod antigo daqui pra baixo
