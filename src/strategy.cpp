@@ -77,7 +77,7 @@ void Strategy::set_constants(int w, int h) {
     transition_y_distance = ABS_ROBOT_SIZE*4;
 
     // // Não usando
-    // BANHEIRA		=	(int) (round((0.50*COMPRIMENTO_CAMPO_TOTAL))+round(0.16*float(width)/1.70));
+    BANHEIRA		=	(int) (round((0.50*COMPRIMENTO_CAMPO_TOTAL))+round(0.16*float(width)/1.70));
     // DIVISAO_AREAS	=	(int) round((0.50*COMPRIMENTO_CAMPO_TOTAL) - 10); // O valor negativo é um offset para não ficar exatamente no meio.
     // OFFSET_BANHEIRA	=	(int) round(0.20*float(width)/1.70);
     // MEIO_GOL_X		=	(int) round(COMPRIMENTO_CAMPO_TOTAL-round(0.05*float(width)/1.70));
@@ -776,9 +776,11 @@ void Strategy::atk_routine(int i) {
 		}
 	} else if (Ball.x > Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) {
 			//Robots::position(i,Ball,goal);
-	} else if (/*seguro*/) {
-			Robots::set_velocity(i,SLOW_VEL)
-			Robots::set_target(i,Ball);
+	} else if (Ball.x < Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) {
+			Robots::set_velocity(i,SLOW_VEL);
+			//Robots::set_position(i, cv::Point(BANHEIRA, COORD_GOAL_UP_Y));
+			Robots::set_target(i, cv::Point(BANHEIRA, COORD_GOAL_UP_Y));
+
 	} else {
 			Robots::set_velocity(i,MAX_VEL);
 			//volta
