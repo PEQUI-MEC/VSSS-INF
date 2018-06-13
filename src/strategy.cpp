@@ -767,6 +767,25 @@ void Strategy::atk_routine(int i) {
 
 	Robots::set_velocity(i);
 
+	if (has_ball(i)) {
+		if (abs(phi) * 180/PI < 30) { //se tem ângulo bom com o gol
+			Robots::set_velocity(i,MAX_VEL);
+			Robots::set_status(i, ATK_PENALTI_STATE);
+		} else {
+			//Robots::position(i,Ball,goal);
+		}
+	} else if (Ball.x > Robots::get_position(i).x && Ball.x > Robots::get_position(def).x) {
+			//Robots::position(i,Ball,goal);
+	} else if (/*seguro*/) {
+			Robots::set_velocity(i,SLOW_VEL)
+			Robots::set_target(i,Ball);
+	} else {
+			Robots::set_velocity(i,MAX_VEL);
+			//volta
+	}
+
+	//cod antigo daqui pra baixo
+
 	if(Robots::get_status(i) != ATK_PENALTI_STATE) {
 		if((Robots::get_position(def).x < COORD_MID_FIELD_X // se o defensor tá atrás do meio de campo
 			&& Ball.x > corner_atk_limit + 5*ABS_ROBOT_SIZE  // se a bola tá depois do x do penalti
@@ -789,7 +808,8 @@ void Strategy::atk_routine(int i) {
 		} else {
 			Robots::set_status(i, NORMAL_STATE); // senão, age normalmente
 		}
-	}
+	} 
+	
 
 	switch(Robots::get_status(i)) {
 		case NORMAL_STATE:
