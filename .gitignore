@@ -11,3 +11,6 @@ cmake-build-debug
 debug.log
 dep_ok
 opencvIsInstalled
+OpenCV-install
+
+
