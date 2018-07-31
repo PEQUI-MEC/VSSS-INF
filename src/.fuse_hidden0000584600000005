@@ -698,14 +698,14 @@ void Strategy::def_wait(int robot_index) {
 }
 
 /*
-void Strategy::pot_field_around(int i) {
-    Robots::set_usingPotField(i, true);
+void Strategy::pot_field_around(int robot_index) {
+    Robots::set_usingPotField(robot_index, true);
 
 	cv::Point targets_temp;
 	cv::Point goal = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
 
 	double m1 = double(goal.y - Ball_Est.y)/double(goal.x - Ball_Est.x);
-	double m2 = double(Robots::get_position(i).y - Ball_Est.y)/double(Robots::get_position(i).x - Ball_Est.x);
+	double m2 = double(Robots::get_position(robot_index).y - Ball_Est.y)/double(Robots::get_position(robot_index).x - Ball_Est.x);
 	// double ball_goal = distance(Ball_Est, goal);
 	// double r1 = ball_goal + max_approach;
 
@@ -729,18 +729,18 @@ void Strategy::pot_field_around(int i) {
 	if(targets_temp.x < 0) targets_temp.x = 0;
 	if(targets_temp.x > COORD_GOAL_ATK_FRONT_X) targets_temp.x = COORD_GOAL_ATK_FRONT_X;
 
-	Robots::set_target(i, targets_temp);
-	Robots::set_transAngle(i, potField(i, targets_temp, BALL_ONLY_OBS));
+	Robots::set_target(robot_index, targets_temp);
+	Robots::set_transAngle(robot_index, potField(robot_index, targets_temp, BALL_ONLY_OBS));
 
-	if(Robots::get_position(i).x > Ball.x + ABS_ROBOT_SIZE)
+	if(Robots::get_position(robot_index).x > Ball.x + ABS_ROBOT_SIZE)
 		action1 = false;
 
-	if(is_near(i, targets_temp) || abs(phi) < beta/2 || action1) {
-		v = cv::Point(Robots::get_position(i).x - Ball.x, Robots::get_position(i).y - Ball.y);
+	if(is_near(robot_index, targets_temp) || abs(phi) < beta/2 || action1) {
+		v = cv::Point(Robots::get_position(robot_index).x - Ball.x, Robots::get_position(robot_index).y - Ball.y);
 		// module = sqrt(pow(v.x,2) + pow(v.y,2));
 		// targets_temp.x = (Ball.x - (v.x/module) * max_approach);
 		// targets_temp.y = (Ball.y - (v.y/module) * max_approach);
-		Robots::set_transAngle(i, atan2(double(Robots::get_position(i).y - Ball.y), - double(Robots::get_position(i).x - Ball.x)));
+		Robots::set_transAngle(robot_index, atan2(double(Robots::get_position(robot_index).y - Ball.y), - double(Robots::get_position(robot_index).x - Ball.x)));
 		action1 = true;
 	}
 }

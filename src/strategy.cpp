@@ -407,7 +407,7 @@ void Strategy::collision_check(int robot_index) {
                 tempAngle = Robots::get_transAngle(robot_index);
             }
 
-            Robots::set_target(robot_index, cv::Point(Ball.x, Robots::get_position(i).y));
+            Robots::set_target(robot_index, cv::Point(Ball.x, Robots::get_position(robot_index).y));
             Robots::set_command(robot_index, tempAngle);
         }
     }
@@ -416,7 +416,7 @@ void Strategy::collision_check(int robot_index) {
 			distance(Robots::get_position(robot_index), Robots::get_target(robot_index)) > fixed_pos_distance) {
 			collision_count[robot_index]++;
 		} else {
-			get_past(i);
+			get_past(robot_index);
 			collision_count[robot_index] = 0;
 		}
 
@@ -917,7 +917,7 @@ void Strategy::atk_routine(int robot_index) {
 
 		case ATK_PENALTI_STATE:
 
-			Robots::set_cmdType(i, Robots::CMD::VECTOR);
+			Robots::set_cmdType(robot_index, Robots::CMD::VECTOR);
             Robots::kick(robot_index, goal);
 
 			if(!has_ball(robot_index))

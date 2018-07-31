@@ -109,6 +109,8 @@ public:
 	void get_past(int robot_index);
 
 	void get_variables();
+
+	void run(int robot_index);
 };
 
 #endif /* STRATEGY_HPP_ */
