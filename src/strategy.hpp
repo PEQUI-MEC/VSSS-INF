@@ -72,41 +72,41 @@ public:
 
 	void set_roles();
 
-	bool has_ball(int i);
+	bool has_ball(int robot_index);
 	
-	void fixed_position_check(int i);
+	void fixed_position_check(int robot_index);
 	
 	// bool offensive_adv();
 	
-	void collision_check(int i);
+	void collision_check(int robot_index);
 	
-	void set_role(int i, int role);
+	void set_role(int robot_index, int role);
 	
-	bool is_near(int i, cv::Point point);
+	bool is_near(int robot_index, cv::Point point);
 	
-	void position_to_vector(int i);
+	void position_to_vector(int robot_index);
 
 	// double potField(int robot_index, cv::Point goal, int behavior=BALL_NOT_OBS);
 
 	// int pot_rotation_decision(int robot_index,cv::Point goal, cv::Point obst);
 	
-	void def_wait(int i);
+	void def_wait(int robot_index);
 
-	// void pot_field_around(int i);
+	// void pot_field_around(int robot_index);
 	
-	void crop_targets(int i);
+	void crop_targets(int robot_index);
 	
-	void atk_routine(int i);
+	void atk_routine(int robot_index);
 	
-	void def_routine(int i);
+	void def_routine(int robot_index);
 	
-	void gk_routine(int i);
+	void gk_routine(int robot_index);
 	
 	void set_Ball(cv::Point b);
 
 	cv::Point get_Ball_Est();
 
-	void get_past(int i);
+	void get_past(int robot_index);
 
 	void get_variables();
 };
