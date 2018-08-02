@@ -117,7 +117,7 @@ set(sources
         src/gui/imageView.cpp
         src/gui/v4linterface.cpp
         src/gui/v4linterfaceEvents.cpp
-)
+		)
 
 include_directories(src
                     ${GTKMM_INCLUDE_DIRS}
