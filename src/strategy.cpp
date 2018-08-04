@@ -322,8 +322,8 @@ void Strategy::overmind() {
 		position_to_vector(gk);
 		fixed_position_check(gk);
 	}
-}
-*/
+}*/
+
 
 /*
 void Strategy::set_flags() {
@@ -467,7 +467,7 @@ void Strategy::position_to_vector(int robotIndex) {
 		Robots::set_transAngle(robotIndex, atan2(double(Robots::get_position(robotIndex).y - Robots::get_target(robotIndex).y), - double(Robots::get_position(robotIndex).x - Robots::get_target(robotIndex).x)));
 }
 
-/*
+
 double Strategy::potField(int robotIndex, cv::Point goal, int behavior) {
 	Robots::set_usingPotField(robotIndex, true);
 
@@ -688,7 +688,7 @@ int Strategy::pot_rotation_decision(int robotIndex,cv::Point goal, cv::Point obs
 		}
 	}
 }
-*/
+
 
 void Strategy::def_wait(int robotIndex) {
     Robots::set_fixedPos(robotIndex, true);
@@ -697,7 +697,7 @@ void Strategy::def_wait(int robotIndex) {
 	}
 }
 
-/*
+
 void Strategy::pot_field_around(int robotIndex) {
     Robots::set_usingPotField(robotIndex, true);
 
@@ -744,7 +744,7 @@ void Strategy::pot_field_around(int robotIndex) {
 		action1 = true;
 	}
 }
-*/
+
 
 void Strategy::crop_targets(int robotIndex) {
     cv::Point target = Robots::get_target(robotIndex);
@@ -1172,45 +1172,65 @@ void Strategy::get_past(int robotIndex) {
 }
 
 void Strategy::uvf(int robotIndex) {
-	double fi_tuf = move_to_goal(robotIndex);
+    Robots::set_usingPotField(robotIndex, true);
+
+    cv::Point targets_temp;
+    cv::Point goal = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
+    cv::Point v = cv::Point(goal.x - Ball_Est.x, goal.y - Ball_Est.y);
+    double module = sqrt(pow(v.x,2) + pow(v.y,2));
+
+    targets_temp.x = static_cast<int>(Ball_Est.x - (v.x/module) * max_approach);
+    targets_temp.y = static_cast<int>(Ball_Est.y - (v.y/module) * max_approach);
+
+    // crop
+    if(targets_temp.y < 0) targets_temp.y = 0;
+    if(targets_temp.y > ABS_FIELD_HEIGHT) targets_temp.y = ABS_FIELD_HEIGHT;
+    if(targets_temp.x < 0) targets_temp.x = 0;
+    if(targets_temp.x > COORD_GOAL_ATK_FRONT_X) targets_temp.x = COORD_GOAL_ATK_FRONT_X;
+
+    Robots::set_target(robotIndex, targets_temp);
+    Robots::set_transAngle(robotIndex, potField(robotIndex, targets_temp, BALL_ONLY_OBS));
+
+	double fi_tuf = move_to_goal(robotIndex, targets_temp);
 	Robots::set_transAngle(robotIndex, fi_tuf);
 }
 
-double Strategy::move_to_goal(int robotIndex) {
+double Strategy::move_to_goal(int robotIndex, cv::Point pos) {
+	/*
 	cv::Point pos;
 	if(has_ball(robotIndex)) {
-		pos = Robots::get_position(robotIndex) - cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y);
+		pos = cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y) -  Robots::get_position(robotIndex);
 	} else if(!has_ball(robotIndex)) {
-		pos = Robots::get_position(robotIndex) - Ball;
-	}
+		pos = Ball - Robots::get_position(robotIndex) ;
+	}*/
 
 	cv::Point distanceL, distanceR;
-	distanceL.x = pos.x;
-	distanceL.y = pos.y + radiusSpiral;
-	distanceR.x = pos.x;
-	distanceR.y = pos.y - radiusSpiral;
+	distanceL.x = pos.y;
+	distanceL.y = pos.x + radiusSpiral;
+	distanceR.x = pos.y;
+	distanceR.y = pos.x - radiusSpiral;
 
 	std::pair<double, double> nhCCW, nhCW;
 	cv::Point vec;
 
-	if(pos.y >= -radiusSpiral && pos.y < radiusSpiral) {
-		nhCCW = hyper_spiral_nh(distanceL, false, robotIndex);
-		nhCW = hyper_spiral_nh(distanceR, true, robotIndex);
-		vec.x = ((abs(pos.y + radiusSpiral) * nhCCW. first) + (abs(pos.y - radiusSpiral) * nhCW.first)) / (2.0 * radiusSpiral);
-		vec.y = ((abs(pos.y + radiusSpiral) * nhCCW. second) + (abs(pos.y - radiusSpiral) * nhCW.second)) / (2.0 * radiusSpiral);
+	if(pos.x >= -radiusSpiral && pos.x < radiusSpiral) {
+		nhCCW = hyper_spiral_nh(distanceR, true, robotIndex);
+		nhCW = hyper_spiral_nh(distanceL, false, robotIndex);
+		vec.x = ((abs(pos.x + radiusSpiral) * nhCCW. first) + (abs(pos.x - radiusSpiral) * nhCW.first)) / (2.0 * radiusSpiral);
+		vec.y = ((abs(pos.x + radiusSpiral) * nhCCW. second) + (abs(pos.x - radiusSpiral) * nhCW.second)) / (2.0 * radiusSpiral);
 		return wrap_to_pi(angle_with_x(vec));
 
-	} else if(pos.y < -radiusSpiral) {
-		return hyper_spiral_fih(distanceL, true, robotIndex);
-	} else {
+	} else if(pos.x < -radiusSpiral) {
 		return hyper_spiral_fih(distanceR, false, robotIndex);
+	} else {
+		return hyper_spiral_fih(distanceL, true, robotIndex);
 	}
 
 }
 
 double Strategy::hyper_spiral_fih(cv::Point p, bool clockwise, int robotIndex) {
 	double theta = wrap_to_pi(angle_with_x(p));
-	double ro = distance(Robots::get_position(robotIndex), p);
+	double ro = distance_meters(Robots::get_position(robotIndex), p);
 	double a;
 
 	if(ro > radiusSpiral) {

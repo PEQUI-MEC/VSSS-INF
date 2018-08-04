@@ -12,13 +12,13 @@
 
 #define N_ROBOTS 3
 
-/*
+
 // potField
 #define BALL_IS_OBS 0
 #define BALL_ONLY_OBS 1
 #define BALL_NOT_OBS 2
 #define NO_OBS 3
- */
+
 
 
 class Strategy {
@@ -44,7 +44,7 @@ public:
 	LS LS_ball_x;
 	LS LS_ball_y;
 
-	/*
+
 	double pot_thetaX = 0;
 	double pot_thetaY = 0;
 	double pot_theta = 0;
@@ -54,7 +54,7 @@ public:
 	double pot_angle[5];
 	double ball_angle = 0;
 	double ball_mag = 0;
-    */
+
 
 	std::vector<cv::Point> adv;
 	int collision_count[N_ROBOTS];
@@ -68,9 +68,9 @@ public:
 	bool transitions_enabled = true;
 
 	int t = 0;
-	// int timeout = 0;
-	// int transition_timeout = 0;
-	// bool action1 = false;
+	int timeout = 0;
+	int transition_timeout = 0;
+	bool action1 = false;
 
 	Strategy();
 	
@@ -96,13 +96,13 @@ public:
 	
 	void position_to_vector(int robotIndex);
 
-	// double potField(int robotIndex, cv::Point goal, int behavior=BALL_NOT_OBS);
+	double potField(int robotIndex, cv::Point goal, int behavior=BALL_NOT_OBS);
 
-	// int pot_rotation_decision(int robotIndex,cv::Point goal, cv::Point obst);
+	int pot_rotation_decision(int robotIndex,cv::Point goal, cv::Point obst);
 	
 	void def_wait(int robotIndex);
 
-	// void pot_field_around(int robotIndex);
+	void pot_field_around(int robotIndex);
 	
 	void crop_targets(int robotIndex);
 	
@@ -122,7 +122,7 @@ public:
 
 	// UVF
 	void uvf(int robotIndex);
-	double move_to_goal(int robotIndex);
+	double move_to_goal(int robotIndex, cv::Point pos);
 	double hyper_spiral_fih(cv::Point p, bool clockwise, int robotIndex);
     std::pair<double,double> hyper_spiral_nh(cv::Point p, bool clockwise, int robotIndex);
     double wrap_to_pi(double theta);
