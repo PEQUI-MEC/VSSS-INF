@@ -1,7 +1,7 @@
-#include "camcap.hpp"
+#include "manager.hpp"
 #include "aux/equations.hpp"
 
-CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), msg_thread(&CamCap::send_cmd_thread, this) {
+Manager::Manager() : data(0), width(0), height(0), frameCounter(0), msg_thread(&Manager::send_cmd_thread, this) {
     fm.set_label("ImageView");
     fm.add(interface.imageView);
 
@@ -35,10 +35,11 @@ CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), msg_thread(&Ca
     pack_start(camera_vbox, true, true, 10);
     pack_start(notebook, false, false, 10);
 
-    interface.signal_start().connect(sigc::mem_fun(*this, &CamCap::start_signal));
+    interface.signal_start().connect(sigc::mem_fun(*this, &Manager::_hdl_start_capture));
+    interface._evt_play.connect(boost::bind(&Manager::_hdl_game_play, this, _1));
 }
 
-CamCap::~CamCap(){
+Manager::~Manager(){
     con.disconnect();
     interface.imageView.disable_image_show();
     free(data);
@@ -47,9 +48,11 @@ CamCap::~CamCap(){
 
     msg_thread.interrupt();
 	if (msg_thread.joinable()) msg_thread.join();
+
+	interface._evt_play.disconnect(this);
 }
 
-bool CamCap::start_signal(bool b) {
+bool Manager::_hdl_start_capture(bool b) {
     if (b) {
         debug_log("Starting capture...");
 
@@ -72,7 +75,7 @@ bool CamCap::start_signal(bool b) {
         data = (unsigned char *) calloc(interface.vcap.format_dest.fmt.pix.sizeimage, sizeof(unsigned char));
 
         interface.imageView.set_size_request(width, height);
-        con = Glib::signal_idle().connect(sigc::mem_fun(*this, &CamCap::capture_and_show));
+        con = Glib::signal_idle().connect(sigc::mem_fun(*this, &Manager::idle_loop));
 
         debug_log("Capture started.");
 
@@ -92,9 +95,9 @@ bool CamCap::start_signal(bool b) {
     interface.__event_bt_quick_load_clicked();
 
     return true;
-} // start_signal
+}
 
-bool CamCap::capture_and_show() {
+bool Manager::idle_loop() {
     // ----------------- CONFIGURAÇÃO INICIAL -----------------//
     if (!data) return false;
     if (frameCounter == 0) timer.start();
@@ -161,7 +164,7 @@ bool CamCap::capture_and_show() {
     }
 
     // roda os filtros e atualiza a posição dos robos na interface
-    updateAllPositions();
+    filter_positions();
 
     // ----------------- CONTROLE -----------------//
 
@@ -236,7 +239,7 @@ bool CamCap::capture_and_show() {
                 aux_point.x = int(100*cos(Robots::get_transAngle(i)));
                 aux_point.y = - int(100*sin(Robots::get_transAngle(i)));
                 aux_point += Robots::get_position(i);
-                arrowedLine(cameraFlow,Robots::get_position(i), aux_point,cv::Scalar(255,0,0),2);
+                arrowed_line(cameraFlow, Robots::get_position(i), aux_point, cv::Scalar(255, 0, 0), 2);
             }
 
             // adversários
@@ -268,7 +271,7 @@ bool CamCap::capture_and_show() {
                 // posição
                 circle(cameraFlow,virtual_robots_positions[i], 17, cv::Scalar(0,255,0), 2);
                 // orientação
-                arrowedLine(cameraFlow,virtual_robots_positions[i], virtual_robots_orientations[i],cv::Scalar(0,255,0),2);
+                arrowed_line(cameraFlow, virtual_robots_positions[i], virtual_robots_orientations[i], cv::Scalar(0, 255, 0), 2);
                 // identificação
                 putText(cameraFlow, std::to_string(i+1),virtual_robots_positions[i] + cv::Point(-14,10),cv::FONT_HERSHEY_PLAIN,1,cv::Scalar(0,255,0),2);
             }
@@ -301,9 +304,9 @@ bool CamCap::capture_and_show() {
     }
 
     return true;
-} // capture_and_show
+} // idle_loop
 
-void CamCap::send_cmd_thread() {
+void Manager::send_cmd_thread() {
 	boost::unique_lock<boost::mutex> lock(data_ready_mutex);
 	while (true) {
 		try {
@@ -317,13 +320,22 @@ void CamCap::send_cmd_thread() {
 	}
 }
 
-void CamCap::notify_data_ready() {
+void Manager::notify_data_ready() {
 	data_ready_flag = true;
 	data_ready_cond.notify_all();
 }
 
-void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
-    int thickness, int line_type, int shift, double tipLength) {
+void Manager::_hdl_game_play(bool started) {
+    if(started) {
+        debug_log("Game Started");
+    } else {
+        debug_log("Game Paused");
+        control.check_robot_status(); // pede pro controle verificar o status dos robôs
+    }
+}
+
+void Manager::arrowed_line(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar &color,
+                           int thickness, int line_type, int shift, double tipLength) {
 
     const double tipSize = norm(pt1-pt2)*tipLength;
     line(img, pt1, pt2, color, thickness, line_type, shift);
@@ -337,7 +349,7 @@ void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Sc
 
 }
 
-void CamCap::updating_formation() {
+void Manager::updating_formation() {
     for(int i = 0; i < Robots::SIZE; i++) {
         if(EQ::distance(Robots::get_position(i), virtual_robots_positions[i]) > ROBOT_RADIUS/3.0) {
             Robots::set_command(i, virtual_robots_positions[i]);
@@ -349,7 +361,7 @@ void CamCap::updating_formation() {
     }
 }
 
-void CamCap::formation_creation() {
+void Manager::formation_creation() {
     if (interface.get_start_game_flag() || control.PID_test_flag) return;
 
     // !TODO usar evento
@@ -415,7 +427,18 @@ void CamCap::formation_creation() {
     }
 }
 
-void CamCap::PID_test() {
+void Manager::update_formation_information() { // atualiza as informações dadas pela interface na estratégia
+    // reseta robo selecionado
+    virtual_robot_selected = -1;
+
+    // copia os dados pra estratégia
+    for(int i = 0; i < 3; i++) {
+        strategyGUI.formation_positions[i] = virtual_robots_positions[i];
+        strategyGUI.formation_orientations[i] = virtual_robots_orientations[i];
+    }
+}
+
+void Manager::PID_test() {
     // se o botão play estiver pressionado, não faz o pid test
     if (interface.get_start_game_flag() || strategyGUI.formation_flag) return;
 
@@ -468,7 +491,7 @@ void CamCap::PID_test() {
     }
 } // PID_test
 
-void CamCap::warp_transform(cv::Mat cameraFlow){
+void Manager::warp_transform(cv::Mat cameraFlow){
     cv::Point2f inputQuad[4];
     cv::Point2f outputQuad[4];
     cv::Mat lambda = cv::Mat::zeros(cameraFlow.rows, cameraFlow.cols, cameraFlow.type());
@@ -518,7 +541,7 @@ void CamCap::warp_transform(cv::Mat cameraFlow){
     }
 } // warp_transform
 
-void CamCap::updateAllPositions() {
+void Manager::filter_positions() {
     cv::Point ballPosition;
 
     // !TODO trocar estas variáveis para um Point e guardar localmente também
@@ -547,4 +570,4 @@ void CamCap::updateAllPositions() {
     }
     Ball_kf_est = KF_RobotBall.at(Robots::SIZE).KF_Prediction(ballPosition);
 
-} // updateAllPositions
+} // filter_positions

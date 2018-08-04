@@ -438,6 +438,8 @@ namespace VSSS_GUI {
             jsonSaveManager config(this);
             config.save();
             debug_log("Quick save");
+
+            _evt_play(true); // avisa aos interessados que o jogo foi iniciado
         } else {
             visionGUI.vision->finishVideo();
             visionGUI.bt_record_video.set_state(Gtk::STATE_NORMAL);
@@ -452,7 +454,7 @@ namespace VSSS_GUI {
             update_interface_camera();
             debug_log("Quick load");
 
-            // !TODO Verificar bateria dos robôs
+            _evt_play(false); // avisa aos interessados que o jogo foi pausado
         }
     }
 
