@@ -123,11 +123,12 @@ public:
 	// UVF
 	void uvf(int robotIndex);
 	double move_to_goal(int robotIndex, cv::Point pos);
-	double hyper_spiral_fih(cv::Point p, bool clockwise, int robotIndex);
+	double hyper_spiral_fih(cv::Point p, bool clockwise;
+	/*
     std::pair<double,double> hyper_spiral_nh(cv::Point p, bool clockwise, int robotIndex);
     double wrap_to_pi(double theta);
     double angle_with_x (cv::Point p);
-
+	*/
 };
 
 #endif /* STRATEGY_HPP_ */

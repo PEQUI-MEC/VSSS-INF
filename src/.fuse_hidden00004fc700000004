@@ -1174,9 +1174,10 @@ void Strategy::get_past(int robotIndex) {
 void Strategy::uvf(int robotIndex) {
     Robots::set_usingPotField(robotIndex, true);
 
+    double ori;
     cv::Point tmpOriginPos, tmpGoalPos;
-    tmpGoalPos = rotate(cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y), Robots::get_orientation(robotIndex););
-    tmpOriginPos = rotate(cv::Point(Robots::get_position(robotIndex)), Robots::get_orientation(robotIndex););
+    tmpGoalPos = rotate(cv::Point(COORD_GOAL_ATK_FRONT_X, COORD_GOAL_MID_Y), ori);
+    tmpOriginPos = rotate(cv::Point(Robots::get_position(robotIndex)), ori);
 
     cv::Point targets_temp = {tmpOriginPos.x - tmpGoalPos.x, tmpOriginPos.y - tmpGoalPos.y};
 
@@ -1212,7 +1213,7 @@ double Strategy::move_to_goal(int robotIndex, cv::Point pos) {
 	}
 }
 
-double Strategy::hyper_spiral_fih(cv::Point p, bool clockwise) {
+double Strategy::hyper_spiral_fih(cv::Point p, bool clockwise {
 	int signal = (clockwise) ? 1:-1;
 	double theta = atan2(p.y, p.x);
 	double ro = sqrt(pow(p.x, 2) + pow(p.y, 2));
