@@ -10,8 +10,6 @@
 #ifndef V4LINTERFACE_HPP_
 #define V4LINTERFACE_HPP_
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include <gtkmm.h>
@@ -23,6 +21,8 @@
 #include "robotGUI.hpp"
 #include <ctime>
 #include <chrono>
+#include <boost/signals2.hpp>
+#include <boost/bind.hpp>
 
 #define PI 3.14159265453
 
@@ -95,6 +95,8 @@ namespace VSSS_GUI {
         	
         void grab_rgb(unsigned char *rgb);
 
+        boost::signals2::signal<void (bool)> _evt_play;
+
         // Signals
         sigc::connection cb_input_signal;
         sigc::connection cb_standard_signal;
@@ -121,10 +123,6 @@ namespace VSSS_GUI {
 		 * @brief Event triggered when 'Load' button is clicked
 		 */	
         void __event_bt_load_clicked();
-
-        bool __core_save(const char *);
-
-        bool __core_load(const char *);
 
         /**
 		 * @brief Event triggered when 'start' button is clicked

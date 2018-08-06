@@ -89,7 +89,7 @@ find_library(LIBXBEE libxbee.so libxbeep.so)
 # --FILE GLOBBING------------------------
 set(sources 
         src/main.cpp
-        src/camcap.cpp
+        src/manager.cpp
         src/strategy.cpp
         src/constants.hpp
         src/robots.cpp
@@ -98,6 +98,7 @@ set(sources
         src/aux/kalmanFilter.cpp
 		src/aux/ls.cpp
 		src/aux/cpuTimer.cpp
+		src/aux/dialog.cpp
 
         src/communication/serialCom.cpp
         src/communication/flyingMessenger.cpp

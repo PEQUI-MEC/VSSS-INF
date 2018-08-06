@@ -10,7 +10,7 @@
 #include "aux/debug.hpp"
 
 #include <gtkmm.h>
-#include "camcap.hpp"
+#include "manager.hpp"
 #include <iostream>
 
 void usage() {
@@ -69,14 +69,14 @@ int main(int argc, char ** argv) {
 		debug_log("Saving debug information to \"./debug.log\"");
 	}
 
-	CamCap camcap;
+	Manager manager;
 
 	window.set_position(Gtk::WIN_POS_CENTER);
 	//window.set_border_width(10);
 	window.maximize();
 	window.set_title("VSSS INF - P137");
 
-	window.add(camcap);
+	window.add(manager);
 
 	window.show_all();
 

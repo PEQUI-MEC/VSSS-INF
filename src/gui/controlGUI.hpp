@@ -125,7 +125,7 @@ public:
 	/** 
 	* @brief Update the battery status of all robots
 	*/
-	void _robot_status();
+	void check_robot_status();
 
 	/** 
 	* @brief Initializes the selected communication device using flyingMessenger's start_xbee method

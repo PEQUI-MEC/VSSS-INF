@@ -1,4 +1,6 @@
 #include "controlGUI.hpp"
+#include "../aux/debug.hpp"
+#include "../aux/dialog.hpp"
 
 ControlGUI::ControlGUI() {
     Serial_Enabled = false;
@@ -84,7 +86,7 @@ ControlGUI::ControlGUI() {
     bt_Serial_test.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_send_test));
     bt_Serial_Refresh.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_update_cb_serial));
     bt_Serial_Start.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_start_serial));
-    bt_Robot_Status.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_robot_status));
+    bt_Robot_Status.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::check_robot_status));
     bt_send_cmd.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::_send_command));
     bt_set_frameskip.signal_clicked().connect(sigc::mem_fun(*this, &ControlGUI::set_frameskipper));
 }
@@ -171,15 +173,17 @@ void ControlGUI::updateInterfaceStatus(double battery, int id) {
         status_img[id].set("img/critical.png");
         battery_bar[id].set_fraction(battery/100);
         status_lb[id].set_text(std::to_string(battery).substr(0,5)+"%");
+        Dialog::pop_alert("Critical Battery Level", "Robot " + std::to_string(id) + "-" + Robots::get_ID(id) + "'s battery is very low (" + std::to_string(battery).substr(0,5) + "%). Please charge it now!");
     } else {
         status_img[id].set("img/zombie.png");
         battery_bar[id].set_fraction(0.0);
         battery_bar[id].set_text("0%");
         status_lb[id].set_text("DEAD");
+        Dialog::pop_critical("Dead Robot", "Robot " + std::to_string(id) + "-" + Robots::get_ID(id) + "'s battery is dead (0%). Charge it now!");
     }
 }
 
-void ControlGUI::_robot_status(){
+void ControlGUI::check_robot_status(){
     //std::string cmd[TOTAL_ROBOTS] = {"A@BAT#", "B@BAT#", "C@BAT#", "D@BAT#", "E@BAT#", "F@BAT#"};
     std::string dateString;
     time_t tt;
@@ -205,6 +209,7 @@ void ControlGUI::_robot_status(){
             status_lb[i].set_text("Offline");
 		}
 	}
+	debug_log("Robots' status checked");
 }
 
 void ControlGUI::_start_serial() {
