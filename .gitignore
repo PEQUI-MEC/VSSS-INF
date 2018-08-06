@@ -12,5 +12,5 @@ debug.log
 dep_ok
 opencvIsInstalled
 OpenCV-install
-
+src/.fuse_hidden*
 
