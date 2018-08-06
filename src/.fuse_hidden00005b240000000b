@@ -1214,8 +1214,8 @@ double Strategy::move_to_goal(int robotIndex, cv::Point pos) {
 
 double Strategy::hyper_spiral_fih(int x, int y, bool clockwise) {
 	int signal = (clockwise) ? 1:-1;
-	double theta = atan2(y, x);
-	double ro = sqrt(pow(x, 2) + pow(y, 2));
+	double theta = atan2(p.y, p.x);
+	double ro = sqrt(pow(p.x, 2) + pow(p.y, 2));
 	double phi;
 
 	if(ro > radiusSpiral) {
@@ -1223,11 +1223,12 @@ double Strategy::hyper_spiral_fih(int x, int y, bool clockwise) {
 	} else {
 		phi = theta + signal*(PI/2.0) * sqrt(ro/radiusSpiral);
 	}
+
 	return phi;
 }
 
 cv::Point Strategy::rotate(const cv::Point temp, double orientation) {
-    cv::Point output = {int(temp.x*cos(orientation) - temp.y*sin(orientation)), int(temp.x*sin(orientation) + temp.y*cos(orientation))};
+    cv::Point output = {temp.x*cos(orientation) - temp.y*sin(orientation), temp.x*sin(orientation) + temp.y*cos(orientation)};
     return output;
 }
 
