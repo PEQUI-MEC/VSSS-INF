@@ -284,15 +284,34 @@ void Robots::kick(int robot, cv::Point target) {
     get_instance()->list.at(robot).vmax = MAX_VEL;
 }
 
-// !TODO usar velocidade proporcional à distancias sem hardcode
 void Robots::manage_velocity(int robot, cv::Point target) {
     if(!check_index(robot)) return;
     cv::Point pos = get_instance()->list.at(robot).position;
     double dist = EQ::distance(pos, target);
-    if(dist > 200)
-        get_instance()->list.at(robot).vmax = 0.8;
-    else if(dist > 80)
-        get_instance()->list.at(robot).vmax = 0.4;
-    else
-        get_instance()->list.at(robot).vmax = 0.1;
+    if(dist > 200) {
+        double yAngleFunction = 6; // -x^2 +yAngleFunction
+        double proporAngleFunction = 90/(sqrt(double(yAngleFunction)));
+        double angleRobot = (get_instance()->list.at(robot).targetOrientation)/proporAngleFunction;
+        if(angleRobot < 0) angleRobot *= -1;
+        double angleFunction = (pow(-1*angleRobot, 2) + yAngleFunction)/10;
+        
+        get_instance()->list.at(robot).vmax = 0.8 - angleFunction;
+    }
+    else {
+        dist = dist/(200/2.829);
+        double velocityFunction = (double)(pow(-1*dist, 2) + 5.657*dist)/10; //(-x^2 + 5.657x)/10
+
+        if(velocityFunction > 0.4) {
+            double yAngleFunction = velocityFunction*10 - 2; // -x^2 + yAngleFunction
+            double proporAngleFunction = 90/(sqrt(double(yAngleFunction)));
+            double angleRobot = (get_instance()->list.at(robot).targetOrientation)/proporAngleFunction;
+            if(angleRobot < 0) angleRobot *= -1;
+            double angleFunction = (pow(-1*angleRobot, 2) + yAngleFunction)/10;
+
+            get_instance()->list.at(robot).vmax = velocityFunction - angleFunction;
+        }
+        else {
+            get_instance()->list.at(robot).vmax = velocityFunction;
+        }
+    }
 }
