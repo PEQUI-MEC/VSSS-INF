@@ -33,6 +33,7 @@ private:
     static const int ADV = 3;
     static const int MAX_ADV = 3;
     static const int TOTAL_COLORS = 4;
+    static const int ALL = 10;
     static const int MIN = 0;
     static const int MAX = 1;
 
@@ -70,6 +71,15 @@ private:
 
     // threads
     boost::thread_group threshold_threads;
+    
+    //Janelamento
+    cv::Rect roi[7];
+    bool perdeu[4];
+    
+    void arrumaRoi(int i);
+    void searchRoi(int color);
+    void verificaJanelas();
+    void resetRoi(int color);
 
     /** Run pre-processing methods in actual frame
      */
@@ -100,7 +110,7 @@ private:
     /** Give tags to the robots
      * @brief uses inSphere() method
      */
-    void pick_a_tag();
+    void pick_a_tag(int color);
 
     /**
      * Checks if a given secondary tag belongs to our current primary tag

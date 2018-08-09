@@ -6,7 +6,7 @@ void Vision::run(cv::Mat raw_frame) {
     if (bOnAir) recordToVideo();
     preProcessing();
     findTags();
-    pick_a_tag();
+    verificaJanelas();
 }
 
 void Vision::preProcessing() {
@@ -15,9 +15,9 @@ void Vision::preProcessing() {
 
 void Vision::findTags() {
     for (int i = 0; i < TOTAL_COLORS; i++)
-        threshold_threads.add_thread(new boost::thread(&Vision::segmentAndSearch, this, i));
+	threshold_threads.add_thread(new boost::thread(&Vision::segmentAndSearch, this, i));
 
-    threshold_threads.join_all();
+    	threshold_threads.join_all();
 }
 
 void Vision::segmentAndSearch(int color) {
@@ -27,8 +27,280 @@ void Vision::segmentAndSearch(int color) {
     cv::Scalar(hue[color][MAX],saturation[color][MAX],value[color][MAX]),threshold_frame.at(color));
 
     posProcessing(color);
-    searchTags(color);
+
+    if (color == GREEN) return;
+
+    if (perdeu[color]) {
+	searchTags(color);
+
+	if (color == MAIN) searchTags(GREEN);
+	
+
+	pick_a_tag(color);
+    } else {
+	searchRoi(color);
+    }
 }
+
+void Vision::verificaJanelas(){
+	int diffX,diffY;
+
+	for (int i=0;i<3;i++){
+		for (int j=i+1;j<3;j++){
+			if (roi[i].x != 0 && roi[i].y != 0 && roi[j].x != 0 && roi[j].y != 0){
+				diffX = roi[j].x - roi[i].x;
+				diffY = roi[j].y - roi[i].y;
+				
+				if (diffX < 0) diffX = diffX * (-1);
+				if (diffY < 0) diffY = diffY * (-1);
+				
+				if (diffX < 80 && diffY < 80) resetRoi(MAIN);
+			}
+		}
+	}
+	
+	for (int i=0;i<3;i++){
+		for (int j=i+1;j<3;j++){
+			if (roi[i+4].x != 0 && roi[i+4].y != 0 && roi[j+4].x != 0 && roi[j+4].y != 0){
+				diffX = roi[j+4].x - roi[i+4].x;
+				diffY = roi[j+4].y - roi[i+4].y;
+				
+				if (diffX < 0) diffX = diffX * (-1);
+				if (diffY < 0) diffY = diffY * (-1);
+				
+				if (diffX < 80 && diffY < 80) resetRoi(ADV);
+			}
+		}
+	}
+}
+
+void Vision::searchRoi(int color){
+	std::vector< std::vector<cv::Point> > contours;
+	std::vector<cv::Vec4i> hierarchy;
+	bool flagAchou;
+	string windowName;
+
+	switch (color){
+		case MAIN: {
+			for (int i = 0; i < 3;i++){
+				cv::Point localPos;
+				cv::Point robotAtualPosition;
+								
+				flagAchou = false;
+
+				cv::findContours(threshold_frame.at(color)(roi[i]),contours,hierarchy,cv::RETR_CCOMP,cv::CHAIN_APPROX_NONE);
+								
+				for (int j=0;j < contours.size() && !flagAchou; j++){
+					double area = contourArea(contours[j]);
+        				
+        				if(area >= areaMin[color]) {
+            					cv::Moments moment = moments(cv::Mat(contours[j]));
+
+            					localPos.y = moment.m01/moment.m00;
+            					localPos.x = moment.m10/moment.m00;
+            					
+            					robotAtualPosition = Robots::get_position(i);
+            					
+            					roi[i].x += localPos.x;
+            					roi[i].y += localPos.y;
+            					
+            					Robots::set_orientation(i,atan2(robotAtualPosition.y - roi[i].y, robotAtualPosition.x - roi[i].x));
+            					
+						Robots::set_position(i, cv::Point(roi[i].x, roi[i].y));
+            					
+            					flagAchou = true;
+            					
+            					arrumaRoi(i);
+            					
+            					windowName = "Robo " + to_string(i);
+            					namedWindow( windowName, cv::WINDOW_AUTOSIZE);
+  						imshow( windowName, in_frame(roi[i])); 
+					}
+				}
+
+				if (!flagAchou){
+					debug_error("Perdeu a tag do robo");
+					perdeu[MAIN] = true;
+					perdeu[GREEN] = true;
+				}
+						
+				
+			}
+		} break;
+				
+				
+		//PRECISA DA ORIENTACAO DO ADV
+		case ADV:{
+			for (int i = 0; i < 3;i++){
+				cv::Point localPos;
+				cv::Point robotAtualPosition;
+								
+				flagAchou = false;
+
+				cv::findContours(threshold_frame.at(color)(roi[i+4]),contours,hierarchy,cv::RETR_CCOMP,cv::CHAIN_APPROX_NONE);
+								
+				for (int j=0;j < contours.size(); j++){
+					double area = contourArea(contours[j]);
+		      				
+		      			if(area >= areaMin[color]) {
+		          			cv::Moments moment = moments(cv::Mat(contours[j]));
+
+		          			localPos.y = moment.m01/moment.m00;
+            					localPos.x = moment.m10/moment.m00;
+		          					
+		          			//robotAtualPosition = advRobots.at(i).position;
+		          					
+		          			roi[i+4].x += localPos.x;
+		          			roi[i+4].y += localPos.y;
+		          					
+		          			advRobots.at(i).x = roi[i+4].x;
+		          			advRobots.at(i).y = roi[i+4].y;
+		          					
+		          			//Robots::set_orientation(i,atan2(robotAtualPosition.y - roi[i].y, robotAtualPosition.x - roi[i].x));
+		          					
+						//Robots::set_position(i, cv::Point(roi[i].y, roi[i].x);
+		          					
+		          			flagAchou = true;
+		          					
+		          			arrumaRoi(i+4);
+		          					
+		          			windowName = "ADV " + to_string(i);
+		          			namedWindow( windowName, cv::WINDOW_AUTOSIZE);
+						imshow( windowName, in_frame(roi[i+4])); 
+					}
+				}
+								
+				if (!flagAchou){
+					debug_error("Perdeu a tag do ADV");
+					perdeu[ADV] = true;
+				}	
+			}
+						
+						
+		} break;
+				
+		//PRECISA DA ORIENTACAO DA BOLA
+				
+		case BALL:{
+			cv::Point localPos;
+			cv::Point ballAtualPosition;
+			double orientacaoBola;
+						
+			if (tags[BALL].empty()){
+				debug_error("Nao encontrou a bola");
+				perdeu[BALL] = true;
+				return;
+			}
+						
+			cv::findContours(threshold_frame.at(color)(roi[3]),contours,hierarchy,cv::RETR_CCOMP,cv::CHAIN_APPROX_NONE);
+						
+			flagAchou = false;
+						
+			for (int j=0; j < contours.size() && !flagAchou;j++){
+				double area = contourArea(contours[j]);
+        				
+        			if(area >= areaMin[color]) {
+            				cv::Moments moment = moments(cv::Mat(contours[j]));
+
+            				localPos.y = moment.m01/moment.m00;
+            				localPos.x = moment.m10/moment.m00;
+					
+					
+
+					//ballAtualPosition.x = ball.x;
+					//ballAtualPosition.y = ball.y;
+            					
+            				roi[3].x += localPos.x;
+            				roi[3].y += localPos.y;
+            					
+            				ball.x = roi[3].x;
+            				ball.y = roi[3].y;
+					tags.at(BALL).at(0).position.x =  roi[3].x;
+					tags.at(BALL).at(0).position.y =  roi[3].y;
+            					
+            				//Calcular orientaçao da bola utilizando
+					//orientacaoBola = atan2(ball.x - ballAtualPosition.x, ball.y - ballAtualPosition.y); 
+            					
+            				flagAchou = true;
+            					
+            				arrumaRoi(3);
+            					
+            				windowName = "Bola";
+            				namedWindow( windowName, cv::WINDOW_AUTOSIZE);
+  					imshow( windowName, in_frame(roi[3])); 
+				}
+			}
+			
+			if (!flagAchou){
+				debug_error("Perdeu Bola");
+				perdeu[BALL] = true;
+			}		
+		} break;
+				
+		default:
+			debug_warning("A cor verde não é utilizada no janelamento");
+		break;
+	}
+}
+
+void Vision::arrumaRoi(int i){
+	roi[i].x -= 25;
+		
+	if (roi[i].x < 0) roi[i].x = 0;
+		
+	roi[i].y -= 25;
+		
+	if(roi[i].y < 0) roi[i].y = 0;
+		
+	if(roi[i].y + roi[i].height > height) roi[i].y = height - 51;
+		
+	if(roi[i].x + roi[i].width > width) roi[i].x = width - 51;
+
+}
+
+void Vision::resetRoi(int color){
+	switch (color){
+		case MAIN:
+			perdeu[MAIN] = true;
+					
+			for (int i=0;i<3;i++){
+				roi[i].x = 0;
+				roi[i].y = 0;
+			}
+					
+			debug_error("Foi necessario resetar as janelas da MAIN");
+					
+					
+		break;
+			
+		case ADV:
+			perdeu[ADV] = true;
+					
+			for (int i=0;i<3;i++){
+				roi[i+4].x = 0;
+				roi[i+4].y = 0;
+			}
+					
+			debug_error("Foi necessario resetar as janelas do ADV");
+					
+		break;
+			
+		case ALL:
+			for (int i=0;i<4;i++) perdeu[i] = true;
+	
+			for (int i=0;i<7;i++){
+				roi[i].x = 0;
+				roi[i].y = 0;
+				roi[i].width = 50;
+				roi[i].height = 50;
+			}
+
+			debug_warning("Foi necessario resetar TODAS as janelas");
+			
+		break;		
+	}
+}
+
 
 void Vision::posProcessing(int color) {
     cv::Mat erodeElement = cv::getStructuringElement( cv::MORPH_RECT,cv::Size(3,3));
@@ -82,66 +354,131 @@ void Vision::searchTags(int color) {
     }
 }
 
-void Vision::pick_a_tag() {
-    // OUR ROBOTS
-    for(unsigned short i = 0; i < tags.at(MAIN).size() && i<3; i++) {
-        std::vector<Tag> tempTags;
+void Vision::pick_a_tag(int color) {
+    int cont;
 
-        Robots::_Status robot;
-        // Posição do robô
-        robot.position = (cv::Point_<int>) tags.at(MAIN).at(i).position;
 
-        // Cálculo da orientação de acordo com os pontos rear e front
-        robot.orientation = atan2((tags.at(MAIN).at(i).frontPoint.y - robot.position.y) * 1.3 / height,
-                                  (tags.at(MAIN).at(i).frontPoint.x - robot.position.x) * 1.5 / width);
+    switch(color){
+	case MAIN:{
+	    // OUR ROBOTS
+	    for(unsigned short i = 0; i < tags.at(MAIN).size() && i<3; i++) {
+		std::vector<Tag> tempTags;
 
-        // Armazena a tag
-        tempTags.push_back(tags.at(MAIN).at(i));
+		Robots::_Status robot;
+		// Posição do robô
+		robot.position = (cv::Point_<int>) tags.at(MAIN).at(i).position;
 
-        // Para cada tag principal, verifica quais são as secundárias correspondentes
-        for (unsigned j = 0;
-             j < tags.at(GREEN).size(); j++) { // (não usei unsigned short pois pode ter muitas tags verdes)
-            // já faz a atribuição verificando se o valor retornado é 0 (falso); além disso, altera a orientação caso esteja errada
-            int tmpSide = inSphere(&robot, &tempTags, tags.at(GREEN).at(j).position);
-            if (tmpSide) {
-                tags.at(GREEN).at(j).left = tmpSide > 0;
-                // calculos feitos, joga tag no vetor
-                tempTags.push_back(tags.at(GREEN).at(j));
+		// Cálculo da orientação de acordo com os pontos rear e front
+		robot.orientation = atan2((tags.at(MAIN).at(i).frontPoint.y - robot.position.y) * 1.3 / height,
+		                          (tags.at(MAIN).at(i).frontPoint.x - robot.position.x) * 1.5 / width);
 
-                // identifica se já tem mais de duas tags (amarela e uma verde.)
-                if (tempTags.size() > 2) {
-                    break;
-                }
-            }
-        }
+		// Armazena a tag
+		tempTags.push_back(tags.at(MAIN).at(i));
 
-        // Dá nome aos bois (robôs)
-        if (tempTags.size() > 2) { // se tem três tags, é o full pick-a
-            Robots::set_position(2, robot.position);
-            Robots::set_orientation(2, robot.orientation);
-            Robots::set_secondary_tag(2, tempTags.at(0).frontPoint);
-            //robot_list.at(2).rearPoint = tempTags.at(0).rearPoint;
-        } else if (tempTags.size() > 1) { // não classifica se não tiver encontrado pelo menos uma verde
-            if (tempTags.at(1).left) {
-                Robots::set_position(0, robot.position);
-                Robots::set_orientation(0, robot.orientation);
-                Robots::set_secondary_tag(0, tempTags.at(0).frontPoint);
-            } else {
-                Robots::set_position(1, robot.position);
-                Robots::set_orientation(1, robot.orientation);
-                Robots::set_secondary_tag(1, tempTags.at(0).frontPoint);
-            }
-        }
-    } // OUR ROBOTS
+		// Para cada tag principal, verifica quais são as secundárias correspondentes
+		for (unsigned j = 0;
+		     j < tags.at(GREEN).size(); j++) { // (não usei unsigned short pois pode ter muitas tags verdes)
+		    // já faz a atribuição verificando se o valor retornado é 0 (falso); além disso, altera a orientação caso esteja errada
 
-    // ADV ROBOTS
-    advRobots.clear();
-    for(int i = 0; i < tags.at(ADV).size(); i++) {
-        advRobots.push_back(tags.at(ADV).at(i).position);
+       		    int tmpSide = inSphere(&robot, &tempTags, tags.at(GREEN).at(j).position);
+		    if (tmpSide) {
+		        tags.at(GREEN).at(j).left = tmpSide > 0;
+		        // calculos feitos, joga tag no vetor
+		        tempTags.push_back(tags.at(GREEN).at(j));
+
+		        // identifica se já tem mais de duas tags (amarela e uma verde.)
+		        if (tempTags.size() > 2) {
+		            break;
+		        }
+		    }
+		}
+
+		cont = 0;
+
+		// Dá nome aos bois (robôs)
+		if (tempTags.size() > 2) { // se tem três tags, é o full pick-a
+		    Robots::set_position(2, robot.position);
+		    Robots::set_orientation(2, robot.orientation);
+		    Robots::set_secondary_tag(2, tempTags.at(0).frontPoint);
+		    
+		    roi[2].x = robot.position.x;
+		    roi[2].y = robot.position.y;
+		    cont++;
+		    perdeu[MAIN] = false;
+		    perdeu[GREEN] = false;
+		    
+		    arrumaRoi(2);
+		    
+		    //robot_list.at(2).rearPoint = tempTags.at(0).rearPoint;
+		} else if (tempTags.size() > 1) { // não classifica se não tiver encontrado pelo menos uma verde
+		    if (tempTags.at(1).left) {
+		        Robots::set_position(0, robot.position);
+		        Robots::set_orientation(0, robot.orientation);
+		        Robots::set_secondary_tag(0, tempTags.at(0).frontPoint);
+		        
+		        roi[0].x = robot.position.x;
+			roi[0].y = robot.position.y;
+			cont++;
+			perdeu[MAIN] = false;
+		        perdeu[GREEN] = false;
+				    
+			arrumaRoi(0);
+		        
+		    } else {
+		        Robots::set_position(1, robot.position);
+		        Robots::set_orientation(1, robot.orientation);
+		        Robots::set_secondary_tag(1, tempTags.at(0).frontPoint);
+		        
+		        roi[1].x = robot.position.x;
+			roi[1].y = robot.position.y;
+			cont++;
+			perdeu[MAIN] = false;
+		        perdeu[GREEN] = false;
+				    
+			arrumaRoi(1);
+		    }
+		}
+	    } // OUR ROBOTS
+    	} break;
+	
+	case ADV:{
+		//if (cont==3){
+			//perdeu[MAIN] = false;
+			//perdeu[GREEN] = false;
+		//}
+
+		cont = 0;
+
+	    // ADV ROBOTS
+	    advRobots.clear();
+	    for(int i = 0; i < tags.at(ADV).size(); i++) {
+		advRobots.push_back(tags.at(ADV).at(i).position);
+		
+		
+		if (i<3){
+			roi[i+4].x = advRobots.at(i).x;
+			roi[i+4].y = advRobots.at(i).y;
+			arrumaRoi(i+4);
+			perdeu[ADV] = false;
+		}
+		
+		cont++;
+	    }
+	} break;
+	
+	case BALL:{
+		//BALL POSITION
+    		if (!tags[BALL].empty()){
+			ball = tags.at(BALL).at(0).position;
+		    	roi[3].x = ball.x;
+		    	roi[3].y = ball.y;
+			perdeu[BALL] = false;   
+			arrumaRoi(3);
+    		}
+
+	} break;
     }
-    // BALL POSITION
-    if (!tags[BALL].empty())
-        ball = tags.at(BALL).at(0).position;
+
 }
 
 int Vision::inSphere(Robots::_Status * robot, std::vector<Tag> * tempTags, cv::Point secondary) {
@@ -165,6 +502,7 @@ int Vision::inSphere(Robots::_Status * robot, std::vector<Tag> * tempTags, cv::P
 double Vision::calcDistance(cv::Point p1, cv::Point p2) {
     return sqrt(pow(p1.x-p2.x,2) + pow(p1.y-p2.y,2));
 }
+
 
 void Vision::switchMainWithAdv() {
     int tmp;
@@ -427,8 +765,9 @@ Vision::Vision(int w, int h) : width(w), height(h), bOnAir(false) {
 
     for(int i = 0; i < TOTAL_COLORS; i++) {
         threshold_frame.push_back(mat);
-        tags.push_back(tagVec);
+        tags.push_back(tagVec);  
     }
+    resetRoi(ALL);
 }
 
 Vision::~Vision() {}
