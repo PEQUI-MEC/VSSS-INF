@@ -25,12 +25,12 @@ namespace CONST {
         // ABS_BALL_SIZE,
         ABS_ROBOT_SIZE,
 
-        // COMPRIMENTO_CAMPO_TOTAL,
+        COMPRIMENTO_CAMPO_TOTAL,
         // COMPRIMENTO_PISTA,
         // LARGURA_CAMPO,
         // TAMANHO_GOL,
         // TAMANHO_AREA,
-        // BANHEIRA,
+        BANHEIRA,
         // DIVISAO_AREAS,
         // OFFSET_BANHEIRA,
         // MEIO_GOL_X,
@@ -54,7 +54,7 @@ namespace CONST {
 
         corner_atk_limit,
         def_corner_line,
-        // def_line,
+        def_line,
         // possession_distance,
         max_approach,
         fixed_pos_distance,

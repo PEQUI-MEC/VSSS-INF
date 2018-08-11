@@ -782,12 +782,12 @@ void Strategy::atk_routine(int i) {
 			Robots::set_target(i, cv::Point(BANHEIRA, COORD_GOAL_UP_Y));
 
 	} else if(Ball.x < Robots::get_position(i).x && Ball.x < Robots::get_position(def).x) { //Bola atrás do atacante e do defensor
-		if(ball.y < COORD_GOAL_MID_Y){
+		if(Ball.y < COORD_GOAL_MID_Y){
 			Robots::set_velocity(i,MAX_VEL);
 			Robots::set_target(i, cv::Point(def_line, COORD_GOAL_UP_Y));	//volta pra parte de cima do gol
 		}else{
 			Robots::set_velocity(i,MAX_VEL);
-			Robots::set_target(i, cv::Point(def_line, COORD_GOAL_DOWN_Y));	//volta pra parte de baixo do gol
+			Robots::set_target(i, cv::Point(def_line, COORD_GOAL_DWN_Y));	//volta pra parte de baixo do gol
 		}
 	}
 
