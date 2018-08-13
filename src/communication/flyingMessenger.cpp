@@ -1,4 +1,7 @@
 #include "flyingMessenger.hpp"
+
+#define PI 3.1415926f
+
 using namespace std;
 
 void FlyingMessenger::start_xbee(const std::string &port, int baud) {
@@ -235,6 +238,11 @@ float FlyingMessenger::round_angle(float angle) {
 	if(theta > PI) theta = theta - 2*PI;
 	else if(theta < -PI) theta = theta + 2*PI;
 	return theta;
+}
+
+void FlyingMessenger::stop_and_wait(){
+
+	final_msg = "0;0";
 }
 
 float FlyingMessenger::saturate(float value, float limit) {

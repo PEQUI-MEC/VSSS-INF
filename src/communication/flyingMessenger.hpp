@@ -19,7 +19,6 @@
 #include <thread>
 #include <condition_variable>
 
-#define PI 3.1415926f
 #define DEFAULT_FRAMESKIP 4
 
 template <int size>
@@ -221,6 +220,7 @@ public:
 	 * 
 	 */
 	float saturate(float value, float limit);
+	void stop_and_wait();
 };
 
 #endif //VSSS_FlyingMessenger_H
