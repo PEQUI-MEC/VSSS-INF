@@ -20,6 +20,17 @@
 #include <condition_variable>
 
 #define DEFAULT_FRAMESKIP 4
+#define PI 3.1415926f
+
+template <int size>
+struct msg_data {
+	std::array<float, size> data;
+	bool is_valid;
+
+	inline float& operator[](int i) {
+		return data[i];
+	}
+};
 
 class FlyingMessenger {
 private:
@@ -30,6 +41,8 @@ private:
 	 */
 	SerialCom* xbee = nullptr;
 	
+	std::string final_msg;
+	float orientation_Kp = 0.8;
 	double time_between_msgs;
 	int frameskip, send_cmd_count;
 	std::chrono::system_clock::time_point previous_msg_time;
@@ -57,6 +70,12 @@ private:
 	 * @return std::string Message containing prepared speed message.
 	 */
 	std::string speed_msg(Robots::Command command);
+
+	/**
+	 * @brief 
+	 * 
+	 */
+	std::string FlyingMessenger::velocity_msg(float right_wheel, float left_wheel);
 
 	/**
 	 * @brief Prepare the message to send to the robot a orientation message.
@@ -163,6 +182,45 @@ public:
 	* @return time_between_msgs Gap between sent messages
 	*/
 	double get_time();
+
+	/**
+	 * @brief 
+	 * 
+	 * @tparam size 
+	 */
+	template<int size>
+	msg_data<size> Messenger::get_values(const string &msg, unsigned int first_char_pos)];
+
+	/**
+	 * @brief 
+	 * 
+	 */
+	void Messenger::goToOrientation(string msg);
+
+	/**
+	 * @brief 
+	 * 
+	 * @param msg 
+	 */
+	void decode_msg(string msg);
+
+	/**
+	 * @brief 
+	 * 
+	 */
+	void orientation_control(float new_theta, float velocity);
+
+	/**
+	 * @brief 
+	 * 
+	 */
+	float FlyingMessenger::round_angle(float angle);
+
+	/**
+	 * @brief 
+	 * 
+	 */
+	float FlyingMessenger::saturate(float value, float limit)
 };
 
 #endif //VSSS_FlyingMessenger_H

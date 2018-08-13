@@ -61,6 +61,11 @@ std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robots::Command> comm
                     msg = position_msg(command);
 		}
 
+		decode_msg(msg);
+		if(command.cmdType == Robots::CMD::ORIENTATION) {
+			msg = final_msg;
+		}
+
 		if(!msg.empty()) {
 			int ack = xbee->sendMessage(command.ID,msg);
 			acks.push_back({command.ID, std::to_string(ack)});
@@ -88,6 +93,11 @@ std::string FlyingMessenger::position_msg(Robots::Command command) {
 
 std::string FlyingMessenger::speed_msg(Robots::Command command) {
 	return (rounded_str(command.Msg.Velocity.right)+";"+ rounded_str(command.Msg.Velocity.left));
+}
+
+// verificar sobre alterar o command e passar como argumento
+std::string FlyingMessenger::velocity_msg(float right_wheel, float left_wheel) {
+	return (rounded_str(right_wheel)+";"+ rounded_str(left_whe));
 }
 
 std::string FlyingMessenger::orientation_msg(Robots::Command command) {
@@ -143,6 +153,94 @@ void FlyingMessenger::update_msg_time() {
 	std::chrono::duration<double, std::milli> time_diff = now - previous_msg_time;
 	time_between_msgs = time_diff.count();
 	previous_msg_time = now;
+}
+
+template<int size>
+msg_data<size> FlyingMessenger::get_values(const string &msg, unsigned int first_char_pos) {
+	std::array<float,size> values{};
+	unsigned int pos_atual = first_char_pos;
+	for (int i = 0; i < size; ++i) {
+		size_t delim_pos = msg.find(';', pos_atual);
+		if (delim_pos == string::npos && i != size - 1) return {values,false};
+		values[i] = std::stof(msg.substr(pos_atual, delim_pos - pos_atual));
+		pos_atual = delim_pos + 1;
+	}
+	return {values,true};
+}
+
+void FlyingMessenger::goToOrientation(string msg) {
+	msg_data<2> values = get_values<2>(msg, 1);
+	if(values.is_valid)
+		orientation_control(values[0], values[1]);
+}
+
+void FlyingMessenger::decode_msg(string msg) {
+
+	switch (msg[0]) {
+		case 'U':
+			uvf_message(msg);
+			return;
+		case 'K':
+			if(msg[1] == 'P') Update_PID_Pos(msg);
+			else Update_PID_K(msg);
+			return;
+		case 'A':
+			Update_ACC(msg);
+			return;
+		case 'O':
+			goToOrientation(msg);
+			return;
+		case 'P':
+			GoToPoint(msg);
+			return;
+		case 'V':
+			GoToVector(msg);
+			return;
+		case 'D':
+			debug_mode = !debug_mode;
+//			(*r).controllerA->debug_mode = debug_mode;
+//			(*r).controllerB->debug_mode = debug_mode;
+			return;
+		case 'B':
+			send_battery();
+			return;
+		default:
+			break;
+	}
+
+}
+
+void FlyingMessenger::orientation_control(float new_theta, float velocity) {
+
+	float old_theta = command.Status.orientation;
+
+	if(round_angle(new_theta - old_theta + PI/2) < 0){
+		old_theta = round_angle(old_theta + PI);
+	}
+	float theta_error = round_angle(new_theta - old_theta);
+	
+	if(std::abs(theta_error) < 2*PI/180) {
+		stop_and_wait();
+		return;
+	}
+
+	float right_wheel_velocity = saturate(orientation_Kp * theta_error, 1);
+	float left_wheel_velocity = saturate(-orientation_Kp * theta_error, 1);
+
+	final_msg = velocity_msg(left_wheel_velocity, right_wheel_velocity);
+}
+
+float FlyingMessenger::round_angle(float angle) {
+	float theta = std::fmod(angle, 2*PI);
+	if(theta > PI) theta = theta - 2*PI;
+	else if(theta < -PI) theta = theta + 2*PI;
+	return theta;
+}
+
+float FlyingMessenger::saturate(float value, float limit) {
+	if(value > limit) value = limit;
+	if(value < -limit) value = -limit;
+	return value;
 }
 
 FlyingMessenger::FlyingMessenger() {
