@@ -1,6 +1,7 @@
-#include "camcap.hpp"
+#include "manager.hpp"
+#include "aux/equations.hpp"
 
-CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), msg_thread(&CamCap::send_cmd_thread, this) {
+Manager::Manager() : data(0), width(0), height(0), frameCounter(0), msg_thread(&Manager::send_cmd_thread, this) {
     fm.set_label("ImageView");
     fm.add(interface.imageView);
 
@@ -12,13 +13,13 @@ CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), msg_thread(&Ca
 
     KalmanFilter kf;
     for(int i = 0; i < 4; i++) {
-        KF_RobotBall.push_back(kf); 
+        KF_RobotBall.push_back(kf);
     }
 
     for(int i = 0; i < 3; i++) {
         fixed_ball[i]=false;
-        virtual_robots_orientations[i] = 0;
         // valores absolutos pois são só pra incializar
+        virtual_robots_orientations[i] = cv::Point(320, 240);
         virtual_robots_positions[i] = cv::Point(200, 480 / 6 + (i + 1) * 480 / 6);
     }
 
@@ -34,21 +35,24 @@ CamCap::CamCap() : data(0), width(0), height(0), frameCounter(0), msg_thread(&Ca
     pack_start(camera_vbox, true, true, 10);
     pack_start(notebook, false, false, 10);
 
-    interface.signal_start().connect(sigc::mem_fun(*this, &CamCap::start_signal));
+    interface.signal_start().connect(sigc::mem_fun(*this, &Manager::_hdl_start_capture));
+    interface._evt_play.connect(boost::bind(&Manager::_hdl_game_play, this, _1));
 }
 
-CamCap::~CamCap(){
+Manager::~Manager(){
     con.disconnect();
     interface.imageView.disable_image_show();
     free(data);
 
     data = 0;
-    
+
     msg_thread.interrupt();
 	if (msg_thread.joinable()) msg_thread.join();
+
+	interface._evt_play.disconnect(this);
 }
 
-bool CamCap::start_signal(bool b) {
+bool Manager::_hdl_start_capture(bool b) {
     if (b) {
         debug_log("Starting capture...");
 
@@ -60,7 +64,7 @@ bool CamCap::start_signal(bool b) {
         width = interface.vcap.format_dest.fmt.pix.width;
         height = interface.vcap.format_dest.fmt.pix.height;
         strategyGUI.strategy.set_constants(width,height);
-        
+
         interface.visionGUI.setFrameSize(width, height);
 
         // Liberar os botões de edit
@@ -71,7 +75,7 @@ bool CamCap::start_signal(bool b) {
         data = (unsigned char *) calloc(interface.vcap.format_dest.fmt.pix.sizeimage, sizeof(unsigned char));
 
         interface.imageView.set_size_request(width, height);
-        con = Glib::signal_idle().connect(sigc::mem_fun(*this, &CamCap::capture_and_show));
+        con = Glib::signal_idle().connect(sigc::mem_fun(*this, &Manager::idle_loop));
 
         debug_log("Capture started.");
 
@@ -91,9 +95,9 @@ bool CamCap::start_signal(bool b) {
     interface.__event_bt_quick_load_clicked();
 
     return true;
-} // start_signal
+}
 
-bool CamCap::capture_and_show() {
+bool Manager::idle_loop() {
     // ----------------- CONFIGURAÇÃO INICIAL -----------------//
     if (!data) return false;
     if (frameCounter == 0) timer.start();
@@ -160,39 +164,40 @@ bool CamCap::capture_and_show() {
     }
 
     // roda os filtros e atualiza a posição dos robos na interface
-    updateAllPositions();
+    filter_positions();
 
-    // -------------- CONTROLE -----------------//
+    // ----------------- CONTROLE -----------------//
 
-    if(interface.imageView.PID_test_flag && !interface.get_start_game_flag()) {
-        control.button_PID_Test.set_active(true);
-        PID_test();
-    } else {
-        Robots::reset_targets();
-        Selec_index=-1;
-        control.PID_test_flag = false;
+    // !TODO criar um evento "disable test controls" que é chamado quando os botões de PID test ou Formation Creation forem pressionados
+    // se não está em estado de jogo
+    if(!interface.get_start_game_flag()) {
+        // se a flag de pid test está ativa
+        if (control.PID_test_flag) {
+            control.button_PID_Test.set_active(true);
+            Robots::reset_commands();
+            PID_test();
+        }
+        // se a flag de formação está ativa
+        else if(strategyGUI.formation_flag) {
+            // se o "load" foi pressionado
+            if (strategyGUI.updating_formation_flag)
+                updating_formation();
+
+            formation_creation();
+        }
+        // se flags de controle não foram ativadas
+        else {
+            Robots::reset_commands();
+            Selec_index = -1;
+            strategyGUI.updating_formation_flag = false;
+            // control.PID_test_flag = false;
+        }
     }
 
-    if(!interface.imageView.PID_test_flag && strategyGUI.formation_flag && !interface.get_start_game_flag()) {
-        if(strategyGUI.updating_formation_flag)
-            updating_formation();
-
-        formation_creation();
-    }
-    else if(strategyGUI.updating_formation_flag) {
-        strategyGUI.updating_formation_flag = false;
-
-        Robots::reset_commands();
-    }
-
-    // !TODO não chamar esta função todo frame, desativar o pid_test logicamente no controle
-    if (interface.imageView.PID_test_flag && (interface.get_start_game_flag() || strategyGUI.formation_flag))
-        control.button_PID_Test.set_active(false);
-
-    // ----------- ESTRATEGIA -----------------//
+    // ----------------- ESTRATEGIA -----------------//
 
     // só roda a estratégia se o play tiver sido dado
-    if(interface.get_start_game_flag()) {
+    else {
         strategyGUI.strategy.set_Ball(Ball_kf_est); // interface.visionGUI.vision->getBall()
         Ball_Est = strategyGUI.strategy.get_Ball_Est();
 
@@ -204,6 +209,12 @@ bool CamCap::capture_and_show() {
         interface.robotGUI.update_speed_progressBars();
         interface.robotGUI.update_robot_functions();
     } // if start_game_flag
+
+    // ----------------- COMUNICAÇÃO -----------------//
+    if (interface.get_start_game_flag() || control.PID_test_flag || strategyGUI.updating_formation_flag) {
+        control.update_msg_time();
+        notify_data_ready();
+    }
 
     // ----------------- DESENHA SOBRE A IMAGEM  -----------------//
 
@@ -228,7 +239,7 @@ bool CamCap::capture_and_show() {
                 aux_point.x = int(100*cos(Robots::get_transAngle(i)));
                 aux_point.y = - int(100*sin(Robots::get_transAngle(i)));
                 aux_point += Robots::get_position(i);
-                arrowedLine(cameraFlow,Robots::get_position(i), aux_point,cv::Scalar(255,0,0),2);
+                arrowed_line(cameraFlow, Robots::get_position(i), aux_point, cv::Scalar(255, 0, 0), 2);
             }
 
             // adversários
@@ -253,15 +264,14 @@ bool CamCap::capture_and_show() {
 
         if(strategyGUI.formation_flag) {
             // exibe os robos virtuais
-            for(int i = 0; i < 3; i++) {
+            for(int i = 0; i < Robots::SIZE; i++) {
                 if(virtual_robot_selected == i)
                     circle(cameraFlow,virtual_robots_positions[i], 20, cv::Scalar(0,255,100), 3);
 
                 // posição
                 circle(cameraFlow,virtual_robots_positions[i], 17, cv::Scalar(0,255,0), 2);
                 // orientação
-                cv::Point aux_point = cv::Point(virtual_robots_positions[i].x + 30*cos(virtual_robots_orientations[i]), virtual_robots_positions[i].y + 30*sin(virtual_robots_orientations[i]));
-                arrowedLine(cameraFlow,virtual_robots_positions[i], aux_point,cv::Scalar(0,255,0),2);
+                arrowed_line(cameraFlow, virtual_robots_positions[i], virtual_robots_orientations[i], cv::Scalar(0, 255, 0), 2);
                 // identificação
                 putText(cameraFlow, std::to_string(i+1),virtual_robots_positions[i] + cv::Point(-14,10),cv::FONT_HERSHEY_PLAIN,1,cv::Scalar(0,255,0),2);
             }
@@ -292,16 +302,11 @@ bool CamCap::capture_and_show() {
         timer.reset();
         frameCounter = 0;
     }
-	
-	if (interface.get_start_game_flag() || interface.imageView.PID_test_flag) {
-		control.update_msg_time();
-		notify_data_ready();
-	}
 
     return true;
-} // capture_and_show
+} // idle_loop
 
-void CamCap::send_cmd_thread() {
+void Manager::send_cmd_thread() {
 	boost::unique_lock<boost::mutex> lock(data_ready_mutex);
 	while (true) {
 		try {
@@ -315,13 +320,22 @@ void CamCap::send_cmd_thread() {
 	}
 }
 
-void CamCap::notify_data_ready() {
+void Manager::notify_data_ready() {
 	data_ready_flag = true;
 	data_ready_cond.notify_all();
 }
 
-void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar& color,
-    int thickness, int line_type, int shift, double tipLength) {
+void Manager::_hdl_game_play(bool started) {
+    if(started) {
+        debug_log("Game Started");
+    } else {
+        debug_log("Game Paused");
+        control.check_robot_status(); // pede pro controle verificar o status dos robôs
+    }
+}
+
+void Manager::arrowed_line(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Scalar &color,
+                           int thickness, int line_type, int shift, double tipLength) {
 
     const double tipSize = norm(pt1-pt2)*tipLength;
     line(img, pt1, pt2, color, thickness, line_type, shift);
@@ -335,83 +349,85 @@ void CamCap::arrowedLine(cv::Mat img, cv::Point pt1, cv::Point pt2, const cv::Sc
 
 }
 
-double CamCap::distance(cv::Point a, cv::Point b) {
-    return sqrt(pow(double(b.x - a.x), 2) + pow(double(b.y - a.y), 2));
-}
-
-double CamCap::angular_distance(double alpha, double beta) {
-    double phi = fmod(abs(beta - alpha), (PI));
-    double distance = phi > PI/2 ? PI - phi : phi;
-    return distance;
-}
-
-void CamCap::updating_formation() {
-    // se os três robôs estiverem posicionados, desmarca a flag
-    int robots_positioned = 0;
-
+void Manager::updating_formation() {
     for(int i = 0; i < Robots::SIZE; i++) {
-        if(distance(Robots::get_position(i), virtual_robots_positions[i]) > CONST::fixed_pos_distance / 4) {
-            //interface.robotGUI.robot_list.at(i).cmdType = VECTOR;
-            //interface.robotGUI.robot_list.at(i).transAngle = atan2(double(interface.robotGUI.robot_list.at(i).position.y - virtual_robots_positions[i].y), - double(interface.robotGUI.robot_list.at(i).position.x - virtual_robots_positions[i].x));
-            Robots::set_command(i, virtual_robots_positions[i], MAX_POSITIONING_VEL);
-        } else if(angular_distance(Robots::get_orientation(i), virtual_robots_orientations[i]) > MAX_THETA_TOLERATION * (PI/180)) {
-            Robots::set_fixedPos(i, true);
-            double angle = virtual_robots_positions[i].x > width/2 ? -virtual_robots_orientations[i] : virtual_robots_orientations[i];
-            Robots::look_at(i, angle, MAX_POSITIONING_VEL);
+        if(EQ::distance(Robots::get_position(i), virtual_robots_positions[i]) > ROBOT_RADIUS/3.0) {
+            Robots::set_command(i, virtual_robots_positions[i]);
+            Robots::manage_velocity(i, virtual_robots_positions[i]);
         } else {
-            Robots::set_command(i, (float)0, 0); // trava as rodas
-            robots_positioned++;
+            // olhar pro alvo até o operador cancelar o posicionamento (caso o robô se posicione antes, a mensagem é ignorada)
+            Robots::look_at(i, virtual_robots_orientations[i]);
         }
-    }
-
-    if(robots_positioned > 2) {
-        strategyGUI.updating_formation_flag = false;
-        std::cout << "Done positioning.\n";
     }
 }
 
-void CamCap::formation_creation() {
-    if (interface.get_start_game_flag()) return;
+void Manager::formation_creation() {
+    if (interface.get_start_game_flag() || control.PID_test_flag) return;
 
+    // !TODO usar evento
+    // atualiza a posição dos robôs virtuais caso seja carregado uma configuração diferente
     if(strategyGUI.update_interface_flag) {
-        for(int i = 0; i < 3; i++) {
-                virtual_robots_positions[i] = strategyGUI.formation_positions[i];
-                virtual_robots_orientations[i] = strategyGUI.formation_orientations[i];
+        for(int i = 0; i < Robots::SIZE; i++) {
+            virtual_robots_positions[i] = strategyGUI.formation_positions[i];
+            virtual_robots_orientations[i] = strategyGUI.formation_orientations[i];
         }
-
         strategyGUI.update_interface_flag = false;
     }
 
-    // marca o robô mais próximo
-    for(int i = 0; i < 3; i++) {
-        float dist = sqrt(pow((interface.imageView.robot_pos[0]-virtual_robots_positions[i].x),2)+pow((interface.imageView.robot_pos[1]-virtual_robots_positions[i].y),2));
-        if(dist <= 17) {
-            virtual_robot_selected = i;
-            for(int j = 0; j < 2; j++) {
-                interface.imageView.tar_pos[i] = -1;
-                interface.imageView.look_pos[i] = -1;
+    // marca o robô mais próximo do clique
+    for(int i = 0; i < Robots::SIZE; i++) {
+        if(EQ::distance(cv::Point(interface.imageView.robot_pos[0], interface.imageView.robot_pos[1]), virtual_robots_positions[i]) <= 17) {
+            // reseta a posição do clique, alvo de posicionamento e orientação alvo
+            for (int j = 0; j < 2; j++) {
+                interface.imageView.robot_pos[j] =
+                interface.imageView.tar_pos[j] =
+                interface.imageView.look_pos[j] = -1;
             }
+
+            // se o robo em questão já for o que está selecionado, desseleciona
+            if(virtual_robot_selected == i) {
+                virtual_robot_selected = -1;
+            }
+            // senão, seleciona esse mesmo
+            else {
+                virtual_robot_selected = i;
+            }
+
+            // o primeiro robô encontrado no raio é suficiente
+            break;
         }
     }
 
-    // segundo clique
+    // atualiza a posição ou orientação do robô selecionado
     if(virtual_robot_selected > -1) {
+        // se a orientação foi setada (se pelo menos o x é maior que 0, sabemos que o y também)
         if(interface.imageView.look_pos[0] >= 0) {
-            float x1, x2, y1, y2;
-            x1 = virtual_robots_positions[virtual_robot_selected].x;
-            y1 = virtual_robots_positions[virtual_robot_selected].y;
-            x2 = interface.imageView.look_pos[0];
-            y2 = interface.imageView.look_pos[1];
-            virtual_robots_orientations[virtual_robot_selected] = atan2((y2-y1)*1.3/height,(x2-x1)*1.5/width);
-            update_formation_information();
-        } else if(interface.imageView.tar_pos[0] >= 0) {
-            virtual_robots_positions[virtual_robot_selected] = cv::Point(interface.imageView.tar_pos[0], interface.imageView.tar_pos[1]);
-            update_formation_information();
+            // atualiza os valores no camcap e na estratégia
+            virtual_robots_orientations[virtual_robot_selected] =
+            strategyGUI.formation_orientations[virtual_robot_selected] =
+                    cv::Point(interface.imageView.look_pos[0], interface.imageView.look_pos[1]);
+
+            // desseleciona o robô e reseta o clique
+            virtual_robot_selected =
+            interface.imageView.look_pos[0] =
+            interface.imageView.look_pos[1] = -1;
+        }
+        // se a posição alvo foi setada
+        else if(interface.imageView.tar_pos[0] >= 0) {
+            // atualiza a posição do robô no camcap e na estratégia
+            virtual_robots_positions[virtual_robot_selected] =
+            strategyGUI.formation_positions[virtual_robot_selected] =
+                    cv::Point(interface.imageView.tar_pos[0], interface.imageView.tar_pos[1]);
+
+            // desseleciona o robô e reseta o clique
+            virtual_robot_selected =
+            interface.imageView.tar_pos[0] =
+            interface.imageView.tar_pos[1] = -1;
         }
     }
 }
 
-void CamCap::update_formation_information() { // atualiza as informações dadas pela interface na estratégia
+void Manager::update_formation_information() { // atualiza as informações dadas pela interface na estratégia
     // reseta robo selecionado
     virtual_robot_selected = -1;
 
@@ -422,18 +438,20 @@ void CamCap::update_formation_information() { // atualiza as informações dadas
     }
 }
 
-void CamCap::PID_test() {
+void Manager::PID_test() {
     // se o botão play estiver pressionado, não faz o pid test
-    if (interface.get_start_game_flag()) return;
-    
+    if (interface.get_start_game_flag() || strategyGUI.formation_flag) return;
+
     // pra cada robô, olha se o clique na imagem foi nele
     for(int i = 0; i < Robots::SIZE; i++) {
         // se a distancia do robô i com o clique da tela for menor que 1 raio de robô
-        if(distance(Robots::get_position(i), cv::Point(interface.imageView.robot_pos[0], interface.imageView.robot_pos[1])) <= ROBOT_RADIUS) {
+        if(EQ::distance(Robots::get_position(i), cv::Point(interface.imageView.robot_pos[0], interface.imageView.robot_pos[1])) <= ROBOT_RADIUS) {
             Selec_index = i; // seleciona o robô i entre as chamadas de PID_test()
             interface.imageView.tar_pos[0] = -1; // reseta o alvo x da tela
             interface.imageView.tar_pos[1] = -1; // reseta o alvo y da tela
-            Robots::stop(Selec_index); // para o robô i
+            interface.imageView.robot_pos[0] = -1; // reseta o clique x da tela
+            interface.imageView.robot_pos[1] = -1; // reseta o clique y da tela
+            Robots::stop(Selec_index); // para o robô selecionado
             fixed_ball[Selec_index] = false; // desmarca a flag de seguir a bola
         }
     }
@@ -441,12 +459,12 @@ void CamCap::PID_test() {
     // se tem um robô selecionado na interface
     if(Selec_index > -1) {
         // se a distancia dele é menor que um threshold pra bola, segue a bola
-        if(distance(Ball_kf_est, Robots::get_target(Selec_index)) <= ROBOT_RADIUS*2)
+        if(EQ::distance(Ball_kf_est, Robots::get_target(Selec_index)) <= ROBOT_RADIUS*2)
             fixed_ball[Selec_index] = true;
         else { // senão, coloca o alvo pro segundo clique
             fixed_ball[Selec_index] = false;
             Robots::set_target(Selec_index, cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]));
-            
+
             /* comando por POSITION */
             //Robots::set_command(i, cv::Point(interface.imageView.tar_pos[0],interface.imageView.tar_pos[1]));
         }
@@ -457,7 +475,7 @@ void CamCap::PID_test() {
             Robots::set_command(i, Ball_kf_est);
         } else {
             // se chegou no alvo, para
-            if(distance(Robots::get_position(i), Robots::get_target(i)) <= ROBOT_RADIUS) {
+            if(EQ::distance(Robots::get_position(i), Robots::get_target(i)) <= ROBOT_RADIUS) {
                 // Robots::look_at(i, Ball_kf_est); // faz o robô olhar pra bola ao chegar no alvo (deve ser o único comando nesse if)
                 Robots::stop(i); // para o robô
                 interface.imageView.tar_pos[0]=-1; // reseta a posição x do alvo da interface
@@ -473,7 +491,7 @@ void CamCap::PID_test() {
     }
 } // PID_test
 
-void CamCap::warp_transform(cv::Mat cameraFlow){
+void Manager::warp_transform(cv::Mat cameraFlow){
     cv::Point2f inputQuad[4];
     cv::Point2f outputQuad[4];
     cv::Mat lambda = cv::Mat::zeros(cameraFlow.rows, cameraFlow.cols, cameraFlow.type());
@@ -523,7 +541,7 @@ void CamCap::warp_transform(cv::Mat cameraFlow){
     }
 } // warp_transform
 
-void CamCap::updateAllPositions() {
+void Manager::filter_positions() {
     cv::Point ballPosition;
 
     // !TODO trocar estas variáveis para um Point e guardar localmente também
@@ -552,4 +570,4 @@ void CamCap::updateAllPositions() {
     }
     Ball_kf_est = KF_RobotBall.at(Robots::SIZE).KF_Prediction(ballPosition);
 
-} // updateAllPositions
+} // filter_positions

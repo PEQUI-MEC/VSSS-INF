@@ -5,7 +5,6 @@ P137
 *.o
 .vscode/
 .idea/
-*.txt
 config/quicksave.json
 build
 cmake-build-debug

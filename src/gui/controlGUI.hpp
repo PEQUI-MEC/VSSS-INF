@@ -94,18 +94,6 @@ public:
 	ControlGUI();
 
 	/** 
-	* @brief Returns "PID test on click" flag
-	* @return PID_test_flag Flag that indicates whether "PID test on click" button is pressed or not
-	*/
-	bool get_PID_test_flag();
-	
-	/** 
-	* @brief Sets "PID test on click" flag
-	* @param input Boolean value to be attributed to PID_test_flag
-	*/
-	void set_PID_test_flag(bool input);
-
-	/** 
 	* @brief Creates the Text frame on Control Gui
 	*/
 	void configureTestFrame();
@@ -137,7 +125,7 @@ public:
 	/** 
 	* @brief Update the battery status of all robots
 	*/
-	void _robot_status();
+	void check_robot_status();
 
 	/** 
 	* @brief Initializes the selected communication device using flyingMessenger's start_xbee method
@@ -187,13 +175,6 @@ public:
 	* @brief Gets the gap between sent messages (through flyingMessenger's get time function) and shows it on interface
 	*/	
 	void update_msg_time();
-
-	/** 
-	* @brief Checks if the values digited on PID labels are valid
-	* @details The label must contain just digits and a single dot or comma
-	* @return bool Value that indicates whether the string is valid
-	*/
-	bool checkPIDvalues();
 };
 
 #endif /* CONTROLGUI_HPP_ */

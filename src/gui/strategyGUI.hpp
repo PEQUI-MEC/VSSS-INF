@@ -1,7 +1,10 @@
 /**
- * @file strategyGUI.hpp 
+ * @file strategyGUI.hpp
  * @since 2016/05/08
- * @author Daniel
+ * @author Daniel @ Pequi Mecanico | Bryan Lincoln @ Pequi Mecânico
+ * @brief Strategy's GUI class
+ * @see https://www.facebook.com/NucleoPMec/
+ * @sa https://www.instagram.com/pequimecanico
  */
 
 #ifndef STRATEGYGUI_HPP_
@@ -14,64 +17,68 @@
 
 class StrategyGUI: public Gtk::VBox {
 private:
-	
+
 	/**
-	 * @brief Converts a constant string to an inconstant one
+	 * Converts a constant string to an inconstant one
 	 * @param c_str Constant string to be converted
-	 * @return char* Not-const converted string 
+	 * @return char* Non-const converted string
 	 */
 	char * unconstant_char(const char * c_str);
-	
+
 	/**
-	 * @brief Event triggered when a formation is selected and 'load' button is clicked
-	 * @details Loads the saved formations file and changes robot's position flags
-	 * The formation will be updated on camcap
-	 */	
+	 * Event triggered when a formation is selected and 'load' button is clicked
+	 * Sets updating_formation_flag so Manager can send the new positions to the robots.
+	 */
 	void _event_loadFormation_bt_clicked();
-	
+
 	/**
-	 * @brief Event triggered when the delete button is clicked
-	 * @details Deletes the selected formation from the formations file (config/formation.txt)
+	 * Event triggered when the delete button is clicked
+	 * Deletes the selected formation from the formations file (config/formation.txt)
 	 */
 	void _event_deleteFormation_bt_clicked();
-	
+
 	/**
-	 * @brief Event triggered when the save button is clicked
-	 * @details Adds the formation in the formations file (config/formation.txt)
+	 * Event triggered when the save button is clicked
+	 * Adds the formation in the formations file (config/formation.txt)
 	 */
 	void _event_saveFormation_bt_clicked();
-	
+
 	/**
-	 * @brief Event triggered when the 'create formation' button is clicked
-	 * @details Makes the text field and 'save' button available
+	 * Event triggered when the 'create formation' button is clicked
+	 * Makes the text field and 'save' button available
 	 */
 	void _event_createFormation_bt_clicked();
-	
+
 	/**
-	 * @brief Event triggered when a formation (or none) is selected 
-	 * @details Checks if a formation is selected and, case positive, makes the 'load' and 'save' buttons available
+	 * Event triggered when a formation (or none) is selected
+	 * Checks if a formation is selected and, case positive, makes the 'load' and 'save' buttons available
 	 */
 	void _event_formation_box_changed();
-	
+
 	/**
-	 * @brief Event triggered when the 'penalty' button is clicked
-	 * @details Not implemented yet
+	 * Event triggered when the 'penalty' button is clicked
+	 * Not implemented yet
 	 */
 	void _event_set_penalty_behavior();
-	
+
  	/**
-	 * @brief Switches Strategy's full_transition_enabled flag value 
+	 * Switches Strategy's full_transition_enabled flag value
 	 */
 	void _event_transitions_checkbox_signal_clicked();
-	
+
 	/**
-	 * @brief Loads formation.txt file and appends the saved formations on the checkbox
-	 * @details File structure:
+	 * Loads formation.txt file and appends the saved formations on the checkbox
+	 * File structure:
 	 * Number of formations
 	 * formation_name r1x r1y r1o r2x r2y r2o r3x r3y r3o
 	 */
 	void loadSavedFormations();
-	
+
+	/**
+	 * Load formation information from file to virtual robot's position arrays.
+	 */
+	void load_formation();
+
 public:
 	/**Tree model columns: */
 	class ModelColumns : public Gtk::TreeModel::ColumnRecord
@@ -118,8 +125,8 @@ public:
 	Gtk::Button bt_saveFormation;
 	Gtk::ComboBoxText formation_box;
 	Gtk::Entry formation_name_entry;
-	cv::Point formation_positions[3]; /**< Updated only if the flag is activated*/
-	float formation_orientations[3]; /**< Updated only if the flag is activated*/
+	cv::Point formation_positions[Robots::SIZE]; /**< Updated only if the flag is activated*/
+	cv::Point formation_orientations[Robots::SIZE]; /**< Updated only if the flag is activated*/
 
 	Gtk::Frame behavior_fm;
 	Gtk::Grid behavior_grid;
@@ -134,23 +141,23 @@ public:
 	StrategyGUI();
 
 	/**
-	 * @brief Inicialization of labels and values from Test Parameters frame 
+	 * Inicialization of labels and values from Test Parameters frame
 	 */
 	void configureTestFrame();
-	
+
 	/**
-	 * @brief Formation frame creator
+	 * Formation frame creator
 	 */
 	void createFormationFrame();
 
 	/**
-	 * @brief Transitions frame creator
+	 * Transitions frame creator
 	 */
 	void createTransitionsFrame();
-	
+
 	/**
-	 * @brief Destructor of a StrategyGUI object
-	 */	
+	 * Destructor of a StrategyGUI object
+	 */
 	~StrategyGUI();
 };
 

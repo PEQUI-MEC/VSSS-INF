@@ -5,6 +5,12 @@ StrategyGUI::StrategyGUI() {
 	createTransitionsFrame();
 	pack_start(strategy.testFrame, false, true, 5);
 	configureTestFrame();
+
+	for(int i = 0; i < Robots::SIZE; i++) {
+		// valores absolutos pois são só pra incializar
+		formation_positions[i] = cv::Point(320, 240);
+		formation_orientations[i] = cv::Point(200, 480 / 6 + (i + 1) * 480 / 6);
+	}
 }
 
 StrategyGUI::~StrategyGUI() {}
@@ -24,69 +30,14 @@ char * StrategyGUI::unconstant_char(const char * c_str) {
 }
 
 void StrategyGUI::_event_loadFormation_bt_clicked() {
-	std::ifstream txtFile;
-	std::string line;
-	char * tmp_substr;
-
-	if(formation_box.get_active_row_number() == 0) {
-		bt_loadFormation.set_sensitive(false);
-		bt_deleteFormation.set_sensitive(false);
-		return;
-	}
-
-	txtFile.open("config/formation.txt");
-
-	if(txtFile.is_open()) {
-		getline(txtFile, line);
-		// formações salvas
-		int n = atoi(line.c_str());
-		// para cada prox linha
-		for(int i = 0; i < n; i++) {
-			// move o cursor enquanto não é a linha que eu quero
-			getline(txtFile, line);
-			if(i == formation_box.get_active_row_number() - 1) {
-				std::vector<std::string> strs;
-				boost::split(strs, line, boost::is_any_of(" "));
-
-				// pega robot 1 x position value
-				formation_positions[0].x = atof(strs.at(1).c_str());
-				// pega robot 1 y position value
-				formation_positions[0].y = atof(strs.at(2).c_str());
-				// pega robot 1 theta position value
-				formation_orientations[0] = atof(strs.at(3).c_str());
-
-				// pega robot 2 x position value
-				formation_positions[1].x = atof(strs.at(4).c_str());
-				// pega robot 2 y position value
-				formation_positions[1].y = atof(strs.at(5).c_str());
-				// pega robot 2 theta position value
-				formation_orientations[1] = atof(strs.at(6).c_str());
-
-				// pega robot 3 x position value
-				formation_positions[2].x = atof(strs.at(7).c_str());
-				// pega robot 3 y position value
-				formation_positions[2].y = atof(strs.at(8).c_str());
-				// pega robot 3 theta position value
-				formation_orientations[2] = atof(strs.at(9).c_str());
-			}
-		}
-		// atualiza interface
-		update_interface_flag = true;
-		std::cout << "Begin positioning...\n";
-		// valores disponíveis: formation_positions e formation_orientations
-		// isso é atualizado no camcap
-
-		// manda atualizar
-		updating_formation_flag = true;
-
-		txtFile.close();
-	} else {
-		// não existem formações salvas
-		std::cout << "You removed the file before I could read it.\n";
-	}
+    // manda o camcap atualizar a posição real dos robôs
+    updating_formation_flag = true;
+    debug_log("Positioning robots...");
 }
 
 void StrategyGUI::_event_deleteFormation_bt_clicked() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
 	std::ofstream tmpTxtFile;
 	std::ifstream txtFile;
 	std::string formationName;
@@ -150,6 +101,8 @@ void StrategyGUI::_event_deleteFormation_bt_clicked() {
 }
 
 void StrategyGUI::_event_saveFormation_bt_clicked() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
 	std::ofstream tmpTxtFile;
 	std::ifstream txtFile;
 	std::string formationName;
@@ -195,9 +148,9 @@ void StrategyGUI::_event_saveFormation_bt_clicked() {
 		// grava os novos dados no arquivo
 		tmpTxtFile << formationName << " ";
 
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < Robots::SIZE; i++) {
 			// não importa deixar o " " no final pois na leitura ele é ignorado
-			tmpTxtFile << formation_positions[i].x << " " << formation_positions[i].y << " " << formation_orientations[i] << " ";
+			tmpTxtFile << formation_positions[i].x << " " << formation_positions[i].y << " " << formation_orientations[i].x << " " << formation_orientations[i].y << " ";
 		}
 
 		tmpTxtFile << std::endl;
@@ -221,9 +174,9 @@ void StrategyGUI::_event_saveFormation_bt_clicked() {
 		// grava os novos dados no arquivo
 		tmpTxtFile << formationName << " ";
 
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < Robots::SIZE; i++) {
 			// não importa deixar o " " no final pois na leitura ele é ignorado
-			tmpTxtFile << formation_positions[i].x << " " << formation_positions[i].y << " " << formation_orientations[i] << " ";
+			tmpTxtFile << formation_positions[i].x << " " << formation_positions[i].y << " " << formation_orientations[i].x << " " << formation_orientations[i].y << " ";
 		}
 
 		tmpTxtFile << std::endl;
@@ -244,6 +197,8 @@ void StrategyGUI::_event_saveFormation_bt_clicked() {
 }
 
 void StrategyGUI::_event_createFormation_bt_clicked() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
 	formation_flag = !formation_flag;
 
 	bt_createFormation.set_active(!formation_flag);
@@ -252,6 +207,8 @@ void StrategyGUI::_event_createFormation_bt_clicked() {
 }
 
 void StrategyGUI::_event_formation_box_changed() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
 	if(formation_box.get_active_row_number() == 0) {
 		bt_loadFormation.set_sensitive(false);
 		bt_deleteFormation.set_sensitive(false);
@@ -259,6 +216,10 @@ void StrategyGUI::_event_formation_box_changed() {
 	}
 	bt_loadFormation.set_sensitive(true);
 	bt_deleteFormation.set_sensitive(true);
+	// carrega os dados dessa formação
+    load_formation();
+	// atualiza interface
+	update_interface_flag = true;
 }
 
 void StrategyGUI::_event_transitions_checkbox_signal_clicked() {
@@ -266,7 +227,58 @@ void StrategyGUI::_event_transitions_checkbox_signal_clicked() {
 	debug_log("Transitions: " + to_string(strategy.transitions_enabled));
 }
 
+void StrategyGUI::load_formation() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
+    std::ifstream txtFile;
+    std::string line;
+
+    if(formation_box.get_active_row_number() == 0) {
+        bt_loadFormation.set_sensitive(false);
+        bt_deleteFormation.set_sensitive(false);
+        return;
+    }
+
+    txtFile.open("config/formation.txt");
+
+    if(txtFile.is_open()) {
+        getline(txtFile, line);
+        // formações salvas
+        int n = atoi(line.c_str());
+        // para cada prox linha
+        for(int i = 0; i < n; i++) {
+            // move o cursor enquanto não é a linha que eu quero
+            getline(txtFile, line);
+            if(i == formation_box.get_active_row_number() - 1) {
+                std::vector<std::string> strs;
+                boost::split(strs, line, boost::is_any_of(" "));
+
+                // as posições estão armazenadas uma na frente da outra. usa 'position' pra navegar sobre elas
+                unsigned short position = 1;
+                for(int robot = 0; robot < Robots::SIZE; robot++) {
+                    formation_positions[robot].x = atoi(strs.at(position++).c_str());
+                    formation_positions[robot].y = atoi(strs.at(position++).c_str());
+                    formation_orientations[robot].x = atoi(strs.at(position++).c_str());
+					formation_orientations[robot].y = atoi(strs.at(position++).c_str());
+                }
+            }
+        }
+        // atualiza interface
+        update_interface_flag = true;
+        debug_log("Formation " + formation_box.get_active_text() + " loaded.");
+        // valores disponíveis: formation_positions e formation_orientations
+        // isso é atualizado no camcap
+
+        txtFile.close();
+    } else {
+        // não existem formações salvas
+        std::cout << "You removed the file before I could read it.\n";
+    }
+}
+
 void StrategyGUI::loadSavedFormations() {
+	updating_formation_flag = false; // para de posicionar caso esteja fazendo isso
+
 	std::ifstream txtFile;
 	std::string line;
 
@@ -301,10 +313,10 @@ void StrategyGUI::createTransitionsFrame() {
 
 	transitions_fm.set_label("Transitions");
 	transitions_fm.add(transitions_grid);
-	
+
 	transitions_grid.set_border_width(10);
 	transitions_grid.set_column_spacing(5);
-	transitions_grid.set_halign(Gtk::ALIGN_CENTER);	
+	transitions_grid.set_halign(Gtk::ALIGN_CENTER);
 
 	transitions_grid.attach(transitions_check, 0, 0, 1, 1);
 

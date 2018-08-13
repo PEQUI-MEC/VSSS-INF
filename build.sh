@@ -11,7 +11,7 @@ if [ -e dep_ok ]; then
     fi
     cd build
     cmake ..
-    make
+    make -j$(nproc)
     cd ..
 else
     chmod +x $PATH_TO_DEP_RESOLUTION
