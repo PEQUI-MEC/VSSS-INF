@@ -61,7 +61,7 @@ std::vector<message> FlyingMessenger::sendCMDs(std::vector<Robots::Command> comm
                     msg = position_msg(command);
 		}
 
-		decode_msg(msg);
+		decode_msg(command, msg);
 		if(command.cmdType == Robots::CMD::ORIENTATION) {
 			msg = final_msg;
 		}
@@ -97,7 +97,7 @@ std::string FlyingMessenger::speed_msg(Robots::Command command) {
 
 // verificar sobre alterar o command e passar como argumento
 std::string FlyingMessenger::velocity_msg(float right_wheel, float left_wheel) {
-	return (rounded_str(right_wheel)+";"+ rounded_str(left_whe));
+	return (rounded_str(right_wheel)+";"+ rounded_str(left_wheel));
 }
 
 std::string FlyingMessenger::orientation_msg(Robots::Command command) {
@@ -156,7 +156,7 @@ void FlyingMessenger::update_msg_time() {
 }
 
 template<int size>
-msg_data<size> FlyingMessenger::get_values(const string &msg, unsigned int first_char_pos) {
+msg_data<size> FlyingMessenger::get_values(const std::string &msg, unsigned int first_char_pos) {
 	std::array<float,size> values{};
 	unsigned int pos_atual = first_char_pos;
 	for (int i = 0; i < size; ++i) {
@@ -168,41 +168,41 @@ msg_data<size> FlyingMessenger::get_values(const string &msg, unsigned int first
 	return {values,true};
 }
 
-void FlyingMessenger::goToOrientation(string msg) {
+void FlyingMessenger::goToOrientation(Robots::Command command, std::string msg) {
 	msg_data<2> values = get_values<2>(msg, 1);
 	if(values.is_valid)
-		orientation_control(values[0], values[1]);
+		orientation_control(command, values[0], values[1]);
 }
 
-void FlyingMessenger::decode_msg(string msg) {
+void FlyingMessenger::decode_msg(Robots::Command command, std::string msg) {
 
 	switch (msg[0]) {
 		case 'U':
-			uvf_message(msg);
+			//uvf_message(msg);
 			return;
 		case 'K':
-			if(msg[1] == 'P') Update_PID_Pos(msg);
-			else Update_PID_K(msg);
+			//if(msg[1] == 'P') Update_PID_Pos(msg);
+			//else Update_PID_K(msg);
 			return;
 		case 'A':
-			Update_ACC(msg);
+			//Update_ACC(msg);
 			return;
 		case 'O':
-			goToOrientation(msg);
+			goToOrientation(command, msg);
 			return;
 		case 'P':
-			GoToPoint(msg);
+			//GoToPoint(msg);
 			return;
 		case 'V':
-			GoToVector(msg);
+			//GoToVector(msg);
 			return;
 		case 'D':
-			debug_mode = !debug_mode;
+			//****debug_mode = !debug_mode;
 //			(*r).controllerA->debug_mode = debug_mode;
 //			(*r).controllerB->debug_mode = debug_mode;
 			return;
 		case 'B':
-			send_battery();
+			//send_battery();
 			return;
 		default:
 			break;
@@ -210,7 +210,7 @@ void FlyingMessenger::decode_msg(string msg) {
 
 }
 
-void FlyingMessenger::orientation_control(float new_theta, float velocity) {
+void FlyingMessenger::orientation_control(Robots::Command command, float new_theta, float velocity) {
 
 	float old_theta = command.Status.orientation;
 

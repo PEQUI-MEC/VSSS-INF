@@ -19,8 +19,8 @@
 #include <thread>
 #include <condition_variable>
 
-#define DEFAULT_FRAMESKIP 4
 #define PI 3.1415926f
+#define DEFAULT_FRAMESKIP 4
 
 template <int size>
 struct msg_data {
@@ -75,7 +75,7 @@ private:
 	 * @brief 
 	 * 
 	 */
-	std::string FlyingMessenger::velocity_msg(float right_wheel, float left_wheel);
+	std::string velocity_msg(float right_wheel, float left_wheel);
 
 	/**
 	 * @brief Prepare the message to send to the robot a orientation message.
@@ -189,38 +189,38 @@ public:
 	 * @tparam size 
 	 */
 	template<int size>
-	msg_data<size> Messenger::get_values(const string &msg, unsigned int first_char_pos)];
+	msg_data<size> get_values(const std::string &msg, unsigned int first_char_pos);
 
 	/**
 	 * @brief 
 	 * 
 	 */
-	void Messenger::goToOrientation(string msg);
+	void goToOrientation(Robots::Command command, std::string msg);
 
 	/**
 	 * @brief 
 	 * 
 	 * @param msg 
 	 */
-	void decode_msg(string msg);
+	void decode_msg(Robots::Command command, std::string msg);
 
 	/**
 	 * @brief 
 	 * 
 	 */
-	void orientation_control(float new_theta, float velocity);
+	void orientation_control(Robots::Command command, float new_theta, float velocity);
 
 	/**
 	 * @brief 
 	 * 
 	 */
-	float FlyingMessenger::round_angle(float angle);
+	float round_angle(float angle);
 
 	/**
 	 * @brief 
 	 * 
 	 */
-	float FlyingMessenger::saturate(float value, float limit)
+	float saturate(float value, float limit);
 };
 
 #endif //VSSS_FlyingMessenger_H
