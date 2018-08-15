@@ -1060,13 +1060,14 @@ void Strategy::def_routine(int i) {
 }
 
 void Strategy::gk_routine(int i) {
+	cv::Point target;
+	
 	switch(Robots::get_status(i)) {
 		case NORMAL_STATE:
 			Robots::set_fixedPos(i, true);
 
             Robots::set_cmdType(i, Robots::CMD::POSITION);
 
-			cv::Point target;
 			target.x = goalie_line;
 			target.y = Ball.y;
 
@@ -1157,16 +1158,19 @@ void Strategy::gk_routine(int i) {
 			}
 
 			break;
-
-        case CORNER_STATE:
+		case CORNER_STATE:
             Robots::set_velocity(i, MAX_VEL);
+            //Chutar para fora
             //Ativar transição?
+
 
             break;
         case BALL_IN_AREA_STATE:
-            //!TODO Ver se o UVF resolve o posicionamento
+        	//Posicionar o robô atrás da bola;
+            //!TODO Ver se o UVF resolve o posicionamento.
 
         case INVIABLE_TRANSITION_STATE:
+        	//Gira com a velocidade máxima
 
             target.x = goalie_line;
             target.y = Ball.y;
