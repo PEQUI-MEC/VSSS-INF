@@ -51,10 +51,10 @@ private:
 	float orientation_Kp = 0.8;
 	bool previously_backwards = false;
 
-	float max_theta_error;
-	float acc_rate;
-	float kgz;
-	int msg_timeout_limit;
+	float max_theta_error = 20.000000;
+	float acc_rate = 1.000000;
+	float kgz = 1.000000;
+	int msg_timeout_limit = 500;
 	char MY_ID;
 
 	/**
