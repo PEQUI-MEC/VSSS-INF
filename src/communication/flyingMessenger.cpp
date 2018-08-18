@@ -1,7 +1,8 @@
 #include "flyingMessenger.hpp"
 
+//Control constants
 #define PI 3.1415926f
-
+#define ROBOT_LOOP_MS 10
 using namespace std;
 
 void FlyingMessenger::start_xbee(const std::string &port, int baud) {
@@ -171,6 +172,11 @@ msg_data<size> FlyingMessenger::get_values(const std::string &msg, unsigned int 
 	return {values,true};
 }
 
+void FlyingMessenger::GoToPoint(Robots::Command command, std::string msg) {
+	msg_data<3> values = get_values<3>(msg, 1);
+	if(values.is_valid)
+		position_control(command, values[0], values[1], values[2]);
+}
 void FlyingMessenger::goToOrientation(Robots::Command command, std::string msg) {
 	msg_data<2> values = get_values<2>(msg, 1);
 	if(values.is_valid)
@@ -194,7 +200,7 @@ void FlyingMessenger::decode_msg(Robots::Command command, std::string msg) {
 			goToOrientation(command, msg);
 			return;
 		case 'P':
-			//GoToPoint(msg);
+			GoToPoint(msg);
 			return;
 		case 'V':
 			//GoToVector(msg);
@@ -214,8 +220,8 @@ void FlyingMessenger::decode_msg(Robots::Command command, std::string msg) {
 }
 
 void FlyingMessenger::orientation_control(Robots::Command command, float new_theta, float velocity) {
-
-	float old_theta = command.Status.orientation;
+	new_theta = round_angle(new_theta + PI/180); //start_orientation_control faz isso;
+	float old_theta = (float) command.Status.orientation;
 
 	if(round_angle(new_theta - old_theta + PI/2) < 0){
 		old_theta = round_angle(old_theta + PI);
@@ -230,6 +236,67 @@ void FlyingMessenger::orientation_control(Robots::Command command, float new_the
 	float right_wheel_velocity = saturate(orientation_Kp * theta_error, 1);
 	float left_wheel_velocity = saturate(-orientation_Kp * theta_error, 1);
 
+	final_msg = velocity_msg(left_wheel_velocity, right_wheel_velocity);
+}
+
+void FlyingMessenger::position_control(Robots::Command command, float target_x, float target_y, float target_velocity) {
+//	Stops after arriving at destination
+	float state_theta = (float)command.Status.orientation * PI/180; //testando
+	float position_error = std::sqrt(std::pow(command.Status.position.x - target_x, 2.0f) + std::pow(command.Status.position.y - target_y, 2.0f));
+	if(target_velocity == 0 || position_error < 1) {
+		stop_and_wait();
+		return;
+	}
+
+	if(vel_acelerada < 0.3) vel_acelerada = 0.3;
+
+//	Computes target.theta in direction of {target.x, target.y} before each control loop
+	float target_theta = std::atan2(target_y - command.Status.position.y, target_x - command.Status.position.x);
+	float theta = state_theta;
+
+//	Activates backwards movement if theta_error > PI/2
+	bool move_backwards = round_angle(target_theta - state_theta + PI/2) < 0;
+	if(move_backwards != previously_backwards) vel_acelerada = 0.3;
+	previously_backwards = move_backwards;
+	if(move_backwards) theta = round_angle(state_theta + PI);
+
+	float theta_error = round_angle(target_theta - theta);
+
+//	Decreases velocity for big errors and limits maximum velocity
+	if (std::abs(theta_error) > max_theta_error) {
+		if(vel_acelerada > 0.8) {
+			vel_acelerada = 0.8;
+		} else if (vel_acelerada > 0.3) {
+			vel_acelerada = vel_acelerada - 2 * acc_rate * ROBOT_LOOP_MS/1000.0f;
+		}
+	} else {
+//		Applies acceleration until robot reaches target velocity
+		float velocity_difference = target_velocity - vel_acelerada;
+		if (velocity_difference > 0.2) {
+			vel_acelerada = vel_acelerada + acc_rate * ROBOT_LOOP_MS/1000.0f;
+		} else if(velocity_difference < 0) {
+			vel_acelerada = target_velocity;
+		}
+	}
+
+	float limiar = std::atan2(1.0f, position_error);
+	limiar = limiar > 30 ? 30 : limiar;
+	if(std::abs(theta_error) < limiar) theta_error = 0;
+
+	set_wheel_velocity_nonlinear_controller(theta_error, vel_acelerada, move_backwards);
+}
+
+void FlyingMessenger::set_wheel_velocity_nonlinear_controller(float theta_error, float velocity, bool backwards) {
+	float m = 1;
+	if(backwards) m = -1;
+
+	float right_wheel_velocity = m + std::sin(theta_error) + m*kgz*std::tan(m*theta_error/2);
+	right_wheel_velocity = saturate(right_wheel_velocity,1);
+
+	float left_wheel_velocity = m - std::sin(theta_error) + m*kgz*std::tan(-m*theta_error/2);
+	left_wheel_velocity = saturate(left_wheel_velocity,1);
+
+	//set_target_velocity(left_wheel_velocity, right_wheel_velocity, velocity);
 	final_msg = velocity_msg(left_wheel_velocity, right_wheel_velocity);
 }
 

@@ -41,10 +41,21 @@ private:
 	SerialCom* xbee = nullptr;
 	
 	std::string final_msg;
-	float orientation_Kp = 0.8;
 	double time_between_msgs;
 	int frameskip, send_cmd_count;
 	std::chrono::system_clock::time_point previous_msg_time;
+
+	//Control variables
+	float uvf_n = 2;
+	float vel_acelerada = 0;
+	float orientation_Kp = 0.8;
+	bool previously_backwards = false;
+
+	float max_theta_error;
+	float acc_rate;
+	float kgz;
+	int msg_timeout_limit;
+	char MY_ID;
 
 	/**
 	 * @brief Calls SerialCom's addNew method and add 6 possible connections to the robots based on their
@@ -197,6 +208,11 @@ public:
 	void goToOrientation(Robots::Command command, std::string msg);
 
 	/**
+	 *
+	 */
+	void GoToPoint(Robots::Command command, std::string msg);
+
+	/**
 	 * @brief 
 	 * 
 	 * @param msg 
@@ -210,6 +226,11 @@ public:
 	void orientation_control(Robots::Command command, float new_theta, float velocity);
 
 	/**
+	 *
+	 */
+	void position_control(Robots::Command command, float target_x, float target_y, float target_velocity);
+
+	/**
 	 * @brief 
 	 * 
 	 */
@@ -220,7 +241,15 @@ public:
 	 * 
 	 */
 	float saturate(float value, float limit);
+
+	/**
+	 *
+	 */
 	void stop_and_wait();
-};
+
+	void set_wheel_velocity_nonlinear_controller(float theta_error, float velocity, bool backwards);
+
+
+	};
 
 #endif //VSSS_FlyingMessenger_H
