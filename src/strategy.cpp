@@ -1064,9 +1064,12 @@ void Strategy::gk_routine(int i) {
     if((Ball.x < COORD_BOX_DEF_X && Ball.y < COORD_BOX_UP_Y) ||
             (Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_DWN_Y)) { //Se está nos cantos, definir como CORNER_STATE;
         Robots::set_status(i, CORNER_STATE);
-    }else if(){
-
-    }
+    }else if(Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_UP_Y && Ball.y < COORD_BOX_DWN_Y ){ //Se a bola está dentro da área
+        Robots::set_status(i, BALL_IN_AREA_STATE);
+    }else if(Ball.x < Robots::get_position(atk).x && Ball.x < Robots::get_position(def).x){ //Bola atrás do atacante e do defensor. Quando é inviável fazer a transição?
+        Robots::set_status(i, INVIABLE_TRANSITION_STATE);
+    }else
+        Robots::set_status(i, NORMAL_STATE);
 
     cv::Point target;
 	switch(Robots::get_status(i)) {
@@ -1173,6 +1176,7 @@ void Strategy::gk_routine(int i) {
             }else{
                 target.y = COORD_GOAL_UP_Y;
             }
+            Robots::set_target(i, target);
 
             //Chutar para fora
             //Ativar transição?
