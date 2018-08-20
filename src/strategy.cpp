@@ -20,8 +20,7 @@
 #define	SIDEWAYS 5
 #define DEF_CORNER_STATE 6
 #define ATK_PENALTI_STATE 7
-#define INVIABLE_TRANSITION_STATE 8
-#define BALL_IN_AREA_STATE 9
+#define BALL_IN_AREA_STATE 8
 
 // velocidade
 #define MAX_VEL 1.4f
@@ -1064,15 +1063,14 @@ void Strategy::gk_routine(int i) {
     if((Ball.x < COORD_BOX_DEF_X && Ball.y < COORD_BOX_UP_Y) ||
             (Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_DWN_Y)) { //Se está nos cantos, definir como CORNER_STATE;
         Robots::set_status(i, CORNER_STATE);
-    }else if(Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_UP_Y && Ball.y < COORD_BOX_DWN_Y ){ //Se a bola está dentro da área
+    }else if(Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_UP_Y && Ball.y < COORD_BOX_DWN_Y ){ //Se a bola está dentro da área, definir BALL_IN_AREA_STATE;
         Robots::set_status(i, BALL_IN_AREA_STATE);
-    }else if(Ball.x < Robots::get_position(atk).x && Ball.x < Robots::get_position(def).x){ //Bola atrás do atacante e do defensor. Quando é inviável fazer a transição?
-        Robots::set_status(i, INVIABLE_TRANSITION_STATE);
     }else
         Robots::set_status(i, NORMAL_STATE);
 
     cv::Point target;
-	switch(Robots::get_status(i)) {
+
+    switch(Robots::get_status(i)) {
 		case NORMAL_STATE:
 			Robots::set_fixedPos(i, true);
 
@@ -1176,7 +1174,9 @@ void Strategy::gk_routine(int i) {
             }else{
                 target.y = COORD_GOAL_UP_Y;
             }
-            Robots::set_target(i, target);
+
+			Robots::set_target(i, Ball);
+			//Robots::kick(i, Ball); < Só com orientação?
 
             //Chutar para fora
             //Ativar transição?
@@ -1184,34 +1184,29 @@ void Strategy::gk_routine(int i) {
 
             break;
         case BALL_IN_AREA_STATE:
+			//Se a velocidade da bola está baixa e dentro da área.
+			Robots::set_velocity(i,MAX_VEL);
+
+			target.x = goalie_line;
+			target.y = Ball.y;
+
+			Robots::set_target(i, target);
+
+			if(Ball.x > Robots::get_position(i).x)
+				Robots::set_target(i, Ball);
+			else if(distance(Robots::get_position(i), Ball) < ABS_ROBOT_SIZE*1.3){
+				if(Ball.y > COORD_GOAL_DWN_Y){
+					Robots::spin_counter_clockwise(i, 1.f)
+				}
+				else if(Ball.y < COORD_GOAL_UP_Y){
+					Robots::spin_clockwise(i, 1.f);
+
+				}
+			}
+
         	//Posicionar o robô atrás da bola;
             //!TODO Ver se o UVF resolve o posicionamento.
 
-        case INVIABLE_TRANSITION_STATE:
-        	//Gira com a velocidade máxima
-
-            target.x = goalie_line;
-            target.y = Ball.y;
-
-            if(target.y > COORD_GOAL_DWN_Y) target.y = COORD_GOAL_DWN_Y - ABS_ROBOT_SIZE;
-            if(target.y < COORD_GOAL_UP_Y) target.y = COORD_GOAL_UP_Y + ABS_ROBOT_SIZE;
-
-
-            if(distance(Robots::get_position(i), Ball) < ABS_ROBOT_SIZE*1.3) {
-                if(Ball.y <= COORD_GOAL_UP_Y) {
-                    Robots::spin_clockwise(i, 1.f);
-                } else if(Ball.y >= COORD_GOAL_DWN_Y) {
-                    Robots::spin_counter_clockwise(i, 1.f);
-                }
-            }
-
-            if(distance(Robots::get_position(i), Ball) < ABS_ROBOT_SIZE*1.3) {
-                if(Ball.y <= Robots::get_position(i).y) {
-                    Robots::spin_clockwise(i, 1.f);
-                } else if(Ball.y >= Robots::get_position(i).y){
-                    Robots::spin_counter_clockwise(i, 1.f);
-                }
-            }
     }
 }
 
