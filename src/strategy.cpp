@@ -1060,8 +1060,15 @@ void Strategy::def_routine(int i) {
 }
 
 void Strategy::gk_routine(int i) {
-	cv::Point target;
-	
+
+    if((Ball.x < COORD_BOX_DEF_X && Ball.y < COORD_BOX_UP_Y) ||
+            (Ball.x < COORD_BOX_DEF_X && Ball.y > COORD_BOX_DWN_Y)) { //Se está nos cantos, definir como CORNER_STATE;
+        Robots::set_status(i, CORNER_STATE);
+    }else if(){
+
+    }
+
+    cv::Point target;
 	switch(Robots::get_status(i)) {
 		case NORMAL_STATE:
 			Robots::set_fixedPos(i, true);
@@ -1160,6 +1167,13 @@ void Strategy::gk_routine(int i) {
 			break;
 		case CORNER_STATE:
             Robots::set_velocity(i, MAX_VEL);
+            target.x = goalie_line;
+            if(Ball.y > COORD_BOX_DWN_Y){
+                target.y = COORD_GOAL_DWN_Y;
+            }else{
+                target.y = COORD_GOAL_UP_Y;
+            }
+
             //Chutar para fora
             //Ativar transição?
 
